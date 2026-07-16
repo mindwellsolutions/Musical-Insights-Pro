@@ -6,11 +6,15 @@
 /**
  * Available MIDI button actions that can be mapped to pedal buttons
  */
-export type MIDIButtonAction = 
+export type MIDIButtonAction =
   | 'prev'           // Manual Selection Previous
   | 'next'           // Manual Selection Next
   | 'scale-left'     // Compatible Scales Navigate Left
   | 'scale-right'    // Compatible Scales Navigate Right
+  | 'item-left'      // Navigate items left within the MIDI-active section
+  | 'item-right'     // Navigate items right within the MIDI-active section
+  | 'section-left'   // Cycle MIDI-active section left (future)
+  | 'section-right'  // Cycle MIDI-active section right (future)
   | 'none';          // No action assigned
 
 /**
@@ -183,6 +187,10 @@ export const MIDI_ACTION_LABELS: Record<MIDIButtonAction, string> = {
   'next': 'Manual Selection: Next',
   'scale-left': 'Compatible Scales: Navigate Left',
   'scale-right': 'Compatible Scales: Navigate Right',
+  'item-left': 'Active Section: Item Left',
+  'item-right': 'Active Section: Item Right',
+  'section-left': 'Cycle Section: Left',
+  'section-right': 'Cycle Section: Right',
   'none': 'No Action',
 };
 

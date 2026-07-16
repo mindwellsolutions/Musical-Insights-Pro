@@ -61,6 +61,8 @@ interface AudioSidebarProps {
   stringBrightness?: number;
   onStringBrightnessChange?: (brightness: number) => void;
   hideToggleButton?: boolean;
+  fretWidth?: number;
+  onFretWidthChange?: (width: number) => void;
 }
 
 export function AudioSidebar({
@@ -110,6 +112,8 @@ export function AudioSidebar({
   stringBrightness = 100,
   onStringBrightnessChange,
   hideToggleButton = false,
+  fretWidth = 50,
+  onFretWidthChange,
 }: AudioSidebarProps) {
   // Shared skill level state - synced with AI Assistant and Compatible Scales
   const [skillLevel, setSkillLevel] = useSharedSkillLevel();
@@ -576,6 +580,32 @@ export function AudioSidebar({
                     background: theme.bgSecondary,
                     color: theme.textPrimary,
                     borderColor: theme.border,
+                  }}
+                />
+              </div>
+            )}
+
+            {/* Fret Width Slider */}
+            {onFretWidthChange && (
+              <div className="mb-3">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-medium" style={{ color: theme.textSecondary }}>
+                    Fret Width:
+                  </span>
+                  <span className="text-xs font-bold" style={{ color: theme.buttonPrimary }}>
+                    {fretWidth}%
+                  </span>
+                </div>
+                <input
+                  type="range"
+                  min="20"
+                  max="100"
+                  step="5"
+                  value={fretWidth}
+                  onChange={(e) => onFretWidthChange(Number(e.target.value))}
+                  className="w-full h-2 rounded-lg appearance-none cursor-pointer"
+                  style={{
+                    background: `linear-gradient(to right, ${theme.buttonPrimary} 0%, ${theme.buttonPrimary} ${((fretWidth - 20) / 80) * 100}%, ${theme.border} ${((fretWidth - 20) / 80) * 100}%, ${theme.border} 100%)`,
                   }}
                 />
               </div>

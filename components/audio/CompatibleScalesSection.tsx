@@ -8,10 +8,10 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { ScaleCompatibilityRating } from '@/lib/musicalCompatibility';
 import ScaleRecommendationCard from './ScaleRecommendationCard';
-import { Theme } from '@/lib/themes';
+import { Theme, themes } from '@/lib/themes';
 import SkillLevelSelector, { SkillLevel, isWithinSkillLevel } from '@/components/shared/SkillLevelSelector';
-import { themes } from '@/lib/themes';
 import { useNoteDisplay } from '@/hooks/useNoteDisplay';
+import { MIDISectionToggle } from '@/components/midi/MIDISectionToggle';
 
 interface CompatibleScalesSectionProps {
   detectedKey: string;
@@ -382,11 +382,20 @@ export default function CompatibleScalesSection({
             </div>
           )}
         </div>
-        <div
-          style={{...arrowStyle, cursor: 'pointer'}}
-          onClick={() => setIsExpanded(!isExpanded)}
-        >
-          {isExpanded ? '▲' : '▼'}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <MIDISectionToggle
+            sectionId="compatible-scales"
+            label="Compatible Scales"
+            onLeft={navigateLeft}
+            onRight={navigateRight}
+            theme={themes[theme]}
+          />
+          <div
+            style={{...arrowStyle, cursor: 'pointer'}}
+            onClick={() => setIsExpanded(!isExpanded)}
+          >
+            {isExpanded ? '▲' : '▼'}
+          </div>
         </div>
       </div>
 

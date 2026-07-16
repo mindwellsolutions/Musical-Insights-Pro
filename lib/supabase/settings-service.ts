@@ -40,6 +40,9 @@ export interface UserSettings {
 
   // Onboarding Guide Settings
   show_guide_at_start: boolean;
+
+  // Fretboard Width Setting (20–100, default 50)
+  fret_width: number;
 }
 
 export const DEFAULT_SETTINGS: UserSettings = {
@@ -64,6 +67,7 @@ export const DEFAULT_SETTINGS: UserSettings = {
   selected_chord_notes: null,
   selected_guide_tones: null,
   show_guide_at_start: true,
+  fret_width: 50,
 };
 
 /**
@@ -104,6 +108,7 @@ export async function loadUserSettings(userId: string): Promise<UserSettings> {
     selected_chord_notes: data.selected_chord_notes,
     selected_guide_tones: data.selected_guide_tones,
     show_guide_at_start: data.show_guide_at_start ?? true,
+    fret_width: data.fret_width ?? 50,
   };
 }
 

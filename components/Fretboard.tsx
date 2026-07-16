@@ -78,6 +78,8 @@ interface FretboardProps {
   showBottomFretNumbers?: boolean;
   // Voicing outline groups: draw rounded SVG rects around each chord voicing cluster
   voicingOutlineGroups?: Array<{ color: string; label: string; positions: { stringIndex: number; fretIndex: number }[] }>;
+  // Per-user fret cell width (20–100, default 50; 50 = 70 px baseline)
+  fretWidth?: number;
   // Generic note click: fires when a custom-color note (chords mode) is clicked
   onNoteClick?: (notePosition: NotePosition) => void;
   // ── Triad Arc Band (Feature 1) ──────────────────────────────────────────────
@@ -337,9 +339,13 @@ export default function Fretboard({
   nonTriadColorMode = false,
   patternHighlightRootNote = undefined,
   patternBgNotesOpacity = 100,
+  fretWidth = 50,
 }: FretboardProps) {
   const { getNoteDisplayName } = useNoteDisplay();
   const fretCount = propFretCount;
+  // Convert percentage (20–100) to pixel width; 50% = 70 px baseline
+  const fretWidthPx = Math.round(70 * (fretWidth / 50));
+  const fretHalfPx = Math.round(fretWidthPx / 2);
 
   // Track all triad positions that share the hovered note (for multi-chord highlighting)
   const [hoveredTriadPositions, setHoveredTriadPositions] = useState<any[]>([]);
@@ -411,9 +417,9 @@ export default function Fretboard({
                     key={`top-dots-${i}`}
                     className="flex items-center justify-center"
                     style={{
-                      width: i === 0 ? '40px' : '70px',
-                      minWidth: i === 0 ? '40px' : '70px',
-                      transform: i === 0 ? 'none' : 'translateX(35px)',
+                      width: i === 0 ? '40px' : `${fretWidthPx}px`,
+                      minWidth: i === 0 ? '40px' : `${fretWidthPx}px`,
+                      transform: i === 0 ? 'none' : `translateX(${fretHalfPx}px)`,
                       height: '32px',
                     }}
                   >
@@ -450,9 +456,9 @@ export default function Fretboard({
                     key={i}
                     className="flex items-center justify-center text-xl font-medium"
                     style={{
-                      width: i === 0 ? '40px' : '70px',
-                      minWidth: i === 0 ? '40px' : '70px',
-                      transform: i === 0 ? 'none' : 'translateX(35px)',
+                      width: i === 0 ? '40px' : `${fretWidthPx}px`,
+                      minWidth: i === 0 ? '40px' : `${fretWidthPx}px`,
+                      transform: i === 0 ? 'none' : `translateX(${fretHalfPx}px)`,
                     }}
                   >
                     {i}
@@ -519,8 +525,8 @@ export default function Fretboard({
                         key={fretIndex}
                         className="relative flex items-center justify-center"
                         style={{
-                          width: fretIndex === 0 ? '40px' : '70px',
-                          minWidth: fretIndex === 0 ? '40px' : '70px',
+                          width: fretIndex === 0 ? '40px' : `${fretWidthPx}px`,
+                          minWidth: fretIndex === 0 ? '40px' : `${fretWidthPx}px`,
                           height: '44px',
                           background: isInZone ? 'rgba(25, 118, 210, 0.08)' : 'transparent',
                           transition: 'background 200ms ease',
@@ -1059,9 +1065,9 @@ export default function Fretboard({
                     key={`middle-dots-${i}`}
                     className="flex items-center justify-center"
                     style={{
-                      width: i === 0 ? '40px' : '70px',
-                      minWidth: i === 0 ? '40px' : '70px',
-                      transform: i === 0 ? 'none' : 'translateX(35px)',
+                      width: i === 0 ? '40px' : `${fretWidthPx}px`,
+                      minWidth: i === 0 ? '40px' : `${fretWidthPx}px`,
+                      transform: i === 0 ? 'none' : `translateX(${fretHalfPx}px)`,
                       height: '32px',
                     }}
                   >
@@ -1103,9 +1109,9 @@ export default function Fretboard({
                     key={`dots-${i}`}
                     className="flex items-center justify-center"
                     style={{
-                      width: i === 0 ? '40px' : '70px',
-                      minWidth: i === 0 ? '40px' : '70px',
-                      transform: i === 0 ? 'none' : 'translateX(35px)',
+                      width: i === 0 ? '40px' : `${fretWidthPx}px`,
+                      minWidth: i === 0 ? '40px' : `${fretWidthPx}px`,
+                      transform: i === 0 ? 'none' : `translateX(${fretHalfPx}px)`,
                       height: '32px',
                     }}
                   >
@@ -1142,9 +1148,9 @@ export default function Fretboard({
                     key={`numbers-${i}`}
                     className="flex items-center justify-center"
                     style={{
-                      width: i === 0 ? '40px' : '70px',
-                      minWidth: i === 0 ? '40px' : '70px',
-                      transform: i === 0 ? 'none' : 'translateX(35px)',
+                      width: i === 0 ? '40px' : `${fretWidthPx}px`,
+                      minWidth: i === 0 ? '40px' : `${fretWidthPx}px`,
+                      transform: i === 0 ? 'none' : `translateX(${fretHalfPx}px)`,
                     }}
                   >
                     <div className="text-xl font-medium" style={{ color: theme.textSecondary }}>

@@ -101,6 +101,9 @@ const KEY_TO_COLUMN_MAP: Record<string, string> = {
 
   // Chord progression exploration state
   'guitar-app-chord-progression-state': 'chord_progression_state',
+
+  // Fretboard width setting
+  'guitar-app-fret-width': 'fret_width',
 };
 
 export function useSupabaseStorage<T>(key: string, defaultValue: T): [T, (value: T) => void, (value: T) => void] {

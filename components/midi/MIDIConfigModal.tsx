@@ -429,7 +429,7 @@ export default function MIDIConfigModal({ isOpen, onClose, theme }: MIDIConfigMo
 
                 {/* Action Assignment List */}
                 <div className="space-y-3">
-                  {(['prev', 'next', 'scale-left', 'scale-right'] as MIDIButtonAction[]).map((action) => {
+                  {(['prev', 'next', 'scale-left', 'scale-right', 'item-left', 'item-right', 'section-left', 'section-right'] as MIDIButtonAction[]).map((action) => {
                     // Find if this action is already assigned to a button
                     const assignedButton = localConfig.buttons.find(b => b.action === action);
                     const isLearningThis = isLearning && learningButtonId === action;
@@ -562,7 +562,7 @@ export default function MIDIConfigModal({ isOpen, onClose, theme }: MIDIConfigMo
                   Status:
                 </p>
                 <div className="space-y-1">
-                  {(['prev', 'next', 'scale-left', 'scale-right'] as MIDIButtonAction[]).map(action => {
+                  {(['prev', 'next', 'scale-left', 'scale-right', 'item-left', 'item-right', 'section-left', 'section-right'] as MIDIButtonAction[]).map(action => {
                     const assigned = localConfig.buttons.find(b => b.action === action);
                     return (
                       <div key={action} className="flex items-center justify-between text-xs">

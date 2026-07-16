@@ -3,6 +3,7 @@
 import React, { useState, useRef, useLayoutEffect, useCallback } from 'react';
 import { ThemeConfig } from '@/lib/themes';
 import { Info, ChevronRight, ChevronDown, Music } from 'lucide-react';
+import { SliderResetButton } from '@/components/shared/SliderResetButton';
 import ManualSelectionList, { ManualSelection } from './ManualSelectionList';
 import ColorPicker from './ColorPicker';
 import { NOTES, NOTE_COLORS, CHORD_TONE_COLORS, HIGHLIGHT_COLORS, ALL_INTERVAL_COLORS, INTERVAL_NAMES, getScaleNotes } from '@/lib/musicTheory';
@@ -413,9 +414,12 @@ export default function SongProgressionChordTonesTabs({
                       </div>
                       {showChordGlow && onGlowOpacityChange && (
                         <div className="flex items-center gap-2 mt-2">
-                          <label className="text-xs font-medium whitespace-nowrap" style={{ color: theme.textSecondary }}>
-                            Opacity: <span style={{ color: theme.textPrimary }}>{glowOpacity}%</span>
-                          </label>
+                          <div className="flex items-center gap-1">
+                            <label className="text-xs font-medium whitespace-nowrap" style={{ color: theme.textSecondary }}>
+                              Opacity: <span style={{ color: theme.textPrimary }}>{glowOpacity}%</span>
+                            </label>
+                            <SliderResetButton onReset={() => onGlowOpacityChange(40)} theme={theme} label="Reset opacity to 40%" />
+                          </div>
                           <input
                             type="range" min="0" max="100" value={glowOpacity}
                             onChange={(e) => onGlowOpacityChange(parseInt(e.target.value))}
@@ -574,9 +578,12 @@ export default function SongProgressionChordTonesTabs({
                       {/* Row 2: Opacity slider (shown when glow is on) */}
                       {showChordGlow && onGlowOpacityChange && (
                         <div className="flex items-center gap-2 mt-2">
-                          <label className="text-xs font-medium whitespace-nowrap" style={{ color: theme.textSecondary }}>
-                            Opacity: <span style={{ color: theme.textPrimary }}>{glowOpacity}%</span>
-                          </label>
+                          <div className="flex items-center gap-1">
+                            <label className="text-xs font-medium whitespace-nowrap" style={{ color: theme.textSecondary }}>
+                              Opacity: <span style={{ color: theme.textPrimary }}>{glowOpacity}%</span>
+                            </label>
+                            <SliderResetButton onReset={() => onGlowOpacityChange(40)} theme={theme} label="Reset opacity to 40%" />
+                          </div>
                           <input
                             type="range" min="0" max="100" value={glowOpacity}
                             onChange={(e) => onGlowOpacityChange(parseInt(e.target.value))}

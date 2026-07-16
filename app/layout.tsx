@@ -6,6 +6,7 @@ import { QueryProvider } from '@/components/providers/QueryProvider';
 import { AuthPrefetchProvider } from '@/components/providers/AuthPrefetchProvider';
 import { NoteNotationProvider } from '@/contexts/NoteNotationContext';
 import { AdminProvider } from '@/contexts/AdminContext';
+import { MIDISelectionProvider } from '@/contexts/MIDISelectionContext';
 import AppSettingsButton from '@/components/AppSettingsButton';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -28,8 +29,10 @@ export default function RootLayout({
             <AdminProvider>
               <NoteNotationProvider>
                 <MIDIProviders>
-                  {children}
-                  <AppSettingsButton />
+                  <MIDISelectionProvider>
+                    {children}
+                    <AppSettingsButton />
+                  </MIDISelectionProvider>
                 </MIDIProviders>
               </NoteNotationProvider>
             </AdminProvider>

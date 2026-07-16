@@ -77,6 +77,7 @@ import type { DiatonicTriad } from '@/lib/music-theory/triad-membership/types';
 import { TriadFocusSelector } from '@/components/scale-triads/TriadFocusSelector';
 import { normalizeNoteToSharp } from '@/lib/triad-theory';
 import { useNoteDisplay } from '@/hooks/useNoteDisplay';
+import { SliderResetButton } from '@/components/shared/SliderResetButton';
 
 // Degree → display color for the chord-tone progression pattern indicator
 const PATTERN_DEGREE_COLORS: Record<string, string> = {
@@ -118,6 +119,7 @@ export default function Home() {
   const [fretDotColor, setFretDotColor] = useSupabaseStorage('guitar-app-fret-dot-color', '#9ca3af');
   const [showMiddleDots, setShowMiddleDots] = useSupabaseStorage('guitar-app-show-middle-dots', false);
   const [fretCount, setFretCount] = useSupabaseStorage('guitar-app-fret-count', 24);
+  const [fretWidth, setFretWidth] = useSupabaseStorage('guitar-app-fret-width', 50);
   const [onlyChordTones, setOnlyChordTones] = useSupabaseStorage('guitar-app-only-chord-tones', false);
   const [selectedChordToneTypes, setSelectedChordToneTypes] = useSupabaseStorage<('root' | 'third' | 'fifth' | 'seventh')[]>(
     'guitar-app-selected-chord-tone-types',
@@ -2468,6 +2470,8 @@ export default function Home() {
           onShowColorfulStringsChange={setShowColorfulStrings}
           stringBrightness={stringBrightness}
           onStringBrightnessChange={setStringBrightness}
+          fretWidth={fretWidth}
+          onFretWidthChange={setFretWidth}
         />
       )}
 
@@ -2908,6 +2912,7 @@ export default function Home() {
                     cagedBrightness={cagedBrightness}
                     sharedNoteRingOpacity={selectedProgression ? progressionGlowBrightness : sharedNoteRingOpacity}
                     fretCount={fretCount}
+                    fretWidth={fretWidth}
                     showNavigationArrows={fretboardOrder === 'triads-top' && showFretboardArrows && chordNeighborhoodState.isPanelVisible}
                     anchorChordPositions={fretboardOrder === 'triads-top' && chordNeighborhoodState.anchorVoicing
                       ? chordNeighborhoodState.anchorVoicing.stringSet.map((string: number, index: number) => ({
@@ -3082,6 +3087,7 @@ export default function Home() {
                     showCAGEDOverlay={showCAGEDGuide}
                     cagedBrightness={cagedBrightness}
                     fretCount={fretCount}
+                    fretWidth={fretWidth}
                   />
                 </div>
                 </div>
@@ -3359,6 +3365,7 @@ export default function Home() {
                                 />
                               </div>
                               <span style={{ fontSize: 11, fontFamily: 'monospace', color: selectedChordTonePattern.genreColor, fontWeight: 700, minWidth: 34, textShadow: `0 0 8px ${selectedChordTonePattern.genreColor}80` }}>{patternGlowBrightness}%</span>
+                              <SliderResetButton onReset={() => setPatternGlowBrightness(100)} theme={theme} label="Reset glow to 100%" />
                             </div>
 
                             {/* Bg Notes opacity — only when Triads in Scale is off */}
@@ -3398,6 +3405,7 @@ export default function Home() {
                                     />
                                   </div>
                                   <span style={{ fontSize: 11, fontFamily: 'monospace', color: theme.textSecondary, minWidth: 30 }}>{patternBgNotesOpacity}%</span>
+                                  <SliderResetButton onReset={() => setPatternBgNotesOpacity(70)} theme={theme} label="Reset bg notes opacity to 70%" />
                                 </div>
                               </>
                             )}
@@ -3441,6 +3449,7 @@ export default function Home() {
                                 />
                               </div>
                               <span style={{ fontSize: 11, fontFamily: 'monospace', color: theme.accentPrimary, fontWeight: 700, minWidth: 34, textShadow: `0 0 8px ${theme.accentPrimary}80` }}>{customProgressionGlowBrightness}%</span>
+                              <SliderResetButton onReset={() => setCustomProgressionGlowBrightness(80)} theme={theme} label="Reset glow to 80%" />
                             </div>
                           </>
                         )}
@@ -3482,6 +3491,7 @@ export default function Home() {
                                 />
                               </div>
                               <span style={{ fontSize: 11, fontFamily: 'monospace', color: theme.textSecondary, minWidth: 30 }}>{chordToneBgNotesOpacity}%</span>
+                              <SliderResetButton onReset={() => setChordToneBgNotesOpacity(70)} theme={theme} label="Reset bg notes opacity to 70%" />
                             </div>
                           </>
                         )}
@@ -3523,6 +3533,7 @@ export default function Home() {
                                 />
                               </div>
                               <span style={{ fontSize: 11, fontFamily: 'monospace', color: theme.textSecondary, minWidth: 30 }}>{nonTriadOpacity}%</span>
+                              <SliderResetButton onReset={() => setNonTriadOpacity(30)} theme={theme} label="Reset non-triad opacity to 30%" />
                             </div>
                             <div style={{
                               display: 'flex',
@@ -3897,6 +3908,7 @@ export default function Home() {
                   cagedBrightness={cagedBrightness}
                   sharedNoteRingOpacity={selectedProgression ? progressionGlowBrightness : sharedNoteRingOpacity}
                   fretCount={fretCount}
+                  fretWidth={fretWidth}
                   showTriadArcBands={showTriadArcBands}
                   triadFocusOn={triadFocusOn}
                   focusTriad={focusTriad}

@@ -8,6 +8,7 @@
 import React, { useState } from 'react';
 import { ThemeConfig } from '@/lib/themes';
 import { Info, ChevronDown } from 'lucide-react';
+import { SliderResetButton } from '@/components/shared/SliderResetButton';
 import ColorPicker from '@/components/ColorPicker';
 import { NOTES, NOTE_COLORS, CHORD_TONE_COLORS, HIGHLIGHT_COLORS } from '@/lib/musicTheory';
 import { useNoteDisplay } from '@/hooks/useNoteDisplay';
@@ -284,9 +285,12 @@ export default function ChordTonesTab({
                                 <label className="text-xs font-medium" style={{ color: theme.textSecondary }}>
                                   Opacity:
                                 </label>
-                                <span className="text-xs font-medium" style={{ color: theme.textPrimary }}>
-                                  {glowOpacity}%
-                                </span>
+                                <div className="flex items-center gap-1">
+                                  <span className="text-xs font-medium" style={{ color: theme.textPrimary }}>
+                                    {glowOpacity}%
+                                  </span>
+                                  <SliderResetButton onReset={() => onGlowOpacityChange(40)} theme={theme} label="Reset opacity to 40%" />
+                                </div>
                               </div>
                               <input
                                 type="range"

@@ -385,7 +385,7 @@ export function getAvailableActionsForButton(
       .map(b => b.action)
   );
 
-  return (['none', 'prev', 'next', 'scale-left', 'scale-right'] as MIDIButtonAction[]).filter(
+  return (['none', 'prev', 'next', 'scale-left', 'scale-right', 'item-left', 'item-right', 'section-left', 'section-right'] as MIDIButtonAction[]).filter(
     action => !assignedActions.has(action)
   );
 }

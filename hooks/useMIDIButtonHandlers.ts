@@ -10,6 +10,7 @@ import { useMIDIMessage } from '@react-midi/hooks';
 import { useMIDIPedal } from '@/components/midi/MIDIContext';
 import { parseMIDIMessage, findButtonByMIDIMessage } from '@/lib/midi/midiUtils';
 import { MIDIButtonAction, MIDI_ACTION_LABELS } from '@/lib/midi/midiTypes';
+import { useMIDISelection } from '@/contexts/MIDISelectionContext';
 import { toast } from 'sonner';
 
 interface MIDIButtonHandlersCallbacks {
@@ -17,6 +18,8 @@ interface MIDIButtonHandlersCallbacks {
   onNext?: () => void;
   onScaleLeft?: () => void;
   onScaleRight?: () => void;
+  onItemLeft?: () => void;
+  onItemRight?: () => void;
 }
 
 /**
@@ -25,12 +28,19 @@ interface MIDIButtonHandlersCallbacks {
 export function useMIDIButtonHandlers(callbacks: MIDIButtonHandlersCallbacks) {
   const { config, isConnected } = useMIDIPedal();
   const midiMessage = useMIDIMessage();
+  const { dispatchItemNav } = useMIDISelection();
   
   // Use refs to avoid re-creating effect when callbacks change
   const callbacksRef = useRef(callbacks);
   useEffect(() => {
     callbacksRef.current = callbacks;
   }, [callbacks]);
+
+  // Keep dispatchItemNav in a ref to avoid stale closures in handleAction
+  const dispatchItemNavRef = useRef(dispatchItemNav);
+  useEffect(() => {
+    dispatchItemNavRef.current = dispatchItemNav;
+  }, [dispatchItemNav]);
 
   // Debounce state to prevent double-triggers
   const lastTriggerTime = useRef<Record<string, number>>({});
@@ -72,6 +82,18 @@ export function useMIDIButtonHandlers(callbacks: MIDIButtonHandlersCallbacks) {
       case 'scale-right':
         console.log('[MIDI Handlers] Calling onScaleRight, exists:', !!callbacksRef.current.onScaleRight);
         callbacksRef.current.onScaleRight?.();
+        break;
+      case 'item-left':
+        console.log('[MIDI Handlers] Dispatching item-left to active section');
+        dispatchItemNavRef.current('left');
+        break;
+      case 'item-right':
+        console.log('[MIDI Handlers] Dispatching item-right to active section');
+        dispatchItemNavRef.current('right');
+        break;
+      case 'section-left':
+      case 'section-right':
+        // Future: cycle active section
         break;
       case 'none':
         // No action
