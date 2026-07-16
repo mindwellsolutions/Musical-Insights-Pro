@@ -1,0 +1,333 @@
+================================================================================
+DEVELOPMENT BLUEPRINT: Multi-Type AI Recommendations System
+================================================================================
+
+OVERVIEW:
+Enhance the AI Assistant to intelligently recommend Scales/Modes, Chords, and 
+Chord Progressions based on user query context, with a tabbed carousel UI for 
+displaying multiple recommendation types simultaneously.
+
+================================================================================
+TASK LIST
+================================================================================
+
+PHASE 1: Type System & Data Structures
+----------------------------------------
+
+Task 1.1: Extend Type Definitions
+- Add AIChordRecommendation interface to lib/ai-assistant/types.ts
+  - Fields: chordName, rootNote, rationale, genreContext, difficulty
+- Add AIChordProgressionRecommendation interface
+  - Fields: name, chords[], romanNumerals[], rationale, genreContext, difficulty
+- Update AIAssistantResponse interface to include:
+  - chordRecommendations?: AIChordRecommendation[]
+  - progressionRecommendations?: AIChordProgressionRecommendation[]
+- Update ChatMessage interface to include the new recommendation types
+
+Task 1.2: Create Chord Enrichment System
+- Create lib/ai-assistant/chord-enrichment.ts
+  - Function to map chord names to voicing data
+  - Function to get chord diagrams from existing chord database
+  - Similar pattern to scale enrichment
+
+----------------------------------------
+PHASE 2: AI Prompt Engineering
+----------------------------------------
+
+Task 2.1: Update System Prompt
+- Modify lib/ai-assistant/prompt-builder.ts
+- Add intelligent response type detection logic
+- Update JSON response format to support multiple recommendation types
+- Add rules for when to recommend each type based on query keywords
+- Update skill level filtering for chords and progressions
+
+Task 2.2: Add Query Context Detection
+- Add helper function to analyze user query intent
+- Detect keywords: "chord", "progression", "scale", "mode", etc.
+- Determine which recommendation types are appropriate
+
+----------------------------------------
+PHASE 3: Backend Processing
+----------------------------------------
+
+Task 3.1: Update OpenAI Service
+- Modify lib/ai-assistant/openai-service.ts
+- Update response parsing to handle new recommendation types
+- Add validation for chord and progression recommendations
+- Implement enrichment calls for chords (get voicings from database)
+
+Task 3.2: Update API Route
+- Modify app/api/ai-assistant/chat/route.ts
+- Ensure proper handling of all recommendation types
+- Add error handling for new data structures
+
+----------------------------------------
+PHASE 4: UI Components - Chord Cards
+----------------------------------------
+
+Task 4.1: Create ChordRecommendationCard Component
+- Create components/ai-assistant/ChordRecommendationCard.tsx
+- Display chord name, root note, difficulty badge
+- Show chord diagram using existing ChordDiagram component
+- Display rationale and genre context
+- Add "Load on Fretboard" button
+- Style consistently with existing ScaleCard
+
+Task 4.2: Create ChordRecommendationCarousel
+- Create components/ai-assistant/ChordRecommendationCarousel.tsx
+- Similar structure to ScaleRecommendationCarousel
+- Navigation controls (prev/next)
+- Dot indicators
+- Counter display
+
+----------------------------------------
+PHASE 5: UI Components - Progression Cards
+----------------------------------------
+
+Task 5.1: Create ProgressionRecommendationCard Component
+- Create components/ai-assistant/ProgressionRecommendationCard.tsx
+- Display progression name and roman numerals
+- Show chord sequence as clickable buttons/badges
+- Display rationale and genre context
+- Difficulty badge
+- Click handler for individual chords to show diagram in modal/popover
+
+Task 5.2: Create Chord Diagram Modal/Popover
+- Create components/ai-assistant/ChordDiagramPopover.tsx
+- Triggered when clicking chord in progression
+- Display chord diagram using ChordDiagram component
+- Sleek, modern overlay design
+- Close on outside click or ESC key
+
+Task 5.3: Create ProgressionRecommendationCarousel
+- Create components/ai-assistant/ProgressionRecommendationCarousel.tsx
+- Similar carousel structure
+- Handle progression-specific interactions
+
+----------------------------------------
+PHASE 6: Tabbed Multi-Carousel System
+----------------------------------------
+
+Task 6.1: Create RecommendationTabs Component
+- Create components/ai-assistant/RecommendationTabs.tsx
+- Tab buttons for: Scales/Modes, Chords, Progressions
+- Only show tabs for recommendation types that exist
+- Active tab state management
+- Smooth transitions between tabs
+- Modern, sleek tab design matching theme
+
+Task 6.2: Create UnifiedRecommendationDisplay Component
+- Create components/ai-assistant/UnifiedRecommendationDisplay.tsx
+- Container for tabbed interface
+- Conditionally render tabs based on available recommendations
+- Show single carousel if only one type exists
+- Show tabbed interface if multiple types exist
+- Pass through theme and interaction handlers
+
+----------------------------------------
+PHASE 7: Integration & Message Display
+----------------------------------------
+
+Task 7.1: Update MessageList Component
+- Modify components/ai-assistant/MessageList.tsx
+- Replace single ScaleRecommendationCarousel with UnifiedRecommendationDisplay
+- Pass all recommendation types to unified component
+- Handle loading states for chords
+
+Task 7.2: Update AIAssistantSidebar
+- Modify components/ai-assistant/AIAssistantSidebar.tsx
+- Add state for loaded chords (similar to loadedScales)
+- Implement handleLoadChord function
+- Update message creation to include new recommendation types
+
+----------------------------------------
+PHASE 8: Chord Loading & Fretboard Integration
+----------------------------------------
+
+Task 8.1: Create Chord Parser
+- Create lib/ai-assistant/chord-parser.ts
+- Function to convert AI chord recommendation to fretboard data
+- Use existing chord voicing calculation functions
+- Map to existing chord highlighting system
+
+Task 8.2: Implement Chord Loading
+- Add chord loading functionality to main app
+- Integrate with existing chord selection system
+- Highlight chord notes on fretboard
+- Show chord diagrams in appropriate panel
+
+----------------------------------------
+PHASE 9: Progression Loading
+----------------------------------------
+
+Task 9.1: Implement Progression Loading
+- Add progression loading functionality
+- Option 1: Load first chord of progression
+- Option 2: Create progression player/sequencer (future enhancement)
+- For now: Allow clicking individual chords in progression to load them
+
+----------------------------------------
+PHASE 10: Testing & Polish
+----------------------------------------
+
+Task 10.1: Test All Query Types
+- Test scale-only queries
+- Test chord-only queries
+- Test progression-only queries
+- Test combined queries (scales + chords, etc.)
+- Test edge cases and error handling
+
+Task 10.2: UI/UX Polish
+- Ensure consistent styling across all card types
+- Smooth animations and transitions
+- Responsive design for mobile
+- Accessibility (keyboard navigation, ARIA labels)
+- Loading states and error messages
+
+Task 10.3: Performance Optimization
+- Optimize chord diagram rendering
+- Lazy load chord voicings
+- Memoize expensive calculations
+- Test with multiple recommendations
+
+================================================================================
+TECHNICAL SPECIFICATIONS
+================================================================================
+
+NEW TYPE DEFINITIONS:
+---------------------
+
+// Slim chord recommendation (from AI)
+interface AIChordRecommendationSlim {
+  chordName: string;      // "Cmaj7", "Dm7", "G7"
+  rootNote: string;       // "C", "D", "G"
+  rationale: string;      // Why recommended
+  genreContext: string;   // "Jazz, Blues"
+  difficulty: number;     // 1-10
+}
+
+// Enriched chord recommendation
+interface AIChordRecommendation extends AIChordRecommendationSlim {
+  voicings: ChordVoicing[];  // From chord database
+  notes: string[];           // Chord tones
+  quality: string;           // "major7", "minor7", etc.
+}
+
+// Progression recommendation
+interface AIChordProgressionRecommendation {
+  name: string;              // "ii-V-I in C"
+  chords: string[];          // ["Dm7", "G7", "Cmaj7"]
+  romanNumerals: string[];   // ["ii7", "V7", "Imaj7"]
+  rationale: string;
+  genreContext: string;
+  difficulty: number;
+}
+
+UPDATED AI RESPONSE FORMAT:
+---------------------------
+
+{
+  "messageText": "Here are some recommendations...",
+  "scaleRecommendations": [
+    {
+      "scaleName": "Dorian",
+      "rootNote": "D",
+      "rationale": "...",
+      "genreContext": "Jazz, Funk",
+      "difficulty": 3
+    }
+  ],
+  "chordRecommendations": [
+    {
+      "chordName": "Dm7",
+      "rootNote": "D",
+      "rationale": "...",
+      "genreContext": "Jazz",
+      "difficulty": 2
+    }
+  ],
+  "progressionRecommendations": [
+    {
+      "name": "ii-V-I in C",
+      "chords": ["Dm7", "G7", "Cmaj7"],
+      "romanNumerals": ["ii7", "V7", "Imaj7"],
+      "rationale": "...",
+      "genreContext": "Jazz",
+      "difficulty": 4
+    }
+  ]
+}
+
+QUERY INTENT DETECTION EXAMPLES:
+---------------------------------
+- "What chords work in C major?" → Chords only
+- "Show me jazz scales" → Scales only
+- "What's a good progression for blues?" → Progressions only
+- "Help me improvise over Am" → Scales + Chords
+- "Teach me jazz in D" → Scales + Chords + Progressions
+
+================================================================================
+DESIGN SPECIFICATIONS
+================================================================================
+
+TAB DESIGN:
+-----------
+- Modern, pill-style tabs
+- Active tab: highlighted with accent color
+- Inactive tabs: subtle, semi-transparent
+- Smooth slide animation on tab change
+- Badge showing count of recommendations per tab
+
+CARD CONSISTENCY:
+-----------------
+- All cards same base size and padding
+- Consistent header layout (name + difficulty badge)
+- Consistent footer (rationale + genre)
+- Chord diagrams: compact mode in cards
+- Progression chords: horizontal scrollable list
+
+CHORD DIAGRAM IN PROGRESSION:
+-----------------------------
+- Click chord → popover appears
+- Popover: centered, semi-transparent backdrop
+- Diagram: larger, detailed view
+- Close button + click outside to dismiss
+
+================================================================================
+DEPENDENCIES & REUSE
+================================================================================
+
+EXISTING COMPONENTS TO REUSE:
+------------------------------
+- ChordDiagram - for displaying chord shapes
+- calculateChordVoicings - for getting chord data
+- getStandardChordVoicings - from chord database
+- Theme system - for consistent styling
+- Carousel pattern - from ScaleRecommendationCarousel
+
+EXISTING PATTERNS TO FOLLOW:
+----------------------------
+- Scale enrichment pattern for chord enrichment
+- Carousel navigation pattern
+- Card design from ScaleCard
+- Loading state management from AIAssistantSidebar
+
+================================================================================
+SUCCESS CRITERIA
+================================================================================
+
+✓ AI correctly detects query intent and returns appropriate recommendation types
+✓ Tabs appear only when multiple recommendation types exist
+✓ Single carousel shown when only one type exists
+✓ Chord cards display chord diagrams correctly
+✓ Progression cards allow clicking chords to view diagrams
+✓ All recommendations can be loaded to fretboard
+✓ Consistent, modern UI across all card types
+✓ Smooth animations and transitions
+✓ Mobile responsive
+✓ No performance degradation
+
+================================================================================
+END OF BLUEPRINT
+================================================================================
+

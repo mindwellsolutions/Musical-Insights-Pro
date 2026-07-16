@@ -1,0 +1,171 @@
+{
+  "key": "C",
+  "scale": "Mixolydian",
+  "quality": "major",
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-25",
+  "diatonicChords": [
+    {
+      "degree": "I",
+      "symbol": "C",
+      "fullName": "C Major",
+      "quality": "major",
+      "notes": [
+        "C",
+        "E",
+        "G"
+      ],
+      "function": "Tonic - Home base, resolution",
+      "commonUse": "Degree 1 in Mixolydian",
+      "compatibilityScore": 10
+    },
+    {
+      "degree": "ii",
+      "symbol": "Dm",
+      "fullName": "Dm Minor",
+      "quality": "minor",
+      "notes": [
+        "D",
+        "F",
+        "A"
+      ],
+      "function": "Supertonic - Pre-dominant function",
+      "commonUse": "Degree 2 in Mixolydian",
+      "compatibilityScore": 8
+    },
+    {
+      "degree": "iii",
+      "symbol": "E°",
+      "fullName": "E° Diminished",
+      "quality": "diminished",
+      "notes": [
+        "E",
+        "G",
+        "A#"
+      ],
+      "function": "Mediant - Tonic extension",
+      "commonUse": "Degree 3 in Mixolydian",
+      "compatibilityScore": 8
+    },
+    {
+      "degree": "IV",
+      "symbol": "F",
+      "fullName": "F Major",
+      "quality": "major",
+      "notes": [
+        "F",
+        "A",
+        "C"
+      ],
+      "function": "Subdominant - Pre-dominant, sets up dominant",
+      "commonUse": "Degree 4 in Mixolydian",
+      "compatibilityScore": 10
+    },
+    {
+      "degree": "V",
+      "symbol": "Gm",
+      "fullName": "Gm Minor",
+      "quality": "minor",
+      "notes": [
+        "G",
+        "A#",
+        "D"
+      ],
+      "function": "Dominant - Tension, leads to tonic",
+      "commonUse": "Degree 5 in Mixolydian",
+      "compatibilityScore": 10
+    },
+    {
+      "degree": "vi",
+      "symbol": "Am",
+      "fullName": "Am Minor",
+      "quality": "minor",
+      "notes": [
+        "A",
+        "C",
+        "E"
+      ],
+      "function": "Submediant - Relative minor/major",
+      "commonUse": "Degree 6 in Mixolydian",
+      "compatibilityScore": 8
+    },
+    {
+      "degree": "vii°",
+      "symbol": "A#",
+      "fullName": "A# Major",
+      "quality": "major",
+      "notes": [
+        "A#",
+        "D",
+        "F"
+      ],
+      "function": "Leading tone - Strong pull to tonic",
+      "commonUse": "Degree 7 in Mixolydian",
+      "compatibilityScore": 8
+    }
+  ],
+  "extendedChords": [
+    {
+      "degree": "Imaj7",
+      "symbol": "Cmaj7",
+      "fullName": "C Major 7th",
+      "quality": "maj7",
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B"
+      ],
+      "function": "Tonic with color",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    },
+    {
+      "degree": "IVmaj7",
+      "symbol": "Fmaj7",
+      "fullName": "F Major 7th",
+      "quality": "maj7",
+      "notes": [
+        "F",
+        "A",
+        "C",
+        "E"
+      ],
+      "function": "Subdominant with color",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    },
+    {
+      "degree": "V7",
+      "symbol": "G7",
+      "fullName": "G Dominant 7th",
+      "quality": "dom7",
+      "notes": [
+        "G",
+        "B",
+        "D",
+        "F"
+      ],
+      "function": "Dominant with tension",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    }
+  ],
+  "modalInterchangeChords": [
+    {
+      "degree": "bVII",
+      "symbol": "A#",
+      "fullName": "A# Major",
+      "quality": "major",
+      "notes": [
+        "A#",
+        "D",
+        "F"
+      ],
+      "borrowedFrom": "C Mixolydian",
+      "function": "Subtonic - creates tension",
+      "commonUse": "Rock, blues, modal jazz",
+      "compatibilityScore": 7
+    }
+  ]
+}

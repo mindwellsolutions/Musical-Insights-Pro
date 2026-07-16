@@ -1,0 +1,2 @@
+﻿lib/chord-voicings.ts(222,27): error TS2802: Type 'Set<number>' can only be iterated through when using the '--downlevelIteration' flag or with a '--target' of 'es2015' or higher.
+lib/chord-voicings.ts(236,33): error TS2802: Type 'IterableIterator<[number, Set<number>]>' can only be iterated through when using the '--downlevelIteration' flag or with a '--target' of 'es2015' or higher.

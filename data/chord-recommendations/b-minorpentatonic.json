@@ -1,0 +1,127 @@
+{
+  "key": "B",
+  "scale": "MinorPentatonic",
+  "quality": "minor",
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-25",
+  "diatonicChords": [
+    {
+      "degree": "I",
+      "symbol": "B",
+      "fullName": "B Major",
+      "quality": "major",
+      "notes": [
+        "B",
+        "D#",
+        "F#"
+      ],
+      "function": "Tonic - Home base, resolution",
+      "commonUse": "Degree 1 in MinorPentatonic",
+      "compatibilityScore": 10
+    },
+    {
+      "degree": "ii",
+      "symbol": "D",
+      "fullName": "D Major",
+      "quality": "major",
+      "notes": [
+        "D",
+        "F#",
+        "A"
+      ],
+      "function": "Supertonic - Pre-dominant function",
+      "commonUse": "Degree 2 in MinorPentatonic",
+      "compatibilityScore": 8
+    },
+    {
+      "degree": "iii",
+      "symbol": "E",
+      "fullName": "E Major",
+      "quality": "major",
+      "notes": [
+        "E",
+        "G#",
+        "B"
+      ],
+      "function": "Mediant - Tonic extension",
+      "commonUse": "Degree 3 in MinorPentatonic",
+      "compatibilityScore": 8
+    },
+    {
+      "degree": "IV",
+      "symbol": "F#",
+      "fullName": "F# Major",
+      "quality": "major",
+      "notes": [
+        "F#",
+        "A#",
+        "C#"
+      ],
+      "function": "Subdominant - Pre-dominant, sets up dominant",
+      "commonUse": "Degree 4 in MinorPentatonic",
+      "compatibilityScore": 10
+    },
+    {
+      "degree": "V",
+      "symbol": "A",
+      "fullName": "A Major",
+      "quality": "major",
+      "notes": [
+        "A",
+        "C#",
+        "E"
+      ],
+      "function": "Dominant - Tension, leads to tonic",
+      "commonUse": "Degree 5 in MinorPentatonic",
+      "compatibilityScore": 10
+    }
+  ],
+  "extendedChords": [
+    {
+      "degree": "Imaj7",
+      "symbol": "Bmaj7",
+      "fullName": "B Major 7th",
+      "quality": "maj7",
+      "notes": [
+        "B",
+        "D#",
+        "F#",
+        "A#"
+      ],
+      "function": "Tonic with color",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    },
+    {
+      "degree": "IVmaj7",
+      "symbol": "F#maj7",
+      "fullName": "F# Major 7th",
+      "quality": "maj7",
+      "notes": [
+        "F#",
+        "A#",
+        "C#",
+        "F"
+      ],
+      "function": "Subdominant with color",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    },
+    {
+      "degree": "V7",
+      "symbol": "Amaj7",
+      "fullName": "A Major 7th",
+      "quality": "maj7",
+      "notes": [
+        "A",
+        "C#",
+        "E",
+        "G#"
+      ],
+      "function": "Dominant with tension",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    }
+  ],
+  "modalInterchangeChords": []
+}

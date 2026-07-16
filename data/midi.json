@@ -1,0 +1,47 @@
+{
+  "activeConfig": {
+    "deviceId": null,
+    "deviceName": null,
+    "enabled": true,
+    "buttons": [
+      {
+        "id": "program-0-ch1",
+        "channel": 1,
+        "messageType": "program",
+        "programNumber": 0,
+        "action": "prev",
+        "label": "Program 0 (Ch 1)",
+        "enabled": true
+      },
+      {
+        "id": "program-1-ch1",
+        "channel": 1,
+        "messageType": "program",
+        "programNumber": 1,
+        "action": "next",
+        "label": "Program 1 (Ch 1)",
+        "enabled": true
+      },
+      {
+        "id": "program-2-ch1",
+        "channel": 1,
+        "messageType": "program",
+        "programNumber": 2,
+        "action": "scale-left",
+        "label": "Program 2 (Ch 1)",
+        "enabled": true
+      },
+      {
+        "id": "program-3-ch1",
+        "channel": 1,
+        "messageType": "program",
+        "programNumber": 3,
+        "action": "scale-right",
+        "label": "Program 3 (Ch 1)",
+        "enabled": true
+      }
+    ],
+    "lastUpdated": 1763064794968
+  },
+  "profiles": []
+}

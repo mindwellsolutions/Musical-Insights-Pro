@@ -1,0 +1,3077 @@
+{
+  "key": "A",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-10",
+  "scales": {
+    "Key_of_A": {
+      "sourceScale": {
+        "name": "Key of A",
+        "formula": null,
+        "family": "key-center",
+        "quality": "major/minor"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "A Major Pentatonic",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Primary pentatonic scale built on the root",
+          "rationale": "Contains the most consonant notes of A major (A, B, C#, E, F#), avoiding tension notes. Creates an instantly recognizable, bright sound that works universally.",
+          "musicalContext": "Universal across all genres; foundation of rock, country, blues, and pop. Used extensively by guitarists from B.B. King to John Mayer.",
+          "musicGenreRecommendations": "Rock, Blues, Country, Pop, Folk, Gospel, R&B",
+          "recommendedUse": "Perfect starting point for improvisation in A. Guaranteed consonance, works over A major chord progressions. Ideal for melodic hooks and solos.",
+          "targetNotes": ["A", "C#", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Primary minor pentatonic scale built on the root",
+          "rationale": "Contains the essential minor pentatonic notes (A, C, D, E, G), providing a dark, bluesy sound. Most common scale for rock and blues improvisation.",
+          "musicalContext": "Rock, blues, metal, hard rock. The go-to scale for electric guitar solos from Led Zeppelin to Metallica. Essential blues sound.",
+          "musicGenreRecommendations": "Rock, Blues, Metal, Hard Rock, Southern Rock, Grunge, Alternative",
+          "recommendedUse": "Essential for rock and blues improvisation. Works perfectly over Am, A7, or minor key progressions. Can be used over major keys for bluesy tension.",
+          "targetNotes": ["A", "C", "G"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Major (Ionian)",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Parent major scale of the key",
+          "rationale": "The fundamental major scale containing all seven notes (A, B, C#, D, E, F#, G#). Foundation of Western music theory and harmony in the key of A.",
+          "musicalContext": "Universal across all genres from classical to pop. The default scale for A major harmony and the basis for all diatonic progressions.",
+          "musicGenreRecommendations": "Classical, Pop, Rock, Folk, Country, Jazz, Musical Theater",
+          "recommendedUse": "Use as the foundation for any A major composition or improvisation. Essential for melodic development and understanding key relationships.",
+          "targetNotes": ["A", "C#", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Natural Minor (Aeolian)",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parallel minor scale to A major",
+          "rationale": "The natural minor scale (A, B, C, D, E, F, G) provides the pure minor sound. Different from A major by three notes (C#→C, F#→F, G#→G).",
+          "musicalContext": "Rock, metal, classical, folk music. The foundation of minor key harmony used from Bach to modern rock. Creates melancholic, serious mood.",
+          "musicGenreRecommendations": "Rock, Metal, Classical, Folk, Alternative, Gothic, Dark Wave",
+          "recommendedUse": "Primary choice for A minor compositions. Essential for understanding minor key harmony and for creating dark, emotional melodies.",
+          "targetNotes": ["A", "C", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Blues Scale",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Minor pentatonic with added b5 blue note",
+          "rationale": "A minor pentatonic (A, C, D, E, G) plus Eb blue note. This added tritone creates the characteristic blues sound with its distinctive tension and release.",
+          "musicalContext": "Blues, rock, jazz blues. The signature sound of blues music from Robert Johnson to Stevie Ray Vaughan. Essential for authentic blues phrasing.",
+          "musicGenreRecommendations": "Blues, Rock, Blues Rock, Jazz Blues, Soul, R&B",
+          "recommendedUse": "Essential for blues improvisation. Use the Eb as a chromatic passing tone between D and E. Perfect over A7 blues progressions.",
+          "targetNotes": ["A", "Eb", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Minor scale with raised 6th degree",
+          "rationale": "Natural minor with F→F# (major 6th). Creates a brighter, jazzier minor sound than Aeolian. One of the most versatile minor modes.",
+          "musicalContext": "Jazz, funk, rock, fusion. The go-to minor scale for jazz improvisation. Used extensively in Santana, Miles Davis, and fusion artists.",
+          "musicGenreRecommendations": "Jazz, Funk, Fusion, Latin, Soul, Jazz Rock, Progressive Rock",
+          "recommendedUse": "Primary choice for minor ii chords and Am7 vamps. More sophisticated than natural minor. Perfect for modal improvisation over Am7.",
+          "targetNotes": ["F#", "A", "C"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 9,
+          "relationship": "Major scale with lowered 7th degree",
+          "rationale": "A major with G#→G (dominant 7th). Creates the characteristic dominant 7th chord sound. Essential for blues, rock, and dominant harmony.",
+          "musicalContext": "Rock, blues, funk, country. The signature sound of dominant chords from The Beatles to The Grateful Dead. Essential for I7-IV7 progressions.",
+          "musicGenreRecommendations": "Rock, Blues, Country, Funk, Jam Band, Folk Rock, Americana",
+          "recommendedUse": "Perfect over A7 chords and dominant vamps. Use when you want major sound with bluesy edge. Essential for rock and blues rhythm guitar.",
+          "targetNotes": ["G", "C#", "E"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "Major scale with raised 4th degree",
+          "rationale": "A major with D→D# (augmented 4th). Creates a bright, ethereal, dreamy quality. The #4 provides a distinctive uplifting character.",
+          "musicalContext": "Jazz, film scores, progressive rock, fusion. Creates dreamlike, floating quality. Common in Joe Satriani, Steve Vai, and film composers like John Williams.",
+          "musicGenreRecommendations": "Jazz, Progressive Rock, Fusion, Film Music, Dream Pop, Neo-Soul",
+          "recommendedUse": "Use over Amaj7 or Amaj7#11 chords. Perfect for I chord modal vamps. Emphasize the D# for characteristic Lydian color.",
+          "targetNotes": ["D#", "C#", "F#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Natural minor with raised 7th degree",
+          "rationale": "A natural minor with G→G# (major 7th). Creates strong V7-i resolution. The augmented 2nd interval (F-G#) gives exotic, dramatic character.",
+          "musicalContext": "Classical, neoclassical metal, flamenco, Middle Eastern. Used extensively in classical music from Bach to modern metal. Dramatic, exotic sound.",
+          "musicGenreRecommendations": "Classical, Neoclassical Metal, Flamenco, Middle Eastern, Gypsy Jazz, Tango",
+          "recommendedUse": "Essential for classical-style minor key compositions. Perfect for V7-i cadences. Use when you want traditional minor with strong resolution.",
+          "targetNotes": ["G#", "C", "E"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Melodic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Natural minor with raised 6th and 7th degrees",
+          "rationale": "A natural minor with F→F# and G→G#. Removes the augmented 2nd of harmonic minor, creating smoother melodic motion. Jazz minor sound.",
+          "musicalContext": "Jazz, fusion, contemporary classical. The foundation of modern jazz improvisation. Essential for bebop and post-bop styles.",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary Classical, Jazz Fusion, Smooth Jazz, Modern Jazz",
+          "recommendedUse": "Essential for jazz minor harmony. Use ascending melodically. Perfect over Am(maj7) chords. Foundation for jazz minor modes.",
+          "targetNotes": ["F#", "G#", "A"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "A Phrygian",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Natural minor with lowered 2nd degree",
+          "rationale": "Natural minor with B→Bb (minor 2nd). Creates dark, Spanish, Middle Eastern sound. The b2 provides distinctive exotic character.",
+          "musicalContext": "Flamenco, metal, Spanish music, Middle Eastern. Essential for Phrygian dominant sound. Used in heavy metal and Spanish guitar music.",
+          "musicGenreRecommendations": "Flamenco, Metal, Spanish, Middle Eastern, Thrash Metal, Progressive Metal",
+          "recommendedUse": "Perfect for exotic, dark minor sounds. Use over Am with Bb emphasis. Essential for flamenco and metal rhythm guitar.",
+          "targetNotes": ["Bb", "C", "E"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "F# Natural Minor (Relative Minor)",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Relative minor - vi scale, shares all notes with A major",
+          "rationale": "F# minor is the vi of A major. Shares all seven notes but centered on F#. Provides natural minor alternative center in A major key.",
+          "musicalContext": "All genres where relative minor relationships apply. Essential for understanding key modulation and minor sounds within major keys.",
+          "musicGenreRecommendations": "Classical, Pop, Rock, Folk, Singer-Songwriter, Indie, Alternative",
+          "recommendedUse": "Use when you want minor sound while staying in A major key. Perfect for vi-IV-I-V progressions. Natural minor alternative.",
+          "targetNotes": ["F#", "A", "C#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D Major",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "IV chord scale - subdominant to tonic relationship",
+          "rationale": "D major is the IV of A major. Shares 6 of 7 notes (only C#→C). Essential subdominant function in A major harmony.",
+          "musicalContext": "All genres; fundamental to I-IV-V progressions. Essential in folk, rock, country from The Beatles to Taylor Swift.",
+          "musicGenreRecommendations": "Folk, Rock, Country, Pop, Americana, Singer-Songwriter, Classic Rock",
+          "recommendedUse": "Perfect for IV chord emphasis. Essential for I-IV-V progressions. Use when moving to/from D major chords.",
+          "targetNotes": ["D", "F#", "A"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "E Major",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "V chord scale - dominant to tonic relationship",
+          "rationale": "E major is the V of A major. Shares 6 of 7 notes (only G#→G). Creates natural dominant tension resolving to A.",
+          "musicalContext": "All genres; essential for V-I cadences. Fundamental to Western harmony from classical to contemporary music.",
+          "musicGenreRecommendations": "Classical, Pop, Rock, Jazz, Country, Folk, Blues",
+          "recommendedUse": "Use when moving to/from E major chords. Essential for dominant function and perfect authentic cadences in A.",
+          "targetNotes": ["G#", "B", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "E Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 9,
+          "relationship": "V7 scale - shares all notes with A major",
+          "rationale": "E Mixolydian is the V mode of A major (contains D instead of D#). Shares all notes with A major parent scale. Perfect V7 sound.",
+          "musicalContext": "Rock, blues, funk. The dominant scale in A major system. Essential for blues and rock E7 chord improvisations.",
+          "musicGenreRecommendations": "Rock, Blues, Funk, Country Rock, Jam Band, Southern Rock",
+          "recommendedUse": "Perfect over E7 chords in A major. Essential for dominant-tonic resolution. Use for bluesy V7 sounds.",
+          "targetNotes": ["D", "G#", "B"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "B Minor (ii chord)",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "ii chord scale in A major - shares all notes",
+          "rationale": "B Dorian/Natural minor in context of A major. The ii chord in A provides minor subdominant function. Essential for ii-V-I progressions.",
+          "musicalContext": "All genres; essential for minor ii chords in major keys. Foundation of jazz and pop harmony.",
+          "musicGenreRecommendations": "Jazz, Pop, R&B, Neo-Soul, Funk, Contemporary",
+          "recommendedUse": "Perfect over Bm7 chords in A major. Essential for ii-V-I progressions (Bm7-E7-Amaj7). Jazz and contemporary standard.",
+          "targetNotes": ["B", "D", "F#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "C# Phrygian",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "iii chord scale in A major - shares all notes",
+          "rationale": "C# Phrygian is the iii mode of A major. Provides exotic minor sound within A major system. Less common but effective for color.",
+          "musicalContext": "Progressive rock, metal, Spanish-influenced music. Adds dark, exotic color to A major progressions.",
+          "musicGenreRecommendations": "Progressive Rock, Metal, Spanish-Influenced, Art Rock, Progressive Metal",
+          "recommendedUse": "Use over C#m chords for exotic minor sound. Creates tension and drama in A major contexts. Emphasize the b2 (D).",
+          "targetNotes": ["C#", "D", "G#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "A Phrygian Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "5th mode of D harmonic minor - exotic dominant sound",
+          "rationale": "Phrygian with major 3rd (C#). Creates Spanish, Middle Eastern, exotic dominant character. The b2-3 half step is characteristic.",
+          "musicalContext": "Flamenco, metal, Middle Eastern music. Signature sound of Spanish guitar and heavy metal. Very distinctive exotic flavor.",
+          "musicGenreRecommendations": "Flamenco, Metal, Middle Eastern, Spanish, Progressive Metal, Fusion",
+          "recommendedUse": "Perfect over A7 with Spanish flavor. Emphasize Bb to C# movement. Essential for flamenco and exotic rock sounds.",
+          "targetNotes": ["Bb", "C#", "G"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "A Lydian Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "4th mode of E melodic minor - bright dominant sound",
+          "rationale": "Mixolydian with raised 4th (D#). Combines dominant 7th with Lydian brightness. Jazz fusion essential scale.",
+          "musicalContext": "Jazz fusion, modern jazz, progressive rock. Used extensively by fusion guitarists like Frank Gambale and Scott Henderson.",
+          "musicGenreRecommendations": "Jazz Fusion, Modern Jazz, Progressive Rock, Fusion, Contemporary Jazz",
+          "recommendedUse": "Perfect over A7#11 chords. Essential for fusion and modern jazz. Emphasize the #11 (D#) for characteristic sound.",
+          "targetNotes": ["D#", "G", "C#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "E Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Relative minor pentatonic - built on the 5th",
+          "rationale": "E minor pentatonic (E, G, A, B, D) works perfectly over A major because these notes are all in the A major scale. Creates bluesy tension.",
+          "musicalContext": "Rock, blues, country. Creates bluesy sound over major chords. Used extensively in rock guitar from Clapton to Mayer.",
+          "musicGenreRecommendations": "Rock, Blues, Country, Blues Rock, Southern Rock, Classic Rock",
+          "recommendedUse": "Use over A major for bluesy rock sound. Safe and consonant but with blues character. Perfect for rock soloing.",
+          "targetNotes": ["E", "G", "B"],
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "Ionian": {
+      "sourceScale": {
+        "name": "A Ionian (Major)",
+        "formula": [0, 2, 4, 5, 7, 9, 11],
+        "family": "major-modes",
+        "quality": "major"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "A Major Pentatonic",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Diatonic subset - scale tones 1, 2, 3, 5, 6 only",
+          "rationale": "Contains only the most consonant notes of A major (A, B, C#, E, F#), avoiding the 4th (D) and 7th (G#) which create tension. Completely safe for any major harmony.",
+          "musicalContext": "Universal across all genres; creates bright, optimistic melodies. Especially effective in rock, blues, country, and pop from Chuck Berry to modern pop.",
+          "musicGenreRecommendations": "Rock, Blues, Country, Pop, Folk, Gospel, Singer-Songwriter",
+          "recommendedUse": "Perfect for improvisation, guaranteed consonance, works over I-IV-V progressions in A. Ideal for creating singable melodies and memorable hooks.",
+          "targetNotes": ["A", "C#", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "Parallel mode with raised 4th degree (D becomes D#)",
+          "rationale": "Shares all notes except D→D#, creating a brighter, more ethereal major sound. The #4 creates a characteristic dreamy, floating quality.",
+          "musicalContext": "Jazz, film scores, progressive rock; sounds dreamlike and uplifting. Common in Joe Satriani and Steve Vai guitar solos. John Williams uses it extensively.",
+          "musicGenreRecommendations": "Jazz, Film Music, Progressive Rock, Fusion, Dream Pop, Neo-Soul",
+          "recommendedUse": "Use over Amaj7 or Amaj7#11 chords; emphasize the D# for color. Perfect for I chord vamps and modal compositions.",
+          "targetNotes": ["D#", "C#", "F#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "E Major",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "V chord scale - dominant to tonic relationship",
+          "rationale": "E major is the V of A major; shares 6 of 7 notes (only G#→G). Creates natural dominant tension that resolves to A major.",
+          "musicalContext": "All genres; essential for V-I cadences. Fundamental to Western harmony from Bach to contemporary music.",
+          "musicGenreRecommendations": "Classical, Pop, Rock, Jazz, Country, Folk, Blues",
+          "recommendedUse": "Use when moving to/from E major chords; emphasizes dominant function. Essential for perfect authentic cadences (V-I in A).",
+          "targetNotes": ["G#", "B", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D Major",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "IV chord scale - subdominant to tonic relationship",
+          "rationale": "D major is the IV of A major; shares 6 of 7 notes (only C#→C). Provides essential subdominant function in A major harmony.",
+          "musicalContext": "All genres; fundamental to I-IV-V progressions. Essential sound in folk, rock, and country music.",
+          "musicGenreRecommendations": "Folk, Rock, Country, Pop, Americana, Classic Rock, Singer-Songwriter",
+          "recommendedUse": "Perfect for IV chord emphasis in A major. Use when moving to/from D major chords. Foundation of I-IV-V progressions.",
+          "targetNotes": ["D", "F#", "A"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "F# Natural Minor (Relative Minor)",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "vi scale - relative minor, shares all notes",
+          "rationale": "F# minor is the vi of A major. Shares all seven notes but centered on F#. Provides natural minor sound within A major key.",
+          "musicalContext": "All genres where relative minor relationships apply. Essential for vi-IV-I-V progressions and minor sections in major keys.",
+          "musicGenreRecommendations": "Pop, Rock, Classical, Folk, Indie, Singer-Songwriter, Alternative",
+          "recommendedUse": "Use when you want minor sound while staying in A major key system. Perfect for vi-IV-I-V progressions.",
+          "targetNotes": ["F#", "A", "C#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 9,
+          "relationship": "Parallel mode with lowered 7th degree (G# becomes G)",
+          "rationale": "One note difference (G#→G), creating dominant 7th character. Combines major brightness with bluesy edge.",
+          "musicalContext": "Rock, blues, funk; dominant 7th chord vamps. Signature sound of The Beatles, Grateful Dead, and jam bands.",
+          "musicGenreRecommendations": "Rock, Blues, Funk, Country, Jam Band, Folk Rock, Americana",
+          "recommendedUse": "Perfect over A7 chords; creates classic rock/blues sound. Essential for I7-IV7 progressions.",
+          "targetNotes": ["G", "C#", "E"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "B Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "ii modal scale - shares all notes with A major",
+          "rationale": "B Dorian is the ii of A major (second mode). Shares all seven notes. Essential for ii-V-I progressions in A.",
+          "musicalContext": "Jazz, funk, rock. The go-to scale for ii chords in major keys. Essential for Bm7-E7-Amaj7 progressions.",
+          "musicGenreRecommendations": "Jazz, Funk, Rock, Fusion, Latin, Soul, Jazz Rock",
+          "recommendedUse": "Perfect over Bm7 chords in A major context. Essential for jazz and funk minor chord improvisation.",
+          "targetNotes": ["B", "F#", "D"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "C# Phrygian",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "iii modal scale - shares all notes with A major",
+          "rationale": "C# Phrygian is the iii of A major (third mode). Provides exotic, Spanish-flavored minor sound within A major system.",
+          "musicalContext": "Progressive rock, metal, Spanish-influenced music. Adds dark color to A major progressions.",
+          "musicGenreRecommendations": "Progressive Rock, Metal, Spanish, Flamenco-Influenced, Art Rock",
+          "recommendedUse": "Use over C#m chords for exotic, dark minor color. Creates tension in A major contexts. Emphasize the b2 (D).",
+          "targetNotes": ["C#", "D", "G#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "E Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 10,
+          "relationship": "V modal scale - shares all notes with A major",
+          "rationale": "E Mixolydian is the V mode of A major. Perfect dominant 7th sound for A major. Shares all notes with parent scale.",
+          "musicalContext": "Rock, blues, funk. Essential for dominant function in A major. The go-to scale for E7 chord improvisation.",
+          "musicGenreRecommendations": "Rock, Blues, Funk, Country Rock, Jam Band, Southern Rock",
+          "recommendedUse": "Perfect over E7 chords in A major. Essential for V7-I blues progressions. Use for dominant chord vamps.",
+          "targetNotes": ["E", "D", "G#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "F# Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Parallel mode to F# Aeolian with raised 6th",
+          "rationale": "F# Dorian (F#, G#, A, B, C#, D#, E) adds D# to F# minor. Creates brighter, jazzier minor sound than natural minor.",
+          "musicalContext": "Jazz, funk, rock. More sophisticated than F# natural minor. Essential for modal jazz improvisation.",
+          "musicGenreRecommendations": "Jazz, Funk, Fusion, Latin, Soul, Jazz Rock",
+          "recommendedUse": "Use over F#m7 for jazz/funk sound. Brighter alternative to F# natural minor. Perfect for modal vamps.",
+          "targetNotes": ["F#", "D#", "A"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "G# Locrian",
+          "keyQuality": "diminished",
+          "compatibilityScore": 7,
+          "relationship": "vii° modal scale - shares all notes with A major",
+          "rationale": "G# Locrian is the vii° of A major. Provides diminished quality for leading tone chords. Less commonly used but theoretically complete.",
+          "musicalContext": "Jazz, contemporary classical. Used sparingly over diminished chords. Creates unstable, tense character.",
+          "musicGenreRecommendations": "Jazz, Contemporary Classical, Avant-Garde, Experimental",
+          "recommendedUse": "Use carefully over G#dim or G#m7b5 chords. Creates tension requiring resolution. Advanced harmonic color.",
+          "targetNotes": ["G#", "A", "C#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A Blues Scale",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "A minor pentatonic with added b5 blue note",
+          "rationale": "Adds blue notes (C, Eb, G) to major context. Creates bluesy tension over major harmony. The Eb provides characteristic blues feel.",
+          "musicalContext": "Blues, rock, jazz blues. Creates authentic blues sound over major chords. Essential for blues-rock fusion.",
+          "musicGenreRecommendations": "Blues, Rock, Blues Rock, Jazz Blues, Soul, R&B",
+          "recommendedUse": "Use for bluesy phrases over A major. The minor 3rd (C) and b5 (Eb) create tension. Classic blues guitar sound.",
+          "targetNotes": ["C", "Eb", "E"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "E Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Built on the V - all notes diatonic to A major",
+          "rationale": "E minor pentatonic (E, G, A, B, D) works perfectly over A major. All notes are in A major scale, creating bluesy major sound.",
+          "musicalContext": "Rock, blues, country. Creates bluesy sound over major chords. Used extensively in rock guitar from Clapton to Mayer.",
+          "musicGenreRecommendations": "Rock, Blues, Country, Blues Rock, Southern Rock, Classic Rock",
+          "recommendedUse": "Perfect for rock soloing over A major. Safe and consonant but with blues character. Essential rock guitar scale.",
+          "targetNotes": ["E", "G", "B"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Harmonic Major",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "Major with lowered 6th degree (F# becomes F)",
+          "rationale": "Creates exotic major sound with minor 6th. The augmented 2nd interval (E-F#) provides Middle Eastern character.",
+          "musicalContext": "Middle Eastern, flamenco, film music. Exotic major sound. Used for dramatic, mysterious major tonalities.",
+          "musicGenreRecommendations": "Middle Eastern, Flamenco, Film Music, World Music, Fusion",
+          "recommendedUse": "Use for exotic major color. Emphasize the b6 (F) for characteristic sound. Creates tension and drama.",
+          "targetNotes": ["F", "E", "G#"],
+          "difficultyLevel": 4
+        }
+      ]
+    },
+    "Dorian": {
+      "sourceScale": {
+        "name": "A Dorian",
+        "formula": [0, 2, 3, 5, 7, 9, 10],
+        "family": "major-modes",
+        "quality": "minor"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "A Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Diatonic subset - scale tones 1, b3, 4, 5, b7 only",
+          "rationale": "Contains the core minor pentatonic notes (A, C, D, E, G), all consonant with Dorian. Removes the characteristic major 6th (F#) but remains completely compatible.",
+          "musicalContext": "Universal minor sound; works in rock, blues, jazz, funk. The most reliable minor scale for improvisation across genres.",
+          "musicGenreRecommendations": "Rock, Blues, Jazz, Funk, Soul, R&B, Hip-Hop",
+          "recommendedUse": "Safe choice for improvisation over A Dorian; impossible to clash. Use when you want straightforward minor sound without modal complexity.",
+          "targetNotes": ["A", "C", "G"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "G Major",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Parent major scale (A Dorian is the second mode of G major)",
+          "rationale": "A Dorian is ii in G major system; shares all notes (A, B, C, D, E, F#, G). Understanding this relationship opens up the entire G major key center.",
+          "musicalContext": "All genres; provides major context for Dorian. Think of Am7 as ii in G rather than i in A minor.",
+          "musicGenreRecommendations": "Jazz, Pop, Rock, Classical, Folk, Contemporary",
+          "recommendedUse": "Think in G major when using A Dorian; opens up ii-V-I possibilities. Essential for understanding modal relationships.",
+          "targetNotes": ["G", "D", "B"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Natural Minor (Aeolian)",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Parallel mode with lowered 6th (F# becomes F)",
+          "rationale": "One note difference from Dorian (F#→F). Creates darker, more traditional minor sound. Aeolian is more somber than Dorian.",
+          "musicalContext": "Rock, metal, classical. The standard natural minor sound. More melancholic than Dorian's brighter character.",
+          "musicGenreRecommendations": "Rock, Metal, Classical, Gothic, Alternative, Dark Wave",
+          "recommendedUse": "Use when you want darker minor sound than Dorian. Perfect for heavy, dramatic minor music. More traditional than Dorian.",
+          "targetNotes": ["A", "C", "F"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Blues Scale",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "A minor pentatonic with added b5 (Eb)",
+          "rationale": "Minor pentatonic plus Eb blue note. All notes work over Dorian. The blue note adds characteristic blues tension.",
+          "musicalContext": "Blues, rock, jazz blues. Essential for blues improvisation. Creates authentic blues phrases over minor harmony.",
+          "musicGenreRecommendations": "Blues, Rock, Blues Rock, Jazz Blues, Soul, Funk",
+          "recommendedUse": "Perfect for blues improvisation over A Dorian. Use Eb as passing tone. Essential blues-rock minor scale.",
+          "targetNotes": ["A", "Eb", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Phrygian",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Minor mode with lowered 2nd (B becomes Bb)",
+          "rationale": "One note difference from Dorian (B→Bb). The b2 creates Spanish, exotic character. Darker and more exotic than Dorian.",
+          "musicalContext": "Flamenco, metal, Spanish music. Creates dark, exotic minor sound. Essential for Spanish guitar and metal.",
+          "musicGenreRecommendations": "Flamenco, Metal, Spanish, Middle Eastern, Progressive Metal, Thrash",
+          "recommendedUse": "Use for exotic minor color. Emphasize the Bb for Spanish flavor. Creates tension and drama.",
+          "targetNotes": ["Bb", "C", "G"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D Major",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "IV of parent G major - shares all notes",
+          "rationale": "D major shares all notes with A Dorian. Thinking in D major (as IV) helps understand harmonic context.",
+          "musicalContext": "All genres; provides subdominant major context. Useful for understanding chord relationships in G major system.",
+          "musicGenreRecommendations": "Folk, Rock, Country, Pop, Americana, Singer-Songwriter",
+          "recommendedUse": "Use over D major chords when playing in A Dorian context. Helps connect modal and functional harmony.",
+          "targetNotes": ["D", "F#", "A"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "E Minor (vi of G Major)",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Relative minor of G major - shares all notes",
+          "rationale": "E minor is vi in G major, shares all notes with A Dorian. Provides another minor center in the G major system.",
+          "musicalContext": "Pop, rock, folk. Essential for understanding minor relationships in major keys.",
+          "musicGenreRecommendations": "Pop, Rock, Folk, Indie, Singer-Songwriter, Alternative",
+          "recommendedUse": "Use for vi minor sounds in G major context. Works perfectly with A Dorian sharing the same note pool.",
+          "targetNotes": ["E", "G", "B"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Dorian with raised 7th (G becomes G#)",
+          "rationale": "One note difference (G→G#), adding leading tone. Creates stronger resolution to A. More classical, less funky than Dorian.",
+          "musicalContext": "Classical, neoclassical metal. Creates traditional minor with strong V7-i resolution. More dramatic than Dorian.",
+          "musicGenreRecommendations": "Classical, Neoclassical Metal, Flamenco, Tango, Gypsy Jazz",
+          "recommendedUse": "Use when you need strong leading tone resolution. Perfect for classical-style minor harmony. More dramatic than Dorian.",
+          "targetNotes": ["G#", "C", "E"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Melodic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Dorian with raised 7th (G becomes G#)",
+          "rationale": "Identical to Dorian except G→G#. Jazz minor sound. Creates sophisticated minor with leading tone.",
+          "musicalContext": "Jazz, fusion. The foundation of modern jazz minor improvisation. More sophisticated than Dorian.",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary Classical, Modern Jazz, Smooth Jazz",
+          "recommendedUse": "Use for jazz minor sound. Essential for jazz improvisation over minor chords. Foundation for jazz minor modes.",
+          "targetNotes": ["F#", "G#", "A"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "C Major",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "bIII major - parallel major of relative minor",
+          "rationale": "C major provides bright major contrast to A Dorian. Common modal interchange in minor keys.",
+          "musicalContext": "Rock, pop, modal music. Creates bright contrast in minor contexts. Common in modern pop and rock.",
+          "musicGenreRecommendations": "Pop, Rock, Indie, Alternative, Modal Jazz, Contemporary",
+          "recommendedUse": "Use for major color in A minor contexts. Creates uplifting contrast. Common modal interchange chord.",
+          "targetNotes": ["C", "E", "G"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "F Major",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "bVI major - common modal interchange",
+          "rationale": "F major provides major subdominant color. Common borrowed chord in minor keys.",
+          "musicalContext": "Rock, pop, classical. Creates warm major sound in minor contexts. Very common in modern music.",
+          "musicGenreRecommendations": "Pop, Rock, Classical, Film Music, Alternative",
+          "recommendedUse": "Use over F major chords in A minor progressions. Common borrowed chord (bVI). Creates warmth and color.",
+          "targetNotes": ["F", "A", "C"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "IV modal scale in G major system",
+          "rationale": "D Mixolydian shares all notes with A Dorian. Provides dominant 7th color on the IV chord.",
+          "musicalContext": "Rock, folk, jam band music. Creates modal IV7 sound. Essential for modal rock progressions.",
+          "musicGenreRecommendations": "Rock, Folk Rock, Jam Band, Americana, Modal Jazz",
+          "recommendedUse": "Use over D7 chords in A Dorian context. Creates modal, non-resolving dominant sound.",
+          "targetNotes": ["D", "C", "F#"],
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "Phrygian": {
+      "sourceScale": {
+        "name": "A Phrygian",
+        "formula": [0, 1, 3, 5, 7, 8, 10],
+        "family": "major-modes",
+        "quality": "minor"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "A Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Subset excluding b2 and b6",
+          "rationale": "Contains the safe minor pentatonic notes (A, C, D, E, G) without the characteristic Phrygian b2 (Bb). Creates traditional minor sound over Phrygian.",
+          "musicalContext": "Rock, metal, blues. Provides safe minor sound when you want to avoid the Spanish b2 character.",
+          "musicGenreRecommendations": "Rock, Metal, Blues, Hard Rock, Alternative",
+          "recommendedUse": "Use for less exotic minor sound over Phrygian. Avoids the b2 tension. Safer than full Phrygian scale.",
+          "targetNotes": ["A", "C", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "F Major",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Parent major scale (A Phrygian is the third mode of F major)",
+          "rationale": "A Phrygian is iii in F major system; shares all notes (A, Bb, C, D, E, F, G). Understanding this reveals the diatonic context.",
+          "musicalContext": "All genres; provides major context for Phrygian. Essential for understanding Phrygian as iii in F major.",
+          "musicGenreRecommendations": "Classical, Jazz, Contemporary, Modal Music",
+          "recommendedUse": "Think in F major to understand A Phrygian's diatonic context. Helps connect modal and functional harmony.",
+          "targetNotes": ["F", "A", "C"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Phrygian Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 9,
+          "relationship": "Phrygian with major 3rd (C becomes C#)",
+          "rationale": "One note difference (C→C#). Creates exotic dominant sound. Combines Phrygian's b2 with major 3rd for Spanish/Middle Eastern flavor.",
+          "musicalContext": "Flamenco, metal, Middle Eastern music. The signature sound of Spanish flamenco and heavy metal. Extremely distinctive.",
+          "musicGenreRecommendations": "Flamenco, Metal, Middle Eastern, Spanish, Progressive Metal, Fusion",
+          "recommendedUse": "Use over A7 for Spanish/exotic flavor. Emphasize Bb to C# movement. Essential for flamenco and metal.",
+          "targetNotes": ["Bb", "C#", "E"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "A Locrian",
+          "keyQuality": "diminished",
+          "compatibilityScore": 8,
+          "relationship": "Phrygian with lowered 5th (E becomes Eb)",
+          "rationale": "One note difference (E→Eb). Creates even darker, more unstable sound. The diminished 5th adds extreme dissonance.",
+          "musicalContext": "Jazz, metal, experimental music. Creates maximum tension and instability. Used for diminished chord contexts.",
+          "musicGenreRecommendations": "Jazz, Metal, Avant-Garde, Experimental, Contemporary Classical",
+          "recommendedUse": "Use over Am7b5 or Adim chords. Creates extreme tension. Advanced harmonic color requiring careful resolution.",
+          "targetNotes": ["Bb", "Eb", "G"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "Bb Major",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "bII major - characteristic Phrygian relationship",
+          "rationale": "The Bb major chord is built on the characteristic b2 of A Phrygian. Creates the distinctive Spanish/Middle Eastern sound.",
+          "musicalContext": "Flamenco, metal, modal music. The bII-i resolution is signature Phrygian sound. Essential for authentic Phrygian harmony.",
+          "musicGenreRecommendations": "Flamenco, Metal, Modal Jazz, Spanish, Progressive",
+          "recommendedUse": "Use Bb major as bII in Phrygian progressions. Creates authentic Phrygian cadence. Emphasize the b2 relationship.",
+          "targetNotes": ["Bb", "D", "F"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Natural Minor (Aeolian)",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Minor mode with natural 2nd (Bb becomes B)",
+          "rationale": "One note difference (Bb→B). Removes the exotic b2, creating standard minor sound. Less Spanish, more conventional.",
+          "musicalContext": "Rock, pop, classical. Provides less exotic minor alternative to Phrygian. More universally applicable.",
+          "musicGenreRecommendations": "Rock, Pop, Classical, Folk, Alternative",
+          "recommendedUse": "Use when you want standard minor sound instead of Phrygian's exoticism. More conventional choice.",
+          "targetNotes": ["A", "B", "C"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "C Major",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "bIII major - common in Phrygian progressions",
+          "rationale": "C major is bIII in A Phrygian. Provides major contrast and is part of the F major parent scale. Common Phrygian progression move.",
+          "musicalContext": "Rock, metal, modal music. The bIII-bII-i progression is classic Phrygian sound. Used extensively in metal.",
+          "musicGenreRecommendations": "Rock, Metal, Modal Jazz, Progressive, Spanish",
+          "recommendedUse": "Use as bIII in Phrygian progressions. Part of bIII-bII-i cadence. Essential Phrygian harmony.",
+          "targetNotes": ["C", "E", "G"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "iv minor - subdominant in Phrygian context",
+          "rationale": "D minor is iv in A Phrygian. Shares notes from F major parent scale. Provides minor subdominant function.",
+          "musicalContext": "Modal music, rock, metal. The iv chord is essential in Phrygian progressions. Creates dark, heavy sound.",
+          "musicGenreRecommendations": "Metal, Rock, Modal Jazz, Dark Ambient, Gothic",
+          "recommendedUse": "Use over Dm chords in Phrygian context. Essential for i-iv Phrygian progressions. Creates dark atmosphere.",
+          "targetNotes": ["D", "F", "A"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "G Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "bVII minor - shares most notes",
+          "rationale": "G minor shares 6 of 7 notes with A Phrygian. Provides minor dominant flavor. Common in modal progressions.",
+          "musicalContext": "Modal rock, metal. Creates dark, modal sound. The bVII-i progression is signature Phrygian.",
+          "musicGenreRecommendations": "Metal, Rock, Modal Jazz, Dark Music, Gothic",
+          "recommendedUse": "Use for bVII-i modal progressions. Creates dark, heavy atmosphere. Common in metal and modal rock.",
+          "targetNotes": ["G", "Bb", "D"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "E Phrygian Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 7,
+          "relationship": "V Phrygian Dominant - exotic dominant function",
+          "rationale": "E Phrygian Dominant (E, F, G#, A, B, C, D) provides exotic V chord over A Phrygian. Creates Spanish harmonic minor sound.",
+          "musicalContext": "Flamenco, Middle Eastern. Creates authentic Spanish V-i resolution with exotic flavor.",
+          "musicGenreRecommendations": "Flamenco, Middle Eastern, Spanish, Metal, Fusion",
+          "recommendedUse": "Use as exotic V chord leading to A Phrygian. Creates dramatic Spanish-style resolution.",
+          "targetNotes": ["F", "G#", "B"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "Eb Major",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "bV major - tritone substitution area",
+          "rationale": "Eb major provides distant major color. Creates modal interchange and exotic harmonic color in Phrygian context.",
+          "musicalContext": "Modal jazz, fusion, experimental. Provides unexpected major brightness against dark Phrygian.",
+          "musicGenreRecommendations": "Modal Jazz, Fusion, Progressive, Experimental",
+          "recommendedUse": "Use for unexpected major color. Creates modal interchange. Advanced harmonic concept.",
+          "targetNotes": ["Eb", "G", "Bb"],
+          "difficultyLevel": 4
+        }
+      ]
+    },
+    "Lydian": {
+      "sourceScale": {
+        "name": "A Lydian",
+        "formula": [0, 2, 4, 6, 7, 9, 11],
+        "family": "major-modes",
+        "quality": "major"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "A Major Pentatonic",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Diatonic subset - excludes the #4",
+          "rationale": "Contains A, B, C#, E, F# - all consonant with Lydian. Avoids the characteristic #4 (D#) and 7th (G#). Creates pure, bright major sound.",
+          "musicalContext": "Universal major sound. Provides simpler melodic option when Lydian's #4 is too exotic. Works across all genres.",
+          "musicGenreRecommendations": "Pop, Rock, Country, Folk, Blues, Gospel",
+          "recommendedUse": "Use when you want bright major sound without Lydian's characteristic #4. Perfect for simple, singable melodies.",
+          "targetNotes": ["A", "C#", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Major (Ionian)",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "Parallel mode with natural 4th (D# becomes D)",
+          "rationale": "One note difference (D#→D). Removes the ethereal #4 for standard major sound. More conventional than Lydian.",
+          "musicalContext": "All genres. Provides standard major alternative to Lydian's brightness. More traditional and grounded.",
+          "musicGenreRecommendations": "Classical, Pop, Rock, Country, Jazz, Folk",
+          "recommendedUse": "Use when Lydian sounds too bright or ethereal. Standard major alternative. More conventional choice.",
+          "targetNotes": ["A", "C#", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "E Major",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Parent major scale (A Lydian is the fourth mode of E major)",
+          "rationale": "A Lydian is IV in E major system; shares all notes (A, B, C#, D#, E, F#, G#). Understanding this reveals the diatonic relationship.",
+          "musicalContext": "All genres; provides major context for Lydian. Essential for understanding Lydian as IV in E major.",
+          "musicGenreRecommendations": "Jazz, Classical, Pop, Rock, Contemporary",
+          "recommendedUse": "Think in E major to understand A Lydian's context. Use A Lydian over IVmaj7 chords in E major.",
+          "targetNotes": ["E", "G#", "B"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Lydian Augmented",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "Lydian with raised 5th (E becomes E#/F)",
+          "rationale": "Adds augmented 5th to Lydian. Creates even more ethereal, floating sound. Third mode of F melodic minor.",
+          "musicalContext": "Jazz, fusion, film music. Creates maximum brightness and suspension. Very dreamy, otherworldly character.",
+          "musicGenreRecommendations": "Jazz, Fusion, Film Music, Progressive, Experimental",
+          "recommendedUse": "Use over Amaj7#5#11 chords. Creates extremely ethereal sound. Advanced jazz harmony.",
+          "targetNotes": ["D#", "E#", "G#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A Lydian Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 9,
+          "relationship": "Lydian with lowered 7th (G# becomes G)",
+          "rationale": "Combines Lydian's #4 with dominant 7th. Creates bright dominant sound. Fourth mode of E melodic minor.",
+          "musicalContext": "Jazz fusion, modern jazz, progressive rock. The signature sound of fusion. Used by Frank Gambale, Scott Henderson.",
+          "musicGenreRecommendations": "Jazz Fusion, Modern Jazz, Progressive Rock, Fusion, Contemporary Jazz",
+          "recommendedUse": "Perfect over A7#11 chords. Essential for fusion and modern jazz. Emphasize the #11 (D#) for characteristic sound.",
+          "targetNotes": ["D#", "G", "C#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Diminished (Half-Whole)",
+          "keyQuality": "diminished",
+          "compatibilityScore": 7,
+          "relationship": "Built on the #4 - symmetrical dominant approach",
+          "rationale": "D# diminished creates tension over the Lydian #4. The symmetrical structure provides chromatic color around the characteristic note.",
+          "musicalContext": "Jazz, fusion. Creates complex chromatic tension around the #4. Advanced jazz harmony technique.",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary, Avant-Garde",
+          "recommendedUse": "Use for chromatic embellishment of the #4. Advanced technique for creating tension and release.",
+          "targetNotes": ["D#", "F#", "A"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "F# Minor (vi of E major)",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Relative minor of parent E major - shares all notes",
+          "rationale": "F# minor shares all notes with A Lydian (both from E major). Provides minor contrast within the same note pool.",
+          "musicalContext": "Pop, rock, classical. Essential for relative minor relationships. Common in vi-IV-I-V progressions.",
+          "musicGenreRecommendations": "Pop, Rock, Classical, Indie, Singer-Songwriter",
+          "recommendedUse": "Use for minor contrast while staying in E major system. Perfect for vi chord emphasis.",
+          "targetNotes": ["F#", "A", "C#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "B Major",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "V of parent E major - shares all notes",
+          "rationale": "B major is V in E major, sharing all notes with A Lydian. Provides dominant function in the E major system.",
+          "musicalContext": "All genres. Essential for V-I relationships in E major. Fundamental harmonic function.",
+          "musicGenreRecommendations": "Classical, Pop, Rock, Jazz, Country",
+          "recommendedUse": "Use for dominant function in E major context. Part of the parent scale relationships.",
+          "targetNotes": ["B", "D#", "F#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "C# Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "iii Dorian in E major system - shares all notes",
+          "rationale": "C# Dorian shares all notes with A Lydian (both from E major). Provides sophisticated minor color.",
+          "musicalContext": "Jazz, funk, fusion. Creates jazz minor sound within E major system. More sophisticated than natural minor.",
+          "musicGenreRecommendations": "Jazz, Funk, Fusion, Soul, R&B",
+          "recommendedUse": "Use over C#m7 chords in E major context. Provides jazz/funk minor flavor.",
+          "targetNotes": ["C#", "E", "A"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "Parallel mode with natural 4th and b7 (D# becomes D, G# becomes G)",
+          "rationale": "Two note changes from Lydian. Creates dominant 7th sound. Less ethereal, more bluesy than Lydian.",
+          "musicalContext": "Rock, blues, funk. Provides dominant 7th alternative to Lydian's maj7 sound. More grounded and bluesy.",
+          "musicGenreRecommendations": "Rock, Blues, Funk, Country, Jam Band",
+          "recommendedUse": "Use over A7 chords when Lydian is too bright. Creates rock/blues dominant sound.",
+          "targetNotes": ["G", "C#", "E"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "E Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "V Lydian - modal relationship in major system",
+          "rationale": "E Lydian shares A# which creates interesting tension. Both Lydian modes create bright, floating harmonies.",
+          "musicalContext": "Modal jazz, fusion. Creates ethereal major-to-major movement. Advanced modal harmony.",
+          "musicGenreRecommendations": "Modal Jazz, Fusion, Progressive, Film Music",
+          "recommendedUse": "Use for modal V-IV relationship. Creates bright, floating harmonic movement.",
+          "targetNotes": ["E", "A#", "G#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "D Major",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "IV in natural major - one note different",
+          "rationale": "D major differs by one note (D# in Lydian vs C# in D major). Provides subdominant major alternative.",
+          "musicalContext": "Folk, rock, country. Standard subdominant major sound. More conventional than Lydian relationships.",
+          "musicGenreRecommendations": "Folk, Rock, Country, Pop, Americana",
+          "recommendedUse": "Use for standard IV major sound. Less exotic than pure Lydian relationships.",
+          "targetNotes": ["D", "F#", "A"],
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "Mixolydian": {
+      "sourceScale": {
+        "name": "A Mixolydian",
+        "formula": [0, 2, 4, 5, 7, 9, 10],
+        "family": "major-modes",
+        "quality": "dominant"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "A Major Pentatonic",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Diatonic subset - excludes 4th and b7",
+          "rationale": "Contains A, B, C#, E, F# - all strongly consonant with Mixolydian. Avoids the 4th and b7 for pure, bright sound over dominant chords.",
+          "musicalContext": "Rock, blues, country. The safest choice for improvising over A7 chords. Creates bright, positive melodic lines.",
+          "musicGenreRecommendations": "Rock, Blues, Country, Folk, Pop, Americana",
+          "recommendedUse": "Perfect for A7 improvisation. Guaranteed consonance. Ideal for creating singable melodies over dominant chords.",
+          "targetNotes": ["A", "C#", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Blues Scale",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Minor pentatonic with b5 over major harmony",
+          "rationale": "Creates bluesy tension over A Mixolydian. The minor 3rd (C) and b5 (Eb) create characteristic blues sound over major/dominant harmony.",
+          "musicalContext": "Blues, blues rock, rock. Essential for authentic blues sound. Creates tension-release over dominant 7th chords.",
+          "musicGenreRecommendations": "Blues, Blues Rock, Rock, Soul, R&B, Funk",
+          "recommendedUse": "Essential for blues improvisation over A7. Use C and Eb as blue notes with quick resolution to C# and E.",
+          "targetNotes": ["C", "Eb", "E"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D Major",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Parent major scale (A Mixolydian is the fifth mode of D major)",
+          "rationale": "A Mixolydian is V in D major system; shares all notes (A, B, C#, D, E, F#, G). Understanding this reveals the diatonic context.",
+          "musicalContext": "All genres; provides major context for Mixolydian. Essential for understanding Mixolydian as V in D major.",
+          "musicGenreRecommendations": "Folk, Rock, Country, Classical, Jazz, Pop",
+          "recommendedUse": "Think in D major to understand A Mixolydian's context. Perfect for V7 function in D major.",
+          "targetNotes": ["D", "F#", "A"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Major (Ionian)",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "Parallel mode with major 7th (G becomes G#)",
+          "rationale": "One note difference (G→G#). Removes the dominant 7th character for pure major sound. More consonant and stable.",
+          "musicalContext": "All genres. Use when you want major sound without dominant character. More stable than Mixolydian.",
+          "musicGenreRecommendations": "Classical, Pop, Jazz, Country, Folk",
+          "recommendedUse": "Use when you want pure major sound. Switch to Ionian for resolution from Mixolydian's dominant tension.",
+          "targetNotes": ["A", "C#", "G#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "E Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Built on the 5th - all notes diatonic to parent D major",
+          "rationale": "E minor pentatonic (E, G, A, B, D) shares all notes with A Mixolydian. Creates bluesy rock sound over dominant harmony.",
+          "musicalContext": "Rock, blues, country. Essential for rock guitar over A7. Used extensively from Clapton to modern rock.",
+          "musicGenreRecommendations": "Rock, Blues, Country, Blues Rock, Southern Rock",
+          "recommendedUse": "Perfect for rock soloing over A7. Creates bluesy sound with all consonant notes. Essential rock scale.",
+          "targetNotes": ["E", "G", "B"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Mixolydian b6",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "Mixolydian with lowered 6th (F# becomes F)",
+          "rationale": "One note difference (F#→F). Creates darker, bluesier dominant sound. Fifth mode of D melodic minor.",
+          "musicalContext": "Jazz blues, fusion. Creates more complex dominant color. Common in bebop and modern jazz.",
+          "musicGenreRecommendations": "Jazz, Jazz Blues, Fusion, Bebop, Modern Jazz",
+          "recommendedUse": "Use over A7 for jazzier, darker dominant sound. The b6 creates characteristic jazz blues color.",
+          "targetNotes": ["F", "G", "C#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "A Lydian Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 9,
+          "relationship": "Mixolydian with raised 4th (D becomes D#)",
+          "rationale": "One note difference (D→D#). Adds Lydian brightness to dominant sound. Creates modern jazz fusion character.",
+          "musicalContext": "Jazz fusion, modern jazz, progressive rock. Signature sound of fusion guitarists. More colorful than plain Mixolydian.",
+          "musicGenreRecommendations": "Jazz Fusion, Modern Jazz, Progressive Rock, Fusion, Contemporary Jazz",
+          "recommendedUse": "Perfect over A7#11 chords. Essential for fusion dominant sound. Emphasize the #11 (D#).",
+          "targetNotes": ["D#", "G", "C#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "B Minor (ii of D major)",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "ii in parent D major - shares all notes",
+          "rationale": "B Dorian shares all notes with A Mixolydian. Provides minor subdominant in the D major system.",
+          "musicalContext": "Jazz, funk, rock. Essential for ii-V relationships in D major. Common in jazz and funk progressions.",
+          "musicGenreRecommendations": "Jazz, Funk, Rock, Soul, R&B, Latin",
+          "recommendedUse": "Use over Bm7 chords in D major context. Perfect for Bm7-A7-Dmaj7 progressions.",
+          "targetNotes": ["B", "D", "F#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "F# Minor (iii of D major)",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "iii in parent D major - shares all notes",
+          "rationale": "F# Phrygian shares all notes with A Mixolydian. Provides exotic minor color in D major system.",
+          "musicalContext": "Modal music, progressive rock. Less common but effective for color in D major progressions.",
+          "musicGenreRecommendations": "Modal Jazz, Progressive Rock, Fusion, Art Rock",
+          "recommendedUse": "Use over F#m chords for exotic minor sound in D major context. Advanced modal color.",
+          "targetNotes": ["F#", "G", "C#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "G Major (IV of D major)",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "IV in parent D major - shares all notes",
+          "rationale": "G Lydian shares all notes with A Mixolydian. Provides bright IV major sound in D major system.",
+          "musicalContext": "Folk, rock, pop. Essential for IV chord emphasis in D major. Common in acoustic music.",
+          "musicGenreRecommendations": "Folk, Rock, Pop, Country, Acoustic, Singer-Songwriter",
+          "recommendedUse": "Use over G major chords in D major context. Part of the parent scale relationships.",
+          "targetNotes": ["G", "B", "D"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "E Dorian (ii of D major)",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Built on the 5th - Dorian flavor",
+          "rationale": "E Dorian shares notes with A Mixolydian system. Creates sophisticated minor sound on the V relationship.",
+          "musicalContext": "Jazz, fusion, modal music. Provides jazz minor color over the fifth.",
+          "musicGenreRecommendations": "Jazz, Fusion, Modal Jazz, Contemporary",
+          "recommendedUse": "Use over Em7 chords for jazz/funk sound. Creates modal minor V relationship.",
+          "targetNotes": ["E", "F#", "B"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "A Bebop Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 9,
+          "relationship": "Mixolydian with added major 7th chromatic passing tone",
+          "rationale": "Adds G# as chromatic passing tone to Mixolydian. Creates smooth eighth-note bebop lines with downbeat chord tones.",
+          "musicalContext": "Bebop, straight-ahead jazz. Essential for classic jazz dominant lines. Charlie Parker and Dizzy Gillespie style.",
+          "musicGenreRecommendations": "Bebop, Jazz, Straight-Ahead Jazz, Hard Bop, Traditional Jazz",
+          "recommendedUse": "Essential for jazz improvisation over A7. Use G# as chromatic approach to A. Perfect for bebop-style eighth note runs.",
+          "targetNotes": ["G", "G#", "A"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D Mixolydian (IV7)",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "Modal IV7 relationship",
+          "rationale": "D Mixolydian provides dominant 7th color on IV. Creates modal, non-resolving dominant sound. Common in jam band music.",
+          "musicalContext": "Rock, jam band, modal music. Creates I7-IV7 modal progression sound. Essential for Grateful Dead-style music.",
+          "musicGenreRecommendations": "Jam Band, Rock, Modal Jazz, Folk Rock, Americana",
+          "recommendedUse": "Use for modal I7-IV7 progressions. Creates non-functional dominant harmony. Essential for jam band sound.",
+          "targetNotes": ["D", "C", "F#"],
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "Aeolian": {
+      "sourceScale": {
+        "name": "A Aeolian (Natural Minor)",
+        "formula": [0, 2, 3, 5, 7, 8, 10],
+        "family": "major-modes",
+        "quality": "minor"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "A Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Diatonic subset - scale tones 1, b3, 4, 5, b7 only",
+          "rationale": "Contains the core minor pentatonic notes (A, C, D, E, G). Completely safe and consonant. The foundation of minor improvisation.",
+          "musicalContext": "Universal minor sound across all genres from blues to metal. Most commonly used scale for rock and blues improvisation.",
+          "musicGenreRecommendations": "Rock, Blues, Metal, Hard Rock, Alternative, Grunge, Punk",
+          "recommendedUse": "Perfect starting point for minor improvisation. Guaranteed consonance. Essential for rock, blues, and metal solos.",
+          "targetNotes": ["A", "C", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "C Major (Relative Major)",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Relative major (vi scale) - shares all notes",
+          "rationale": "A minor is vi of C major. Shares all seven notes (A, B, C, D, E, F, G). Understanding this relationship is fundamental to music theory.",
+          "musicalContext": "All genres. Essential for understanding relative major-minor relationships. Foundation of Western harmony.",
+          "musicGenreRecommendations": "Classical, Pop, Rock, Folk, Jazz, Country, Singer-Songwriter",
+          "recommendedUse": "Think in C major to understand A minor's diatonic context. Perfect for vi-IV-I-V progressions in C major.",
+          "targetNotes": ["C", "E", "G"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Blues Scale",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Minor pentatonic with added b5 blue note (Eb)",
+          "rationale": "Adds Eb blue note to minor pentatonic. Creates authentic blues sound with characteristic tension and release.",
+          "musicalContext": "Blues, rock, blues rock. The signature sound of blues music from Robert Johnson to Stevie Ray Vaughan.",
+          "musicGenreRecommendations": "Blues, Rock, Blues Rock, Jazz Blues, Soul, R&B",
+          "recommendedUse": "Essential for blues improvisation over Am. Use Eb as chromatic passing tone. Defines blues style.",
+          "targetNotes": ["A", "Eb", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Minor mode with raised 6th (F becomes F#)",
+          "rationale": "One note difference (F→F#). Creates brighter, jazzier minor sound. More versatile and less melancholic than Aeolian.",
+          "musicalContext": "Jazz, funk, fusion. The go-to minor scale for jazz improvisation. More sophisticated than natural minor.",
+          "musicGenreRecommendations": "Jazz, Funk, Fusion, Latin, Soul, Jazz Rock, R&B",
+          "recommendedUse": "Use when you want brighter minor sound. Perfect for jazz/funk Am7 chords. More colorful than Aeolian.",
+          "targetNotes": ["F#", "A", "C"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Natural minor with raised 7th (G becomes G#)",
+          "rationale": "One note difference (G→G#). Adds leading tone for strong V7-i resolution. Creates classical minor sound with exotic character.",
+          "musicalContext": "Classical, neoclassical metal, flamenco. Essential for traditional minor harmony. Creates dramatic, exotic sound.",
+          "musicGenreRecommendations": "Classical, Neoclassical Metal, Flamenco, Tango, Gypsy Jazz, Middle Eastern",
+          "recommendedUse": "Essential for classical-style minor. Use when you need strong V7-i cadences. Creates dramatic resolution.",
+          "targetNotes": ["G#", "C", "E"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Melodic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Natural minor with raised 6th and 7th (F becomes F#, G becomes G#)",
+          "rationale": "Two note changes (F→F#, G→G#). Removes augmented 2nd of harmonic minor. Jazz minor with smooth melodic motion.",
+          "musicalContext": "Jazz, fusion, contemporary classical. Foundation of modern jazz improvisation. Essential for bebop and post-bop.",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary Classical, Modern Jazz, Bebop, Smooth Jazz",
+          "recommendedUse": "Essential for jazz minor harmony. Perfect over Am(maj7) chords. Foundation for jazz minor modes.",
+          "targetNotes": ["F#", "G#", "A"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "A Phrygian",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Minor mode with lowered 2nd (B becomes Bb)",
+          "rationale": "One note difference (B→Bb). Creates dark, Spanish, Middle Eastern sound. The b2 provides exotic character.",
+          "musicalContext": "Flamenco, metal, Spanish music. Creates dramatic exotic minor. Essential for flamenco and metal.",
+          "musicGenreRecommendations": "Flamenco, Metal, Spanish, Middle Eastern, Progressive Metal, Thrash",
+          "recommendedUse": "Use for exotic, dark minor sound. Emphasize Bb for Spanish flavor. Creates maximum darkness.",
+          "targetNotes": ["Bb", "C", "E"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D Minor (iv)",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "iv chord in A minor - shares all notes from C major",
+          "rationale": "D Dorian/Natural minor in A minor context. Essential subdominant minor function. Core of minor harmony.",
+          "musicalContext": "All genres. The iv chord is essential in minor progressions. Foundation of i-iv-V minor harmony.",
+          "musicGenreRecommendations": "Rock, Pop, Classical, Blues, Metal, Folk, Jazz",
+          "recommendedUse": "Essential for iv chord in A minor. Use in i-iv-V progressions. Core minor harmony function.",
+          "targetNotes": ["D", "F", "A"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "E Phrygian (v)",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "v chord in A minor - shares all notes from C major",
+          "rationale": "E Phrygian provides minor v chord. Less common than dominant V7, but essential for modal minor sound.",
+          "musicalContext": "Modal minor, rock, metal. Creates darker alternative to dominant. Common in modal and rock music.",
+          "musicGenreRecommendations": "Modal Rock, Metal, Progressive, Alternative, Gothic",
+          "recommendedUse": "Use for modal minor v chord instead of V7. Creates darker, less resolved sound.",
+          "targetNotes": ["E", "F", "B"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "F Major (bVI)",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "bVI major - shares all notes from C major parent scale",
+          "rationale": "F major is bVI in A minor. Provides warm major contrast. Extremely common in modern minor key progressions.",
+          "musicalContext": "Rock, pop, film music. One of the most common chords in modern music. Creates emotional lift in minor keys.",
+          "musicGenreRecommendations": "Pop, Rock, Film Music, Indie, Alternative, Contemporary",
+          "recommendedUse": "Essential for bVI-bVII-i progressions. Creates emotional release in minor contexts. Very common in modern music.",
+          "targetNotes": ["F", "A", "C"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "G Major (bVII)",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "bVII major - shares all notes from C major parent scale",
+          "rationale": "G major is bVII in A minor. Creates the classic rock bVII-i sound. Essential for modal minor progressions.",
+          "musicalContext": "Rock, modal music. The signature bVII-i rock progression sound. Used extensively from The Beatles to modern rock.",
+          "musicGenreRecommendations": "Rock, Modal Rock, Indie, Alternative, Progressive Rock, Hard Rock",
+          "recommendedUse": "Essential for bVII-i rock progressions. Use in bVI-bVII-i cadences. Classic rock sound.",
+          "targetNotes": ["G", "B", "D"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "E Minor (v relative)",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "v minor - parallel relationship",
+          "rationale": "E minor shares 6 of 7 notes with A minor (only difference: A vs G#). Provides dominant area minor chord.",
+          "musicalContext": "Modal minor, folk, rock. Less functional than E7 but common in modal music.",
+          "musicGenreRecommendations": "Folk, Modal Rock, Progressive, Alternative, Indie",
+          "recommendedUse": "Use for modal v-i instead of V7-i. Creates less resolved, more open sound.",
+          "targetNotes": ["E", "G", "B"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "C Mixolydian (bIII)",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "bIII as dominant 7th - modal mixture",
+          "rationale": "C7 (C Mixolydian) provides dominant color on bIII. Common in blues and rock minor progressions.",
+          "musicalContext": "Blues, rock, modal music. Creates bluesy bIII7 sound. Less common but effective for color.",
+          "musicGenreRecommendations": "Blues, Rock, Blues Rock, Modal Jazz, Jam Band",
+          "recommendedUse": "Use over C7 chords in A minor for bluesy color. Creates modal dominant on bIII.",
+          "targetNotes": ["C", "Bb", "E"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Locrian",
+          "keyQuality": "diminished",
+          "compatibilityScore": 6,
+          "relationship": "Minor mode with lowered 2nd and lowered 5th",
+          "rationale": "Creates extremely dark, unstable sound. The b5 makes this very dissonant. Used sparingly for extreme tension.",
+          "musicalContext": "Jazz, metal, experimental. Creates maximum instability. Used over half-diminished chords.",
+          "musicGenreRecommendations": "Jazz, Metal, Experimental, Avant-Garde, Contemporary Classical",
+          "recommendedUse": "Use carefully over Am7b5 chords. Creates extreme tension requiring resolution. Very advanced.",
+          "targetNotes": ["Bb", "Eb", "G"],
+          "difficultyLevel": 4
+        }
+      ]
+    },
+    "Locrian": {
+      "sourceScale": {
+        "name": "A Locrian",
+        "formula": [0, 1, 3, 5, 6, 8, 10],
+        "family": "major-modes",
+        "quality": "diminished"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "Bb Major",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Parent major scale (A Locrian is the seventh mode of Bb major)",
+          "rationale": "A Locrian is vii° in Bb major system; shares all notes (A, Bb, C, D, Eb, F, G). Understanding this reveals the diatonic context.",
+          "musicalContext": "All genres; provides major context for Locrian. Essential for understanding Locrian as vii° in Bb major.",
+          "musicGenreRecommendations": "Jazz, Classical, Contemporary, Fusion",
+          "recommendedUse": "Think in Bb major to understand A Locrian's context. Use over Am7b5 chords in Bb major.",
+          "targetNotes": ["Bb", "D", "F"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "A Phrygian",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Minor mode with perfect 5th (Eb becomes E)",
+          "rationale": "One note difference (Eb→E). Removes the unstable diminished 5th. Creates stable dark minor instead of diminished sound.",
+          "musicalContext": "Flamenco, metal, Spanish music. Provides stable dark minor alternative to Locrian's instability.",
+          "musicGenreRecommendations": "Flamenco, Metal, Spanish, Middle Eastern, Progressive Metal",
+          "recommendedUse": "Use when Locrian's diminished 5th is too unstable. Provides Spanish minor alternative.",
+          "targetNotes": ["Bb", "C", "E"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Diminished (Half-Whole)",
+          "keyQuality": "diminished",
+          "compatibilityScore": 9,
+          "relationship": "Symmetrical diminished scale for half-diminished harmony",
+          "rationale": "Perfect for Am7b5 chords. The symmetrical structure provides rich color over diminished harmony.",
+          "musicalContext": "Jazz, fusion. Essential for half-diminished chord improvisation. Creates complex, tense sound.",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary, Bebop, Modern Jazz",
+          "recommendedUse": "Essential for jazz improvisation over Am7b5. Provides rich chromatic color. Standard jazz choice.",
+          "targetNotes": ["A", "C", "Eb"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A Super Locrian (Altered)",
+          "keyQuality": "diminished",
+          "compatibilityScore": 8,
+          "relationship": "Locrian with lowered 4th - seventh mode of Bb melodic minor",
+          "rationale": "Even more altered than Locrian. All upper extensions lowered. Creates maximum tension for altered dominant.",
+          "musicalContext": "Jazz, fusion. Used over altered dominant chords resolving down. Very tense, unstable sound.",
+          "musicGenreRecommendations": "Jazz, Fusion, Bebop, Modern Jazz, Contemporary",
+          "recommendedUse": "Use over A7alt chords. Creates maximum tension for dominant resolution. Advanced jazz harmony.",
+          "targetNotes": ["Bb", "Eb", "G"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "Eb Major (bV)",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "bV major - tritone relationship",
+          "rationale": "Eb major provides major contrast to Locrian. The tritone relationship creates interesting tension.",
+          "musicalContext": "Jazz, fusion, experimental. Creates unexpected major brightness against dark Locrian.",
+          "musicGenreRecommendations": "Jazz, Fusion, Experimental, Contemporary, Avant-Garde",
+          "recommendedUse": "Use for tritone substitution colors. Creates distant harmonic relationship. Advanced concept.",
+          "targetNotes": ["Eb", "G", "Bb"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D Minor (iv of Bb major)",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "iv in parent Bb major - shares all notes",
+          "rationale": "D Dorian shares all notes with A Locrian. Provides stable minor contrast to Locrian's instability.",
+          "musicalContext": "Jazz, fusion. Helps understand diatonic relationships in Bb major system.",
+          "musicGenreRecommendations": "Jazz, Funk, Rock, Fusion, Contemporary",
+          "recommendedUse": "Use over Dm7 chords in Bb major context. Provides stable contrast to Locrian.",
+          "targetNotes": ["D", "F", "A"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "F Major (IV of Bb major)",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "IV in parent Bb major - shares all notes",
+          "rationale": "F Lydian shares all notes with A Locrian. Provides bright major IV sound in Bb system.",
+          "musicalContext": "All genres. Essential IV chord in Bb major system.",
+          "musicGenreRecommendations": "Pop, Rock, Jazz, Classical, Folk",
+          "recommendedUse": "Use over F major chords in Bb major context. Part of parent scale relationships.",
+          "targetNotes": ["F", "A", "C"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "G Minor (vi of Bb major)",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "vi in parent Bb major - shares all notes",
+          "rationale": "G Aeolian shares all notes with A Locrian. Relative minor of Bb major.",
+          "musicalContext": "Pop, rock, classical. Essential for relative minor relationships in Bb major.",
+          "musicGenreRecommendations": "Pop, Rock, Classical, Folk, Indie",
+          "recommendedUse": "Use for vi minor sound in Bb major context. Standard relative minor.",
+          "targetNotes": ["G", "Bb", "D"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "C Mixolydian (V of Bb major)",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "V in parent Bb major - shares all notes",
+          "rationale": "C Mixolydian shares all notes with A Locrian. Provides dominant function in Bb system.",
+          "musicalContext": "Rock, blues, jazz. Essential V7 sound in Bb major.",
+          "musicGenreRecommendations": "Rock, Blues, Jazz, Funk, Country",
+          "recommendedUse": "Use over C7 chords in Bb major context. Standard dominant function.",
+          "targetNotes": ["C", "Bb", "E"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Aeolian (Natural Minor)",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Minor mode with perfect 5th and major 2nd",
+          "rationale": "Two note changes (Bb→B, Eb→E). Creates stable natural minor from unstable Locrian. Much more consonant.",
+          "musicalContext": "Rock, pop, classical. Provides stable minor alternative to Locrian's extreme dissonance.",
+          "musicGenreRecommendations": "Rock, Pop, Classical, Metal, Alternative",
+          "recommendedUse": "Use when you need stable minor instead of Locrian. Much more consonant and usable.",
+          "targetNotes": ["A", "C", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "Eb Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 7,
+          "relationship": "bV as dominant - distant relationship",
+          "rationale": "Eb7 provides tritone substitute area harmony. Advanced jazz concept for reharmonization.",
+          "musicalContext": "Jazz, fusion. Creates unexpected dominant color. Advanced harmonic concept.",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary, Bebop",
+          "recommendedUse": "Use for tritone substitution approaches. Very advanced jazz harmony technique.",
+          "targetNotes": ["Eb", "Db", "Bb"],
+          "difficultyLevel": 5
+        }
+      ]
+    },
+    "HarmonicMinor": {
+      "sourceScale": {
+        "name": "A Harmonic Minor",
+        "formula": [0, 2, 3, 5, 7, 8, 11],
+        "family": "minor-variants",
+        "quality": "minor"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "A Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Subset excluding 2nd and 7th",
+          "rationale": "Contains A, C, D, E, G - safe minor pentatonic notes. Avoids the characteristic raised 7th (G#) and augmented 2nd interval.",
+          "musicalContext": "Rock, blues, classical crossover. Provides simple minor sound when harmonic minor feels too exotic.",
+          "musicGenreRecommendations": "Rock, Blues, Classical Crossover, Neoclassical",
+          "recommendedUse": "Use for straightforward minor sound. Avoids harmonic minor's exotic character. Safer melodic choice.",
+          "targetNotes": ["A", "C", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Natural Minor (Aeolian)",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Parallel mode with natural 7th (G# becomes G)",
+          "rationale": "One note difference (G#→G). Removes the leading tone for natural minor sound. Less classical, more contemporary.",
+          "musicalContext": "Rock, pop, modal music. Provides less resolved minor alternative. More common in modern music.",
+          "musicGenreRecommendations": "Rock, Pop, Modal Rock, Alternative, Indie",
+          "recommendedUse": "Use when you don't need classical V7-i resolution. More modern, less dramatic than harmonic minor.",
+          "targetNotes": ["A", "C", "G"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Melodic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Harmonic minor with raised 6th (F becomes F#)",
+          "rationale": "One note difference (F→F#). Removes the augmented 2nd for smoother melodic motion. Jazz minor sound.",
+          "musicalContext": "Jazz, fusion, contemporary classical. More smooth and jazzy than harmonic minor's exotic character.",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary Classical, Modern Jazz, Smooth Jazz",
+          "recommendedUse": "Use for jazz minor sound. Smoother than harmonic minor. Essential for jazz harmony.",
+          "targetNotes": ["F#", "G#", "A"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "E Phrygian Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 10,
+          "relationship": "V chord scale - fifth mode of A harmonic minor",
+          "rationale": "E Phrygian Dominant is the V of A harmonic minor. Creates the characteristic Spanish/exotic dominant sound with strong resolution to A.",
+          "musicalContext": "Classical, flamenco, neoclassical metal. Essential for authentic V7-i resolution in harmonic minor. Dramatic and exotic.",
+          "musicGenreRecommendations": "Classical, Flamenco, Neoclassical Metal, Spanish, Middle Eastern",
+          "recommendedUse": "Essential over E7 chords in A harmonic minor. Creates dramatic Spanish-style V-i resolution.",
+          "targetNotes": ["F", "G#", "B"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "D Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "iv chord - natural minor iv with harmonic context",
+          "rationale": "D minor (natural) works beautifully as iv in harmonic minor. Provides subdominant function with traditional sound.",
+          "musicalContext": "Classical, neoclassical. Essential iv-V7-i progression in harmonic minor. Foundation of classical minor harmony.",
+          "musicGenreRecommendations": "Classical, Neoclassical Metal, Baroque, Traditional",
+          "recommendedUse": "Essential for iv-V7-i progressions. Use Dm-E7-Am for classical minor cadence.",
+          "targetNotes": ["D", "F", "A"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "F Major",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "bVI major - common in harmonic minor progressions",
+          "rationale": "F major provides major subdominant color. The bVI-V7-i progression is essential in harmonic minor.",
+          "musicalContext": "Classical, film music, dramatic music. Creates emotional lift before resolution. Very dramatic sound.",
+          "musicGenreRecommendations": "Classical, Film Music, Neoclassical, Dramatic, Baroque",
+          "recommendedUse": "Use in bVI-V7-i progressions. Creates dramatic emotional arc. Classical harmonic minor essential.",
+          "targetNotes": ["F", "A", "C"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "C Major",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "bIII major - relative major with shared notes",
+          "rationale": "C major shares 6 of 7 notes with A harmonic minor (only F vs F#). Provides bright major contrast.",
+          "musicalContext": "Classical, neoclassical. Common modal mixture in minor keys. Provides major relief.",
+          "musicGenreRecommendations": "Classical, Neoclassical, Film Music, Progressive",
+          "recommendedUse": "Use for major color in harmonic minor contexts. Common borrowed chord.",
+          "targetNotes": ["C", "E", "G"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Phrygian Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "Parallel Phrygian dominant - similar exotic flavor",
+          "rationale": "Both scales share the exotic, Middle Eastern character. A Phrygian Dominant can substitute for A harmonic minor in modal contexts.",
+          "musicalContext": "Flamenco, Middle Eastern, metal. Creates similar exotic dominant character. Modal alternative.",
+          "musicGenreRecommendations": "Flamenco, Middle Eastern, Metal, Spanish, Fusion",
+          "recommendedUse": "Use for Spanish/exotic A dominant sound. Alternative to pure harmonic minor tonic.",
+          "targetNotes": ["Bb", "C#", "E"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "B Locrian Natural 6",
+          "keyQuality": "diminished",
+          "compatibilityScore": 9,
+          "relationship": "ii° scale - second mode of A harmonic minor",
+          "rationale": "B Locrian ♮6 is the ii° of A harmonic minor. Essential for ii°-V7-i progressions in harmonic minor.",
+          "musicalContext": "Classical, jazz. Used over Bm7b5 in A harmonic minor contexts. More sophisticated than standard Locrian.",
+          "musicGenreRecommendations": "Classical, Jazz, Neoclassical, Contemporary, Fusion",
+          "recommendedUse": "Use over Bm7b5 chords in A harmonic minor. Essential for ii°-V7-i progressions.",
+          "targetNotes": ["B", "D", "G#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "C Ionian #5",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "bIII augmented - third mode of A harmonic minor",
+          "rationale": "C Ionian #5 is the third mode of A harmonic minor. Creates major sound with augmented 5th color.",
+          "musicalContext": "Jazz, fusion, film music. Creates unique major augmented character. Exotic major sound.",
+          "musicGenreRecommendations": "Jazz, Fusion, Film Music, Contemporary, Experimental",
+          "recommendedUse": "Use over Cmaj7#5 chords. Creates exotic major color in A harmonic minor system.",
+          "targetNotes": ["C", "E", "G#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D Dorian #4",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "iv with #4 - fourth mode of A harmonic minor",
+          "rationale": "D Dorian #4 is the fourth mode of A harmonic minor. Provides sophisticated minor subdominant with Lydian #4.",
+          "musicalContext": "Jazz, fusion. Creates unique minor sound with raised 4th. Exotic minor color.",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary, Progressive, Experimental",
+          "recommendedUse": "Use over Dm chords with exotic color. Advanced harmonic minor mode.",
+          "targetNotes": ["D", "G#", "F"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "G# Diminished (Whole-Half)",
+          "keyQuality": "diminished",
+          "compatibilityScore": 8,
+          "relationship": "Symmetrical scale over leading tone",
+          "rationale": "G# diminished provides rich color over the raised 7th. Creates tension resolving to A.",
+          "musicalContext": "Jazz, classical. Creates chromatic tension on leading tone. Advanced harmonic color.",
+          "musicGenreRecommendations": "Jazz, Classical, Fusion, Contemporary",
+          "recommendedUse": "Use for chromatic approach to A. Creates rich leading tone harmony.",
+          "targetNotes": ["G#", "B", "D"],
+          "difficultyLevel": 5
+        }
+      ]
+    },
+    "MelodicMinor": {
+      "sourceScale": {
+        "name": "A Melodic Minor",
+        "formula": [0, 2, 3, 5, 7, 9, 11],
+        "family": "minor-variants",
+        "quality": "minor"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "A Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Subset of core minor pentatonic notes",
+          "rationale": "Contains A, C, D, E, G - avoids the raised 6th and 7th. Provides simple minor sound when melodic minor feels too jazzy.",
+          "musicalContext": "Jazz, fusion with blues influence. Grounds the jazz minor sound with bluesy simplicity.",
+          "musicGenreRecommendations": "Jazz, Blues, Fusion, Jazz Blues, Contemporary",
+          "recommendedUse": "Use for simpler melodic phrases. Avoids melodic minor's complexity. Blues-influenced jazz lines.",
+          "targetNotes": ["A", "C", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Natural Minor (Aeolian)",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Parallel mode with lowered 6th and 7th",
+          "rationale": "Two note changes (F#→F, G#→G). Removes the jazz minor character for natural minor sound.",
+          "musicalContext": "Rock, pop. Provides natural minor alternative to melodic minor's sophistication.",
+          "musicGenreRecommendations": "Rock, Pop, Alternative, Indie, Folk",
+          "recommendedUse": "Use when natural minor sound is more appropriate. Less sophisticated than melodic minor.",
+          "targetNotes": ["A", "C", "F"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Minor mode with lowered 7th (G# becomes G)",
+          "rationale": "One note difference (G#→G). Creates modal minor sound instead of leading tone. More stable endpoint than melodic minor.",
+          "musicalContext": "Jazz, funk, modal music. Provides modal alternative to melodic minor's classical tendencies.",
+          "musicGenreRecommendations": "Jazz, Funk, Fusion, Latin, Soul, Modal Jazz",
+          "recommendedUse": "Use for modal minor sound. More stable than melodic minor. Perfect for Am7 vamps.",
+          "targetNotes": ["A", "F#", "G"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Melodic minor with lowered 6th (F# becomes F)",
+          "rationale": "One note difference (F#→F). Creates classical harmonic minor with augmented 2nd. More exotic than melodic minor.",
+          "musicalContext": "Classical, neoclassical metal. Provides classical alternative to jazz melodic minor sound.",
+          "musicGenreRecommendations": "Classical, Neoclassical Metal, Flamenco, Baroque",
+          "recommendedUse": "Use for classical minor sound. More exotic than melodic minor. Traditional V7-i resolution.",
+          "targetNotes": ["A", "F", "G#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "B Dorian b2",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "ii chord scale - second mode of A melodic minor",
+          "rationale": "B Dorian b2 is the ii of A melodic minor. Essential for ii-V-i progressions in melodic minor. Sophisticated minor ii sound.",
+          "musicalContext": "Jazz, fusion. The go-to scale for ii chords in melodic minor contexts. Essential modern jazz harmony.",
+          "musicGenreRecommendations": "Jazz, Fusion, Modern Jazz, Bebop, Contemporary Jazz",
+          "recommendedUse": "Essential over Bm7 in melodic minor contexts. Use for Bm7-E7alt-Am(maj7) progressions.",
+          "targetNotes": ["B", "C", "F#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "C Lydian Augmented",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "bIII augmented - third mode of A melodic minor",
+          "rationale": "C Lydian Augmented is the third mode of A melodic minor. Creates ethereal major sound with #4 and #5.",
+          "musicalContext": "Jazz, fusion, film music. Creates dreamy, floating major character. Very distinctive sound.",
+          "musicGenreRecommendations": "Jazz, Fusion, Film Music, Contemporary, Progressive",
+          "recommendedUse": "Use over Cmaj7#5 or Cmaj7#5#11 chords. Creates maximum brightness and suspension.",
+          "targetNotes": ["C", "F#", "G#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D Lydian Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 9,
+          "relationship": "IV7#11 - fourth mode of A melodic minor",
+          "rationale": "D Lydian Dominant is the fourth mode of A melodic minor. Essential fusion sound combining Lydian brightness with dominant function.",
+          "musicalContext": "Jazz fusion, modern jazz, progressive rock. Signature sound of fusion. Creates bright, sophisticated dominant color.",
+          "musicGenreRecommendations": "Jazz Fusion, Modern Jazz, Progressive Rock, Fusion, Contemporary",
+          "recommendedUse": "Perfect over D7#11 chords. Essential fusion dominant sound. Emphasize the #11 (G#).",
+          "targetNotes": ["D", "G#", "C"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "E Mixolydian b6",
+          "keyQuality": "dominant",
+          "compatibilityScore": 10,
+          "relationship": "V7 scale - fifth mode of A melodic minor",
+          "rationale": "E Mixolydian b6 is the V of A melodic minor. Essential for jazz minor V7 sound. The b13 creates characteristic jazz color.",
+          "musicalContext": "Jazz, bebop, fusion. The standard V7 scale in melodic minor contexts. Essential for modern jazz harmony.",
+          "musicGenreRecommendations": "Jazz, Bebop, Fusion, Modern Jazz, Contemporary Jazz",
+          "recommendedUse": "Essential over E7 chords resolving to Am(maj7). The b13 (C) creates sophisticated dominant sound.",
+          "targetNotes": ["E", "C", "D"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "F# Locrian #2",
+          "keyQuality": "diminished",
+          "compatibilityScore": 8,
+          "relationship": "vi half-diminished - sixth mode of A melodic minor",
+          "rationale": "F# Locrian #2 is the sixth mode of A melodic minor. Provides sophisticated half-diminished sound with natural 2nd.",
+          "musicalContext": "Jazz, fusion. Used over F#m7b5 chords. More sophisticated than standard Locrian.",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary, Modern Jazz, Bebop",
+          "recommendedUse": "Use over F#m7b5 chords. The major 2nd (G#) distinguishes it from standard Locrian.",
+          "targetNotes": ["F#", "G#", "C"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "G# Super Locrian (Altered)",
+          "keyQuality": "diminished",
+          "compatibilityScore": 10,
+          "relationship": "Leading tone altered - seventh mode of A melodic minor",
+          "rationale": "G# Super Locrian is the seventh mode of A melodic minor. Essential for altered dominant approaching A. Creates maximum tension.",
+          "musicalContext": "Jazz, bebop, fusion. The altered scale for dominant chords. Essential modern jazz harmony.",
+          "musicGenreRecommendations": "Jazz, Bebop, Fusion, Modern Jazz, Contemporary Jazz",
+          "recommendedUse": "Essential over G#7alt chords. Use for chromatic approach to A. Maximum altered dominant tension.",
+          "targetNotes": ["G#", "B", "D"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "F# Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "vi minor - relative position",
+          "rationale": "F# minor provides minor contrast. Creates modal interchange possibility within melodic minor system.",
+          "musicalContext": "Jazz, fusion, contemporary. Provides minor color on vi. Less common but effective.",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary, Modern Jazz",
+          "recommendedUse": "Use for vi minor color in A melodic minor contexts. Modal mixture option.",
+          "targetNotes": ["F#", "A", "C#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "A Major",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "Parallel major - modal mixture",
+          "rationale": "A major provides bright major contrast to melodic minor. Common modal interchange in modern jazz.",
+          "musicalContext": "Jazz, fusion. Creates bright major alternative. Modal mixture technique.",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary, Modal Jazz",
+          "recommendedUse": "Use for bright major contrast. Modal interchange from parallel major.",
+          "targetNotes": ["A", "C#", "E"],
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "LocrianNatural6": {
+      "sourceScale": {
+        "name": "A Locrian Natural 6",
+        "formula": [0, 1, 3, 5, 6, 9, 10],
+        "family": "harmonic-minor-modes",
+        "quality": "diminished"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "G Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent harmonic minor scale (A Locrian ♮6 is ii° of G harmonic minor)",
+          "rationale": "A Locrian ♮6 is the second mode of G harmonic minor. Shares all notes. Essential for understanding harmonic context.",
+          "musicalContext": "Classical, jazz. Provides harmonic minor context for Locrian ♮6. Essential for ii°-V7-i progressions.",
+          "musicGenreRecommendations": "Classical, Jazz, Neoclassical, Contemporary, Fusion",
+          "recommendedUse": "Think in G harmonic minor for context. Use over Am7b5 in G minor. Essential for ii°-V7-i.",
+          "targetNotes": ["G", "Bb", "D"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A Locrian",
+          "keyQuality": "diminished",
+          "compatibilityScore": 8,
+          "relationship": "Standard Locrian with lowered 6th (F# becomes F)",
+          "rationale": "One note difference (F#→F). Standard Locrian from major scale. More common but less distinctive than Locrian ♮6.",
+          "musicalContext": "Jazz, classical. Provides standard diminished alternative. More common than Locrian ♮6.",
+          "musicGenreRecommendations": "Jazz, Classical, Contemporary, Fusion",
+          "recommendedUse": "Use when standard Locrian sound is more appropriate. Less exotic than Locrian ♮6.",
+          "targetNotes": ["A", "Bb", "Eb"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A Diminished (Half-Whole)",
+          "keyQuality": "diminished",
+          "compatibilityScore": 9,
+          "relationship": "Symmetrical diminished scale for half-diminished harmony",
+          "rationale": "Perfect for Am7b5 chords. Provides rich symmetrical color over diminished harmony.",
+          "musicalContext": "Jazz, fusion. Essential for half-diminished improvisation. Creates complex chromatic sound.",
+          "musicGenreRecommendations": "Jazz, Fusion, Bebop, Modern Jazz, Contemporary",
+          "recommendedUse": "Essential for jazz over Am7b5. Provides rich chromatic color. Standard jazz choice.",
+          "targetNotes": ["A", "C", "Eb"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D Phrygian Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 9,
+          "relationship": "V7 in G harmonic minor - same parent scale",
+          "rationale": "D Phrygian Dominant shares all notes with A Locrian ♮6 (both from G harmonic minor). Provides exotic dominant context.",
+          "musicalContext": "Flamenco, classical, neoclassical. Essential V7 in G harmonic minor system.",
+          "musicGenreRecommendations": "Flamenco, Classical, Neoclassical Metal, Spanish, Middle Eastern",
+          "recommendedUse": "Use to understand V7 relationship in G harmonic minor. Creates exotic dominant color.",
+          "targetNotes": ["D", "Eb", "F#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "F Major",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "bVI - distant major relationship",
+          "rationale": "F major provides major contrast to diminished Locrian ♮6. Creates warmth against dark diminished sound.",
+          "musicalContext": "Jazz, fusion. Provides major relief from diminished tension. Advanced harmonic color.",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary, Experimental",
+          "recommendedUse": "Use for major contrast. Creates relief from diminished tension. Advanced concept.",
+          "targetNotes": ["F", "A", "C"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "Bb Major",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "bII major - characteristic Phrygian relationship",
+          "rationale": "Bb major built on the b2 creates Phrygian-like character. Provides major color on characteristic note.",
+          "musicalContext": "Jazz, fusion, experimental. Creates unexpected major brightness. Advanced harmonic technique.",
+          "musicGenreRecommendations": "Jazz, Fusion, Experimental, Contemporary, Avant-Garde",
+          "recommendedUse": "Use for exotic major color on b2. Advanced modal mixture concept.",
+          "targetNotes": ["Bb", "D", "F"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "Eb Major",
+          "keyQuality": "major",
+          "compatibilityScore": 6,
+          "relationship": "bV major - tritone area",
+          "rationale": "Eb major provides distant tritone relationship. Creates unexpected harmonic color.",
+          "musicalContext": "Jazz, fusion, experimental. Very distant harmonic relationship. Advanced substitution.",
+          "musicGenreRecommendations": "Jazz, Fusion, Experimental, Avant-Garde, Contemporary",
+          "recommendedUse": "Use for distant harmonic color. Very advanced tritone substitution area.",
+          "targetNotes": ["Eb", "G", "Bb"],
+          "difficultyLevel": 5
+        }
+      ]
+    },
+    "IonianSharp5": {
+      "sourceScale": {
+        "name": "A Ionian #5",
+        "formula": [0, 2, 4, 5, 8, 9, 11],
+        "family": "harmonic-minor-modes",
+        "quality": "major"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "F Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent harmonic minor scale (A Ionian #5 is III of F harmonic minor)",
+          "rationale": "A Ionian #5 is the third mode of F harmonic minor. Shares all notes. Essential for understanding context.",
+          "musicalContext": "Classical, jazz. Provides harmonic minor context. Rare but distinctive major sound.",
+          "musicGenreRecommendations": "Classical, Jazz, Contemporary, Neoclassical, Fusion",
+          "recommendedUse": "Think in F harmonic minor for context. Use over Amaj7#5. Creates exotic major sound.",
+          "targetNotes": ["F", "Ab", "C"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A Major",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "Standard major with natural 5th",
+          "rationale": "One note difference (E# becomes E). Standard major scale. More common and consonant.",
+          "musicalContext": "All genres. Provides standard major alternative to augmented sound.",
+          "musicGenreRecommendations": "Pop, Rock, Classical, Jazz, Folk",
+          "recommendedUse": "Use when standard major sound is more appropriate. Less exotic than Ionian #5.",
+          "targetNotes": ["A", "C#", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Lydian Augmented",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "Similar augmented character with #4",
+          "rationale": "Both have augmented 5th. Lydian Augmented adds #4 for even more brightness.",
+          "musicalContext": "Jazz, fusion, film music. Creates extremely ethereal sound. Maximum brightness.",
+          "musicGenreRecommendations": "Jazz, Fusion, Film Music, Experimental, Contemporary",
+          "recommendedUse": "Use over Amaj7#5#11. Creates maximum suspended brightness.",
+          "targetNotes": ["C#", "E#", "G#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A Augmented Scale",
+          "keyQuality": "augmented",
+          "compatibilityScore": 8,
+          "relationship": "Symmetrical augmented scale",
+          "rationale": "Built on augmented triads. Complements the #5 character. Symmetrical structure.",
+          "musicalContext": "Jazz, fusion, experimental. Creates mysterious augmented sound.",
+          "musicGenreRecommendations": "Jazz, Fusion, Experimental, Contemporary, Avant-Garde",
+          "recommendedUse": "Use for symmetrical augmented color. Advanced jazz harmony.",
+          "targetNotes": ["A", "C#", "E#"],
+          "difficultyLevel": 5
+        }
+      ]
+    },
+    "DorianSharp4": {
+      "sourceScale": {
+        "name": "A Dorian #4",
+        "formula": [0, 2, 3, 6, 7, 9, 10],
+        "family": "harmonic-minor-modes",
+        "quality": "minor"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "E Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent harmonic minor scale (A Dorian #4 is IV of E harmonic minor)",
+          "rationale": "A Dorian #4 is the fourth mode of E harmonic minor. Shares all notes. Essential context.",
+          "musicalContext": "Classical, jazz. Provides harmonic minor context. Creates exotic minor subdominant.",
+          "musicGenreRecommendations": "Classical, Jazz, Neoclassical, Fusion, Contemporary",
+          "recommendedUse": "Think in E harmonic minor for context. Use over Am with #4 color.",
+          "targetNotes": ["E", "G", "B"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Standard Dorian with natural 4th",
+          "rationale": "One note difference (D# becomes D). Standard Dorian. More common and functional.",
+          "musicalContext": "Jazz, funk, fusion. Standard Dorian is more versatile. Less exotic.",
+          "musicGenreRecommendations": "Jazz, Funk, Fusion, Soul, R&B, Latin",
+          "recommendedUse": "Use when standard Dorian sound is more appropriate. More common choice.",
+          "targetNotes": ["A", "D", "F#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 6,
+          "relationship": "Parallel Lydian - shared #4",
+          "rationale": "Both have #4. Lydian is major version. Shares the characteristic raised 4th.",
+          "musicalContext": "Jazz, fusion. Creates bright major alternative with shared #4 character.",
+          "musicGenreRecommendations": "Jazz, Fusion, Progressive, Film Music",
+          "recommendedUse": "Use for major version with #4. Modal mixture concept.",
+          "targetNotes": ["A", "D#", "C#"],
+          "difficultyLevel": 3
+        }
+      ]
+    },
+    "PhrygianDominant": {
+      "sourceScale": {
+        "name": "A Phrygian Dominant",
+        "formula": [0, 1, 4, 5, 7, 8, 10],
+        "family": "harmonic-minor-modes",
+        "quality": "dominant"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent harmonic minor scale (A Phrygian Dominant is V of D harmonic minor)",
+          "rationale": "A Phrygian Dominant is the fifth mode of D harmonic minor. Essential V7-i relationship in harmonic minor.",
+          "musicalContext": "Classical, flamenco, neoclassical metal. The characteristic dominant of harmonic minor. Dramatic resolution.",
+          "musicGenreRecommendations": "Classical, Flamenco, Neoclassical Metal, Spanish, Middle Eastern, Tango",
+          "recommendedUse": "Essential V7 in D harmonic minor. Use over A7 with Spanish flavor. Classic V7-i resolution.",
+          "targetNotes": ["D", "F", "A"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "A Phrygian",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Minor Phrygian with lowered 3rd",
+          "rationale": "One note difference (C# becomes C). Creates minor instead of dominant. Same dark b2 character.",
+          "musicalContext": "Flamenco, metal, Spanish. Provides minor alternative. Same Spanish character.",
+          "musicGenreRecommendations": "Flamenco, Metal, Spanish, Middle Eastern, Progressive Metal",
+          "recommendedUse": "Use for minor Spanish sound instead of dominant. Same exotic b2 character.",
+          "targetNotes": ["Bb", "C", "E"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 7,
+          "relationship": "Standard dominant with natural 2nd",
+          "rationale": "One note difference (Bb becomes B). Standard dominant 7th sound. Less exotic.",
+          "musicalContext": "Rock, blues, funk. Standard dominant alternative. More conventional.",
+          "musicGenreRecommendations": "Rock, Blues, Funk, Country, Jam Band",
+          "recommendedUse": "Use when standard dominant sound is more appropriate. Less Spanish character.",
+          "targetNotes": ["A", "B", "G"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Major Pentatonic",
+          "keyQuality": "major",
+          "compatibilityScore": 6,
+          "relationship": "Subset avoiding b2 tension",
+          "rationale": "Avoids the characteristic Bb. Creates simpler major pentatonic sound over dominant.",
+          "musicalContext": "Rock, country, blues. Provides simple melodic option. Less exotic.",
+          "musicGenreRecommendations": "Rock, Country, Blues, Pop, Folk",
+          "recommendedUse": "Use for simple melodies over A7. Avoids Phrygian exotic character.",
+          "targetNotes": ["A", "C#", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "iv in D harmonic minor - shares all notes",
+          "rationale": "D minor shares all notes with A Phrygian Dominant. Essential subdominant in D harmonic minor.",
+          "musicalContext": "Classical, flamenco. Part of iv-V7-i in D harmonic minor. Traditional progression.",
+          "musicGenreRecommendations": "Classical, Flamenco, Neoclassical, Spanish, Tango",
+          "recommendedUse": "Use to understand iv-V7-i context. Essential harmonic minor progression.",
+          "targetNotes": ["D", "F", "A"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "F Major",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "bVI in D harmonic minor - shares all notes",
+          "rationale": "F major shares all notes. Provides major contrast in harmonic minor system.",
+          "musicalContext": "Classical, flamenco. Part of bVI-V7-i progression. Dramatic harmonic movement.",
+          "musicGenreRecommendations": "Classical, Flamenco, Film Music, Dramatic",
+          "recommendedUse": "Use for bVI-V7-i progression. Creates dramatic resolution in D harmonic minor.",
+          "targetNotes": ["F", "A", "C"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "Bb Major",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "bII major - characteristic Phrygian relationship",
+          "rationale": "Built on the characteristic b2. Creates signature Phrygian dominant sound. Essential for Spanish music.",
+          "musicalContext": "Flamenco, Spanish music. The bII-I resolution is signature Spanish sound.",
+          "musicGenreRecommendations": "Flamenco, Spanish, Middle Eastern, Metal, Fusion",
+          "recommendedUse": "Essential for bII-I Spanish resolution. Emphasize Bb to A movement.",
+          "targetNotes": ["Bb", "D", "F"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Parallel harmonic minor",
+          "rationale": "Creates minor tonic alternative. Both share exotic Middle Eastern character.",
+          "musicalContext": "Classical, Middle Eastern. Provides minor alternative with similar exotic flavor.",
+          "musicGenreRecommendations": "Classical, Middle Eastern, Flamenco, Neoclassical",
+          "recommendedUse": "Use for minor tonic alternative. Similar exotic character.",
+          "targetNotes": ["A", "C", "G#"],
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "LydianSharp2": {
+      "sourceScale": {
+        "name": "A Lydian #2",
+        "formula": [0, 3, 4, 6, 7, 9, 11],
+        "family": "harmonic-minor-modes",
+        "quality": "major"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "C Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent harmonic minor (A Lydian #2 is VI of C harmonic minor)",
+          "rationale": "Sixth mode of C harmonic minor. Shares all notes. Very rare exotic major sound.",
+          "musicalContext": "Experimental, contemporary classical. Extremely unusual major scale. Very distinctive.",
+          "musicGenreRecommendations": "Experimental, Contemporary Classical, Avant-Garde, Fusion",
+          "recommendedUse": "Use for extremely exotic major color. Very advanced harmonic concept.",
+          "targetNotes": ["C", "Eb", "G"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "A Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "Standard Lydian with natural 2nd",
+          "rationale": "One note difference (C# becomes B). Standard Lydian more common and usable.",
+          "musicalContext": "Jazz, fusion, film music. Standard Lydian is more practical.",
+          "musicGenreRecommendations": "Jazz, Fusion, Film Music, Progressive",
+          "recommendedUse": "Use when standard Lydian is more appropriate. More common choice.",
+          "targetNotes": ["A", "D#", "G#"],
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "MixolydianFlat9Flat13": {
+      "sourceScale": {
+        "name": "A Mixolydian b9 b13",
+        "formula": [0, 1, 4, 5, 7, 8, 10],
+        "family": "harmonic-minor-modes",
+        "quality": "dominant"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "Bb Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent harmonic minor (A Mixolydian b9 b13 is VII of Bb harmonic minor)",
+          "rationale": "Seventh mode of Bb harmonic minor. Creates extremely altered dominant sound.",
+          "musicalContext": "Jazz, fusion, experimental. Very altered dominant for advanced harmony.",
+          "musicGenreRecommendations": "Jazz, Fusion, Experimental, Contemporary, Avant-Garde",
+          "recommendedUse": "Use over A7b9b13 chords. Creates maximum altered dominant tension.",
+          "targetNotes": ["Bb", "F", "G"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "A Phrygian Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "Similar b9 dominant character",
+          "rationale": "Both have b9 creating Spanish/altered character. Similar exotic dominant sound.",
+          "musicalContext": "Flamenco, jazz, fusion. Both create exotic altered dominant.",
+          "musicGenreRecommendations": "Flamenco, Jazz, Fusion, Spanish, Middle Eastern",
+          "recommendedUse": "Use for similar Spanish altered dominant sound. Related concept.",
+          "targetNotes": ["Bb", "C#", "G"],
+          "difficultyLevel": 4
+        }
+      ]
+    },
+    "DorianFlat2": {
+      "sourceScale": {
+        "name": "A Dorian b2",
+        "formula": [0, 1, 3, 5, 7, 9, 10],
+        "family": "melodic-minor-modes",
+        "quality": "minor"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "G Melodic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent melodic minor (A Dorian b2 is ii of G melodic minor)",
+          "rationale": "Second mode of G melodic minor. Essential ii chord in melodic minor system.",
+          "musicalContext": "Jazz, fusion. The go-to ii scale in melodic minor. Essential modern jazz.",
+          "musicGenreRecommendations": "Jazz, Fusion, Bebop, Modern Jazz, Contemporary Jazz",
+          "recommendedUse": "Essential over Am7 in G melodic minor. Use in Am7-D7alt-Gm(maj7) progressions.",
+          "targetNotes": ["G", "Bb", "F#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Standard Dorian with natural 2nd",
+          "rationale": "One note difference (Bb becomes B). Standard Dorian more common. Less exotic.",
+          "musicalContext": "Jazz, funk, fusion. Standard Dorian is more versatile and common.",
+          "musicGenreRecommendations": "Jazz, Funk, Fusion, Soul, R&B, Latin",
+          "recommendedUse": "Use when standard Dorian sound is more appropriate. More conventional.",
+          "targetNotes": ["A", "B", "F#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Phrygian",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Phrygian with major 6th",
+          "rationale": "Similar b2 character but with minor 7th. Dorian b2 has major 6th making it brighter.",
+          "musicalContext": "Jazz vs Flamenco. Dorian b2 is jazz; Phrygian is Spanish. Different contexts.",
+          "musicGenreRecommendations": "Jazz, Fusion vs Flamenco, Spanish",
+          "recommendedUse": "Both have b2 but Dorian b2 is jazzier with major 6th. Different flavors.",
+          "targetNotes": ["Bb", "F#", "A"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "D Mixolydian b6",
+          "keyQuality": "dominant",
+          "compatibilityScore": 9,
+          "relationship": "V7 in G melodic minor - shares all notes",
+          "rationale": "D Mixolydian b6 shares all notes with A Dorian b2. Both from G melodic minor.",
+          "musicalContext": "Jazz. Essential V7 scale in melodic minor system. Part of ii-V-i.",
+          "musicGenreRecommendations": "Jazz, Fusion, Bebop, Modern Jazz, Contemporary",
+          "recommendedUse": "Use to understand ii-V relationship in melodic minor. Essential jazz harmony.",
+          "targetNotes": ["D", "Bb", "C"],
+          "difficultyLevel": 4
+        }
+      ]
+    },
+    "LydianAugmented": {
+      "sourceScale": {
+        "name": "A Lydian Augmented",
+        "formula": [0, 2, 4, 6, 8, 9, 11],
+        "family": "melodic-minor-modes",
+        "quality": "major"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "F Melodic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent melodic minor (A Lydian Augmented is III of F melodic minor)",
+          "rationale": "Third mode of F melodic minor. Creates ethereal major sound with #4 and #5.",
+          "musicalContext": "Jazz, fusion, film music. Creates dreamy, floating major character.",
+          "musicGenreRecommendations": "Jazz, Fusion, Film Music, Progressive, Contemporary",
+          "recommendedUse": "Use over Amaj7#5 or Amaj7#5#11. Creates maximum brightness and suspension.",
+          "targetNotes": ["F", "Ab", "Eb"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "Standard Lydian with natural 5th",
+          "rationale": "One note difference (E# becomes E). Standard Lydian more stable. Less augmented.",
+          "musicalContext": "Jazz, fusion. Standard Lydian is more common and versatile.",
+          "musicGenreRecommendations": "Jazz, Fusion, Progressive, Film Music",
+          "recommendedUse": "Use when standard Lydian is more appropriate. More stable 5th.",
+          "targetNotes": ["A", "D#", "E"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Ionian #5",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "Similar augmented 5th, natural 4th",
+          "rationale": "Both have #5. Ionian #5 has natural 4th. Different exotic major flavors.",
+          "musicalContext": "Experimental, contemporary. Both create augmented major sounds.",
+          "musicGenreRecommendations": "Experimental, Contemporary, Fusion, Avant-Garde",
+          "recommendedUse": "Both work over augmented chords. Different characteristic notes.",
+          "targetNotes": ["A", "E#", "G#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A Augmented Scale",
+          "keyQuality": "augmented",
+          "compatibilityScore": 8,
+          "relationship": "Symmetrical augmented scale",
+          "rationale": "Built on augmented triads. Complements the #5. Symmetrical structure.",
+          "musicalContext": "Jazz, fusion. Creates mysterious augmented sound.",
+          "musicGenreRecommendations": "Jazz, Fusion, Experimental, Contemporary",
+          "recommendedUse": "Use for symmetrical augmented color. Advanced jazz.",
+          "targetNotes": ["A", "C#", "E#"],
+          "difficultyLevel": 5
+        }
+      ]
+    },
+    "LydianDominant": {
+      "sourceScale": {
+        "name": "A Lydian Dominant",
+        "formula": [0, 2, 4, 6, 7, 9, 10],
+        "family": "melodic-minor-modes",
+        "quality": "dominant"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "E Melodic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent melodic minor (A Lydian Dominant is IV of E melodic minor)",
+          "rationale": "Fourth mode of E melodic minor. Essential fusion dominant sound combining Lydian #4 with b7.",
+          "musicalContext": "Jazz fusion, modern jazz, progressive rock. Signature sound of fusion guitarists.",
+          "musicGenreRecommendations": "Jazz Fusion, Modern Jazz, Progressive Rock, Fusion, Contemporary Jazz",
+          "recommendedUse": "Perfect over A7#11 chords. Essential fusion dominant. Emphasize #11 (D#).",
+          "targetNotes": ["E", "G", "B"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "Standard dominant with natural 4th",
+          "rationale": "One note difference (D# becomes D). Standard Mixolydian more common. Less exotic.",
+          "musicalContext": "Rock, blues, funk. Standard dominant is more versatile.",
+          "musicGenreRecommendations": "Rock, Blues, Funk, Country, Jam Band",
+          "recommendedUse": "Use when standard dominant sound more appropriate. More conventional.",
+          "targetNotes": ["A", "D", "G"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "Lydian with major 7th",
+          "rationale": "One note difference (G becomes G#). Shares #4 but creates major 7th instead of dominant.",
+          "musicalContext": "Jazz, fusion. Both Lydian scales but different 7th creates different function.",
+          "musicGenreRecommendations": "Jazz, Fusion, Progressive, Film Music",
+          "recommendedUse": "Use Lydian for maj7 chords, Lydian Dominant for 7#11 chords.",
+          "targetNotes": ["A", "D#", "G#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "E Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Built on the 5th - simpler melodic option",
+          "rationale": "E minor pentatonic works over A7 for rock sound. Simpler than Lydian Dominant.",
+          "musicalContext": "Rock, blues. Provides rock alternative to jazz Lydian Dominant.",
+          "musicGenreRecommendations": "Rock, Blues, Country, Blues Rock",
+          "recommendedUse": "Use for rock sound over A7. Simpler than Lydian Dominant complexity.",
+          "targetNotes": ["E", "G", "B"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Blues Scale",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Blues alternative over dominant",
+          "rationale": "Creates bluesy sound over A7. Very different character from Lydian Dominant.",
+          "musicalContext": "Blues, rock. Traditional blues alternative to jazz fusion sound.",
+          "musicGenreRecommendations": "Blues, Rock, Blues Rock, Soul",
+          "recommendedUse": "Use for blues sound over A7. Contrasts with fusion Lydian Dominant.",
+          "targetNotes": ["A", "Eb", "G"],
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "MixolydianFlat6": {
+      "sourceScale": {
+        "name": "A Mixolydian b6",
+        "formula": [0, 2, 4, 5, 7, 8, 10],
+        "family": "melodic-minor-modes",
+        "quality": "dominant"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D Melodic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent melodic minor (A Mixolydian b6 is V of D melodic minor)",
+          "rationale": "Fifth mode of D melodic minor. Essential V7 in melodic minor. The b13 creates jazz color.",
+          "musicalContext": "Jazz, bebop, fusion. Standard V7 in melodic minor contexts.",
+          "musicGenreRecommendations": "Jazz, Bebop, Fusion, Modern Jazz, Contemporary Jazz",
+          "recommendedUse": "Essential over A7 resolving to Dm(maj7). The b13 (F) creates sophisticated sound.",
+          "targetNotes": ["D", "F", "A"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "Standard Mixolydian with natural 6th",
+          "rationale": "One note difference (F becomes F#). Standard Mixolydian more common. Brighter.",
+          "musicalContext": "Rock, blues, funk. Standard dominant more versatile and common.",
+          "musicGenreRecommendations": "Rock, Blues, Funk, Country, Jam Band",
+          "recommendedUse": "Use when standard dominant sound more appropriate. Less dark.",
+          "targetNotes": ["A", "F#", "G"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Minor version with natural 7th",
+          "rationale": "Similar scale degrees but minor quality. Dorian is minor; Mixolydian b6 is dominant.",
+          "musicalContext": "Jazz, funk. Related modal concepts but different functions.",
+          "musicGenreRecommendations": "Jazz, Funk, Fusion, Soul",
+          "recommendedUse": "Compare minor Dorian vs dominant Mixolydian b6. Different functions.",
+          "targetNotes": ["A", "C", "F#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Based on resolving tonic",
+          "rationale": "D minor pentatonic relates to target Dm chord. Simpler melodic approach.",
+          "musicalContext": "Jazz with blues influence. Simpler than full Mixolydian b6.",
+          "musicGenreRecommendations": "Jazz Blues, Fusion, Contemporary",
+          "recommendedUse": "Use for simpler V7-i melodic approach. Blues-influenced jazz.",
+          "targetNotes": ["D", "F", "A"],
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "AeolianFlat5": {
+      "sourceScale": {
+        "name": "A Aeolian b5 (Locrian #2)",
+        "formula": [0, 2, 3, 5, 6, 8, 10],
+        "family": "melodic-minor-modes",
+        "quality": "diminished"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "C Melodic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent melodic minor (A Locrian #2 is VI of C melodic minor)",
+          "rationale": "Sixth mode of C melodic minor. Creates half-diminished sound with major 2nd.",
+          "musicalContext": "Jazz, fusion. Used over Am7b5. More sophisticated than standard Locrian.",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary, Bebop, Modern Jazz",
+          "recommendedUse": "Use over Am7b5 chords. Major 2nd (B) distinguishes from standard Locrian.",
+          "targetNotes": ["C", "Eb", "Bb"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A Locrian",
+          "keyQuality": "diminished",
+          "compatibilityScore": 8,
+          "relationship": "Standard Locrian with minor 2nd",
+          "rationale": "One note difference (B becomes Bb). Standard Locrian from major scale.",
+          "musicalContext": "Jazz, classical. Standard Locrian more common. Darker with b2.",
+          "musicGenreRecommendations": "Jazz, Classical, Contemporary, Fusion",
+          "recommendedUse": "Use when standard Locrian sound more appropriate. Darker b2.",
+          "targetNotes": ["A", "Bb", "Eb"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A Diminished (Half-Whole)",
+          "keyQuality": "diminished",
+          "compatibilityScore": 8,
+          "relationship": "Symmetrical diminished for half-diminished",
+          "rationale": "Standard jazz choice for Am7b5. Provides rich chromatic color.",
+          "musicalContext": "Jazz, fusion. More common jazz choice than Locrian #2.",
+          "musicGenreRecommendations": "Jazz, Fusion, Bebop, Modern Jazz",
+          "recommendedUse": "Standard jazz choice for Am7b5. Rich symmetrical color.",
+          "targetNotes": ["A", "C", "Eb"],
+          "difficultyLevel": 4
+        }
+      ]
+    },
+    "SuperLocrian": {
+      "sourceScale": {
+        "name": "A Super Locrian (Altered)",
+        "formula": [0, 1, 3, 4, 6, 8, 10],
+        "family": "melodic-minor-modes",
+        "quality": "diminished"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "Bb Melodic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent melodic minor (A Super Locrian is VII of Bb melodic minor)",
+          "rationale": "Seventh mode of Bb melodic minor. Essential altered scale. All tensions lowered.",
+          "musicalContext": "Jazz, bebop, fusion. The altered dominant scale. Essential modern jazz.",
+          "musicGenreRecommendations": "Jazz, Bebop, Fusion, Modern Jazz, Contemporary Jazz",
+          "recommendedUse": "Essential over A7alt chords. Use b9, #9, b5, #5. Maximum altered tension.",
+          "targetNotes": ["Bb", "D#", "F"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "A Locrian",
+          "keyQuality": "diminished",
+          "compatibilityScore": 7,
+          "relationship": "Locrian with natural 4th",
+          "rationale": "Super Locrian has lowered 4th. Extremely altered. Locrian less altered.",
+          "musicalContext": "Jazz. Super Locrian more altered for dominant function.",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary",
+          "recommendedUse": "Super Locrian for altered dominants. Locrian for half-diminished.",
+          "targetNotes": ["A", "Bb", "Eb"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A Diminished (Whole-Half)",
+          "keyQuality": "diminished",
+          "compatibilityScore": 8,
+          "relationship": "Symmetrical dominant diminished",
+          "rationale": "Whole-half diminished for dominant chords. Alternative to Super Locrian.",
+          "musicalContext": "Jazz, fusion. Both work over A7alt. Different chromatic colors.",
+          "musicGenreRecommendations": "Jazz, Fusion, Bebop, Contemporary",
+          "recommendedUse": "Alternative altered dominant scale. Symmetrical structure.",
+          "targetNotes": ["A", "Bb", "C#"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "Eb Major",
+          "keyQuality": "major",
+          "compatibilityScore": 6,
+          "relationship": "Tritone substitution area",
+          "rationale": "Eb major (tritone away) for substitution. Advanced reharmonization.",
+          "musicalContext": "Jazz. Tritone substitution concept. Very advanced.",
+          "musicGenreRecommendations": "Jazz, Fusion, Bebop, Contemporary",
+          "recommendedUse": "Use for tritone substitution. Very advanced jazz concept.",
+          "targetNotes": ["Eb", "G", "Bb"],
+          "difficultyLevel": 5
+        }
+      ]
+    },
+    "MajorPentatonic": {
+      "sourceScale": {
+        "name": "A Major Pentatonic",
+        "formula": [0, 2, 4, 7, 9],
+        "family": "pentatonic",
+        "quality": "major"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "A Major (Ionian)",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Parent major scale - subset of scale tones 1, 2, 3, 5, 6",
+          "rationale": "A major pentatonic is derived from A major scale. Contains only consonant notes, avoiding 4th and 7th.",
+          "musicalContext": "Universal across all genres. Foundation scale for rock, country, blues, pop solos.",
+          "musicGenreRecommendations": "Rock, Blues, Country, Pop, Folk, Gospel, R&B, Singer-Songwriter",
+          "recommendedUse": "Perfect starting point for A major improvisation. Guaranteed consonance. Works over I-IV-V progressions.",
+          "targetNotes": ["A", "C#", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "E Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Relative minor pentatonic - shares all notes",
+          "rationale": "E minor pentatonic shares all notes with A major pentatonic. Creates bluesy sound over major harmony.",
+          "musicalContext": "Rock, blues, country. Creates bluesy tension over major chords. Extremely common in guitar music.",
+          "musicGenreRecommendations": "Rock, Blues, Country, Blues Rock, Southern Rock, Classic Rock",
+          "recommendedUse": "Use over A major for bluesy rock sound. Creates tension-release. Essential rock guitar technique.",
+          "targetNotes": ["E", "G", "B"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D Major",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "IV major - subdominant relationship",
+          "rationale": "D major is IV of A. A major pentatonic works perfectly over D chords. Essential for I-IV-V progressions.",
+          "musicalContext": "Rock, country, folk. Essential for understanding IV chord relationships.",
+          "musicGenreRecommendations": "Rock, Country, Folk, Pop, Americana",
+          "recommendedUse": "Use A major pentatonic over D major chords. Works in I-IV-V contexts.",
+          "targetNotes": ["D", "F#", "A"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "E Major",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "V major - dominant relationship",
+          "rationale": "E major is V of A. A major pentatonic creates melodic connection to dominant chords.",
+          "musicalContext": "Rock, country, blues. Essential for V-I cadences and resolutions.",
+          "musicGenreRecommendations": "Rock, Country, Blues, Folk, Pop",
+          "recommendedUse": "Use over E major for V chord emphasis. Creates strong V-I melodic movement.",
+          "targetNotes": ["E", "G#", "B"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "F# Minor (Relative Minor)",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "vi relative minor - shares notes from A major",
+          "rationale": "F# minor is vi of A major. A major pentatonic works over relative minor chords.",
+          "musicalContext": "Pop, rock, singer-songwriter. Essential for vi-IV-I-V progressions.",
+          "musicGenreRecommendations": "Pop, Rock, Indie, Singer-Songwriter, Alternative",
+          "recommendedUse": "Use over F#m chords in A major context. Creates bright sound over minor chords.",
+          "targetNotes": ["F#", "A", "C#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "Contains all major pentatonic notes plus more",
+          "rationale": "A major pentatonic fits perfectly within Mixolydian. Creates safe melodic choice over A7.",
+          "musicalContext": "Rock, blues, funk. Provides simple melodic framework over dominant chords.",
+          "musicGenreRecommendations": "Rock, Blues, Funk, Country, Jam Band",
+          "recommendedUse": "Use over A7 chords for safe, bright dominant sound. Avoids complex Mixolydian notes.",
+          "targetNotes": ["A", "C#", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "Contains all major pentatonic notes",
+          "rationale": "A major pentatonic avoids the #4, making it safe over Lydian. Simpler melodic framework.",
+          "musicalContext": "Jazz, fusion, pop. Provides simple melodies over complex Lydian harmony.",
+          "musicGenreRecommendations": "Jazz, Fusion, Progressive, Pop, Contemporary",
+          "recommendedUse": "Use for simple melodies over Lydian harmony. Avoids the exotic #4.",
+          "targetNotes": ["A", "C#", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "B Minor (ii)",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "ii chord in A major - shares parent scale",
+          "rationale": "B Dorian shares notes with A major. Major pentatonic creates interesting color over ii chords.",
+          "musicalContext": "Jazz, pop, contemporary. Creates sophisticated ii chord melodies.",
+          "musicGenreRecommendations": "Jazz, Pop, R&B, Neo-Soul, Contemporary",
+          "recommendedUse": "Use over Bm7 chords for bright minor sound. Creates modern pop/R&B flavor.",
+          "targetNotes": ["B", "F#", "A"],
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "MinorPentatonic": {
+      "sourceScale": {
+        "name": "A Minor Pentatonic",
+        "formula": [0, 3, 5, 7, 10],
+        "family": "pentatonic",
+        "quality": "minor"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "A Natural Minor (Aeolian)",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent natural minor - subset of scale tones 1, b3, 4, 5, b7",
+          "rationale": "A minor pentatonic derived from A natural minor. Contains core minor notes without 2nd and b6.",
+          "musicalContext": "Universal minor sound. Foundation of rock, blues, metal improvisation.",
+          "musicGenreRecommendations": "Rock, Blues, Metal, Hard Rock, Alternative, Grunge, Punk, Heavy Metal",
+          "recommendedUse": "Essential starting point for minor improvisation. Guaranteed consonance. Works over all minor chord progressions.",
+          "targetNotes": ["A", "C", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "C Major Pentatonic",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Relative major pentatonic - shares all notes",
+          "rationale": "C major pentatonic shares all notes with A minor pentatonic. Same notes, different tonal center.",
+          "musicalContext": "All genres. Understanding relative relationship essential for theory and improvisation.",
+          "musicGenreRecommendations": "Rock, Pop, Blues, Country, Folk, Jazz, Classical",
+          "recommendedUse": "Use C major pentatonic over A minor for brighter sound. Same notes, different emphasis.",
+          "targetNotes": ["C", "E", "G"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Dorian contains all minor pentatonic notes",
+          "rationale": "A minor pentatonic fits perfectly in Dorian. Avoids the characteristic F# for simpler sound.",
+          "musicalContext": "Jazz, funk, rock. Provides blues-rock simplicity over sophisticated Dorian harmony.",
+          "musicGenreRecommendations": "Jazz, Funk, Rock, Fusion, Soul, R&B",
+          "recommendedUse": "Use over Am7 Dorian for simpler, more bluesy sound. Avoids Dorian complexity.",
+          "targetNotes": ["A", "C", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Blues Scale",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Minor pentatonic with added b5 blue note",
+          "rationale": "A blues scale is A minor pentatonic plus Eb. Creates authentic blues sound with characteristic tension.",
+          "musicalContext": "Blues, rock, blues rock. Essential for authentic blues phrasing and character.",
+          "musicGenreRecommendations": "Blues, Rock, Blues Rock, Jazz Blues, Soul, R&B, Funk",
+          "recommendedUse": "Add Eb blue note to minor pentatonic for blues sound. Use Eb as chromatic passing tone.",
+          "targetNotes": ["A", "Eb", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Phrygian",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Phrygian contains all minor pentatonic notes",
+          "rationale": "A minor pentatonic works over Phrygian. Avoids the characteristic Bb for simpler sound.",
+          "musicalContext": "Metal, rock, flamenco-influenced. Provides simple framework over exotic Phrygian.",
+          "musicGenreRecommendations": "Metal, Rock, Alternative, Progressive Metal, Thrash",
+          "recommendedUse": "Use for simple melodies over Phrygian. Avoids exotic b2 character.",
+          "targetNotes": ["A", "C", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D Minor (iv)",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "iv chord in A minor - essential subdominant",
+          "rationale": "D minor is iv in A minor. Minor pentatonic creates strong melodic connection to subdominant.",
+          "musicalContext": "Rock, blues, classical. Essential for i-iv-V minor progressions.",
+          "musicGenreRecommendations": "Rock, Blues, Metal, Classical, Folk, Alternative",
+          "recommendedUse": "Use over Dm chords in A minor context. Essential for i-iv progressions.",
+          "targetNotes": ["D", "F", "A"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "E Minor (v)",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "v chord in A minor - minor dominant",
+          "rationale": "E minor is v in A minor (modal). Minor pentatonic creates modal minor v-i sound.",
+          "musicalContext": "Modal rock, folk, alternative. Creates less resolved minor v-i progression.",
+          "musicGenreRecommendations": "Modal Rock, Folk, Alternative, Indie, Progressive",
+          "recommendedUse": "Use over Em chords for modal minor v-i sound. Less functional than V7.",
+          "targetNotes": ["E", "G", "B"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "F Major (bVI)",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "bVI major - common borrowed chord",
+          "rationale": "F major is bVI in A minor. Minor pentatonic creates interesting color over bVI.",
+          "musicalContext": "Rock, pop, film music. The bVI-bVII-i progression is extremely common.",
+          "musicGenreRecommendations": "Rock, Pop, Film Music, Indie, Alternative, Contemporary",
+          "recommendedUse": "Use over F major in minor keys. Part of bVI-bVII-i rock progression.",
+          "targetNotes": ["F", "A", "C"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "G Major (bVII)",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "bVII major - classic rock progression",
+          "rationale": "G major is bVII in A minor. Creates the iconic bVII-i rock sound with minor pentatonic.",
+          "musicalContext": "Rock, modal rock. The bVII-i progression is signature rock sound from 60s onwards.",
+          "musicGenreRecommendations": "Rock, Modal Rock, Classic Rock, Alternative, Hard Rock, Indie",
+          "recommendedUse": "Essential for bVII-i rock progressions. Use in bVI-bVII-i cadences.",
+          "targetNotes": ["G", "D", "A"],
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "BluesScale": {
+      "sourceScale": {
+        "name": "A Blues Scale",
+        "formula": [0, 3, 5, 6, 7, 10],
+        "family": "pentatonic",
+        "quality": "minor"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "A Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Blues scale is minor pentatonic with added b5",
+          "rationale": "A blues scale adds Eb (b5) to minor pentatonic. The blue note creates characteristic blues tension.",
+          "musicalContext": "Blues, rock, blues rock. The foundation of blues improvisation across all tempos and styles.",
+          "musicGenreRecommendations": "Blues, Rock, Blues Rock, Jazz Blues, Soul, R&B, Funk, Hard Rock",
+          "recommendedUse": "Essential for blues improvisation. Use Eb as chromatic passing tone between D and E. Defines blues style.",
+          "targetNotes": ["A", "Eb", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Natural Minor (Aeolian)",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Natural minor parent scale",
+          "rationale": "Blues scale uses notes from natural minor plus Eb. Works perfectly over A minor harmony.",
+          "musicalContext": "Blues, rock, metal. Creates bluesy character over minor chords and progressions.",
+          "musicGenreRecommendations": "Blues, Rock, Metal, Blues Rock, Hard Rock, Alternative",
+          "recommendedUse": "Use over Am for authentic blues sound. Essential for blues-rock and metal.",
+          "targetNotes": ["A", "C", "E"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Major (Ionian)",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "Blues scale creates tension over major harmony",
+          "rationale": "Using blues scale (minor-based) over major creates classic blues tension. The C and Eb create blues character over major chords.",
+          "musicalContext": "Blues, blues rock, rock. Essential blues technique of using minor blues over major chords.",
+          "musicGenreRecommendations": "Blues, Blues Rock, Rock, Soul, R&B",
+          "recommendedUse": "Essential blues technique: use minor blues over major chords. Creates authentic blues sound with tension-release.",
+          "targetNotes": ["C", "Eb", "E"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 9,
+          "relationship": "Blues scale perfect over dominant 7th chords",
+          "rationale": "Blues scale creates perfect blues sound over A7. The minor 3rd and b5 create characteristic blues dominant sound.",
+          "musicalContext": "Blues, blues rock, rock. Essential for blues dominant 7th improvisation.",
+          "musicGenreRecommendations": "Blues, Blues Rock, Rock, Funk, Soul, R&B, Jazz Blues",
+          "recommendedUse": "Essential over A7 blues chords. Creates classic blues dominant sound. Use in 12-bar blues progressions.",
+          "targetNotes": ["A", "Eb", "G"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Blues scale works over Dorian minor",
+          "rationale": "Blues scale creates bluesy character over Dorian. More traditional blues sound than pure Dorian.",
+          "musicalContext": "Jazz blues, funk. Combines blues simplicity with Dorian sophistication.",
+          "musicGenreRecommendations": "Jazz Blues, Funk, Soul, R&B, Fusion",
+          "recommendedUse": "Use over Am7 Dorian for blues-funk sound. Combines blues and jazz elements.",
+          "targetNotes": ["A", "C", "Eb"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "E Blues Scale",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "V blues scale - common blues technique",
+          "rationale": "E blues scale works over A in blues contexts. Creates tension and resolution. Common blues guitar technique.",
+          "musicalContext": "Blues, blues rock. Creates authentic blues phrasing with E blues over A changes.",
+          "musicGenreRecommendations": "Blues, Blues Rock, Rock, Classic Rock, Southern Rock",
+          "recommendedUse": "Use E blues scale over A blues changes. Common blues soloing technique for variation.",
+          "targetNotes": ["E", "Bb", "B"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D Blues Scale",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "IV blues scale in blues progression",
+          "rationale": "D blues scale over A creates blues color. Common in 12-bar blues for IV chord emphasis.",
+          "musicalContext": "Blues, blues rock. Use over D7 (IV) in blues progressions for melodic variation.",
+          "musicGenreRecommendations": "Blues, Blues Rock, Rock, Jazz Blues",
+          "recommendedUse": "Use D blues scale when emphasizing IV chord in blues. Creates melodic contrast.",
+          "targetNotes": ["D", "Ab", "A"],
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "JapanesePentatonic": {
+      "sourceScale": {
+        "name": "A Japanese Pentatonic (In Sen)",
+        "formula": [0, 1, 5, 7, 10],
+        "family": "pentatonic",
+        "quality": "other"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "A Phrygian",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Shares the characteristic b2 (Bb)",
+          "rationale": "Both scales have the exotic b2. Japanese pentatonic creates similar dark, exotic character to Phrygian.",
+          "musicalContext": "World music, fusion, film scores. Creates Japanese/Asian atmospheric sound.",
+          "musicGenreRecommendations": "World Music, Fusion, Film Music, Ambient, New Age, Experimental",
+          "recommendedUse": "Use for Japanese or Asian-influenced melodies. Creates exotic, mysterious atmosphere.",
+          "targetNotes": ["Bb", "E", "G"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "A Natural Minor (Aeolian)",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Minor context for exotic pentatonic",
+          "rationale": "Japanese pentatonic can be used over A minor harmony. Creates exotic color in minor context.",
+          "musicalContext": "World fusion, film music. Adds Japanese flavor to Western minor harmony.",
+          "musicGenreRecommendations": "World Fusion, Film Music, Contemporary, Experimental",
+          "recommendedUse": "Use over Am chords for exotic Japanese color. Creates atmospheric minor sound.",
+          "targetNotes": ["A", "E", "G"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "F Major",
+          "keyQuality": "major",
+          "compatibilityScore": 6,
+          "relationship": "Distant major relationship",
+          "rationale": "F major provides Western major contrast to Japanese pentatonic. Creates interesting modal mixture.",
+          "musicalContext": "Fusion, experimental. Combines Western and Eastern elements.",
+          "musicGenreRecommendations": "Fusion, Experimental, World Fusion, Contemporary",
+          "recommendedUse": "Use for East-West fusion concepts. Advanced modal mixture.",
+          "targetNotes": ["F", "A", "C"],
+          "difficultyLevel": 4
+        }
+      ]
+    },
+    "EgyptianPentatonic": {
+      "sourceScale": {
+        "name": "A Egyptian Pentatonic",
+        "formula": [0, 2, 5, 7, 10],
+        "family": "pentatonic",
+        "quality": "other"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "A Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Similar minor pentatonic structure",
+          "rationale": "Egyptian pentatonic has similar minor character. Creates exotic Middle Eastern flavor.",
+          "musicalContext": "World music, Middle Eastern fusion. Creates ancient, exotic atmosphere.",
+          "musicGenreRecommendations": "World Music, Middle Eastern, Fusion, Film Music, Ambient, Ethnic",
+          "recommendedUse": "Use for Middle Eastern or ancient atmospheres. Creates mysterious, exotic melodies.",
+          "targetNotes": ["A", "E", "G"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "A Natural Minor (Aeolian)",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Minor context for exotic pentatonic",
+          "rationale": "Egyptian pentatonic works over A minor harmony. Adds Middle Eastern color to minor chords.",
+          "musicalContext": "World fusion, film music. Creates ethnic minor sound.",
+          "musicGenreRecommendations": "World Fusion, Film Music, Middle Eastern, Contemporary",
+          "recommendedUse": "Use over Am for Middle Eastern color. Creates ancient, exotic atmosphere.",
+          "targetNotes": ["A", "E", "G"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "D Minor (iv)",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Subdominant minor relationship",
+          "rationale": "D minor provides subdominant context. Egyptian pentatonic creates exotic color over iv chord.",
+          "musicalContext": "World music, fusion. Creates Middle Eastern iv-i sound.",
+          "musicGenreRecommendations": "World Music, Fusion, Middle Eastern, Film Music",
+          "recommendedUse": "Use over Dm in A minor context. Creates exotic subdominant color.",
+          "targetNotes": ["D", "A", "E"],
+          "difficultyLevel": 3
+        }
+      ]
+    },
+    "Chromatic": {
+      "sourceScale": {
+        "name": "A Chromatic",
+        "formula": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+        "family": "symmetrical",
+        "quality": "other"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "All Scales",
+          "keyQuality": "major/minor",
+          "compatibilityScore": 10,
+          "relationship": "Contains all 12 notes - compatible with everything",
+          "rationale": "Chromatic scale includes every note. Used for chromatic passing tones, embellishments, and connecting chord tones.",
+          "musicalContext": "All genres. Essential for jazz, classical, bebop. Used for chromatic approach notes and passing tones.",
+          "musicGenreRecommendations": "Jazz, Bebop, Classical, Fusion, Contemporary, All Genres",
+          "recommendedUse": "Use for chromatic passing tones between chord tones. Essential for bebop-style eighth note runs. Creates smooth voice leading.",
+          "targetNotes": ["A", "Bb", "B"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "A Major",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "Chromatic embellishes major scale",
+          "rationale": "Chromatic provides passing tones between A major scale degrees. Essential for smooth melodic motion.",
+          "musicalContext": "Jazz, classical. Creates sophisticated melodic lines with chromatic embellishment.",
+          "musicGenreRecommendations": "Jazz, Classical, Bebop, Contemporary",
+          "recommendedUse": "Use chromatic passing tones between A major scale degrees. Creates smooth jazz lines.",
+          "targetNotes": ["A", "C#", "E"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "A Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Chromatic embellishes minor scale",
+          "rationale": "Chromatic provides passing tones between A minor scale degrees. Essential for bebop and jazz minor.",
+          "musicalContext": "Jazz, classical. Creates sophisticated minor melodic lines.",
+          "musicGenreRecommendations": "Jazz, Classical, Bebop, Fusion, Contemporary",
+          "recommendedUse": "Use chromatic passing tones between A minor scale degrees. Essential for jazz minor lines.",
+          "targetNotes": ["A", "C", "E"],
+          "difficultyLevel": 3
+        }
+      ]
+    },
+    "WholeTone": {
+      "sourceScale": {
+        "name": "A Whole Tone",
+        "formula": [0, 2, 4, 6, 8, 10],
+        "family": "symmetrical",
+        "quality": "augmented"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "A Augmented Scale",
+          "keyQuality": "augmented",
+          "compatibilityScore": 9,
+          "relationship": "Both symmetrical, augmented character",
+          "rationale": "Both scales create augmented, floating, dreamlike character. Symmetrical structures with no tonal center.",
+          "musicalContext": "Jazz, fusion, film music, impressionist. Creates mysterious, floating, unresolved sound.",
+          "musicGenreRecommendations": "Jazz, Fusion, Film Music, Impressionist, Experimental, Contemporary",
+          "recommendedUse": "Use over augmented chords or for impressionist color. Creates Debussy-like floating harmony.",
+          "targetNotes": ["A", "C#", "E#"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "A Major",
+          "keyQuality": "major",
+          "compatibilityScore": 6,
+          "relationship": "Whole tone creates tension over major",
+          "rationale": "Whole tone provides altered, mysterious color over major harmony. Creates impressionist sound.",
+          "musicalContext": "Impressionist, film music, jazz. Creates Debussy/Ravel-style harmonic color.",
+          "musicGenreRecommendations": "Impressionist, Film Music, Jazz, Contemporary, Experimental",
+          "recommendedUse": "Use for impressionist reharmonization. Creates mysterious, unresolved color over major chords.",
+          "targetNotes": ["A", "C#", "F#"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "A7 (Dominant)",
+          "keyQuality": "dominant",
+          "compatibilityScore": 7,
+          "relationship": "Whole tone classic choice over dominant 7th",
+          "rationale": "Whole tone creates altered dominant sound. All extensions (9, #11, b13) available. Classic jazz sound.",
+          "musicalContext": "Jazz, bebop, impressionist. Creates altered, floating dominant color.",
+          "musicGenreRecommendations": "Jazz, Bebop, Impressionist, Fusion, Contemporary",
+          "recommendedUse": "Use over A7 for altered, impressionist sound. Creates floating, unresolved dominant character.",
+          "targetNotes": ["A", "C#", "F#"],
+          "difficultyLevel": 4
+        }
+      ]
+    },
+    "DiminishedHalfWhole": {
+      "sourceScale": {
+        "name": "A Diminished (Half-Whole)",
+        "formula": [0, 1, 3, 4, 6, 7, 9, 10],
+        "family": "symmetrical",
+        "quality": "diminished"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "A Minor 7b5 (Half-Diminished)",
+          "keyQuality": "diminished",
+          "compatibilityScore": 10,
+          "relationship": "Perfect scale for half-diminished chords",
+          "rationale": "Half-whole diminished is the standard jazz choice for m7b5 chords. Provides rich color with all available tensions.",
+          "musicalContext": "Jazz, bebop, fusion. Essential for jazz improvisation over half-diminished chords.",
+          "musicGenreRecommendations": "Jazz, Bebop, Fusion, Modern Jazz, Contemporary Jazz",
+          "recommendedUse": "Essential over Am7b5 chords. Provides 9, 11, b13 tensions. Standard jazz choice for ii°7 chords.",
+          "targetNotes": ["A", "C", "Eb"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A Locrian",
+          "keyQuality": "diminished",
+          "compatibilityScore": 8,
+          "relationship": "Diatonic alternative to diminished",
+          "rationale": "Locrian is diatonic choice for m7b5. Diminished provides richer chromatic color.",
+          "musicalContext": "Jazz. Locrian more diatonic; diminished more chromatic and colorful.",
+          "musicGenreRecommendations": "Jazz, Classical, Contemporary, Fusion",
+          "recommendedUse": "Diminished provides more color than Locrian. Use for richer half-diminished sound.",
+          "targetNotes": ["A", "Eb", "G"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A Locrian #2",
+          "keyQuality": "diminished",
+          "compatibilityScore": 8,
+          "relationship": "Melodic minor alternative",
+          "rationale": "Locrian #2 from melodic minor. Diminished provides different chromatic color.",
+          "musicalContext": "Jazz, fusion. Both sophisticated choices for m7b5.",
+          "musicGenreRecommendations": "Jazz, Fusion, Modern Jazz, Contemporary",
+          "recommendedUse": "Both advanced choices for Am7b5. Different chromatic colors.",
+          "targetNotes": ["A", "B", "Eb"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "C Major",
+          "keyQuality": "major",
+          "compatibilityScore": 6,
+          "relationship": "Diminished provides altered color over major",
+          "rationale": "Half-whole diminished creates altered, mysterious color over major chords. Advanced reharmonization.",
+          "musicalContext": "Jazz, contemporary. Very advanced harmonic concept.",
+          "musicGenreRecommendations": "Jazz, Contemporary, Experimental, Avant-Garde",
+          "recommendedUse": "Very advanced reharmonization concept. Creates altered major color.",
+          "targetNotes": ["C", "Eb", "Gb"],
+          "difficultyLevel": 5
+        }
+      ]
+    },
+    "DiminishedWholeHalf": {
+      "sourceScale": {
+        "name": "A Diminished (Whole-Half)",
+        "formula": [0, 2, 3, 5, 6, 8, 9, 11],
+        "family": "symmetrical",
+        "quality": "dominant"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "A7 (Dominant 7th)",
+          "keyQuality": "dominant",
+          "compatibilityScore": 10,
+          "relationship": "Perfect scale for altered dominant chords",
+          "rationale": "Whole-half diminished is the standard jazz choice for dominant 7th chords. Provides b9, #9, #11, 13 - all altered tensions.",
+          "musicalContext": "Jazz, bebop, fusion. Essential for jazz dominant chord improvisation.",
+          "musicGenreRecommendations": "Jazz, Bebop, Fusion, Modern Jazz, Contemporary Jazz, Hard Bop",
+          "recommendedUse": "Essential over A7b9 or A7#9 chords. Provides all altered tensions. Standard bebop dominant choice.",
+          "targetNotes": ["A", "Bb", "C#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 7,
+          "relationship": "Diatonic dominant alternative",
+          "rationale": "Mixolydian is diatonic dominant. Diminished provides altered, chromatic color.",
+          "musicalContext": "Rock/blues vs jazz. Mixolydian more diatonic; diminished more altered and jazzy.",
+          "musicGenreRecommendations": "Rock, Blues vs Jazz, Bebop",
+          "recommendedUse": "Diminished for altered jazz sound; Mixolydian for diatonic rock/blues sound.",
+          "targetNotes": ["A", "C#", "G"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A Super Locrian (Altered)",
+          "keyQuality": "diminished",
+          "compatibilityScore": 9,
+          "relationship": "Both altered dominant scales",
+          "rationale": "Super Locrian and whole-half diminished both create altered dominant sound. Different chromatic colors.",
+          "musicalContext": "Jazz, fusion. Both standard altered dominant choices with different flavors.",
+          "musicGenreRecommendations": "Jazz, Fusion, Bebop, Modern Jazz, Contemporary",
+          "recommendedUse": "Both work over A7alt. Diminished has b9, #9, #11, 13. Super Locrian more linear.",
+          "targetNotes": ["A", "Bb", "D#"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "A Phrygian Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 7,
+          "relationship": "Both have b9 dominant character",
+          "rationale": "Both scales have b9. Phrygian Dominant is Spanish; Diminished is jazz bebop.",
+          "musicalContext": "Flamenco vs jazz. Different styles, similar b9 tension.",
+          "musicGenreRecommendations": "Flamenco, Spanish vs Jazz, Bebop",
+          "recommendedUse": "Phrygian Dominant for Spanish; Diminished for jazz bebop altered dominant.",
+          "targetNotes": ["Bb", "C#", "G"],
+          "difficultyLevel": 3
+        }
+      ]
+    },
+    "Augmented": {
+      "sourceScale": {
+        "name": "A Augmented",
+        "formula": [0, 3, 4, 7, 8, 11],
+        "family": "symmetrical",
+        "quality": "augmented"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "A Whole Tone",
+          "keyQuality": "augmented",
+          "compatibilityScore": 9,
+          "relationship": "Both symmetrical, augmented character",
+          "rationale": "Both create floating, augmented, mysterious character. Symmetrical structures with augmented triads.",
+          "musicalContext": "Jazz, fusion, film music, impressionist. Creates floating, unresolved, dreamlike sound.",
+          "musicGenreRecommendations": "Jazz, Fusion, Film Music, Impressionist, Experimental, Contemporary",
+          "recommendedUse": "Use over augmented chords for mysterious, floating color. Creates impressionist harmony.",
+          "targetNotes": ["A", "C#", "E#"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "A Lydian Augmented",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "Both have augmented 5th",
+          "rationale": "Both scales feature #5. Lydian Augmented adds #4 for major-based augmented sound.",
+          "musicalContext": "Jazz, fusion. Lydian Augmented more diatonic; Augmented scale more symmetrical.",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary, Progressive",
+          "recommendedUse": "Both work over Amaj7#5. Augmented scale creates more mysterious symmetrical color.",
+          "targetNotes": ["A", "E#", "G#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A Ionian #5",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "Major with augmented 5th",
+          "rationale": "Both have #5. Ionian #5 from harmonic minor; Augmented scale symmetrical.",
+          "musicalContext": "Classical vs jazz. Different approaches to augmented major sound.",
+          "musicGenreRecommendations": "Classical, Neoclassical vs Jazz, Experimental",
+          "recommendedUse": "Both create augmented major sound. Different harmonic contexts.",
+          "targetNotes": ["A", "C#", "E#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "F# Augmented",
+          "keyQuality": "augmented",
+          "compatibilityScore": 10,
+          "relationship": "Same augmented scale - symmetrical relationship",
+          "rationale": "Augmented scale repeats every major third. A, C#, and F# all share the same augmented scale notes.",
+          "musicalContext": "Jazz, fusion, experimental. Understanding symmetrical relationships essential for augmented harmony.",
+          "musicGenreRecommendations": "Jazz, Fusion, Experimental, Contemporary, Avant-Garde",
+          "recommendedUse": "A and F# augmented are the same scale. Use this symmetry for modulation and reharmonization.",
+          "targetNotes": ["A", "C#", "F#"],
+          "difficultyLevel": 5
+        }
+      ]
+    }
+  },
+  "status": "A key complete"
+}
+

@@ -1,0 +1,454 @@
+{
+  "key": "G",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-14",
+  "chords": {
+    "G": {
+      "symbol": "G",
+      "fullName": "G Major",
+      "romanNumeral": "I",
+      "quality": "major",
+      "notes": ["G", "B", "D"],
+      "rootNote": "G",
+      "scaleCompatibility": [
+        {
+          "scaleName": "G Major Pentatonic",
+          "scaleDbKey": "MajorPentatonic",
+          "compatibilityScore": 10,
+          "relationship": "Primary pentatonic - perfect consonance",
+          "rationale": "Contains all chord tones (G, B, D) plus safe extensions (A, E). Zero avoid notes. One of the most guitar-friendly pentatonic scales.",
+          "chordToneAlignment": {
+            "chordTones": ["G", "B", "D"],
+            "tensions": ["A (9th)", "E (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Target the root (G) and major 3rd (B) for resolution. Perfect for folk and rock guitar.",
+          "recommendedUse": "The go-to scale for G major in rock, country, blues, and folk. Extremely common. Ideal for memorable hooks.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "G Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Parent scale - complete diatonic harmony",
+          "rationale": "The fundamental G major scale with one sharp (F#). Complete melodic freedom.",
+          "chordToneAlignment": {
+            "chordTones": ["G", "B", "D"],
+            "tensions": ["A (9th)", "C (11th)", "E (13th)", "F# (maj7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "All notes work over I major. C (11th) can sound suspended - resolve to B or D.",
+          "recommendedUse": "Complete freedom over G major. Essential for full diatonic expression.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "G Lydian",
+          "scaleDbKey": "Lydian",
+          "compatibilityScore": 9,
+          "relationship": "Bright major with #11",
+          "rationale": "Raises C to C# (#11) creating dreamy, ethereal quality.",
+          "chordToneAlignment": {
+            "chordTones": ["G", "B", "D"],
+            "tensions": ["A (9th)", "C# (#11)", "E (13th)", "F# (maj7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize the #11 (C#) for signature Lydian color.",
+          "recommendedUse": "Use for Gmaj7#11 or modern I major sounds. Perfect for film scores and jazz.",
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "G Mixolydian",
+          "scaleDbKey": "Mixolydian",
+          "compatibilityScore": 9,
+          "relationship": "Dominant major with b7",
+          "rationale": "Lowers F# to F (b7) creating dominant 7th character. Perfect for bluesy G major.",
+          "chordToneAlignment": {
+            "chordTones": ["G", "B", "D"],
+            "tensions": ["A (9th)", "C (11th)", "E (13th)", "F (b7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "The F (b7) creates bluesy edge. Great for rock and folk guitar.",
+          "recommendedUse": "Perfect for G7 chords and folk-rock vamps. Essential for jam bands.",
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "Gmaj7": {
+      "symbol": "Gmaj7",
+      "fullName": "G Major 7th",
+      "romanNumeral": "Imaj7",
+      "quality": "major7",
+      "notes": ["G", "B", "D", "F#"],
+      "rootNote": "G",
+      "scaleCompatibility": [
+        {
+          "scaleName": "G Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Perfect alignment with Imaj7",
+          "rationale": "Contains all four chord tones. F# is a chord tone (maj7).",
+          "chordToneAlignment": {
+            "chordTones": ["G", "B", "D", "F#"],
+            "tensions": ["A (9th)", "C (11th)", "E (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize the maj7 (F#). All tones work beautifully.",
+          "recommendedUse": "Complete freedom over Gmaj7. Perfect for jazz, pop, R&B.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "G Lydian",
+          "scaleDbKey": "Lydian",
+          "compatibilityScore": 10,
+          "relationship": "Preferred Imaj7 scale with #11",
+          "rationale": "The #4 (C#) avoids suspended sound. THE scale for Imaj7 in modern jazz.",
+          "chordToneAlignment": {
+            "chordTones": ["G", "B", "D", "F#"],
+            "tensions": ["A (9th)", "C# (#11)", "E (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "The #11 (C#) is signature sound. Essential for Gmaj7#11.",
+          "recommendedUse": "The definitive modern Imaj7 scale. Essential for jazz and fusion.",
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "Am": {
+      "symbol": "Am",
+      "fullName": "A Minor",
+      "romanNumeral": "ii",
+      "quality": "minor",
+      "notes": ["A", "C", "E"],
+      "rootNote": "A",
+      "scaleCompatibility": [
+        {
+          "scaleName": "A Dorian",
+          "scaleDbKey": "Dorian",
+          "compatibilityScore": 10,
+          "relationship": "Primary ii chord scale",
+          "rationale": "A Dorian is the natural ii mode in G major. Major 6th (F#) creates jazzier minor sound.",
+          "chordToneAlignment": {
+            "chordTones": ["A", "C", "E"],
+            "tensions": ["B (9th)", "D (11th)", "F# (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize the F# (13th) for Dorian character. Essential for ii-V-I.",
+          "recommendedUse": "The definitive ii chord scale. Essential for jazz, pop, R&B.",
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "Am7": {
+      "symbol": "Am7",
+      "fullName": "A Minor 7th",
+      "romanNumeral": "iim7",
+      "quality": "minor7",
+      "notes": ["A", "C", "E", "G"],
+      "rootNote": "A",
+      "scaleCompatibility": [
+        {
+          "scaleName": "A Dorian",
+          "scaleDbKey": "Dorian",
+          "compatibilityScore": 10,
+          "relationship": "The definitive iim7 scale",
+          "rationale": "Contains all four chord tones. F# (13th) essential for ii-V-I.",
+          "chordToneAlignment": {
+            "chordTones": ["A", "C", "E", "G"],
+            "tensions": ["B (9th)", "D (11th)", "F# (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "F# (13th) crucial for Dorian color. Smooth voice leading to D7.",
+          "recommendedUse": "Essential for Am7-D7-Gmaj7. The standard iim7 sound.",
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "Bm": {
+      "symbol": "Bm",
+      "fullName": "B Minor",
+      "romanNumeral": "iii",
+      "quality": "minor",
+      "notes": ["B", "D", "F#"],
+      "rootNote": "B",
+      "scaleCompatibility": [
+        {
+          "scaleName": "B Phrygian",
+          "scaleDbKey": "Phrygian",
+          "compatibilityScore": 9,
+          "relationship": "Natural iii mode with exotic b2",
+          "rationale": "B Phrygian is iii mode of G major. b2 (C) creates Spanish/exotic character.",
+          "chordToneAlignment": {
+            "chordTones": ["B", "D", "F#"],
+            "tensions": ["C (b9)", "E (11th)", "A (b13)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize the b2 (C) for Phrygian color.",
+          "recommendedUse": "Use for exotic, Spanish, or metal-influenced iii minor.",
+          "difficultyLevel": 3
+        }
+      ]
+    },
+    "C": {
+      "symbol": "C",
+      "fullName": "C Major",
+      "romanNumeral": "IV",
+      "quality": "major",
+      "notes": ["C", "E", "G"],
+      "rootNote": "C",
+      "scaleCompatibility": [
+        {
+          "scaleName": "C Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "IV chord parent scale",
+          "rationale": "C major is the natural scale for IV in G major. Creates subdominant function.",
+          "chordToneAlignment": {
+            "chordTones": ["C", "E", "G"],
+            "tensions": ["D (9th)", "F (11th)", "A (13th)", "B (maj7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize root (C) and major 3rd (E). F (11th) can sound suspended.",
+          "recommendedUse": "Essential for I-IV-V progressions. Perfect for folk and rock.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "C Lydian",
+          "scaleDbKey": "Lydian",
+          "compatibilityScore": 9,
+          "relationship": "Bright IV with #11",
+          "rationale": "The #4 (F#) creates modern, floating IV sound.",
+          "chordToneAlignment": {
+            "chordTones": ["C", "E", "G"],
+            "tensions": ["D (9th)", "F# (#11)", "A (13th)", "B (maj7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "The #11 (F#) creates bright, dreamy quality. Perfect for Cmaj7#11.",
+          "recommendedUse": "Use for sophisticated, modern IV sound. Perfect for jazz and fusion.",
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "D": {
+      "symbol": "D",
+      "fullName": "D Major",
+      "romanNumeral": "V",
+      "quality": "major",
+      "notes": ["D", "F#", "A"],
+      "rootNote": "D",
+      "scaleCompatibility": [
+        {
+          "scaleName": "D Mixolydian",
+          "scaleDbKey": "Mixolydian",
+          "compatibilityScore": 10,
+          "relationship": "Natural V chord mode in G major",
+          "rationale": "D Mixolydian shares all notes with G major. b7 (C) creates dominant 7th character.",
+          "chordToneAlignment": {
+            "chordTones": ["D", "F#", "A"],
+            "tensions": ["E (9th)", "G (11th)", "B (13th)", "C (b7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "The C (b7) creates dominant pull to G. Emphasize F# and C for strong V-I.",
+          "recommendedUse": "Essential for V7 chords in G major. Perfect for dominant-tonic resolution.",
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "D7": {
+      "symbol": "D7",
+      "fullName": "D Dominant 7th",
+      "romanNumeral": "V7",
+      "quality": "dominant7",
+      "notes": ["D", "F#", "A", "C"],
+      "rootNote": "D",
+      "scaleCompatibility": [
+        {
+          "scaleName": "D Mixolydian",
+          "scaleDbKey": "Mixolydian",
+          "compatibilityScore": 10,
+          "relationship": "The definitive dominant 7th scale",
+          "rationale": "Contains all four chord tones perfectly. b7 (C) is a chord tone.",
+          "chordToneAlignment": {
+            "chordTones": ["D", "F#", "A", "C"],
+            "tensions": ["E (9th)", "G (11th)", "B (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize 3rd (F#) and b7 (C) - the tritone that resolves to G.",
+          "recommendedUse": "Essential for all V7 situations. Perfect for ii-V-I (Am7-D7-Gmaj7).",
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "Em": {
+      "symbol": "Em",
+      "fullName": "E Minor",
+      "romanNumeral": "vi",
+      "quality": "minor",
+      "notes": ["E", "G", "B"],
+      "rootNote": "E",
+      "scaleCompatibility": [
+        {
+          "scaleName": "E Natural Minor (Aeolian)",
+          "scaleDbKey": "Aeolian",
+          "compatibilityScore": 10,
+          "relationship": "Relative minor - shares all notes with G major",
+          "rationale": "E minor is vi of G major. Shares all seven notes. Most common minor chord in G major.",
+          "chordToneAlignment": {
+            "chordTones": ["E", "G", "B"],
+            "tensions": ["F# (9th)", "A (11th)", "D (b13)", "C (b6)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "All G major notes work perfectly. Natural minor sound in the key.",
+          "recommendedUse": "Essential for vi chords in G major. Perfect for G-D-Em-C progressions.",
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "Em7": {
+      "symbol": "Em7",
+      "fullName": "E Minor 7th",
+      "romanNumeral": "vim7",
+      "quality": "minor7",
+      "notes": ["E", "G", "B", "D"],
+      "rootNote": "E",
+      "scaleCompatibility": [
+        {
+          "scaleName": "E Natural Minor (Aeolian)",
+          "scaleDbKey": "Aeolian",
+          "compatibilityScore": 10,
+          "relationship": "Perfect alignment with vim7",
+          "rationale": "Contains all four chord tones. Natural minor sound perfect for vi minor 7.",
+          "chordToneAlignment": {
+            "chordTones": ["E", "G", "B", "D"],
+            "tensions": ["F# (9th)", "A (11th)", "C (b13)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "All notes work beautifully. Standard vim7 sound.",
+          "recommendedUse": "Essential for vim7 in G major. Perfect for G-D-Em7-C progressions.",
+          "difficultyLevel": 1
+        }
+      ]
+    }
+  },
+  "commonProgressions": [
+    {
+      "name": "I-IV-V",
+      "description": "The foundation of Western music in G major. Perfect for guitar and folk music.",
+      "chords": ["G", "C", "D"],
+      "genre": ["Rock", "Folk", "Country", "Blues", "Classic Rock"],
+      "difficulty": 1,
+      "musicalCharacter": "Strong, optimistic, and guitar-friendly. The most common folk progression.",
+      "famousSongs": ["Ring of Fire, Good Riddance (Time of Your Life), Brown Eyed Girl"],
+      "tips": "G major is extremely guitar and folk-friendly. All three chords are open position."
+    },
+    {
+      "name": "I-V-vi-IV",
+      "description": "Modern pop progression in G. The 'Axis of Awesome' progression.",
+      "chords": ["G", "D", "Em", "C"],
+      "genre": ["Pop", "Pop Rock", "Indie", "Contemporary"],
+      "difficulty": 1,
+      "musicalCharacter": "Emotionally versatile. Works for entire songs.",
+      "famousSongs": ["No Woman No Cry, With or Without You, Zombie"],
+      "tips": "Extremely common in modern music. Can be played in any order."
+    },
+    {
+      "name": "I-vi-IV-V",
+      "description": "Classic '50s progression in G. The doo-wop changes.",
+      "chords": ["G", "Em", "C", "D"],
+      "genre": ["Doo-Wop", "50s Rock", "Pop", "Oldies"],
+      "difficulty": 1,
+      "musicalCharacter": "Nostalgic, romantic, optimistic.",
+      "famousSongs": ["Stand By Me, Blue Moon"],
+      "tips": "Perfect for retro vibes. Can enhance with Gmaj7-Em7-Cmaj7-D7."
+    },
+    {
+      "name": "ii-V-I",
+      "description": "The fundamental jazz progression in G major.",
+      "chords": ["Am7", "D7", "Gmaj7"],
+      "genre": ["Jazz", "Bossa Nova", "Latin Jazz", "Smooth Jazz"],
+      "difficulty": 2,
+      "musicalCharacter": "Sophisticated with strong resolution. The jazz standard.",
+      "famousSongs": ["Autumn Leaves, jazz standards"],
+      "tips": "Master this for jazz. Practice with extensions: Am9-D13-Gmaj9."
+    },
+    {
+      "name": "I-IV-vi-V",
+      "description": "Optimistic folk/pop progression with smooth voice leading.",
+      "chords": ["G", "C", "Em", "D"],
+      "genre": ["Folk", "Country", "Pop", "Singer-Songwriter"],
+      "difficulty": 1,
+      "musicalCharacter": "Warm, hopeful, melodically smooth.",
+      "famousSongs": ["Common in folk and country music"],
+      "tips": "Perfect for acoustic guitar. Very singable."
+    },
+    {
+      "name": "vi-IV-I-V",
+      "description": "Modern pop/rock starting on vi minor in G.",
+      "chords": ["Em", "C", "G", "D"],
+      "genre": ["Pop", "Rock", "Alternative", "Indie Rock"],
+      "difficulty": 1,
+      "musicalCharacter": "Begins melancholic, builds to hopeful resolution.",
+      "famousSongs": ["Zombie, Grenade"],
+      "tips": "Starting on vi creates immediate emotional impact."
+    },
+    {
+      "name": "I-bVII-IV-I",
+      "description": "Modal rock progression in G borrowing bVII (F major).",
+      "chords": ["G", "F", "C", "G"],
+      "genre": ["Rock", "Hard Rock", "Classic Rock", "Arena Rock"],
+      "difficulty": 2,
+      "musicalCharacter": "Bold, anthemic, powerful with modal flavor.",
+      "famousSongs": ["Sweet Child O' Mine, Hey Jude sections"],
+      "tips": "The F major is borrowed from G Mixolydian. Creates powerful rock sound."
+    },
+    {
+      "name": "I-V-IV-V",
+      "description": "High-energy rock progression in G.",
+      "chords": ["G", "D", "C", "D"],
+      "genre": ["Rock", "Pop Rock", "Power Pop", "Punk Rock"],
+      "difficulty": 1,
+      "musicalCharacter": "Energetic and driving. Double V creates urgency.",
+      "famousSongs": ["Common in uptempo rock"],
+      "tips": "Great for high-energy sections. Repeated V emphasizes tension."
+    },
+    {
+      "name": "I-IV-I-V",
+      "description": "Classic folk and country progression in G.",
+      "chords": ["G", "C", "G", "D"],
+      "genre": ["Folk", "Country", "Bluegrass", "Traditional"],
+      "difficulty": 1,
+      "musicalCharacter": "Stable, traditional, comforting.",
+      "famousSongs": ["Traditional folk songs in G"],
+      "tips": "Very stable - keeps returning to I. Perfect for acoustic styles."
+    },
+    {
+      "name": "vi-ii-V-I",
+      "description": "Extended jazz progression in G combining relative minor with ii-V-I.",
+      "chords": ["Em7", "Am7", "D7", "Gmaj7"],
+      "genre": ["Jazz", "Jazz Ballad", "Bossa Nova", "Smooth Jazz"],
+      "difficulty": 3,
+      "musicalCharacter": "Sophisticated and smooth. Longer journey to resolution.",
+      "famousSongs": ["Common in jazz standards"],
+      "tips": "Extends ii-V-I with vi start. Great for learning harmony."
+    },
+    {
+      "name": "I-iii-IV-V",
+      "description": "Ascending progression in G through scale degrees.",
+      "chords": ["G", "Bm", "C", "D"],
+      "genre": ["Pop", "Gospel", "Soul", "R&B"],
+      "difficulty": 2,
+      "musicalCharacter": "Builds tension through ascending harmony.",
+      "famousSongs": ["Kiss From a Rose sections"],
+      "tips": "The iii chord (Bm) is underused but effective."
+    },
+    {
+      "name": "I-vi-ii-V",
+      "description": "Jazz standard progression in G - the rhythm changes.",
+      "chords": ["Gmaj7", "Em7", "Am7", "D7"],
+      "genre": ["Jazz", "Jazz Standards", "Swing", "Bebop"],
+      "difficulty": 2,
+      "musicalCharacter": "Sophisticated with circle-of-fifths motion.",
+      "famousSongs": ["I Got Rhythm variations"],
+      "tips": "Essential for jazz. Strong harmonic motion."
+    }
+  ]
+}

@@ -1,0 +1,456 @@
+{
+  "key": "G#",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-14",
+  "note": "G# major is enharmonically equivalent to Ab major. Ab major (4 flats) is more commonly used in practice than G# major (8 sharps). This database uses G# notation but musicians typically prefer Ab major for readability.",
+  "chords": {
+    "G#": {
+      "symbol": "G#",
+      "fullName": "G# Major (Ab Major)",
+      "romanNumeral": "I",
+      "quality": "major",
+      "notes": ["G#", "B#", "D#"],
+      "rootNote": "G#",
+      "enharmonicEquivalent": "Ab Major (Ab, C, Eb)",
+      "scaleCompatibility": [
+        {
+          "scaleName": "G# Major Pentatonic",
+          "scaleDbKey": "MajorPentatonic",
+          "compatibilityScore": 10,
+          "relationship": "Primary pentatonic - perfect consonance",
+          "rationale": "Contains all chord tones plus safe extensions. Note: Ab major pentatonic (Ab, Bb, C, Eb, F) is more commonly notated.",
+          "chordToneAlignment": {
+            "chordTones": ["G#", "B#", "D#"],
+            "tensions": ["A# (9th)", "E# (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Target the root and major 3rd for resolution. In practice, think Ab pentatonic for easier reading.",
+          "recommendedUse": "The go-to scale for G#/Ab major. Perfect for pop, R&B, and contemporary music. Extremely common in Ab major context.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "G# Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Parent scale - complete diatonic harmony",
+          "rationale": "The fundamental major scale. Note: Ab Ionian (Ab, Bb, C, Db, Eb, F, G) with 4 flats is preferred over G# with 8 sharps.",
+          "chordToneAlignment": {
+            "chordTones": ["G#", "B#", "D#"],
+            "tensions": ["A# (9th)", "C# (11th)", "E# (13th)", "F## (maj7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "All notes work over I major. In practice, use Ab major notation for clarity.",
+          "recommendedUse": "Complete freedom over G#/Ab major. Essential for full diatonic expression.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "G# Lydian",
+          "scaleDbKey": "Lydian",
+          "compatibilityScore": 9,
+          "relationship": "Bright major with #11",
+          "rationale": "Raises the 4th creating dreamy quality. Ab Lydian (Ab, Bb, C, D, Eb, F, G) is more practical notation.",
+          "chordToneAlignment": {
+            "chordTones": ["G#", "B#", "D#"],
+            "tensions": ["A# (9th)", "C## (#11)", "E# (13th)", "F## (maj7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize the #11 for signature Lydian color. Think Ab Lydian in practice.",
+          "recommendedUse": "Use for Abmaj7#11 or modern I major sounds. Perfect for film scores and jazz.",
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "G# Mixolydian",
+          "scaleDbKey": "Mixolydian",
+          "compatibilityScore": 9,
+          "relationship": "Dominant major with b7",
+          "rationale": "Creates dominant 7th character. Ab Mixolydian is standard in practice.",
+          "chordToneAlignment": {
+            "chordTones": ["G#", "B#", "D#"],
+            "tensions": ["A# (9th)", "C# (11th)", "E# (13th)", "F# (b7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "The b7 creates bluesy edge. Use Ab7 notation in practice.",
+          "recommendedUse": "Perfect for Ab7 chords and R&B progressions.",
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "G#maj7": {
+      "symbol": "G#maj7",
+      "fullName": "G# Major 7th (Abmaj7)",
+      "romanNumeral": "Imaj7",
+      "quality": "major7",
+      "notes": ["G#", "B#", "D#", "F##"],
+      "rootNote": "G#",
+      "enharmonicEquivalent": "Abmaj7 (Ab, C, Eb, G)",
+      "scaleCompatibility": [
+        {
+          "scaleName": "G# Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Perfect alignment with Imaj7",
+          "rationale": "Contains all four chord tones. Use Abmaj7 notation in practice.",
+          "chordToneAlignment": {
+            "chordTones": ["G#", "B#", "D#", "F##"],
+            "tensions": ["A# (9th)", "C# (11th)", "E# (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize the maj7. Think Ab Ionian for easier reading.",
+          "recommendedUse": "Complete freedom over Abmaj7. Perfect for jazz, pop, R&B.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "G# Lydian",
+          "scaleDbKey": "Lydian",
+          "compatibilityScore": 10,
+          "relationship": "Preferred Imaj7 scale with #11",
+          "rationale": "THE scale for Imaj7 in modern jazz. Use Ab Lydian in practice.",
+          "chordToneAlignment": {
+            "chordTones": ["G#", "B#", "D#", "F##"],
+            "tensions": ["A# (9th)", "C## (#11)", "E# (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "The #11 is signature sound. Think Abmaj7#11.",
+          "recommendedUse": "The definitive modern Imaj7 scale. Essential for jazz and R&B.",
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "A#m": {
+      "symbol": "A#m",
+      "fullName": "A# Minor (Bbm)",
+      "romanNumeral": "ii",
+      "quality": "minor",
+      "notes": ["A#", "C#", "E#"],
+      "rootNote": "A#",
+      "enharmonicEquivalent": "Bbm (Bb, Db, F)",
+      "scaleCompatibility": [
+        {
+          "scaleName": "A# Dorian",
+          "scaleDbKey": "Dorian",
+          "compatibilityScore": 10,
+          "relationship": "Primary ii chord scale",
+          "rationale": "The natural ii mode. Use Bb Dorian in practice for easier reading.",
+          "chordToneAlignment": {
+            "chordTones": ["A#", "C#", "E#"],
+            "tensions": ["B# (9th)", "D# (11th)", "F## (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize the 13th for Dorian character. Think Bbm7 in practice.",
+          "recommendedUse": "The definitive ii chord scale. Use Bb Dorian notation.",
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "A#m7": {
+      "symbol": "A#m7",
+      "fullName": "A# Minor 7th (Bbm7)",
+      "romanNumeral": "iim7",
+      "quality": "minor7",
+      "notes": ["A#", "C#", "E#", "G#"],
+      "rootNote": "A#",
+      "enharmonicEquivalent": "Bbm7 (Bb, Db, F, Ab)",
+      "scaleCompatibility": [
+        {
+          "scaleName": "A# Dorian",
+          "scaleDbKey": "Dorian",
+          "compatibilityScore": 10,
+          "relationship": "The definitive iim7 scale",
+          "rationale": "Contains all four chord tones. Bbm7 is standard notation.",
+          "chordToneAlignment": {
+            "chordTones": ["A#", "C#", "E#", "G#"],
+            "tensions": ["B# (9th)", "D# (11th)", "F## (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "13th crucial for Dorian color. Think Bbm7-Eb7-Abmaj7 in practice.",
+          "recommendedUse": "Essential for iim7. Use Bb Dorian notation for clarity.",
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "B#m": {
+      "symbol": "B#m",
+      "fullName": "B# Minor (Cm)",
+      "romanNumeral": "iii",
+      "quality": "minor",
+      "notes": ["B#", "D#", "F##"],
+      "rootNote": "B#",
+      "enharmonicEquivalent": "Cm (C, Eb, G)",
+      "scaleCompatibility": [
+        {
+          "scaleName": "B# Phrygian",
+          "scaleDbKey": "Phrygian",
+          "compatibilityScore": 9,
+          "relationship": "Natural iii mode with exotic b2",
+          "rationale": "The iii mode. Use C Phrygian in practice - much easier to read.",
+          "chordToneAlignment": {
+            "chordTones": ["B#", "D#", "F##"],
+            "tensions": ["C# (b9)", "E# (11th)", "A# (b13)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize the b2 for Phrygian color. Think Cm in Ab major.",
+          "recommendedUse": "Use for exotic iii minor. Cm notation is standard.",
+          "difficultyLevel": 3
+        }
+      ]
+    },
+    "C#": {
+      "symbol": "C#",
+      "fullName": "C# Major (Db Major)",
+      "romanNumeral": "IV",
+      "quality": "major",
+      "notes": ["C#", "E#", "G#"],
+      "rootNote": "C#",
+      "enharmonicEquivalent": "Db Major (Db, F, Ab)",
+      "scaleCompatibility": [
+        {
+          "scaleName": "C# Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "IV chord parent scale",
+          "rationale": "The natural IV scale. Db Major is standard notation in practice.",
+          "chordToneAlignment": {
+            "chordTones": ["C#", "E#", "G#"],
+            "tensions": ["D# (9th)", "F# (11th)", "A# (13th)", "B# (maj7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize root and major 3rd. Use Db major for easier reading.",
+          "recommendedUse": "Essential for I-IV-V. Think Ab-Db-Eb progression.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "C# Lydian",
+          "scaleDbKey": "Lydian",
+          "compatibilityScore": 9,
+          "relationship": "Bright IV with #11",
+          "rationale": "Modern IV sound. Db Lydian is practical notation.",
+          "chordToneAlignment": {
+            "chordTones": ["C#", "E#", "G#"],
+            "tensions": ["D# (9th)", "F## (#11)", "A# (13th)", "B# (maj7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "The #11 creates bright quality. Think Dbmaj7#11.",
+          "recommendedUse": "Use for sophisticated IV. Db Lydian in practice.",
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "D#": {
+      "symbol": "D#",
+      "fullName": "D# Major (Eb Major)",
+      "romanNumeral": "V",
+      "quality": "major",
+      "notes": ["D#", "F##", "A#"],
+      "rootNote": "D#",
+      "enharmonicEquivalent": "Eb Major (Eb, G, Bb)",
+      "scaleCompatibility": [
+        {
+          "scaleName": "D# Mixolydian",
+          "scaleDbKey": "Mixolydian",
+          "compatibilityScore": 10,
+          "relationship": "Natural V chord mode",
+          "rationale": "Creates dominant 7th character. Eb Mixolydian is standard.",
+          "chordToneAlignment": {
+            "chordTones": ["D#", "F##", "A#"],
+            "tensions": ["E# (9th)", "G# (11th)", "B# (13th)", "C# (b7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "The b7 creates dominant pull. Think Eb7 resolving to Ab.",
+          "recommendedUse": "Essential for V7. Use Eb7 notation in practice.",
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "D#7": {
+      "symbol": "D#7",
+      "fullName": "D# Dominant 7th (Eb7)",
+      "romanNumeral": "V7",
+      "quality": "dominant7",
+      "notes": ["D#", "F##", "A#", "C#"],
+      "rootNote": "D#",
+      "enharmonicEquivalent": "Eb7 (Eb, G, Bb, Db)",
+      "scaleCompatibility": [
+        {
+          "scaleName": "D# Mixolydian",
+          "scaleDbKey": "Mixolydian",
+          "compatibilityScore": 10,
+          "relationship": "The definitive dominant 7th scale",
+          "rationale": "Contains all four chord tones. Eb7 is standard notation.",
+          "chordToneAlignment": {
+            "chordTones": ["D#", "F##", "A#", "C#"],
+            "tensions": ["E# (9th)", "G# (11th)", "B# (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize 3rd and b7 tritone. Think Bbm7-Eb7-Abmaj7.",
+          "recommendedUse": "Essential for V7. Always use Eb7 notation in practice.",
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "E#m": {
+      "symbol": "E#m",
+      "fullName": "E# Minor (Fm)",
+      "romanNumeral": "vi",
+      "quality": "minor",
+      "notes": ["E#", "G#", "B#"],
+      "rootNote": "E#",
+      "enharmonicEquivalent": "Fm (F, Ab, C)",
+      "scaleCompatibility": [
+        {
+          "scaleName": "E# Natural Minor (Aeolian)",
+          "scaleDbKey": "Aeolian",
+          "compatibilityScore": 10,
+          "relationship": "Relative minor - shares all notes",
+          "rationale": "The vi of G# major. Fm is standard notation - much more readable.",
+          "chordToneAlignment": {
+            "chordTones": ["E#", "G#", "B#"],
+            "tensions": ["F## (9th)", "A# (11th)", "D# (b13)", "C# (b6)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "All notes work perfectly. Think Ab-Eb-Fm-Db progression.",
+          "recommendedUse": "Essential for vi chords. Always use Fm in practice.",
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "E#m7": {
+      "symbol": "E#m7",
+      "fullName": "E# Minor 7th (Fm7)",
+      "romanNumeral": "vim7",
+      "quality": "minor7",
+      "notes": ["E#", "G#", "B#", "D#"],
+      "rootNote": "E#",
+      "enharmonicEquivalent": "Fm7 (F, Ab, C, Eb)",
+      "scaleCompatibility": [
+        {
+          "scaleName": "E# Natural Minor (Aeolian)",
+          "scaleDbKey": "Aeolian",
+          "compatibilityScore": 10,
+          "relationship": "Perfect alignment with vim7",
+          "rationale": "Contains all four chord tones. Fm7 is universally used.",
+          "chordToneAlignment": {
+            "chordTones": ["E#", "G#", "B#", "D#"],
+            "tensions": ["F## (9th)", "A# (11th)", "C# (b13)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "All notes work beautifully. Think Ab-Eb-Fm7-Db.",
+          "recommendedUse": "Essential for vim7. Use Fm7 notation always.",
+          "difficultyLevel": 1
+        }
+      ]
+    }
+  },
+  "commonProgressions": [
+    {
+      "name": "I-IV-V (as Ab-Db-Eb)",
+      "description": "The foundation progression. Note: Always notated as Ab-Db-Eb in practice, not G#-C#-D#.",
+      "chords": ["G#", "C#", "D#"],
+      "enharmonicChords": ["Ab", "Db", "Eb"],
+      "genre": ["Pop", "R&B", "Soul", "Gospel", "Rock"],
+      "difficulty": 1,
+      "musicalCharacter": "Strong, soulful, and warm. Ab major is common in R&B and soul music.",
+      "famousSongs": ["Many R&B and soul classics use Ab-Db-Eb"],
+      "tips": "ALWAYS write this as Ab-Db-Eb. G# major notation is impractical with 8 sharps. Ab major with 4 flats is standard."
+    },
+    {
+      "name": "I-V-vi-IV (as Ab-Eb-Fm-Db)",
+      "description": "Modern pop progression. Written as Ab-Eb-Fm-Db in practice.",
+      "chords": ["G#", "D#", "E#m", "C#"],
+      "enharmonicChords": ["Ab", "Eb", "Fm", "Db"],
+      "genre": ["Pop", "R&B", "Soul", "Contemporary"],
+      "difficulty": 1,
+      "musicalCharacter": "Emotionally rich and soulful. Very common in contemporary R&B.",
+      "famousSongs": ["Someone Like You, countless pop ballads"],
+      "tips": "Use Ab-Eb-Fm-Db notation. This is one of the most common progressions in Ab major."
+    },
+    {
+      "name": "I-vi-IV-V (as Ab-Fm-Db-Eb)",
+      "description": "Classic progression. Always written Ab-Fm-Db-Eb.",
+      "chords": ["G#", "E#m", "C#", "D#"],
+      "enharmonicChords": ["Ab", "Fm", "Db", "Eb"],
+      "genre": ["Doo-Wop", "Pop", "Soul", "R&B"],
+      "difficulty": 1,
+      "musicalCharacter": "Nostalgic, warm, and soulful.",
+      "famousSongs": ["Stand By Me, Blue Moon (when in Ab)"],
+      "tips": "Use Ab-Fm-Db-Eb notation exclusively."
+    },
+    {
+      "name": "ii-V-I (as Bbm7-Eb7-Abmaj7)",
+      "description": "Jazz standard progression. Written Bbm7-Eb7-Abmaj7 in practice.",
+      "chords": ["A#m7", "D#7", "G#maj7"],
+      "enharmonicChords": ["Bbm7", "Eb7", "Abmaj7"],
+      "genre": ["Jazz", "Bossa Nova", "Latin Jazz", "R&B"],
+      "difficulty": 2,
+      "musicalCharacter": "Sophisticated and smooth. Very common in jazz and R&B.",
+      "famousSongs": ["Autumn Leaves (when in Ab), jazz standards"],
+      "tips": "ALWAYS write Bbm7-Eb7-Abmaj7. This is extremely common in jazz in Ab major."
+    },
+    {
+      "name": "I-IV-vi-V (as Ab-Db-Fm-Eb)",
+      "description": "Soulful progression. Written Ab-Db-Fm-Eb.",
+      "chords": ["G#", "C#", "E#m", "D#"],
+      "enharmonicChords": ["Ab", "Db", "Fm", "Eb"],
+      "genre": ["Soul", "R&B", "Gospel", "Pop"],
+      "difficulty": 1,
+      "musicalCharacter": "Warm and uplifting with emotional depth.",
+      "famousSongs": ["Common in soul and gospel music"],
+      "tips": "Use Ab-Db-Fm-Eb notation. Common in R&B and soul."
+    },
+    {
+      "name": "vi-IV-I-V (as Fm-Db-Ab-Eb)",
+      "description": "Emotional pop progression. Written Fm-Db-Ab-Eb.",
+      "chords": ["E#m", "C#", "G#", "D#"],
+      "enharmonicChords": ["Fm", "Db", "Ab", "Eb"],
+      "genre": ["Pop", "Rock", "Alternative", "Indie"],
+      "difficulty": 1,
+      "musicalCharacter": "Begins melancholic, builds to hopeful.",
+      "famousSongs": ["Grenade, Apologize (when in Ab)"],
+      "tips": "Use Fm-Db-Ab-Eb notation always."
+    },
+    {
+      "name": "I-vi-ii-V (as Abmaj7-Fm7-Bbm7-Eb7)",
+      "description": "Jazz progression. Written Abmaj7-Fm7-Bbm7-Eb7.",
+      "chords": ["G#maj7", "E#m7", "A#m7", "D#7"],
+      "enharmonicChords": ["Abmaj7", "Fm7", "Bbm7", "Eb7"],
+      "genre": ["Jazz", "Jazz Standards", "Swing", "Bebop"],
+      "difficulty": 2,
+      "musicalCharacter": "Sophisticated circle-of-fifths motion.",
+      "famousSongs": ["I Got Rhythm variations in Ab"],
+      "tips": "Use Abmaj7-Fm7-Bbm7-Eb7 notation exclusively."
+    },
+    {
+      "name": "vi-ii-V-I (as Fm7-Bbm7-Eb7-Abmaj7)",
+      "description": "Extended jazz progression. Written Fm7-Bbm7-Eb7-Abmaj7.",
+      "chords": ["E#m7", "A#m7", "D#7", "G#maj7"],
+      "enharmonicChords": ["Fm7", "Bbm7", "Eb7", "Abmaj7"],
+      "genre": ["Jazz", "Jazz Ballad", "Bossa Nova"],
+      "difficulty": 3,
+      "musicalCharacter": "Sophisticated and smooth.",
+      "famousSongs": ["Jazz standards in Ab major"],
+      "tips": "Always use Fm7-Bbm7-Eb7-Abmaj7 notation."
+    },
+    {
+      "name": "I-bVII-IV-I (as Ab-Gb-Db-Ab)",
+      "description": "Modal progression. Written Ab-Gb-Db-Ab.",
+      "chords": ["G#", "F#", "C#", "G#"],
+      "enharmonicChords": ["Ab", "Gb", "Db", "Ab"],
+      "genre": ["Rock", "R&B", "Soul", "Alternative"],
+      "difficulty": 2,
+      "musicalCharacter": "Bold and soulful with modal flavor.",
+      "famousSongs": ["Common in soul and R&B"],
+      "tips": "Use Ab-Gb-Db-Ab notation."
+    },
+    {
+      "name": "I-V-IV-V (as Ab-Eb-Db-Eb)",
+      "description": "Energetic progression. Written Ab-Eb-Db-Eb.",
+      "chords": ["G#", "D#", "C#", "D#"],
+      "enharmonicChords": ["Ab", "Eb", "Db", "Eb"],
+      "genre": ["Pop", "R&B", "Soul", "Gospel"],
+      "difficulty": 1,
+      "musicalCharacter": "Driving and uplifting.",
+      "famousSongs": ["Common in gospel and R&B"],
+      "tips": "Use Ab-Eb-Db-Eb notation always."
+    }
+  ],
+  "practicalNote": "IMPORTANT: G# major is ALWAYS written as Ab major in practice. Ab major (4 flats: Bb, Eb, Ab, Db) is infinitely more readable than G# major (8 sharps including double sharps). This database uses G# notation for systematic completeness, but musicians should ALWAYS think and write in Ab major. The enharmonic equivalents are provided for every chord and progression."
+}

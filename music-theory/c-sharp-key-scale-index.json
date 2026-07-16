@@ -1,0 +1,241 @@
+{
+  "key": "C#",
+  "totalScales": 36,
+  "scaleIndex": [
+    {
+      "scalesArrayKey": "Key_of_CSharp",
+      "fullScaleName": "Key of C#",
+      "family": "key-center",
+      "quality": "major/minor"
+    },
+    {
+      "scalesArrayKey": "Ionian",
+      "fullScaleName": "C# Ionian (Major)",
+      "family": "major-modes",
+      "quality": "major"
+    },
+    {
+      "scalesArrayKey": "Dorian",
+      "fullScaleName": "C# Dorian",
+      "family": "major-modes",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "Phrygian",
+      "fullScaleName": "C# Phrygian",
+      "family": "major-modes",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "Lydian",
+      "fullScaleName": "C# Lydian",
+      "family": "major-modes",
+      "quality": "major"
+    },
+    {
+      "scalesArrayKey": "Mixolydian",
+      "fullScaleName": "C# Mixolydian",
+      "family": "major-modes",
+      "quality": "dominant"
+    },
+    {
+      "scalesArrayKey": "Aeolian",
+      "fullScaleName": "C# Aeolian (Natural Minor)",
+      "family": "major-modes",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "Locrian",
+      "fullScaleName": "C# Locrian",
+      "family": "major-modes",
+      "quality": "diminished"
+    },
+    {
+      "scalesArrayKey": "HarmonicMinor",
+      "fullScaleName": "C# Harmonic Minor",
+      "family": "minor-variants",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "MelodicMinor",
+      "fullScaleName": "C# Melodic Minor",
+      "family": "minor-variants",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "LocrianNatural6",
+      "fullScaleName": "C# Locrian Natural 6",
+      "family": "harmonic-minor-modes",
+      "quality": "diminished"
+    },
+    {
+      "scalesArrayKey": "IonianSharp5",
+      "fullScaleName": "C# Ionian #5 (Augmented Major)",
+      "family": "harmonic-minor-modes",
+      "quality": "augmented"
+    },
+    {
+      "scalesArrayKey": "DorianSharp4",
+      "fullScaleName": "C# Dorian #4",
+      "family": "harmonic-minor-modes",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "PhrygianDominant",
+      "fullScaleName": "C# Phrygian Dominant",
+      "family": "harmonic-minor-modes",
+      "quality": "dominant"
+    },
+    {
+      "scalesArrayKey": "LydianSharp2",
+      "fullScaleName": "C# Lydian #2",
+      "family": "harmonic-minor-modes",
+      "quality": "major"
+    },
+    {
+      "scalesArrayKey": "MixolydianFlat9Flat13",
+      "fullScaleName": "C# Mixolydian b9 b13",
+      "family": "harmonic-minor-modes",
+      "quality": "dominant"
+    },
+    {
+      "scalesArrayKey": "DorianFlat2",
+      "fullScaleName": "C# Dorian b2 (Phrygian #6)",
+      "family": "melodic-minor-modes",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "LydianAugmented",
+      "fullScaleName": "C# Lydian Augmented",
+      "family": "melodic-minor-modes",
+      "quality": "major"
+    },
+    {
+      "scalesArrayKey": "LydianDominant",
+      "fullScaleName": "C# Lydian Dominant",
+      "family": "melodic-minor-modes",
+      "quality": "dominant"
+    },
+    {
+      "scalesArrayKey": "MixolydianFlat6",
+      "fullScaleName": "C# Mixolydian b6 (Hindu Scale)",
+      "family": "melodic-minor-modes",
+      "quality": "dominant"
+    },
+    {
+      "scalesArrayKey": "AeolianFlat5",
+      "fullScaleName": "C# Aeolian b5 (Locrian #2 / Half-Diminished)",
+      "family": "melodic-minor-modes",
+      "quality": "diminished"
+    },
+    {
+      "scalesArrayKey": "SuperLocrian",
+      "fullScaleName": "C# Super Locrian (Altered Scale)",
+      "family": "melodic-minor-modes",
+      "quality": "diminished"
+    },
+    {
+      "scalesArrayKey": "MajorPentatonic",
+      "fullScaleName": "C# Major Pentatonic",
+      "family": "pentatonic",
+      "quality": "major"
+    },
+    {
+      "scalesArrayKey": "MinorPentatonic",
+      "fullScaleName": "C# Minor Pentatonic",
+      "family": "pentatonic",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "BluesScale",
+      "fullScaleName": "C# Blues Scale",
+      "family": "pentatonic",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "JapanesePentatonic",
+      "fullScaleName": "C# Japanese Pentatonic (In Sen)",
+      "family": "pentatonic",
+      "quality": "other"
+    },
+    {
+      "scalesArrayKey": "EgyptianPentatonic",
+      "fullScaleName": "C# Egyptian Pentatonic",
+      "family": "pentatonic",
+      "quality": "other"
+    },
+    {
+      "scalesArrayKey": "Chromatic",
+      "fullScaleName": "C# Chromatic",
+      "family": "symmetrical",
+      "quality": "other"
+    },
+    {
+      "scalesArrayKey": "WholeTone",
+      "fullScaleName": "C# Whole Tone",
+      "family": "symmetrical",
+      "quality": "augmented"
+    },
+    {
+      "scalesArrayKey": "DiminishedHalfWhole",
+      "fullScaleName": "C# Diminished (Half-Whole)",
+      "family": "symmetrical",
+      "quality": "diminished"
+    },
+    {
+      "scalesArrayKey": "DiminishedWholeHalf",
+      "fullScaleName": "C# Diminished (Whole-Half)",
+      "family": "symmetrical",
+      "quality": "dominant"
+    },
+    {
+      "scalesArrayKey": "Augmented",
+      "fullScaleName": "C# Augmented",
+      "family": "symmetrical",
+      "quality": "augmented"
+    },
+    {
+      "scalesArrayKey": "BebopDominant",
+      "fullScaleName": "C# Bebop Dominant",
+      "family": "jazz",
+      "quality": "dominant"
+    },
+    {
+      "scalesArrayKey": "BebopMajor",
+      "fullScaleName": "C# Bebop Major",
+      "family": "jazz",
+      "quality": "major"
+    },
+    {
+      "scalesArrayKey": "BebopMinor",
+      "fullScaleName": "C# Bebop Minor",
+      "family": "jazz",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "BebopDorian",
+      "fullScaleName": "C# Bebop Dorian",
+      "family": "jazz",
+      "quality": "minor"
+    }
+  ],
+  "scalesByFamily": {
+    "key-center": ["Key_of_CSharp"],
+    "major-modes": ["Ionian", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian", "Locrian"],
+    "minor-variants": ["HarmonicMinor", "MelodicMinor"],
+    "harmonic-minor-modes": ["LocrianNatural6", "IonianSharp5", "DorianSharp4", "PhrygianDominant", "LydianSharp2", "MixolydianFlat9Flat13"],
+    "melodic-minor-modes": ["DorianFlat2", "LydianAugmented", "LydianDominant", "MixolydianFlat6", "AeolianFlat5", "SuperLocrian"],
+    "pentatonic": ["MajorPentatonic", "MinorPentatonic", "BluesScale", "JapanesePentatonic", "EgyptianPentatonic"],
+    "symmetrical": ["Chromatic", "WholeTone", "DiminishedHalfWhole", "DiminishedWholeHalf", "Augmented"],
+    "jazz": ["BebopDominant", "BebopMajor", "BebopMinor", "BebopDorian"]
+  },
+  "scalesByQuality": {
+    "major": ["Ionian", "Lydian", "LydianSharp2", "LydianAugmented", "MajorPentatonic", "BebopMajor"],
+    "minor": ["Dorian", "Phrygian", "Aeolian", "HarmonicMinor", "MelodicMinor", "DorianSharp4", "DorianFlat2", "MinorPentatonic", "BluesScale", "BebopMinor", "BebopDorian"],
+    "dominant": ["Mixolydian", "PhrygianDominant", "LydianDominant", "MixolydianFlat6", "MixolydianFlat9Flat13", "DiminishedWholeHalf", "BebopDominant"],
+    "diminished": ["Locrian", "LocrianNatural6", "AeolianFlat5", "SuperLocrian", "DiminishedHalfWhole"],
+    "augmented": ["IonianSharp5", "WholeTone", "Augmented"],
+    "other": ["JapanesePentatonic", "EgyptianPentatonic", "Chromatic"],
+    "major/minor": ["Key_of_CSharp"]
+  }
+}

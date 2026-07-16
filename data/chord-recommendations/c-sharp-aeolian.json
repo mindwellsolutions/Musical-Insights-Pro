@@ -1,0 +1,155 @@
+{
+  "key": "C#",
+  "scale": "Aeolian",
+  "quality": "minor",
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-25",
+  "diatonicChords": [
+    {
+      "degree": "I",
+      "symbol": "C#m",
+      "fullName": "C#m Minor",
+      "quality": "minor",
+      "notes": [
+        "C#",
+        "E",
+        "G#"
+      ],
+      "function": "Tonic - Home base, resolution",
+      "commonUse": "Degree 1 in Aeolian",
+      "compatibilityScore": 10
+    },
+    {
+      "degree": "ii",
+      "symbol": "D#°",
+      "fullName": "D#° Diminished",
+      "quality": "diminished",
+      "notes": [
+        "D#",
+        "F#",
+        "A"
+      ],
+      "function": "Supertonic - Pre-dominant function",
+      "commonUse": "Degree 2 in Aeolian",
+      "compatibilityScore": 8
+    },
+    {
+      "degree": "iii",
+      "symbol": "E",
+      "fullName": "E Major",
+      "quality": "major",
+      "notes": [
+        "E",
+        "G#",
+        "B"
+      ],
+      "function": "Mediant - Tonic extension",
+      "commonUse": "Degree 3 in Aeolian",
+      "compatibilityScore": 8
+    },
+    {
+      "degree": "IV",
+      "symbol": "F#m",
+      "fullName": "F#m Minor",
+      "quality": "minor",
+      "notes": [
+        "F#",
+        "A",
+        "C#"
+      ],
+      "function": "Subdominant - Pre-dominant, sets up dominant",
+      "commonUse": "Degree 4 in Aeolian",
+      "compatibilityScore": 10
+    },
+    {
+      "degree": "V",
+      "symbol": "G#m",
+      "fullName": "G#m Minor",
+      "quality": "minor",
+      "notes": [
+        "G#",
+        "B",
+        "D#"
+      ],
+      "function": "Dominant - Tension, leads to tonic",
+      "commonUse": "Degree 5 in Aeolian",
+      "compatibilityScore": 10
+    },
+    {
+      "degree": "vi",
+      "symbol": "A",
+      "fullName": "A Major",
+      "quality": "major",
+      "notes": [
+        "A",
+        "C#",
+        "E"
+      ],
+      "function": "Submediant - Relative minor/major",
+      "commonUse": "Degree 6 in Aeolian",
+      "compatibilityScore": 8
+    },
+    {
+      "degree": "vii°",
+      "symbol": "B",
+      "fullName": "B Major",
+      "quality": "major",
+      "notes": [
+        "B",
+        "D#",
+        "F#"
+      ],
+      "function": "Leading tone - Strong pull to tonic",
+      "commonUse": "Degree 7 in Aeolian",
+      "compatibilityScore": 8
+    }
+  ],
+  "extendedChords": [
+    {
+      "degree": "Imaj7",
+      "symbol": "C#maj7",
+      "fullName": "C# Major 7th",
+      "quality": "maj7",
+      "notes": [
+        "C#",
+        "F",
+        "G#",
+        "C"
+      ],
+      "function": "Tonic with color",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    },
+    {
+      "degree": "IVmaj7",
+      "symbol": "F#maj7",
+      "fullName": "F# Major 7th",
+      "quality": "maj7",
+      "notes": [
+        "F#",
+        "A#",
+        "C#",
+        "F"
+      ],
+      "function": "Subdominant with color",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    },
+    {
+      "degree": "V7",
+      "symbol": "G#maj7",
+      "fullName": "G# Major 7th",
+      "quality": "maj7",
+      "notes": [
+        "G#",
+        "C",
+        "D#",
+        "G"
+      ],
+      "function": "Dominant with tension",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    }
+  ],
+  "modalInterchangeChords": []
+}

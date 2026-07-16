@@ -1,0 +1,166 @@
+{
+  "chordQuality": "minor7",
+  "displayName": "Minor 7th",
+  "suffix": "m7",
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-09",
+  "description": "Minor 7th chord compatibility data",
+  "intervals": [
+    0,
+    3,
+    7,
+    10
+  ],
+  "compatibleScales": [
+    {
+      "scaleName": "D Dorian",
+      "scaleDbKey": "Dorian",
+      "compatibilityScore": 10,
+      "relationship": "The definitive iim7 scale",
+      "musicalContext": "Contains all four chord tones. The major 6th (B) is essential for ii-V-I. The standard jazz iim7 sound.",
+      "chordTones": [
+        "D",
+        "F",
+        "A",
+        "C"
+      ],
+      "tensions": [
+        "E (9th)",
+        "G (11th)",
+        "B (13th)"
+      ],
+      "avoidNotes": [],
+      "musicGenreRecommendations": "R&B",
+      "difficultyLevel": 2,
+      "commonUse": "Essential for Dm7-G7-Cmaj7. The definitive iim7 scale in jazz, R&B, neo-soul, and contemporary music. Non-negotiable for jazz harmony.",
+      "famousExamples": "The B (13th) is crucial for Dorian color. Smooth voice leading to G7. This IS the ii-V-I sound in jazz."
+    },
+    {
+      "scaleName": "C Major (Ionian)",
+      "scaleDbKey": "Ionian",
+      "compatibilityScore": 10,
+      "relationship": "Parent scale approach",
+      "musicalContext": "Thinking in C major reinforces key center. All notes work since Dm7 is diatonic to C. Simple and effective.",
+      "chordTones": [
+        "D",
+        "F",
+        "A",
+        "C"
+      ],
+      "tensions": [
+        "E (9th)",
+        "G (11th)",
+        "B (13th)"
+      ],
+      "avoidNotes": [],
+      "musicGenreRecommendations": "General",
+      "difficultyLevel": 1,
+      "commonUse": "Use for key center emphasis. Great for teaching and maintaining tonal awareness. Works universally in all contexts.",
+      "famousExamples": "Think C major, emphasize D as root. Maintains tonal clarity. Perfect for understanding diatonic relationships."
+    },
+    {
+      "scaleName": "A Natural Minor (Aeolian)",
+      "scaleDbKey": "Aeolian",
+      "compatibilityScore": 10,
+      "relationship": "Perfect alignment with vim7",
+      "musicalContext": "Contains all four chord tones. The natural minor sound is perfect for vi minor 7. Most common vim7 choice.",
+      "chordTones": [
+        "A",
+        "C",
+        "E",
+        "G"
+      ],
+      "tensions": [
+        "B (9th)",
+        "D (11th)",
+        "F (b13)"
+      ],
+      "avoidNotes": [],
+      "musicGenreRecommendations": "General",
+      "difficultyLevel": 1,
+      "commonUse": "Essential for vim7 in C major. Perfect for C-G-Am7-F progressions. Works in pop, rock, folk, and all styles.",
+      "famousExamples": "All notes work beautifully. This is the standard vim7 sound. Perfect for emotional, melancholic sections."
+    },
+    {
+      "scaleName": "G# Minor (Natural Minor)",
+      "scaleDbKey": "Minor(NaturalMinor)",
+      "compatibilityScore": 10,
+      "relationship": "vi scale - relative minor, shares all notes with B major",
+      "musicalContext": "G# minor is the relative minor of B major; they share all seven notes. Provides the minor color within the B major key system",
+      "chordTones": [
+        "G#",
+        "B",
+        "D#",
+        "F#"
+      ],
+      "tensions": [],
+      "avoidNotes": [],
+      "musicGenreRecommendations": "General",
+      "difficultyLevel": 1,
+      "commonUse": "Use when moving to vi chords in B major. Perfect for creating emotional contrast. Works for full minor sections within primarily major songs",
+      "famousExamples": "Use when moving to vi chords in B major. Perfect for creating emotional contrast. Works for full minor sections within primarily major songs"
+    },
+    {
+      "scaleName": "E Phrygian",
+      "scaleDbKey": "Phrygian",
+      "compatibilityScore": 9,
+      "relationship": "Natural iii mode with characteristic b2",
+      "musicalContext": "All four chord tones present. The b2 (F) creates exotic Phrygian character for iiim7 in major keys.",
+      "chordTones": [
+        "E",
+        "G",
+        "B",
+        "D"
+      ],
+      "tensions": [
+        "F (b9)",
+        "A (11th)"
+      ],
+      "avoidNotes": [
+        "C"
+      ],
+      "musicGenreRecommendations": "General",
+      "difficultyLevel": 3,
+      "commonUse": "Perfect for exotic iiim7 color. Use in progressive rock, metal, Spanish music. Less common but highly effective for drama.",
+      "famousExamples": "The b9 (F) creates characteristic tension. Use for dark, dramatic, or Spanish passages. Creates exotic color in C major."
+    },
+    {
+      "scaleName": "D Minor Pentatonic",
+      "scaleDbKey": "MinorPentatonic",
+      "compatibilityScore": 8,
+      "relationship": "Simplified approach",
+      "musicalContext": "Removes complexity while maintaining minor character. Safe but lacks Dorian sophistication.",
+      "chordTones": [
+        "D",
+        "F",
+        "A",
+        "C"
+      ],
+      "tensions": [],
+      "avoidNotes": [],
+      "musicGenreRecommendations": "General",
+      "difficultyLevel": 1,
+      "commonUse": "Perfect for simple pop/rock approaches. Great for beginners. Use when you want uncomplicated minor sound.",
+      "famousExamples": "Very safe but simple. Won't clash but lacks the hip Dorian sound. Good for pop and rock contexts."
+    },
+    {
+      "scaleName": "D Minor Pentatonic (Relative)",
+      "scaleDbKey": "MinorPentatonic(Relative)",
+      "compatibilityScore": 8,
+      "relationship": "Relative minor pentatonic - vi relationship to F major",
+      "musicalContext": "D minor pentatonic shares many notes with F major pentatonic and works beautifully over F major progressions, adding minor color",
+      "chordTones": [
+        "D",
+        "F",
+        "A",
+        "C"
+      ],
+      "tensions": [],
+      "avoidNotes": [],
+      "musicGenreRecommendations": "General",
+      "difficultyLevel": 2,
+      "commonUse": "Use to add minor flavor over F major progressions. Perfect for creating tension/release in major key songs",
+      "famousExamples": "Use to add minor flavor over F major progressions. Perfect for creating tension/release in major key songs"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+﻿
+> nextjs@0.1.0 build
+> next build
+
+   Γû▓ Next.js 15.5.7
+   - Environments: .env.local, .env
+
+   Creating an optimized production build ...
+node.exe : <w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (129kiB) impacts deserialization performance (consider using Buffer instead and decode 
+when needed)
+At C:\Program Files\nodejs\npm.ps1:29 char:3
++   & $NODE_EXE $NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (<w> [webpack.ca...de when needed):String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+ ΓÜá Compiled with warnings in 6.9s
+
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+A Node.js API is used (process.versions at line: 39) which is not supported in the Edge Runtime.
+Learn more: https://nextjs.org/docs/api-reference/edge-runtime
+
+Import trace for requested module:
+./node_modules/@supabase/realtime-js/dist/module/lib/websocket-factory.js
+./node_modules/@supabase/realtime-js/dist/module/index.js
+./node_modules/@supabase/supabase-js/dist/main/index.js
+./node_modules/@supabase/supabase-js/dist/esm/wrapper.mjs
+./node_modules/@supabase/ssr/dist/module/createBrowserClient.js
+./node_modules/@supabase/ssr/dist/module/index.js
+
+./node_modules/@supabase/supabase-js/dist/main/index.js
+A Node.js API is used (process.version at line: 60) which is not supported in the Edge Runtime.
+Learn more: https://nextjs.org/docs/api-reference/edge-runtime
+
+Import trace for requested module:
+./node_modules/@supabase/supabase-js/dist/main/index.js
+./node_modules/@supabase/supabase-js/dist/esm/wrapper.mjs
+./node_modules/@supabase/ssr/dist/module/createBrowserClient.js
+./node_modules/@supabase/ssr/dist/module/index.js
+
+   Skipping linting
+   Checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/18) ...
+   Generating static pages (4/18) 
+≡ƒÄ¿ [FRETBOARD RENDER] Received notePositions for E string (string 0): Fret 0: E, Fret 2: F#, Fret 3: G, Fret 5: A, Fret 7: B, Fret 9: C#, Fret 10: D, Fret 12: E, Fret 14: F#, Fret 15: G, Fret 17: A, Fret 19: B, Fret 21: C#, Fret 22: D, Fret 24: E
+≡ƒÄ¿ [FRETBOARD RENDER] selectedChordNotes: null
+≡ƒÄ¿ [FRETBOARD RENDER] selectedGuideTones: null
+≡ƒÄ¿ [FRETBOARD RENDER] showChordTones: true
+≡ƒÄ¿ [FRETBOARD RENDER] showGuideTones: true
+≡ƒÄ¿ [FRETBOARD RENDER] NoteMap for E string (display string 0): Fret 0: E, Fret 2: F#, Fret 3: G, Fret 5: A, Fret 7: B, Fret 9: C#, Fret 10: D, Fret 12: E, Fret 14: F#, Fret 15: G
+   Generating static pages (8/18) 
+   Generating static pages (13/18) 
+ Γ£ô Generating static pages (18/18)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+Γöî Γùï /                                    86.3 kB         265 kB
+Γö£ Γùï /_not-found                            996 B         103 kB
+Γö£ ╞Æ /api/chord-recommendations             145 B         102 kB
+Γö£ ╞Æ /api/chord-scale-compatibility         145 B         102 kB
+Γö£ ╞Æ /api/compatible-scales                 145 B         102 kB
+Γö£ ╞Æ /api/midi/config                       145 B         102 kB
+Γö£ ╞Æ /api/midi/profiles                     145 B         102 kB
+Γö£ ╞Æ /api/progression-recommendations       145 B         102 kB
+Γö£ ╞Æ /api/user-manual-selections            145 B         102 kB
+Γö£ ╞Æ /api/user-midi-config                  145 B         102 kB
+Γö£ ╞Æ /api/user-settings                     145 B         102 kB
+Γö£ ╞Æ /auth/callback                         145 B         102 kB
+Γö£ Γùï /login                               2.17 kB         172 kB
+Γö£ Γùï /note-detector                       40.6 kB         143 kB
+Γö£ Γùï /reset-password                      2.27 kB         172 kB
+Γöö Γùï /reset-password/update               2.34 kB         172 kB
++ First Load JS shared by all             102 kB
+  Γö£ chunks/255-47484af636b98715.js       45.8 kB
+  Γö£ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+  Γöö other shared chunks (total)          2.04 kB
+
+
+╞Æ Middleware                             86.3 kB
+
+Γùï  (Static)   prerendered as static content
+╞Æ  (Dynamic)  server-rendered on demand
+

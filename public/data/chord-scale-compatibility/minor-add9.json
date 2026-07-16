@@ -1,0 +1,15 @@
+{
+  "chordQuality": "minor-add9",
+  "displayName": "Minor Add 9",
+  "suffix": "madd9",
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-09",
+  "description": "Minor Add 9 chord compatibility data",
+  "intervals": [
+    0,
+    3,
+    7,
+    14
+  ],
+  "compatibleScales": []
+}

@@ -1,0 +1,63 @@
+﻿
+> nextjs@0.1.0 build
+> next build
+
+   Γû▓ Next.js 15.5.7
+   - Environments: .env.local, .env
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully in 4.2s
+   Skipping linting
+   Checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/31) ...
+   Generating static pages (7/31) 
+   Generating static pages (15/31) 
+   Generating static pages (23/31) 
+ Γ£ô Generating static pages (31/31)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                           Size  First Load JS
+Γöî Γùï /                                               103 kB         286 kB
+Γö£ Γùï /_not-found                                       1 kB         103 kB
+Γö£ Γùï /adminaccesspoint                               3.1 kB         172 kB
+Γö£ Γùï /adminaccesspoint/dashboard                    5.63 kB         180 kB
+Γö£ ╞Æ /api/ai-assistant/chat                           189 B         102 kB
+Γö£ ╞Æ /api/ai-assistant/conversations                  189 B         102 kB
+Γö£ ╞Æ /api/ai-assistant/conversations/[id]             189 B         102 kB
+Γö£ ╞Æ /api/ai-assistant/conversations/[id]/messages    189 B         102 kB
+Γö£ ╞Æ /api/chord-recommendations                       189 B         102 kB
+Γö£ ╞Æ /api/chord-scale-compatibility                   189 B         102 kB
+Γö£ ╞Æ /api/compatible-scales                           189 B         102 kB
+Γö£ ╞Æ /api/midi/config                                 189 B         102 kB
+Γö£ ╞Æ /api/midi/profiles                               189 B         102 kB
+Γö£ ╞Æ /api/progression-recommendations                 189 B         102 kB
+Γö£ ╞Æ /api/reviews/admin/approve                       189 B         102 kB
+Γö£ ╞Æ /api/reviews/admin/approved                      189 B         102 kB
+Γö£ ╞Æ /api/reviews/admin/pending                       189 B         102 kB
+Γö£ ╞Æ /api/reviews/admin/reject                        189 B         102 kB
+Γö£ ╞Æ /api/reviews/admin/unapprove                     189 B         102 kB
+Γö£ ╞Æ /api/reviews/public                              189 B         102 kB
+Γö£ ╞Æ /api/reviews/submit                              189 B         102 kB
+Γö£ ╞Æ /api/user-manual-selections                      189 B         102 kB
+Γö£ ╞Æ /api/user-midi-config                            189 B         102 kB
+Γö£ ╞Æ /api/user-settings                               189 B         102 kB
+Γö£ ╞Æ /auth/callback                                   189 B         102 kB
+Γö£ Γùï /login                                         2.17 kB         171 kB
+Γö£ Γùï /note-detector                                 6.14 kB         143 kB
+Γö£ Γùï /reset-password                                2.28 kB         171 kB
+Γö£ Γùï /reset-password/update                         2.35 kB         171 kB
+Γö£ ╞Æ /reviews                                       3.32 kB         122 kB
+Γöö Γùï /reviews/submit                                28.1 kB         174 kB
++ First Load JS shared by all                       102 kB
+  Γö£ chunks/1255-404bb8de49c90395.js                45.8 kB
+  Γö£ chunks/4bd1b696-f785427dddbba9fb.js            54.2 kB
+  Γöö other shared chunks (total)                    2.05 kB
+
+
+╞Æ Middleware                                       86.3 kB
+
+Γùï  (Static)   prerendered as static content
+╞Æ  (Dynamic)  server-rendered on demand
+

@@ -1,0 +1,108 @@
+{
+  "chordQuality": "dominant7",
+  "displayName": "Dominant 7th",
+  "suffix": "7",
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-09",
+  "description": "Dominant 7th chord compatibility data",
+  "intervals": [
+    0,
+    4,
+    7,
+    10
+  ],
+  "compatibleScales": [
+    {
+      "scaleName": "G Mixolydian",
+      "scaleDbKey": "Mixolydian",
+      "compatibilityScore": 10,
+      "relationship": "The definitive dominant 7th scale",
+      "musicalContext": "Contains all four chord tones perfectly. The b7 (F) is a chord tone. Essential for V7-I resolution in all styles.",
+      "chordTones": [
+        "G",
+        "B",
+        "D",
+        "F"
+      ],
+      "tensions": [
+        "A (9th)",
+        "C (11th)",
+        "E (13th)"
+      ],
+      "avoidNotes": [],
+      "musicGenreRecommendations": "General",
+      "difficultyLevel": 2,
+      "commonUse": "Essential for all V7 situations. Perfect for ii-V-I (Dm7-G7-Cmaj7). Use in jazz, rock, blues, pop, and all dominant harmony.",
+      "famousExamples": "Emphasize 3rd (B) and b7 (F) - the tritone that resolves to C. These create dominant character and pull to C major."
+    },
+    {
+      "scaleName": "C Major (Ionian)",
+      "scaleDbKey": "Ionian",
+      "compatibilityScore": 10,
+      "relationship": "Parent scale approach",
+      "musicalContext": "C major over G7 maintains key center. G Mixolydian and C Ionian are the same notes. Simple and effective.",
+      "chordTones": [
+        "G",
+        "B",
+        "D",
+        "F"
+      ],
+      "tensions": [
+        "A (9th)",
+        "C (11th)",
+        "E (13th)"
+      ],
+      "avoidNotes": [],
+      "musicGenreRecommendations": "General",
+      "difficultyLevel": 1,
+      "commonUse": "Perfect for maintaining key awareness over V7. Works universally. Great for teaching diatonic harmony.",
+      "famousExamples": "Think C major, emphasize G as root. The F creates dominant 7th automatically. Maintains clear tonal direction to C."
+    },
+    {
+      "scaleName": "G Blues Scale",
+      "scaleDbKey": "Blues",
+      "compatibilityScore": 9,
+      "relationship": "Bluesy dominant approach",
+      "musicalContext": "Adds blue notes for authentic blues dominant. The b5 (Db) creates characteristic blues tension. Essential for blues and rock.",
+      "chordTones": [
+        "G",
+        "Bb",
+        "D",
+        "F"
+      ],
+      "tensions": [
+        "C (11th)",
+        "Db (b5)"
+      ],
+      "avoidNotes": [],
+      "musicGenreRecommendations": "General",
+      "difficultyLevel": 2,
+      "commonUse": "Essential for blues and blues-rock G7. Perfect for 12-bar blues. Use when you want gritty, authentic blues dominant.",
+      "famousExamples": "Use Db (b5) as passing tone to D. Creates authentic blues sound. The minor 3rd (Bb) adds bluesy tension."
+    },
+    {
+      "scaleName": "G Altered (Super Locrian)",
+      "scaleDbKey": "Altered",
+      "compatibilityScore": 8,
+      "relationship": "Jazz altered dominant",
+      "musicalContext": "Contains b9, #9, #11, b13 for maximum tension. Used in jazz for dramatic V7 resolution. Very dissonant, modern sound.",
+      "chordTones": [
+        "G",
+        "B",
+        "Db",
+        "F"
+      ],
+      "tensions": [
+        "Ab (b9)",
+        "Bb (b3/#9)",
+        "Db (#11/b5)",
+        "Eb (b13)"
+      ],
+      "avoidNotes": [],
+      "musicGenreRecommendations": "General",
+      "difficultyLevel": 5,
+      "commonUse": "Use for modern jazz G7alt chords. Perfect for dramatic V7-I in bebop, post-bop, and fusion. Very advanced.",
+      "famousExamples": "Maximum tension for dramatic jazz resolutions. All alterations create strong pull to C. Very advanced, bebop sound."
+    }
+  ]
+}

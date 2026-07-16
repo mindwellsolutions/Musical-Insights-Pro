@@ -1,0 +1,16 @@
+{
+  "chordQuality": "major9",
+  "displayName": "Major 9th",
+  "suffix": "maj9",
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-09",
+  "description": "Major 9th chord compatibility data",
+  "intervals": [
+    0,
+    4,
+    7,
+    11,
+    14
+  ],
+  "compatibleScales": []
+}

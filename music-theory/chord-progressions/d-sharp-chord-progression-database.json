@@ -1,0 +1,292 @@
+{
+  "key": "D#",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-14",
+  "chords": {
+    "D#": {
+      "symbol": "D#",
+      "fullName": "D# Major",
+      "romanNumeral": "I",
+      "quality": "major",
+      "notes": [
+        "D#",
+        "G",
+        "A#"
+      ],
+      "rootNote": "D#",
+      "scaleCompatibility": []
+    },
+    "Fm": {
+      "symbol": "Fm",
+      "fullName": "F Minor",
+      "romanNumeral": "ii",
+      "quality": "minor",
+      "notes": [
+        "F",
+        "G#",
+        "C"
+      ],
+      "rootNote": "F",
+      "scaleCompatibility": []
+    },
+    "Gm": {
+      "symbol": "Gm",
+      "fullName": "G Minor",
+      "romanNumeral": "iii",
+      "quality": "minor",
+      "notes": [
+        "G",
+        "A#",
+        "D"
+      ],
+      "rootNote": "G",
+      "scaleCompatibility": []
+    },
+    "G#": {
+      "symbol": "G#",
+      "fullName": "G# Major",
+      "romanNumeral": "IV",
+      "quality": "major",
+      "notes": [
+        "G#",
+        "C",
+        "D#"
+      ],
+      "rootNote": "G#",
+      "scaleCompatibility": []
+    },
+    "A#": {
+      "symbol": "A#",
+      "fullName": "A# Major",
+      "romanNumeral": "V",
+      "quality": "major",
+      "notes": [
+        "A#",
+        "D",
+        "F"
+      ],
+      "rootNote": "A#",
+      "scaleCompatibility": []
+    },
+    "Cm": {
+      "symbol": "Cm",
+      "fullName": "C Minor",
+      "romanNumeral": "vi",
+      "quality": "minor",
+      "notes": [
+        "C",
+        "D#",
+        "G"
+      ],
+      "rootNote": "C",
+      "scaleCompatibility": []
+    },
+    "Ddim": {
+      "symbol": "Ddim",
+      "fullName": "D Diminished",
+      "romanNumeral": "vii\u00b0",
+      "quality": "diminished",
+      "notes": [
+        "D",
+        "F",
+        "G#"
+      ],
+      "rootNote": "D",
+      "scaleCompatibility": []
+    },
+    "D#maj7": {
+      "symbol": "D#maj7",
+      "fullName": "D# Major 7th",
+      "romanNumeral": "Imaj7",
+      "quality": "major7",
+      "notes": [
+        "D#",
+        "G",
+        "A#",
+        "D"
+      ],
+      "rootNote": "D#",
+      "scaleCompatibility": []
+    },
+    "Fm7": {
+      "symbol": "Fm7",
+      "fullName": "F Minor 7th",
+      "romanNumeral": "iim7",
+      "quality": "minor7",
+      "notes": [
+        "F",
+        "G#",
+        "C",
+        "D#"
+      ],
+      "rootNote": "F",
+      "scaleCompatibility": []
+    },
+    "Gm7": {
+      "symbol": "Gm7",
+      "fullName": "G Minor 7th",
+      "romanNumeral": "iiim7",
+      "quality": "minor7",
+      "notes": [
+        "G",
+        "A#",
+        "D",
+        "F"
+      ],
+      "rootNote": "G",
+      "scaleCompatibility": []
+    },
+    "G#maj7": {
+      "symbol": "G#maj7",
+      "fullName": "G# Major 7th",
+      "romanNumeral": "IVmaj7",
+      "quality": "major7",
+      "notes": [
+        "G#",
+        "C",
+        "D#",
+        "G"
+      ],
+      "rootNote": "G#",
+      "scaleCompatibility": []
+    },
+    "A#7": {
+      "symbol": "A#7",
+      "fullName": "A# Dominant 7th",
+      "romanNumeral": "V7",
+      "quality": "dominant7",
+      "notes": [
+        "A#",
+        "D",
+        "F",
+        "G#"
+      ],
+      "rootNote": "A#",
+      "scaleCompatibility": []
+    },
+    "Cm7": {
+      "symbol": "Cm7",
+      "fullName": "C Minor 7th",
+      "romanNumeral": "vim7",
+      "quality": "minor7",
+      "notes": [
+        "C",
+        "D#",
+        "G",
+        "A#"
+      ],
+      "rootNote": "C",
+      "scaleCompatibility": []
+    },
+    "Dm7b5": {
+      "symbol": "Dm7b5",
+      "fullName": "D Minor 7 Flat 5",
+      "romanNumeral": "viim7b5",
+      "quality": "minor7b5",
+      "notes": [
+        "D",
+        "F",
+        "G#",
+        "C"
+      ],
+      "rootNote": "D",
+      "scaleCompatibility": []
+    }
+  },
+  "commonProgressions": [
+    {
+      "name": "I-IV-V",
+      "description": "Classic rock and blues progression",
+      "chords": [
+        "D#",
+        "G#",
+        "A#"
+      ],
+      "genre": [
+        "Rock",
+        "Blues",
+        "Country"
+      ],
+      "difficulty": 1
+    },
+    {
+      "name": "I-V-vi-IV",
+      "description": "Pop progression (Axis progression)",
+      "chords": [
+        "D#",
+        "A#",
+        "Cm",
+        "G#"
+      ],
+      "genre": [
+        "Pop",
+        "Rock",
+        "Indie"
+      ],
+      "difficulty": 1
+    },
+    {
+      "name": "I-vi-IV-V",
+      "description": "50s progression / Doo-wop changes",
+      "chords": [
+        "D#",
+        "Cm",
+        "G#",
+        "A#"
+      ],
+      "genre": [
+        "Pop",
+        "Rock",
+        "Doo-wop"
+      ],
+      "difficulty": 1
+    },
+    {
+      "name": "ii-V-I",
+      "description": "Jazz standard progression",
+      "chords": [
+        "Fm7",
+        "A#7",
+        "D#maj7"
+      ],
+      "genre": [
+        "Jazz",
+        "Bossa Nova",
+        "Swing"
+      ],
+      "difficulty": 2
+    },
+    {
+      "name": "I-IV-vi-V",
+      "description": "Folk and singer-songwriter progression",
+      "chords": [
+        "D#",
+        "G#",
+        "Cm",
+        "A#"
+      ],
+      "genre": [
+        "Folk",
+        "Country",
+        "Singer-Songwriter"
+      ],
+      "difficulty": 1
+    },
+    {
+      "name": "vi-IV-I-V",
+      "description": "Modern pop progression",
+      "chords": [
+        "Cm",
+        "G#",
+        "D#",
+        "A#"
+      ],
+      "genre": [
+        "Pop",
+        "Rock",
+        "Alternative"
+      ],
+      "difficulty": 1
+    }
+  ]
+}

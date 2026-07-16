@@ -1,0 +1,141 @@
+{
+  "key": "A",
+  "scale": "Blues",
+  "quality": "minor",
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-25",
+  "diatonicChords": [
+    {
+      "degree": "I",
+      "symbol": "A",
+      "fullName": "A Major",
+      "quality": "major",
+      "notes": [
+        "A",
+        "C#",
+        "E"
+      ],
+      "function": "Tonic - Home base, resolution",
+      "commonUse": "Degree 1 in Blues",
+      "compatibilityScore": 10
+    },
+    {
+      "degree": "ii",
+      "symbol": "Cm",
+      "fullName": "Cm Minor",
+      "quality": "minor",
+      "notes": [
+        "C",
+        "D#",
+        "G"
+      ],
+      "function": "Supertonic - Pre-dominant function",
+      "commonUse": "Degree 2 in Blues",
+      "compatibilityScore": 8
+    },
+    {
+      "degree": "iii",
+      "symbol": "D",
+      "fullName": "D Major",
+      "quality": "major",
+      "notes": [
+        "D",
+        "F#",
+        "A"
+      ],
+      "function": "Mediant - Tonic extension",
+      "commonUse": "Degree 3 in Blues",
+      "compatibilityScore": 8
+    },
+    {
+      "degree": "IV",
+      "symbol": "D#",
+      "fullName": "D# Major",
+      "quality": "major",
+      "notes": [
+        "D#",
+        "G",
+        "A#"
+      ],
+      "function": "Subdominant - Pre-dominant, sets up dominant",
+      "commonUse": "Degree 4 in Blues",
+      "compatibilityScore": 10
+    },
+    {
+      "degree": "V",
+      "symbol": "E",
+      "fullName": "E Major",
+      "quality": "major",
+      "notes": [
+        "E",
+        "G#",
+        "B"
+      ],
+      "function": "Dominant - Tension, leads to tonic",
+      "commonUse": "Degree 5 in Blues",
+      "compatibilityScore": 10
+    },
+    {
+      "degree": "vi",
+      "symbol": "G",
+      "fullName": "G Major",
+      "quality": "major",
+      "notes": [
+        "G",
+        "B",
+        "D"
+      ],
+      "function": "Submediant - Relative minor/major",
+      "commonUse": "Degree 6 in Blues",
+      "compatibilityScore": 8
+    }
+  ],
+  "extendedChords": [
+    {
+      "degree": "Imaj7",
+      "symbol": "Amaj7",
+      "fullName": "A Major 7th",
+      "quality": "maj7",
+      "notes": [
+        "A",
+        "C#",
+        "E",
+        "G#"
+      ],
+      "function": "Tonic with color",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    },
+    {
+      "degree": "IVmaj7",
+      "symbol": "D#maj7",
+      "fullName": "D# Major 7th",
+      "quality": "maj7",
+      "notes": [
+        "D#",
+        "G",
+        "A#",
+        "D"
+      ],
+      "function": "Subdominant with color",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    },
+    {
+      "degree": "V7",
+      "symbol": "Emaj7",
+      "fullName": "E Major 7th",
+      "quality": "maj7",
+      "notes": [
+        "E",
+        "G#",
+        "B",
+        "D#"
+      ],
+      "function": "Dominant with tension",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    }
+  ],
+  "modalInterchangeChords": []
+}

@@ -1,0 +1,7639 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-01-24",
+  "description": "Comprehensive chord tones database for real-time fretboard updates",
+  "chords": {
+    "C": {
+      "symbol": "C",
+      "rootNote": "C",
+      "quality": "major",
+      "displayName": "C Major",
+      "notes": [
+        "C",
+        "E",
+        "G"
+      ],
+      "intervals": [
+        0,
+        4,
+        7
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "E",
+        "fifth": "G"
+      }
+    },
+    "Cm": {
+      "symbol": "Cm",
+      "rootNote": "C",
+      "quality": "minor",
+      "displayName": "C Minor",
+      "notes": [
+        "C",
+        "D#",
+        "G"
+      ],
+      "intervals": [
+        0,
+        3,
+        7
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "D#",
+        "fifth": "G"
+      }
+    },
+    "Cdim": {
+      "symbol": "Cdim",
+      "rootNote": "C",
+      "quality": "diminished",
+      "displayName": "C Diminished",
+      "notes": [
+        "C",
+        "D#",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        3,
+        6
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "D#",
+        "fifth": "F#"
+      }
+    },
+    "Caug": {
+      "symbol": "Caug",
+      "rootNote": "C",
+      "quality": "augmented",
+      "displayName": "C Augmented",
+      "notes": [
+        "C",
+        "E",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        4,
+        8
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "E",
+        "fifth": "G#"
+      }
+    },
+    "Cmaj7": {
+      "symbol": "Cmaj7",
+      "rootNote": "C",
+      "quality": "major7",
+      "displayName": "C Major 7th",
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "E",
+        "fifth": "G",
+        "seventh": "B"
+      }
+    },
+    "Cm7": {
+      "symbol": "Cm7",
+      "rootNote": "C",
+      "quality": "minor7",
+      "displayName": "C Minor 7th",
+      "notes": [
+        "C",
+        "D#",
+        "G",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "D#",
+        "fifth": "G",
+        "seventh": "A#"
+      }
+    },
+    "C7": {
+      "symbol": "C7",
+      "rootNote": "C",
+      "quality": "dominant7",
+      "displayName": "C Dominant 7th",
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "E",
+        "fifth": "G",
+        "seventh": "A#"
+      }
+    },
+    "Cdim7": {
+      "symbol": "Cdim7",
+      "rootNote": "C",
+      "quality": "diminished7",
+      "displayName": "C Diminished 7th",
+      "notes": [
+        "C",
+        "D#",
+        "F#",
+        "A"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        9
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "D#",
+        "fifth": "F#",
+        "seventh": "A"
+      }
+    },
+    "Cm7b5": {
+      "symbol": "Cm7b5",
+      "rootNote": "C",
+      "quality": "half-diminished7",
+      "displayName": "C Half-Diminished 7th",
+      "notes": [
+        "C",
+        "D#",
+        "F#",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        10
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "D#",
+        "fifth": "F#",
+        "seventh": "A#"
+      }
+    },
+    "Caug7": {
+      "symbol": "Caug7",
+      "rootNote": "C",
+      "quality": "augmented7",
+      "displayName": "C Augmented 7th",
+      "notes": [
+        "C",
+        "E",
+        "G#",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        4,
+        8,
+        10
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "E",
+        "fifth": "G#",
+        "seventh": "A#"
+      }
+    },
+    "Cmaj9": {
+      "symbol": "Cmaj9",
+      "rootNote": "C",
+      "quality": "major9",
+      "displayName": "C Major 9th",
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B",
+        "D"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "E",
+        "fifth": "G",
+        "seventh": "B",
+        "ninth": "D"
+      }
+    },
+    "Cm9": {
+      "symbol": "Cm9",
+      "rootNote": "C",
+      "quality": "minor9",
+      "displayName": "C Minor 9th",
+      "notes": [
+        "C",
+        "D#",
+        "G",
+        "A#",
+        "D"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "D#",
+        "fifth": "G",
+        "seventh": "A#",
+        "ninth": "D"
+      }
+    },
+    "C9": {
+      "symbol": "C9",
+      "rootNote": "C",
+      "quality": "dominant9",
+      "displayName": "C Dominant 9th",
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "A#",
+        "D"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "E",
+        "fifth": "G",
+        "seventh": "A#",
+        "ninth": "D"
+      }
+    },
+    "Cmaj11": {
+      "symbol": "Cmaj11",
+      "rootNote": "C",
+      "quality": "major11",
+      "displayName": "C Major 11th",
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B",
+        "D",
+        "F"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "E",
+        "fifth": "G",
+        "seventh": "B",
+        "ninth": "D",
+        "eleventh": "F"
+      }
+    },
+    "Cm11": {
+      "symbol": "Cm11",
+      "rootNote": "C",
+      "quality": "minor11",
+      "displayName": "C Minor 11th",
+      "notes": [
+        "C",
+        "D#",
+        "G",
+        "A#",
+        "D",
+        "F"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "D#",
+        "fifth": "G",
+        "seventh": "A#",
+        "ninth": "D",
+        "eleventh": "F"
+      }
+    },
+    "C11": {
+      "symbol": "C11",
+      "rootNote": "C",
+      "quality": "dominant11",
+      "displayName": "C Dominant 11th",
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "A#",
+        "D",
+        "F"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "E",
+        "fifth": "G",
+        "seventh": "A#",
+        "ninth": "D",
+        "eleventh": "F"
+      }
+    },
+    "Cmaj13": {
+      "symbol": "Cmaj13",
+      "rootNote": "C",
+      "quality": "major13",
+      "displayName": "C Major 13th",
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B",
+        "D",
+        "F",
+        "A"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "E",
+        "fifth": "G",
+        "seventh": "B",
+        "ninth": "D",
+        "eleventh": "F",
+        "thirteenth": "A"
+      }
+    },
+    "Cm13": {
+      "symbol": "Cm13",
+      "rootNote": "C",
+      "quality": "minor13",
+      "displayName": "C Minor 13th",
+      "notes": [
+        "C",
+        "D#",
+        "G",
+        "A#",
+        "D",
+        "F",
+        "A"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "D#",
+        "fifth": "G",
+        "seventh": "A#",
+        "ninth": "D",
+        "eleventh": "F",
+        "thirteenth": "A"
+      }
+    },
+    "C13": {
+      "symbol": "C13",
+      "rootNote": "C",
+      "quality": "dominant13",
+      "displayName": "C Dominant 13th",
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "A#",
+        "D",
+        "F",
+        "A"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "E",
+        "fifth": "G",
+        "seventh": "A#",
+        "ninth": "D",
+        "eleventh": "F",
+        "thirteenth": "A"
+      }
+    },
+    "Csus2": {
+      "symbol": "Csus2",
+      "rootNote": "C",
+      "quality": "sus2",
+      "displayName": "C Suspended 2nd",
+      "notes": [
+        "C",
+        "D",
+        "G"
+      ],
+      "intervals": [
+        0,
+        2,
+        7
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "D",
+        "fifth": "G"
+      }
+    },
+    "Csus4": {
+      "symbol": "Csus4",
+      "rootNote": "C",
+      "quality": "sus4",
+      "displayName": "C Suspended 4th",
+      "notes": [
+        "C",
+        "F",
+        "G"
+      ],
+      "intervals": [
+        0,
+        5,
+        7
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "F",
+        "fifth": "G"
+      }
+    },
+    "C6": {
+      "symbol": "C6",
+      "rootNote": "C",
+      "quality": "6",
+      "displayName": "C Major 6th",
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "A"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "E",
+        "fifth": "G",
+        "seventh": "A"
+      }
+    },
+    "Cm6": {
+      "symbol": "Cm6",
+      "rootNote": "C",
+      "quality": "minor6",
+      "displayName": "C Minor 6th",
+      "notes": [
+        "C",
+        "D#",
+        "G",
+        "A"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "D#",
+        "fifth": "G",
+        "seventh": "A"
+      }
+    },
+    "Cadd9": {
+      "symbol": "Cadd9",
+      "rootNote": "C",
+      "quality": "add9",
+      "displayName": "C Add 9",
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "D"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "E",
+        "fifth": "G",
+        "seventh": "D"
+      }
+    },
+    "Cmadd9": {
+      "symbol": "Cmadd9",
+      "rootNote": "C",
+      "quality": "minor-add9",
+      "displayName": "C Minor Add 9",
+      "notes": [
+        "C",
+        "D#",
+        "G",
+        "D"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "C",
+        "third": "D#",
+        "fifth": "G",
+        "seventh": "D"
+      }
+    },
+    "C#": {
+      "symbol": "C#",
+      "rootNote": "C#",
+      "quality": "major",
+      "displayName": "C# Major",
+      "notes": [
+        "C#",
+        "F",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "F",
+        "fifth": "G#"
+      }
+    },
+    "C#m": {
+      "symbol": "C#m",
+      "rootNote": "C#",
+      "quality": "minor",
+      "displayName": "C# Minor",
+      "notes": [
+        "C#",
+        "E",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "E",
+        "fifth": "G#"
+      }
+    },
+    "C#dim": {
+      "symbol": "C#dim",
+      "rootNote": "C#",
+      "quality": "diminished",
+      "displayName": "C# Diminished",
+      "notes": [
+        "C#",
+        "E",
+        "G"
+      ],
+      "intervals": [
+        0,
+        3,
+        6
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "E",
+        "fifth": "G"
+      }
+    },
+    "C#aug": {
+      "symbol": "C#aug",
+      "rootNote": "C#",
+      "quality": "augmented",
+      "displayName": "C# Augmented",
+      "notes": [
+        "C#",
+        "F",
+        "A"
+      ],
+      "intervals": [
+        0,
+        4,
+        8
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "F",
+        "fifth": "A"
+      }
+    },
+    "C#maj7": {
+      "symbol": "C#maj7",
+      "rootNote": "C#",
+      "quality": "major7",
+      "displayName": "C# Major 7th",
+      "notes": [
+        "C#",
+        "F",
+        "G#",
+        "C"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "F",
+        "fifth": "G#",
+        "seventh": "C"
+      }
+    },
+    "C#m7": {
+      "symbol": "C#m7",
+      "rootNote": "C#",
+      "quality": "minor7",
+      "displayName": "C# Minor 7th",
+      "notes": [
+        "C#",
+        "E",
+        "G#",
+        "B"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "E",
+        "fifth": "G#",
+        "seventh": "B"
+      }
+    },
+    "C#7": {
+      "symbol": "C#7",
+      "rootNote": "C#",
+      "quality": "dominant7",
+      "displayName": "C# Dominant 7th",
+      "notes": [
+        "C#",
+        "F",
+        "G#",
+        "B"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "F",
+        "fifth": "G#",
+        "seventh": "B"
+      }
+    },
+    "C#dim7": {
+      "symbol": "C#dim7",
+      "rootNote": "C#",
+      "quality": "diminished7",
+      "displayName": "C# Diminished 7th",
+      "notes": [
+        "C#",
+        "E",
+        "G",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        9
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "E",
+        "fifth": "G",
+        "seventh": "A#"
+      }
+    },
+    "C#m7b5": {
+      "symbol": "C#m7b5",
+      "rootNote": "C#",
+      "quality": "half-diminished7",
+      "displayName": "C# Half-Diminished 7th",
+      "notes": [
+        "C#",
+        "E",
+        "G",
+        "B"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        10
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "E",
+        "fifth": "G",
+        "seventh": "B"
+      }
+    },
+    "C#aug7": {
+      "symbol": "C#aug7",
+      "rootNote": "C#",
+      "quality": "augmented7",
+      "displayName": "C# Augmented 7th",
+      "notes": [
+        "C#",
+        "F",
+        "A",
+        "B"
+      ],
+      "intervals": [
+        0,
+        4,
+        8,
+        10
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "F",
+        "fifth": "A",
+        "seventh": "B"
+      }
+    },
+    "C#maj9": {
+      "symbol": "C#maj9",
+      "rootNote": "C#",
+      "quality": "major9",
+      "displayName": "C# Major 9th",
+      "notes": [
+        "C#",
+        "F",
+        "G#",
+        "C",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "F",
+        "fifth": "G#",
+        "seventh": "C",
+        "ninth": "D#"
+      }
+    },
+    "C#m9": {
+      "symbol": "C#m9",
+      "rootNote": "C#",
+      "quality": "minor9",
+      "displayName": "C# Minor 9th",
+      "notes": [
+        "C#",
+        "E",
+        "G#",
+        "B",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "E",
+        "fifth": "G#",
+        "seventh": "B",
+        "ninth": "D#"
+      }
+    },
+    "C#9": {
+      "symbol": "C#9",
+      "rootNote": "C#",
+      "quality": "dominant9",
+      "displayName": "C# Dominant 9th",
+      "notes": [
+        "C#",
+        "F",
+        "G#",
+        "B",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "F",
+        "fifth": "G#",
+        "seventh": "B",
+        "ninth": "D#"
+      }
+    },
+    "C#maj11": {
+      "symbol": "C#maj11",
+      "rootNote": "C#",
+      "quality": "major11",
+      "displayName": "C# Major 11th",
+      "notes": [
+        "C#",
+        "F",
+        "G#",
+        "C",
+        "D#",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "F",
+        "fifth": "G#",
+        "seventh": "C",
+        "ninth": "D#",
+        "eleventh": "F#"
+      }
+    },
+    "C#m11": {
+      "symbol": "C#m11",
+      "rootNote": "C#",
+      "quality": "minor11",
+      "displayName": "C# Minor 11th",
+      "notes": [
+        "C#",
+        "E",
+        "G#",
+        "B",
+        "D#",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "E",
+        "fifth": "G#",
+        "seventh": "B",
+        "ninth": "D#",
+        "eleventh": "F#"
+      }
+    },
+    "C#11": {
+      "symbol": "C#11",
+      "rootNote": "C#",
+      "quality": "dominant11",
+      "displayName": "C# Dominant 11th",
+      "notes": [
+        "C#",
+        "F",
+        "G#",
+        "B",
+        "D#",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "F",
+        "fifth": "G#",
+        "seventh": "B",
+        "ninth": "D#",
+        "eleventh": "F#"
+      }
+    },
+    "C#maj13": {
+      "symbol": "C#maj13",
+      "rootNote": "C#",
+      "quality": "major13",
+      "displayName": "C# Major 13th",
+      "notes": [
+        "C#",
+        "F",
+        "G#",
+        "C",
+        "D#",
+        "F#",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "F",
+        "fifth": "G#",
+        "seventh": "C",
+        "ninth": "D#",
+        "eleventh": "F#",
+        "thirteenth": "A#"
+      }
+    },
+    "C#m13": {
+      "symbol": "C#m13",
+      "rootNote": "C#",
+      "quality": "minor13",
+      "displayName": "C# Minor 13th",
+      "notes": [
+        "C#",
+        "E",
+        "G#",
+        "B",
+        "D#",
+        "F#",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "E",
+        "fifth": "G#",
+        "seventh": "B",
+        "ninth": "D#",
+        "eleventh": "F#",
+        "thirteenth": "A#"
+      }
+    },
+    "C#13": {
+      "symbol": "C#13",
+      "rootNote": "C#",
+      "quality": "dominant13",
+      "displayName": "C# Dominant 13th",
+      "notes": [
+        "C#",
+        "F",
+        "G#",
+        "B",
+        "D#",
+        "F#",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "F",
+        "fifth": "G#",
+        "seventh": "B",
+        "ninth": "D#",
+        "eleventh": "F#",
+        "thirteenth": "A#"
+      }
+    },
+    "C#sus2": {
+      "symbol": "C#sus2",
+      "rootNote": "C#",
+      "quality": "sus2",
+      "displayName": "C# Suspended 2nd",
+      "notes": [
+        "C#",
+        "D#",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        2,
+        7
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "D#",
+        "fifth": "G#"
+      }
+    },
+    "C#sus4": {
+      "symbol": "C#sus4",
+      "rootNote": "C#",
+      "quality": "sus4",
+      "displayName": "C# Suspended 4th",
+      "notes": [
+        "C#",
+        "F#",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        5,
+        7
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "F#",
+        "fifth": "G#"
+      }
+    },
+    "C#6": {
+      "symbol": "C#6",
+      "rootNote": "C#",
+      "quality": "6",
+      "displayName": "C# Major 6th",
+      "notes": [
+        "C#",
+        "F",
+        "G#",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "F",
+        "fifth": "G#",
+        "seventh": "A#"
+      }
+    },
+    "C#m6": {
+      "symbol": "C#m6",
+      "rootNote": "C#",
+      "quality": "minor6",
+      "displayName": "C# Minor 6th",
+      "notes": [
+        "C#",
+        "E",
+        "G#",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "E",
+        "fifth": "G#",
+        "seventh": "A#"
+      }
+    },
+    "C#add9": {
+      "symbol": "C#add9",
+      "rootNote": "C#",
+      "quality": "add9",
+      "displayName": "C# Add 9",
+      "notes": [
+        "C#",
+        "F",
+        "G#",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "F",
+        "fifth": "G#",
+        "seventh": "D#"
+      }
+    },
+    "C#madd9": {
+      "symbol": "C#madd9",
+      "rootNote": "C#",
+      "quality": "minor-add9",
+      "displayName": "C# Minor Add 9",
+      "notes": [
+        "C#",
+        "E",
+        "G#",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "C#",
+        "third": "E",
+        "fifth": "G#",
+        "seventh": "D#"
+      }
+    },
+    "D": {
+      "symbol": "D",
+      "rootNote": "D",
+      "quality": "major",
+      "displayName": "D Major",
+      "notes": [
+        "D",
+        "F#",
+        "A"
+      ],
+      "intervals": [
+        0,
+        4,
+        7
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "F#",
+        "fifth": "A"
+      }
+    },
+    "Dm": {
+      "symbol": "Dm",
+      "rootNote": "D",
+      "quality": "minor",
+      "displayName": "D Minor",
+      "notes": [
+        "D",
+        "F",
+        "A"
+      ],
+      "intervals": [
+        0,
+        3,
+        7
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "F",
+        "fifth": "A"
+      }
+    },
+    "Ddim": {
+      "symbol": "Ddim",
+      "rootNote": "D",
+      "quality": "diminished",
+      "displayName": "D Diminished",
+      "notes": [
+        "D",
+        "F",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        3,
+        6
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "F",
+        "fifth": "G#"
+      }
+    },
+    "Daug": {
+      "symbol": "Daug",
+      "rootNote": "D",
+      "quality": "augmented",
+      "displayName": "D Augmented",
+      "notes": [
+        "D",
+        "F#",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        4,
+        8
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "F#",
+        "fifth": "A#"
+      }
+    },
+    "Dmaj7": {
+      "symbol": "Dmaj7",
+      "rootNote": "D",
+      "quality": "major7",
+      "displayName": "D Major 7th",
+      "notes": [
+        "D",
+        "F#",
+        "A",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "F#",
+        "fifth": "A",
+        "seventh": "C#"
+      }
+    },
+    "Dm7": {
+      "symbol": "Dm7",
+      "rootNote": "D",
+      "quality": "minor7",
+      "displayName": "D Minor 7th",
+      "notes": [
+        "D",
+        "F",
+        "A",
+        "C"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "F",
+        "fifth": "A",
+        "seventh": "C"
+      }
+    },
+    "D7": {
+      "symbol": "D7",
+      "rootNote": "D",
+      "quality": "dominant7",
+      "displayName": "D Dominant 7th",
+      "notes": [
+        "D",
+        "F#",
+        "A",
+        "C"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "F#",
+        "fifth": "A",
+        "seventh": "C"
+      }
+    },
+    "Ddim7": {
+      "symbol": "Ddim7",
+      "rootNote": "D",
+      "quality": "diminished7",
+      "displayName": "D Diminished 7th",
+      "notes": [
+        "D",
+        "F",
+        "G#",
+        "B"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        9
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "F",
+        "fifth": "G#",
+        "seventh": "B"
+      }
+    },
+    "Dm7b5": {
+      "symbol": "Dm7b5",
+      "rootNote": "D",
+      "quality": "half-diminished7",
+      "displayName": "D Half-Diminished 7th",
+      "notes": [
+        "D",
+        "F",
+        "G#",
+        "C"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        10
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "F",
+        "fifth": "G#",
+        "seventh": "C"
+      }
+    },
+    "Daug7": {
+      "symbol": "Daug7",
+      "rootNote": "D",
+      "quality": "augmented7",
+      "displayName": "D Augmented 7th",
+      "notes": [
+        "D",
+        "F#",
+        "A#",
+        "C"
+      ],
+      "intervals": [
+        0,
+        4,
+        8,
+        10
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "F#",
+        "fifth": "A#",
+        "seventh": "C"
+      }
+    },
+    "Dmaj9": {
+      "symbol": "Dmaj9",
+      "rootNote": "D",
+      "quality": "major9",
+      "displayName": "D Major 9th",
+      "notes": [
+        "D",
+        "F#",
+        "A",
+        "C#",
+        "E"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "F#",
+        "fifth": "A",
+        "seventh": "C#",
+        "ninth": "E"
+      }
+    },
+    "Dm9": {
+      "symbol": "Dm9",
+      "rootNote": "D",
+      "quality": "minor9",
+      "displayName": "D Minor 9th",
+      "notes": [
+        "D",
+        "F",
+        "A",
+        "C",
+        "E"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "F",
+        "fifth": "A",
+        "seventh": "C",
+        "ninth": "E"
+      }
+    },
+    "D9": {
+      "symbol": "D9",
+      "rootNote": "D",
+      "quality": "dominant9",
+      "displayName": "D Dominant 9th",
+      "notes": [
+        "D",
+        "F#",
+        "A",
+        "C",
+        "E"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "F#",
+        "fifth": "A",
+        "seventh": "C",
+        "ninth": "E"
+      }
+    },
+    "Dmaj11": {
+      "symbol": "Dmaj11",
+      "rootNote": "D",
+      "quality": "major11",
+      "displayName": "D Major 11th",
+      "notes": [
+        "D",
+        "F#",
+        "A",
+        "C#",
+        "E",
+        "G"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "F#",
+        "fifth": "A",
+        "seventh": "C#",
+        "ninth": "E",
+        "eleventh": "G"
+      }
+    },
+    "Dm11": {
+      "symbol": "Dm11",
+      "rootNote": "D",
+      "quality": "minor11",
+      "displayName": "D Minor 11th",
+      "notes": [
+        "D",
+        "F",
+        "A",
+        "C",
+        "E",
+        "G"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "F",
+        "fifth": "A",
+        "seventh": "C",
+        "ninth": "E",
+        "eleventh": "G"
+      }
+    },
+    "D11": {
+      "symbol": "D11",
+      "rootNote": "D",
+      "quality": "dominant11",
+      "displayName": "D Dominant 11th",
+      "notes": [
+        "D",
+        "F#",
+        "A",
+        "C",
+        "E",
+        "G"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "F#",
+        "fifth": "A",
+        "seventh": "C",
+        "ninth": "E",
+        "eleventh": "G"
+      }
+    },
+    "Dmaj13": {
+      "symbol": "Dmaj13",
+      "rootNote": "D",
+      "quality": "major13",
+      "displayName": "D Major 13th",
+      "notes": [
+        "D",
+        "F#",
+        "A",
+        "C#",
+        "E",
+        "G",
+        "B"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "F#",
+        "fifth": "A",
+        "seventh": "C#",
+        "ninth": "E",
+        "eleventh": "G",
+        "thirteenth": "B"
+      }
+    },
+    "Dm13": {
+      "symbol": "Dm13",
+      "rootNote": "D",
+      "quality": "minor13",
+      "displayName": "D Minor 13th",
+      "notes": [
+        "D",
+        "F",
+        "A",
+        "C",
+        "E",
+        "G",
+        "B"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "F",
+        "fifth": "A",
+        "seventh": "C",
+        "ninth": "E",
+        "eleventh": "G",
+        "thirteenth": "B"
+      }
+    },
+    "D13": {
+      "symbol": "D13",
+      "rootNote": "D",
+      "quality": "dominant13",
+      "displayName": "D Dominant 13th",
+      "notes": [
+        "D",
+        "F#",
+        "A",
+        "C",
+        "E",
+        "G",
+        "B"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "F#",
+        "fifth": "A",
+        "seventh": "C",
+        "ninth": "E",
+        "eleventh": "G",
+        "thirteenth": "B"
+      }
+    },
+    "Dsus2": {
+      "symbol": "Dsus2",
+      "rootNote": "D",
+      "quality": "sus2",
+      "displayName": "D Suspended 2nd",
+      "notes": [
+        "D",
+        "E",
+        "A"
+      ],
+      "intervals": [
+        0,
+        2,
+        7
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "E",
+        "fifth": "A"
+      }
+    },
+    "Dsus4": {
+      "symbol": "Dsus4",
+      "rootNote": "D",
+      "quality": "sus4",
+      "displayName": "D Suspended 4th",
+      "notes": [
+        "D",
+        "G",
+        "A"
+      ],
+      "intervals": [
+        0,
+        5,
+        7
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "G",
+        "fifth": "A"
+      }
+    },
+    "D6": {
+      "symbol": "D6",
+      "rootNote": "D",
+      "quality": "6",
+      "displayName": "D Major 6th",
+      "notes": [
+        "D",
+        "F#",
+        "A",
+        "B"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "F#",
+        "fifth": "A",
+        "seventh": "B"
+      }
+    },
+    "Dm6": {
+      "symbol": "Dm6",
+      "rootNote": "D",
+      "quality": "minor6",
+      "displayName": "D Minor 6th",
+      "notes": [
+        "D",
+        "F",
+        "A",
+        "B"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "F",
+        "fifth": "A",
+        "seventh": "B"
+      }
+    },
+    "Dadd9": {
+      "symbol": "Dadd9",
+      "rootNote": "D",
+      "quality": "add9",
+      "displayName": "D Add 9",
+      "notes": [
+        "D",
+        "F#",
+        "A",
+        "E"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "F#",
+        "fifth": "A",
+        "seventh": "E"
+      }
+    },
+    "Dmadd9": {
+      "symbol": "Dmadd9",
+      "rootNote": "D",
+      "quality": "minor-add9",
+      "displayName": "D Minor Add 9",
+      "notes": [
+        "D",
+        "F",
+        "A",
+        "E"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "D",
+        "third": "F",
+        "fifth": "A",
+        "seventh": "E"
+      }
+    },
+    "D#": {
+      "symbol": "D#",
+      "rootNote": "D#",
+      "quality": "major",
+      "displayName": "D# Major",
+      "notes": [
+        "D#",
+        "G",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "G",
+        "fifth": "A#"
+      }
+    },
+    "D#m": {
+      "symbol": "D#m",
+      "rootNote": "D#",
+      "quality": "minor",
+      "displayName": "D# Minor",
+      "notes": [
+        "D#",
+        "F#",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "F#",
+        "fifth": "A#"
+      }
+    },
+    "D#dim": {
+      "symbol": "D#dim",
+      "rootNote": "D#",
+      "quality": "diminished",
+      "displayName": "D# Diminished",
+      "notes": [
+        "D#",
+        "F#",
+        "A"
+      ],
+      "intervals": [
+        0,
+        3,
+        6
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "F#",
+        "fifth": "A"
+      }
+    },
+    "D#aug": {
+      "symbol": "D#aug",
+      "rootNote": "D#",
+      "quality": "augmented",
+      "displayName": "D# Augmented",
+      "notes": [
+        "D#",
+        "G",
+        "B"
+      ],
+      "intervals": [
+        0,
+        4,
+        8
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "G",
+        "fifth": "B"
+      }
+    },
+    "D#maj7": {
+      "symbol": "D#maj7",
+      "rootNote": "D#",
+      "quality": "major7",
+      "displayName": "D# Major 7th",
+      "notes": [
+        "D#",
+        "G",
+        "A#",
+        "D"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "G",
+        "fifth": "A#",
+        "seventh": "D"
+      }
+    },
+    "D#m7": {
+      "symbol": "D#m7",
+      "rootNote": "D#",
+      "quality": "minor7",
+      "displayName": "D# Minor 7th",
+      "notes": [
+        "D#",
+        "F#",
+        "A#",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "F#",
+        "fifth": "A#",
+        "seventh": "C#"
+      }
+    },
+    "D#7": {
+      "symbol": "D#7",
+      "rootNote": "D#",
+      "quality": "dominant7",
+      "displayName": "D# Dominant 7th",
+      "notes": [
+        "D#",
+        "G",
+        "A#",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "G",
+        "fifth": "A#",
+        "seventh": "C#"
+      }
+    },
+    "D#dim7": {
+      "symbol": "D#dim7",
+      "rootNote": "D#",
+      "quality": "diminished7",
+      "displayName": "D# Diminished 7th",
+      "notes": [
+        "D#",
+        "F#",
+        "A",
+        "C"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        9
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "F#",
+        "fifth": "A",
+        "seventh": "C"
+      }
+    },
+    "D#m7b5": {
+      "symbol": "D#m7b5",
+      "rootNote": "D#",
+      "quality": "half-diminished7",
+      "displayName": "D# Half-Diminished 7th",
+      "notes": [
+        "D#",
+        "F#",
+        "A",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        10
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "F#",
+        "fifth": "A",
+        "seventh": "C#"
+      }
+    },
+    "D#aug7": {
+      "symbol": "D#aug7",
+      "rootNote": "D#",
+      "quality": "augmented7",
+      "displayName": "D# Augmented 7th",
+      "notes": [
+        "D#",
+        "G",
+        "B",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        4,
+        8,
+        10
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "G",
+        "fifth": "B",
+        "seventh": "C#"
+      }
+    },
+    "D#maj9": {
+      "symbol": "D#maj9",
+      "rootNote": "D#",
+      "quality": "major9",
+      "displayName": "D# Major 9th",
+      "notes": [
+        "D#",
+        "G",
+        "A#",
+        "D",
+        "F"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "G",
+        "fifth": "A#",
+        "seventh": "D",
+        "ninth": "F"
+      }
+    },
+    "D#m9": {
+      "symbol": "D#m9",
+      "rootNote": "D#",
+      "quality": "minor9",
+      "displayName": "D# Minor 9th",
+      "notes": [
+        "D#",
+        "F#",
+        "A#",
+        "C#",
+        "F"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "F#",
+        "fifth": "A#",
+        "seventh": "C#",
+        "ninth": "F"
+      }
+    },
+    "D#9": {
+      "symbol": "D#9",
+      "rootNote": "D#",
+      "quality": "dominant9",
+      "displayName": "D# Dominant 9th",
+      "notes": [
+        "D#",
+        "G",
+        "A#",
+        "C#",
+        "F"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "G",
+        "fifth": "A#",
+        "seventh": "C#",
+        "ninth": "F"
+      }
+    },
+    "D#maj11": {
+      "symbol": "D#maj11",
+      "rootNote": "D#",
+      "quality": "major11",
+      "displayName": "D# Major 11th",
+      "notes": [
+        "D#",
+        "G",
+        "A#",
+        "D",
+        "F",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "G",
+        "fifth": "A#",
+        "seventh": "D",
+        "ninth": "F",
+        "eleventh": "G#"
+      }
+    },
+    "D#m11": {
+      "symbol": "D#m11",
+      "rootNote": "D#",
+      "quality": "minor11",
+      "displayName": "D# Minor 11th",
+      "notes": [
+        "D#",
+        "F#",
+        "A#",
+        "C#",
+        "F",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "F#",
+        "fifth": "A#",
+        "seventh": "C#",
+        "ninth": "F",
+        "eleventh": "G#"
+      }
+    },
+    "D#11": {
+      "symbol": "D#11",
+      "rootNote": "D#",
+      "quality": "dominant11",
+      "displayName": "D# Dominant 11th",
+      "notes": [
+        "D#",
+        "G",
+        "A#",
+        "C#",
+        "F",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "G",
+        "fifth": "A#",
+        "seventh": "C#",
+        "ninth": "F",
+        "eleventh": "G#"
+      }
+    },
+    "D#maj13": {
+      "symbol": "D#maj13",
+      "rootNote": "D#",
+      "quality": "major13",
+      "displayName": "D# Major 13th",
+      "notes": [
+        "D#",
+        "G",
+        "A#",
+        "D",
+        "F",
+        "G#",
+        "C"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "G",
+        "fifth": "A#",
+        "seventh": "D",
+        "ninth": "F",
+        "eleventh": "G#",
+        "thirteenth": "C"
+      }
+    },
+    "D#m13": {
+      "symbol": "D#m13",
+      "rootNote": "D#",
+      "quality": "minor13",
+      "displayName": "D# Minor 13th",
+      "notes": [
+        "D#",
+        "F#",
+        "A#",
+        "C#",
+        "F",
+        "G#",
+        "C"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "F#",
+        "fifth": "A#",
+        "seventh": "C#",
+        "ninth": "F",
+        "eleventh": "G#",
+        "thirteenth": "C"
+      }
+    },
+    "D#13": {
+      "symbol": "D#13",
+      "rootNote": "D#",
+      "quality": "dominant13",
+      "displayName": "D# Dominant 13th",
+      "notes": [
+        "D#",
+        "G",
+        "A#",
+        "C#",
+        "F",
+        "G#",
+        "C"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "G",
+        "fifth": "A#",
+        "seventh": "C#",
+        "ninth": "F",
+        "eleventh": "G#",
+        "thirteenth": "C"
+      }
+    },
+    "D#sus2": {
+      "symbol": "D#sus2",
+      "rootNote": "D#",
+      "quality": "sus2",
+      "displayName": "D# Suspended 2nd",
+      "notes": [
+        "D#",
+        "F",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        2,
+        7
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "F",
+        "fifth": "A#"
+      }
+    },
+    "D#sus4": {
+      "symbol": "D#sus4",
+      "rootNote": "D#",
+      "quality": "sus4",
+      "displayName": "D# Suspended 4th",
+      "notes": [
+        "D#",
+        "G#",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        5,
+        7
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "G#",
+        "fifth": "A#"
+      }
+    },
+    "D#6": {
+      "symbol": "D#6",
+      "rootNote": "D#",
+      "quality": "6",
+      "displayName": "D# Major 6th",
+      "notes": [
+        "D#",
+        "G",
+        "A#",
+        "C"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "G",
+        "fifth": "A#",
+        "seventh": "C"
+      }
+    },
+    "D#m6": {
+      "symbol": "D#m6",
+      "rootNote": "D#",
+      "quality": "minor6",
+      "displayName": "D# Minor 6th",
+      "notes": [
+        "D#",
+        "F#",
+        "A#",
+        "C"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "F#",
+        "fifth": "A#",
+        "seventh": "C"
+      }
+    },
+    "D#add9": {
+      "symbol": "D#add9",
+      "rootNote": "D#",
+      "quality": "add9",
+      "displayName": "D# Add 9",
+      "notes": [
+        "D#",
+        "G",
+        "A#",
+        "F"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "G",
+        "fifth": "A#",
+        "seventh": "F"
+      }
+    },
+    "D#madd9": {
+      "symbol": "D#madd9",
+      "rootNote": "D#",
+      "quality": "minor-add9",
+      "displayName": "D# Minor Add 9",
+      "notes": [
+        "D#",
+        "F#",
+        "A#",
+        "F"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "D#",
+        "third": "F#",
+        "fifth": "A#",
+        "seventh": "F"
+      }
+    },
+    "E": {
+      "symbol": "E",
+      "rootNote": "E",
+      "quality": "major",
+      "displayName": "E Major",
+      "notes": [
+        "E",
+        "G#",
+        "B"
+      ],
+      "intervals": [
+        0,
+        4,
+        7
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "G#",
+        "fifth": "B"
+      }
+    },
+    "Em": {
+      "symbol": "Em",
+      "rootNote": "E",
+      "quality": "minor",
+      "displayName": "E Minor",
+      "notes": [
+        "E",
+        "G",
+        "B"
+      ],
+      "intervals": [
+        0,
+        3,
+        7
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "G",
+        "fifth": "B"
+      }
+    },
+    "Edim": {
+      "symbol": "Edim",
+      "rootNote": "E",
+      "quality": "diminished",
+      "displayName": "E Diminished",
+      "notes": [
+        "E",
+        "G",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        3,
+        6
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "G",
+        "fifth": "A#"
+      }
+    },
+    "Eaug": {
+      "symbol": "Eaug",
+      "rootNote": "E",
+      "quality": "augmented",
+      "displayName": "E Augmented",
+      "notes": [
+        "E",
+        "G#",
+        "C"
+      ],
+      "intervals": [
+        0,
+        4,
+        8
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "G#",
+        "fifth": "C"
+      }
+    },
+    "Emaj7": {
+      "symbol": "Emaj7",
+      "rootNote": "E",
+      "quality": "major7",
+      "displayName": "E Major 7th",
+      "notes": [
+        "E",
+        "G#",
+        "B",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "G#",
+        "fifth": "B",
+        "seventh": "D#"
+      }
+    },
+    "Em7": {
+      "symbol": "Em7",
+      "rootNote": "E",
+      "quality": "minor7",
+      "displayName": "E Minor 7th",
+      "notes": [
+        "E",
+        "G",
+        "B",
+        "D"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "G",
+        "fifth": "B",
+        "seventh": "D"
+      }
+    },
+    "E7": {
+      "symbol": "E7",
+      "rootNote": "E",
+      "quality": "dominant7",
+      "displayName": "E Dominant 7th",
+      "notes": [
+        "E",
+        "G#",
+        "B",
+        "D"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "G#",
+        "fifth": "B",
+        "seventh": "D"
+      }
+    },
+    "Edim7": {
+      "symbol": "Edim7",
+      "rootNote": "E",
+      "quality": "diminished7",
+      "displayName": "E Diminished 7th",
+      "notes": [
+        "E",
+        "G",
+        "A#",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        9
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "G",
+        "fifth": "A#",
+        "seventh": "C#"
+      }
+    },
+    "Em7b5": {
+      "symbol": "Em7b5",
+      "rootNote": "E",
+      "quality": "half-diminished7",
+      "displayName": "E Half-Diminished 7th",
+      "notes": [
+        "E",
+        "G",
+        "A#",
+        "D"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        10
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "G",
+        "fifth": "A#",
+        "seventh": "D"
+      }
+    },
+    "Eaug7": {
+      "symbol": "Eaug7",
+      "rootNote": "E",
+      "quality": "augmented7",
+      "displayName": "E Augmented 7th",
+      "notes": [
+        "E",
+        "G#",
+        "C",
+        "D"
+      ],
+      "intervals": [
+        0,
+        4,
+        8,
+        10
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "G#",
+        "fifth": "C",
+        "seventh": "D"
+      }
+    },
+    "Emaj9": {
+      "symbol": "Emaj9",
+      "rootNote": "E",
+      "quality": "major9",
+      "displayName": "E Major 9th",
+      "notes": [
+        "E",
+        "G#",
+        "B",
+        "D#",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "G#",
+        "fifth": "B",
+        "seventh": "D#",
+        "ninth": "F#"
+      }
+    },
+    "Em9": {
+      "symbol": "Em9",
+      "rootNote": "E",
+      "quality": "minor9",
+      "displayName": "E Minor 9th",
+      "notes": [
+        "E",
+        "G",
+        "B",
+        "D",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "G",
+        "fifth": "B",
+        "seventh": "D",
+        "ninth": "F#"
+      }
+    },
+    "E9": {
+      "symbol": "E9",
+      "rootNote": "E",
+      "quality": "dominant9",
+      "displayName": "E Dominant 9th",
+      "notes": [
+        "E",
+        "G#",
+        "B",
+        "D",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "G#",
+        "fifth": "B",
+        "seventh": "D",
+        "ninth": "F#"
+      }
+    },
+    "Emaj11": {
+      "symbol": "Emaj11",
+      "rootNote": "E",
+      "quality": "major11",
+      "displayName": "E Major 11th",
+      "notes": [
+        "E",
+        "G#",
+        "B",
+        "D#",
+        "F#",
+        "A"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "G#",
+        "fifth": "B",
+        "seventh": "D#",
+        "ninth": "F#",
+        "eleventh": "A"
+      }
+    },
+    "Em11": {
+      "symbol": "Em11",
+      "rootNote": "E",
+      "quality": "minor11",
+      "displayName": "E Minor 11th",
+      "notes": [
+        "E",
+        "G",
+        "B",
+        "D",
+        "F#",
+        "A"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "G",
+        "fifth": "B",
+        "seventh": "D",
+        "ninth": "F#",
+        "eleventh": "A"
+      }
+    },
+    "E11": {
+      "symbol": "E11",
+      "rootNote": "E",
+      "quality": "dominant11",
+      "displayName": "E Dominant 11th",
+      "notes": [
+        "E",
+        "G#",
+        "B",
+        "D",
+        "F#",
+        "A"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "G#",
+        "fifth": "B",
+        "seventh": "D",
+        "ninth": "F#",
+        "eleventh": "A"
+      }
+    },
+    "Emaj13": {
+      "symbol": "Emaj13",
+      "rootNote": "E",
+      "quality": "major13",
+      "displayName": "E Major 13th",
+      "notes": [
+        "E",
+        "G#",
+        "B",
+        "D#",
+        "F#",
+        "A",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "G#",
+        "fifth": "B",
+        "seventh": "D#",
+        "ninth": "F#",
+        "eleventh": "A",
+        "thirteenth": "C#"
+      }
+    },
+    "Em13": {
+      "symbol": "Em13",
+      "rootNote": "E",
+      "quality": "minor13",
+      "displayName": "E Minor 13th",
+      "notes": [
+        "E",
+        "G",
+        "B",
+        "D",
+        "F#",
+        "A",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "G",
+        "fifth": "B",
+        "seventh": "D",
+        "ninth": "F#",
+        "eleventh": "A",
+        "thirteenth": "C#"
+      }
+    },
+    "E13": {
+      "symbol": "E13",
+      "rootNote": "E",
+      "quality": "dominant13",
+      "displayName": "E Dominant 13th",
+      "notes": [
+        "E",
+        "G#",
+        "B",
+        "D",
+        "F#",
+        "A",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "G#",
+        "fifth": "B",
+        "seventh": "D",
+        "ninth": "F#",
+        "eleventh": "A",
+        "thirteenth": "C#"
+      }
+    },
+    "Esus2": {
+      "symbol": "Esus2",
+      "rootNote": "E",
+      "quality": "sus2",
+      "displayName": "E Suspended 2nd",
+      "notes": [
+        "E",
+        "F#",
+        "B"
+      ],
+      "intervals": [
+        0,
+        2,
+        7
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "F#",
+        "fifth": "B"
+      }
+    },
+    "Esus4": {
+      "symbol": "Esus4",
+      "rootNote": "E",
+      "quality": "sus4",
+      "displayName": "E Suspended 4th",
+      "notes": [
+        "E",
+        "A",
+        "B"
+      ],
+      "intervals": [
+        0,
+        5,
+        7
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "A",
+        "fifth": "B"
+      }
+    },
+    "E6": {
+      "symbol": "E6",
+      "rootNote": "E",
+      "quality": "6",
+      "displayName": "E Major 6th",
+      "notes": [
+        "E",
+        "G#",
+        "B",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "G#",
+        "fifth": "B",
+        "seventh": "C#"
+      }
+    },
+    "Em6": {
+      "symbol": "Em6",
+      "rootNote": "E",
+      "quality": "minor6",
+      "displayName": "E Minor 6th",
+      "notes": [
+        "E",
+        "G",
+        "B",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "G",
+        "fifth": "B",
+        "seventh": "C#"
+      }
+    },
+    "Eadd9": {
+      "symbol": "Eadd9",
+      "rootNote": "E",
+      "quality": "add9",
+      "displayName": "E Add 9",
+      "notes": [
+        "E",
+        "G#",
+        "B",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "G#",
+        "fifth": "B",
+        "seventh": "F#"
+      }
+    },
+    "Emadd9": {
+      "symbol": "Emadd9",
+      "rootNote": "E",
+      "quality": "minor-add9",
+      "displayName": "E Minor Add 9",
+      "notes": [
+        "E",
+        "G",
+        "B",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "E",
+        "third": "G",
+        "fifth": "B",
+        "seventh": "F#"
+      }
+    },
+    "F": {
+      "symbol": "F",
+      "rootNote": "F",
+      "quality": "major",
+      "displayName": "F Major",
+      "notes": [
+        "F",
+        "A",
+        "C"
+      ],
+      "intervals": [
+        0,
+        4,
+        7
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "A",
+        "fifth": "C"
+      }
+    },
+    "Fm": {
+      "symbol": "Fm",
+      "rootNote": "F",
+      "quality": "minor",
+      "displayName": "F Minor",
+      "notes": [
+        "F",
+        "G#",
+        "C"
+      ],
+      "intervals": [
+        0,
+        3,
+        7
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "G#",
+        "fifth": "C"
+      }
+    },
+    "Fdim": {
+      "symbol": "Fdim",
+      "rootNote": "F",
+      "quality": "diminished",
+      "displayName": "F Diminished",
+      "notes": [
+        "F",
+        "G#",
+        "B"
+      ],
+      "intervals": [
+        0,
+        3,
+        6
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "G#",
+        "fifth": "B"
+      }
+    },
+    "Faug": {
+      "symbol": "Faug",
+      "rootNote": "F",
+      "quality": "augmented",
+      "displayName": "F Augmented",
+      "notes": [
+        "F",
+        "A",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        4,
+        8
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "A",
+        "fifth": "C#"
+      }
+    },
+    "Fmaj7": {
+      "symbol": "Fmaj7",
+      "rootNote": "F",
+      "quality": "major7",
+      "displayName": "F Major 7th",
+      "notes": [
+        "F",
+        "A",
+        "C",
+        "E"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "A",
+        "fifth": "C",
+        "seventh": "E"
+      }
+    },
+    "Fm7": {
+      "symbol": "Fm7",
+      "rootNote": "F",
+      "quality": "minor7",
+      "displayName": "F Minor 7th",
+      "notes": [
+        "F",
+        "G#",
+        "C",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "G#",
+        "fifth": "C",
+        "seventh": "D#"
+      }
+    },
+    "F7": {
+      "symbol": "F7",
+      "rootNote": "F",
+      "quality": "dominant7",
+      "displayName": "F Dominant 7th",
+      "notes": [
+        "F",
+        "A",
+        "C",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "A",
+        "fifth": "C",
+        "seventh": "D#"
+      }
+    },
+    "Fdim7": {
+      "symbol": "Fdim7",
+      "rootNote": "F",
+      "quality": "diminished7",
+      "displayName": "F Diminished 7th",
+      "notes": [
+        "F",
+        "G#",
+        "B",
+        "D"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        9
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "G#",
+        "fifth": "B",
+        "seventh": "D"
+      }
+    },
+    "Fm7b5": {
+      "symbol": "Fm7b5",
+      "rootNote": "F",
+      "quality": "half-diminished7",
+      "displayName": "F Half-Diminished 7th",
+      "notes": [
+        "F",
+        "G#",
+        "B",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        10
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "G#",
+        "fifth": "B",
+        "seventh": "D#"
+      }
+    },
+    "Faug7": {
+      "symbol": "Faug7",
+      "rootNote": "F",
+      "quality": "augmented7",
+      "displayName": "F Augmented 7th",
+      "notes": [
+        "F",
+        "A",
+        "C#",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        4,
+        8,
+        10
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "A",
+        "fifth": "C#",
+        "seventh": "D#"
+      }
+    },
+    "Fmaj9": {
+      "symbol": "Fmaj9",
+      "rootNote": "F",
+      "quality": "major9",
+      "displayName": "F Major 9th",
+      "notes": [
+        "F",
+        "A",
+        "C",
+        "E",
+        "G"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "A",
+        "fifth": "C",
+        "seventh": "E",
+        "ninth": "G"
+      }
+    },
+    "Fm9": {
+      "symbol": "Fm9",
+      "rootNote": "F",
+      "quality": "minor9",
+      "displayName": "F Minor 9th",
+      "notes": [
+        "F",
+        "G#",
+        "C",
+        "D#",
+        "G"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "G#",
+        "fifth": "C",
+        "seventh": "D#",
+        "ninth": "G"
+      }
+    },
+    "F9": {
+      "symbol": "F9",
+      "rootNote": "F",
+      "quality": "dominant9",
+      "displayName": "F Dominant 9th",
+      "notes": [
+        "F",
+        "A",
+        "C",
+        "D#",
+        "G"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "A",
+        "fifth": "C",
+        "seventh": "D#",
+        "ninth": "G"
+      }
+    },
+    "Fmaj11": {
+      "symbol": "Fmaj11",
+      "rootNote": "F",
+      "quality": "major11",
+      "displayName": "F Major 11th",
+      "notes": [
+        "F",
+        "A",
+        "C",
+        "E",
+        "G",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "A",
+        "fifth": "C",
+        "seventh": "E",
+        "ninth": "G",
+        "eleventh": "A#"
+      }
+    },
+    "Fm11": {
+      "symbol": "Fm11",
+      "rootNote": "F",
+      "quality": "minor11",
+      "displayName": "F Minor 11th",
+      "notes": [
+        "F",
+        "G#",
+        "C",
+        "D#",
+        "G",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "G#",
+        "fifth": "C",
+        "seventh": "D#",
+        "ninth": "G",
+        "eleventh": "A#"
+      }
+    },
+    "F11": {
+      "symbol": "F11",
+      "rootNote": "F",
+      "quality": "dominant11",
+      "displayName": "F Dominant 11th",
+      "notes": [
+        "F",
+        "A",
+        "C",
+        "D#",
+        "G",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "A",
+        "fifth": "C",
+        "seventh": "D#",
+        "ninth": "G",
+        "eleventh": "A#"
+      }
+    },
+    "Fmaj13": {
+      "symbol": "Fmaj13",
+      "rootNote": "F",
+      "quality": "major13",
+      "displayName": "F Major 13th",
+      "notes": [
+        "F",
+        "A",
+        "C",
+        "E",
+        "G",
+        "A#",
+        "D"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "A",
+        "fifth": "C",
+        "seventh": "E",
+        "ninth": "G",
+        "eleventh": "A#",
+        "thirteenth": "D"
+      }
+    },
+    "Fm13": {
+      "symbol": "Fm13",
+      "rootNote": "F",
+      "quality": "minor13",
+      "displayName": "F Minor 13th",
+      "notes": [
+        "F",
+        "G#",
+        "C",
+        "D#",
+        "G",
+        "A#",
+        "D"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "G#",
+        "fifth": "C",
+        "seventh": "D#",
+        "ninth": "G",
+        "eleventh": "A#",
+        "thirteenth": "D"
+      }
+    },
+    "F13": {
+      "symbol": "F13",
+      "rootNote": "F",
+      "quality": "dominant13",
+      "displayName": "F Dominant 13th",
+      "notes": [
+        "F",
+        "A",
+        "C",
+        "D#",
+        "G",
+        "A#",
+        "D"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "A",
+        "fifth": "C",
+        "seventh": "D#",
+        "ninth": "G",
+        "eleventh": "A#",
+        "thirteenth": "D"
+      }
+    },
+    "Fsus2": {
+      "symbol": "Fsus2",
+      "rootNote": "F",
+      "quality": "sus2",
+      "displayName": "F Suspended 2nd",
+      "notes": [
+        "F",
+        "G",
+        "C"
+      ],
+      "intervals": [
+        0,
+        2,
+        7
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "G",
+        "fifth": "C"
+      }
+    },
+    "Fsus4": {
+      "symbol": "Fsus4",
+      "rootNote": "F",
+      "quality": "sus4",
+      "displayName": "F Suspended 4th",
+      "notes": [
+        "F",
+        "A#",
+        "C"
+      ],
+      "intervals": [
+        0,
+        5,
+        7
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "A#",
+        "fifth": "C"
+      }
+    },
+    "F6": {
+      "symbol": "F6",
+      "rootNote": "F",
+      "quality": "6",
+      "displayName": "F Major 6th",
+      "notes": [
+        "F",
+        "A",
+        "C",
+        "D"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "A",
+        "fifth": "C",
+        "seventh": "D"
+      }
+    },
+    "Fm6": {
+      "symbol": "Fm6",
+      "rootNote": "F",
+      "quality": "minor6",
+      "displayName": "F Minor 6th",
+      "notes": [
+        "F",
+        "G#",
+        "C",
+        "D"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "G#",
+        "fifth": "C",
+        "seventh": "D"
+      }
+    },
+    "Fadd9": {
+      "symbol": "Fadd9",
+      "rootNote": "F",
+      "quality": "add9",
+      "displayName": "F Add 9",
+      "notes": [
+        "F",
+        "A",
+        "C",
+        "G"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "A",
+        "fifth": "C",
+        "seventh": "G"
+      }
+    },
+    "Fmadd9": {
+      "symbol": "Fmadd9",
+      "rootNote": "F",
+      "quality": "minor-add9",
+      "displayName": "F Minor Add 9",
+      "notes": [
+        "F",
+        "G#",
+        "C",
+        "G"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "F",
+        "third": "G#",
+        "fifth": "C",
+        "seventh": "G"
+      }
+    },
+    "F#": {
+      "symbol": "F#",
+      "rootNote": "F#",
+      "quality": "major",
+      "displayName": "F# Major",
+      "notes": [
+        "F#",
+        "A#",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "A#",
+        "fifth": "C#"
+      }
+    },
+    "F#m": {
+      "symbol": "F#m",
+      "rootNote": "F#",
+      "quality": "minor",
+      "displayName": "F# Minor",
+      "notes": [
+        "F#",
+        "A",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "A",
+        "fifth": "C#"
+      }
+    },
+    "F#dim": {
+      "symbol": "F#dim",
+      "rootNote": "F#",
+      "quality": "diminished",
+      "displayName": "F# Diminished",
+      "notes": [
+        "F#",
+        "A",
+        "C"
+      ],
+      "intervals": [
+        0,
+        3,
+        6
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "A",
+        "fifth": "C"
+      }
+    },
+    "F#aug": {
+      "symbol": "F#aug",
+      "rootNote": "F#",
+      "quality": "augmented",
+      "displayName": "F# Augmented",
+      "notes": [
+        "F#",
+        "A#",
+        "D"
+      ],
+      "intervals": [
+        0,
+        4,
+        8
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "A#",
+        "fifth": "D"
+      }
+    },
+    "F#maj7": {
+      "symbol": "F#maj7",
+      "rootNote": "F#",
+      "quality": "major7",
+      "displayName": "F# Major 7th",
+      "notes": [
+        "F#",
+        "A#",
+        "C#",
+        "F"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "A#",
+        "fifth": "C#",
+        "seventh": "F"
+      }
+    },
+    "F#m7": {
+      "symbol": "F#m7",
+      "rootNote": "F#",
+      "quality": "minor7",
+      "displayName": "F# Minor 7th",
+      "notes": [
+        "F#",
+        "A",
+        "C#",
+        "E"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "A",
+        "fifth": "C#",
+        "seventh": "E"
+      }
+    },
+    "F#7": {
+      "symbol": "F#7",
+      "rootNote": "F#",
+      "quality": "dominant7",
+      "displayName": "F# Dominant 7th",
+      "notes": [
+        "F#",
+        "A#",
+        "C#",
+        "E"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "A#",
+        "fifth": "C#",
+        "seventh": "E"
+      }
+    },
+    "F#dim7": {
+      "symbol": "F#dim7",
+      "rootNote": "F#",
+      "quality": "diminished7",
+      "displayName": "F# Diminished 7th",
+      "notes": [
+        "F#",
+        "A",
+        "C",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        9
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "A",
+        "fifth": "C",
+        "seventh": "D#"
+      }
+    },
+    "F#m7b5": {
+      "symbol": "F#m7b5",
+      "rootNote": "F#",
+      "quality": "half-diminished7",
+      "displayName": "F# Half-Diminished 7th",
+      "notes": [
+        "F#",
+        "A",
+        "C",
+        "E"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        10
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "A",
+        "fifth": "C",
+        "seventh": "E"
+      }
+    },
+    "F#aug7": {
+      "symbol": "F#aug7",
+      "rootNote": "F#",
+      "quality": "augmented7",
+      "displayName": "F# Augmented 7th",
+      "notes": [
+        "F#",
+        "A#",
+        "D",
+        "E"
+      ],
+      "intervals": [
+        0,
+        4,
+        8,
+        10
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "A#",
+        "fifth": "D",
+        "seventh": "E"
+      }
+    },
+    "F#maj9": {
+      "symbol": "F#maj9",
+      "rootNote": "F#",
+      "quality": "major9",
+      "displayName": "F# Major 9th",
+      "notes": [
+        "F#",
+        "A#",
+        "C#",
+        "F",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "A#",
+        "fifth": "C#",
+        "seventh": "F",
+        "ninth": "G#"
+      }
+    },
+    "F#m9": {
+      "symbol": "F#m9",
+      "rootNote": "F#",
+      "quality": "minor9",
+      "displayName": "F# Minor 9th",
+      "notes": [
+        "F#",
+        "A",
+        "C#",
+        "E",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "A",
+        "fifth": "C#",
+        "seventh": "E",
+        "ninth": "G#"
+      }
+    },
+    "F#9": {
+      "symbol": "F#9",
+      "rootNote": "F#",
+      "quality": "dominant9",
+      "displayName": "F# Dominant 9th",
+      "notes": [
+        "F#",
+        "A#",
+        "C#",
+        "E",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "A#",
+        "fifth": "C#",
+        "seventh": "E",
+        "ninth": "G#"
+      }
+    },
+    "F#maj11": {
+      "symbol": "F#maj11",
+      "rootNote": "F#",
+      "quality": "major11",
+      "displayName": "F# Major 11th",
+      "notes": [
+        "F#",
+        "A#",
+        "C#",
+        "F",
+        "G#",
+        "B"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "A#",
+        "fifth": "C#",
+        "seventh": "F",
+        "ninth": "G#",
+        "eleventh": "B"
+      }
+    },
+    "F#m11": {
+      "symbol": "F#m11",
+      "rootNote": "F#",
+      "quality": "minor11",
+      "displayName": "F# Minor 11th",
+      "notes": [
+        "F#",
+        "A",
+        "C#",
+        "E",
+        "G#",
+        "B"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "A",
+        "fifth": "C#",
+        "seventh": "E",
+        "ninth": "G#",
+        "eleventh": "B"
+      }
+    },
+    "F#11": {
+      "symbol": "F#11",
+      "rootNote": "F#",
+      "quality": "dominant11",
+      "displayName": "F# Dominant 11th",
+      "notes": [
+        "F#",
+        "A#",
+        "C#",
+        "E",
+        "G#",
+        "B"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "A#",
+        "fifth": "C#",
+        "seventh": "E",
+        "ninth": "G#",
+        "eleventh": "B"
+      }
+    },
+    "F#maj13": {
+      "symbol": "F#maj13",
+      "rootNote": "F#",
+      "quality": "major13",
+      "displayName": "F# Major 13th",
+      "notes": [
+        "F#",
+        "A#",
+        "C#",
+        "F",
+        "G#",
+        "B",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "A#",
+        "fifth": "C#",
+        "seventh": "F",
+        "ninth": "G#",
+        "eleventh": "B",
+        "thirteenth": "D#"
+      }
+    },
+    "F#m13": {
+      "symbol": "F#m13",
+      "rootNote": "F#",
+      "quality": "minor13",
+      "displayName": "F# Minor 13th",
+      "notes": [
+        "F#",
+        "A",
+        "C#",
+        "E",
+        "G#",
+        "B",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "A",
+        "fifth": "C#",
+        "seventh": "E",
+        "ninth": "G#",
+        "eleventh": "B",
+        "thirteenth": "D#"
+      }
+    },
+    "F#13": {
+      "symbol": "F#13",
+      "rootNote": "F#",
+      "quality": "dominant13",
+      "displayName": "F# Dominant 13th",
+      "notes": [
+        "F#",
+        "A#",
+        "C#",
+        "E",
+        "G#",
+        "B",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "A#",
+        "fifth": "C#",
+        "seventh": "E",
+        "ninth": "G#",
+        "eleventh": "B",
+        "thirteenth": "D#"
+      }
+    },
+    "F#sus2": {
+      "symbol": "F#sus2",
+      "rootNote": "F#",
+      "quality": "sus2",
+      "displayName": "F# Suspended 2nd",
+      "notes": [
+        "F#",
+        "G#",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        2,
+        7
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "G#",
+        "fifth": "C#"
+      }
+    },
+    "F#sus4": {
+      "symbol": "F#sus4",
+      "rootNote": "F#",
+      "quality": "sus4",
+      "displayName": "F# Suspended 4th",
+      "notes": [
+        "F#",
+        "B",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        5,
+        7
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "B",
+        "fifth": "C#"
+      }
+    },
+    "F#6": {
+      "symbol": "F#6",
+      "rootNote": "F#",
+      "quality": "6",
+      "displayName": "F# Major 6th",
+      "notes": [
+        "F#",
+        "A#",
+        "C#",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "A#",
+        "fifth": "C#",
+        "seventh": "D#"
+      }
+    },
+    "F#m6": {
+      "symbol": "F#m6",
+      "rootNote": "F#",
+      "quality": "minor6",
+      "displayName": "F# Minor 6th",
+      "notes": [
+        "F#",
+        "A",
+        "C#",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "A",
+        "fifth": "C#",
+        "seventh": "D#"
+      }
+    },
+    "F#add9": {
+      "symbol": "F#add9",
+      "rootNote": "F#",
+      "quality": "add9",
+      "displayName": "F# Add 9",
+      "notes": [
+        "F#",
+        "A#",
+        "C#",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "A#",
+        "fifth": "C#",
+        "seventh": "G#"
+      }
+    },
+    "F#madd9": {
+      "symbol": "F#madd9",
+      "rootNote": "F#",
+      "quality": "minor-add9",
+      "displayName": "F# Minor Add 9",
+      "notes": [
+        "F#",
+        "A",
+        "C#",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "F#",
+        "third": "A",
+        "fifth": "C#",
+        "seventh": "G#"
+      }
+    },
+    "G": {
+      "symbol": "G",
+      "rootNote": "G",
+      "quality": "major",
+      "displayName": "G Major",
+      "notes": [
+        "G",
+        "B",
+        "D"
+      ],
+      "intervals": [
+        0,
+        4,
+        7
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "B",
+        "fifth": "D"
+      }
+    },
+    "Gm": {
+      "symbol": "Gm",
+      "rootNote": "G",
+      "quality": "minor",
+      "displayName": "G Minor",
+      "notes": [
+        "G",
+        "A#",
+        "D"
+      ],
+      "intervals": [
+        0,
+        3,
+        7
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "A#",
+        "fifth": "D"
+      }
+    },
+    "Gdim": {
+      "symbol": "Gdim",
+      "rootNote": "G",
+      "quality": "diminished",
+      "displayName": "G Diminished",
+      "notes": [
+        "G",
+        "A#",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        3,
+        6
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "A#",
+        "fifth": "C#"
+      }
+    },
+    "Gaug": {
+      "symbol": "Gaug",
+      "rootNote": "G",
+      "quality": "augmented",
+      "displayName": "G Augmented",
+      "notes": [
+        "G",
+        "B",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        4,
+        8
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "B",
+        "fifth": "D#"
+      }
+    },
+    "Gmaj7": {
+      "symbol": "Gmaj7",
+      "rootNote": "G",
+      "quality": "major7",
+      "displayName": "G Major 7th",
+      "notes": [
+        "G",
+        "B",
+        "D",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "B",
+        "fifth": "D",
+        "seventh": "F#"
+      }
+    },
+    "Gm7": {
+      "symbol": "Gm7",
+      "rootNote": "G",
+      "quality": "minor7",
+      "displayName": "G Minor 7th",
+      "notes": [
+        "G",
+        "A#",
+        "D",
+        "F"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "A#",
+        "fifth": "D",
+        "seventh": "F"
+      }
+    },
+    "G7": {
+      "symbol": "G7",
+      "rootNote": "G",
+      "quality": "dominant7",
+      "displayName": "G Dominant 7th",
+      "notes": [
+        "G",
+        "B",
+        "D",
+        "F"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "B",
+        "fifth": "D",
+        "seventh": "F"
+      }
+    },
+    "Gdim7": {
+      "symbol": "Gdim7",
+      "rootNote": "G",
+      "quality": "diminished7",
+      "displayName": "G Diminished 7th",
+      "notes": [
+        "G",
+        "A#",
+        "C#",
+        "E"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        9
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "A#",
+        "fifth": "C#",
+        "seventh": "E"
+      }
+    },
+    "Gm7b5": {
+      "symbol": "Gm7b5",
+      "rootNote": "G",
+      "quality": "half-diminished7",
+      "displayName": "G Half-Diminished 7th",
+      "notes": [
+        "G",
+        "A#",
+        "C#",
+        "F"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        10
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "A#",
+        "fifth": "C#",
+        "seventh": "F"
+      }
+    },
+    "Gaug7": {
+      "symbol": "Gaug7",
+      "rootNote": "G",
+      "quality": "augmented7",
+      "displayName": "G Augmented 7th",
+      "notes": [
+        "G",
+        "B",
+        "D#",
+        "F"
+      ],
+      "intervals": [
+        0,
+        4,
+        8,
+        10
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "B",
+        "fifth": "D#",
+        "seventh": "F"
+      }
+    },
+    "Gmaj9": {
+      "symbol": "Gmaj9",
+      "rootNote": "G",
+      "quality": "major9",
+      "displayName": "G Major 9th",
+      "notes": [
+        "G",
+        "B",
+        "D",
+        "F#",
+        "A"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "B",
+        "fifth": "D",
+        "seventh": "F#",
+        "ninth": "A"
+      }
+    },
+    "Gm9": {
+      "symbol": "Gm9",
+      "rootNote": "G",
+      "quality": "minor9",
+      "displayName": "G Minor 9th",
+      "notes": [
+        "G",
+        "A#",
+        "D",
+        "F",
+        "A"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "A#",
+        "fifth": "D",
+        "seventh": "F",
+        "ninth": "A"
+      }
+    },
+    "G9": {
+      "symbol": "G9",
+      "rootNote": "G",
+      "quality": "dominant9",
+      "displayName": "G Dominant 9th",
+      "notes": [
+        "G",
+        "B",
+        "D",
+        "F",
+        "A"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "B",
+        "fifth": "D",
+        "seventh": "F",
+        "ninth": "A"
+      }
+    },
+    "Gmaj11": {
+      "symbol": "Gmaj11",
+      "rootNote": "G",
+      "quality": "major11",
+      "displayName": "G Major 11th",
+      "notes": [
+        "G",
+        "B",
+        "D",
+        "F#",
+        "A",
+        "C"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "B",
+        "fifth": "D",
+        "seventh": "F#",
+        "ninth": "A",
+        "eleventh": "C"
+      }
+    },
+    "Gm11": {
+      "symbol": "Gm11",
+      "rootNote": "G",
+      "quality": "minor11",
+      "displayName": "G Minor 11th",
+      "notes": [
+        "G",
+        "A#",
+        "D",
+        "F",
+        "A",
+        "C"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "A#",
+        "fifth": "D",
+        "seventh": "F",
+        "ninth": "A",
+        "eleventh": "C"
+      }
+    },
+    "G11": {
+      "symbol": "G11",
+      "rootNote": "G",
+      "quality": "dominant11",
+      "displayName": "G Dominant 11th",
+      "notes": [
+        "G",
+        "B",
+        "D",
+        "F",
+        "A",
+        "C"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "B",
+        "fifth": "D",
+        "seventh": "F",
+        "ninth": "A",
+        "eleventh": "C"
+      }
+    },
+    "Gmaj13": {
+      "symbol": "Gmaj13",
+      "rootNote": "G",
+      "quality": "major13",
+      "displayName": "G Major 13th",
+      "notes": [
+        "G",
+        "B",
+        "D",
+        "F#",
+        "A",
+        "C",
+        "E"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "B",
+        "fifth": "D",
+        "seventh": "F#",
+        "ninth": "A",
+        "eleventh": "C",
+        "thirteenth": "E"
+      }
+    },
+    "Gm13": {
+      "symbol": "Gm13",
+      "rootNote": "G",
+      "quality": "minor13",
+      "displayName": "G Minor 13th",
+      "notes": [
+        "G",
+        "A#",
+        "D",
+        "F",
+        "A",
+        "C",
+        "E"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "A#",
+        "fifth": "D",
+        "seventh": "F",
+        "ninth": "A",
+        "eleventh": "C",
+        "thirteenth": "E"
+      }
+    },
+    "G13": {
+      "symbol": "G13",
+      "rootNote": "G",
+      "quality": "dominant13",
+      "displayName": "G Dominant 13th",
+      "notes": [
+        "G",
+        "B",
+        "D",
+        "F",
+        "A",
+        "C",
+        "E"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "B",
+        "fifth": "D",
+        "seventh": "F",
+        "ninth": "A",
+        "eleventh": "C",
+        "thirteenth": "E"
+      }
+    },
+    "Gsus2": {
+      "symbol": "Gsus2",
+      "rootNote": "G",
+      "quality": "sus2",
+      "displayName": "G Suspended 2nd",
+      "notes": [
+        "G",
+        "A",
+        "D"
+      ],
+      "intervals": [
+        0,
+        2,
+        7
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "A",
+        "fifth": "D"
+      }
+    },
+    "Gsus4": {
+      "symbol": "Gsus4",
+      "rootNote": "G",
+      "quality": "sus4",
+      "displayName": "G Suspended 4th",
+      "notes": [
+        "G",
+        "C",
+        "D"
+      ],
+      "intervals": [
+        0,
+        5,
+        7
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "C",
+        "fifth": "D"
+      }
+    },
+    "G6": {
+      "symbol": "G6",
+      "rootNote": "G",
+      "quality": "6",
+      "displayName": "G Major 6th",
+      "notes": [
+        "G",
+        "B",
+        "D",
+        "E"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "B",
+        "fifth": "D",
+        "seventh": "E"
+      }
+    },
+    "Gm6": {
+      "symbol": "Gm6",
+      "rootNote": "G",
+      "quality": "minor6",
+      "displayName": "G Minor 6th",
+      "notes": [
+        "G",
+        "A#",
+        "D",
+        "E"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "A#",
+        "fifth": "D",
+        "seventh": "E"
+      }
+    },
+    "Gadd9": {
+      "symbol": "Gadd9",
+      "rootNote": "G",
+      "quality": "add9",
+      "displayName": "G Add 9",
+      "notes": [
+        "G",
+        "B",
+        "D",
+        "A"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "B",
+        "fifth": "D",
+        "seventh": "A"
+      }
+    },
+    "Gmadd9": {
+      "symbol": "Gmadd9",
+      "rootNote": "G",
+      "quality": "minor-add9",
+      "displayName": "G Minor Add 9",
+      "notes": [
+        "G",
+        "A#",
+        "D",
+        "A"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "G",
+        "third": "A#",
+        "fifth": "D",
+        "seventh": "A"
+      }
+    },
+    "G#": {
+      "symbol": "G#",
+      "rootNote": "G#",
+      "quality": "major",
+      "displayName": "G# Major",
+      "notes": [
+        "G#",
+        "C",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "C",
+        "fifth": "D#"
+      }
+    },
+    "G#m": {
+      "symbol": "G#m",
+      "rootNote": "G#",
+      "quality": "minor",
+      "displayName": "G# Minor",
+      "notes": [
+        "G#",
+        "B",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "B",
+        "fifth": "D#"
+      }
+    },
+    "G#dim": {
+      "symbol": "G#dim",
+      "rootNote": "G#",
+      "quality": "diminished",
+      "displayName": "G# Diminished",
+      "notes": [
+        "G#",
+        "B",
+        "D"
+      ],
+      "intervals": [
+        0,
+        3,
+        6
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "B",
+        "fifth": "D"
+      }
+    },
+    "G#aug": {
+      "symbol": "G#aug",
+      "rootNote": "G#",
+      "quality": "augmented",
+      "displayName": "G# Augmented",
+      "notes": [
+        "G#",
+        "C",
+        "E"
+      ],
+      "intervals": [
+        0,
+        4,
+        8
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "C",
+        "fifth": "E"
+      }
+    },
+    "G#maj7": {
+      "symbol": "G#maj7",
+      "rootNote": "G#",
+      "quality": "major7",
+      "displayName": "G# Major 7th",
+      "notes": [
+        "G#",
+        "C",
+        "D#",
+        "G"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "C",
+        "fifth": "D#",
+        "seventh": "G"
+      }
+    },
+    "G#m7": {
+      "symbol": "G#m7",
+      "rootNote": "G#",
+      "quality": "minor7",
+      "displayName": "G# Minor 7th",
+      "notes": [
+        "G#",
+        "B",
+        "D#",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "B",
+        "fifth": "D#",
+        "seventh": "F#"
+      }
+    },
+    "G#7": {
+      "symbol": "G#7",
+      "rootNote": "G#",
+      "quality": "dominant7",
+      "displayName": "G# Dominant 7th",
+      "notes": [
+        "G#",
+        "C",
+        "D#",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "C",
+        "fifth": "D#",
+        "seventh": "F#"
+      }
+    },
+    "G#dim7": {
+      "symbol": "G#dim7",
+      "rootNote": "G#",
+      "quality": "diminished7",
+      "displayName": "G# Diminished 7th",
+      "notes": [
+        "G#",
+        "B",
+        "D",
+        "F"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        9
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "B",
+        "fifth": "D",
+        "seventh": "F"
+      }
+    },
+    "G#m7b5": {
+      "symbol": "G#m7b5",
+      "rootNote": "G#",
+      "quality": "half-diminished7",
+      "displayName": "G# Half-Diminished 7th",
+      "notes": [
+        "G#",
+        "B",
+        "D",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        10
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "B",
+        "fifth": "D",
+        "seventh": "F#"
+      }
+    },
+    "G#aug7": {
+      "symbol": "G#aug7",
+      "rootNote": "G#",
+      "quality": "augmented7",
+      "displayName": "G# Augmented 7th",
+      "notes": [
+        "G#",
+        "C",
+        "E",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        4,
+        8,
+        10
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "C",
+        "fifth": "E",
+        "seventh": "F#"
+      }
+    },
+    "G#maj9": {
+      "symbol": "G#maj9",
+      "rootNote": "G#",
+      "quality": "major9",
+      "displayName": "G# Major 9th",
+      "notes": [
+        "G#",
+        "C",
+        "D#",
+        "G",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "C",
+        "fifth": "D#",
+        "seventh": "G",
+        "ninth": "A#"
+      }
+    },
+    "G#m9": {
+      "symbol": "G#m9",
+      "rootNote": "G#",
+      "quality": "minor9",
+      "displayName": "G# Minor 9th",
+      "notes": [
+        "G#",
+        "B",
+        "D#",
+        "F#",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "B",
+        "fifth": "D#",
+        "seventh": "F#",
+        "ninth": "A#"
+      }
+    },
+    "G#9": {
+      "symbol": "G#9",
+      "rootNote": "G#",
+      "quality": "dominant9",
+      "displayName": "G# Dominant 9th",
+      "notes": [
+        "G#",
+        "C",
+        "D#",
+        "F#",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "C",
+        "fifth": "D#",
+        "seventh": "F#",
+        "ninth": "A#"
+      }
+    },
+    "G#maj11": {
+      "symbol": "G#maj11",
+      "rootNote": "G#",
+      "quality": "major11",
+      "displayName": "G# Major 11th",
+      "notes": [
+        "G#",
+        "C",
+        "D#",
+        "G",
+        "A#",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "C",
+        "fifth": "D#",
+        "seventh": "G",
+        "ninth": "A#",
+        "eleventh": "C#"
+      }
+    },
+    "G#m11": {
+      "symbol": "G#m11",
+      "rootNote": "G#",
+      "quality": "minor11",
+      "displayName": "G# Minor 11th",
+      "notes": [
+        "G#",
+        "B",
+        "D#",
+        "F#",
+        "A#",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "B",
+        "fifth": "D#",
+        "seventh": "F#",
+        "ninth": "A#",
+        "eleventh": "C#"
+      }
+    },
+    "G#11": {
+      "symbol": "G#11",
+      "rootNote": "G#",
+      "quality": "dominant11",
+      "displayName": "G# Dominant 11th",
+      "notes": [
+        "G#",
+        "C",
+        "D#",
+        "F#",
+        "A#",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "C",
+        "fifth": "D#",
+        "seventh": "F#",
+        "ninth": "A#",
+        "eleventh": "C#"
+      }
+    },
+    "G#maj13": {
+      "symbol": "G#maj13",
+      "rootNote": "G#",
+      "quality": "major13",
+      "displayName": "G# Major 13th",
+      "notes": [
+        "G#",
+        "C",
+        "D#",
+        "G",
+        "A#",
+        "C#",
+        "F"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "C",
+        "fifth": "D#",
+        "seventh": "G",
+        "ninth": "A#",
+        "eleventh": "C#",
+        "thirteenth": "F"
+      }
+    },
+    "G#m13": {
+      "symbol": "G#m13",
+      "rootNote": "G#",
+      "quality": "minor13",
+      "displayName": "G# Minor 13th",
+      "notes": [
+        "G#",
+        "B",
+        "D#",
+        "F#",
+        "A#",
+        "C#",
+        "F"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "B",
+        "fifth": "D#",
+        "seventh": "F#",
+        "ninth": "A#",
+        "eleventh": "C#",
+        "thirteenth": "F"
+      }
+    },
+    "G#13": {
+      "symbol": "G#13",
+      "rootNote": "G#",
+      "quality": "dominant13",
+      "displayName": "G# Dominant 13th",
+      "notes": [
+        "G#",
+        "C",
+        "D#",
+        "F#",
+        "A#",
+        "C#",
+        "F"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "C",
+        "fifth": "D#",
+        "seventh": "F#",
+        "ninth": "A#",
+        "eleventh": "C#",
+        "thirteenth": "F"
+      }
+    },
+    "G#sus2": {
+      "symbol": "G#sus2",
+      "rootNote": "G#",
+      "quality": "sus2",
+      "displayName": "G# Suspended 2nd",
+      "notes": [
+        "G#",
+        "A#",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        2,
+        7
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "A#",
+        "fifth": "D#"
+      }
+    },
+    "G#sus4": {
+      "symbol": "G#sus4",
+      "rootNote": "G#",
+      "quality": "sus4",
+      "displayName": "G# Suspended 4th",
+      "notes": [
+        "G#",
+        "C#",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        5,
+        7
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "C#",
+        "fifth": "D#"
+      }
+    },
+    "G#6": {
+      "symbol": "G#6",
+      "rootNote": "G#",
+      "quality": "6",
+      "displayName": "G# Major 6th",
+      "notes": [
+        "G#",
+        "C",
+        "D#",
+        "F"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "C",
+        "fifth": "D#",
+        "seventh": "F"
+      }
+    },
+    "G#m6": {
+      "symbol": "G#m6",
+      "rootNote": "G#",
+      "quality": "minor6",
+      "displayName": "G# Minor 6th",
+      "notes": [
+        "G#",
+        "B",
+        "D#",
+        "F"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "B",
+        "fifth": "D#",
+        "seventh": "F"
+      }
+    },
+    "G#add9": {
+      "symbol": "G#add9",
+      "rootNote": "G#",
+      "quality": "add9",
+      "displayName": "G# Add 9",
+      "notes": [
+        "G#",
+        "C",
+        "D#",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "C",
+        "fifth": "D#",
+        "seventh": "A#"
+      }
+    },
+    "G#madd9": {
+      "symbol": "G#madd9",
+      "rootNote": "G#",
+      "quality": "minor-add9",
+      "displayName": "G# Minor Add 9",
+      "notes": [
+        "G#",
+        "B",
+        "D#",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "G#",
+        "third": "B",
+        "fifth": "D#",
+        "seventh": "A#"
+      }
+    },
+    "A": {
+      "symbol": "A",
+      "rootNote": "A",
+      "quality": "major",
+      "displayName": "A Major",
+      "notes": [
+        "A",
+        "C#",
+        "E"
+      ],
+      "intervals": [
+        0,
+        4,
+        7
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "C#",
+        "fifth": "E"
+      }
+    },
+    "Am": {
+      "symbol": "Am",
+      "rootNote": "A",
+      "quality": "minor",
+      "displayName": "A Minor",
+      "notes": [
+        "A",
+        "C",
+        "E"
+      ],
+      "intervals": [
+        0,
+        3,
+        7
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "C",
+        "fifth": "E"
+      }
+    },
+    "Adim": {
+      "symbol": "Adim",
+      "rootNote": "A",
+      "quality": "diminished",
+      "displayName": "A Diminished",
+      "notes": [
+        "A",
+        "C",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        3,
+        6
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "C",
+        "fifth": "D#"
+      }
+    },
+    "Aaug": {
+      "symbol": "Aaug",
+      "rootNote": "A",
+      "quality": "augmented",
+      "displayName": "A Augmented",
+      "notes": [
+        "A",
+        "C#",
+        "F"
+      ],
+      "intervals": [
+        0,
+        4,
+        8
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "C#",
+        "fifth": "F"
+      }
+    },
+    "Amaj7": {
+      "symbol": "Amaj7",
+      "rootNote": "A",
+      "quality": "major7",
+      "displayName": "A Major 7th",
+      "notes": [
+        "A",
+        "C#",
+        "E",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "C#",
+        "fifth": "E",
+        "seventh": "G#"
+      }
+    },
+    "Am7": {
+      "symbol": "Am7",
+      "rootNote": "A",
+      "quality": "minor7",
+      "displayName": "A Minor 7th",
+      "notes": [
+        "A",
+        "C",
+        "E",
+        "G"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "C",
+        "fifth": "E",
+        "seventh": "G"
+      }
+    },
+    "A7": {
+      "symbol": "A7",
+      "rootNote": "A",
+      "quality": "dominant7",
+      "displayName": "A Dominant 7th",
+      "notes": [
+        "A",
+        "C#",
+        "E",
+        "G"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "C#",
+        "fifth": "E",
+        "seventh": "G"
+      }
+    },
+    "Adim7": {
+      "symbol": "Adim7",
+      "rootNote": "A",
+      "quality": "diminished7",
+      "displayName": "A Diminished 7th",
+      "notes": [
+        "A",
+        "C",
+        "D#",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        9
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "C",
+        "fifth": "D#",
+        "seventh": "F#"
+      }
+    },
+    "Am7b5": {
+      "symbol": "Am7b5",
+      "rootNote": "A",
+      "quality": "half-diminished7",
+      "displayName": "A Half-Diminished 7th",
+      "notes": [
+        "A",
+        "C",
+        "D#",
+        "G"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        10
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "C",
+        "fifth": "D#",
+        "seventh": "G"
+      }
+    },
+    "Aaug7": {
+      "symbol": "Aaug7",
+      "rootNote": "A",
+      "quality": "augmented7",
+      "displayName": "A Augmented 7th",
+      "notes": [
+        "A",
+        "C#",
+        "F",
+        "G"
+      ],
+      "intervals": [
+        0,
+        4,
+        8,
+        10
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "C#",
+        "fifth": "F",
+        "seventh": "G"
+      }
+    },
+    "Amaj9": {
+      "symbol": "Amaj9",
+      "rootNote": "A",
+      "quality": "major9",
+      "displayName": "A Major 9th",
+      "notes": [
+        "A",
+        "C#",
+        "E",
+        "G#",
+        "B"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "C#",
+        "fifth": "E",
+        "seventh": "G#",
+        "ninth": "B"
+      }
+    },
+    "Am9": {
+      "symbol": "Am9",
+      "rootNote": "A",
+      "quality": "minor9",
+      "displayName": "A Minor 9th",
+      "notes": [
+        "A",
+        "C",
+        "E",
+        "G",
+        "B"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "C",
+        "fifth": "E",
+        "seventh": "G",
+        "ninth": "B"
+      }
+    },
+    "A9": {
+      "symbol": "A9",
+      "rootNote": "A",
+      "quality": "dominant9",
+      "displayName": "A Dominant 9th",
+      "notes": [
+        "A",
+        "C#",
+        "E",
+        "G",
+        "B"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "C#",
+        "fifth": "E",
+        "seventh": "G",
+        "ninth": "B"
+      }
+    },
+    "Amaj11": {
+      "symbol": "Amaj11",
+      "rootNote": "A",
+      "quality": "major11",
+      "displayName": "A Major 11th",
+      "notes": [
+        "A",
+        "C#",
+        "E",
+        "G#",
+        "B",
+        "D"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "C#",
+        "fifth": "E",
+        "seventh": "G#",
+        "ninth": "B",
+        "eleventh": "D"
+      }
+    },
+    "Am11": {
+      "symbol": "Am11",
+      "rootNote": "A",
+      "quality": "minor11",
+      "displayName": "A Minor 11th",
+      "notes": [
+        "A",
+        "C",
+        "E",
+        "G",
+        "B",
+        "D"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "C",
+        "fifth": "E",
+        "seventh": "G",
+        "ninth": "B",
+        "eleventh": "D"
+      }
+    },
+    "A11": {
+      "symbol": "A11",
+      "rootNote": "A",
+      "quality": "dominant11",
+      "displayName": "A Dominant 11th",
+      "notes": [
+        "A",
+        "C#",
+        "E",
+        "G",
+        "B",
+        "D"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "C#",
+        "fifth": "E",
+        "seventh": "G",
+        "ninth": "B",
+        "eleventh": "D"
+      }
+    },
+    "Amaj13": {
+      "symbol": "Amaj13",
+      "rootNote": "A",
+      "quality": "major13",
+      "displayName": "A Major 13th",
+      "notes": [
+        "A",
+        "C#",
+        "E",
+        "G#",
+        "B",
+        "D",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "C#",
+        "fifth": "E",
+        "seventh": "G#",
+        "ninth": "B",
+        "eleventh": "D",
+        "thirteenth": "F#"
+      }
+    },
+    "Am13": {
+      "symbol": "Am13",
+      "rootNote": "A",
+      "quality": "minor13",
+      "displayName": "A Minor 13th",
+      "notes": [
+        "A",
+        "C",
+        "E",
+        "G",
+        "B",
+        "D",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "C",
+        "fifth": "E",
+        "seventh": "G",
+        "ninth": "B",
+        "eleventh": "D",
+        "thirteenth": "F#"
+      }
+    },
+    "A13": {
+      "symbol": "A13",
+      "rootNote": "A",
+      "quality": "dominant13",
+      "displayName": "A Dominant 13th",
+      "notes": [
+        "A",
+        "C#",
+        "E",
+        "G",
+        "B",
+        "D",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "C#",
+        "fifth": "E",
+        "seventh": "G",
+        "ninth": "B",
+        "eleventh": "D",
+        "thirteenth": "F#"
+      }
+    },
+    "Asus2": {
+      "symbol": "Asus2",
+      "rootNote": "A",
+      "quality": "sus2",
+      "displayName": "A Suspended 2nd",
+      "notes": [
+        "A",
+        "B",
+        "E"
+      ],
+      "intervals": [
+        0,
+        2,
+        7
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "B",
+        "fifth": "E"
+      }
+    },
+    "Asus4": {
+      "symbol": "Asus4",
+      "rootNote": "A",
+      "quality": "sus4",
+      "displayName": "A Suspended 4th",
+      "notes": [
+        "A",
+        "D",
+        "E"
+      ],
+      "intervals": [
+        0,
+        5,
+        7
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "D",
+        "fifth": "E"
+      }
+    },
+    "A6": {
+      "symbol": "A6",
+      "rootNote": "A",
+      "quality": "6",
+      "displayName": "A Major 6th",
+      "notes": [
+        "A",
+        "C#",
+        "E",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "C#",
+        "fifth": "E",
+        "seventh": "F#"
+      }
+    },
+    "Am6": {
+      "symbol": "Am6",
+      "rootNote": "A",
+      "quality": "minor6",
+      "displayName": "A Minor 6th",
+      "notes": [
+        "A",
+        "C",
+        "E",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "C",
+        "fifth": "E",
+        "seventh": "F#"
+      }
+    },
+    "Aadd9": {
+      "symbol": "Aadd9",
+      "rootNote": "A",
+      "quality": "add9",
+      "displayName": "A Add 9",
+      "notes": [
+        "A",
+        "C#",
+        "E",
+        "B"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "C#",
+        "fifth": "E",
+        "seventh": "B"
+      }
+    },
+    "Amadd9": {
+      "symbol": "Amadd9",
+      "rootNote": "A",
+      "quality": "minor-add9",
+      "displayName": "A Minor Add 9",
+      "notes": [
+        "A",
+        "C",
+        "E",
+        "B"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "A",
+        "third": "C",
+        "fifth": "E",
+        "seventh": "B"
+      }
+    },
+    "A#": {
+      "symbol": "A#",
+      "rootNote": "A#",
+      "quality": "major",
+      "displayName": "A# Major",
+      "notes": [
+        "A#",
+        "D",
+        "F"
+      ],
+      "intervals": [
+        0,
+        4,
+        7
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "D",
+        "fifth": "F"
+      }
+    },
+    "A#m": {
+      "symbol": "A#m",
+      "rootNote": "A#",
+      "quality": "minor",
+      "displayName": "A# Minor",
+      "notes": [
+        "A#",
+        "C#",
+        "F"
+      ],
+      "intervals": [
+        0,
+        3,
+        7
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "C#",
+        "fifth": "F"
+      }
+    },
+    "A#dim": {
+      "symbol": "A#dim",
+      "rootNote": "A#",
+      "quality": "diminished",
+      "displayName": "A# Diminished",
+      "notes": [
+        "A#",
+        "C#",
+        "E"
+      ],
+      "intervals": [
+        0,
+        3,
+        6
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "C#",
+        "fifth": "E"
+      }
+    },
+    "A#aug": {
+      "symbol": "A#aug",
+      "rootNote": "A#",
+      "quality": "augmented",
+      "displayName": "A# Augmented",
+      "notes": [
+        "A#",
+        "D",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        4,
+        8
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "D",
+        "fifth": "F#"
+      }
+    },
+    "A#maj7": {
+      "symbol": "A#maj7",
+      "rootNote": "A#",
+      "quality": "major7",
+      "displayName": "A# Major 7th",
+      "notes": [
+        "A#",
+        "D",
+        "F",
+        "A"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "D",
+        "fifth": "F",
+        "seventh": "A"
+      }
+    },
+    "A#m7": {
+      "symbol": "A#m7",
+      "rootNote": "A#",
+      "quality": "minor7",
+      "displayName": "A# Minor 7th",
+      "notes": [
+        "A#",
+        "C#",
+        "F",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "C#",
+        "fifth": "F",
+        "seventh": "G#"
+      }
+    },
+    "A#7": {
+      "symbol": "A#7",
+      "rootNote": "A#",
+      "quality": "dominant7",
+      "displayName": "A# Dominant 7th",
+      "notes": [
+        "A#",
+        "D",
+        "F",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "D",
+        "fifth": "F",
+        "seventh": "G#"
+      }
+    },
+    "A#dim7": {
+      "symbol": "A#dim7",
+      "rootNote": "A#",
+      "quality": "diminished7",
+      "displayName": "A# Diminished 7th",
+      "notes": [
+        "A#",
+        "C#",
+        "E",
+        "G"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        9
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "C#",
+        "fifth": "E",
+        "seventh": "G"
+      }
+    },
+    "A#m7b5": {
+      "symbol": "A#m7b5",
+      "rootNote": "A#",
+      "quality": "half-diminished7",
+      "displayName": "A# Half-Diminished 7th",
+      "notes": [
+        "A#",
+        "C#",
+        "E",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        10
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "C#",
+        "fifth": "E",
+        "seventh": "G#"
+      }
+    },
+    "A#aug7": {
+      "symbol": "A#aug7",
+      "rootNote": "A#",
+      "quality": "augmented7",
+      "displayName": "A# Augmented 7th",
+      "notes": [
+        "A#",
+        "D",
+        "F#",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        4,
+        8,
+        10
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "D",
+        "fifth": "F#",
+        "seventh": "G#"
+      }
+    },
+    "A#maj9": {
+      "symbol": "A#maj9",
+      "rootNote": "A#",
+      "quality": "major9",
+      "displayName": "A# Major 9th",
+      "notes": [
+        "A#",
+        "D",
+        "F",
+        "A",
+        "C"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "D",
+        "fifth": "F",
+        "seventh": "A",
+        "ninth": "C"
+      }
+    },
+    "A#m9": {
+      "symbol": "A#m9",
+      "rootNote": "A#",
+      "quality": "minor9",
+      "displayName": "A# Minor 9th",
+      "notes": [
+        "A#",
+        "C#",
+        "F",
+        "G#",
+        "C"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "C#",
+        "fifth": "F",
+        "seventh": "G#",
+        "ninth": "C"
+      }
+    },
+    "A#9": {
+      "symbol": "A#9",
+      "rootNote": "A#",
+      "quality": "dominant9",
+      "displayName": "A# Dominant 9th",
+      "notes": [
+        "A#",
+        "D",
+        "F",
+        "G#",
+        "C"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "D",
+        "fifth": "F",
+        "seventh": "G#",
+        "ninth": "C"
+      }
+    },
+    "A#maj11": {
+      "symbol": "A#maj11",
+      "rootNote": "A#",
+      "quality": "major11",
+      "displayName": "A# Major 11th",
+      "notes": [
+        "A#",
+        "D",
+        "F",
+        "A",
+        "C",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "D",
+        "fifth": "F",
+        "seventh": "A",
+        "ninth": "C",
+        "eleventh": "D#"
+      }
+    },
+    "A#m11": {
+      "symbol": "A#m11",
+      "rootNote": "A#",
+      "quality": "minor11",
+      "displayName": "A# Minor 11th",
+      "notes": [
+        "A#",
+        "C#",
+        "F",
+        "G#",
+        "C",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "C#",
+        "fifth": "F",
+        "seventh": "G#",
+        "ninth": "C",
+        "eleventh": "D#"
+      }
+    },
+    "A#11": {
+      "symbol": "A#11",
+      "rootNote": "A#",
+      "quality": "dominant11",
+      "displayName": "A# Dominant 11th",
+      "notes": [
+        "A#",
+        "D",
+        "F",
+        "G#",
+        "C",
+        "D#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "D",
+        "fifth": "F",
+        "seventh": "G#",
+        "ninth": "C",
+        "eleventh": "D#"
+      }
+    },
+    "A#maj13": {
+      "symbol": "A#maj13",
+      "rootNote": "A#",
+      "quality": "major13",
+      "displayName": "A# Major 13th",
+      "notes": [
+        "A#",
+        "D",
+        "F",
+        "A",
+        "C",
+        "D#",
+        "G"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "D",
+        "fifth": "F",
+        "seventh": "A",
+        "ninth": "C",
+        "eleventh": "D#",
+        "thirteenth": "G"
+      }
+    },
+    "A#m13": {
+      "symbol": "A#m13",
+      "rootNote": "A#",
+      "quality": "minor13",
+      "displayName": "A# Minor 13th",
+      "notes": [
+        "A#",
+        "C#",
+        "F",
+        "G#",
+        "C",
+        "D#",
+        "G"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "C#",
+        "fifth": "F",
+        "seventh": "G#",
+        "ninth": "C",
+        "eleventh": "D#",
+        "thirteenth": "G"
+      }
+    },
+    "A#13": {
+      "symbol": "A#13",
+      "rootNote": "A#",
+      "quality": "dominant13",
+      "displayName": "A# Dominant 13th",
+      "notes": [
+        "A#",
+        "D",
+        "F",
+        "G#",
+        "C",
+        "D#",
+        "G"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "D",
+        "fifth": "F",
+        "seventh": "G#",
+        "ninth": "C",
+        "eleventh": "D#",
+        "thirteenth": "G"
+      }
+    },
+    "A#sus2": {
+      "symbol": "A#sus2",
+      "rootNote": "A#",
+      "quality": "sus2",
+      "displayName": "A# Suspended 2nd",
+      "notes": [
+        "A#",
+        "C",
+        "F"
+      ],
+      "intervals": [
+        0,
+        2,
+        7
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "C",
+        "fifth": "F"
+      }
+    },
+    "A#sus4": {
+      "symbol": "A#sus4",
+      "rootNote": "A#",
+      "quality": "sus4",
+      "displayName": "A# Suspended 4th",
+      "notes": [
+        "A#",
+        "D#",
+        "F"
+      ],
+      "intervals": [
+        0,
+        5,
+        7
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "D#",
+        "fifth": "F"
+      }
+    },
+    "A#6": {
+      "symbol": "A#6",
+      "rootNote": "A#",
+      "quality": "6",
+      "displayName": "A# Major 6th",
+      "notes": [
+        "A#",
+        "D",
+        "F",
+        "G"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "D",
+        "fifth": "F",
+        "seventh": "G"
+      }
+    },
+    "A#m6": {
+      "symbol": "A#m6",
+      "rootNote": "A#",
+      "quality": "minor6",
+      "displayName": "A# Minor 6th",
+      "notes": [
+        "A#",
+        "C#",
+        "F",
+        "G"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "C#",
+        "fifth": "F",
+        "seventh": "G"
+      }
+    },
+    "A#add9": {
+      "symbol": "A#add9",
+      "rootNote": "A#",
+      "quality": "add9",
+      "displayName": "A# Add 9",
+      "notes": [
+        "A#",
+        "D",
+        "F",
+        "C"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "D",
+        "fifth": "F",
+        "seventh": "C"
+      }
+    },
+    "A#madd9": {
+      "symbol": "A#madd9",
+      "rootNote": "A#",
+      "quality": "minor-add9",
+      "displayName": "A# Minor Add 9",
+      "notes": [
+        "A#",
+        "C#",
+        "F",
+        "C"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "A#",
+        "third": "C#",
+        "fifth": "F",
+        "seventh": "C"
+      }
+    },
+    "B": {
+      "symbol": "B",
+      "rootNote": "B",
+      "quality": "major",
+      "displayName": "B Major",
+      "notes": [
+        "B",
+        "D#",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "D#",
+        "fifth": "F#"
+      }
+    },
+    "Bm": {
+      "symbol": "Bm",
+      "rootNote": "B",
+      "quality": "minor",
+      "displayName": "B Minor",
+      "notes": [
+        "B",
+        "D",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "D",
+        "fifth": "F#"
+      }
+    },
+    "Bdim": {
+      "symbol": "Bdim",
+      "rootNote": "B",
+      "quality": "diminished",
+      "displayName": "B Diminished",
+      "notes": [
+        "B",
+        "D",
+        "F"
+      ],
+      "intervals": [
+        0,
+        3,
+        6
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "D",
+        "fifth": "F"
+      }
+    },
+    "Baug": {
+      "symbol": "Baug",
+      "rootNote": "B",
+      "quality": "augmented",
+      "displayName": "B Augmented",
+      "notes": [
+        "B",
+        "D#",
+        "G"
+      ],
+      "intervals": [
+        0,
+        4,
+        8
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "D#",
+        "fifth": "G"
+      }
+    },
+    "Bmaj7": {
+      "symbol": "Bmaj7",
+      "rootNote": "B",
+      "quality": "major7",
+      "displayName": "B Major 7th",
+      "notes": [
+        "B",
+        "D#",
+        "F#",
+        "A#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "D#",
+        "fifth": "F#",
+        "seventh": "A#"
+      }
+    },
+    "Bm7": {
+      "symbol": "Bm7",
+      "rootNote": "B",
+      "quality": "minor7",
+      "displayName": "B Minor 7th",
+      "notes": [
+        "B",
+        "D",
+        "F#",
+        "A"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "D",
+        "fifth": "F#",
+        "seventh": "A"
+      }
+    },
+    "B7": {
+      "symbol": "B7",
+      "rootNote": "B",
+      "quality": "dominant7",
+      "displayName": "B Dominant 7th",
+      "notes": [
+        "B",
+        "D#",
+        "F#",
+        "A"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "D#",
+        "fifth": "F#",
+        "seventh": "A"
+      }
+    },
+    "Bdim7": {
+      "symbol": "Bdim7",
+      "rootNote": "B",
+      "quality": "diminished7",
+      "displayName": "B Diminished 7th",
+      "notes": [
+        "B",
+        "D",
+        "F",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        9
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "D",
+        "fifth": "F",
+        "seventh": "G#"
+      }
+    },
+    "Bm7b5": {
+      "symbol": "Bm7b5",
+      "rootNote": "B",
+      "quality": "half-diminished7",
+      "displayName": "B Half-Diminished 7th",
+      "notes": [
+        "B",
+        "D",
+        "F",
+        "A"
+      ],
+      "intervals": [
+        0,
+        3,
+        6,
+        10
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "D",
+        "fifth": "F",
+        "seventh": "A"
+      }
+    },
+    "Baug7": {
+      "symbol": "Baug7",
+      "rootNote": "B",
+      "quality": "augmented7",
+      "displayName": "B Augmented 7th",
+      "notes": [
+        "B",
+        "D#",
+        "G",
+        "A"
+      ],
+      "intervals": [
+        0,
+        4,
+        8,
+        10
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "D#",
+        "fifth": "G",
+        "seventh": "A"
+      }
+    },
+    "Bmaj9": {
+      "symbol": "Bmaj9",
+      "rootNote": "B",
+      "quality": "major9",
+      "displayName": "B Major 9th",
+      "notes": [
+        "B",
+        "D#",
+        "F#",
+        "A#",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "D#",
+        "fifth": "F#",
+        "seventh": "A#",
+        "ninth": "C#"
+      }
+    },
+    "Bm9": {
+      "symbol": "Bm9",
+      "rootNote": "B",
+      "quality": "minor9",
+      "displayName": "B Minor 9th",
+      "notes": [
+        "B",
+        "D",
+        "F#",
+        "A",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "D",
+        "fifth": "F#",
+        "seventh": "A",
+        "ninth": "C#"
+      }
+    },
+    "B9": {
+      "symbol": "B9",
+      "rootNote": "B",
+      "quality": "dominant9",
+      "displayName": "B Dominant 9th",
+      "notes": [
+        "B",
+        "D#",
+        "F#",
+        "A",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "D#",
+        "fifth": "F#",
+        "seventh": "A",
+        "ninth": "C#"
+      }
+    },
+    "Bmaj11": {
+      "symbol": "Bmaj11",
+      "rootNote": "B",
+      "quality": "major11",
+      "displayName": "B Major 11th",
+      "notes": [
+        "B",
+        "D#",
+        "F#",
+        "A#",
+        "C#",
+        "E"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "D#",
+        "fifth": "F#",
+        "seventh": "A#",
+        "ninth": "C#",
+        "eleventh": "E"
+      }
+    },
+    "Bm11": {
+      "symbol": "Bm11",
+      "rootNote": "B",
+      "quality": "minor11",
+      "displayName": "B Minor 11th",
+      "notes": [
+        "B",
+        "D",
+        "F#",
+        "A",
+        "C#",
+        "E"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "D",
+        "fifth": "F#",
+        "seventh": "A",
+        "ninth": "C#",
+        "eleventh": "E"
+      }
+    },
+    "B11": {
+      "symbol": "B11",
+      "rootNote": "B",
+      "quality": "dominant11",
+      "displayName": "B Dominant 11th",
+      "notes": [
+        "B",
+        "D#",
+        "F#",
+        "A",
+        "C#",
+        "E"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "D#",
+        "fifth": "F#",
+        "seventh": "A",
+        "ninth": "C#",
+        "eleventh": "E"
+      }
+    },
+    "Bmaj13": {
+      "symbol": "Bmaj13",
+      "rootNote": "B",
+      "quality": "major13",
+      "displayName": "B Major 13th",
+      "notes": [
+        "B",
+        "D#",
+        "F#",
+        "A#",
+        "C#",
+        "E",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        11,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "D#",
+        "fifth": "F#",
+        "seventh": "A#",
+        "ninth": "C#",
+        "eleventh": "E",
+        "thirteenth": "G#"
+      }
+    },
+    "Bm13": {
+      "symbol": "Bm13",
+      "rootNote": "B",
+      "quality": "minor13",
+      "displayName": "B Minor 13th",
+      "notes": [
+        "B",
+        "D",
+        "F#",
+        "A",
+        "C#",
+        "E",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "D",
+        "fifth": "F#",
+        "seventh": "A",
+        "ninth": "C#",
+        "eleventh": "E",
+        "thirteenth": "G#"
+      }
+    },
+    "B13": {
+      "symbol": "B13",
+      "rootNote": "B",
+      "quality": "dominant13",
+      "displayName": "B Dominant 13th",
+      "notes": [
+        "B",
+        "D#",
+        "F#",
+        "A",
+        "C#",
+        "E",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        10,
+        14,
+        17,
+        21
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "D#",
+        "fifth": "F#",
+        "seventh": "A",
+        "ninth": "C#",
+        "eleventh": "E",
+        "thirteenth": "G#"
+      }
+    },
+    "Bsus2": {
+      "symbol": "Bsus2",
+      "rootNote": "B",
+      "quality": "sus2",
+      "displayName": "B Suspended 2nd",
+      "notes": [
+        "B",
+        "C#",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        2,
+        7
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "C#",
+        "fifth": "F#"
+      }
+    },
+    "Bsus4": {
+      "symbol": "Bsus4",
+      "rootNote": "B",
+      "quality": "sus4",
+      "displayName": "B Suspended 4th",
+      "notes": [
+        "B",
+        "E",
+        "F#"
+      ],
+      "intervals": [
+        0,
+        5,
+        7
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "E",
+        "fifth": "F#"
+      }
+    },
+    "B6": {
+      "symbol": "B6",
+      "rootNote": "B",
+      "quality": "6",
+      "displayName": "B Major 6th",
+      "notes": [
+        "B",
+        "D#",
+        "F#",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "D#",
+        "fifth": "F#",
+        "seventh": "G#"
+      }
+    },
+    "Bm6": {
+      "symbol": "Bm6",
+      "rootNote": "B",
+      "quality": "minor6",
+      "displayName": "B Minor 6th",
+      "notes": [
+        "B",
+        "D",
+        "F#",
+        "G#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        9
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "D",
+        "fifth": "F#",
+        "seventh": "G#"
+      }
+    },
+    "Badd9": {
+      "symbol": "Badd9",
+      "rootNote": "B",
+      "quality": "add9",
+      "displayName": "B Add 9",
+      "notes": [
+        "B",
+        "D#",
+        "F#",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        4,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "D#",
+        "fifth": "F#",
+        "seventh": "C#"
+      }
+    },
+    "Bmadd9": {
+      "symbol": "Bmadd9",
+      "rootNote": "B",
+      "quality": "minor-add9",
+      "displayName": "B Minor Add 9",
+      "notes": [
+        "B",
+        "D",
+        "F#",
+        "C#"
+      ],
+      "intervals": [
+        0,
+        3,
+        7,
+        14
+      ],
+      "chordTones": {
+        "root": "B",
+        "third": "D",
+        "fifth": "F#",
+        "seventh": "C#"
+      }
+    }
+  }
+}

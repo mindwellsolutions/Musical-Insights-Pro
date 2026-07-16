@@ -1,0 +1,83 @@
+{
+  "chordQuality": "major7",
+  "displayName": "Major 7th",
+  "suffix": "maj7",
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-09",
+  "description": "Major 7th chord compatibility data",
+  "intervals": [
+    0,
+    4,
+    7,
+    11
+  ],
+  "compatibleScales": [
+    {
+      "scaleName": "C Major (Ionian)",
+      "scaleDbKey": "Ionian",
+      "compatibilityScore": 10,
+      "relationship": "Perfect alignment with Imaj7",
+      "musicalContext": "Contains all four chord tones. The B is a chord tone (maj7), making C Ionian the natural choice for Cmaj7 chords.",
+      "chordTones": [
+        "C",
+        "E",
+        "G",
+        "B"
+      ],
+      "tensions": [
+        "D (9th)",
+        "F (11th)",
+        "A (13th)"
+      ],
+      "avoidNotes": [],
+      "musicGenreRecommendations": "R&B",
+      "difficultyLevel": 1,
+      "commonUse": "Complete freedom over Cmaj7. The quintessential maj7 scale. Perfect for jazz, pop, R&B, and contemporary music.",
+      "famousExamples": "Emphasize the maj7 (B) for sophisticated color. The F (11th) can be used but resolve to E or G. All tones work beautifully."
+    },
+    {
+      "scaleName": "C Lydian",
+      "scaleDbKey": "Lydian",
+      "compatibilityScore": 10,
+      "relationship": "Preferred Imaj7 scale with #11",
+      "musicalContext": "The #4 (F#) avoids suspended sound of natural 11th. This is THE scale for Imaj7 in modern jazz and fusion.",
+      "chordTones": [
+        "C",
+        "E",
+        "G",
+        "B"
+      ],
+      "tensions": [
+        "D (9th)",
+        "F# (#11)",
+        "A (13th)"
+      ],
+      "avoidNotes": [],
+      "musicGenreRecommendations": "General",
+      "difficultyLevel": 2,
+      "commonUse": "The definitive modern Imaj7 scale. Essential for jazz, fusion, film music, and progressive styles. Creates sophisticated, ethereal maj7 color.",
+      "famousExamples": "The #11 (F#) is signature Lydian sound. Creates floating, dreamy quality. Essential for Cmaj7#11 voicings."
+    },
+    {
+      "scaleName": "C Major Pentatonic",
+      "scaleDbKey": "MajorPentatonic",
+      "compatibilityScore": 9,
+      "relationship": "Safe pentatonic approach",
+      "musicalContext": "Omits 4th and 7th for core consonance. Simpler maj7 approach perfect for melodic clarity and pop contexts.",
+      "chordTones": [
+        "C",
+        "E",
+        "G"
+      ],
+      "tensions": [
+        "D (9th)",
+        "A (13th)"
+      ],
+      "avoidNotes": [],
+      "musicGenreRecommendations": "R&B",
+      "difficultyLevel": 1,
+      "commonUse": "Perfect for pop and R&B maj7 approaches. Creates smooth melodies without harmonic complexity. Ideal for vocal lines and memorable hooks.",
+      "famousExamples": "Very safe and melodic. Implies maj7 without stating it. Great for hooks and singable lines over Cmaj7."
+    }
+  ]
+}

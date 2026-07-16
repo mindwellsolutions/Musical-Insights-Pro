@@ -1,0 +1,664 @@
+{
+  "key": "Bb",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-14",
+  "chords": {
+    "Bb": {
+      "symbol": "Bb",
+      "fullName": "Bb Major",
+      "romanNumeral": "I",
+      "quality": "major",
+      "notes": ["Bb", "D", "F"],
+      "rootNote": "Bb",
+      "scaleCompatibility": [
+        {
+          "scaleName": "Bb Major Pentatonic",
+          "scaleDbKey": "MajorPentatonic",
+          "compatibilityScore": 10,
+          "relationship": "Primary pentatonic - perfect consonance",
+          "rationale": "Contains all chord tones (Bb, D, F) plus safe extensions (C, G). Zero avoid notes. Extremely common in jazz horn arrangements.",
+          "chordToneAlignment": {
+            "chordTones": ["Bb", "D", "F"],
+            "tensions": ["C (9th)", "G (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Target the root (Bb) and major 3rd (D) for resolution. Perfect for jazz, R&B, and horn sections.",
+          "recommendedUse": "The go-to scale for Bb major in jazz, R&B, pop, and classical. Bb is one of the most common keys for horns and wind instruments.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "Bb Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Parent scale - complete diatonic harmony",
+          "rationale": "The fundamental Bb major scale with two flats (Bb, Eb). Complete melodic freedom. One of the most common keys in jazz and classical.",
+          "chordToneAlignment": {
+            "chordTones": ["Bb", "D", "F"],
+            "tensions": ["C (9th)", "Eb (11th)", "G (13th)", "A (maj7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "All notes work over I major. The Eb (11th) can sound suspended - resolve to D or F.",
+          "recommendedUse": "Complete freedom over Bb major. Essential for jazz standards, classical music, and horn arrangements.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "Bb Lydian",
+          "scaleDbKey": "Lydian",
+          "compatibilityScore": 9,
+          "relationship": "Bright major with #11",
+          "rationale": "Raises Eb to E (#11) creating dreamy, ethereal quality. Very common in modern jazz over Bbmaj7#11.",
+          "chordToneAlignment": {
+            "chordTones": ["Bb", "D", "F"],
+            "tensions": ["C (9th)", "E (#11)", "G (13th)", "A (maj7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize the #11 (E) for signature Lydian color. Creates uplifting, modern sound.",
+          "recommendedUse": "Use for Bbmaj7#11 or modern I major sounds. Essential for contemporary jazz and film music.",
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "Bb Mixolydian",
+          "scaleDbKey": "Mixolydian",
+          "compatibilityScore": 9,
+          "relationship": "Dominant major with b7",
+          "rationale": "Lowers A to Ab (b7) creating dominant 7th character. Bb7 is extremely common in jazz and blues.",
+          "chordToneAlignment": {
+            "chordTones": ["Bb", "D", "F"],
+            "tensions": ["C (9th)", "Eb (11th)", "G (13th)", "Ab (b7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "The Ab (b7) creates bluesy edge. Bb7 is a staple in jazz and R&B.",
+          "recommendedUse": "Perfect for Bb7 chords in jazz, blues, and R&B. Essential for dominant vamps and horn sections.",
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "F Minor Pentatonic",
+          "scaleDbKey": "MinorPentatonic",
+          "compatibilityScore": 8,
+          "relationship": "Built on V - creates bluesy major sound",
+          "rationale": "All notes diatonic to Bb major. Classic blues-rock approach over major chords.",
+          "chordToneAlignment": {
+            "chordTones": ["F", "Ab", "C"],
+            "tensions": ["Eb (11th)", "Bb (root)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Creates bluesy major without clash. Perfect for rock guitar over Bb major.",
+          "recommendedUse": "Essential rock guitar scale over Bb major. Safe and bluesy.",
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "Bbmaj7": {
+      "symbol": "Bbmaj7",
+      "fullName": "Bb Major 7th",
+      "romanNumeral": "Imaj7",
+      "quality": "major7",
+      "notes": ["Bb", "D", "F", "A"],
+      "rootNote": "Bb",
+      "scaleCompatibility": [
+        {
+          "scaleName": "Bb Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Perfect alignment with Imaj7",
+          "rationale": "Contains all four chord tones. Bbmaj7 is one of the most common chords in jazz standards.",
+          "chordToneAlignment": {
+            "chordTones": ["Bb", "D", "F", "A"],
+            "tensions": ["C (9th)", "Eb (11th)", "G (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize the maj7 (A). All tones work beautifully over Bbmaj7.",
+          "recommendedUse": "Complete freedom over Bbmaj7. Extremely common in jazz standards and R&B.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "Bb Lydian",
+          "scaleDbKey": "Lydian",
+          "compatibilityScore": 10,
+          "relationship": "Preferred Imaj7 scale with #11",
+          "rationale": "The #4 (E) avoids suspended sound. Bbmaj7#11 is a jazz staple. This IS the modern Imaj7 sound.",
+          "chordToneAlignment": {
+            "chordTones": ["Bb", "D", "F", "A"],
+            "tensions": ["C (9th)", "E (#11)", "G (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "The #11 (E) is signature sound. Bbmaj7#11 is essential in modern jazz vocabulary.",
+          "recommendedUse": "The definitive modern Imaj7 scale. Essential for jazz, fusion, and contemporary music.",
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "Bb Major Pentatonic",
+          "scaleDbKey": "MajorPentatonic",
+          "compatibilityScore": 9,
+          "relationship": "Safe pentatonic approach",
+          "rationale": "Omits 4th and 7th for core consonance. Simple approach to maj7 harmony.",
+          "chordToneAlignment": {
+            "chordTones": ["Bb", "D", "F"],
+            "tensions": ["C (9th)", "G (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Very safe and melodic. Perfect for pop and R&B over Bbmaj7.",
+          "recommendedUse": "Perfect for pop and R&B maj7 approaches. Creates smooth, singable melodies.",
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "Cm": {
+      "symbol": "Cm",
+      "fullName": "C Minor",
+      "romanNumeral": "ii",
+      "quality": "minor",
+      "notes": ["C", "Eb", "G"],
+      "rootNote": "C",
+      "scaleCompatibility": [
+        {
+          "scaleName": "C Dorian",
+          "scaleDbKey": "Dorian",
+          "compatibilityScore": 10,
+          "relationship": "Primary ii chord scale",
+          "rationale": "C Dorian is the natural ii mode in Bb major. The major 6th (A) creates brighter, jazzier minor sound.",
+          "chordToneAlignment": {
+            "chordTones": ["C", "Eb", "G"],
+            "tensions": ["D (9th)", "F (11th)", "A (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize the A (13th) for Dorian character. Essential for ii-V-I progressions.",
+          "recommendedUse": "The definitive ii chord scale in Bb major. Essential for jazz, R&B, and contemporary music.",
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "C Natural Minor (Aeolian)",
+          "scaleDbKey": "Aeolian",
+          "compatibilityScore": 9,
+          "relationship": "Darker minor alternative",
+          "rationale": "Natural minor with Ab instead of A. Creates traditional, somber minor sound.",
+          "chordToneAlignment": {
+            "chordTones": ["C", "Eb", "G"],
+            "tensions": ["D (9th)", "F (11th)", "Ab (b13)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "The Ab (b13) creates darker color. Use for traditional minor sound.",
+          "recommendedUse": "Use for darker ii chord sound. More melancholic than Dorian.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "C Minor Pentatonic",
+          "scaleDbKey": "MinorPentatonic",
+          "compatibilityScore": 9,
+          "relationship": "Simple pentatonic approach",
+          "rationale": "Safe minor pentatonic removes complexity. Universal minor sound.",
+          "chordToneAlignment": {
+            "chordTones": ["C", "Eb", "G"],
+            "tensions": ["Bb (b7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Very safe and simple. Perfect for straightforward minor melodies.",
+          "recommendedUse": "Perfect for simple, bluesy ii minor. Works in R&B and rock contexts.",
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "Cm7": {
+      "symbol": "Cm7",
+      "fullName": "C Minor 7th",
+      "romanNumeral": "iim7",
+      "quality": "minor7",
+      "notes": ["C", "Eb", "G", "Bb"],
+      "rootNote": "C",
+      "scaleCompatibility": [
+        {
+          "scaleName": "C Dorian",
+          "scaleDbKey": "Dorian",
+          "compatibilityScore": 10,
+          "relationship": "The definitive iim7 scale",
+          "rationale": "Contains all four chord tones. A (13th) essential for ii-V-I. Cm7-F7-Bbmaj7 is a jazz standard progression.",
+          "chordToneAlignment": {
+            "chordTones": ["C", "Eb", "G", "Bb"],
+            "tensions": ["D (9th)", "F (11th)", "A (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "A (13th) crucial for Dorian color. Smooth voice leading to F7.",
+          "recommendedUse": "Essential for Cm7-F7-Bbmaj7. The standard iim7 sound in jazz and R&B.",
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "Bb Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Parent scale approach",
+          "rationale": "Bb major reinforces key center. All notes work since Cm7 is diatonic to Bb.",
+          "chordToneAlignment": {
+            "chordTones": ["C", "Eb", "G", "Bb"],
+            "tensions": ["D (9th)", "F (11th)", "A (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Think Bb major, emphasize C as root. Maintains tonal clarity.",
+          "recommendedUse": "Use for key center emphasis. Great for teaching diatonic harmony.",
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "Dm": {
+      "symbol": "Dm",
+      "fullName": "D Minor",
+      "romanNumeral": "iii",
+      "quality": "minor",
+      "notes": ["D", "F", "A"],
+      "rootNote": "D",
+      "scaleCompatibility": [
+        {
+          "scaleName": "D Phrygian",
+          "scaleDbKey": "Phrygian",
+          "compatibilityScore": 9,
+          "relationship": "Natural iii mode with exotic b2",
+          "rationale": "D Phrygian is the iii mode of Bb major. The b2 (Eb) creates Spanish/exotic character.",
+          "chordToneAlignment": {
+            "chordTones": ["D", "F", "A"],
+            "tensions": ["Eb (b9)", "G (11th)", "C (b13)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize the b2 (Eb) for Phrygian color. Creates dark, mysterious quality.",
+          "recommendedUse": "Use for exotic, Spanish, or metal-influenced iii minor. Creates drama in Bb major.",
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "Bb Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Parent scale - diatonic approach",
+          "rationale": "All Bb major notes work over Dm. Maintains key center.",
+          "chordToneAlignment": {
+            "chordTones": ["D", "F", "A"],
+            "tensions": ["C (7th)", "Eb (b9)", "G (11th)", "Bb (b6)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Think Bb major, emphasize D as root. Simple diatonic approach.",
+          "recommendedUse": "Perfect for maintaining key center over iii. Works universally.",
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "Eb": {
+      "symbol": "Eb",
+      "fullName": "Eb Major",
+      "romanNumeral": "IV",
+      "quality": "major",
+      "notes": ["Eb", "G", "Bb"],
+      "rootNote": "Eb",
+      "scaleCompatibility": [
+        {
+          "scaleName": "Eb Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "IV chord parent scale",
+          "rationale": "Eb major is the natural scale for IV in Bb major. Creates subdominant function.",
+          "chordToneAlignment": {
+            "chordTones": ["Eb", "G", "Bb"],
+            "tensions": ["F (9th)", "Ab (11th)", "C (13th)", "D (maj7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize root (Eb) and major 3rd (G). Ab (11th) can sound suspended.",
+          "recommendedUse": "Essential for I-IV-V progressions in Bb. Perfect for jazz, classical, and R&B.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "Eb Lydian",
+          "scaleDbKey": "Lydian",
+          "compatibilityScore": 9,
+          "relationship": "Bright IV with #11",
+          "rationale": "The #4 (A) creates modern, floating IV sound. Common in jazz.",
+          "chordToneAlignment": {
+            "chordTones": ["Eb", "G", "Bb"],
+            "tensions": ["F (9th)", "A (#11)", "C (13th)", "D (maj7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "The #11 (A) creates bright, dreamy quality. Perfect for Ebmaj7#11.",
+          "recommendedUse": "Use for sophisticated, modern IV sound. Perfect for jazz and contemporary music.",
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "Bb Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Parent key - diatonic approach",
+          "rationale": "Bb major over IV maintains key center. All notes work.",
+          "chordToneAlignment": {
+            "chordTones": ["Eb", "G", "Bb"],
+            "tensions": ["C (13th)", "D (maj7)", "F (9th)", "A (#11)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Think Bb major, emphasize Eb as root. Maintains tonal clarity.",
+          "recommendedUse": "Use for diatonic IV approach. Works universally.",
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "F": {
+      "symbol": "F",
+      "fullName": "F Major",
+      "romanNumeral": "V",
+      "quality": "major",
+      "notes": ["F", "A", "C"],
+      "rootNote": "F",
+      "scaleCompatibility": [
+        {
+          "scaleName": "F Mixolydian",
+          "scaleDbKey": "Mixolydian",
+          "compatibilityScore": 10,
+          "relationship": "Natural V chord mode in Bb major",
+          "rationale": "F Mixolydian shares all notes with Bb major. The b7 (Eb) creates dominant 7th character.",
+          "chordToneAlignment": {
+            "chordTones": ["F", "A", "C"],
+            "tensions": ["G (9th)", "Bb (11th)", "D (13th)", "Eb (b7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "The Eb (b7) creates dominant pull to Bb. Emphasize A and Eb for strong V-I.",
+          "recommendedUse": "Essential for V7 chords in Bb major. Perfect for dominant-tonic resolution.",
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "F Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 9,
+          "relationship": "Pure major V without dominant 7th",
+          "rationale": "F major provides pure V triad. E (maj7) is brighter than Mixolydian's Eb.",
+          "chordToneAlignment": {
+            "chordTones": ["F", "A", "C"],
+            "tensions": ["G (9th)", "Bb (11th)", "D (13th)", "E (maj7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "More classical V approach. E creates major 7th rather than dominant 7th.",
+          "recommendedUse": "Use for classical, traditional V sound.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "Bb Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Parent scale - diatonic approach",
+          "rationale": "Bb major contains all V chord tones. F Mixolydian = Bb Ionian starting on F.",
+          "chordToneAlignment": {
+            "chordTones": ["F", "A", "C"],
+            "tensions": ["G (9th)", "Bb (11th)", "D (13th)", "Eb (b7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Think Bb major, emphasize F as root. Eb creates natural dominant character.",
+          "recommendedUse": "Perfect for diatonic V approach. Maintains key center.",
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "F7": {
+      "symbol": "F7",
+      "fullName": "F Dominant 7th",
+      "romanNumeral": "V7",
+      "quality": "dominant7",
+      "notes": ["F", "A", "C", "Eb"],
+      "rootNote": "F",
+      "scaleCompatibility": [
+        {
+          "scaleName": "F Mixolydian",
+          "scaleDbKey": "Mixolydian",
+          "compatibilityScore": 10,
+          "relationship": "The definitive dominant 7th scale",
+          "rationale": "Contains all four chord tones perfectly. F7 is extremely common in jazz and blues in Bb.",
+          "chordToneAlignment": {
+            "chordTones": ["F", "A", "C", "Eb"],
+            "tensions": ["G (9th)", "Bb (11th)", "D (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize 3rd (A) and b7 (Eb) - the tritone that resolves to Bb.",
+          "recommendedUse": "Essential for all V7 situations. Perfect for ii-V-I (Cm7-F7-Bbmaj7).",
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "Bb Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Parent scale approach",
+          "rationale": "Bb major over F7 maintains key center. Simple and effective.",
+          "chordToneAlignment": {
+            "chordTones": ["F", "A", "C", "Eb"],
+            "tensions": ["G (9th)", "Bb (11th)", "D (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Think Bb major, emphasize F as root. Eb creates dominant 7th automatically.",
+          "recommendedUse": "Perfect for maintaining key awareness over V7.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "F Blues Scale",
+          "scaleDbKey": "Blues",
+          "compatibilityScore": 9,
+          "relationship": "Bluesy dominant approach",
+          "rationale": "Adds blue notes for authentic blues dominant. The b5 (B) creates blues tension.",
+          "chordToneAlignment": {
+            "chordTones": ["F", "Ab", "C", "Eb"],
+            "tensions": ["Bb (11th)", "B (b5)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Use B (b5) as passing tone to C. Creates authentic blues sound.",
+          "recommendedUse": "Essential for blues in Bb. Perfect for 12-bar blues.",
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "Gm": {
+      "symbol": "Gm",
+      "fullName": "G Minor",
+      "romanNumeral": "vi",
+      "quality": "minor",
+      "notes": ["G", "Bb", "D"],
+      "rootNote": "G",
+      "scaleCompatibility": [
+        {
+          "scaleName": "G Natural Minor (Aeolian)",
+          "scaleDbKey": "Aeolian",
+          "compatibilityScore": 10,
+          "relationship": "Relative minor - shares all notes with Bb major",
+          "rationale": "G minor is the vi of Bb major. Shares all seven notes. Most common minor chord in Bb major progressions.",
+          "chordToneAlignment": {
+            "chordTones": ["G", "Bb", "D"],
+            "tensions": ["A (9th)", "C (11th)", "F (b13)", "Eb (b6)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "All Bb major notes work perfectly. Natural minor sound in the key.",
+          "recommendedUse": "Essential for vi chords in Bb major. Perfect for Bb-F-Gm-Eb progressions.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "G Dorian",
+          "scaleDbKey": "Dorian",
+          "compatibilityScore": 9,
+          "relationship": "Brighter minor alternative",
+          "rationale": "Dorian adds E (major 6th) for brighter minor. More sophisticated than natural minor.",
+          "chordToneAlignment": {
+            "chordTones": ["G", "Bb", "D"],
+            "tensions": ["A (9th)", "C (11th)", "E (13th)", "F (b7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "The E (major 6th) creates jazzy, bright minor. More modern than Aeolian.",
+          "recommendedUse": "Use for sophisticated, jazzy vi minor. Perfect for jazz and R&B.",
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "Bb Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Parent scale - relative major",
+          "rationale": "Bb major and G minor share all notes. G Aeolian = Bb Ionian starting on G.",
+          "chordToneAlignment": {
+            "chordTones": ["G", "Bb", "D"],
+            "tensions": ["C (11th)", "Eb (b6)", "F (b7)", "A (9th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Think Bb major, emphasize G as root. All notes work perfectly.",
+          "recommendedUse": "Perfect for understanding relative major/minor. Works universally.",
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "Gm7": {
+      "symbol": "Gm7",
+      "fullName": "G Minor 7th",
+      "romanNumeral": "vim7",
+      "quality": "minor7",
+      "notes": ["G", "Bb", "D", "F"],
+      "rootNote": "G",
+      "scaleCompatibility": [
+        {
+          "scaleName": "G Natural Minor (Aeolian)",
+          "scaleDbKey": "Aeolian",
+          "compatibilityScore": 10,
+          "relationship": "Perfect alignment with vim7",
+          "rationale": "Contains all four chord tones. Natural minor sound perfect for vi minor 7.",
+          "chordToneAlignment": {
+            "chordTones": ["G", "Bb", "D", "F"],
+            "tensions": ["A (9th)", "C (11th)", "Eb (b13)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "All notes work beautifully. Standard vim7 sound.",
+          "recommendedUse": "Essential for vim7 in Bb major. Perfect for Bb-F-Gm7-Eb progressions.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "Bb Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Parent scale - diatonic approach",
+          "rationale": "Simple and effective. All Bb major notes work over Gm7.",
+          "chordToneAlignment": {
+            "chordTones": ["G", "Bb", "D", "F"],
+            "tensions": ["C (11th)", "Eb (b13)", "A (9th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Think Bb major, emphasize G as root. Maintains tonal clarity.",
+          "recommendedUse": "Perfect for diatonic vim7 approach. Works universally.",
+          "difficultyLevel": 1
+        }
+      ]
+    }
+  },
+  "commonProgressions": [
+    {
+      "name": "I-IV-V",
+      "description": "The foundation of Western music in Bb major. Extremely common in jazz and classical.",
+      "chords": ["Bb", "Eb", "F"],
+      "genre": ["Jazz", "Classical", "R&B", "Blues", "Rock"],
+      "difficulty": 1,
+      "musicalCharacter": "Strong, warm, and sophisticated. Bb is one of the most common keys for horns and woodwinds.",
+      "famousSongs": ["Many jazz standards and classical pieces in Bb"],
+      "tips": "Bb major is THE key for jazz. Perfect for horn arrangements (trumpet, sax, clarinet). Can enhance with Bb-Eb-F7."
+    },
+    {
+      "name": "I-V-vi-IV",
+      "description": "Modern pop progression in Bb. The 'Axis of Awesome' progression.",
+      "chords": ["Bb", "F", "Gm", "Eb"],
+      "genre": ["Pop", "R&B", "Soul", "Contemporary"],
+      "difficulty": 1,
+      "musicalCharacter": "Emotionally versatile and soulful. Very common in contemporary R&B.",
+      "famousSongs": ["Someone Like You, With or Without You (transposed)"],
+      "tips": "Extremely common in modern music. Works for entire songs. Can be played in any order."
+    },
+    {
+      "name": "I-vi-IV-V",
+      "description": "Classic progression in Bb. The doo-wop changes.",
+      "chords": ["Bb", "Gm", "Eb", "F"],
+      "genre": ["Doo-Wop", "Jazz", "R&B", "Soul"],
+      "difficulty": 1,
+      "musicalCharacter": "Nostalgic, warm, and soulful.",
+      "famousSongs": ["Stand By Me (transposed), Blue Moon (transposed)"],
+      "tips": "Perfect for retro and soul vibes. Can enhance with Bbmaj7-Gm7-Ebmaj7-F7."
+    },
+    {
+      "name": "ii-V-I",
+      "description": "THE fundamental jazz progression. Bb is one of the most common jazz keys.",
+      "chords": ["Cm7", "F7", "Bbmaj7"],
+      "genre": ["Jazz", "Bossa Nova", "Latin Jazz", "Jazz Ballad"],
+      "difficulty": 2,
+      "musicalCharacter": "Sophisticated with strong resolution. The gold standard for jazz harmony.",
+      "famousSongs": ["Autumn Leaves, Satin Doll, countless jazz standards in Bb"],
+      "tips": "MASTER this for jazz. Practice with extensions: Cm9-F13-Bbmaj9. F7 can be altered. Essential for all jazz musicians."
+    },
+    {
+      "name": "I-IV-vi-V",
+      "description": "Optimistic progression with smooth voice leading.",
+      "chords": ["Bb", "Eb", "Gm", "F"],
+      "genre": ["Jazz", "R&B", "Soul", "Pop"],
+      "difficulty": 1,
+      "musicalCharacter": "Warm, hopeful, melodically smooth.",
+      "famousSongs": ["Common in jazz and R&B"],
+      "tips": "Perfect for horn arrangements. Very singable. Can add 7ths for sophistication."
+    },
+    {
+      "name": "vi-IV-I-V",
+      "description": "Emotional pop/R&B progression starting on vi minor.",
+      "chords": ["Gm", "Eb", "Bb", "F"],
+      "genre": ["Pop", "R&B", "Soul", "Alternative"],
+      "difficulty": 1,
+      "musicalCharacter": "Begins melancholic, builds to hopeful resolution.",
+      "famousSongs": ["Grenade, Apologize (transposed)"],
+      "tips": "Starting on vi creates immediate emotional impact. Great for building verses."
+    },
+    {
+      "name": "I-vi-ii-V",
+      "description": "Jazz standard progression - the rhythm changes in Bb.",
+      "chords": ["Bbmaj7", "Gm7", "Cm7", "F7"],
+      "genre": ["Jazz", "Jazz Standards", "Swing", "Bebop"],
+      "difficulty": 2,
+      "musicalCharacter": "Sophisticated circle-of-fifths motion.",
+      "famousSongs": ["I Got Rhythm, countless bebop heads"],
+      "tips": "Essential for jazz. Strong harmonic motion. Add tensions for sophistication."
+    },
+    {
+      "name": "vi-ii-V-I",
+      "description": "Extended jazz progression combining relative minor with ii-V-I.",
+      "chords": ["Gm7", "Cm7", "F7", "Bbmaj7"],
+      "genre": ["Jazz", "Jazz Ballad", "Bossa Nova", "Smooth Jazz"],
+      "difficulty": 3,
+      "musicalCharacter": "Sophisticated and smooth. Longer journey to resolution.",
+      "famousSongs": ["Common in jazz ballads"],
+      "tips": "Extends ii-V-I with vi start. Practice jazz voicings. Can substitute chords (Gm7b5, F7alt)."
+    },
+    {
+      "name": "I-bVII-IV-I",
+      "description": "Modal progression in Bb borrowing bVII (Ab major).",
+      "chords": ["Bb", "Ab", "Eb", "Bb"],
+      "genre": ["Rock", "R&B", "Soul", "Alternative"],
+      "difficulty": 2,
+      "musicalCharacter": "Bold, soulful with modal flavor.",
+      "famousSongs": ["Common in soul and R&B"],
+      "tips": "The Ab is borrowed from Bb Mixolydian. Creates powerful, soulful sound."
+    },
+    {
+      "name": "I-V-IV-V",
+      "description": "High-energy progression in Bb.",
+      "chords": ["Bb", "F", "Eb", "F"],
+      "genre": ["Pop", "R&B", "Soul", "Gospel"],
+      "difficulty": 1,
+      "musicalCharacter": "Energetic and driving. Double V creates urgency.",
+      "famousSongs": ["Common in gospel and R&B"],
+      "tips": "Great for high-energy sections. Repeated V emphasizes tension."
+    },
+    {
+      "name": "I-iii-IV-V",
+      "description": "Ascending progression through scale degrees.",
+      "chords": ["Bb", "Dm", "Eb", "F"],
+      "genre": ["Pop", "Gospel", "Soul", "R&B"],
+      "difficulty": 2,
+      "musicalCharacter": "Builds tension through ascending harmony.",
+      "famousSongs": ["Common in gospel and soul"],
+      "tips": "The iii chord (Dm) is underused but effective. Creates smooth voice leading."
+    },
+    {
+      "name": "12-Bar Blues in Bb",
+      "description": "Classic 12-bar blues. Bb is extremely common for blues in horn keys.",
+      "chords": ["Bb7", "Bb7", "Bb7", "Bb7", "Eb7", "Eb7", "Bb7", "Bb7", "F7", "Eb7", "Bb7", "F7"],
+      "genre": ["Blues", "Jazz Blues", "R&B", "Soul"],
+      "difficulty": 2,
+      "musicalCharacter": "The quintessential blues sound in horn key.",
+      "famousSongs": ["Countless blues standards, Billie's Bounce"],
+      "tips": "Bb is THE blues key for horns. Use Bb blues scale and Bb minor pentatonic for solos. Essential for jazz blues."
+    }
+  ]
+}

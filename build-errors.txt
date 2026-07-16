@@ -1,0 +1,33 @@
+﻿
+> nextjs@0.1.0 build
+> next build
+
+   Γû▓ Next.js 15.5.14
+   - Environments: .env.local, .env
+   - Experiments (use with caution):
+     ┬╖ optimizePackageImports
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully in 4.3s
+   Skipping linting
+   Checking validity of types ...
+node.exe : Failed to compile.
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Failed to compile.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+./app/learn/fretboard/note-a-day/page.tsx:155:38
+Type error: Argument of type '{ type: "correct"; message: string; }' is not assignable to parameter of type 'SetStateAction<FeedbackEvent | null>'.
+  Object literal may only specify known properties, and 'message' does not exist in type 'FeedbackEvent | ((prevState: FeedbackEvent | null) => FeedbackEvent | null)'.
+
+[0m [90m 153 |[39m     [36mif[39m (targetNote [33m===[39m currentNote) {
+ [90m 154 |[39m       [90m// Correct![39m
+[31m[1m>[22m[39m[90m 155 |[39m       setFeedback({ type[33m:[39m [32m'correct'[39m[33m,[39m message[33m:[39m [32m`Correct! ${currentNote} on string ${stringIndex + 1}`[39m })[33m;[39m
+ [90m     |[39m                                      [31m[1m^[22m[39m
+ [90m 156 |[39m       setScore((prev) [33m=>[39m prev [33m+[39m [35m1[39m)[33m;[39m
+ [90m 157 |[39m       setStreak((prev) [33m=>[39m prev [33m+[39m [35m1[39m)[33m;[39m
+ [90m 158 |[39m[0m
+Next.js build worker exited with code: 1 and signal: null

@@ -1,0 +1,171 @@
+{
+  "key": "E",
+  "scale": "Ionian",
+  "quality": "major",
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-25",
+  "diatonicChords": [
+    {
+      "degree": "I",
+      "symbol": "E",
+      "fullName": "E Major",
+      "quality": "major",
+      "notes": [
+        "E",
+        "G#",
+        "B"
+      ],
+      "function": "Tonic - Home base, resolution",
+      "commonUse": "Degree 1 in Ionian",
+      "compatibilityScore": 10
+    },
+    {
+      "degree": "ii",
+      "symbol": "F#m",
+      "fullName": "F#m Minor",
+      "quality": "minor",
+      "notes": [
+        "F#",
+        "A",
+        "C#"
+      ],
+      "function": "Supertonic - Pre-dominant function",
+      "commonUse": "Degree 2 in Ionian",
+      "compatibilityScore": 8
+    },
+    {
+      "degree": "iii",
+      "symbol": "G#m",
+      "fullName": "G#m Minor",
+      "quality": "minor",
+      "notes": [
+        "G#",
+        "B",
+        "D#"
+      ],
+      "function": "Mediant - Tonic extension",
+      "commonUse": "Degree 3 in Ionian",
+      "compatibilityScore": 8
+    },
+    {
+      "degree": "IV",
+      "symbol": "A",
+      "fullName": "A Major",
+      "quality": "major",
+      "notes": [
+        "A",
+        "C#",
+        "E"
+      ],
+      "function": "Subdominant - Pre-dominant, sets up dominant",
+      "commonUse": "Degree 4 in Ionian",
+      "compatibilityScore": 10
+    },
+    {
+      "degree": "V",
+      "symbol": "B",
+      "fullName": "B Major",
+      "quality": "major",
+      "notes": [
+        "B",
+        "D#",
+        "F#"
+      ],
+      "function": "Dominant - Tension, leads to tonic",
+      "commonUse": "Degree 5 in Ionian",
+      "compatibilityScore": 10
+    },
+    {
+      "degree": "vi",
+      "symbol": "C#m",
+      "fullName": "C#m Minor",
+      "quality": "minor",
+      "notes": [
+        "C#",
+        "E",
+        "G#"
+      ],
+      "function": "Submediant - Relative minor/major",
+      "commonUse": "Degree 6 in Ionian",
+      "compatibilityScore": 8
+    },
+    {
+      "degree": "vii°",
+      "symbol": "D#°",
+      "fullName": "D#° Diminished",
+      "quality": "diminished",
+      "notes": [
+        "D#",
+        "F#",
+        "A"
+      ],
+      "function": "Leading tone - Strong pull to tonic",
+      "commonUse": "Degree 7 in Ionian",
+      "compatibilityScore": 8
+    }
+  ],
+  "extendedChords": [
+    {
+      "degree": "Imaj7",
+      "symbol": "Emaj7",
+      "fullName": "E Major 7th",
+      "quality": "maj7",
+      "notes": [
+        "E",
+        "G#",
+        "B",
+        "D#"
+      ],
+      "function": "Tonic with color",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    },
+    {
+      "degree": "IVmaj7",
+      "symbol": "Amaj7",
+      "fullName": "A Major 7th",
+      "quality": "maj7",
+      "notes": [
+        "A",
+        "C#",
+        "E",
+        "G#"
+      ],
+      "function": "Subdominant with color",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    },
+    {
+      "degree": "V7",
+      "symbol": "B7",
+      "fullName": "B Dominant 7th",
+      "quality": "dom7",
+      "notes": [
+        "B",
+        "D#",
+        "F#",
+        "A"
+      ],
+      "function": "Dominant with tension",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    }
+  ],
+  "modalInterchangeChords": [
+    {
+      "degree": "bVII",
+      "symbol": "D",
+      "fullName": "D Major",
+      "quality": "major",
+      "notes": [
+        "D",
+        "F#",
+        "A"
+      ],
+      "borrowedFrom": "E Mixolydian",
+      "function": "Subtonic - creates tension",
+      "commonUse": "Rock, blues, modal jazz",
+      "compatibilityScore": 7
+    }
+  ]
+}

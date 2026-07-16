@@ -1,0 +1,155 @@
+{
+  "key": "C",
+  "scale": "Locrian",
+  "quality": "diminished",
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-25",
+  "diatonicChords": [
+    {
+      "degree": "I",
+      "symbol": "C°",
+      "fullName": "C° Diminished",
+      "quality": "diminished",
+      "notes": [
+        "C",
+        "D#",
+        "F#"
+      ],
+      "function": "Tonic - Home base, resolution",
+      "commonUse": "Degree 1 in Locrian",
+      "compatibilityScore": 10
+    },
+    {
+      "degree": "ii",
+      "symbol": "C#",
+      "fullName": "C# Major",
+      "quality": "major",
+      "notes": [
+        "C#",
+        "F",
+        "G#"
+      ],
+      "function": "Supertonic - Pre-dominant function",
+      "commonUse": "Degree 2 in Locrian",
+      "compatibilityScore": 8
+    },
+    {
+      "degree": "iii",
+      "symbol": "D#m",
+      "fullName": "D#m Minor",
+      "quality": "minor",
+      "notes": [
+        "D#",
+        "F#",
+        "A#"
+      ],
+      "function": "Mediant - Tonic extension",
+      "commonUse": "Degree 3 in Locrian",
+      "compatibilityScore": 8
+    },
+    {
+      "degree": "IV",
+      "symbol": "Fm",
+      "fullName": "Fm Minor",
+      "quality": "minor",
+      "notes": [
+        "F",
+        "G#",
+        "C"
+      ],
+      "function": "Subdominant - Pre-dominant, sets up dominant",
+      "commonUse": "Degree 4 in Locrian",
+      "compatibilityScore": 10
+    },
+    {
+      "degree": "V",
+      "symbol": "F#",
+      "fullName": "F# Major",
+      "quality": "major",
+      "notes": [
+        "F#",
+        "A#",
+        "C#"
+      ],
+      "function": "Dominant - Tension, leads to tonic",
+      "commonUse": "Degree 5 in Locrian",
+      "compatibilityScore": 10
+    },
+    {
+      "degree": "vi",
+      "symbol": "G#",
+      "fullName": "G# Major",
+      "quality": "major",
+      "notes": [
+        "G#",
+        "C",
+        "D#"
+      ],
+      "function": "Submediant - Relative minor/major",
+      "commonUse": "Degree 6 in Locrian",
+      "compatibilityScore": 8
+    },
+    {
+      "degree": "vii°",
+      "symbol": "A#m",
+      "fullName": "A#m Minor",
+      "quality": "minor",
+      "notes": [
+        "A#",
+        "C#",
+        "F"
+      ],
+      "function": "Leading tone - Strong pull to tonic",
+      "commonUse": "Degree 7 in Locrian",
+      "compatibilityScore": 8
+    }
+  ],
+  "extendedChords": [
+    {
+      "degree": "Imaj7",
+      "symbol": "Cmaj7",
+      "fullName": "C Major 7th",
+      "quality": "maj7",
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B"
+      ],
+      "function": "Tonic with color",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    },
+    {
+      "degree": "IVmaj7",
+      "symbol": "Fmaj7",
+      "fullName": "F Major 7th",
+      "quality": "maj7",
+      "notes": [
+        "F",
+        "A",
+        "C",
+        "E"
+      ],
+      "function": "Subdominant with color",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    },
+    {
+      "degree": "V7",
+      "symbol": "F#maj7",
+      "fullName": "F# Major 7th",
+      "quality": "maj7",
+      "notes": [
+        "F#",
+        "A#",
+        "C#",
+        "F"
+      ],
+      "function": "Dominant with tension",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    }
+  ],
+  "modalInterchangeChords": []
+}

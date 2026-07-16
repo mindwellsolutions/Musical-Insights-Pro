@@ -1,0 +1,295 @@
+{
+  "key": "D",
+  "totalScales": 32,
+  "scaleIndex": [
+    {
+      "scalesArrayKey": "Key_of_D",
+      "fullScaleName": "D Key Center",
+      "family": "key-center",
+      "quality": "major/minor"
+    },
+    {
+      "scalesArrayKey": "Ionian",
+      "fullScaleName": "D Ionian (Major)",
+      "family": "major-modes",
+      "quality": "major"
+    },
+    {
+      "scalesArrayKey": "Dorian",
+      "fullScaleName": "D Dorian",
+      "family": "major-modes",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "Phrygian",
+      "fullScaleName": "D Phrygian",
+      "family": "major-modes",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "Lydian",
+      "fullScaleName": "D Lydian",
+      "family": "major-modes",
+      "quality": "major"
+    },
+    {
+      "scalesArrayKey": "Mixolydian",
+      "fullScaleName": "D Mixolydian",
+      "family": "major-modes",
+      "quality": "dominant"
+    },
+    {
+      "scalesArrayKey": "Aeolian",
+      "fullScaleName": "D Aeolian (Natural Minor)",
+      "family": "major-modes",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "Locrian",
+      "fullScaleName": "D Locrian",
+      "family": "major-modes",
+      "quality": "diminished"
+    },
+    {
+      "scalesArrayKey": "HarmonicMinor",
+      "fullScaleName": "D Harmonic Minor",
+      "family": "minor-variants",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "MelodicMinor",
+      "fullScaleName": "D Melodic Minor",
+      "family": "minor-variants",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "LocrianNatural6",
+      "fullScaleName": "D Locrian Natural 6",
+      "family": "harmonic-minor-modes",
+      "quality": "diminished"
+    },
+    {
+      "scalesArrayKey": "IonianSharp5",
+      "fullScaleName": "D Ionian #5",
+      "family": "harmonic-minor-modes",
+      "quality": "augmented"
+    },
+    {
+      "scalesArrayKey": "DorianSharp4",
+      "fullScaleName": "D Dorian #4",
+      "family": "harmonic-minor-modes",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "PhrygianDominant",
+      "fullScaleName": "D Phrygian Dominant",
+      "family": "harmonic-minor-modes",
+      "quality": "dominant"
+    },
+    {
+      "scalesArrayKey": "LydianSharp2",
+      "fullScaleName": "D Lydian #2",
+      "family": "harmonic-minor-modes",
+      "quality": "major"
+    },
+    {
+      "scalesArrayKey": "MixolydianFlat9Flat13",
+      "fullScaleName": "D Mixolydian b9 b13",
+      "family": "harmonic-minor-modes",
+      "quality": "diminished"
+    },
+    {
+      "scalesArrayKey": "DorianFlat2",
+      "fullScaleName": "D Dorian b2 (Phrygian #6)",
+      "family": "melodic-minor-modes",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "LydianAugmented",
+      "fullScaleName": "D Lydian Augmented",
+      "family": "melodic-minor-modes",
+      "quality": "major"
+    },
+    {
+      "scalesArrayKey": "LydianDominant",
+      "fullScaleName": "D Lydian Dominant (Acoustic Scale)",
+      "family": "melodic-minor-modes",
+      "quality": "dominant"
+    },
+    {
+      "scalesArrayKey": "MixolydianFlat6",
+      "fullScaleName": "D Mixolydian b6",
+      "family": "melodic-minor-modes",
+      "quality": "dominant"
+    },
+    {
+      "scalesArrayKey": "AeolianFlat5",
+      "fullScaleName": "D Aeolian b5 (Half-Diminished)",
+      "family": "melodic-minor-modes",
+      "quality": "diminished"
+    },
+    {
+      "scalesArrayKey": "SuperLocrian",
+      "fullScaleName": "D Super Locrian (Altered Scale)",
+      "family": "melodic-minor-modes",
+      "quality": "dominant"
+    },
+    {
+      "scalesArrayKey": "MajorPentatonic",
+      "fullScaleName": "D Major Pentatonic",
+      "family": "pentatonic",
+      "quality": "major"
+    },
+    {
+      "scalesArrayKey": "MinorPentatonic",
+      "fullScaleName": "D Minor Pentatonic",
+      "family": "pentatonic",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "BluesScale",
+      "fullScaleName": "D Blues Scale",
+      "family": "pentatonic",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "JapanesePentatonic",
+      "fullScaleName": "D Japanese Pentatonic (In Scale)",
+      "family": "pentatonic",
+      "quality": "other"
+    },
+    {
+      "scalesArrayKey": "EgyptianPentatonic",
+      "fullScaleName": "D Egyptian Pentatonic (Suspended)",
+      "family": "pentatonic",
+      "quality": "other"
+    },
+    {
+      "scalesArrayKey": "Chromatic",
+      "fullScaleName": "D Chromatic",
+      "family": "symmetrical",
+      "quality": "other"
+    },
+    {
+      "scalesArrayKey": "WholeTone",
+      "fullScaleName": "D Whole Tone",
+      "family": "symmetrical",
+      "quality": "augmented"
+    },
+    {
+      "scalesArrayKey": "DiminishedHalfWhole",
+      "fullScaleName": "D Diminished (Half-Whole)",
+      "family": "symmetrical",
+      "quality": "diminished"
+    },
+    {
+      "scalesArrayKey": "DiminishedWholeHalf",
+      "fullScaleName": "D Diminished (Whole-Half)",
+      "family": "symmetrical",
+      "quality": "dominant"
+    },
+    {
+      "scalesArrayKey": "Augmented",
+      "fullScaleName": "D Augmented (Hexatonic)",
+      "family": "symmetrical",
+      "quality": "augmented"
+    }
+  ],
+  "scalesByFamily": {
+    "key-center": [
+      "Key_of_D"
+    ],
+    "major-modes": [
+      "Ionian",
+      "Dorian",
+      "Phrygian",
+      "Lydian",
+      "Mixolydian",
+      "Aeolian",
+      "Locrian"
+    ],
+    "minor-variants": [
+      "HarmonicMinor",
+      "MelodicMinor"
+    ],
+    "harmonic-minor-modes": [
+      "LocrianNatural6",
+      "IonianSharp5",
+      "DorianSharp4",
+      "PhrygianDominant",
+      "LydianSharp2",
+      "MixolydianFlat9Flat13"
+    ],
+    "melodic-minor-modes": [
+      "DorianFlat2",
+      "LydianAugmented",
+      "LydianDominant",
+      "MixolydianFlat6",
+      "AeolianFlat5",
+      "SuperLocrian"
+    ],
+    "pentatonic": [
+      "MajorPentatonic",
+      "MinorPentatonic",
+      "BluesScale",
+      "JapanesePentatonic",
+      "EgyptianPentatonic"
+    ],
+    "symmetrical": [
+      "Chromatic",
+      "WholeTone",
+      "DiminishedHalfWhole",
+      "DiminishedWholeHalf",
+      "Augmented"
+    ],
+    "jazz": []
+  },
+  "scalesByQuality": {
+    "major": [
+      "Ionian",
+      "Lydian",
+      "LydianSharp2",
+      "LydianAugmented",
+      "MajorPentatonic"
+    ],
+    "minor": [
+      "Dorian",
+      "Phrygian",
+      "Aeolian",
+      "HarmonicMinor",
+      "MelodicMinor",
+      "DorianSharp4",
+      "DorianFlat2",
+      "MinorPentatonic",
+      "BluesScale"
+    ],
+    "dominant": [
+      "Mixolydian",
+      "PhrygianDominant",
+      "LydianDominant",
+      "MixolydianFlat6",
+      "SuperLocrian",
+      "DiminishedWholeHalf"
+    ],
+    "diminished": [
+      "Locrian",
+      "LocrianNatural6",
+      "MixolydianFlat9Flat13",
+      "AeolianFlat5",
+      "DiminishedHalfWhole"
+    ],
+    "augmented": [
+      "IonianSharp5",
+      "WholeTone",
+      "Augmented"
+    ],
+    "other": [
+      "JapanesePentatonic",
+      "EgyptianPentatonic",
+      "Chromatic"
+    ],
+    "major/minor": [
+      "Key_of_D"
+    ]
+  }
+}

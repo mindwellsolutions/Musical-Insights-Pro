@@ -1,0 +1,171 @@
+{
+  "key": "G#",
+  "scale": "Lydian",
+  "quality": "major",
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-25",
+  "diatonicChords": [
+    {
+      "degree": "I",
+      "symbol": "G#",
+      "fullName": "G# Major",
+      "quality": "major",
+      "notes": [
+        "G#",
+        "C",
+        "D#"
+      ],
+      "function": "Tonic - Home base, resolution",
+      "commonUse": "Degree 1 in Lydian",
+      "compatibilityScore": 10
+    },
+    {
+      "degree": "ii",
+      "symbol": "A#",
+      "fullName": "A# Major",
+      "quality": "major",
+      "notes": [
+        "A#",
+        "D",
+        "F"
+      ],
+      "function": "Supertonic - Pre-dominant function",
+      "commonUse": "Degree 2 in Lydian",
+      "compatibilityScore": 8
+    },
+    {
+      "degree": "iii",
+      "symbol": "Cm",
+      "fullName": "Cm Minor",
+      "quality": "minor",
+      "notes": [
+        "C",
+        "D#",
+        "G"
+      ],
+      "function": "Mediant - Tonic extension",
+      "commonUse": "Degree 3 in Lydian",
+      "compatibilityScore": 8
+    },
+    {
+      "degree": "IV",
+      "symbol": "D°",
+      "fullName": "D° Diminished",
+      "quality": "diminished",
+      "notes": [
+        "D",
+        "F",
+        "G#"
+      ],
+      "function": "Subdominant - Pre-dominant, sets up dominant",
+      "commonUse": "Degree 4 in Lydian",
+      "compatibilityScore": 10
+    },
+    {
+      "degree": "V",
+      "symbol": "D#",
+      "fullName": "D# Major",
+      "quality": "major",
+      "notes": [
+        "D#",
+        "G",
+        "A#"
+      ],
+      "function": "Dominant - Tension, leads to tonic",
+      "commonUse": "Degree 5 in Lydian",
+      "compatibilityScore": 10
+    },
+    {
+      "degree": "vi",
+      "symbol": "Fm",
+      "fullName": "Fm Minor",
+      "quality": "minor",
+      "notes": [
+        "F",
+        "G#",
+        "C"
+      ],
+      "function": "Submediant - Relative minor/major",
+      "commonUse": "Degree 6 in Lydian",
+      "compatibilityScore": 8
+    },
+    {
+      "degree": "vii°",
+      "symbol": "Gm",
+      "fullName": "Gm Minor",
+      "quality": "minor",
+      "notes": [
+        "G",
+        "A#",
+        "D"
+      ],
+      "function": "Leading tone - Strong pull to tonic",
+      "commonUse": "Degree 7 in Lydian",
+      "compatibilityScore": 8
+    }
+  ],
+  "extendedChords": [
+    {
+      "degree": "Imaj7",
+      "symbol": "G#maj7",
+      "fullName": "G# Major 7th",
+      "quality": "maj7",
+      "notes": [
+        "G#",
+        "C",
+        "D#",
+        "G"
+      ],
+      "function": "Tonic with color",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    },
+    {
+      "degree": "IVmaj7",
+      "symbol": "Dmaj7",
+      "fullName": "D Major 7th",
+      "quality": "maj7",
+      "notes": [
+        "D",
+        "F#",
+        "A",
+        "C#"
+      ],
+      "function": "Subdominant with color",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    },
+    {
+      "degree": "V7",
+      "symbol": "D#7",
+      "fullName": "D# Dominant 7th",
+      "quality": "dom7",
+      "notes": [
+        "D#",
+        "G",
+        "A#",
+        "C#"
+      ],
+      "function": "Dominant with tension",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    }
+  ],
+  "modalInterchangeChords": [
+    {
+      "degree": "bVII",
+      "symbol": "F#",
+      "fullName": "F# Major",
+      "quality": "major",
+      "notes": [
+        "F#",
+        "A#",
+        "C#"
+      ],
+      "borrowedFrom": "G# Mixolydian",
+      "function": "Subtonic - creates tension",
+      "commonUse": "Rock, blues, modal jazz",
+      "compatibilityScore": 7
+    }
+  ]
+}

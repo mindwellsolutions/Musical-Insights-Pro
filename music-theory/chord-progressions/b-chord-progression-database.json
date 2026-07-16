@@ -1,0 +1,492 @@
+{
+  "key": "B",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-14",
+  "chords": {
+    "B": {
+      "symbol": "B",
+      "fullName": "B Major",
+      "romanNumeral": "I",
+      "quality": "major",
+      "notes": [
+        "B",
+        "D#",
+        "F#"
+      ],
+      "rootNote": "B",
+      "scaleCompatibility": [
+        {
+          "scaleName": "B Major Pentatonic",
+          "scaleDbKey": "MajorPentatonic",
+          "compatibilityScore": 10,
+          "relationship": "Primary major pentatonic - scale tones 1, 2, 3, 5, 6",
+          "rationale": "The most consonant notes in B major, omitting the 4th (E) and 7th (A#) which create tension. Creates a universally pleasing major sound over any B major harmony",
+          "chordToneAlignment": {
+            "chordTones": [
+              "B",
+              "D#",
+              "F#"
+            ],
+            "tensions": [],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Perfect for improvisation with guaranteed consonance. Works over any B major chord progression (I-IV-V). Ideal for creating memorable, singable melodies and guitar solos",
+          "recommendedUse": "Perfect for improvisation with guaranteed consonance. Works over any B major chord progression (I-IV-V). Ideal for creating memorable, singable melodies and guitar solos",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "B Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Primary major scale - complete B major diatonic collection",
+          "rationale": "The fundamental major scale for the key of B. Contains all seven diatonic notes that define B major tonality and harmony",
+          "chordToneAlignment": {
+            "chordTones": [
+              "B",
+              "D#",
+              "F#"
+            ],
+            "tensions": [],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Use when you want full major scale color and movement. Essential for melodic development and complete harmonic expression in B major. Works over all diatonic B major progressions",
+          "recommendedUse": "Use when you want full major scale color and movement. Essential for melodic development and complete harmonic expression in B major. Works over all diatonic B major progressions",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "B Mixolydian",
+          "scaleDbKey": "Mixolydian",
+          "compatibilityScore": 9,
+          "relationship": "Major scale with b7 (A# becomes A) - V mode of E major, creates dominant 7th character",
+          "rationale": "One note difference from major (lowered 7th) creates dominant 7th tonality. The b7 is essential for blues, rock, and dominant chord harmony",
+          "chordToneAlignment": {
+            "chordTones": [
+              "B",
+              "D#",
+              "F#"
+            ],
+            "tensions": [],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Perfect over B7 chords and dominant vamps. Essential for rock progressions using I7-IV7. Creates that classic rock/blues sound when used over major chord forms",
+          "recommendedUse": "Perfect over B7 chords and dominant vamps. Essential for rock progressions using I7-IV7. Creates that classic rock/blues sound when used over major chord forms",
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "B Lydian",
+          "scaleDbKey": "Lydian",
+          "compatibilityScore": 9,
+          "relationship": "Major scale with #4 (E becomes E#/F) - IV mode of F# major, creates dreamy, ethereal quality",
+          "rationale": "One note difference from major (raised 4th) creates a brighter, more ethereal sound. The #4 adds a characteristic 'floating' quality beloved in jazz and progressive rock",
+          "chordToneAlignment": {
+            "chordTones": [
+              "B",
+              "D#",
+              "F#"
+            ],
+            "tensions": [],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Use over Bmaj7 or Bmaj7#11 chords. Perfect for I chord modal vamps. Emphasize the E#/F for the characteristic Lydian color",
+          "recommendedUse": "Use over Bmaj7 or Bmaj7#11 chords. Perfect for I chord modal vamps. Emphasize the E#/F for the characteristic Lydian color",
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "C#m": {
+      "symbol": "C#m",
+      "fullName": "C# Minor",
+      "romanNumeral": "ii",
+      "quality": "minor",
+      "notes": [
+        "C#",
+        "E",
+        "G#"
+      ],
+      "rootNote": "C#",
+      "scaleCompatibility": [
+        {
+          "scaleName": "C# Minor Pentatonic",
+          "scaleDbKey": "MinorPentatonic",
+          "compatibilityScore": 8,
+          "relationship": "ii minor pentatonic in B major system - modal pentatonic relationship",
+          "rationale": "Provides a different minor color while staying in the B major/G# minor universe. Creates interesting tension and resolution possibilities",
+          "chordToneAlignment": {
+            "chordTones": [
+              "C#",
+              "E",
+              "G#"
+            ],
+            "tensions": [],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Use over ii chords (C#m) in B major. Great for modal interchange and adding variety to B major improvisations",
+          "recommendedUse": "Use over ii chords (C#m) in B major. Great for modal interchange and adding variety to B major improvisations",
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "D#m": {
+      "symbol": "D#m",
+      "fullName": "D# Minor",
+      "romanNumeral": "iii",
+      "quality": "minor",
+      "notes": [
+        "D#",
+        "F#",
+        "A#"
+      ],
+      "rootNote": "D#",
+      "scaleCompatibility": []
+    },
+    "E": {
+      "symbol": "E",
+      "fullName": "E Major",
+      "romanNumeral": "IV",
+      "quality": "major",
+      "notes": [
+        "E",
+        "G#",
+        "B"
+      ],
+      "rootNote": "E",
+      "scaleCompatibility": [
+        {
+          "scaleName": "E Major",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "IV chord scale - subdominant relationship in B major",
+          "rationale": "E major is the IV of B major; shares 6 of 7 notes (only A#\u00e2\u2020\u2019A). Creates the characteristic IV chord color essential to major key harmony",
+          "chordToneAlignment": {
+            "chordTones": [
+              "E",
+              "G#",
+              "B"
+            ],
+            "tensions": [],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Perfect for emphasizing IV chord function. Use over I-IV-V progressions. The natural A instead of A# creates authentic subdominant color",
+          "recommendedUse": "Perfect for emphasizing IV chord function. Use over I-IV-V progressions. The natural A instead of A# creates authentic subdominant color",
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "F#": {
+      "symbol": "F#",
+      "fullName": "F# Major",
+      "romanNumeral": "V",
+      "quality": "major",
+      "notes": [
+        "F#",
+        "A#",
+        "C#"
+      ],
+      "rootNote": "F#",
+      "scaleCompatibility": []
+    },
+    "G#m": {
+      "symbol": "G#m",
+      "fullName": "G# Minor",
+      "romanNumeral": "vi",
+      "quality": "minor",
+      "notes": [
+        "G#",
+        "B",
+        "D#"
+      ],
+      "rootNote": "G#",
+      "scaleCompatibility": [
+        {
+          "scaleName": "G# Minor (Natural Minor)",
+          "scaleDbKey": "Minor(NaturalMinor)",
+          "compatibilityScore": 10,
+          "relationship": "vi scale - relative minor, shares all notes with B major",
+          "rationale": "G# minor is the relative minor of B major; they share all seven notes. Provides the minor color within the B major key system",
+          "chordToneAlignment": {
+            "chordTones": [
+              "G#",
+              "B",
+              "D#"
+            ],
+            "tensions": [],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Use when moving to vi chords in B major. Perfect for creating emotional contrast. Works for full minor sections within primarily major songs",
+          "recommendedUse": "Use when moving to vi chords in B major. Perfect for creating emotional contrast. Works for full minor sections within primarily major songs",
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "A#dim": {
+      "symbol": "A#dim",
+      "fullName": "A# Diminished",
+      "romanNumeral": "vii\u00b0",
+      "quality": "diminished",
+      "notes": [
+        "A#",
+        "C#",
+        "E"
+      ],
+      "rootNote": "A#",
+      "scaleCompatibility": []
+    },
+    "Bmaj7": {
+      "symbol": "Bmaj7",
+      "fullName": "B Major 7th",
+      "romanNumeral": "Imaj7",
+      "quality": "major7",
+      "notes": [
+        "B",
+        "D#",
+        "F#",
+        "A#"
+      ],
+      "rootNote": "B",
+      "scaleCompatibility": []
+    },
+    "C#m7": {
+      "symbol": "C#m7",
+      "fullName": "C# Minor 7th",
+      "romanNumeral": "iim7",
+      "quality": "minor7",
+      "notes": [
+        "C#",
+        "E",
+        "G#",
+        "B"
+      ],
+      "rootNote": "C#",
+      "scaleCompatibility": [
+        {
+          "scaleName": "C# Minor Pentatonic",
+          "scaleDbKey": "MinorPentatonic",
+          "compatibilityScore": 8,
+          "relationship": "ii minor pentatonic in B major system - modal pentatonic relationship",
+          "rationale": "Provides a different minor color while staying in the B major/G# minor universe. Creates interesting tension and resolution possibilities",
+          "chordToneAlignment": {
+            "chordTones": [
+              "C#",
+              "E",
+              "G#",
+              "B"
+            ],
+            "tensions": [],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Use over ii chords (C#m) in B major. Great for modal interchange and adding variety to B major improvisations",
+          "recommendedUse": "Use over ii chords (C#m) in B major. Great for modal interchange and adding variety to B major improvisations",
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "D#m7": {
+      "symbol": "D#m7",
+      "fullName": "D# Minor 7th",
+      "romanNumeral": "iiim7",
+      "quality": "minor7",
+      "notes": [
+        "D#",
+        "F#",
+        "A#",
+        "C#"
+      ],
+      "rootNote": "D#",
+      "scaleCompatibility": []
+    },
+    "Emaj7": {
+      "symbol": "Emaj7",
+      "fullName": "E Major 7th",
+      "romanNumeral": "IVmaj7",
+      "quality": "major7",
+      "notes": [
+        "E",
+        "G#",
+        "B",
+        "D#"
+      ],
+      "rootNote": "E",
+      "scaleCompatibility": [
+        {
+          "scaleName": "E Major",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "IV chord scale - subdominant relationship in B major",
+          "rationale": "E major is the IV of B major; shares 6 of 7 notes (only A#\u00e2\u2020\u2019A). Creates the characteristic IV chord color essential to major key harmony",
+          "chordToneAlignment": {
+            "chordTones": [
+              "E",
+              "G#",
+              "B",
+              "D#"
+            ],
+            "tensions": [],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Perfect for emphasizing IV chord function. Use over I-IV-V progressions. The natural A instead of A# creates authentic subdominant color",
+          "recommendedUse": "Perfect for emphasizing IV chord function. Use over I-IV-V progressions. The natural A instead of A# creates authentic subdominant color",
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "F#7": {
+      "symbol": "F#7",
+      "fullName": "F# Dominant 7th",
+      "romanNumeral": "V7",
+      "quality": "dominant7",
+      "notes": [
+        "F#",
+        "A#",
+        "C#",
+        "E"
+      ],
+      "rootNote": "F#",
+      "scaleCompatibility": []
+    },
+    "G#m7": {
+      "symbol": "G#m7",
+      "fullName": "G# Minor 7th",
+      "romanNumeral": "vim7",
+      "quality": "minor7",
+      "notes": [
+        "G#",
+        "B",
+        "D#",
+        "F#"
+      ],
+      "rootNote": "G#",
+      "scaleCompatibility": [
+        {
+          "scaleName": "G# Minor (Natural Minor)",
+          "scaleDbKey": "Minor(NaturalMinor)",
+          "compatibilityScore": 10,
+          "relationship": "vi scale - relative minor, shares all notes with B major",
+          "rationale": "G# minor is the relative minor of B major; they share all seven notes. Provides the minor color within the B major key system",
+          "chordToneAlignment": {
+            "chordTones": [
+              "G#",
+              "B",
+              "D#",
+              "F#"
+            ],
+            "tensions": [],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Use when moving to vi chords in B major. Perfect for creating emotional contrast. Works for full minor sections within primarily major songs",
+          "recommendedUse": "Use when moving to vi chords in B major. Perfect for creating emotional contrast. Works for full minor sections within primarily major songs",
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "A#m7b5": {
+      "symbol": "A#m7b5",
+      "fullName": "A# Minor 7 Flat 5",
+      "romanNumeral": "viim7b5",
+      "quality": "minor7b5",
+      "notes": [
+        "A#",
+        "C#",
+        "E",
+        "G#"
+      ],
+      "rootNote": "A#",
+      "scaleCompatibility": []
+    }
+  },
+  "commonProgressions": [
+    {
+      "name": "I-IV-V",
+      "description": "Classic rock and blues progression",
+      "chords": [
+        "B",
+        "E",
+        "F#"
+      ],
+      "genre": [
+        "Rock",
+        "Blues",
+        "Country"
+      ],
+      "difficulty": 1
+    },
+    {
+      "name": "I-V-vi-IV",
+      "description": "Pop progression (Axis progression)",
+      "chords": [
+        "B",
+        "F#",
+        "G#m",
+        "E"
+      ],
+      "genre": [
+        "Pop",
+        "Rock",
+        "Indie"
+      ],
+      "difficulty": 1
+    },
+    {
+      "name": "I-vi-IV-V",
+      "description": "50s progression / Doo-wop changes",
+      "chords": [
+        "B",
+        "G#m",
+        "E",
+        "F#"
+      ],
+      "genre": [
+        "Pop",
+        "Rock",
+        "Doo-wop"
+      ],
+      "difficulty": 1
+    },
+    {
+      "name": "ii-V-I",
+      "description": "Jazz standard progression",
+      "chords": [
+        "C#m7",
+        "F#7",
+        "Bmaj7"
+      ],
+      "genre": [
+        "Jazz",
+        "Bossa Nova",
+        "Swing"
+      ],
+      "difficulty": 2
+    },
+    {
+      "name": "I-IV-vi-V",
+      "description": "Folk and singer-songwriter progression",
+      "chords": [
+        "B",
+        "E",
+        "G#m",
+        "F#"
+      ],
+      "genre": [
+        "Folk",
+        "Country",
+        "Singer-Songwriter"
+      ],
+      "difficulty": 1
+    },
+    {
+      "name": "vi-IV-I-V",
+      "description": "Modern pop progression",
+      "chords": [
+        "G#m",
+        "E",
+        "B",
+        "F#"
+      ],
+      "genre": [
+        "Pop",
+        "Rock",
+        "Alternative"
+      ],
+      "difficulty": 1
+    }
+  ]
+}

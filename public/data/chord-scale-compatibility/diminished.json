@@ -1,0 +1,82 @@
+{
+  "chordQuality": "diminished",
+  "displayName": "Diminished",
+  "suffix": "°",
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-09",
+  "description": "Diminished chord compatibility data",
+  "intervals": [
+    0,
+    3,
+    6
+  ],
+  "compatibleScales": [
+    {
+      "scaleName": "B Locrian",
+      "scaleDbKey": "Locrian",
+      "compatibilityScore": 9,
+      "relationship": "Natural vii° mode",
+      "musicalContext": "B Locrian is the vii° mode in C major. Contains all diminished chord tones. Creates leading tone function to I.",
+      "chordTones": [
+        "B",
+        "D",
+        "F"
+      ],
+      "tensions": [
+        "C (b9)",
+        "E (11th)",
+        "G (b13)",
+        "A (b7)"
+      ],
+      "avoidNotes": [],
+      "musicGenreRecommendations": "General",
+      "difficultyLevel": 4,
+      "commonUse": "Use sparingly for leading tone tension. Creates strong pull to I. Common in classical and jazz for dramatic resolutions.",
+      "famousExamples": "Highly unstable - resolves strongly to C. The B is leading tone to C. Use for dramatic tension before I resolution."
+    },
+    {
+      "scaleName": "B Diminished (Whole-Half)",
+      "scaleDbKey": "Diminished",
+      "compatibilityScore": 8,
+      "relationship": "Symmetrical diminished scale",
+      "musicalContext": "Whole-half diminished provides tensions for diminished chords. Symmetrical construction. Advanced jazz concept.",
+      "chordTones": [
+        "B",
+        "D",
+        "F"
+      ],
+      "tensions": [
+        "C# (9th)",
+        "E (11th)",
+        "G (13th)"
+      ],
+      "avoidNotes": [],
+      "musicGenreRecommendations": "General",
+      "difficultyLevel": 5,
+      "commonUse": "Use for advanced jazz vii° approaches. Very dissonant. Perfect for bebop and modern jazz. Maximum tension.",
+      "famousExamples": "Very dissonant and tense. Use for maximum tension before resolution. Creates symmetrical, angular melodies."
+    },
+    {
+      "scaleName": "C Harmonic Minor",
+      "scaleDbKey": "HarmonicMinor",
+      "compatibilityScore": 8,
+      "relationship": "Source of vii° in minor keys",
+      "musicalContext": "Bdim comes from C harmonic minor. Creates classical minor key resolution. The B is raised 7th of C minor.",
+      "chordTones": [
+        "B",
+        "D",
+        "F"
+      ],
+      "tensions": [
+        "Eb (b11)",
+        "G (b13)",
+        "Ab (bb7)"
+      ],
+      "avoidNotes": [],
+      "musicGenreRecommendations": "General",
+      "difficultyLevel": 3,
+      "commonUse": "Use for classical or neoclassical approaches. Perfect for minor key contexts. Traditional leading tone resolution.",
+      "famousExamples": "Classical approach to diminished. The B leads to C in minor contexts. Traditional classical resolution."
+    }
+  ]
+}

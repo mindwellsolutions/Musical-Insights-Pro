@@ -1,0 +1,634 @@
+{
+  "key": "E",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-14",
+  "chords": {
+    "E": {
+      "symbol": "E",
+      "fullName": "E Major",
+      "romanNumeral": "I",
+      "quality": "major",
+      "notes": ["E", "G#", "B"],
+      "rootNote": "E",
+      "scaleCompatibility": [
+        {
+          "scaleName": "E Major Pentatonic",
+          "scaleDbKey": "MajorPentatonic",
+          "compatibilityScore": 10,
+          "relationship": "Primary pentatonic - perfect consonance",
+          "rationale": "Contains all chord tones (E, G#, B) plus safe extensions (F#, C#). Zero avoid notes. The most guitar-friendly major pentatonic scale.",
+          "chordToneAlignment": {
+            "chordTones": ["E", "G#", "B"],
+            "tensions": ["F# (9th)", "C# (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Target the root (E) and major 3rd (G#) for resolution. Perfect for rock guitar in the open position.",
+          "recommendedUse": "The go-to scale for E major in rock, country, and blues. Extremely guitar-friendly. Ideal for memorable hooks and solos.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "E Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Parent scale - complete diatonic harmony",
+          "rationale": "The fundamental E major scale with four sharps (F#, C#, G#, D#). Complete melodic freedom.",
+          "chordToneAlignment": {
+            "chordTones": ["E", "G#", "B"],
+            "tensions": ["F# (9th)", "A (11th)", "C# (13th)", "D# (maj7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "All notes work over I major. The A (11th) can sound suspended - resolve to G# or B.",
+          "recommendedUse": "Complete freedom over E major. Essential for full diatonic expression. Works in all styles.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "E Lydian",
+          "scaleDbKey": "Lydian",
+          "compatibilityScore": 9,
+          "relationship": "Bright major with #11",
+          "rationale": "Raises A to A# (#11) creating dreamy, ethereal quality. Modern, floating major sound.",
+          "chordToneAlignment": {
+            "chordTones": ["E", "G#", "B"],
+            "tensions": ["F# (9th)", "A# (#11)", "C# (13th)", "D# (maj7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize the #11 (A#) for signature Lydian color. Creates uplifting quality.",
+          "recommendedUse": "Use for Emaj7#11 or modern I major sounds. Perfect for film scores, jazz, and fusion.",
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "E Mixolydian",
+          "scaleDbKey": "Mixolydian",
+          "compatibilityScore": 9,
+          "relationship": "Dominant major with b7",
+          "rationale": "Lowers D# to D (b7) creating dominant 7th character. Perfect for bluesy E major.",
+          "chordToneAlignment": {
+            "chordTones": ["E", "G#", "B"],
+            "tensions": ["F# (9th)", "A (11th)", "C# (13th)", "D (b7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "The D (b7) creates bluesy edge. Great for rock and blues guitar.",
+          "recommendedUse": "Perfect for E7 chords and blues-rock vamps. Essential for jam bands and folk rock.",
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "B Minor Pentatonic",
+          "scaleDbKey": "MinorPentatonic",
+          "compatibilityScore": 8,
+          "relationship": "Built on V - creates bluesy major sound",
+          "rationale": "All notes diatonic to E major. Classic rock guitar approach to E major chords.",
+          "chordToneAlignment": {
+            "chordTones": ["B", "D", "F#"],
+            "tensions": ["A (11th)", "E (root)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Creates bluesy major without clash. Perfect for rock guitar soloing.",
+          "recommendedUse": "Essential rock guitar scale over E major. Safe and bluesy.",
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "Emaj7": {
+      "symbol": "Emaj7",
+      "fullName": "E Major 7th",
+      "romanNumeral": "Imaj7",
+      "quality": "major7",
+      "notes": ["E", "G#", "B", "D#"],
+      "rootNote": "E",
+      "scaleCompatibility": [
+        {
+          "scaleName": "E Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Perfect alignment with Imaj7",
+          "rationale": "Contains all four chord tones. D# is a chord tone (maj7).",
+          "chordToneAlignment": {
+            "chordTones": ["E", "G#", "B", "D#"],
+            "tensions": ["F# (9th)", "A (11th)", "C# (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize the maj7 (D#). All tones work beautifully.",
+          "recommendedUse": "Complete freedom over Emaj7. Perfect for jazz, pop, R&B.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "E Lydian",
+          "scaleDbKey": "Lydian",
+          "compatibilityScore": 10,
+          "relationship": "Preferred Imaj7 scale with #11",
+          "rationale": "The #4 (A#) avoids suspended sound. THE scale for Imaj7 in modern jazz.",
+          "chordToneAlignment": {
+            "chordTones": ["E", "G#", "B", "D#"],
+            "tensions": ["F# (9th)", "A# (#11)", "C# (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "The #11 (A#) is signature sound. Essential for Emaj7#11 voicings.",
+          "recommendedUse": "The definitive modern Imaj7 scale. Essential for jazz and fusion.",
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "F#m": {
+      "symbol": "F#m",
+      "fullName": "F# Minor",
+      "romanNumeral": "ii",
+      "quality": "minor",
+      "notes": ["F#", "A", "C#"],
+      "rootNote": "F#",
+      "scaleCompatibility": [
+        {
+          "scaleName": "F# Dorian",
+          "scaleDbKey": "Dorian",
+          "compatibilityScore": 10,
+          "relationship": "Primary ii chord scale",
+          "rationale": "F# Dorian is the natural ii mode in E major. Major 6th (D#) creates jazzier minor sound.",
+          "chordToneAlignment": {
+            "chordTones": ["F#", "A", "C#"],
+            "tensions": ["G# (9th)", "B (11th)", "D# (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize the D# (13th) for Dorian character. Essential for ii-V-I.",
+          "recommendedUse": "The definitive ii chord scale. Essential for jazz, pop, R&B.",
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "F# Natural Minor (Aeolian)",
+          "scaleDbKey": "Aeolian",
+          "compatibilityScore": 9,
+          "relationship": "Darker minor alternative",
+          "rationale": "Natural minor with D instead of D#. Traditional, somber minor sound.",
+          "chordToneAlignment": {
+            "chordTones": ["F#", "A", "C#"],
+            "tensions": ["G# (9th)", "B (11th)", "D (b13)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "The D (b13) creates darker color. More traditional than Dorian.",
+          "recommendedUse": "Use for darker ii chord sound. More melancholic approach.",
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "F#m7": {
+      "symbol": "F#m7",
+      "fullName": "F# Minor 7th",
+      "romanNumeral": "iim7",
+      "quality": "minor7",
+      "notes": ["F#", "A", "C#", "E"],
+      "rootNote": "F#",
+      "scaleCompatibility": [
+        {
+          "scaleName": "F# Dorian",
+          "scaleDbKey": "Dorian",
+          "compatibilityScore": 10,
+          "relationship": "The definitive iim7 scale",
+          "rationale": "Contains all four chord tones. D# (13th) essential for ii-V-I.",
+          "chordToneAlignment": {
+            "chordTones": ["F#", "A", "C#", "E"],
+            "tensions": ["G# (9th)", "B (11th)", "D# (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "D# (13th) crucial for Dorian color. Smooth voice leading to B7.",
+          "recommendedUse": "Essential for F#m7-B7-Emaj7. The standard iim7 sound.",
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "E Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Parent scale approach",
+          "rationale": "E major reinforces key center. All notes work since F#m7 is diatonic to E.",
+          "chordToneAlignment": {
+            "chordTones": ["F#", "A", "C#", "E"],
+            "tensions": ["G# (9th)", "B (11th)", "D# (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Think E major, emphasize F# as root. Maintains tonal clarity.",
+          "recommendedUse": "Use for key center emphasis. Great for teaching.",
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "G#m": {
+      "symbol": "G#m",
+      "fullName": "G# Minor",
+      "romanNumeral": "iii",
+      "quality": "minor",
+      "notes": ["G#", "B", "D#"],
+      "rootNote": "G#",
+      "scaleCompatibility": [
+        {
+          "scaleName": "G# Phrygian",
+          "scaleDbKey": "Phrygian",
+          "compatibilityScore": 9,
+          "relationship": "Natural iii mode with exotic b2",
+          "rationale": "G# Phrygian is iii mode of E major. b2 (A) creates Spanish/exotic character.",
+          "chordToneAlignment": {
+            "chordTones": ["G#", "B", "D#"],
+            "tensions": ["A (b9)", "C# (11th)", "F# (b13)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize the b2 (A) for Phrygian color. Creates dark, mysterious quality.",
+          "recommendedUse": "Use for exotic, Spanish, or metal-influenced iii minor.",
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "E Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Parent scale - diatonic approach",
+          "rationale": "All E major notes work over G#m. Maintains key center.",
+          "chordToneAlignment": {
+            "chordTones": ["G#", "B", "D#"],
+            "tensions": ["F# (7th)", "A (b9)", "C# (11th)", "E (b6)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Think E major, emphasize G# as root. Simple diatonic approach.",
+          "recommendedUse": "Perfect for maintaining key center over iii.",
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "A": {
+      "symbol": "A",
+      "fullName": "A Major",
+      "romanNumeral": "IV",
+      "quality": "major",
+      "notes": ["A", "C#", "E"],
+      "rootNote": "A",
+      "scaleCompatibility": [
+        {
+          "scaleName": "A Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "IV chord parent scale",
+          "rationale": "A major is the natural scale for IV in E major. Creates subdominant function.",
+          "chordToneAlignment": {
+            "chordTones": ["A", "C#", "E"],
+            "tensions": ["B (9th)", "D (11th)", "F# (13th)", "G# (maj7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize root (A) and major 3rd (C#). D (11th) can sound suspended.",
+          "recommendedUse": "Essential for I-IV-V progressions. Perfect for rock, folk, and country.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A Lydian",
+          "scaleDbKey": "Lydian",
+          "compatibilityScore": 9,
+          "relationship": "Bright IV with #11",
+          "rationale": "The #4 (D#) creates modern, floating IV sound. Common in jazz.",
+          "chordToneAlignment": {
+            "chordTones": ["A", "C#", "E"],
+            "tensions": ["B (9th)", "D# (#11)", "F# (13th)", "G# (maj7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "The #11 (D#) creates bright, dreamy quality. Perfect for Amaj7#11.",
+          "recommendedUse": "Use for sophisticated, modern IV sound. Perfect for jazz and fusion.",
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "E Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Parent key - diatonic approach",
+          "rationale": "E major over IV maintains key center. All notes work.",
+          "chordToneAlignment": {
+            "chordTones": ["A", "C#", "E"],
+            "tensions": ["F# (13th)", "G# (maj7)", "B (9th)", "D# (#11)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Think E major, emphasize A as root. Maintains tonal clarity.",
+          "recommendedUse": "Use for diatonic IV approach. Works universally.",
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "B": {
+      "symbol": "B",
+      "fullName": "B Major",
+      "romanNumeral": "V",
+      "quality": "major",
+      "notes": ["B", "D#", "F#"],
+      "rootNote": "B",
+      "scaleCompatibility": [
+        {
+          "scaleName": "B Mixolydian",
+          "scaleDbKey": "Mixolydian",
+          "compatibilityScore": 10,
+          "relationship": "Natural V chord mode in E major",
+          "rationale": "B Mixolydian shares all notes with E major. b7 (A) creates dominant 7th character.",
+          "chordToneAlignment": {
+            "chordTones": ["B", "D#", "F#"],
+            "tensions": ["C# (9th)", "E (11th)", "G# (13th)", "A (b7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "The A (b7) creates dominant pull to E. Emphasize D# and A for strong V-I.",
+          "recommendedUse": "Essential for V7 chords in E major. Perfect for dominant-tonic resolution.",
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "B Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 9,
+          "relationship": "Pure major V without dominant 7th",
+          "rationale": "B major provides pure V triad. A# (maj7) is brighter than Mixolydian's A.",
+          "chordToneAlignment": {
+            "chordTones": ["B", "D#", "F#"],
+            "tensions": ["C# (9th)", "E (11th)", "G# (13th)", "A# (maj7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "More classical V approach. A# creates major 7th rather than dominant 7th.",
+          "recommendedUse": "Use for classical, traditional V sound.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "E Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Parent scale - diatonic approach",
+          "rationale": "E major contains all V chord tones. B Mixolydian = E Ionian starting on B.",
+          "chordToneAlignment": {
+            "chordTones": ["B", "D#", "F#"],
+            "tensions": ["C# (9th)", "E (11th)", "G# (13th)", "A (b7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Think E major, emphasize B as root. A creates natural dominant character.",
+          "recommendedUse": "Perfect for diatonic V approach. Maintains key center.",
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "B7": {
+      "symbol": "B7",
+      "fullName": "B Dominant 7th",
+      "romanNumeral": "V7",
+      "quality": "dominant7",
+      "notes": ["B", "D#", "F#", "A"],
+      "rootNote": "B",
+      "scaleCompatibility": [
+        {
+          "scaleName": "B Mixolydian",
+          "scaleDbKey": "Mixolydian",
+          "compatibilityScore": 10,
+          "relationship": "The definitive dominant 7th scale",
+          "rationale": "Contains all four chord tones perfectly. b7 (A) is a chord tone.",
+          "chordToneAlignment": {
+            "chordTones": ["B", "D#", "F#", "A"],
+            "tensions": ["C# (9th)", "E (11th)", "G# (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Emphasize 3rd (D#) and b7 (A) - the tritone that resolves to E.",
+          "recommendedUse": "Essential for all V7 situations. Perfect for ii-V-I (F#m7-B7-Emaj7).",
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "E Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Parent scale approach",
+          "rationale": "E major over B7 maintains key center. Simple and effective.",
+          "chordToneAlignment": {
+            "chordTones": ["B", "D#", "F#", "A"],
+            "tensions": ["C# (9th)", "E (11th)", "G# (13th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Think E major, emphasize B as root. A creates dominant 7th automatically.",
+          "recommendedUse": "Perfect for maintaining key awareness over V7.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "B Blues Scale",
+          "scaleDbKey": "Blues",
+          "compatibilityScore": 9,
+          "relationship": "Bluesy dominant approach",
+          "rationale": "Adds blue notes for authentic blues dominant. b5 (F) creates blues tension.",
+          "chordToneAlignment": {
+            "chordTones": ["B", "D", "F#", "A"],
+            "tensions": ["E (11th)", "F (b5)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Use F (b5) as passing tone to F#. Creates authentic blues sound.",
+          "recommendedUse": "Essential for blues and blues-rock B7. Perfect for 12-bar blues in E.",
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "C#m": {
+      "symbol": "C#m",
+      "fullName": "C# Minor",
+      "romanNumeral": "vi",
+      "quality": "minor",
+      "notes": ["C#", "E", "G#"],
+      "rootNote": "C#",
+      "scaleCompatibility": [
+        {
+          "scaleName": "C# Natural Minor (Aeolian)",
+          "scaleDbKey": "Aeolian",
+          "compatibilityScore": 10,
+          "relationship": "Relative minor - shares all notes with E major",
+          "rationale": "C# minor is vi of E major. Shares all seven notes. Most common minor chord in E major.",
+          "chordToneAlignment": {
+            "chordTones": ["C#", "E", "G#"],
+            "tensions": ["D# (9th)", "F# (11th)", "B (b13)", "A (b6)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "All E major notes work perfectly. Natural minor sound in the key.",
+          "recommendedUse": "Essential for vi chords in E major. Perfect for E-B-C#m-A progressions.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "C# Dorian",
+          "scaleDbKey": "Dorian",
+          "compatibilityScore": 9,
+          "relationship": "Brighter minor alternative",
+          "rationale": "Dorian adds A# (major 6th) for brighter minor. More sophisticated.",
+          "chordToneAlignment": {
+            "chordTones": ["C#", "E", "G#"],
+            "tensions": ["D# (9th)", "F# (11th)", "A# (13th)", "B (b7)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "The A# (major 6th) creates jazzy, bright minor. More modern than Aeolian.",
+          "recommendedUse": "Use for sophisticated, jazzy vi minor. Perfect for jazz, funk, R&B.",
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "E Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Parent scale - relative major",
+          "rationale": "E major and C# minor share all notes. C# Aeolian = E Ionian starting on C#.",
+          "chordToneAlignment": {
+            "chordTones": ["C#", "E", "G#"],
+            "tensions": ["F# (11th)", "A (b6)", "B (b7)", "D# (9th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Think E major, emphasize C# as root. All notes work perfectly.",
+          "recommendedUse": "Perfect for understanding relative major/minor. Works universally.",
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "C#m7": {
+      "symbol": "C#m7",
+      "fullName": "C# Minor 7th",
+      "romanNumeral": "vim7",
+      "quality": "minor7",
+      "notes": ["C#", "E", "G#", "B"],
+      "rootNote": "C#",
+      "scaleCompatibility": [
+        {
+          "scaleName": "C# Natural Minor (Aeolian)",
+          "scaleDbKey": "Aeolian",
+          "compatibilityScore": 10,
+          "relationship": "Perfect alignment with vim7",
+          "rationale": "Contains all four chord tones. Natural minor sound perfect for vi minor 7.",
+          "chordToneAlignment": {
+            "chordTones": ["C#", "E", "G#", "B"],
+            "tensions": ["D# (9th)", "F# (11th)", "A (b13)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "All notes work beautifully. Standard vim7 sound.",
+          "recommendedUse": "Essential for vim7 in E major. Perfect for E-B-C#m7-A progressions.",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "E Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Parent scale - diatonic approach",
+          "rationale": "Simple and effective. All E major notes work over C#m7.",
+          "chordToneAlignment": {
+            "chordTones": ["C#", "E", "G#", "B"],
+            "tensions": ["F# (11th)", "A (b13)", "D# (9th)"],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Think E major, emphasize C# as root. Maintains tonal clarity.",
+          "recommendedUse": "Perfect for diatonic vim7 approach. Works universally.",
+          "difficultyLevel": 1
+        }
+      ]
+    }
+  },
+  "commonProgressions": [
+    {
+      "name": "I-IV-V",
+      "description": "The foundation of Western music in E major. Perfect for guitar - all open position chords.",
+      "chords": ["E", "A", "B"],
+      "genre": ["Rock", "Blues", "Country", "Folk Rock", "Classic Rock"],
+      "difficulty": 1,
+      "musicalCharacter": "Strong, optimistic, and guitar-friendly. The most natural guitar key.",
+      "famousSongs": ["Wonderful Tonight, Cocaine, Layla sections"],
+      "tips": "E major is THE guitar key. All three chords are open position. Can enhance with E-A-B7."
+    },
+    {
+      "name": "I-V-vi-IV",
+      "description": "Modern pop progression in E. The 'Axis of Awesome' progression.",
+      "chords": ["E", "B", "C#m", "A"],
+      "genre": ["Pop", "Pop Rock", "Indie", "Contemporary"],
+      "difficulty": 1,
+      "musicalCharacter": "Emotionally versatile. Works for entire songs.",
+      "famousSongs": ["Let It Be (transposed), With or Without You (transposed)"],
+      "tips": "Extremely common in modern music. Can be played in any order."
+    },
+    {
+      "name": "I-vi-IV-V",
+      "description": "Classic '50s progression in E. The doo-wop changes.",
+      "chords": ["E", "C#m", "A", "B"],
+      "genre": ["Doo-Wop", "50s Rock", "Pop", "Oldies"],
+      "difficulty": 1,
+      "musicalCharacter": "Nostalgic, romantic, optimistic.",
+      "famousSongs": ["Stand By Me (transposed), Blue Moon (transposed)"],
+      "tips": "Perfect for retro vibes. Can enhance with Emaj7-C#m7-Amaj7-B7."
+    },
+    {
+      "name": "ii-V-I",
+      "description": "The fundamental jazz progression in E major.",
+      "chords": ["F#m7", "B7", "Emaj7"],
+      "genre": ["Jazz", "Bossa Nova", "Latin Jazz", "Smooth Jazz"],
+      "difficulty": 2,
+      "musicalCharacter": "Sophisticated with strong resolution. The jazz standard.",
+      "famousSongs": ["Autumn Leaves (transposed), jazz standards"],
+      "tips": "Master this for jazz. Practice with extensions: F#m9-B13-Emaj9."
+    },
+    {
+      "name": "I-IV-vi-V",
+      "description": "Optimistic folk/pop progression with smooth voice leading.",
+      "chords": ["E", "A", "C#m", "B"],
+      "genre": ["Folk", "Country", "Pop", "Singer-Songwriter"],
+      "difficulty": 1,
+      "musicalCharacter": "Warm, hopeful, melodically smooth.",
+      "famousSongs": ["Common in folk and country music"],
+      "tips": "Perfect for acoustic guitar. Very singable."
+    },
+    {
+      "name": "vi-IV-I-V",
+      "description": "Modern pop/rock starting on vi minor in E.",
+      "chords": ["C#m", "A", "E", "B"],
+      "genre": ["Pop", "Rock", "Alternative", "Indie Rock"],
+      "difficulty": 1,
+      "musicalCharacter": "Begins melancholic, builds to hopeful resolution.",
+      "famousSongs": ["Apologize (transposed), Zombie (transposed)"],
+      "tips": "Starting on vi creates immediate emotional impact."
+    },
+    {
+      "name": "I-bVII-IV-I",
+      "description": "Modal rock progression in E borrowing bVII (D major).",
+      "chords": ["E", "D", "A", "E"],
+      "genre": ["Rock", "Hard Rock", "Classic Rock", "Arena Rock"],
+      "difficulty": 2,
+      "musicalCharacter": "Bold, anthemic, powerful with modal flavor.",
+      "famousSongs": ["Sweet Child O' Mine (transposed), rock anthems"],
+      "tips": "The D major is borrowed from E Mixolydian. Creates powerful rock sound."
+    },
+    {
+      "name": "I-V-IV-V",
+      "description": "High-energy rock progression in E.",
+      "chords": ["E", "B", "A", "B"],
+      "genre": ["Rock", "Pop Rock", "Power Pop", "Punk Rock"],
+      "difficulty": 1,
+      "musicalCharacter": "Energetic and driving. Double V creates urgency.",
+      "famousSongs": ["Common in uptempo rock"],
+      "tips": "Great for high-energy sections. Repeated V emphasizes tension."
+    },
+    {
+      "name": "I-IV-I-V",
+      "description": "Classic folk and country progression in E.",
+      "chords": ["E", "A", "E", "B"],
+      "genre": ["Folk", "Country", "Bluegrass", "Traditional"],
+      "difficulty": 1,
+      "musicalCharacter": "Stable, traditional, comforting.",
+      "famousSongs": ["Traditional folk songs in E"],
+      "tips": "Very stable - keeps returning to I. Perfect for acoustic styles."
+    },
+    {
+      "name": "vi-ii-V-I",
+      "description": "Extended jazz progression in E combining relative minor with ii-V-I.",
+      "chords": ["C#m7", "F#m7", "B7", "Emaj7"],
+      "genre": ["Jazz", "Jazz Ballad", "Bossa Nova", "Smooth Jazz"],
+      "difficulty": 3,
+      "musicalCharacter": "Sophisticated and smooth. Longer journey to resolution.",
+      "famousSongs": ["Common in jazz standards"],
+      "tips": "Extends ii-V-I with vi start. Great for learning harmony."
+    },
+    {
+      "name": "I-iii-IV-V",
+      "description": "Ascending progression in E through scale degrees.",
+      "chords": ["E", "G#m", "A", "B"],
+      "genre": ["Pop", "Gospel", "Soul", "R&B"],
+      "difficulty": 2,
+      "musicalCharacter": "Builds tension through ascending harmony.",
+      "famousSongs": ["Kiss From a Rose sections (transposed)"],
+      "tips": "The iii chord (G#m) is underused but effective."
+    },
+    {
+      "name": "12-Bar Blues in E",
+      "description": "The classic 12-bar blues progression. E is the most common blues key.",
+      "chords": ["E7", "E7", "E7", "E7", "A7", "A7", "E7", "E7", "B7", "A7", "E7", "B7"],
+      "genre": ["Blues", "Blues Rock", "Jazz Blues", "R&B"],
+      "difficulty": 2,
+      "musicalCharacter": "The quintessential blues sound. Raw, emotional, authentic.",
+      "famousSongs": ["Pride and Joy, Texas Flood, countless blues standards"],
+      "tips": "E is THE blues key. Use E blues scale and E minor pentatonic for solos. Essential for any blues guitarist."
+    }
+  ]
+}

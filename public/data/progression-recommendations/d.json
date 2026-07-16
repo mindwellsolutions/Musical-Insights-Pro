@@ -1,0 +1,266 @@
+{
+  "key": "D",
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-09",
+  "progressions": [
+    {
+      "id": "i-iv-v-i",
+      "name": "I-IV-V-I",
+      "description": "The foundation of rock, blues, and country music",
+      "chords": [
+        "D",
+        "G",
+        "A",
+        "D"
+      ],
+      "romanNumerals": [
+        "I",
+        "IV",
+        "V",
+        "I"
+      ],
+      "genre": [
+        "Rock",
+        "Blues",
+        "Country",
+        "Folk"
+      ],
+      "difficulty": 1,
+      "musicalCharacter": "Strong, resolute, optimistic",
+      "famousSongs": [
+        "La Bamba",
+        "Twist and Shout",
+        "Wild Thing"
+      ],
+      "scaleRecommendations": {
+        "D": [
+          {
+            "scaleName": "D Major Pentatonic",
+            "compatibilityScore": 10,
+            "usage": "Safe, always works"
+          },
+          {
+            "scaleName": "D Ionian",
+            "compatibilityScore": 10,
+            "usage": "Full major scale"
+          }
+        ],
+        "G": [
+          {
+            "scaleName": "G Lydian",
+            "compatibilityScore": 9,
+            "usage": "Bright, uplifting"
+          }
+        ],
+        "A": [
+          {
+            "scaleName": "A Mixolydian",
+            "compatibilityScore": 10,
+            "usage": "Perfect for dominant"
+          }
+        ]
+      }
+    },
+    {
+      "id": "i-v-vi-iv",
+      "name": "I-V-vi-IV",
+      "description": "The most popular pop progression of all time",
+      "chords": [
+        "D",
+        "A",
+        "Bm",
+        "G"
+      ],
+      "romanNumerals": [
+        "I",
+        "V",
+        "vi",
+        "IV"
+      ],
+      "genre": [
+        "Pop",
+        "Rock",
+        "Country"
+      ],
+      "difficulty": 1,
+      "musicalCharacter": "Uplifting, emotional, singable",
+      "famousSongs": [
+        "Let It Be",
+        "No Woman No Cry",
+        "With or Without You"
+      ],
+      "scaleRecommendations": {
+        "D": [
+          {
+            "scaleName": "D Major Pentatonic",
+            "compatibilityScore": 10,
+            "usage": "Works over entire progression"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ii-v-i",
+      "name": "ii-V-I",
+      "description": "The fundamental jazz progression",
+      "chords": [
+        "Em7",
+        "A7",
+        "Dmaj7"
+      ],
+      "romanNumerals": [
+        "ii7",
+        "V7",
+        "Imaj7"
+      ],
+      "genre": [
+        "Jazz",
+        "Bossa Nova",
+        "R&B"
+      ],
+      "difficulty": 3,
+      "musicalCharacter": "Sophisticated, smooth, resolving",
+      "famousSongs": [
+        "Autumn Leaves",
+        "Fly Me to the Moon",
+        "Satin Doll"
+      ],
+      "scaleRecommendations": {
+        "Em7": [
+          {
+            "scaleName": "E Dorian",
+            "compatibilityScore": 10,
+            "usage": "Classic jazz sound"
+          }
+        ],
+        "A7": [
+          {
+            "scaleName": "A Mixolydian",
+            "compatibilityScore": 10,
+            "usage": "Dominant sound"
+          }
+        ],
+        "Dmaj7": [
+          {
+            "scaleName": "D Ionian",
+            "compatibilityScore": 10,
+            "usage": "Resolution"
+          }
+        ]
+      }
+    },
+    {
+      "id": "i-bvii-iv-i",
+      "name": "I-bVII-IV-I",
+      "description": "Classic rock progression with modal flavor",
+      "chords": [
+        "D",
+        "C",
+        "G",
+        "D"
+      ],
+      "romanNumerals": [
+        "I",
+        "bVII",
+        "IV",
+        "I"
+      ],
+      "genre": [
+        "Rock",
+        "Blues Rock",
+        "Hard Rock"
+      ],
+      "difficulty": 2,
+      "musicalCharacter": "Powerful, driving, anthemic",
+      "famousSongs": [
+        "Sweet Child O Mine",
+        "Hey Jude (outro)",
+        "Sympathy for the Devil"
+      ],
+      "scaleRecommendations": {
+        "D": [
+          {
+            "scaleName": "D Mixolydian",
+            "compatibilityScore": 10,
+            "usage": "Perfect for this progression"
+          }
+        ]
+      }
+    },
+    {
+      "id": "i-vi-ii-v",
+      "name": "I-vi-ii-V",
+      "description": "Classic 50s doo-wop progression",
+      "chords": [
+        "D",
+        "Bm",
+        "Em",
+        "A"
+      ],
+      "romanNumerals": [
+        "I",
+        "vi",
+        "ii",
+        "V"
+      ],
+      "genre": [
+        "Doo-wop",
+        "Pop",
+        "Jazz"
+      ],
+      "difficulty": 2,
+      "musicalCharacter": "Nostalgic, smooth, circular",
+      "famousSongs": [
+        "Stand By Me",
+        "Every Breath You Take",
+        "Blue Moon"
+      ],
+      "scaleRecommendations": {
+        "D": [
+          {
+            "scaleName": "D Major Pentatonic",
+            "compatibilityScore": 10,
+            "usage": "Works throughout"
+          }
+        ]
+      }
+    },
+    {
+      "id": "i-iv-i-v",
+      "name": "I-IV-I-V",
+      "description": "Simple folk and country progression",
+      "chords": [
+        "D",
+        "G",
+        "D",
+        "A"
+      ],
+      "romanNumerals": [
+        "I",
+        "IV",
+        "I",
+        "V"
+      ],
+      "genre": [
+        "Folk",
+        "Country",
+        "Bluegrass"
+      ],
+      "difficulty": 1,
+      "musicalCharacter": "Simple, direct, traditional",
+      "famousSongs": [
+        "Blowin in the Wind",
+        "This Land Is Your Land"
+      ],
+      "scaleRecommendations": {
+        "D": [
+          {
+            "scaleName": "D Major Pentatonic",
+            "compatibilityScore": 10,
+            "usage": "Traditional sound"
+          }
+        ]
+      }
+    }
+  ]
+}

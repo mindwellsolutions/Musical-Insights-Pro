@@ -1,0 +1,410 @@
+{
+  "key": "F",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-14",
+  "chords": {
+    "F": {
+      "symbol": "F",
+      "fullName": "F Major",
+      "romanNumeral": "I",
+      "quality": "major",
+      "notes": [
+        "F",
+        "A",
+        "C"
+      ],
+      "rootNote": "F",
+      "scaleCompatibility": [
+        {
+          "scaleName": "F Major Pentatonic",
+          "scaleDbKey": "MajorPentatonic",
+          "compatibilityScore": 10,
+          "relationship": "Primary pentatonic - scale tones 1, 2, 3, 5, 6 of F major",
+          "rationale": "Contains only the most consonant notes of F major (F, G, A, C, D), avoiding the 4th and 7th which create tension. Completely safe for any major harmony in F",
+          "chordToneAlignment": {
+            "chordTones": [
+              "F",
+              "A",
+              "C"
+            ],
+            "tensions": [],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Perfect for improvisation, guaranteed consonance, works over I-IV-V progressions in F. Ideal for creating singable melodies and memorable hooks",
+          "recommendedUse": "Perfect for improvisation, guaranteed consonance, works over I-IV-V progressions in F. Ideal for creating singable melodies and memorable hooks",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "F Major (Ionian)",
+          "scaleDbKey": "Ionian",
+          "compatibilityScore": 10,
+          "relationship": "Diatonic parent scale - all seven notes of F major tonality",
+          "rationale": "The complete major scale in F provides the full harmonic palette. Contains all diatonic chords and melodic possibilities for F major key",
+          "chordToneAlignment": {
+            "chordTones": [
+              "F",
+              "A",
+              "C"
+            ],
+            "tensions": [],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Use for complete melodic freedom in F major. Essential for scale practice, composition, and understanding key relationships",
+          "recommendedUse": "Use for complete melodic freedom in F major. Essential for scale practice, composition, and understanding key relationships",
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "F Mixolydian",
+          "scaleDbKey": "Mixolydian",
+          "compatibilityScore": 9,
+          "relationship": "Major scale with flatted 7th (F, G, A, Bb, C, D, Eb)",
+          "rationale": "Creates dominant 7th character by lowering the 7th degree. Perfect for F7 chords and bluesy rock contexts",
+          "chordToneAlignment": {
+            "chordTones": [
+              "F",
+              "A",
+              "C"
+            ],
+            "tensions": [],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Use over F7 chords and I7-IV7 progressions. Creates bluesy, rock sound while maintaining major character. Perfect for modal rock jams",
+          "recommendedUse": "Use over F7 chords and I7-IV7 progressions. Creates bluesy, rock sound while maintaining major character. Perfect for modal rock jams",
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "F Lydian",
+          "scaleDbKey": "Lydian",
+          "compatibilityScore": 9,
+          "relationship": "Major scale with raised 4th (F, G, A, B, C, D, E)",
+          "rationale": "Raises the 4th degree from Bb to B natural, creating ethereal, dreamy major sound. The #4 provides characteristic bright, uplifting quality",
+          "chordToneAlignment": {
+            "chordTones": [
+              "F",
+              "A",
+              "C"
+            ],
+            "tensions": [],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Use over Fmaj7 or Fmaj7#11 chords; emphasize the B natural for color. Perfect for I chord vamps and modal compositions",
+          "recommendedUse": "Use over Fmaj7 or Fmaj7#11 chords; emphasize the B natural for color. Perfect for I chord vamps and modal compositions",
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "Gm": {
+      "symbol": "Gm",
+      "fullName": "G Minor",
+      "romanNumeral": "ii",
+      "quality": "minor",
+      "notes": [
+        "G",
+        "A#",
+        "D"
+      ],
+      "rootNote": "G",
+      "scaleCompatibility": []
+    },
+    "Am": {
+      "symbol": "Am",
+      "fullName": "A Minor",
+      "romanNumeral": "iii",
+      "quality": "minor",
+      "notes": [
+        "A",
+        "C",
+        "E"
+      ],
+      "rootNote": "A",
+      "scaleCompatibility": []
+    },
+    "A#": {
+      "symbol": "A#",
+      "fullName": "A# Major",
+      "romanNumeral": "IV",
+      "quality": "major",
+      "notes": [
+        "A#",
+        "D",
+        "F"
+      ],
+      "rootNote": "A#",
+      "scaleCompatibility": []
+    },
+    "C": {
+      "symbol": "C",
+      "fullName": "C Major",
+      "romanNumeral": "V",
+      "quality": "major",
+      "notes": [
+        "C",
+        "E",
+        "G"
+      ],
+      "rootNote": "C",
+      "scaleCompatibility": []
+    },
+    "Dm": {
+      "symbol": "Dm",
+      "fullName": "D Minor",
+      "romanNumeral": "vi",
+      "quality": "minor",
+      "notes": [
+        "D",
+        "F",
+        "A"
+      ],
+      "rootNote": "D",
+      "scaleCompatibility": [
+        {
+          "scaleName": "D Minor Pentatonic (Relative)",
+          "scaleDbKey": "MinorPentatonic(Relative)",
+          "compatibilityScore": 8,
+          "relationship": "Relative minor pentatonic - vi relationship to F major",
+          "rationale": "D minor pentatonic shares many notes with F major pentatonic and works beautifully over F major progressions, adding minor color",
+          "chordToneAlignment": {
+            "chordTones": [
+              "D",
+              "F",
+              "A"
+            ],
+            "tensions": [],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Use to add minor flavor over F major progressions. Perfect for creating tension/release in major key songs",
+          "recommendedUse": "Use to add minor flavor over F major progressions. Perfect for creating tension/release in major key songs",
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "Edim": {
+      "symbol": "Edim",
+      "fullName": "E Diminished",
+      "romanNumeral": "vii\u00b0",
+      "quality": "diminished",
+      "notes": [
+        "E",
+        "G",
+        "A#"
+      ],
+      "rootNote": "E",
+      "scaleCompatibility": []
+    },
+    "Fmaj7": {
+      "symbol": "Fmaj7",
+      "fullName": "F Major 7th",
+      "romanNumeral": "Imaj7",
+      "quality": "major7",
+      "notes": [
+        "F",
+        "A",
+        "C",
+        "E"
+      ],
+      "rootNote": "F",
+      "scaleCompatibility": []
+    },
+    "Gm7": {
+      "symbol": "Gm7",
+      "fullName": "G Minor 7th",
+      "romanNumeral": "iim7",
+      "quality": "minor7",
+      "notes": [
+        "G",
+        "A#",
+        "D",
+        "F"
+      ],
+      "rootNote": "G",
+      "scaleCompatibility": []
+    },
+    "Am7": {
+      "symbol": "Am7",
+      "fullName": "A Minor 7th",
+      "romanNumeral": "iiim7",
+      "quality": "minor7",
+      "notes": [
+        "A",
+        "C",
+        "E",
+        "G"
+      ],
+      "rootNote": "A",
+      "scaleCompatibility": []
+    },
+    "A#maj7": {
+      "symbol": "A#maj7",
+      "fullName": "A# Major 7th",
+      "romanNumeral": "IVmaj7",
+      "quality": "major7",
+      "notes": [
+        "A#",
+        "D",
+        "F",
+        "A"
+      ],
+      "rootNote": "A#",
+      "scaleCompatibility": []
+    },
+    "C7": {
+      "symbol": "C7",
+      "fullName": "C Dominant 7th",
+      "romanNumeral": "V7",
+      "quality": "dominant7",
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "A#"
+      ],
+      "rootNote": "C",
+      "scaleCompatibility": []
+    },
+    "Dm7": {
+      "symbol": "Dm7",
+      "fullName": "D Minor 7th",
+      "romanNumeral": "vim7",
+      "quality": "minor7",
+      "notes": [
+        "D",
+        "F",
+        "A",
+        "C"
+      ],
+      "rootNote": "D",
+      "scaleCompatibility": [
+        {
+          "scaleName": "D Minor Pentatonic (Relative)",
+          "scaleDbKey": "MinorPentatonic(Relative)",
+          "compatibilityScore": 8,
+          "relationship": "Relative minor pentatonic - vi relationship to F major",
+          "rationale": "D minor pentatonic shares many notes with F major pentatonic and works beautifully over F major progressions, adding minor color",
+          "chordToneAlignment": {
+            "chordTones": [
+              "D",
+              "F",
+              "A",
+              "C"
+            ],
+            "tensions": [],
+            "avoidNotes": []
+          },
+          "voiceLeadingTips": "Use to add minor flavor over F major progressions. Perfect for creating tension/release in major key songs",
+          "recommendedUse": "Use to add minor flavor over F major progressions. Perfect for creating tension/release in major key songs",
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "Em7b5": {
+      "symbol": "Em7b5",
+      "fullName": "E Minor 7 Flat 5",
+      "romanNumeral": "viim7b5",
+      "quality": "minor7b5",
+      "notes": [
+        "E",
+        "G",
+        "A#",
+        "D"
+      ],
+      "rootNote": "E",
+      "scaleCompatibility": []
+    }
+  },
+  "commonProgressions": [
+    {
+      "name": "I-IV-V",
+      "description": "Classic rock and blues progression",
+      "chords": [
+        "F",
+        "A#",
+        "C"
+      ],
+      "genre": [
+        "Rock",
+        "Blues",
+        "Country"
+      ],
+      "difficulty": 1
+    },
+    {
+      "name": "I-V-vi-IV",
+      "description": "Pop progression (Axis progression)",
+      "chords": [
+        "F",
+        "C",
+        "Dm",
+        "A#"
+      ],
+      "genre": [
+        "Pop",
+        "Rock",
+        "Indie"
+      ],
+      "difficulty": 1
+    },
+    {
+      "name": "I-vi-IV-V",
+      "description": "50s progression / Doo-wop changes",
+      "chords": [
+        "F",
+        "Dm",
+        "A#",
+        "C"
+      ],
+      "genre": [
+        "Pop",
+        "Rock",
+        "Doo-wop"
+      ],
+      "difficulty": 1
+    },
+    {
+      "name": "ii-V-I",
+      "description": "Jazz standard progression",
+      "chords": [
+        "Gm7",
+        "C7",
+        "Fmaj7"
+      ],
+      "genre": [
+        "Jazz",
+        "Bossa Nova",
+        "Swing"
+      ],
+      "difficulty": 2
+    },
+    {
+      "name": "I-IV-vi-V",
+      "description": "Folk and singer-songwriter progression",
+      "chords": [
+        "F",
+        "A#",
+        "Dm",
+        "C"
+      ],
+      "genre": [
+        "Folk",
+        "Country",
+        "Singer-Songwriter"
+      ],
+      "difficulty": 1
+    },
+    {
+      "name": "vi-IV-I-V",
+      "description": "Modern pop progression",
+      "chords": [
+        "Dm",
+        "A#",
+        "F",
+        "C"
+      ],
+      "genre": [
+        "Pop",
+        "Rock",
+        "Alternative"
+      ],
+      "difficulty": 1
+    }
+  ]
+}

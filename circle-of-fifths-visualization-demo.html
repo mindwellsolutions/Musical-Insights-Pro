@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circle of Fifths Fretboard Visualization - Interactive Demo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #e0e0e0;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #a0a0a0;
+      margin-bottom: 50px;
+      font-size: 1.1rem;
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .demo-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .demo-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .demo-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .demo-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .demo-rating {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .demo-description {
+      color: #b0b0b0;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .fretboard-demo {
+      background: #2a2a3e;
+      border-radius: 12px;
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+      min-height: 250px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .control-label {
+      font-size: 0.85rem;
+      color: #a0a0a0;
+      font-weight: 500;
+    }
+
+    button, select, input[type="range"] {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.9rem;
+    }
+
+    button:hover, select:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    button.active {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-color: #667eea;
+    }
+
+    input[type="range"] {
+      padding: 0;
+      width: 120px;
+    }
+
+    input[type="color"] {
+      width: 50px;
+      height: 35px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    /* Fretboard Strings */
+    .string {
+      position: relative;
+      height: 40px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+
+    .string-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #555;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .note-container {
+      position: relative;
+      display: flex;
+      gap: 60px;
+      padding-left: 20px;
+      z-index: 10;
+    }
+
+    /* Note Dots */
+    .note {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.75rem;
+      color: #fff;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .note:hover {
+      transform: scale(1.15);
+    }
+
+    /* Note Colors (matching your app) */
+    .note-C { background: #ef4444; }
+    .note-D { background: #f59e0b; }
+    .note-E { background: #84cc16; }
+    .note-F { background: #22c55e; }
+    .note-G { background: #14b8a6; }
+    .note-A { background: #0ea5e9; }
+    .note-B { background: #6366f1; }
+
+    /* SVG Overlay for connections */
+    .svg-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    /* IDEA 1: Connecting Lines */
+    .connection-line {
+      stroke-width: 2;
+      fill: none;
+      opacity: 0.4;
+      transition: opacity 0.3s ease;
+    }
+
+    .connection-line.active {
+      opacity: 0.8;
+      stroke-width: 3;
+    }
+
+    /* IDEA 2: Pulsing Glow Rings */
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 0 0 currentColor;
+        opacity: 1;
+      }
+      50% {
+        box-shadow: 0 0 20px 8px currentColor;
+        opacity: 0.8;
+      }
+    }
+
+    .note.glow-root {
+      box-shadow: 0 0 0 3px #ffffff, 0 0 20px 8px rgba(255, 255, 255, 0.6);
+      animation: pulse-glow 1.5s ease-in-out infinite;
+    }
+
+    .note.glow-fifth {
+      box-shadow: 0 0 0 2px #22c55e, 0 0 15px 6px rgba(34, 197, 94, 0.5);
+      animation: pulse-glow 1.5s ease-in-out infinite;
+    }
+
+    .note.glow-second {
+      box-shadow: 0 0 0 2px #3b82f6, 0 0 12px 4px rgba(59, 130, 246, 0.4);
+      animation: pulse-glow 1.5s ease-in-out infinite;
+    }
+
+    .note.glow-distant {
+      box-shadow: 0 0 0 1px #a855f7, 0 0 8px 3px rgba(168, 85, 247, 0.3);
+      animation: pulse-glow 1.5s ease-in-out infinite;
+    }
+
+    /* IDEA 3: Color Gradient Overlay */
+    .note.gradient-overlay::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%);
+      pointer-events: none;
+    }
+
+    .note.gradient-root {
+      filter: brightness(1.3) saturate(1.2);
+      border: 2px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .note.gradient-close {
+      filter: brightness(1.1) saturate(1.1);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .note.gradient-medium {
+      filter: brightness(0.9) saturate(0.9);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .note.gradient-distant {
+      filter: brightness(0.7) saturate(0.7);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* IDEA 4: Interactive Hover */
+    .note.dimmed {
+      opacity: 0.3;
+      transition: opacity 0.3s ease;
+    }
+
+    .note.highlighted {
+      transform: scale(1.3);
+      box-shadow: 0 0 0 4px #ffffff, 0 0 25px 10px rgba(255, 255, 255, 0.7);
+      z-index: 100;
+    }
+
+    .note.neighbor-1 {
+      box-shadow: 0 0 0 3px #22c55e, 0 0 20px 8px rgba(34, 197, 94, 0.6);
+      transform: scale(1.15);
+    }
+
+    .note.neighbor-2 {
+      box-shadow: 0 0 0 2px #3b82f6, 0 0 15px 6px rgba(59, 130, 246, 0.5);
+      transform: scale(1.1);
+    }
+
+    /* IDEA 5: Mini Circle Overlay */
+    .mini-circle {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 120px;
+      height: 120px;
+      opacity: 0.85;
+      transition: opacity 0.3s ease;
+      z-index: 20;
+    }
+
+    .mini-circle:hover {
+      opacity: 1;
+    }
+
+    .mini-circle-note {
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .mini-circle-note.active {
+      filter: brightness(1.3);
+    }
+
+    .mini-circle-note.playing {
+      animation: pulse-glow 1s ease-in-out infinite;
+    }
+
+    /* Ratings Grid */
+    .ratings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+      margin-top: 15px;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+    }
+
+    .rating-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .rating-label {
+      font-size: 0.75rem;
+      color: #a0a0a0;
+      text-align: center;
+    }
+
+    .rating-value {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #667eea;
+    }
+
+    /* Tooltip */
+    .tooltip {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.9);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      pointer-events: none;
+      z-index: 1000;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .tooltip.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎸 Circle of Fifths Fretboard Visualization</h1>
+    <p class="subtitle">Interactive demonstration of 5 design concepts for showing Circle of Fifths relationships on the fretboard</p>
+
+    <div class="demo-grid">
+
+      <!-- IDEA 1: Connecting Lines -->
+      <div class="demo-card">
+        <div class="demo-header">
+          <h2 class="demo-title">1. Connecting Lines</h2>
+          <div class="demo-rating">7.6/10</div>
+        </div>
+        <p class="demo-description">
+          Draw lines connecting each note to its Circle of Fifths neighbors (±1 position).
+          For example, B connects to E (left) and F# (right).
+        </p>
+
+        <div class="fretboard-demo" id="demo1">
+          <svg class="svg-overlay" id="svg1"></svg>
+          <div class="string">
+            <div class="string-line"></div>
+            <div class="note-container">
+              <div class="note note-E" data-note="E">E</div>
+              <div class="note note-B" data-note="B">B</div>
+              <div class="note note-E" data-note="E">E</div>
+            </div>
+          </div>
+          <div class="string">
+            <div class="string-line"></div>
+            <div class="note-container">
+              <div class="note note-B" data-note="B">B</div>
+              <div class="note note-F" data-note="F#">F#</div>
+              <div class="note note-B" data-note="B">B</div>
+            </div>
+          </div>
+          <div class="string">
+            <div class="string-line"></div>
+            <div class="note-container">
+              <div class="note note-G" data-note="G">G</div>
+              <div class="note note-D" data-note="D">D</div>
+              <div class="note note-A" data-note="A">A</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <div class="control-group">
+            <label class="control-label">Toggle</label>
+            <button class="active" onclick="toggleLines(this)">Show Lines</button>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Line Color</label>
+            <input type="color" value="#667eea" onchange="updateLineColor(this.value)">
+          </div>
+          <div class="control-group">
+            <label class="control-label">Opacity: <span id="opacity1">40</span>%</label>
+            <input type="range" min="0" max="100" value="40" oninput="updateOpacity1(this.value)">
+          </div>
+          <div class="control-group">
+            <label class="control-label">Style</label>
+            <select onchange="updateLineStyle(this.value)">
+              <option value="curved">Curved</option>
+              <option value="straight">Straight</option>
+              <option value="dotted">Dotted</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="ratings-grid">
+          <div class="rating-item">
+            <div class="rating-label">Visual Clarity</div>
+            <div class="rating-value">7/10</div>
+          </div>
+          <div class="rating-item">
+            <div class="rating-label">Learning Value</div>
+            <div class="rating-value">9/10</div>
+          </div>
+          <div class="rating-item">
+            <div class="rating-label">Performance</div>
+            <div class="rating-value">8/10</div>
+          </div>
+          <div class="rating-item">
+            <div class="rating-label">Distraction</div>
+            <div class="rating-value">6/10</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- IDEA 2: Pulsing Glow Rings -->
+      <div class="demo-card">
+        <div class="demo-header">
+          <h2 class="demo-title">2. Pulsing Glow Rings ⭐</h2>
+          <div class="demo-rating">8.0/10</div>
+        </div>
+        <p class="demo-description">
+          Each note displays an animated glow ring whose color and intensity indicate Circle of Fifths distance from root.
+          Closer relationships = brighter glow.
+        </p>
+
+        <div class="fretboard-demo" id="demo2">
+          <div class="string">
+            <div class="string-line"></div>
+            <div class="note-container">
+              <div class="note note-C glow-root" data-note="C">C</div>
+              <div class="note note-G glow-fifth" data-note="G">G</div>
+              <div class="note note-C glow-root" data-note="C">C</div>
+            </div>
+          </div>
+          <div class="string">
+            <div class="string-line"></div>
+            <div class="note-container">
+              <div class="note note-F glow-fifth" data-note="F">F</div>
+              <div class="note note-D glow-second" data-note="D">D</div>
+              <div class="note note-A glow-second" data-note="A">A</div>
+            </div>
+          </div>
+          <div class="string">
+            <div class="string-line"></div>
+            <div class="note-container">
+              <div class="note note-E glow-distant" data-note="E">E</div>
+              <div class="note note-B glow-distant" data-note="B">B</div>
+              <div class="note note-E glow-distant" data-note="E">E</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <div class="control-group">
+            <label class="control-label">Toggle</label>
+            <button class="active" onclick="toggleGlow(this)">Glow On</button>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Intensity: <span id="intensity2">100</span>%</label>
+            <input type="range" min="0" max="100" value="100" oninput="updateIntensity(this.value)">
+          </div>
+          <div class="control-group">
+            <label class="control-label">Speed</label>
+            <select onchange="updateGlowSpeed(this.value)">
+              <option value="3s">Slow</option>
+              <option value="1.5s" selected>Medium</option>
+              <option value="0.8s">Fast</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="ratings-grid">
+          <div class="rating-item">
+            <div class="rating-label">Visual Clarity</div>
+            <div class="rating-value">9/10</div>
+          </div>
+          <div class="rating-item">
+            <div class="rating-label">Learning Value</div>
+            <div class="rating-value">8/10</div>
+          </div>
+          <div class="rating-item">
+            <div class="rating-label">Performance</div>
+            <div class="rating-value">9/10</div>
+          </div>
+          <div class="rating-item">
+            <div class="rating-label">Distraction</div>
+            <div class="rating-value">8/10</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- IDEA 3: Color Gradient Overlay -->
+      <div class="demo-card">
+        <div class="demo-header">
+          <h2 class="demo-title">3. Color Gradient Overlay</h2>
+          <div class="demo-rating">7.7/10</div>
+        </div>
+        <p class="demo-description">
+          Apply a color gradient to each note based on Circle of Fifths position.
+          Creates a "heat map" showing harmonic relationships.
+        </p>
+
+        <div class="fretboard-demo" id="demo3">
+          <div class="string">
+            <div class="string-line"></div>
+            <div class="note-container">
+              <div class="note note-C gradient-root gradient-overlay" data-note="C">C</div>
+              <div class="note note-G gradient-close gradient-overlay" data-note="G">G</div>
+              <div class="note note-C gradient-root gradient-overlay" data-note="C">C</div>
+            </div>
+          </div>
+          <div class="string">
+            <div class="string-line"></div>
+            <div class="note-container">
+              <div class="note note-F gradient-close gradient-overlay" data-note="F">F</div>
+              <div class="note note-D gradient-medium gradient-overlay" data-note="D">D</div>
+              <div class="note note-A gradient-medium gradient-overlay" data-note="A">A</div>
+            </div>
+          </div>
+          <div class="string">
+            <div class="string-line"></div>
+            <div class="note-container">
+              <div class="note note-E gradient-distant gradient-overlay" data-note="E">E</div>
+              <div class="note note-B gradient-distant gradient-overlay" data-note="B">B</div>
+              <div class="note note-E gradient-distant gradient-overlay" data-note="E">E</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <div class="control-group">
+            <label class="control-label">Toggle</label>
+            <button class="active" onclick="toggleGradient(this)">Gradient On</button>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Style</label>
+            <select>
+              <option>Bright → Dim</option>
+              <option>Saturated → Desaturated</option>
+              <option>Warm → Cool</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="ratings-grid">
+          <div class="rating-item">
+            <div class="rating-label">Visual Clarity</div>
+            <div class="rating-value">7/10</div>
+          </div>
+          <div class="rating-item">
+            <div class="rating-label">Performance</div>
+            <div class="rating-value">10/10</div>
+          </div>
+          <div class="rating-item">
+            <div class="rating-label">Distraction</div>
+            <div class="rating-value">9/10</div>
+          </div>
+          <div class="rating-item">
+            <div class="rating-label">Mobile</div>
+            <div class="rating-value">10/10</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- IDEA 4: Interactive Hover Highlighting -->
+      <div class="demo-card">
+        <div class="demo-header">
+          <h2 class="demo-title">4. Interactive Hover 🏆</h2>
+          <div class="demo-rating">8.7/10</div>
+        </div>
+        <p class="demo-description">
+          Hover over any note to highlight its Circle of Fifths neighborhood.
+          Related notes glow, unrelated notes dim. <strong>Try hovering over the notes!</strong>
+        </p>
+
+        <div class="fretboard-demo" id="demo4">
+          <svg class="svg-overlay" id="svg4"></svg>
+          <div class="string">
+            <div class="string-line"></div>
+            <div class="note-container">
+              <div class="note note-C" data-note="C" onmouseenter="highlightNeighbors(this, 'C')" onmouseleave="clearHighlight()">C</div>
+              <div class="note note-G" data-note="G" onmouseenter="highlightNeighbors(this, 'G')" onmouseleave="clearHighlight()">G</div>
+              <div class="note note-C" data-note="C" onmouseenter="highlightNeighbors(this, 'C')" onmouseleave="clearHighlight()">C</div>
+            </div>
+          </div>
+          <div class="string">
+            <div class="string-line"></div>
+            <div class="note-container">
+              <div class="note note-F" data-note="F" onmouseenter="highlightNeighbors(this, 'F')" onmouseleave="clearHighlight()">F</div>
+              <div class="note note-D" data-note="D" onmouseenter="highlightNeighbors(this, 'D')" onmouseleave="clearHighlight()">D</div>
+              <div class="note note-A" data-note="A" onmouseenter="highlightNeighbors(this, 'A')" onmouseleave="clearHighlight()">A</div>
+            </div>
+          </div>
+          <div class="string">
+            <div class="string-line"></div>
+            <div class="note-container">
+              <div class="note note-E" data-note="E" onmouseenter="highlightNeighbors(this, 'E')" onmouseleave="clearHighlight()">E</div>
+              <div class="note note-B" data-note="B" onmouseenter="highlightNeighbors(this, 'B')" onmouseleave="clearHighlight()">B</div>
+              <div class="note note-E" data-note="E" onmouseenter="highlightNeighbors(this, 'E')" onmouseleave="clearHighlight()">E</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <div class="control-group">
+            <label class="control-label">Highlight Range</label>
+            <select id="range4" onchange="updateRange(this.value)">
+              <option value="1">±1 step</option>
+              <option value="2" selected>±2 steps</option>
+              <option value="3">±3 steps</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Animation</label>
+            <select>
+              <option>Fast (0.2s)</option>
+              <option selected>Medium (0.3s)</option>
+              <option>Slow (0.5s)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="ratings-grid">
+          <div class="rating-item">
+            <div class="rating-label">Visual Clarity</div>
+            <div class="rating-value">10/10</div>
+          </div>
+          <div class="rating-item">
+            <div class="rating-label">Learning Value</div>
+            <div class="rating-value">10/10</div>
+          </div>
+          <div class="rating-item">
+            <div class="rating-label">Distraction</div>
+            <div class="rating-value">10/10</div>
+          </div>
+          <div class="rating-item">
+            <div class="rating-label">Complexity</div>
+            <div class="rating-value">8/10</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- IDEA 5: Mini Circle Overlay -->
+      <div class="demo-card">
+        <div class="demo-header">
+          <h2 class="demo-title">5. Mini Circle Overlay</h2>
+          <div class="demo-rating">8.1/10</div>
+        </div>
+        <p class="demo-description">
+          Display a small Circle of Fifths in the corner that highlights notes in real-time.
+          Shows full circle context while you play.
+        </p>
+
+        <div class="fretboard-demo" id="demo5" style="position: relative;">
+          <!-- Mini Circle of Fifths -->
+          <svg class="mini-circle" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="55" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <circle cx="60" cy="60" r="35" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+            <!-- Circle notes (12 positions) -->
+            <g id="circle-notes">
+              <!-- Will be populated by JavaScript -->
+            </g>
+
+            <text x="60" y="60" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-size="10" font-weight="600">Circle</text>
+            <text x="60" y="70" text-anchor="middle" dominant-baseline="middle" fill="#aaa" font-size="7">of 5ths</text>
+          </svg>
+
+          <div class="string">
+            <div class="string-line"></div>
+            <div class="note-container">
+              <div class="note note-C" data-note="C" onclick="activateCircleNote('C')">C</div>
+              <div class="note note-G" data-note="G" onclick="activateCircleNote('G')">G</div>
+              <div class="note note-C" data-note="C" onclick="activateCircleNote('C')">C</div>
+            </div>
+          </div>
+          <div class="string">
+            <div class="string-line"></div>
+            <div class="note-container">
+              <div class="note note-F" data-note="F" onclick="activateCircleNote('F')">F</div>
+              <div class="note note-D" data-note="D" onclick="activateCircleNote('D')">D</div>
+              <div class="note note-A" data-note="A" onclick="activateCircleNote('A')">A</div>
+            </div>
+          </div>
+          <div class="string">
+            <div class="string-line"></div>
+            <div class="note-container">
+              <div class="note note-E" data-note="E" onclick="activateCircleNote('E')">E</div>
+              <div class="note note-B" data-note="B" onclick="activateCircleNote('B')">B</div>
+              <div class="note note-E" data-note="E" onclick="activateCircleNote('E')">E</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <div class="control-group">
+            <label class="control-label">Size</label>
+            <select onchange="updateCircleSize(this.value)">
+              <option value="100">Small</option>
+              <option value="120" selected>Medium</option>
+              <option value="150">Large</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Opacity: <span id="opacity5">85</span>%</label>
+            <input type="range" min="30" max="100" value="85" oninput="updateCircleOpacity(this.value)">
+          </div>
+          <div class="control-group">
+            <label class="control-label">Position</label>
+            <select>
+              <option>Top Right</option>
+              <option>Top Left</option>
+              <option>Bottom Right</option>
+              <option>Bottom Left</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="ratings-grid">
+          <div class="rating-item">
+            <div class="rating-label">Visual Clarity</div>
+            <div class="rating-value">8/10</div>
+          </div>
+          <div class="rating-item">
+            <div class="rating-label">Learning Value</div>
+            <div class="rating-value">9/10</div>
+          </div>
+          <div class="rating-item">
+            <div class="rating-label">Performance</div>
+            <div class="rating-value">9/10</div>
+          </div>
+          <div class="rating-item">
+            <div class="rating-label">Mobile</div>
+            <div class="rating-value">8/10</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Summary Section -->
+    <div class="demo-card" style="grid-column: 1 / -1;">
+      <h2 class="demo-title" style="margin-bottom: 20px;">📊 Comparison Summary</h2>
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; color: #e0e0e0;">
+          <thead>
+            <tr style="border-bottom: 2px solid rgba(255,255,255,0.2);">
+              <th style="padding: 12px; text-align: left;">Idea</th>
+              <th style="padding: 12px; text-align: center;">Visual Clarity</th>
+              <th style="padding: 12px; text-align: center;">Learning Value</th>
+              <th style="padding: 12px; text-align: center;">Performance</th>
+              <th style="padding: 12px; text-align: center;">Distraction</th>
+              <th style="padding: 12px; text-align: center;">Mobile</th>
+              <th style="padding: 12px; text-align: center;"><strong>Overall</strong></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+              <td style="padding: 12px;">1. Connecting Lines</td>
+              <td style="padding: 12px; text-align: center;">7</td>
+              <td style="padding: 12px; text-align: center;">9</td>
+              <td style="padding: 12px; text-align: center;">8</td>
+              <td style="padding: 12px; text-align: center;">6</td>
+              <td style="padding: 12px; text-align: center;">7</td>
+              <td style="padding: 12px; text-align: center;"><strong>7.6</strong></td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(102, 126, 234, 0.1);">
+              <td style="padding: 12px;">2. Pulsing Glow Rings ⭐</td>
+              <td style="padding: 12px; text-align: center;">9</td>
+              <td style="padding: 12px; text-align: center;">8</td>
+              <td style="padding: 12px; text-align: center;">9</td>
+              <td style="padding: 12px; text-align: center;">8</td>
+              <td style="padding: 12px; text-align: center;">9</td>
+              <td style="padding: 12px; text-align: center;"><strong style="color: #667eea;">8.0</strong></td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+              <td style="padding: 12px;">3. Color Gradient</td>
+              <td style="padding: 12px; text-align: center;">7</td>
+              <td style="padding: 12px; text-align: center;">7</td>
+              <td style="padding: 12px; text-align: center;">10</td>
+              <td style="padding: 12px; text-align: center;">9</td>
+              <td style="padding: 12px; text-align: center;">10</td>
+              <td style="padding: 12px; text-align: center;"><strong>7.7</strong></td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(102, 126, 234, 0.15);">
+              <td style="padding: 12px;">4. Interactive Hover 🏆</td>
+              <td style="padding: 12px; text-align: center;">10</td>
+              <td style="padding: 12px; text-align: center;">10</td>
+              <td style="padding: 12px; text-align: center;">8</td>
+              <td style="padding: 12px; text-align: center;">10</td>
+              <td style="padding: 12px; text-align: center;">6</td>
+              <td style="padding: 12px; text-align: center;"><strong style="color: #667eea;">8.7</strong></td>
+            </tr>
+            <tr>
+              <td style="padding: 12px;">5. Mini Circle Overlay</td>
+              <td style="padding: 12px; text-align: center;">8</td>
+              <td style="padding: 12px; text-align: center;">9</td>
+              <td style="padding: 12px; text-align: center;">9</td>
+              <td style="padding: 12px; text-align: center;">7</td>
+              <td style="padding: 12px; text-align: center;">8</td>
+              <td style="padding: 12px; text-align: center;"><strong>8.1</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top: 30px; padding: 20px; background: rgba(102, 126, 234, 0.1); border-radius: 8px; border-left: 4px solid #667eea;">
+        <h3 style="margin-bottom: 10px; color: #667eea;">🎯 Recommendations</h3>
+        <ul style="line-height: 1.8; color: #b0b0b0; margin-left: 20px;">
+          <li><strong style="color: #fff;">Best Overall:</strong> Idea 4 (Interactive Hover) - Highest learning value with zero distraction</li>
+          <li><strong style="color: #fff;">Best Always-On:</strong> Idea 2 (Pulsing Glow Rings) - Beautiful, subtle, excellent performance</li>
+          <li><strong style="color: #fff;">Best Combination:</strong> Use Ideas 2 + 4 together for passive awareness + active exploration</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tooltip" id="tooltip"></div>
+
+  <script>
+    // Circle of Fifths order
+    const CIRCLE_KEYS = ['C', 'G', 'D', 'A', 'E', 'B', 'F#', 'C#', 'G#', 'D#', 'A#', 'F'];
+
+    // Note colors matching your app
+    const NOTE_COLORS = {
+      'C': '#ef4444',
+      'C#': '#f97316',
+      'D': '#f59e0b',
+      'D#': '#eab308',
+      'E': '#84cc16',
+      'F': '#22c55e',
+      'F#': '#10b981',
+      'G': '#14b8a6',
+      'G#': '#06b6d4',
+      'A': '#0ea5e9',
+      'A#': '#3b82f6',
+      'B': '#6366f1'
+    };
+
+    // Get Circle of Fifths neighbors
+    function getCircleNeighbors(note, range = 1) {
+      const index = CIRCLE_KEYS.indexOf(note);
+      if (index === -1) return { left: [], right: [] };
+
+      const left = [];
+      const right = [];
+
+      for (let i = 1; i <= range; i++) {
+        const leftIndex = (index - i + 12) % 12;
+        const rightIndex = (index + i) % 12;
+        left.push(CIRCLE_KEYS[leftIndex]);
+        right.push(CIRCLE_KEYS[rightIndex]);
+      }
+
+      return { left, right, all: [...left, ...right] };
+    }
+
+    // Calculate distance in Circle of Fifths
+    function getCircleDistance(note1, note2) {
+      const idx1 = CIRCLE_KEYS.indexOf(note1);
+      const idx2 = CIRCLE_KEYS.indexOf(note2);
+      if (idx1 === -1 || idx2 === -1) return 999;
+
+      const distance = Math.abs(idx1 - idx2);
+      return Math.min(distance, 12 - distance);
+    }
+
+    // ===== IDEA 1: Connecting Lines =====
+    let linesVisible = true;
+    let lineColor = '#667eea';
+    let lineOpacity = 0.4;
+    let lineStyle = 'curved';
+
+    function drawConnectingLines() {
+      const svg = document.getElementById('svg1');
+      if (!svg) return;
+
+      svg.innerHTML = '';
+      if (!linesVisible) return;
+
+      const demo = document.getElementById('demo1');
+      const notes = demo.querySelectorAll('.note');
+
+      notes.forEach(note => {
+        const noteName = note.getAttribute('data-note');
+        const neighbors = getCircleNeighbors(noteName, 1);
+        const rect = note.getBoundingClientRect();
+        const demoRect = demo.getBoundingClientRect();
+
+        const x1 = rect.left - demoRect.left + rect.width / 2;
+        const y1 = rect.top - demoRect.top + rect.height / 2;
+
+        // Find and connect to neighbors
+        notes.forEach(targetNote => {
+          const targetName = targetNote.getAttribute('data-note');
+          if (neighbors.all.includes(targetName) && note !== targetNote) {
+            const targetRect = targetNote.getBoundingClientRect();
+            const x2 = targetRect.left - demoRect.left + targetRect.width / 2;
+            const y2 = targetRect.top - demoRect.top + targetRect.height / 2;
+
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+
+            if (lineStyle === 'curved') {
+              const midX = (x1 + x2) / 2;
+              const midY = (y1 + y2) / 2 - 20;
+              path.setAttribute('d', `M ${x1} ${y1} Q ${midX} ${midY} ${x2} ${y2}`);
+            } else {
+              path.setAttribute('d', `M ${x1} ${y1} L ${x2} ${y2}`);
+            }
+
+            path.setAttribute('stroke', lineColor);
+            path.setAttribute('class', 'connection-line');
+            path.style.opacity = lineOpacity;
+
+            if (lineStyle === 'dotted') {
+              path.setAttribute('stroke-dasharray', '4,4');
+            }
+
+            svg.appendChild(path);
+          }
+        });
+      });
+    }
+
+    function toggleLines(btn) {
+      linesVisible = !linesVisible;
+      btn.textContent = linesVisible ? 'Hide Lines' : 'Show Lines';
+      btn.classList.toggle('active');
+      drawConnectingLines();
+    }
+
+    function updateLineColor(color) {
+      lineColor = color;
+      drawConnectingLines();
+    }
+
+    function updateOpacity1(value) {
+      document.getElementById('opacity1').textContent = value;
+      lineOpacity = value / 100;
+      drawConnectingLines();
+    }
+
+    function updateLineStyle(style) {
+      lineStyle = style;
+      drawConnectingLines();
+    }
+
+    // Initialize lines
+    setTimeout(drawConnectingLines, 100);
+
+    // ===== IDEA 2: Pulsing Glow Rings =====
+    function toggleGlow(btn) {
+      const demo = document.getElementById('demo2');
+      const notes = demo.querySelectorAll('.note');
+
+      notes.forEach(note => {
+        note.style.animation = note.style.animation ? '' : 'pulse-glow 1.5s ease-in-out infinite';
+      });
+
+      btn.classList.toggle('active');
+      btn.textContent = btn.classList.contains('active') ? 'Glow On' : 'Glow Off';
+    }
+
+    function updateIntensity(value) {
+      document.getElementById('intensity2').textContent = value;
+      const demo = document.getElementById('demo2');
+      const notes = demo.querySelectorAll('.note');
+
+      notes.forEach(note => {
+        note.style.opacity = value / 100;
+      });
+    }
+
+    function updateGlowSpeed(speed) {
+      const demo = document.getElementById('demo2');
+      const notes = demo.querySelectorAll('.note');
+
+      notes.forEach(note => {
+        if (note.style.animation) {
+          note.style.animation = `pulse-glow ${speed} ease-in-out infinite`;
+        }
+      });
+    }
+
+    // ===== IDEA 3: Color Gradient =====
+    function toggleGradient(btn) {
+      const demo = document.getElementById('demo3');
+      const notes = demo.querySelectorAll('.note');
+
+      notes.forEach(note => {
+        note.classList.toggle('gradient-overlay');
+      });
+
+      btn.classList.toggle('active');
+      btn.textContent = btn.classList.contains('active') ? 'Gradient On' : 'Gradient Off';
+    }
+
+    // ===== IDEA 4: Interactive Hover =====
+    let currentRange = 2;
+
+    function highlightNeighbors(element, note) {
+      const demo = document.getElementById('demo4');
+      const svg = document.getElementById('svg4');
+      const allNotes = demo.querySelectorAll('.note');
+
+      // Clear previous highlights
+      allNotes.forEach(n => {
+        n.classList.remove('dimmed', 'highlighted', 'neighbor-1', 'neighbor-2');
+      });
+      svg.innerHTML = '';
+
+      // Highlight current note
+      element.classList.add('highlighted');
+
+      // Get neighbors
+      const neighbors = getCircleNeighbors(note, currentRange);
+
+      // Highlight neighbors and draw connections
+      allNotes.forEach(n => {
+        const nName = n.getAttribute('data-note');
+        const distance = getCircleDistance(note, nName);
+
+        if (distance === 0) {
+          // Current note - already highlighted
+        } else if (distance === 1) {
+          n.classList.add('neighbor-1');
+          drawArc(element, n, svg, demo, '#22c55e');
+        } else if (distance === 2 && currentRange >= 2) {
+          n.classList.add('neighbor-2');
+          drawArc(element, n, svg, demo, '#3b82f6');
+        } else {
+          n.classList.add('dimmed');
+        }
+      });
+
+      // Show tooltip
+      showTooltip(element, note, neighbors);
+    }
+
+    function clearHighlight() {
+      const demo = document.getElementById('demo4');
+      const svg = document.getElementById('svg4');
+      const allNotes = demo.querySelectorAll('.note');
+
+      allNotes.forEach(n => {
+        n.classList.remove('dimmed', 'highlighted', 'neighbor-1', 'neighbor-2');
+      });
+      svg.innerHTML = '';
+      hideTooltip();
+    }
+
+    function drawArc(from, to, svg, demo, color) {
+      const fromRect = from.getBoundingClientRect();
+      const toRect = to.getBoundingClientRect();
+      const demoRect = demo.getBoundingClientRect();
+
+      const x1 = fromRect.left - demoRect.left + fromRect.width / 2;
+      const y1 = fromRect.top - demoRect.top + fromRect.height / 2;
+      const x2 = toRect.left - demoRect.left + toRect.width / 2;
+      const y2 = toRect.top - demoRect.top + toRect.height / 2;
+
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      const midX = (x1 + x2) / 2;
+      const midY = (y1 + y2) / 2 - 30;
+
+      path.setAttribute('d', `M ${x1} ${y1} Q ${midX} ${midY} ${x2} ${y2}`);
+      path.setAttribute('stroke', color);
+      path.setAttribute('stroke-width', '3');
+      path.setAttribute('fill', 'none');
+      path.setAttribute('opacity', '0.6');
+      path.style.animation = 'fadeIn 0.3s ease-out';
+
+      svg.appendChild(path);
+    }
+
+    function updateRange(value) {
+      currentRange = parseInt(value);
+    }
+
+    function showTooltip(element, note, neighbors) {
+      const tooltip = document.getElementById('tooltip');
+      const rect = element.getBoundingClientRect();
+
+      const leftNeighbor = neighbors.left[0] || '';
+      const rightNeighbor = neighbors.right[0] || '';
+
+      tooltip.textContent = `${note} → ${leftNeighbor} (←) | ${rightNeighbor} (→)`;
+      tooltip.style.left = rect.left + rect.width / 2 + 'px';
+      tooltip.style.top = rect.top - 40 + 'px';
+      tooltip.style.transform = 'translateX(-50%)';
+      tooltip.classList.add('show');
+    }
+
+    function hideTooltip() {
+      const tooltip = document.getElementById('tooltip');
+      tooltip.classList.remove('show');
+    }
+
+    // ===== IDEA 5: Mini Circle Overlay =====
+    function initMiniCircle() {
+      const circleGroup = document.getElementById('circle-notes');
+      if (!circleGroup) return;
+
+      const radius = 45;
+      const centerX = 60;
+      const centerY = 60;
+
+      CIRCLE_KEYS.forEach((key, index) => {
+        const angle = (index * 30 - 90) * (Math.PI / 180);
+        const x = centerX + radius * Math.cos(angle);
+        const y = centerY + radius * Math.sin(angle);
+
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', x);
+        circle.setAttribute('cy', y);
+        circle.setAttribute('r', '8');
+        circle.setAttribute('fill', NOTE_COLORS[key]);
+        circle.setAttribute('class', 'mini-circle-note');
+        circle.setAttribute('data-note', key);
+        circle.setAttribute('opacity', '0.4');
+
+        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        text.setAttribute('x', x);
+        text.setAttribute('y', y);
+        text.setAttribute('text-anchor', 'middle');
+        text.setAttribute('dominant-baseline', 'middle');
+        text.setAttribute('fill', '#fff');
+        text.setAttribute('font-size', '7');
+        text.setAttribute('font-weight', '700');
+        text.setAttribute('pointer-events', 'none');
+        text.textContent = key;
+
+        circleGroup.appendChild(circle);
+        circleGroup.appendChild(text);
+      });
+    }
+
+    function activateCircleNote(note) {
+      const circles = document.querySelectorAll('.mini-circle-note');
+
+      circles.forEach(circle => {
+        const circleName = circle.getAttribute('data-note');
+        if (circleName === note) {
+          circle.setAttribute('opacity', '1');
+          circle.classList.add('playing');
+
+          setTimeout(() => {
+            circle.classList.remove('playing');
+            circle.setAttribute('opacity', '0.7');
+          }, 1000);
+        }
+      });
+    }
+
+    function updateCircleSize(size) {
+      const circle = document.querySelector('.mini-circle');
+      if (circle) {
+        circle.style.width = size + 'px';
+        circle.style.height = size + 'px';
+      }
+    }
+
+    function updateCircleOpacity(value) {
+      document.getElementById('opacity5').textContent = value;
+      const circle = document.querySelector('.mini-circle');
+      if (circle) {
+        circle.style.opacity = value / 100;
+      }
+    }
+
+    // Initialize mini circle
+    setTimeout(initMiniCircle, 100);
+
+    // Add window resize handler for line redrawing
+    window.addEventListener('resize', () => {
+      drawConnectingLines();
+    });
+  </script>
+</body>
+</html>
+

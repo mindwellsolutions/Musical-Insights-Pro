@@ -1,0 +1,18 @@
+{
+  "chordQuality": "major13",
+  "displayName": "Major 13th",
+  "suffix": "maj13",
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-09",
+  "description": "Major 13th chord compatibility data",
+  "intervals": [
+    0,
+    4,
+    7,
+    11,
+    14,
+    17,
+    21
+  ],
+  "compatibleScales": []
+}

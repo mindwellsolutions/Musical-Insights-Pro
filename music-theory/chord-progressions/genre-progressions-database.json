@@ -1,0 +1,247 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-01-13",
+  "genres": {
+    "Rock": {
+      "description": "Rock music progressions",
+      "progressions": [
+        {
+          "id": "rock-1",
+          "name": "I-V-vi-IV",
+          "description": "The Axis Progression - Pop/Rock staple",
+          "chords": ["C", "G", "Am", "F"],
+          "romanNumerals": ["I", "V", "vi", "IV"],
+          "genre": ["Rock", "Pop", "Indie"],
+          "difficulty": 1,
+          "musicalCharacter": "Uplifting, anthemic, optimistic",
+          "famousSongs": [
+            "Let It Be - The Beatles",
+            "Don't Stop Believin' - Journey",
+            "With or Without You - U2"
+          ],
+          "rationale": "This progression creates a sense of forward motion and resolution. The vi chord adds emotional depth before returning to the IV.",
+          "scaleRecommendations": {
+            "C": [
+              { "scaleName": "Ionian", "compatibilityScore": 10, "usage": "Perfect fit for major I chord" },
+              { "scaleName": "Major Pentatonic", "compatibilityScore": 9, "usage": "Great for melodic lines" }
+            ],
+            "G": [
+              { "scaleName": "Mixolydian", "compatibilityScore": 10, "usage": "Natural choice for V chord" },
+              { "scaleName": "Major Pentatonic", "compatibilityScore": 9, "usage": "Bluesy feel" }
+            ],
+            "Am": [
+              { "scaleName": "Aeolian", "compatibilityScore": 10, "usage": "Natural minor sound" },
+              { "scaleName": "Dorian", "compatibilityScore": 9, "usage": "Brighter minor option" }
+            ],
+            "F": [
+              { "scaleName": "Lydian", "compatibilityScore": 10, "usage": "Bright, uplifting sound" },
+              { "scaleName": "Ionian", "compatibilityScore": 9, "usage": "Classic major sound" }
+            ]
+          }
+        },
+        {
+          "id": "rock-2",
+          "name": "I-IV-V",
+          "description": "The Foundation - Rock, Blues, Country",
+          "chords": ["C", "F", "G"],
+          "romanNumerals": ["I", "IV", "V"],
+          "genre": ["Rock", "Blues", "Country"],
+          "difficulty": 1,
+          "musicalCharacter": "Classic, powerful, straightforward",
+          "famousSongs": [
+            "La Bamba - Ritchie Valens",
+            "Twist and Shout - The Beatles",
+            "Wild Thing - The Troggs"
+          ],
+          "rationale": "The most fundamental progression in Western music. Creates strong harmonic movement and resolution.",
+          "scaleRecommendations": {
+            "C": [
+              { "scaleName": "Ionian", "compatibilityScore": 10, "usage": "Perfect for tonic" },
+              { "scaleName": "Major Pentatonic", "compatibilityScore": 10, "usage": "Rock/blues soloing" }
+            ],
+            "F": [
+              { "scaleName": "Ionian", "compatibilityScore": 10, "usage": "Subdominant function" },
+              { "scaleName": "Lydian", "compatibilityScore": 8, "usage": "Brighter option" }
+            ],
+            "G": [
+              { "scaleName": "Mixolydian", "compatibilityScore": 10, "usage": "Dominant function" },
+              { "scaleName": "Major Pentatonic", "compatibilityScore": 9, "usage": "Blues rock" }
+            ]
+          }
+        },
+        {
+          "id": "rock-3",
+          "name": "I-vi-IV-V",
+          "description": "The 50s Progression - Doo-wop classic",
+          "chords": ["C", "Am", "F", "G"],
+          "romanNumerals": ["I", "vi", "IV", "V"],
+          "genre": ["Rock", "Pop", "Doo-wop"],
+          "difficulty": 1,
+          "musicalCharacter": "Nostalgic, romantic, classic",
+          "famousSongs": [
+            "Stand By Me - Ben E. King",
+            "Every Breath You Take - The Police",
+            "Blue Moon - The Marcels"
+          ],
+          "rationale": "Creates a circular motion that feels complete and satisfying. The vi chord adds emotional depth.",
+          "scaleRecommendations": {
+            "C": [
+              { "scaleName": "Ionian", "compatibilityScore": 10, "usage": "Tonic major" }
+            ],
+            "Am": [
+              { "scaleName": "Aeolian", "compatibilityScore": 10, "usage": "Relative minor" },
+              { "scaleName": "Dorian", "compatibilityScore": 8, "usage": "Jazzier option" }
+            ],
+            "F": [
+              { "scaleName": "Ionian", "compatibilityScore": 10, "usage": "Subdominant" }
+            ],
+            "G": [
+              { "scaleName": "Mixolydian", "compatibilityScore": 10, "usage": "Dominant" }
+            ]
+          }
+        }
+      ]
+    },
+    "Jazz": {
+      "description": "Jazz music progressions",
+      "progressions": [
+        {
+          "id": "jazz-1",
+          "name": "ii-V-I",
+          "description": "The fundamental jazz progression",
+          "chords": ["Dm7", "G7", "Cmaj7"],
+          "romanNumerals": ["ii7", "V7", "Imaj7"],
+          "genre": ["Jazz", "Bossa Nova", "Swing"],
+          "difficulty": 3,
+          "musicalCharacter": "Sophisticated, resolving, classic",
+          "famousSongs": [
+            "Autumn Leaves",
+            "All The Things You Are",
+            "Satin Doll"
+          ],
+          "rationale": "The ii-V-I is the cornerstone of jazz harmony. The ii chord prepares the V, which strongly resolves to I.",
+          "scaleRecommendations": {
+            "Dm7": [
+              { "scaleName": "Dorian", "compatibilityScore": 10, "usage": "Standard choice for ii7" },
+              { "scaleName": "Minor Pentatonic", "compatibilityScore": 8, "usage": "Simpler option" }
+            ],
+            "G7": [
+              { "scaleName": "Mixolydian", "compatibilityScore": 10, "usage": "Basic dominant sound" },
+              { "scaleName": "Altered", "compatibilityScore": 9, "usage": "Tension and color" }
+            ],
+            "Cmaj7": [
+              { "scaleName": "Ionian", "compatibilityScore": 10, "usage": "Resolution to tonic" },
+              { "scaleName": "Lydian", "compatibilityScore": 9, "usage": "Brighter color" }
+            ]
+          }
+        }
+      ]
+    },
+    "Pop": {
+      "description": "Pop music progressions",
+      "progressions": [
+        {
+          "id": "pop-1",
+          "name": "I-V-vi-IV",
+          "description": "The most popular pop progression",
+          "chords": ["C", "G", "Am", "F"],
+          "romanNumerals": ["I", "V", "vi", "IV"],
+          "genre": ["Pop", "Rock", "Indie"],
+          "difficulty": 1,
+          "musicalCharacter": "Uplifting, catchy, emotional",
+          "famousSongs": [
+            "Someone Like You - Adele",
+            "Let It Be - The Beatles",
+            "No Woman No Cry - Bob Marley"
+          ],
+          "rationale": "Creates emotional depth with the minor vi chord while maintaining an uplifting feel.",
+          "scaleRecommendations": {
+            "C": [
+              { "scaleName": "Ionian", "compatibilityScore": 10, "usage": "Perfect for major I chord" }
+            ],
+            "G": [
+              { "scaleName": "Mixolydian", "compatibilityScore": 10, "usage": "Natural choice for V chord" }
+            ],
+            "Am": [
+              { "scaleName": "Aeolian", "compatibilityScore": 10, "usage": "Natural minor sound" }
+            ],
+            "F": [
+              { "scaleName": "Lydian", "compatibilityScore": 10, "usage": "Bright, uplifting sound" }
+            ]
+          }
+        }
+      ]
+    },
+    "Blues": {
+      "description": "Blues music progressions",
+      "progressions": [
+        {
+          "id": "blues-1",
+          "name": "12-Bar Blues",
+          "description": "The classic 12-bar blues progression",
+          "chords": ["C7", "C7", "C7", "C7", "F7", "F7", "C7", "C7", "G7", "F7", "C7", "G7"],
+          "romanNumerals": ["I7", "I7", "I7", "I7", "IV7", "IV7", "I7", "I7", "V7", "IV7", "I7", "V7"],
+          "genre": ["Blues", "Rock", "Jazz"],
+          "difficulty": 2,
+          "musicalCharacter": "Soulful, expressive, foundational",
+          "famousSongs": [
+            "Sweet Home Chicago - Robert Johnson",
+            "Stormy Monday - T-Bone Walker",
+            "Pride and Joy - Stevie Ray Vaughan"
+          ],
+          "rationale": "The foundation of blues music. Creates tension and release through dominant 7th chords.",
+          "scaleRecommendations": {
+            "C7": [
+              { "scaleName": "Blues", "compatibilityScore": 10, "usage": "Essential blues sound" },
+              { "scaleName": "Mixolydian", "compatibilityScore": 9, "usage": "Dominant 7th color" }
+            ],
+            "F7": [
+              { "scaleName": "Blues", "compatibilityScore": 10, "usage": "Blues scale works throughout" },
+              { "scaleName": "Mixolydian", "compatibilityScore": 9, "usage": "Subdominant function" }
+            ],
+            "G7": [
+              { "scaleName": "Blues", "compatibilityScore": 10, "usage": "Blues scale works throughout" },
+              { "scaleName": "Mixolydian", "compatibilityScore": 9, "usage": "Dominant function" }
+            ]
+          }
+        }
+      ]
+    },
+    "EDM": {
+      "description": "Electronic Dance Music progressions",
+      "progressions": [
+        {
+          "id": "edm-1",
+          "name": "vi-IV-I-V",
+          "description": "Modern EDM progression",
+          "chords": ["Am", "F", "C", "G"],
+          "romanNumerals": ["vi", "IV", "I", "V"],
+          "genre": ["EDM", "House", "Trance"],
+          "difficulty": 1,
+          "musicalCharacter": "Energetic, building, euphoric",
+          "famousSongs": [
+            "Wake Me Up - Avicii",
+            "Clarity - Zedd",
+            "Animals - Martin Garrix"
+          ],
+          "rationale": "Starts with minor for emotional depth, builds to major resolution. Perfect for drops.",
+          "scaleRecommendations": {
+            "Am": [
+              { "scaleName": "Aeolian", "compatibilityScore": 10, "usage": "Natural minor" }
+            ],
+            "F": [
+              { "scaleName": "Ionian", "compatibilityScore": 10, "usage": "Major brightness" }
+            ],
+            "C": [
+              { "scaleName": "Ionian", "compatibilityScore": 10, "usage": "Tonic resolution" }
+            ],
+            "G": [
+              { "scaleName": "Mixolydian", "compatibilityScore": 10, "usage": "Dominant energy" }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
+

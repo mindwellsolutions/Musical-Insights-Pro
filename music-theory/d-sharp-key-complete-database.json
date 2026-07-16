@@ -1,0 +1,2956 @@
+{
+  "key": "D#",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-09",
+  "scales": {
+    "Key_of_D_Sharp": {
+      "sourceScale": {
+        "name": "D# Key Center",
+        "formula": null,
+        "family": "key-center",
+        "quality": "major/minor"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Major Pentatonic",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Primary pentatonic subset of D# major - omits 4th and 7th scale degrees",
+          "rationale": "Contains only the most consonant notes (1, 2, 3, 5, 6) of D# major, avoiding tension notes. Creates universally pleasing melodies with no wrong notes",
+          "musicalContext": "Universal across all genres; perfect for rock, pop, country, blues, and folk. Used extensively in classic rock solos and singer-songwriter melodies",
+          "musicGenreRecommendations": "Pop, Rock, Country, Blues, Folk, Singer-Songwriter",
+          "recommendedUse": "Start here for improvisation in D# major. Works over any major chord progression. Impossible to sound wrong when used melodically",
+          "targetNotes": ["D#", "F##", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D# Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Primary pentatonic subset of D# natural minor - omits 2nd and 6th scale degrees",
+          "rationale": "Contains the core minor pentatonic framework (1, b3, 4, 5, b7). Most reliable minor scale for improvisation with no avoid notes",
+          "musicalContext": "The foundation of rock, blues, and funk guitar solos. Essential for blues-based music and jam bands like Led Zeppelin, Hendrix, and Allman Brothers",
+          "musicGenreRecommendations": "Rock, Blues, Hard Rock, Metal, Funk, Soul",
+          "recommendedUse": "Primary choice for minor key improvisation across all styles. Works over i-IV-V minor progressions and blues forms. Start here before exploring more complex minor scales",
+          "targetNotes": ["D#", "F#", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D# Major (Ionian)",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Tonic major scale - the parent scale of the D# key center",
+          "rationale": "The fundamental major scale defining D# tonality. All other compatible scales relate back to this tonal center. Contains all diatonic notes of D# major",
+          "musicalContext": "Universal in classical, pop, rock, jazz, and all Western music. The default major scale for D# major key signatures",
+          "musicGenreRecommendations": "Classical, Pop, Rock, Jazz, Country, Folk, All Genres",
+          "recommendedUse": "Use for D# major melodies, I-IV-V progressions, and establishing clear major tonality. Essential for understanding all other D# scales",
+          "targetNotes": ["D#", "F##", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D# Natural Minor (Aeolian)",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Tonic minor scale - parallel minor to D# major",
+          "rationale": "The fundamental natural minor scale for D# minor tonality. Shares root but has b3, b6, and b7 compared to D# major. Creates traditional classical minor sound",
+          "musicalContext": "Classical music, metal, progressive rock, and traditional folk. More somber and dramatic than Dorian. Used extensively in Bach, Beethoven, and neoclassical metal",
+          "musicGenreRecommendations": "Classical, Metal, Neoclassical, Gothic, Progressive Rock",
+          "recommendedUse": "Use for traditional minor tonality in D# minor. Perfect for i-iv-V progressions and classical minor cadences. More dramatic than Dorian",
+          "targetNotes": ["D#", "F#", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D# Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Minor mode with major 6th - parallel mode to D# Aeolian with raised 6th",
+          "rationale": "Differs from D# natural minor by one note (B→B#), creating a brighter, more modern minor sound. The major 6th prevents the heavy darkness of Aeolian",
+          "musicalContext": "The go-to minor scale for jazz, funk, rock, and contemporary music. More versatile than natural minor. Essential in Miles Davis, Santana, and modern jazz",
+          "musicGenreRecommendations": "Jazz, Funk, Rock, Fusion, R&B, Contemporary",
+          "recommendedUse": "Primary choice for D# minor improvisation in modern styles. Works beautifully over D#m7 and G#m7 chords. More colorful than natural minor",
+          "targetNotes": ["D#", "B#", "F#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Blues Scale",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Minor pentatonic with added b5 'blue note' (D#-F#-G#-A-A#-C#)",
+          "rationale": "Adds the characteristic blue note (A natural) to D# minor pentatonic, creating the essential blues sound. The b5 creates delicious tension and release",
+          "musicalContext": "Essential for blues, rock, and blues-rock. The defining scale of electric blues guitar from B.B. King to Eric Clapton. Fundamental to rock and roll",
+          "musicGenreRecommendations": "Blues, Blues Rock, Rock, Hard Rock, Southern Rock",
+          "recommendedUse": "Use over D# blues progressions and minor vamps. Emphasize the A natural for authentic blues flavor. Bend into the blue note for maximum effect",
+          "targetNotes": ["A", "F#", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D# Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "Major mode with raised 4th - parallel to D# major with #4",
+          "rationale": "One note difference from D# major (G#→G##/A natural enharmonically). Creates dreamy, ethereal major sound with characteristic brightness. The #4 is the defining color tone",
+          "musicalContext": "Film scores, progressive rock, jazz, and fusion. Sounds uplifting and magical. Used by Joe Satriani, Steve Vai, and John Williams in film music",
+          "musicGenreRecommendations": "Progressive Rock, Jazz, Fusion, Film Score, Instrumental Rock",
+          "recommendedUse": "Perfect over D#maj7 or D#maj7#11 chords. Emphasize the raised 4th for the characteristic Lydian sound. Great for modal vamps",
+          "targetNotes": ["G##", "F##", "B#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 9,
+          "relationship": "Major mode with b7 - parallel to D# major with flattened 7th",
+          "rationale": "One note difference from D# major (C##→C#). Creates dominant 7th character, perfect for D#7 chords. The b7 creates classic blues-rock and funk tonality",
+          "musicalContext": "Rock, blues, funk, and jam bands. The signature sound of dominant 7th vamps. Essential for Grateful Dead, Allman Brothers, and classic rock",
+          "musicGenreRecommendations": "Rock, Blues, Funk, Jam Band, Southern Rock, Classic Rock",
+          "recommendedUse": "Perfect for D#7 dominant vamps and I7-IV7 progressions. Essential for blues-rock improvisation. Creates major sound with bluesy edge",
+          "targetNotes": ["C#", "D#", "A#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Natural minor with raised 7th - creates leading tone to tonic",
+          "rationale": "Differs from natural minor by raising the 7th (C#→C##). Creates classical minor sound with strong V7-i resolution. The augmented 2nd (B-C##) creates exotic flavor",
+          "musicalContext": "Classical music, neoclassical metal, flamenco, and Middle Eastern influenced music. Essential for baroque and romantic period composition",
+          "musicGenreRecommendations": "Classical, Neoclassical Metal, Flamenco, Baroque, Metal",
+          "recommendedUse": "Use when you want strong V7-i cadences in D# minor. Perfect for classical minor harmony. The raised 7th creates powerful resolution to tonic",
+          "targetNotes": ["C##", "F#", "A#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "D# Melodic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Natural minor with raised 6th and 7th ascending - combines minor and major upper tetrachord",
+          "rationale": "Raises both 6th and 7th (B→B#, C#→C##) creating a minor scale with major scale upper tetrachord. Eliminates the augmented 2nd of harmonic minor",
+          "musicalContext": "Jazz, fusion, and modern composition. More sophisticated than natural or harmonic minor. Essential for modern jazz improvisation",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary Classical, Modern Jazz",
+          "recommendedUse": "Primary minor scale for jazz improvisation. Use ascending melodically. More modern and sophisticated than natural minor. Essential for minor ii-V-i",
+          "targetNotes": ["B#", "C##", "F#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "D# Phrygian",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Minor mode with b2 - creates Spanish/Middle Eastern character",
+          "rationale": "Features the characteristic b2 (E natural), creating exotic, Spanish, or Middle Eastern flavor. Dark minor mode with semitone relationship to root",
+          "musicalContext": "Flamenco, metal, and Spanish-influenced music. Creates dramatic, exotic atmosphere. Used in Metallica, Megadeth, and flamenco guitar",
+          "musicGenreRecommendations": "Flamenco, Metal, Thrash Metal, Spanish, Middle Eastern",
+          "recommendedUse": "Perfect over D#m or D#m(b9) chords. Emphasize the b2 for exotic Spanish flavor. Essential for metal riffs and flamenco passages",
+          "targetNotes": ["E", "F#", "B"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "B Major (Relative Major)",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Relative major - shares all notes with D# natural minor (vi-I relationship)",
+          "rationale": "B major and D# minor share the exact same key signature and all notes. D# minor is the vi of B major. Provides major perspective on D# minor tonality",
+          "musicalContext": "Universal across all genres. Essential for understanding relative key relationships. Fundamental to Western harmony and modulation",
+          "musicGenreRecommendations": "All Genres, Classical, Pop, Rock, Jazz",
+          "recommendedUse": "Think of D# minor as vi in B major. Opens up relative major progressions and provides major color options when in D# minor context",
+          "targetNotes": ["B", "D#", "F#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "F## (G) Major",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "iii chord scale of D# major - mediant relationship",
+          "rationale": "G major (enharmonically F## major) is the iii scale in D# major system. Shares 6 of 7 notes with D# major. Provides relative minor color within major tonality",
+          "musicalContext": "All genres. Common modulation point in classical and pop music. Creates gentle shift from tonic major to relative minor area",
+          "musicGenreRecommendations": "Classical, Pop, Rock, Singer-Songwriter",
+          "recommendedUse": "Use when moving from D# major to its relative minor area. Works well for iii-vi-ii-V progressions. Subtle but colorful relationship",
+          "targetNotes": ["G", "B", "D"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A# Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 10,
+          "relationship": "V chord scale of D# major - dominant to tonic relationship",
+          "rationale": "A# Mixolydian is the V scale in D# major. Creates dominant function with strong pull back to D# tonic. Essential for V-I cadences",
+          "musicalContext": "Universal in all Western music. The fundamental dominant-tonic relationship. Essential for perfect authentic cadences",
+          "musicGenreRecommendations": "All Genres, Classical, Jazz, Pop, Rock",
+          "recommendedUse": "Use over A#7 chords leading to D# major. Essential for V-I resolutions. The most important scale relationship after tonic",
+          "targetNotes": ["A#", "C##", "G#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "G# Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "ii chord scale of F## (G) major - subdominant minor function in D# context",
+          "rationale": "G# Dorian provides minor subdominant color in D# major context. Works as iv chord scale, creating minor iv-I progressions common in pop and rock",
+          "musicalContext": "Pop, rock, and contemporary music. The minor iv chord is a signature sound of Beatles, Radiohead, and modern pop. Creates bittersweet major-minor blend",
+          "musicGenreRecommendations": "Pop, Rock, Alternative, Indie, Contemporary",
+          "recommendedUse": "Perfect for minor iv chords in D# major progressions. Creates emotional depth and sophisticated color. Essential for modern songwriting",
+          "targetNotes": ["G#", "B", "E#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Phrygian Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "5th mode of D# harmonic minor - Phrygian with major 3rd",
+          "rationale": "Combines Phrygian's b2 with major 3rd, creating Spanish dominant sound. The distinctive sound of flamenco and Latin music. Features both E natural and F## (G)",
+          "musicalContext": "Flamenco, Latin, metal, and Spanish-influenced music. Signature scale of flamenco guitar and Latin jazz. Creates dramatic, exotic tension",
+          "musicGenreRecommendations": "Flamenco, Latin, Salsa, Metal, Spanish",
+          "recommendedUse": "Perfect over D#7 chords with Spanish flavor. Essential for flamenco-style improvisation. Emphasize the b2-major 3rd relationship for authentic sound",
+          "targetNotes": ["E", "F##", "C#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Lydian Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "4th mode of D# melodic minor - Lydian with b7",
+          "rationale": "Combines Lydian's #4 with dominant b7, creating sophisticated jazz dominant sound. Features both G## (A) and C# creating altered dominant color",
+          "musicalContext": "Jazz, fusion, and modern jazz. Common in bebop and post-bop. Used extensively by jazz masters for altered dominant resolutions",
+          "musicGenreRecommendations": "Jazz, Bebop, Fusion, Modern Jazz, Post-Bop",
+          "recommendedUse": "Advanced jazz dominant scale over D#7#11 chords. Use in jazz progressions where altered dominant sound is desired. More inside than super locrian",
+          "targetNotes": ["G##", "C#", "F##"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Whole Tone",
+          "keyQuality": "augmented",
+          "compatibilityScore": 7,
+          "relationship": "Symmetrical scale dividing octave into 6 equal whole steps",
+          "rationale": "Every interval is a whole step, creating ambiguous, floating tonality. No perfect 5th or leading tone. Creates augmented, dreamlike quality characteristic of impressionism",
+          "musicalContext": "Impressionist music, film scores, jazz, and avant-garde. Signature sound of Debussy and modern film composers. Creates suspension and weightlessness",
+          "musicGenreRecommendations": "Impressionist, Film Score, Jazz, Avant-Garde, Contemporary Classical",
+          "recommendedUse": "Use over D#aug or D#7#5 chords. Creates tension and ambiguity. Perfect for transition passages and film scoring. Keep phrases short for maximum effect",
+          "targetNotes": ["D#", "F##", "A"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Super Locrian (Altered)",
+          "keyQuality": "diminished",
+          "compatibilityScore": 7,
+          "relationship": "7th mode of melodic minor - extreme altered dominant scale",
+          "rationale": "Features b2, b3, b4, b5, b6, b7 - the most altered scale possible. Every available tension (b9, #9, #11, b13) over dominant chord. Creates maximum tension",
+          "musicalContext": "Modern jazz, bebop, and fusion. Essential for altered dominant jazz harmony. Used by John Coltrane, McCoy Tyner, and modern jazz masters",
+          "musicGenreRecommendations": "Modern Jazz, Bebop, Post-Bop, Fusion, Free Jazz",
+          "recommendedUse": "Advanced altered dominant scale over D#7alt chords. Maximum outside sound for jazz. Use all altered tensions (b9, #9, #11, b13) freely",
+          "targetNotes": ["E", "G", "A", "C"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "D# Diminished (Whole-Half)",
+          "keyQuality": "diminished",
+          "compatibilityScore": 7,
+          "relationship": "Symmetrical octatonic scale alternating whole and half steps, for dominant function",
+          "rationale": "8-note symmetrical scale with alternating whole-half pattern. Perfect for diminished 7th and dominant 7b9 chords. Creates dense, chromatic harmonic texture",
+          "musicalContext": "Jazz, bebop, and classical music. Essential for dominant 7b9 chords. Used by Charlie Parker, Thelonious Monk, and jazz masters",
+          "musicGenreRecommendations": "Jazz, Bebop, Classical, Contemporary Classical",
+          "recommendedUse": "Use over D#7b9 or D# diminished chords. Alternates whole and half steps starting with whole step. Perfect for bebop dominant lines",
+          "targetNotes": ["D#", "F##", "G#", "B"],
+          "difficultyLevel": 4
+        }
+      ]
+    },
+    "Ionian": {
+      "sourceScale": {
+        "name": "D# Ionian (Major)",
+        "formula": [0, 2, 4, 5, 7, 9, 11],
+        "family": "major-modes",
+        "quality": "major"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Major Pentatonic",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Diatonic subset - scale tones 1, 2, 3, 5, 6 only",
+          "rationale": "Contains only the most consonant notes of D# major (D#-E#-F##-A#-B#), avoiding the 4th and 7th which create tension. Completely safe for any D# major harmony",
+          "musicalContext": "Universal across all genres; creates bright, optimistic melodies. Especially effective in rock, blues, country, and pop. Used by virtually every guitarist",
+          "musicGenreRecommendations": "Pop, Rock, Country, Blues, Folk, Singer-Songwriter",
+          "recommendedUse": "Perfect for improvisation, guaranteed consonance, works over I-IV-V progressions. Ideal for creating singable melodies and memorable hooks in D# major",
+          "targetNotes": ["D#", "F##", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D# Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "Parallel mode with raised 4th degree (G#→G##)",
+          "rationale": "Shares all notes except G#→G## (enharmonically A), creating a brighter, more ethereal major sound. The #4 creates characteristic dreamy, floating quality",
+          "musicalContext": "Jazz, film scores, progressive rock; sounds dreamlike and uplifting. Common in Joe Satriani, Steve Vai guitar solos, and John Williams film scores",
+          "musicGenreRecommendations": "Jazz, Film Score, Progressive Rock, Fusion, Instrumental Rock",
+          "recommendedUse": "Use over D#maj7 or D#maj7#11 chords; emphasize the G## for color. Perfect for I chord vamps and modal compositions. Creates magical, suspended feel",
+          "targetNotes": ["G##", "F##", "B#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A# Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 10,
+          "relationship": "V chord scale - dominant to tonic relationship in D# major",
+          "rationale": "A# Mixolydian is the V of D# major; shares 6 of 7 notes (only G#→G). Creates natural dominant tension that resolves to D# tonic",
+          "musicalContext": "All genres; essential for V-I cadences. Fundamental to Western harmony from Bach to contemporary music. The most important dominant relationship",
+          "musicGenreRecommendations": "All Genres, Classical, Jazz, Pop, Rock",
+          "recommendedUse": "Use when moving to/from A# dominant chords; emphasizes dominant function. Essential for perfect authentic cadences (V-I) in D# major",
+          "targetNotes": ["A#", "C##", "G#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "B Major",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "vi chord scale - submediant/relative minor parallel major",
+          "rationale": "B major shares 6 of 7 notes with D# major (only G#→G). VI chord in D# major provides major color in deceptive cadences. Closely related key",
+          "musicalContext": "All genres; essential for deceptive cadences (V-VI). Common modulation point and closely related key in classical and pop songwriting",
+          "musicGenreRecommendations": "All Genres, Classical, Pop, Rock, Singer-Songwriter",
+          "recommendedUse": "Perfect for deceptive cadences and VI chord emphasis. Creates unexpected but pleasant resolution. Common in Beatles-style progressions",
+          "targetNotes": ["B", "D#", "F#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "C# Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "vii (leading tone) parallel Dorian - shares 6 of 7 notes",
+          "rationale": "C# Dorian relates to D# as the vii degree. Provides sophisticated minor color while maintaining close relationship to D# major tonality",
+          "musicalContext": "Jazz, funk, and fusion. Creates modern minor sound that relates back to D# major. Used when wanting minor color without leaving D# tonal center",
+          "musicGenreRecommendations": "Jazz, Funk, Fusion, R&B, Contemporary",
+          "recommendedUse": "Use over C#m7 chords in D# major context. Provides sophisticated minor vii sound. Perfect for vii-I progressions with modern flavor",
+          "targetNotes": ["C#", "E#", "A#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "G# Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "iv modal scale - minor subdominant in parallel D# minor context",
+          "rationale": "G# Dorian provides minor iv function. The minor iv-I progression is a signature sound of pop and rock, creating bittersweet emotional character",
+          "musicalContext": "Pop, rock, and contemporary music. Essential for minor iv chords in major keys. Signature sound of Beatles, Radiohead, and Coldplay",
+          "musicGenreRecommendations": "Pop, Rock, Alternative, Indie, Contemporary",
+          "recommendedUse": "Perfect for minor iv chords in D# major (iv-I progressions). Creates emotional depth and sophisticated pop/rock color. Essential for modern songwriting",
+          "targetNotes": ["G#", "B", "E#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "E# (F) Phrygian",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "ii chord scale in D# major - supertonic minor mode",
+          "rationale": "E# Phrygian (F Phrygian enharmonically) is the ii scale in D# major. Provides Phrygian color for ii chords, though Dorian is more common",
+          "musicalContext": "Classical music and flamenco-influenced passages. Less common than Dorian for ii chords but creates darker, more exotic minor ii sound",
+          "musicGenreRecommendations": "Classical, Flamenco, Metal, Spanish",
+          "recommendedUse": "Use for dark, exotic ii chord sound in D# major. More dramatic than Dorian. Creates Spanish or metal-influenced color on ii chord",
+          "targetNotes": ["E#", "F#", "B#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "F## (G) Major",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "iii chord scale - mediant relationship in D# major",
+          "rationale": "G major (enharmonically F## major) is the iii scale in D# major. Shares 6 of 7 notes. Common modulation point between major and relative minor",
+          "musicalContext": "All genres. Connects D# major to its relative minor (C# minor). Common in pop progressions and classical modulations",
+          "musicGenreRecommendations": "All Genres, Pop, Classical, Rock",
+          "recommendedUse": "Use when emphasizing iii chord or modulating toward relative minor. Bridge between major and relative minor tonalities",
+          "targetNotes": ["G", "B", "D"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "G# Aeolian (Natural Minor)",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "iv natural minor scale - parallel minor of IV chord",
+          "rationale": "Provides darker natural minor iv sound. More dramatic than Dorian on iv chord. Creates classical minor iv-I progression",
+          "musicalContext": "Classical, metal, and traditional folk. More somber than Dorian iv. Used for dramatic minor subdominant emphasis",
+          "musicGenreRecommendations": "Classical, Metal, Folk, Neoclassical",
+          "recommendedUse": "Use for traditional natural minor iv sound. More dramatic and darker than Dorian. Essential for classical minor subdominant function",
+          "targetNotes": ["G#", "B", "D#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "Parallel mode with b7 - tonic Mixolydian over D# major",
+          "rationale": "Differs from D# Ionian by only C##→C#. Creates dominant 7th character on tonic, common in rock and blues. The b7 adds bluesy edge to major tonality",
+          "musicalContext": "Rock, blues, and funk. Creates I7 sound common in blues-rock and Southern rock. Essential for Allman Brothers and Grateful Dead style",
+          "musicGenreRecommendations": "Rock, Blues, Funk, Jam Band, Southern Rock",
+          "recommendedUse": "Use for dominant 7th tonic chords (D#7 as I chord). Essential for blues-rock and jam band vamps. Creates major with bluesy flavor",
+          "targetNotes": ["C#", "D#", "A#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "C# Aeolian (Natural Minor)",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Relative minor - vii natural minor scale of D# major",
+          "rationale": "C# minor is the relative minor of D# major, sharing all notes but emphasizing C# as tonic. Provides full minor tonality within D# major key signature",
+          "musicalContext": "Universal in all genres. Essential relative minor relationship. Fundamental to understanding major-minor duality in Western music",
+          "musicGenreRecommendations": "All Genres, Classical, Pop, Rock, Metal",
+          "recommendedUse": "Use when modulating to relative minor or emphasizing vi-I relationships. Essential for understanding D# major's minor parallel tonality",
+          "targetNotes": ["C#", "E", "G#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D# Harmonic Major",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "Major scale with b6 - creates major with minor subdominant character",
+          "rationale": "Differs from D# major by B#→B. Creates exotic major sound with classical harmonic motion. The b6 creates augmented 2nd interval characteristic",
+          "musicalContext": "Classical, neoclassical, and ethnic music. Creates sophisticated major tonality with minor subdominant. Baroque and romantic composers",
+          "musicGenreRecommendations": "Classical, Neoclassical, Baroque, Ethnic, World Music",
+          "recommendedUse": "Use for exotic major sound with classical harmony. The b6 creates unique character. Perfect for IV-I with minor iv color",
+          "targetNotes": ["B", "F##", "A#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "B# (C) Locrian",
+          "keyQuality": "diminished",
+          "compatibilityScore": 6,
+          "relationship": "vii° chord scale - leading tone diminished scale in D# major",
+          "rationale": "C Locrian (enharmonically B# Locrian) is the vii° scale in D# major. Most unstable mode, used primarily for vii° half-diminished chords",
+          "musicalContext": "Jazz and classical music. Rarely used melodically due to instability. Essential for half-diminished chord voicings and vii°-I resolutions",
+          "musicGenreRecommendations": "Jazz, Classical, Bebop, Contemporary Jazz",
+          "recommendedUse": "Use over B#m7b5 (Cm7b5) chords functioning as vii° in D# major. Very unstable; keep usage brief. Primarily for harmonic rather than melodic use",
+          "targetNotes": ["C", "E", "G"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Blues Scale",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Minor pentatonic with added b5 blue note, used over major as blues tonality",
+          "rationale": "Though technically minor, blues scale works over D# major in blues contexts. The blue notes create authentic blues flavor even in major tonality",
+          "musicalContext": "Blues, blues-rock, and rock. Essential for authentic blues sound. Used when blending major and minor blues tonalities",
+          "musicGenreRecommendations": "Blues, Blues Rock, Rock, Hard Rock",
+          "recommendedUse": "Use over D# blues progressions and major blues contexts. Creates authentic blues by blending major and minor. Essential for blues guitar",
+          "targetNotes": ["A", "G#", "F#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A# Major Pentatonic",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "V pentatonic over I major - dominant pentatonic relationship",
+          "rationale": "A# major pentatonic fits perfectly over D# major. Shares most notes and creates bright V-I relationship. Very consonant and safe",
+          "musicalContext": "All genres. Essential for V-I oriented melodies. Creates strong sense of resolution to tonic",
+          "musicGenreRecommendations": "All Genres, Pop, Rock, Country, Folk",
+          "recommendedUse": "Use when emphasizing dominant-tonic relationship. Perfect for V-I progressions and resolutions. Very safe and consonant over D# major",
+          "targetNotes": ["A#", "C##", "F##"],
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "Dorian": {
+      "sourceScale": {
+        "name": "D# Dorian",
+        "formula": [0, 2, 3, 5, 7, 9, 10],
+        "family": "major-modes",
+        "quality": "minor"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Diatonic subset - scale tones 1, b3, 4, 5, b7 only",
+          "rationale": "Contains the core minor pentatonic notes (D#-F#-G#-A#-C#), all consonant with Dorian. Removes the characteristic major 6th (B#) but remains completely compatible",
+          "musicalContext": "Universal minor sound; works in rock, blues, jazz, funk. The most reliable minor scale for improvisation across all genres",
+          "musicGenreRecommendations": "Rock, Blues, Jazz, Funk, Soul, R&B",
+          "recommendedUse": "Safe choice for improvisation over D# Dorian; impossible to clash. Use when you want straightforward minor sound without emphasizing the Dorian major 6th",
+          "targetNotes": ["D#", "F#", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "C# Major",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Parent major scale (D# Dorian is the second mode of C# major)",
+          "rationale": "D# Dorian is ii in C# major system; shares all notes exactly. Understanding this relationship opens up the entire C# major key center for harmonic context",
+          "musicalContext": "All genres; provides major context for Dorian. Think of D#m7 as ii in C# major rather than i in D# minor for jazz and contemporary approaches",
+          "musicGenreRecommendations": "All Genres, Jazz, Classical, Pop, Rock",
+          "recommendedUse": "Think in C# major when using D# Dorian; opens up ii-V-I possibilities. Essential for understanding modal relationships and jazz harmony",
+          "targetNotes": ["C#", "E#", "G#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Blues Scale",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Minor pentatonic with added b5 blue note (adds A natural)",
+          "rationale": "Adds the characteristic blue note (A natural as b5) to minor pentatonic base. Creates authentic blues sound over D# Dorian with extra tension and color",
+          "musicalContext": "Blues, blues-rock, and funk. Essential for blues-based improvisation. Adds authentic blues character to Dorian vamps",
+          "musicGenreRecommendations": "Blues, Blues Rock, Rock, Funk, Soul",
+          "recommendedUse": "Perfect for blues-inflected D# minor improvisation. Emphasize the blue note (A natural) for authentic blues flavor. Bend into the b5 for maximum effect",
+          "targetNotes": ["A", "F#", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D# Aeolian (Natural Minor)",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Parallel mode with b6 - one note difference from Dorian",
+          "rationale": "Differs from D# Dorian by only B#→B. Creates darker, more traditional classical minor sound. The b6 removes Dorian's characteristic brightness",
+          "musicalContext": "Classical music, metal, and traditional minor. More somber and dramatic than Dorian. Used in Bach, Beethoven, and neoclassical metal",
+          "musicGenreRecommendations": "Classical, Metal, Neoclassical, Gothic, Traditional",
+          "recommendedUse": "Use when you want traditional, darker minor sound. Perfect for i-iv-V in classical minor. More dramatic and heavy than Dorian",
+          "targetNotes": ["B", "F#", "D#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "G# Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "iv chord Dorian - subdominant minor relationship to D# Dorian",
+          "rationale": "G# Dorian shares significant notes with D# Dorian. Creates beautiful iv-i minor progression with both scales in Dorian mode for modern minor sound",
+          "musicalContext": "Jazz, funk, and modern minor music. Perfect for modal minor progressions. Essential for i-iv Dorian vamps in fusion and contemporary jazz",
+          "musicGenreRecommendations": "Jazz, Funk, Fusion, Contemporary, Modal Jazz",
+          "recommendedUse": "Use for modal minor progressions (i-iv in Dorian). Creates sophisticated modern minor sound. Perfect for D#m7-G#m7 vamps",
+          "targetNotes": ["G#", "B", "E#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A# Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 9,
+          "relationship": "V chord scale in D# Dorian context - dominant relationship",
+          "rationale": "A# Mixolydian functions as V in D# minor. Provides dominant 7th function with smooth voice leading back to D# Dorian. Essential for V7-i in minor",
+          "musicalContext": "Jazz, funk, and blues. Essential for dominant function in minor keys. Creates authentic V7-i resolutions in modern minor contexts",
+          "musicGenreRecommendations": "Jazz, Funk, Blues, R&B, Soul",
+          "recommendedUse": "Perfect over A#7 chords resolving to D#m7. Essential for V7-i in jazz and funk. Creates strong dominant-tonic minor relationship",
+          "targetNotes": ["A#", "C##", "G#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Phrygian",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Parallel mode with b2 and b6 - darker minor mode",
+          "rationale": "Differs from Dorian by E#→E (b2) and B#→B (b6). Creates much darker, Spanish/Middle Eastern character. The b2 is the defining difference from Dorian",
+          "musicalContext": "Flamenco, metal, and Spanish music. Much more exotic and dark than Dorian. Used in Metallica, flamenco guitar, and Middle Eastern influenced music",
+          "musicGenreRecommendations": "Flamenco, Metal, Spanish, Middle Eastern, Thrash Metal",
+          "recommendedUse": "Use when you want dark, exotic minor character. Perfect for flamenco-style passages and metal riffs. Emphasize the b2 (E natural) for Spanish flavor",
+          "targetNotes": ["E", "F#", "B"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "D# Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Parallel minor with raised 7th - classical minor with leading tone",
+          "rationale": "Differs from Dorian by C#→C##, creating leading tone to tonic. Also has b6 (B instead of B#). Creates classical minor sound with strong V7-i resolution",
+          "musicalContext": "Classical music, neoclassical metal, and baroque. Essential for classical minor harmony. Used extensively by Bach, Mozart, and metal guitarists",
+          "musicGenreRecommendations": "Classical, Neoclassical Metal, Baroque, Classical Guitar",
+          "recommendedUse": "Use when you want classical V7-i resolutions in D# minor. The raised 7th creates strong pull to tonic. Essential for authentic classical minor cadences",
+          "targetNotes": ["C##", "F#", "A#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "D# Melodic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Parallel minor with both raised 6th and 7th - jazz minor scale",
+          "rationale": "Same as Dorian but with raised 7th (C#→C##). Eliminates the b7 creating more sophisticated jazz minor sound. Essential scale for modern jazz minor",
+          "musicalContext": "Jazz, fusion, and modern composition. The primary minor scale for jazz improvisation. More sophisticated and modern than Dorian or natural minor",
+          "musicGenreRecommendations": "Jazz, Fusion, Modern Jazz, Contemporary, Bebop",
+          "recommendedUse": "Primary jazz minor scale for D# minor. More sophisticated than Dorian due to raised 7th. Essential for minor ii-V-i and modern jazz improvisation",
+          "targetNotes": ["B#", "C##", "F#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "F# Major Pentatonic",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "Relative major pentatonic - emphasizes major 3rd (F#) of Dorian",
+          "rationale": "F# major pentatonic contains notes from D# Dorian that emphasize the brighter, more consonant tones. Creates major flavor over minor chord",
+          "musicalContext": "Blues, rock, and fusion. Creates major-over-minor blues sound. Common technique in blues and rock soloing over minor chords",
+          "musicGenreRecommendations": "Blues, Rock, Fusion, Blues Rock, Southern Rock",
+          "recommendedUse": "Use for major-over-minor blues sound on D#m7 chords. Creates sophisticated blues color. Technique used by Allman Brothers and blues-rock masters",
+          "targetNotes": ["F#", "A#", "C#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "C# Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "bVII chord scale - subtonic dominant relationship",
+          "rationale": "C# Mixolydian (bVII of D#) creates modern modal minor progression. The bVII-i progression is signature sound of modal rock and funk",
+          "musicalContext": "Rock, funk, and modal music. Essential for bVII-i progressions common in modal rock. Used by Van Halen, funk bands, and modal composers",
+          "musicGenreRecommendations": "Rock, Funk, Modal, Hard Rock, Fusion",
+          "recommendedUse": "Perfect for bVII-i modal minor progressions. Creates strong, modern minor sound. Essential for modal rock and funk harmony",
+          "targetNotes": ["C#", "E#", "B"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "E# (F) Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "II chord scale - major II in D# minor creates modern color",
+          "rationale": "F Lydian (enharmonically E# Lydian) provides bright major II color in D# minor. The II-i progression creates sophisticated modern minor harmony",
+          "musicalContext": "Jazz, fusion, and contemporary music. Creates bright, unexpected major color in minor contexts. Used in modern jazz and progressive composition",
+          "musicGenreRecommendations": "Jazz, Fusion, Progressive, Contemporary, Modern Jazz",
+          "recommendedUse": "Use for sophisticated II-i progressions in D# minor. Creates bright major color against minor tonic. Advanced harmonic technique",
+          "targetNotes": ["F", "A", "C"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "D# Dorian b2",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "2nd mode of melodic minor - Dorian with b2",
+          "rationale": "Differs from Dorian by E#→E. Creates exotic minor sound combining Dorian's major 6th with Phrygian's b2. Sophisticated jazz minor mode",
+          "musicalContext": "Jazz and fusion. Creates exotic yet modern minor sound. Used in contemporary jazz for sophisticated minor color with both b2 and natural 6",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary Jazz, Modern Jazz",
+          "recommendedUse": "Advanced minor scale for sophisticated jazz improvisation. Combines Phrygian darkness with Dorian brightness. Use over D#m7 with exotic intent",
+          "targetNotes": ["E", "B#", "A#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A# Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "V Dorian - provides minor V in modal context",
+          "rationale": "A# Dorian instead of A# Mixolydian creates modal minor harmony. Avoids traditional V-i resolution, creating more static, modal minor vamp",
+          "musicalContext": "Modal jazz, fusion, and contemporary music. Creates modern minor vamps without traditional functional harmony. Essential for modal approaches",
+          "musicGenreRecommendations": "Modal Jazz, Fusion, Contemporary, World Music",
+          "recommendedUse": "Use for modal i-v minor progressions without functional harmony. Creates sophisticated static harmony. Perfect for modal minor compositions",
+          "targetNotes": ["A#", "C#", "F##"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "B# (C) Diminished (Whole-Half)",
+          "keyQuality": "diminished",
+          "compatibilityScore": 6,
+          "relationship": "Diminished passing scale - creates chromatic connection",
+          "rationale": "Provides chromatic passing tones and diminished color. Creates tension and chromaticism between chord changes. Advanced jazz technique",
+          "musicalContext": "Jazz and bebop. Used for chromatic embellishment and passing tones. Creates sophisticated jazz vocabulary over D# minor",
+          "musicGenreRecommendations": "Jazz, Bebop, Contemporary Jazz, Post-Bop",
+          "recommendedUse": "Use for chromatic embellishment in D# Dorian context. Creates sophisticated bebop lines. Advanced technique for adding color and tension",
+          "targetNotes": ["C", "D#", "F#", "A"],
+          "difficultyLevel": 5
+        }
+      ]
+    },
+    "Phrygian": {
+      "sourceScale": {
+        "name": "D# Phrygian",
+        "formula": [0, 1, 3, 5, 7, 8, 10],
+        "family": "major-modes",
+        "quality": "minor"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Minor pentatonic subset - omits the characteristic b2",
+          "rationale": "Contains D#-F#-G#-A#-C#, removing the characteristic Phrygian b2 (E natural). Provides safe, consonant minor sound that works universally",
+          "musicalContext": "Rock, blues, and metal. Removes the exotic Phrygian flavor for more universal minor sound. Useful when Phrygian b2 is too dark",
+          "musicGenreRecommendations": "Rock, Blues, Metal, Hard Rock, Heavy Metal",
+          "recommendedUse": "Use when D# Phrygian feels too exotic or dark. Provides straightforward minor sound. Good starting point before emphasizing Phrygian character",
+          "targetNotes": ["D#", "F#", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "B Major",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Parent major scale (D# Phrygian is the third mode of B major)",
+          "rationale": "D# Phrygian is iii in B major system; shares all notes exactly. Understanding this provides major harmonic context for the exotic Phrygian sound",
+          "musicalContext": "All genres; helps understand Phrygian in major key context. Thinking of D#phry as iii in B major opens up harmonic possibilities",
+          "musicGenreRecommendations": "All Genres, Classical, Jazz, Progressive",
+          "recommendedUse": "Think in B major when analyzing D# Phrygian. Helps understand iii-I and iii-vi-ii-V progressions. Essential for harmonic analysis",
+          "targetNotes": ["B", "D#", "F#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Phrygian Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "Parallel mode with major 3rd - Phrygian with F##(G) instead of F#",
+          "rationale": "Differs from Phrygian by raising the 3rd (F#→F##/G). Creates Spanish dominant sound essential for flamenco. Combines b2 with major 3rd",
+          "musicalContext": "Flamenco, Latin music, and metal. The signature scale of Spanish guitar. Creates dramatic, exotic dominant sound unique to flamenco",
+          "musicGenreRecommendations": "Flamenco, Latin, Metal, Spanish, Middle Eastern",
+          "recommendedUse": "Use for authentic flamenco and Spanish music. Perfect over D#7 with Spanish flavor. Emphasize the b2 to major 3rd interval for characteristic sound",
+          "targetNotes": ["E", "F##", "C#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Locrian",
+          "keyQuality": "diminished",
+          "compatibilityScore": 8,
+          "relationship": "Parallel mode with b5 - adds diminished quality to Phrygian darkness",
+          "rationale": "Differs from Phrygian by A#→A (b5). Even darker and more unstable than Phrygian. Creates half-diminished character with extreme tension",
+          "musicalContext": "Jazz, metal, and avant-garde. Most unstable mode. Used for extreme tension and dissonance in metal and experimental music",
+          "musicGenreRecommendations": "Metal, Jazz, Avant-Garde, Death Metal, Progressive Metal",
+          "recommendedUse": "Use for maximum darkness and tension. Perfect over D#m7b5 chords. Creates most unstable minor sound; use sparingly for dramatic effect",
+          "targetNotes": ["E", "A", "C#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "E Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "Major scale built on the b2 - creates Phrygian cadence relationship",
+          "rationale": "E Lydian (the b2 of D# Phrygian) creates the classic Phrygian cadence. The bII-I movement is the defining cadence of Phrygian and flamenco",
+          "musicalContext": "Flamenco, metal, and classical music. The Phrygian cadence (bII-i) is essential to Spanish music and metal. Dramatic resolution unique to Phrygian",
+          "musicGenreRecommendations": "Flamenco, Metal, Classical, Spanish, Neoclassical",
+          "recommendedUse": "Use for dramatic Phrygian cadences (bII-i). Essential for flamenco and metal. The E major chord resolving to D#m is signature Phrygian sound",
+          "targetNotes": ["E", "G#", "B"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "D# Aeolian (Natural Minor)",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Parallel natural minor with raised 2nd - less exotic than Phrygian",
+          "rationale": "Differs from Phrygian by E→E# (natural 2nd). Removes the exotic Phrygian character for more conventional minor sound",
+          "musicalContext": "Classical and traditional music. More accessible than Phrygian's exotic darkness. Used when Phrygian b2 is too unusual",
+          "musicGenreRecommendations": "Classical, Traditional, Folk, Metal",
+          "recommendedUse": "Use when you want traditional minor without Phrygian's exotic b2. More conventional and accessible. Easier for listeners to follow",
+          "targetNotes": ["E#", "F#", "B"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D# Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Natural minor with raised 7th - adds leading tone to Aeolian base",
+          "rationale": "Differs from Phrygian by E→E# and C#→C##. Removes Phrygian b2 and adds classical leading tone. Creates dramatic classical minor",
+          "musicalContext": "Classical, neoclassical metal, and baroque. More functional harmony than Phrygian. Essential for V7-i resolutions in minor",
+          "musicGenreRecommendations": "Classical, Neoclassical Metal, Baroque, Classical Guitar",
+          "recommendedUse": "Use for classical minor harmony with strong V7-i cadences. More functional than Phrygian. Essential for traditional minor harmony",
+          "targetNotes": ["C##", "F#", "A#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "C# Aeolian (Natural Minor)",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Minor scale starting on b7 - relative minor area",
+          "rationale": "C# natural minor shares most notes with D# Phrygian. Provides related minor tonality with less exotic character",
+          "musicalContext": "Classical and rock. Creates movement between related minor tonalities. Less exotic than staying in Phrygian",
+          "musicGenreRecommendations": "Classical, Rock, Metal, Traditional",
+          "recommendedUse": "Use for modulation to related minor key. Provides less exotic alternative to D# Phrygian. Easier for conventional minor progressions",
+          "targetNotes": ["C#", "E", "G#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "G# Phrygian",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Phrygian mode built on 4th degree - parallel Phrygian in different key",
+          "rationale": "G# Phrygian shares the dark Phrygian character. Creates modal progression between two Phrygian centers. Maintains exotic, dark atmosphere",
+          "musicalContext": "Metal, flamenco, and modal music. Creates continuous dark, exotic atmosphere. Used for maintaining Phrygian character across chord changes",
+          "musicGenreRecommendations": "Metal, Flamenco, Modal, Death Metal, Spanish",
+          "recommendedUse": "Use for modal i-iv progressions maintaining Phrygian darkness. Both chords use Phrygian mode for consistent exotic atmosphere",
+          "targetNotes": ["G#", "A", "C#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "A# Phrygian Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 7,
+          "relationship": "Phrygian dominant on V - Spanish dominant resolution to Phrygian",
+          "rationale": "A# Phrygian dominant (V of D#) creates exotic dominant-tonic relationship. Combines Spanish dominant with Phrygian tonic resolution",
+          "musicalContext": "Flamenco and Latin music. Creates authentic Spanish V-i resolution with exotic flavor. Essential for flamenco cadences",
+          "musicGenreRecommendations": "Flamenco, Latin, Spanish, World Music",
+          "recommendedUse": "Use for exotic V-i in Phrygian context. Creates powerful Spanish-flavored dominant resolution. Essential for flamenco progressions",
+          "targetNotes": ["A#", "B", "G#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "F# Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 6,
+          "relationship": "Dorian starting on minor 3rd - provides brighter minor alternative",
+          "rationale": "F# Dorian is much brighter than D# Phrygian. Provides contrasting minor sound with major 6th replacing Phrygian's dark character",
+          "musicalContext": "Jazz and fusion. Creates bright relief from Phrygian darkness. Used for contrasting minor color in progressive compositions",
+          "musicGenreRecommendations": "Jazz, Fusion, Progressive, Contemporary",
+          "recommendedUse": "Use for bright contrast to D# Phrygian darkness. F# Dorian provides major 6th warmth against Phrygian's b2 exotic quality",
+          "targetNotes": ["F#", "A#", "D#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "D# Blues Scale",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Blues scale with similar dark minor character",
+          "rationale": "Blues scale shares the dark minor quality with Phrygian. Both create tension and exotic flavor in different ways. Complementary dark minor approaches",
+          "musicalContext": "Blues-rock and metal fusion. Combines blues and Phrygian darkness for powerful minor sound. Creates heavy, blues-influenced metal atmosphere",
+          "musicGenreRecommendations": "Blues Rock, Metal, Hard Rock, Stoner Rock",
+          "recommendedUse": "Use for bluesy Phrygian sound. Combines blues vocabulary with Phrygian darkness. Perfect for heavy blues-metal fusion",
+          "targetNotes": ["A", "F#", "D#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Diminished (Half-Whole)",
+          "keyQuality": "diminished",
+          "compatibilityScore": 6,
+          "relationship": "Symmetrical diminished scale starting on tonic",
+          "rationale": "Shares the dark, tense character with Phrygian. Provides additional chromatic options and symmetrical structure for tension",
+          "musicalContext": "Jazz and avant-garde metal. Creates extreme tension and chromaticism. Used for sophisticated harmonic color in dark contexts",
+          "musicGenreRecommendations": "Jazz, Metal, Avant-Garde, Death Metal",
+          "recommendedUse": "Use for extreme tension over D# minor contexts. Provides chromatic embellishment. Advanced technique for sophisticated dark harmonies",
+          "targetNotes": ["D#", "E", "F#", "G#"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "B Harmonic Major",
+          "keyQuality": "major",
+          "compatibilityScore": 6,
+          "relationship": "Parent harmonic major scale containing Phrygian as mode",
+          "rationale": "D# Phrygian relates to B harmonic major. Provides exotic major context for Phrygian minor sound. Advanced modal relationship",
+          "musicalContext": "Classical and ethnic music. Creates sophisticated major-minor interplay. Used in baroque and romantic composition",
+          "musicGenreRecommendations": "Classical, Baroque, World Music, Ethnic",
+          "recommendedUse": "Advanced theoretical relationship. Use for understanding Phrygian in exotic major context. Creates sophisticated harmonic color",
+          "targetNotes": ["B", "D#", "F#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Whole Tone",
+          "keyQuality": "augmented",
+          "compatibilityScore": 5,
+          "relationship": "Symmetrical whole tone scale - creates ambiguous suspension",
+          "rationale": "Completely different character from Phrygian but provides contrasting ambiguous tonality. Creates floating, suspended atmosphere",
+          "musicalContext": "Impressionist and film music. Creates dreamlike contrast to Phrygian's dark grounding. Used for atmospheric transitions",
+          "musicGenreRecommendations": "Impressionist, Film Score, Avant-Garde, Ambient",
+          "recommendedUse": "Use for atmospheric contrast to Phrygian darkness. Creates suspended, floating feeling. Advanced technique for color and atmosphere",
+          "targetNotes": ["D#", "F##", "A"],
+          "difficultyLevel": 4
+        }
+      ]
+    },
+    "Lydian": {
+      "sourceScale": {
+        "name": "D# Lydian",
+        "formula": [0, 2, 4, 6, 7, 9, 11],
+        "family": "major-modes",
+        "quality": "major"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Major Pentatonic",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Pentatonic subset omitting the characteristic #4 and 7th",
+          "rationale": "Contains the core major pentatonic notes (D#-E#-F##-A#-B#), removing the defining Lydian #4 but maintaining pure major consonance",
+          "musicalContext": "Universal major sound; works across all genres. Provides safe melodic foundation before emphasizing Lydian's characteristic brightness",
+          "musicGenreRecommendations": "Pop, Rock, Country, Blues, Folk",
+          "recommendedUse": "Start with major pentatonic before adding the Lydian #4. Establishes major tonality then gradually introduce the raised 4th for Lydian color",
+          "targetNotes": ["D#", "F##", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D# Major (Ionian)",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "Parallel mode with natural 4th - differs by one note from Lydian",
+          "rationale": "Only difference is G##→G# (natural 4th). Ionian is more grounded while Lydian floats. Easy transition between conventional and ethereal major",
+          "musicalContext": "All genres. Use Ionian for grounded major sound, Lydian for floating dreamlike quality. Interchange based on desired emotional character",
+          "musicGenreRecommendations": "All Genres, Pop, Rock, Classical",
+          "recommendedUse": "Alternate with D# Lydian for variety. Use Ionian when you want conventional major sound, Lydian for ethereal quality. Single note difference makes transition smooth",
+          "targetNotes": ["D#", "G#", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "A# Major (Enharmonic Parent)",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Parent major scale (D# Lydian is the IV mode of A# major)",
+          "rationale": "D# Lydian is the IV scale in A# major system; shares all notes exactly. Understanding this relationship opens up the entire A# major key center",
+          "musicalContext": "All genres; essential for understanding Lydian in functional harmony context. The IV-I relationship is fundamental to Western music",
+          "musicGenreRecommendations": "All Genres, Classical, Jazz, Pop, Rock",
+          "recommendedUse": "Think in A# major when analyzing D# Lydian. Helps understand IV-I progressions and modal interchange. Essential for harmonic context",
+          "targetNotes": ["A#", "C##", "E#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "Parallel mode with natural 4th and b7 - dominant character over Lydian base",
+          "rationale": "Differs from Lydian by G##→G# and C##→C#. Creates dominant 7th character. Less ethereal than Lydian, more bluesy and grounded",
+          "musicalContext": "Rock, blues, and funk. When Lydian is too bright and floating, Mixolydian brings bluesy edge. Common interchange in modal rock",
+          "musicGenreRecommendations": "Rock, Blues, Funk, Jam Band, Southern Rock",
+          "recommendedUse": "Use when Lydian feels too ethereal. Mixolydian grounds the sound with bluesy b7. Perfect for dominant 7th vamps in D#",
+          "targetNotes": ["C#", "D#", "A#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "G## (A) Major",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "Major scale built on #4 - emphasizes Lydian's characteristic note",
+          "rationale": "A major (enharmonically G## major) is built on the defining Lydian #4. Emphasizes the characteristic brightness of Lydian mode",
+          "musicalContext": "All genres. Creates bright resolution to the Lydian's defining characteristic note. Used for modal emphasis and bright major movement",
+          "musicGenreRecommendations": "All Genres, Progressive Rock, Jazz, Fusion",
+          "recommendedUse": "Use to emphasize the Lydian #4 characteristic. Moving to A major (G## major) highlights Lydian's brightest quality. Creates modal brightness",
+          "targetNotes": ["A", "C#", "E"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Lydian Augmented",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "Melodic minor mode with #4 and #5 - extends Lydian brightness",
+          "rationale": "Adds #5 to Lydian's already bright #4. Creates even more ethereal, augmented quality. Both #4 and #5 push the boundaries of major tonality",
+          "musicalContext": "Jazz, fusion, and film scores. More exotic than standard Lydian. Used for maximum brightness and floating quality in modern jazz",
+          "musicGenreRecommendations": "Jazz, Fusion, Film Score, Contemporary Jazz",
+          "recommendedUse": "Advanced Lydian extension. Use over D#maj7#5#11 chords. Creates maximum brightness and suspension. More exotic than regular Lydian",
+          "targetNotes": ["G##", "A##", "F##"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "B# (C) Major Pentatonic",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "Major pentatonic from 6th degree - emphasizes upper major tetrachord",
+          "rationale": "C major pentatonic (enharmonically B# major pentatonic) shares consonant tones with D# Lydian. Creates major color from the 6th degree perspective",
+          "musicalContext": "Rock, pop, and blues. Creates relative major pentatonic sound over Lydian. Common technique for melodic variation",
+          "musicGenreRecommendations": "Pop, Rock, Blues, Country",
+          "recommendedUse": "Use for pentatonic melodic ideas over D# Lydian. Creates fresh perspective by emphasizing the 6th degree area. Simple yet effective",
+          "targetNotes": ["C", "E", "G"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "E# (F) Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "Lydian mode built on 2nd degree - parallel Lydian in different key",
+          "rationale": "F Lydian (enharmonically E# Lydian) shares the bright Lydian character. Creates modal progression between two Lydian centers maintaining ethereal quality",
+          "musicalContext": "Progressive rock, jazz, and fusion. Maintains Lydian brightness across chord changes. Used for consistent ethereal atmosphere",
+          "musicGenreRecommendations": "Progressive Rock, Jazz, Fusion, Film Score",
+          "recommendedUse": "Use for modal I-II progressions maintaining Lydian character. Both chords use Lydian mode for consistent bright, floating atmosphere",
+          "targetNotes": ["F", "A", "C"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "D# Ionian #5",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "Harmonic minor mode with #4 - Lydian with #5 instead of natural 5",
+          "rationale": "Combines Lydian's #4 with augmented 5th. Creates exotic major sound with both #4 brightness and #5 augmentation. Very colorful and unusual",
+          "musicalContext": "Jazz, fusion, and exotic music. Creates unique blend of Lydian brightness with augmented tonality. Used for sophisticated harmonic color",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary Jazz, World Music",
+          "recommendedUse": "Advanced harmonic color. Use over D#maj7#5 chords with Lydian intent. Very exotic and sophisticated sound. Keep phrases short",
+          "targetNotes": ["G##", "A##", "D#"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "A# Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "Lydian mode built on V degree - dominant area Lydian",
+          "rationale": "A# Lydian (V of D#) brings Lydian brightness to dominant area. Creates bright, floating dominant that avoids traditional tension",
+          "musicalContext": "Modal jazz and progressive rock. Avoids traditional dominant function for modal brightness. Creates non-functional bright V chord",
+          "musicGenreRecommendations": "Modal Jazz, Progressive Rock, Fusion, Contemporary",
+          "recommendedUse": "Use for modal V chord without traditional resolution. Creates bright, floating quality on dominant. Avoids functional V-I pull",
+          "targetNotes": ["A#", "D##", "F##"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "D# Whole Tone",
+          "keyQuality": "augmented",
+          "compatibilityScore": 7,
+          "relationship": "Symmetrical scale sharing augmented quality with Lydian brightness",
+          "rationale": "Both Lydian and whole tone create floating, suspended quality. Whole tone is more ambiguous and extreme. Shares the upward, bright tendency",
+          "musicalContext": "Impressionist, film scores, and jazz. Creates maximum suspension and ambiguity. Used when Lydian brightness needs to become completely untethered",
+          "musicGenreRecommendations": "Impressionist, Film Score, Jazz, Avant-Garde",
+          "recommendedUse": "Use for extreme floating quality over D#aug or D#7#5. More ambiguous than Lydian. Creates Debussy-like impressionist atmosphere",
+          "targetNotes": ["D#", "F##", "A"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "F## (G) Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "Lydian mode built on major 3rd - emphasizes the major 3rd with Lydian quality",
+          "rationale": "G Lydian (enharmonically F## Lydian) is built on D# Lydian's major 3rd. Creates bright major movement emphasizing the 3rd degree",
+          "musicalContext": "Jazz and progressive rock. Creates sophisticated major color from the 3rd degree. Used for complex modal harmony",
+          "musicGenreRecommendations": "Jazz, Progressive Rock, Fusion, Contemporary",
+          "recommendedUse": "Advanced modal technique. Use for iii Lydian over I Lydian. Creates complex but bright harmonic movement. Sophisticated modal interchange",
+          "targetNotes": ["G", "C", "E"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Lydian Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "Melodic minor mode combining Lydian #4 with dominant b7",
+          "rationale": "Combines Lydian's ethereal #4 with Mixolydian's bluesy b7. Perfect blend of floating brightness and dominant function. Jazz essential",
+          "musicalContext": "Jazz and fusion. The primary altered dominant scale in jazz. Combines brightness with dominant function. Used extensively in bebop and beyond",
+          "musicGenreRecommendations": "Jazz, Bebop, Fusion, Modern Jazz, Post-Bop",
+          "recommendedUse": "Essential jazz dominant scale over D#7#11 chords. Combines Lydian brightness with dominant resolution. Primary choice for altered dominant in jazz",
+          "targetNotes": ["G##", "C#", "F##"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "C# Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "Lydian mode built on major 7th - emphasizes leading tone area with Lydian brightness",
+          "rationale": "C# Lydian is built on the major 7th of D# Lydian. Creates bright major color in the leading tone area. Sophisticated modal relationship",
+          "musicalContext": "Jazz and contemporary music. Creates sophisticated upper structure harmony. Used for complex modal progressions in modern composition",
+          "musicGenreRecommendations": "Jazz, Contemporary, Fusion, Modern Classical",
+          "recommendedUse": "Advanced modal harmony. Use for VII Lydian over I Lydian. Creates sophisticated bright harmonic color. Complex but beautiful relationship",
+          "targetNotes": ["C#", "F##", "A#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "B# (C) Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 6,
+          "relationship": "Dorian mode built on major 6th - provides minor contrast to Lydian brightness",
+          "rationale": "C Dorian (enharmonically B# Dorian) provides sophisticated minor color against Lydian brightness. The vi minor with Dorian character",
+          "musicalContext": "Jazz and contemporary music. Creates minor relief from Lydian brightness. Common in sophisticated major-minor interplay",
+          "musicGenreRecommendations": "Jazz, Contemporary, Fusion, Progressive",
+          "recommendedUse": "Use for sophisticated vi minor sound against D# Lydian. Dorian provides modern minor color. Creates interesting major-minor dialogue",
+          "targetNotes": ["C", "Eb", "G"],
+          "difficultyLevel": 3
+        }
+      ]
+    },
+    "Mixolydian": {
+      "sourceScale": {
+        "name": "D# Mixolydian",
+        "formula": [0, 2, 4, 5, 7, 9, 10],
+        "family": "major-modes",
+        "quality": "dominant"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Major Pentatonic",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Pentatonic subset omitting the characteristic b7 and 4th",
+          "rationale": "Contains the core consonant notes (D#-E#-F##-A#-B#), removing the bluesy b7 but maintaining clear major character. Universally safe",
+          "musicalContext": "Universal across all genres. Provides melodic foundation for Mixolydian without the dominant tension. Perfect starting point for improvisation",
+          "musicGenreRecommendations": "Pop, Rock, Country, Blues, Folk, Jam Band",
+          "recommendedUse": "Start with major pentatonic then add the characteristic b7 for Mixolydian flavor. Establishes major tonality before adding dominant edge",
+          "targetNotes": ["D#", "F##", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D# Blues Scale",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Minor pentatonic with blue note works perfectly over dominant 7th",
+          "rationale": "Blues scale's minor 3rd and b7 align with Mixolydian's dominant 7th character. The blue note adds perfect blues flavor to dominant vamps",
+          "musicalContext": "Blues, rock, and blues-rock. Essential for blues-based improvisation over dominant 7th chords. The foundation of blues guitar soloing",
+          "musicGenreRecommendations": "Blues, Blues Rock, Rock, Southern Rock, Jam Band",
+          "recommendedUse": "Perfect for blues improvisation over D#7 chords. Combines major and minor blues tonality. Essential for authentic blues-rock sound",
+          "targetNotes": ["A", "F#", "C#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D# Major (Ionian)",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "Parallel mode with natural 7th - differs by one note from Mixolydian",
+          "rationale": "Only difference is C#→C## (natural 7th). Mixolydian is bluesier while Ionian is cleaner. Easy transition between conventional and dominant major",
+          "musicalContext": "All genres. Use Ionian for pure major sound, Mixolydian for bluesy dominant quality. Common interchange in rock and funk",
+          "musicGenreRecommendations": "All Genres, Pop, Rock, Blues, Funk",
+          "recommendedUse": "Alternate between Ionian and Mixolydian for variety. Single note difference makes transition smooth. Use Ionian for resolution, Mixolydian for groove",
+          "targetNotes": ["D#", "C##", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "G# Major",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Parent major scale (D# Mixolydian is the V mode of G# major)",
+          "rationale": "D# Mixolydian is the V scale in G# major system; shares all notes exactly. The fundamental dominant-tonic relationship in functional harmony",
+          "musicalContext": "All genres; essential for understanding Mixolydian in functional harmony. The V-I relationship is the most important in Western music",
+          "musicGenreRecommendations": "All Genres, Classical, Jazz, Pop, Rock, Blues",
+          "recommendedUse": "Think in G# major when analyzing D# Mixolydian. Understanding V-I relationship is fundamental. Essential for dominant function",
+          "targetNotes": ["G#", "B#", "D#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D# Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Minor pentatonic over dominant creates blues tonality",
+          "rationale": "Minor pentatonic over dominant 7th is the essence of blues. Creates major-minor blues ambiguity essential to blues and rock",
+          "musicalContext": "Blues, rock, and funk. The defining sound of electric blues guitar. Essential for blues-rock improvisation over dominant chords",
+          "musicGenreRecommendations": "Blues, Blues Rock, Rock, Funk, Soul, R&B",
+          "recommendedUse": "Essential for blues improvisation over D#7 vamps. Creates authentic major-minor blues sound. Used by every blues guitarist",
+          "targetNotes": ["D#", "F#", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "C# Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Minor mode built on b7 - subtonic minor relationship",
+          "rationale": "C# Dorian (built on Mixolydian's b7) creates bVII-I progression common in modal rock and funk. Provides minor color from b7 perspective",
+          "musicalContext": "Rock, funk, and modal music. The bVII-I progression is signature of modal rock. Used by Van Halen, funk bands, and jam bands",
+          "musicGenreRecommendations": "Rock, Funk, Modal, Jam Band, Progressive Rock",
+          "recommendedUse": "Perfect for bVII-I modal progressions. C#m7-D#7 is classic modal funk/rock sound. Creates strong modal character",
+          "targetNotes": ["C#", "E#", "A#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Lydian Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "Mixolydian with #4 - adds Lydian brightness to dominant",
+          "rationale": "Differs from Mixolydian by G#→G## (#4). Combines dominant b7 with Lydian's ethereal #4. Essential jazz altered dominant scale",
+          "musicalContext": "Jazz, fusion, and bebop. Primary altered dominant scale in jazz. Combines Mixolydian's function with Lydian's brightness",
+          "musicGenreRecommendations": "Jazz, Bebop, Fusion, Modern Jazz, Post-Bop",
+          "recommendedUse": "Essential jazz dominant scale over D#7#11 chords. Use for sophisticated dominant alterations. Primary choice for altered dominant in jazz",
+          "targetNotes": ["G##", "C#", "F##"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A# Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "Mixolydian built on V - parallel dominant modes",
+          "rationale": "A# Mixolydian (V of D#) shares dominant character. Creates parallel dominant harmony. Both use Mixolydian mode for consistent groove",
+          "musicalContext": "Rock, funk, and jam band music. Maintains dominant groove across chord changes. Essential for modal dominant progressions",
+          "musicGenreRecommendations": "Rock, Funk, Jam Band, Soul, R&B",
+          "recommendedUse": "Use for I7-V7 parallel dominant progressions. Both chords use Mixolydian for consistent bluesy groove. Common in funk and jam bands",
+          "targetNotes": ["A#", "C##", "G#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "G# Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "Mixolydian built on IV - subdominant dominant color",
+          "rationale": "G# Mixolydian (IV of D#) brings dominant character to subdominant. Creates IV7-I7 progression common in blues and funk",
+          "musicalContext": "Blues, funk, and southern rock. The IV7-I7 progression is essential blues harmony. Used in virtually all blues progressions",
+          "musicGenreRecommendations": "Blues, Funk, Southern Rock, R&B, Soul",
+          "recommendedUse": "Essential for IV7-I7 blues progressions. Both chords use Mixolydian for consistent blues-funk groove. Fundamental to blues harmony",
+          "targetNotes": ["G#", "B#", "F#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "E# (F) Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 7,
+          "relationship": "Mixolydian built on II - supertonic dominant",
+          "rationale": "F Mixolydian (enharmonically E# Mixolydian) on the II creates II7-I7 progression. Provides dominant color from II degree",
+          "musicalContext": "Blues and funk. The II7-I7 movement is common in blues-based music. Creates tension-release with dominant quality on both chords",
+          "musicGenreRecommendations": "Blues, Funk, Soul, R&B, Jam Band",
+          "recommendedUse": "Use for II7-I7 progressions. Maintains dominant groove on supertonic. Common in blues and funk turnarounds",
+          "targetNotes": ["F", "A", "Eb"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Mixolydian b6",
+          "keyQuality": "dominant",
+          "compatibilityScore": 7,
+          "relationship": "Melodic minor mode adding b6 to Mixolydian - darker dominant",
+          "rationale": "Differs from Mixolydian by B#→B (b6). Creates darker, more exotic dominant sound. Combines dominant b7 with minor subdominant b6",
+          "musicalContext": "Jazz and fusion. Creates sophisticated dark dominant color. Used for exotic altered dominant sounds in modern jazz",
+          "musicGenreRecommendations": "Jazz, Fusion, Modern Jazz, Contemporary",
+          "recommendedUse": "Advanced altered dominant scale. Use over D#7b13 chords. More exotic than regular Mixolydian. Creates dark dominant tension",
+          "targetNotes": ["B", "C#", "A#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "B# (C) Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "Lydian built on 6th degree - major color from submediant",
+          "rationale": "C Lydian (enharmonically B# Lydian) on the 6th provides bright major contrast to Mixolydian's dominant character",
+          "musicalContext": "Jazz and progressive rock. Creates bright major relief from dominant groove. Used for sophisticated harmonic variety",
+          "musicGenreRecommendations": "Jazz, Progressive Rock, Fusion, Contemporary",
+          "recommendedUse": "Use for VI Lydian over I7 to create bright contrast. Adds sophisticated major color against dominant vamp. Advanced harmonic technique",
+          "targetNotes": ["C", "F#", "A"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "D# Bebop Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 9,
+          "relationship": "Mixolydian with added natural 7th for chromatic passing tone",
+          "rationale": "Adds C## (natural 7th) to Mixolydian creating 8-note bebop scale. The chromatic passing tone enables smooth bebop eighth-note lines",
+          "musicalContext": "Bebop and jazz. Essential for bebop-style improvisation. The added chromatic note creates smooth phrase endings on downbeats",
+          "musicGenreRecommendations": "Bebop, Jazz, Post-Bop, Hard Bop, Straight-Ahead Jazz",
+          "recommendedUse": "Essential for bebop lines over D#7 chords. The chromatic passing tone creates smooth bebop phrasing. Use for Charlie Parker style lines",
+          "targetNotes": ["C#", "C##", "F##"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Diminished (Whole-Half)",
+          "keyQuality": "diminished",
+          "compatibilityScore": 8,
+          "relationship": "Symmetrical octatonic scale for dominant 7b9 harmony",
+          "rationale": "The whole-half diminished scale is perfect for dominant 7b9 chords. Provides all available tensions (b9, #9, #11, 13) for dominant",
+          "musicalContext": "Jazz and bebop. Essential for dominant 7b9 chords. Creates dense chromatic dominant harmony characteristic of modern jazz",
+          "musicGenreRecommendations": "Jazz, Bebop, Post-Bop, Contemporary Jazz",
+          "recommendedUse": "Use over D#7b9 chords. Provides all dominant tensions. Essential for bebop and modern jazz dominant harmony",
+          "targetNotes": ["D#", "F##", "G#", "B"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "F## (G) Major Pentatonic",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "Major pentatonic from major 3rd creates bright color over dominant",
+          "rationale": "G major pentatonic (enharmonically F## major pentatonic) creates major color emphasizing the 3rd. Bright and consonant over D#7",
+          "musicalContext": "Rock, blues, and country. Creates bright major pentatonic sound over dominant chord. Common technique for melodic variety",
+          "musicGenreRecommendations": "Rock, Blues, Country, Southern Rock, Jam Band",
+          "recommendedUse": "Use for bright pentatonic lines over D#7. Emphasizes major 3rd area. Simple but effective melodic approach",
+          "targetNotes": ["G", "B", "D"],
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "Aeolian": {
+      "sourceScale": {
+        "name": "D# Aeolian (Natural Minor)",
+        "formula": [0, 2, 3, 5, 7, 8, 10],
+        "family": "major-modes",
+        "quality": "minor"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Diatonic subset - scale tones 1, b3, 4, 5, b7 only",
+          "rationale": "Contains the core minor pentatonic framework (D#-F#-G#-A#-C#). Removes the b6 but maintains pure minor consonance. Universally safe and reliable",
+          "musicalContext": "Universal minor sound across all genres. The most reliable scale for minor improvisation. Foundation of rock, blues, and metal soloing",
+          "musicGenreRecommendations": "Rock, Blues, Metal, Hard Rock, Heavy Metal, Punk",
+          "recommendedUse": "Perfect starting point for D# minor improvisation. Guaranteed consonance, impossible to sound wrong. Foundation before exploring Aeolian's b6",
+          "targetNotes": ["D#", "F#", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "B Major",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Relative major - vi scale relationship, shares all notes",
+          "rationale": "D# Aeolian is the vi scale of B major; shares all notes exactly. Provides major perspective on natural minor tonality. Fundamental relative relationship",
+          "musicalContext": "Universal across all genres. Essential relative major-minor relationship. Fundamental to Western harmony and understanding minor keys",
+          "musicGenreRecommendations": "All Genres, Classical, Pop, Rock, Metal, Jazz",
+          "recommendedUse": "Think of D# minor as vi in B major. Opens up relative major progressions. Essential for modulation between parallel tonalities",
+          "targetNotes": ["B", "D#", "F#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D# Blues Scale",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Minor pentatonic with added b5 blue note (adds A natural)",
+          "rationale": "Adds the characteristic blue note (A natural as b5) to minor pentatonic base. Creates authentic blues sound essential to blues and rock",
+          "musicalContext": "Blues, blues-rock, and hard rock. Essential for blues-based guitar solos. The foundation of blues guitar from B.B. King to SRV",
+          "musicGenreRecommendations": "Blues, Blues Rock, Rock, Hard Rock, Heavy Metal",
+          "recommendedUse": "Essential for blues-rock improvisation in D# minor. Emphasize and bend into the blue note (A natural). Perfect for authentic blues flavor",
+          "targetNotes": ["A", "F#", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D# Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Parallel mode with major 6th - one note difference from Aeolian",
+          "rationale": "Differs from Aeolian by B→B# (natural 6th). Creates brighter, more modern minor sound. Dorian is more versatile for contemporary music",
+          "musicalContext": "Jazz, funk, rock, and contemporary music. More versatile than Aeolian due to major 6th. The go-to minor scale for modern improvisation",
+          "musicGenreRecommendations": "Jazz, Funk, Rock, Fusion, Contemporary, R&B",
+          "recommendedUse": "Use when you want brighter, more modern minor sound. Single note difference makes transition from Aeolian smooth. More sophisticated than natural minor",
+          "targetNotes": ["B#", "D#", "F#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Natural minor with raised 7th - adds leading tone for V7-i resolution",
+          "rationale": "Differs from Aeolian by C#→C## (natural 7th). Creates classical minor sound with strong V7-i resolution. Essential for functional minor harmony",
+          "musicalContext": "Classical music, neoclassical metal, and baroque. Essential for traditional minor harmony. Used by Bach, Mozart, and neoclassical guitarists",
+          "musicGenreRecommendations": "Classical, Neoclassical Metal, Baroque, Classical Guitar, Metal",
+          "recommendedUse": "Use when you want strong V7-i cadences in D# minor. The raised 7th creates powerful resolution to tonic. Essential for classical minor",
+          "targetNotes": ["C##", "F#", "A#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "D# Melodic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Natural minor with raised 6th and 7th ascending",
+          "rationale": "Differs from Aeolian by B→B# and C#→C## (raised 6th and 7th). Creates sophisticated jazz minor sound. More modern than harmonic minor",
+          "musicalContext": "Jazz, fusion, and modern composition. The primary minor scale for jazz improvisation. More sophisticated than natural or harmonic minor",
+          "musicGenreRecommendations": "Jazz, Fusion, Modern Jazz, Contemporary, Bebop",
+          "recommendedUse": "Primary jazz minor scale for D# minor. Use ascending for melodic lines. More sophisticated than Aeolian. Essential for minor ii-V-i",
+          "targetNotes": ["B#", "C##", "F#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "F# Major",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "III chord scale - mediant major provides relative minor color",
+          "rationale": "F# major (III of D# minor) shares significant notes with Aeolian. Provides major color within minor context. Common modulation point",
+          "musicalContext": "Classical and pop music. Creates gentle shift from minor to relative major area. Essential for III-VI progressions in minor",
+          "musicGenreRecommendations": "Classical, Pop, Rock, Singer-Songwriter, Indie",
+          "recommendedUse": "Use when moving from D# minor to relative major area. III-VI progression is common in pop. Provides major relief in minor context",
+          "targetNotes": ["F#", "A#", "C#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "G# Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "iv chord Dorian - subdominant minor relationship",
+          "rationale": "G# Dorian provides bright minor iv color. The i-iv minor progression is essential in minor keys. Dorian iv is more modern than Aeolian iv",
+          "musicalContext": "Jazz, rock, and contemporary music. Essential for modern minor iv-i progressions. More sophisticated than using G# Aeolian on iv",
+          "musicGenreRecommendations": "Jazz, Rock, Contemporary, Funk, Soul",
+          "recommendedUse": "Perfect for iv-i progressions in D# minor. G# Dorian over iv chord creates modern minor sound. More colorful than natural minor iv",
+          "targetNotes": ["G#", "B", "E#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A# Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 9,
+          "relationship": "V chord scale - dominant to tonic minor relationship",
+          "rationale": "A# Mixolydian functions as V7 in D# minor. Provides dominant function with bluesy character. Essential for V7-i in contemporary minor",
+          "musicalContext": "Rock, blues, and jazz. Essential for dominant function in minor keys. More bluesy than using harmonic minor's raised 7th",
+          "musicGenreRecommendations": "Rock, Blues, Jazz, Funk, Soul, R&B",
+          "recommendedUse": "Perfect over A#7 chords resolving to D#m. Essential for V7-i in blues-based minor. More contemporary than classical V7-i",
+          "targetNotes": ["A#", "C##", "G#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Phrygian",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Parallel mode with b2 - adds Spanish/exotic character to minor",
+          "rationale": "Differs from Aeolian by E#→E (b2). Creates much darker, more exotic minor character. Spanish and Middle Eastern flavor",
+          "musicalContext": "Flamenco, metal, and Spanish music. More exotic and darker than Aeolian. Used in Metallica, flamenco guitar, and Middle Eastern music",
+          "musicGenreRecommendations": "Flamenco, Metal, Spanish, Middle Eastern, Thrash Metal",
+          "recommendedUse": "Use when you want dark, exotic minor character. Perfect for Spanish-influenced passages and metal riffs. Emphasize b2 for flamenco flavor",
+          "targetNotes": ["E", "F#", "B"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "C# Aeolian (Natural Minor)",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Minor scale built on b7 - subtonic minor relationship",
+          "rationale": "C# minor (bVII of D#) creates bVII-i progression common in modal minor. Both use Aeolian for consistent dark minor atmosphere",
+          "musicalContext": "Rock, metal, and modal music. The bVII-i progression is signature of modal rock and metal. Creates strong minor modal character",
+          "musicGenreRecommendations": "Rock, Metal, Modal, Hard Rock, Heavy Metal",
+          "recommendedUse": "Perfect for bVII-i modal minor progressions. Both chords use natural minor for consistent dark atmosphere. Essential for modal minor",
+          "targetNotes": ["C#", "E", "G#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "G# Aeolian (Natural Minor)",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Minor scale built on iv - subdominant natural minor",
+          "rationale": "G# Aeolian on iv creates traditional i-iv natural minor progression. Darker and more traditional than Dorian iv",
+          "musicalContext": "Classical, folk, and traditional metal. More somber than Dorian iv. Creates traditional minor subdominant sound",
+          "musicGenreRecommendations": "Classical, Folk, Metal, Traditional, Gothic",
+          "recommendedUse": "Use for traditional dark i-iv minor progressions. G# natural minor on iv creates classical minor atmosphere. More somber than Dorian",
+          "targetNotes": ["G#", "B", "D#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "E# (F) Major Pentatonic",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "Major pentatonic from minor 3rd creates major-minor blues blend",
+          "rationale": "F major pentatonic (enharmonically E# major pentatonic) creates major-over-minor blues sound. Common blues-rock technique",
+          "musicalContext": "Blues and blues-rock. Creates sophisticated major-minor blues ambiguity. Used by blues-rock masters for tonal variety",
+          "musicGenreRecommendations": "Blues, Blues Rock, Southern Rock, Rock",
+          "recommendedUse": "Use for major-over-minor blues sound. Creates sophisticated tonal ambiguity. Technique used by Allman Brothers and blues-rock masters",
+          "targetNotes": ["F", "A", "C"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Locrian",
+          "keyQuality": "diminished",
+          "compatibilityScore": 6,
+          "relationship": "Parallel mode with b2 and b5 - most unstable minor mode",
+          "rationale": "Differs from Aeolian by E#→E (b2) and A#→A (b5). Creates half-diminished character. Most unstable and dark minor mode",
+          "musicalContext": "Jazz and metal. Used for extreme tension and instability. Essential for half-diminished chord voicings in jazz",
+          "musicGenreRecommendations": "Jazz, Metal, Avant-Garde, Death Metal, Progressive Metal",
+          "recommendedUse": "Use over D#m7b5 chords. Creates maximum instability and tension. Primarily for harmonic use; difficult to sustain melodically",
+          "targetNotes": ["E", "A", "C#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "B Harmonic Major",
+          "keyQuality": "major",
+          "compatibilityScore": 6,
+          "relationship": "Parent harmonic major scale containing Aeolian as related mode",
+          "rationale": "D# Aeolian relates to B harmonic major. Provides exotic major context for natural minor. Advanced harmonic relationship",
+          "musicalContext": "Classical and ethnic music. Creates sophisticated major-minor interplay. Used in baroque and romantic composition",
+          "musicGenreRecommendations": "Classical, Baroque, World Music, Ethnic, Neoclassical",
+          "recommendedUse": "Advanced theoretical relationship. Use for understanding Aeolian in exotic major harmonic context. Complex but colorful relationship",
+          "targetNotes": ["B", "D#", "F#"],
+          "difficultyLevel": 4
+        }
+      ]
+    },
+    "Locrian": {
+      "sourceScale": {
+        "name": "D# Locrian",
+        "formula": [0, 1, 3, 5, 6, 8, 10],
+        "family": "major-modes",
+        "quality": "diminished"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Diminished (Half-Whole)",
+          "keyQuality": "diminished",
+          "compatibilityScore": 9,
+          "relationship": "Symmetrical octatonic scale for diminished harmony",
+          "rationale": "The half-whole diminished scale perfectly fits half-diminished and diminished chords. Provides chromatic richness for unstable Locrian tonality",
+          "musicalContext": "Jazz and contemporary music. Essential for half-diminished and diminished chord voicings. Creates sophisticated chromatic harmony",
+          "musicGenreRecommendations": "Jazz, Bebop, Contemporary Jazz, Post-Bop, Avant-Garde",
+          "recommendedUse": "Perfect over D#m7b5 chords. Provides all tensions for half-diminished harmony. Essential for jazz voicings of unstable chords",
+          "targetNotes": ["D#", "E", "G", "A"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "E Major",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Parent major scale (D# Locrian is the vii° mode of E major)",
+          "rationale": "D# Locrian is the vii° scale in E major system; shares all notes exactly. Understanding this provides functional harmonic context",
+          "musicalContext": "Classical and jazz. Essential for understanding Locrian's function as vii° in major keys. Fundamental to functional harmony",
+          "musicGenreRecommendations": "Classical, Jazz, Pop, All Genres",
+          "recommendedUse": "Think in E major when analyzing D# Locrian. Helps understand vii°-I progressions. Essential for comprehending Locrian's unstable nature",
+          "targetNotes": ["E", "G#", "B"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Minor pentatonic provides more stable subset of Locrian",
+          "rationale": "Removes Locrian's most unstable notes (b2 and b5) for more manageable minor sound. Provides melodic foundation before exploring Locrian tension",
+          "musicalContext": "Jazz and contemporary music. Use when full Locrian is too unstable. Provides safer melodic framework for half-diminished contexts",
+          "musicGenreRecommendations": "Jazz, Contemporary, Fusion, Modern Jazz",
+          "recommendedUse": "Start with minor pentatonic before venturing into full Locrian. Removes the most problematic notes (b2, b5) for easier improvisation",
+          "targetNotes": ["D#", "F#", "A"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Phrygian",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Parallel mode with natural 5th - more stable than Locrian",
+          "rationale": "Differs from Locrian only by A→A# (natural 5th). Still has dark Phrygian b2 but with stable perfect 5th. Much easier to use melodically",
+          "musicalContext": "Metal and Spanish music. When Locrian's b5 is too unstable, Phrygian provides similar darkness with stability. More usable melodically",
+          "musicGenreRecommendations": "Metal, Flamenco, Spanish, Thrash Metal, Death Metal",
+          "recommendedUse": "Use when you want Locrian-like darkness but need melodic stability. The natural 5th makes Phrygian much more usable than Locrian",
+          "targetNotes": ["E", "F#", "A#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "D# Locrian Natural 2",
+          "keyQuality": "diminished",
+          "compatibilityScore": 8,
+          "relationship": "Locrian with raised 2nd - removes semitone dissonance",
+          "rationale": "Differs from Locrian by E→E# (natural 2nd). Removes the harsh b2 while keeping the unstable b5. Slightly more melodic than regular Locrian",
+          "musicalContext": "Jazz and fusion. More melodically usable than standard Locrian. Still maintains half-diminished character but easier to navigate",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary Jazz, Modern Jazz",
+          "recommendedUse": "Use over D#m7b5 when regular Locrian feels too harsh. Natural 2nd makes it more singable while maintaining half-diminished quality",
+          "targetNotes": ["E#", "A", "C#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A Whole Tone",
+          "keyQuality": "augmented",
+          "compatibilityScore": 6,
+          "relationship": "Whole tone scale starting on b5 creates ambiguous suspension",
+          "rationale": "Whole tone from the b5 creates maximum ambiguity and suspension. Shares Locrian's unstable quality but in different way",
+          "musicalContext": "Impressionist and avant-garde. When Locrian needs to become even more ambiguous and floating. Creates dreamlike instability",
+          "musicGenreRecommendations": "Impressionist, Avant-Garde, Film Score, Contemporary Classical",
+          "recommendedUse": "Use for maximum ambiguity over unstable harmony. More floating than Locrian. Creates Debussy-like suspended atmosphere",
+          "targetNotes": ["A", "C", "E"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "D# Super Locrian (Altered)",
+          "keyQuality": "diminished",
+          "compatibilityScore": 7,
+          "relationship": "Even more altered than Locrian - all possible tensions",
+          "rationale": "Contains b2, b3, b4(#9), b5, b6, b7 - maximum alteration. Even more unstable than Locrian. Used for extreme jazz altered dominants",
+          "musicalContext": "Modern jazz and bebop. Most altered scale possible. Used for extreme tension on altered dominant chords in jazz",
+          "musicGenreRecommendations": "Modern Jazz, Bebop, Post-Bop, Free Jazz, Avant-Garde",
+          "recommendedUse": "Advanced altered dominant scale. Use over D#7alt chords. Maximum outside sound for jazz. Extremely unstable; use briefly",
+          "targetNotes": ["E", "G", "A", "C"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "A# Locrian",
+          "keyQuality": "diminished",
+          "compatibilityScore": 7,
+          "relationship": "Locrian mode built on V - parallel unstable modes",
+          "rationale": "A# Locrian shares the unstable Locrian character. Creates progression between two Locrian centers. Maintains extreme instability",
+          "musicalContext": "Jazz and avant-garde. Creates consistent unstable atmosphere across chord changes. Very experimental and challenging",
+          "musicGenreRecommendations": "Jazz, Avant-Garde, Free Jazz, Experimental, Contemporary",
+          "recommendedUse": "Advanced modal technique maintaining Locrian instability across changes. Very difficult to use effectively. Primarily theoretical interest",
+          "targetNotes": ["A#", "B", "D#"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "E Harmonic Major",
+          "keyQuality": "major",
+          "compatibilityScore": 6,
+          "relationship": "Parent harmonic major scale containing Locrian as mode",
+          "rationale": "D# Locrian relates to E harmonic major. Provides exotic major context for Locrian's instability. Advanced harmonic relationship",
+          "musicalContext": "Classical and ethnic music. Creates sophisticated understanding of Locrian in major harmonic context. Theoretical significance",
+          "musicGenreRecommendations": "Classical, World Music, Ethnic, Baroque, Contemporary Classical",
+          "recommendedUse": "Advanced theoretical relationship. Helps understand Locrian's function in exotic major system. More theoretical than practical",
+          "targetNotes": ["E", "G#", "B"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "F# Aeolian (Natural Minor)",
+          "keyQuality": "minor",
+          "compatibilityScore": 6,
+          "relationship": "Natural minor from minor 3rd area provides stable minor alternative",
+          "rationale": "F# minor provides much more stable minor sound than Locrian. Both natural 2nd and natural 5th create conventional minor tonality",
+          "musicalContext": "When Locrian is too unstable, F# minor provides normal minor sound. Useful for resolving Locrian tension to stability",
+          "musicGenreRecommendations": "Classical, Rock, Metal, All Genres",
+          "recommendedUse": "Use as stable minor resolution from Locrian instability. F# minor provides conventional minor tonality when Locrian is too tense",
+          "targetNotes": ["F#", "A", "C#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "C# Aeolian (Natural Minor)",
+          "keyQuality": "minor",
+          "compatibilityScore": 6,
+          "relationship": "Natural minor from b7 area provides minor resolution",
+          "rationale": "C# minor provides stable minor alternative to Locrian instability. Shares some notes but creates grounded minor tonality",
+          "musicalContext": "Rock and metal. Use for resolving from Locrian tension to stable minor. Creates dramatic tension-release",
+          "musicGenreRecommendations": "Rock, Metal, Classical, All Genres",
+          "recommendedUse": "Use as minor resolution target from Locrian tension. C# minor provides stable grounding after Locrian instability",
+          "targetNotes": ["C#", "E", "G#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "B Major Pentatonic",
+          "keyQuality": "major",
+          "compatibilityScore": 5,
+          "relationship": "Major pentatonic provides bright contrast to Locrian darkness",
+          "rationale": "B major pentatonic is maximally contrasting to Locrian's instability. Provides bright, stable major sound as relief from Locrian tension",
+          "musicalContext": "Contemporary and experimental music. Use for dramatic contrast from Locrian darkness to major brightness. Experimental technique",
+          "musicGenreRecommendations": "Contemporary, Experimental, Progressive, Avant-Garde",
+          "recommendedUse": "Use for maximum contrast and tension-release from Locrian instability. B major pentatonic provides ultimate resolution",
+          "targetNotes": ["B", "D#", "F#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "G# Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 5,
+          "relationship": "Dorian from 4th degree provides brighter minor alternative",
+          "rationale": "G# Dorian is much brighter and more stable than Locrian. Provides modern minor sound with major 6th as strong contrast",
+          "musicalContext": "Jazz and fusion. Use for bright minor relief from Locrian instability. Creates strong contrast in minor contexts",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary, Modern Jazz",
+          "recommendedUse": "Use for bright modern minor contrast to Locrian darkness. G# Dorian provides sophisticated minor alternative to Locrian tension",
+          "targetNotes": ["G#", "B", "E#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "D# Diminished (Whole-Half)",
+          "keyQuality": "diminished",
+          "compatibilityScore": 7,
+          "relationship": "Symmetrical diminished scale for dominant diminished harmony",
+          "rationale": "The whole-half diminished provides different symmetrical approach to diminished harmony. Used for dominant 7b9 over half-diminished base",
+          "musicalContext": "Jazz and bebop. Different diminished approach than half-whole. Used when approaching Locrian as passing chord to dominant",
+          "musicGenreRecommendations": "Jazz, Bebop, Contemporary Jazz, Post-Bop",
+          "recommendedUse": "Advanced technique using whole-half diminished over half-diminished chords. Creates passing chord tension toward dominant resolution",
+          "targetNotes": ["D#", "F##", "G#", "B"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "E Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 6,
+          "relationship": "Lydian from I of parent major provides bright major contrast",
+          "rationale": "E Lydian (I in parent E major) provides maximum brightness against Locrian darkness. The brightest mode vs the darkest mode",
+          "musicalContext": "Contemporary and progressive music. Creates maximum contrast from Locrian instability to Lydian brightness. Dramatic tension-release",
+          "musicGenreRecommendations": "Progressive, Contemporary, Fusion, Experimental",
+          "recommendedUse": "Use for maximum tonal contrast. E Lydian provides ultimate brightness and stability as resolution from Locrian instability",
+          "targetNotes": ["E", "A#", "D#"],
+          "difficultyLevel": 4
+        }
+      ]
+    },
+    "HarmonicMinor": {
+      "sourceScale": {
+        "name": "D# Harmonic Minor",
+        "formula": [0, 2, 3, 5, 7, 8, 11],
+        "family": "minor-variants",
+        "quality": "minor"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Aeolian (Natural Minor)",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Natural minor with lowered 7th - one note difference",
+          "rationale": "Differs from harmonic minor only by C##→C# (lowered 7th). Natural minor is less classical, more modal. Easier melodically without augmented 2nd",
+          "musicalContext": "Rock, metal, and modal music. When harmonic minor's raised 7th is too classical. Natural minor is more versatile for contemporary styles",
+          "musicGenreRecommendations": "Rock, Metal, Modal, Folk, Contemporary",
+          "recommendedUse": "Use when harmonic minor feels too classical. Natural minor is more neutral and versatile. Better for sustained melodies",
+          "targetNotes": ["D#", "F#", "C#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D# Phrygian Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 10,
+          "relationship": "5th mode of harmonic minor - the Spanish/flamenco dominant scale",
+          "rationale": "Built on the 5th degree of D# harmonic minor. Features b2 and major 3rd creating Spanish dominant sound. Essential for V7 in harmonic minor",
+          "musicalContext": "Flamenco, Latin music, and metal. The signature dominant scale of Spanish music. Creates exotic dominant tension characteristic of flamenco",
+          "musicGenreRecommendations": "Flamenco, Latin, Metal, Spanish, Middle Eastern, Neoclassical",
+          "recommendedUse": "Essential V7 scale in harmonic minor system. Perfect over A#7 resolving to D#m harmonic. Emphasize b2 to major 3rd for Spanish flavor",
+          "targetNotes": ["A#", "B", "D##"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Melodic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Harmonic minor with raised 6th - eliminates augmented 2nd",
+          "rationale": "Differs from harmonic minor by B→B# (natural 6th). Removes the awkward augmented 2nd (B-C##) for smoother melodic motion. Jazz standard",
+          "musicalContext": "Jazz, fusion, and modern composition. More melodically smooth than harmonic minor. The primary minor scale for jazz improvisation",
+          "musicGenreRecommendations": "Jazz, Fusion, Modern Jazz, Contemporary, Bebop",
+          "recommendedUse": "Use when harmonic minor's augmented 2nd is too awkward. Melodic minor is smoother and more modern. Essential for jazz minor harmony",
+          "targetNotes": ["B#", "C##", "F#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "A# Phrygian Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 10,
+          "relationship": "V7 chord scale - the dominant of D# harmonic minor",
+          "rationale": "A# Phrygian dominant is the V7 in D# harmonic minor system. Creates authentic Spanish dominant resolution. Essential for V7-i in classical minor",
+          "musicalContext": "Classical, flamenco, and neoclassical metal. The traditional dominant for harmonic minor. Creates powerful exotic V7-i resolution",
+          "musicGenreRecommendations": "Classical, Flamenco, Neoclassical Metal, Baroque, Spanish",
+          "recommendedUse": "Essential dominant scale for D# harmonic minor. Perfect over A#7 leading to D#m. Creates authentic classical and flamenco V7-i cadence",
+          "targetNotes": ["A#", "B", "G#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Minor pentatonic subset - removes augmented 2nd interval",
+          "rationale": "Contains the core minor pentatonic (D#-F#-G#-A#-C#), avoiding both the b6 and raised 7th. Provides safe melodic foundation",
+          "musicalContext": "Rock, blues, and metal. When harmonic minor is too classical, pentatonic provides universal minor sound. Easier for improvisation",
+          "musicGenreRecommendations": "Rock, Blues, Metal, Hard Rock, Heavy Metal",
+          "recommendedUse": "Start with minor pentatonic before adding harmonic minor's raised 7th. Provides safe foundation then gradually introduce C## for color",
+          "targetNotes": ["D#", "F#", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "F# Lydian #2",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "3rd mode of harmonic minor - minor third becomes major tonic",
+          "rationale": "Built on the b3 of D# harmonic minor. Features both #2 and #5, creating exotic major sound. Very colorful and unusual",
+          "musicalContext": "Jazz and world music. Creates exotic major sound with Middle Eastern character. Used for sophisticated harmonic color in modern jazz",
+          "musicGenreRecommendations": "Jazz, World Music, Contemporary Jazz, Middle Eastern, Ethnic",
+          "recommendedUse": "Advanced exotic major scale. Use over F#maj7#5 chords. Creates Middle Eastern flavor. Very colorful; use sparingly for effect",
+          "targetNotes": ["F#", "G##", "C##"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "G# Locrian Natural 6",
+          "keyQuality": "diminished",
+          "compatibilityScore": 7,
+          "relationship": "2nd mode of harmonic minor - Locrian with natural 6th",
+          "rationale": "Built on the 2nd degree of D# harmonic minor. Features b5 like Locrian but has natural 6th. Creates unique half-diminished quality",
+          "musicalContext": "Jazz and contemporary music. More melodically usable than regular Locrian due to natural 6th. Used for sophisticated half-diminished voicings",
+          "musicGenreRecommendations": "Jazz, Contemporary Jazz, Fusion, Modern Jazz",
+          "recommendedUse": "Use over G#m7b5 chords. More melodic than regular Locrian due to natural 6th. Advanced jazz voicing for half-diminished",
+          "targetNotes": ["G#", "C#", "E#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "B Ionian #5",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "6th mode of harmonic minor - major with augmented 5th",
+          "rationale": "Built on the b6 of D# harmonic minor. Major scale with #5 creates augmented major quality. Exotic and colorful",
+          "musicalContext": "Jazz and fusion. Creates augmented major sound. Used for sophisticated harmonic color over major chords with augmented 5th",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary Jazz, Modern Jazz",
+          "recommendedUse": "Use over Bmaj7#5 chords. Creates exotic augmented major sound. Advanced harmonic color for sophisticated jazz harmony",
+          "targetNotes": ["B", "D#", "F##"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "C# Super Locrian bb7",
+          "keyQuality": "diminished",
+          "compatibilityScore": 6,
+          "relationship": "7th mode of harmonic minor - most altered Locrian variant",
+          "rationale": "Built on the 7th degree of D# harmonic minor. Features diminished 7th creating extreme alteration. Most unstable mode of harmonic minor",
+          "musicalContext": "Avant-garde and experimental music. Extremely altered and unstable. Used for maximum tension in contemporary composition",
+          "musicGenreRecommendations": "Avant-Garde, Experimental, Contemporary Classical, Free Jazz",
+          "recommendedUse": "Advanced altered scale for extreme tension. Use over highly altered diminished chords. Very unstable; use briefly for effect",
+          "targetNotes": ["C#", "E", "G", "Bb"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "D# Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Parallel minor with natural 7th and raised 6th",
+          "rationale": "Differs from harmonic minor by C##→C# and B→B#. Creates brighter, more modern minor. Removes classical character for contemporary sound",
+          "musicalContext": "Jazz, funk, and rock. More versatile than harmonic minor for contemporary styles. Removes classical associations",
+          "musicGenreRecommendations": "Jazz, Funk, Rock, R&B, Contemporary",
+          "recommendedUse": "Use when harmonic minor is too classical. Dorian is more neutral and modern. Better for funk and contemporary styles",
+          "targetNotes": ["B#", "D#", "F#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Blues Scale",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Blues scale shares minor character with different approach",
+          "rationale": "Blues scale and harmonic minor both create minor tonality but with different approaches. Blues is more pentatonic, harmonic minor more classical",
+          "musicalContext": "When combining classical and blues approaches. Blues scale provides bluesy contrast to harmonic minor's classical character",
+          "musicGenreRecommendations": "Blues Rock, Neoclassical, Fusion, Metal",
+          "recommendedUse": "Use blues scale for bluesy passages, harmonic minor for classical moments. Combining both creates sophisticated minor vocabulary",
+          "targetNotes": ["A", "F#", "C##"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "C## (D) Dorian #4",
+          "keyQuality": "minor",
+          "compatibilityScore": 6,
+          "relationship": "4th mode of harmonic minor - Dorian with raised 4th",
+          "rationale": "Built on the 4th degree of D# harmonic minor. Dorian with #4 creates unique minor color. Combines Dorian brightness with Lydian #4",
+          "musicalContext": "Jazz and fusion. Creates sophisticated minor color combining Dorian and Lydian characteristics. Advanced minor modal color",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary Jazz, Modern Jazz",
+          "recommendedUse": "Advanced minor scale over D major (C##) chords with Dorian character. Use for sophisticated minor modal harmony",
+          "targetNotes": ["D", "F##", "A"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "B Harmonic Major",
+          "keyQuality": "major",
+          "compatibilityScore": 6,
+          "relationship": "Relative harmonic major sharing similar augmented 2nd characteristic",
+          "rationale": "Harmonic major shares the exotic augmented 2nd interval with harmonic minor. Both create classical harmonic tension",
+          "musicalContext": "Classical and ethnic music. Both scales share exotic augmented interval character. Used in baroque and romantic composition",
+          "musicGenreRecommendations": "Classical, Baroque, World Music, Ethnic, Neoclassical",
+          "recommendedUse": "Use for understanding shared harmonic characteristics. Both scales create similar exotic tension through augmented intervals",
+          "targetNotes": ["B", "D#", "F#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "G# Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Harmonic minor built on iv - subdominant harmonic minor",
+          "rationale": "G# harmonic minor on iv creates parallel harmonic minor progression. Both use harmonic minor for consistent classical minor atmosphere",
+          "musicalContext": "Classical and neoclassical music. Maintains harmonic minor character across chord changes. Creates consistent classical minor tonality",
+          "musicGenreRecommendations": "Classical, Neoclassical, Baroque, Classical Guitar",
+          "recommendedUse": "Use for iv-i progressions maintaining harmonic minor character. Creates consistent classical minor atmosphere across changes",
+          "targetNotes": ["G#", "B", "D##"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "C# Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 6,
+          "relationship": "Harmonic minor built on b7 - subtonic harmonic minor",
+          "rationale": "C# harmonic minor on bVII creates exotic modal minor progression. Both use harmonic minor for consistent exotic character",
+          "musicalContext": "Neoclassical and ethnic music. Creates exotic minor progression with harmonic minor on both chords. Unusual but colorful",
+          "musicGenreRecommendations": "Neoclassical, World Music, Ethnic, Metal",
+          "recommendedUse": "Use for bVII-i progressions maintaining harmonic minor character. Creates exotic consistent minor atmosphere",
+          "targetNotes": ["C#", "E", "B#"],
+          "difficultyLevel": 4
+        }
+      ]
+    },
+    "MelodicMinor": {
+      "sourceScale": {
+        "name": "D# Melodic Minor",
+        "formula": [0, 2, 3, 5, 7, 9, 11],
+        "family": "minor-variants",
+        "quality": "minor"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Dorian with lowered 7th - one note difference",
+          "rationale": "Differs from melodic minor only by C##→C# (lowered 7th). Dorian is more modal, less jazzy. Easier for contemporary music contexts",
+          "musicalContext": "Rock, funk, and modal music. When melodic minor is too jazzy. Dorian is more neutral and versatile for contemporary styles",
+          "musicGenreRecommendations": "Rock, Funk, Modal, R&B, Contemporary",
+          "recommendedUse": "Use when melodic minor feels too jazzy or sophisticated. Dorian is more straightforward. Better for funk and rock contexts",
+          "targetNotes": ["D#", "B#", "F#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Lydian Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 10,
+          "relationship": "4th mode of melodic minor - the essential jazz altered dominant",
+          "rationale": "Built on the 4th degree of D# melodic minor. Combines Lydian #4 with dominant b7. Essential jazz dominant scale",
+          "musicalContext": "Jazz, bebop, and fusion. The primary altered dominant scale in jazz. Essential for sophisticated dominant alterations in modern jazz",
+          "musicGenreRecommendations": "Jazz, Bebop, Fusion, Modern Jazz, Post-Bop, Hard Bop",
+          "recommendedUse": "Essential jazz dominant scale over G#7#11 chords. Combines brightness with dominant function. Primary choice for altered dominant",
+          "targetNotes": ["G#", "C##", "F#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Minor pentatonic subset - core consonant framework",
+          "rationale": "Contains the core minor pentatonic (D#-F#-G#-A#-C#), removing the raised 6th and 7th. Provides safe melodic foundation",
+          "musicalContext": "Universal minor sound. Start with pentatonic before adding melodic minor's sophisticated raised degrees. Perfect improvisational base",
+          "musicGenreRecommendations": "All Genres, Rock, Blues, Jazz, Metal",
+          "recommendedUse": "Start with minor pentatonic then gradually add B# and C## for melodic minor color. Provides safe base for sophisticated extensions",
+          "targetNotes": ["D#", "F#", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D# Super Locrian (Altered)",
+          "keyQuality": "diminished",
+          "compatibilityScore": 10,
+          "relationship": "7th mode of melodic minor - the ultimate altered dominant scale",
+          "rationale": "Built on the 7th degree of D# melodic minor. Features all possible alterations (b9, #9, #11, b13). Maximum altered dominant tension",
+          "musicalContext": "Modern jazz and bebop. The most altered scale possible. Essential for altered dominant jazz harmony. Used by Coltrane and modern masters",
+          "musicGenreRecommendations": "Modern Jazz, Bebop, Post-Bop, Free Jazz, Avant-Garde",
+          "recommendedUse": "Advanced altered dominant scale over C#7alt chords. Maximum outside sound for jazz. All altered tensions available. Use freely",
+          "targetNotes": ["C#", "E", "G", "A#"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "D# Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Melodic minor with lowered 6th - creates augmented 2nd",
+          "rationale": "Differs from melodic minor by B#→B (lowered 6th). Creates classical harmonic minor with augmented 2nd interval. More classical than jazz",
+          "musicalContext": "Classical and neoclassical music. When melodic minor needs more classical character. Harmonic minor is more traditional",
+          "musicGenreRecommendations": "Classical, Neoclassical, Baroque, Classical Guitar",
+          "recommendedUse": "Use when you want classical minor sound with stronger V7-i cadences. Harmonic minor is more traditional than melodic minor",
+          "targetNotes": ["B", "C##", "F#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "E# (F) Dorian b2",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "2nd mode of melodic minor - Dorian with Phrygian b2",
+          "rationale": "Built on the 2nd degree of D# melodic minor. Combines Dorian's major 6th with Phrygian's exotic b2. Sophisticated jazz minor mode",
+          "musicalContext": "Jazz and fusion. Creates exotic yet modern minor sound. Combines Phrygian darkness with Dorian brightness. Sophisticated minor color",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary Jazz, Modern Jazz",
+          "recommendedUse": "Advanced minor scale over F (E#) minor chords. Combines b2 exoticism with natural 6 brightness. Sophisticated jazz minor mode",
+          "targetNotes": ["F", "G", "D"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "F# Lydian Augmented",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "3rd mode of melodic minor - Lydian with augmented 5th",
+          "rationale": "Built on the b3 of D# melodic minor. Combines Lydian #4 with augmented #5. Maximum brightness and floating quality",
+          "musicalContext": "Jazz, fusion, and film scores. Even brighter than regular Lydian. Used for maximum ethereal, floating quality in modern jazz",
+          "musicGenreRecommendations": "Jazz, Fusion, Film Score, Contemporary Jazz, Modern Jazz",
+          "recommendedUse": "Advanced Lydian extension over F#maj7#5#11 chords. Creates maximum brightness and suspension. More exotic than regular Lydian",
+          "targetNotes": ["F#", "A#", "C##"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "G# Mixolydian b6",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "5th mode of melodic minor - Mixolydian with darkened 6th",
+          "rationale": "Built on the 5th degree of D# melodic minor. Mixolydian with b6 creates darker dominant sound. More exotic than regular Mixolydian",
+          "musicalContext": "Jazz and fusion. Creates sophisticated dark dominant color. Used for exotic dominant sounds in modern jazz harmony",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary Jazz, Modern Jazz",
+          "recommendedUse": "Advanced dominant scale over G#7b13 chords. Creates dark dominant tension. More exotic than regular Mixolydian",
+          "targetNotes": ["G#", "E", "F#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "A# Locrian Natural 2",
+          "keyQuality": "diminished",
+          "compatibilityScore": 7,
+          "relationship": "6th mode of melodic minor - Locrian with natural 2nd",
+          "rationale": "Built on the 6th degree of D# melodic minor. Locrian with natural 2nd is more melodically usable. Still has unstable b5",
+          "musicalContext": "Jazz and contemporary music. More melodic than regular Locrian due to natural 2nd. Used for half-diminished voicings",
+          "musicGenreRecommendations": "Jazz, Contemporary Jazz, Fusion, Modern Jazz",
+          "recommendedUse": "Use over A#m7b5 chords. More melodic than regular Locrian. Natural 2nd makes it more singable while maintaining b5 tension",
+          "targetNotes": ["A#", "B#", "E"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Major (Ionian)",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "Parallel major - same root, major quality",
+          "rationale": "Parallel major to melodic minor. Shares root but has F## instead of F#. Creates major-minor contrast on same tonic",
+          "musicalContext": "All genres. Use for major-minor interchange on tonic. Classic songwriting technique for emotional depth",
+          "musicGenreRecommendations": "All Genres, Pop, Rock, Jazz, Classical",
+          "recommendedUse": "Use for parallel major-minor relationship. Classic technique for adding emotional variety. Major brightness vs minor depth",
+          "targetNotes": ["D#", "F##", "A#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Lydian Augmented",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "Melodic minor with major 3rd - creates augmented major quality",
+          "rationale": "Differs from melodic minor by F#→F## (major 3rd). Creates bright major version with both #4 and #5. Maximum brightness",
+          "musicalContext": "Jazz and fusion. Creates even brighter sound than melodic minor. Used for maximum ethereal major quality",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary Jazz, Film Score",
+          "recommendedUse": "Use over D#maj7#5#11 chords for maximum brightness. Creates augmented major floating quality. Advanced jazz harmony",
+          "targetNotes": ["D#", "F##", "A##"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "B Major",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "Relative major area - natural 6th as major tonic",
+          "rationale": "B major (the natural 6th of D#) provides relative major perspective. Shares many notes with melodic minor",
+          "musicalContext": "All genres. Creates major color from the 6th degree. Common modulation point in melodic minor contexts",
+          "musicGenreRecommendations": "All Genres, Classical, Jazz, Pop",
+          "recommendedUse": "Use for modulation to relative major area. B major provides major color within melodic minor context",
+          "targetNotes": ["B", "D#", "F#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Blues Scale",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Blues scale provides bluesy contrast to jazz melodic minor",
+          "rationale": "Blues scale and melodic minor both create minor tonality but with different approaches. Blues is pentatonic, melodic minor is jazzy",
+          "musicalContext": "When combining blues and jazz approaches. Blues scale provides bluesy contrast to melodic minor's sophistication",
+          "musicGenreRecommendations": "Blues, Jazz, Fusion, Blues Rock",
+          "recommendedUse": "Use blues scale for bluesy moments, melodic minor for sophisticated jazz passages. Combining both creates rich minor vocabulary",
+          "targetNotes": ["A", "F#", "C##"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A# Lydian Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 9,
+          "relationship": "V7 Lydian dominant creates altered dominant resolution to melodic minor",
+          "rationale": "A# Lydian dominant (V7 of D#) creates sophisticated jazz dominant-tonic relationship with melodic minor",
+          "musicalContext": "Jazz and fusion. Essential for V7-i in melodic minor context. Creates sophisticated jazz cadences",
+          "musicGenreRecommendations": "Jazz, Fusion, Bebop, Modern Jazz",
+          "recommendedUse": "Essential V7-i for melodic minor. A#7#11 to D#m(maj7). Creates sophisticated jazz resolution with altered dominant",
+          "targetNotes": ["A#", "D##", "G#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "G# Melodic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Melodic minor built on iv - subdominant melodic minor",
+          "rationale": "G# melodic minor on iv creates parallel melodic minor progression. Both use melodic minor for consistent jazz minor atmosphere",
+          "musicalContext": "Jazz and fusion. Maintains melodic minor character across chord changes. Creates consistent modern jazz minor tonality",
+          "musicGenreRecommendations": "Jazz, Fusion, Modern Jazz, Contemporary",
+          "recommendedUse": "Use for iv-i progressions maintaining melodic minor character. Creates sophisticated jazz minor atmosphere across changes",
+          "targetNotes": ["G#", "B#", "D##"],
+          "difficultyLevel": 3
+        }
+      ]
+    },
+    "LocrianNatural6": {
+      "sourceScale": {
+        "name": "D# Locrian Natural 6",
+        "formula": [0, 1, 3, 5, 6, 9, 10],
+        "family": "harmonic-minor-modes",
+        "quality": "diminished"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Locrian",
+          "keyQuality": "diminished",
+          "compatibilityScore": 9,
+          "relationship": "Regular Locrian with b6 instead of natural 6",
+          "rationale": "Differs only by B#→B (b6). Regular Locrian is darker and more unstable. Natural 6 makes this mode slightly more melodic",
+          "musicalContext": "Jazz and contemporary music. When Locrian natural 6 needs more darkness. Regular Locrian is more conventionally unstable",
+          "musicGenreRecommendations": "Jazz, Contemporary Jazz, Avant-Garde",
+          "recommendedUse": "Use regular Locrian when natural 6 feels too bright. Creates more conventional half-diminished sound",
+          "targetNotes": ["D#", "E", "A"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "G# Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent harmonic minor scale (Locrian nat 6 is 2nd mode)",
+          "rationale": "D# Locrian natural 6 is the ii° scale in G# harmonic minor system. Understanding this provides harmonic context",
+          "musicalContext": "Classical and neoclassical music. Essential for understanding function in harmonic minor. The ii°-i relationship",
+          "musicGenreRecommendations": "Classical, Neoclassical, Baroque, Harmonic Minor Context",
+          "recommendedUse": "Think in G# harmonic minor for context. Helps understand ii°-V7-i progressions in classical minor harmony",
+          "targetNotes": ["G#", "B", "D##"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "D# Diminished (Half-Whole)",
+          "keyQuality": "diminished",
+          "compatibilityScore": 8,
+          "relationship": "Symmetrical diminished scale for half-diminished harmony",
+          "rationale": "The half-whole diminished provides chromatic richness for half-diminished chords. More options than Locrian natural 6",
+          "musicalContext": "Jazz and bebop. Provides more chromatic options for half-diminished voicings. Advanced jazz technique",
+          "musicGenreRecommendations": "Jazz, Bebop, Contemporary Jazz, Post-Bop",
+          "recommendedUse": "Use over D#m7b5 chords for chromatic richness. More options than Locrian natural 6. Advanced jazz voicing technique",
+          "targetNotes": ["D#", "E", "G", "A"],
+          "difficultyLevel": 5
+        }
+      ]
+    },
+    "IonianSharp5": {
+      "sourceScale": {
+        "name": "D# Ionian #5",
+        "formula": [0, 2, 4, 5, 8, 9, 11],
+        "family": "harmonic-minor-modes",
+        "quality": "augmented"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Major (Ionian)",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "Regular Ionian with natural 5th instead of #5",
+          "rationale": "Differs only by A##→A# (natural 5th). Regular Ionian is more stable and conventional. #5 creates augmented quality",
+          "musicalContext": "When Ionian #5 needs conventional stability. Regular major scale is more accessible and universal",
+          "musicGenreRecommendations": "All Genres, Pop, Rock, Classical",
+          "recommendedUse": "Use regular Ionian when #5 feels too exotic. Creates conventional major sound without augmentation",
+          "targetNotes": ["D#", "F##", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "B Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent harmonic minor scale (Ionian #5 is 3rd mode)",
+          "rationale": "D# Ionian #5 is the III+ scale in B harmonic minor system. Understanding this provides harmonic context",
+          "musicalContext": "Classical and ethnic music. Essential for understanding function in harmonic minor. The III+ major chord",
+          "musicGenreRecommendations": "Classical, World Music, Ethnic, Harmonic Minor Context",
+          "recommendedUse": "Think in B harmonic minor for context. Helps understand III+-i relationships in classical minor harmony",
+          "targetNotes": ["B", "D#", "F##"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Whole Tone",
+          "keyQuality": "augmented",
+          "compatibilityScore": 7,
+          "relationship": "Shares augmented quality with Ionian #5",
+          "rationale": "Both create augmented tonality. Whole tone is more ambiguous, Ionian #5 maintains major character with augmented 5th",
+          "musicalContext": "Impressionist and jazz. When Ionian #5 needs more ambiguity. Whole tone removes all conventional harmonic grounding",
+          "musicGenreRecommendations": "Impressionist, Jazz, Film Score, Avant-Garde",
+          "recommendedUse": "Use whole tone for maximum augmented ambiguity. More floating than Ionian #5. Creates Debussy-like suspension",
+          "targetNotes": ["D#", "F##", "A##"],
+          "difficultyLevel": 4
+        }
+      ]
+    },
+    "DorianSharp4": {
+      "sourceScale": {
+        "name": "D# Dorian #4",
+        "formula": [0, 2, 3, 6, 7, 9, 10],
+        "family": "harmonic-minor-modes",
+        "quality": "minor"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Regular Dorian with natural 4th instead of #4",
+          "rationale": "Differs only by G##→G# (natural 4th). Regular Dorian is more conventional. #4 creates exotic color",
+          "musicalContext": "When Dorian #4 needs conventional character. Regular Dorian is more versatile and widely applicable",
+          "musicGenreRecommendations": "Jazz, Funk, Rock, R&B, Contemporary",
+          "recommendedUse": "Use regular Dorian when #4 feels too exotic. Creates standard modern minor sound",
+          "targetNotes": ["D#", "B#", "F#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A# Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent harmonic minor scale (Dorian #4 is 4th mode)",
+          "rationale": "D# Dorian #4 is the iv scale in A# harmonic minor system. Understanding this provides harmonic context",
+          "musicalContext": "Classical and ethnic music. Essential for understanding function in harmonic minor. The iv minor chord with #4",
+          "musicGenreRecommendations": "Classical, World Music, Harmonic Minor Context",
+          "recommendedUse": "Think in A# harmonic minor for context. Helps understand iv-V7-i progressions in classical minor harmony",
+          "targetNotes": ["A#", "C##", "F##"],
+          "difficultyLevel": 4
+        }
+      ]
+    },
+    "PhrygianDominant": {
+      "sourceScale": {
+        "name": "D# Phrygian Dominant",
+        "formula": [0, 1, 4, 5, 7, 8, 10],
+        "family": "harmonic-minor-modes",
+        "quality": "dominant"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "Mixolydian with natural 2nd instead of b2",
+          "rationale": "Differs by E→E# (natural 2nd). Mixolydian is more conventional dominant. b2 creates Spanish exotic character",
+          "musicalContext": "When Phrygian dominant is too exotic. Mixolydian provides conventional blues-rock dominant sound",
+          "musicGenreRecommendations": "Rock, Blues, Funk, Jam Band",
+          "recommendedUse": "Use Mixolydian when Spanish flavor is too exotic. Creates standard dominant 7th sound",
+          "targetNotes": ["D#", "E#", "C#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "G# Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent harmonic minor scale (Phrygian dominant is 5th mode)",
+          "rationale": "D# Phrygian dominant is the V7 scale in G# harmonic minor system. The essential Spanish dominant",
+          "musicalContext": "Flamenco, Latin, and classical music. Essential V7 for harmonic minor. Creates authentic Spanish V7-i cadence",
+          "musicGenreRecommendations": "Flamenco, Latin, Classical, Spanish, Metal",
+          "recommendedUse": "Essential dominant scale for G# harmonic minor. Perfect over D#7 resolving to G#m. Authentic Spanish/classical V7-i",
+          "targetNotes": ["D#", "E", "F##"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Blues Scale",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Blues scale shares dominant character with different approach",
+          "rationale": "Both work over dominant chords but with different flavors. Phrygian dominant is Spanish, blues is American blues",
+          "musicalContext": "When combining Spanish and blues approaches. Creates fusion of flamenco and blues vocabulary",
+          "musicGenreRecommendations": "Fusion, World Music, Blues Rock, Flamenco Fusion",
+          "recommendedUse": "Use Phrygian dominant for Spanish flavor, blues for American blues. Combining creates world fusion sound",
+          "targetNotes": ["E", "A", "C#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "E Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 7,
+          "relationship": "Major scale on b2 creates Phrygian cadence",
+          "rationale": "E major (the b2) creates classic Phrygian cadence. The bII-I movement is signature of Phrygian dominant",
+          "musicalContext": "Flamenco and metal. The Phrygian cadence (bII-i) is essential to Spanish music. Dramatic resolution",
+          "musicGenreRecommendations": "Flamenco, Metal, Spanish, Classical",
+          "recommendedUse": "Use for dramatic Phrygian cadences. E major to D# creates signature Spanish resolution. Essential flamenco technique",
+          "targetNotes": ["E", "G#", "B"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "D# Phrygian",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Phrygian with minor 3rd instead of major 3rd",
+          "rationale": "Differs by F##→F# (minor 3rd). Phrygian is darker and more minor. Major 3rd creates dominant character",
+          "musicalContext": "When dominant quality needs to become minor. Phrygian provides dark minor color with same b2",
+          "musicGenreRecommendations": "Flamenco, Metal, Spanish, Middle Eastern",
+          "recommendedUse": "Use Phrygian for minor passages, Phrygian dominant for dominant chords. Both share Spanish b2 character",
+          "targetNotes": ["E", "F#", "C#"],
+          "difficultyLevel": 3
+        }
+      ]
+    },
+    "LydianSharp2": {
+      "sourceScale": {
+        "name": "D# Lydian #2",
+        "formula": [0, 3, 4, 6, 7, 9, 11],
+        "family": "harmonic-minor-modes",
+        "quality": "major"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "Regular Lydian with natural 2nd instead of #2",
+          "rationale": "Differs by E##→E# (natural 2nd). Regular Lydian is more melodic. #2 creates very exotic major sound",
+          "musicalContext": "When Lydian #2 is too exotic. Regular Lydian maintains brightness but is more melodically accessible",
+          "musicGenreRecommendations": "Jazz, Progressive Rock, Fusion, Film Score",
+          "recommendedUse": "Use regular Lydian when #2 is too unusual. Creates bright major sound that's more singable",
+          "targetNotes": ["D#", "G##", "B#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "F# Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent harmonic minor scale (Lydian #2 is 6th mode)",
+          "rationale": "D# Lydian #2 is the VI+ scale in F# harmonic minor system. Provides harmonic context for this exotic mode",
+          "musicalContext": "Classical and world music. Essential for understanding function in harmonic minor. The VI+ major chord",
+          "musicGenreRecommendations": "Classical, World Music, Ethnic, Harmonic Minor Context",
+          "recommendedUse": "Think in F# harmonic minor for context. Helps understand VI+-i relationships in classical minor harmony",
+          "targetNotes": ["F#", "A#", "C##"],
+          "difficultyLevel": 5
+        }
+      ]
+    },
+    "MixolydianFlat9Flat13": {
+      "sourceScale": {
+        "name": "D# Mixolydian b9 b13",
+        "formula": [0, 1, 4, 5, 7, 8, 10],
+        "family": "harmonic-minor-modes",
+        "quality": "dominant"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 7,
+          "relationship": "Regular Mixolydian without b9 and b13 alterations",
+          "rationale": "Regular Mixolydian has natural 9th and 13th. Much more conventional and bluesy. Alterations create exotic dominant",
+          "musicalContext": "When altered dominant is too exotic. Regular Mixolydian provides standard blues-rock dominant sound",
+          "musicGenreRecommendations": "Rock, Blues, Funk, Jam Band",
+          "recommendedUse": "Use regular Mixolydian for conventional dominant. Creates standard blues-rock sound without exotic alterations",
+          "targetNotes": ["D#", "E#", "B#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "E Harmonic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent harmonic minor scale (Mixolydian b9 b13 is 7th mode)",
+          "rationale": "D# Mixolydian b9 b13 is the vii° scale in E harmonic minor system. Most altered mode of harmonic minor",
+          "musicalContext": "Classical and jazz. Creates extreme altered dominant sound. Theoretical significance in harmonic minor system",
+          "musicGenreRecommendations": "Classical, Jazz, Contemporary, Harmonic Minor Context",
+          "recommendedUse": "Think in E harmonic minor for context. Very altered and unstable. Use briefly for extreme tension",
+          "targetNotes": ["E", "G", "Bb"],
+          "difficultyLevel": 5
+        }
+      ]
+    },
+    "DorianFlat2": {
+      "sourceScale": {
+        "name": "D# Dorian b2",
+        "formula": [0, 1, 3, 5, 7, 9, 10],
+        "family": "melodic-minor-modes",
+        "quality": "minor"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Regular Dorian with natural 2nd instead of b2",
+          "rationale": "Differs only by E→E# (natural 2nd). Regular Dorian is more melodic and conventional. b2 creates exotic character",
+          "musicalContext": "When Dorian b2 is too exotic. Regular Dorian is more versatile for contemporary music without Phrygian darkness",
+          "musicGenreRecommendations": "Jazz, Funk, Rock, R&B, Contemporary",
+          "recommendedUse": "Use regular Dorian when b2 feels too dark. Creates modern minor sound without exotic Phrygian character",
+          "targetNotes": ["D#", "E#", "B#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "C# Melodic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent melodic minor scale (Dorian b2 is 2nd mode)",
+          "rationale": "D# Dorian b2 is the ii scale in C# melodic minor system. Combines Dorian's major 6th with Phrygian's b2",
+          "musicalContext": "Jazz and fusion. Creates exotic yet modern minor sound. Essential for sophisticated jazz minor harmony",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary Jazz, Modern Jazz",
+          "recommendedUse": "Think in C# melodic minor for context. Advanced minor sound combining brightness (nat 6) with darkness (b2)",
+          "targetNotes": ["D#", "E", "B#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Phrygian",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Phrygian with raised 6th becomes Dorian b2",
+          "rationale": "Differs only by B→B# (natural 6th). Phrygian is darker with b6. Natural 6 brightens while keeping b2 exotic quality",
+          "musicalContext": "When Phrygian needs brightening. Dorian b2 maintains exotic b2 but adds major 6th brightness",
+          "musicGenreRecommendations": "Jazz, Fusion, Flamenco Fusion, Contemporary",
+          "recommendedUse": "Use when Phrygian is too dark. Natural 6 brightens the sound while maintaining Spanish b2 character",
+          "targetNotes": ["E", "B#", "F#"],
+          "difficultyLevel": 3
+        }
+      ]
+    },
+    "LydianAugmented": {
+      "sourceScale": {
+        "name": "D# Lydian Augmented",
+        "formula": [0, 2, 4, 6, 8, 9, 11],
+        "family": "melodic-minor-modes",
+        "quality": "major"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "Regular Lydian with natural 5th instead of #5",
+          "rationale": "Differs only by A##→A# (natural 5th). Regular Lydian is more stable. #5 creates augmented floating quality",
+          "musicalContext": "When augmented quality is too exotic. Regular Lydian maintains brightness but is more grounded",
+          "musicGenreRecommendations": "Jazz, Progressive Rock, Fusion, Film Score",
+          "recommendedUse": "Use regular Lydian when #5 augmentation is too unstable. Creates bright major without augmented tension",
+          "targetNotes": ["D#", "G##", "A#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "B Melodic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent melodic minor scale (Lydian augmented is 3rd mode)",
+          "rationale": "D# Lydian augmented is the III+ scale in B melodic minor system. Maximum brightness with augmented 5th",
+          "musicalContext": "Jazz and fusion. Essential for understanding function in melodic minor. The III+ major chord with Lydian character",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary Jazz, Modern Jazz",
+          "recommendedUse": "Think in B melodic minor for context. Creates maximum brightness and floating quality. Advanced jazz harmony",
+          "targetNotes": ["B", "D#", "F##"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Whole Tone",
+          "keyQuality": "augmented",
+          "compatibilityScore": 8,
+          "relationship": "Shares augmented quality with Lydian augmented",
+          "rationale": "Both create augmented tonality. Whole tone is more ambiguous, Lydian augmented maintains major Lydian character",
+          "musicalContext": "Impressionist and jazz. When Lydian augmented needs complete ambiguity. Whole tone removes all conventional grounding",
+          "musicGenreRecommendations": "Impressionist, Jazz, Film Score, Avant-Garde",
+          "recommendedUse": "Use whole tone for maximum augmented ambiguity. More floating than Lydian augmented. Debussy-like suspension",
+          "targetNotes": ["D#", "G##", "A##"],
+          "difficultyLevel": 4
+        }
+      ]
+    },
+    "LydianDominant": {
+      "sourceScale": {
+        "name": "D# Lydian Dominant",
+        "formula": [0, 2, 4, 6, 7, 9, 10],
+        "family": "melodic-minor-modes",
+        "quality": "dominant"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 9,
+          "relationship": "Mixolydian with natural 4th instead of #4",
+          "rationale": "Differs only by G##→G# (natural 4th). Mixolydian is more conventional blues-rock. #4 creates jazz sophistication",
+          "musicalContext": "When Lydian dominant is too sophisticated. Mixolydian provides standard blues-rock dominant sound",
+          "musicGenreRecommendations": "Rock, Blues, Funk, Jam Band",
+          "recommendedUse": "Use Mixolydian for conventional dominant. Creates standard blues sound without Lydian #4 jazz flavor",
+          "targetNotes": ["D#", "G#", "C#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "A# Melodic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent melodic minor scale (Lydian dominant is 4th mode)",
+          "rationale": "D# Lydian dominant is the IV7 scale in A# melodic minor system. Essential altered dominant for jazz",
+          "musicalContext": "Jazz, bebop, and fusion. The primary altered dominant scale in jazz. Essential for sophisticated dominant alterations",
+          "musicGenreRecommendations": "Jazz, Bebop, Fusion, Modern Jazz, Post-Bop",
+          "recommendedUse": "Think in A# melodic minor for context. Essential dominant scale over D#7#11. Primary jazz altered dominant choice",
+          "targetNotes": ["D#", "G##", "C#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "Lydian with natural 7th instead of b7",
+          "rationale": "Differs only by C#→C## (natural 7th). Lydian is pure major brightness. b7 creates dominant function",
+          "musicalContext": "When dominant function is not needed. Pure Lydian creates bright major without dominant resolution tendency",
+          "musicGenreRecommendations": "Jazz, Progressive Rock, Film Score, Fusion",
+          "recommendedUse": "Use pure Lydian for modal major without dominant function. Lydian dominant for V7 chords with brightness",
+          "targetNotes": ["G##", "C##", "F##"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Bebop Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 9,
+          "relationship": "Lydian dominant with added natural 7th for bebop lines",
+          "rationale": "Bebop dominant adds C## (natural 7th) to Lydian dominant for chromatic passing tones. Essential for bebop phrasing",
+          "musicalContext": "Bebop and jazz. Creates smooth bebop eighth-note lines. The chromatic passing tone enables proper phrase endings",
+          "musicGenreRecommendations": "Bebop, Jazz, Post-Bop, Hard Bop",
+          "recommendedUse": "Use for bebop lines over D#7#11 chords. The added chromatic note creates smooth bebop phrasing. Charlie Parker style",
+          "targetNotes": ["G##", "C#", "C##"],
+          "difficultyLevel": 4
+        }
+      ]
+    },
+    "MixolydianFlat6": {
+      "sourceScale": {
+        "name": "D# Mixolydian b6",
+        "formula": [0, 2, 4, 5, 7, 8, 10],
+        "family": "melodic-minor-modes",
+        "quality": "dominant"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 9,
+          "relationship": "Regular Mixolydian with natural 6th instead of b6",
+          "rationale": "Differs only by B→B# (natural 6th). Regular Mixolydian is brighter and more conventional. b6 creates darker dominant",
+          "musicalContext": "When dark altered dominant is too exotic. Regular Mixolydian provides bright conventional blues-rock sound",
+          "musicGenreRecommendations": "Rock, Blues, Funk, Jam Band",
+          "recommendedUse": "Use regular Mixolydian for conventional dominant. Creates standard blues sound without b6 darkness",
+          "targetNotes": ["D#", "B#", "C#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "G# Melodic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent melodic minor scale (Mixolydian b6 is 5th mode)",
+          "rationale": "D# Mixolydian b6 is the V7 scale in G# melodic minor system. Creates dark sophisticated dominant color",
+          "musicalContext": "Jazz and fusion. Essential for sophisticated dominant alterations. Creates dark dominant tension in jazz",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary Jazz, Modern Jazz",
+          "recommendedUse": "Think in G# melodic minor for context. Use over D#7b13 chords. Creates dark sophisticated dominant sound",
+          "targetNotes": ["D#", "B", "C#"],
+          "difficultyLevel": 4
+        }
+      ]
+    },
+    "AeolianFlat5": {
+      "sourceScale": {
+        "name": "D# Aeolian b5",
+        "formula": [0, 2, 3, 5, 6, 8, 10],
+        "family": "melodic-minor-modes",
+        "quality": "diminished"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Aeolian (Natural Minor)",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Natural minor with natural 5th instead of b5",
+          "rationale": "Differs only by A→A# (natural 5th). Natural minor is stable and conventional. b5 creates half-diminished quality",
+          "musicalContext": "When half-diminished quality is too unstable. Natural minor provides stable conventional minor sound",
+          "musicGenreRecommendations": "Rock, Metal, Classical, Folk",
+          "recommendedUse": "Use natural minor for stable minor. Aeolian b5 for half-diminished harmony. b5 creates instability",
+          "targetNotes": ["D#", "A#", "F#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "F# Melodic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent melodic minor scale (Aeolian b5 is 6th mode)",
+          "rationale": "D# Aeolian b5 is the vi scale in F# melodic minor system. Natural minor with added b5 tension",
+          "musicalContext": "Jazz and contemporary music. Creates half-diminished character with minor tonality. Advanced jazz voicing",
+          "musicGenreRecommendations": "Jazz, Contemporary Jazz, Fusion, Modern Jazz",
+          "recommendedUse": "Think in F# melodic minor for context. Use over D#m7b5 chords. Creates sophisticated half-diminished sound",
+          "targetNotes": ["F#", "A", "C#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Locrian",
+          "keyQuality": "diminished",
+          "compatibilityScore": 8,
+          "relationship": "Locrian with raised 2nd becomes Aeolian b5",
+          "rationale": "Differs only by E→E# (natural 2nd). Locrian is darker with b2. Natural 2 makes Aeolian b5 more melodic",
+          "musicalContext": "When Locrian is too dark and unstable. Aeolian b5 is more melodic while maintaining b5 tension",
+          "musicGenreRecommendations": "Jazz, Contemporary, Modern Jazz",
+          "recommendedUse": "Use when Locrian is too harsh. Natural 2nd makes it more singable while keeping half-diminished quality",
+          "targetNotes": ["E#", "A", "C#"],
+          "difficultyLevel": 4
+        }
+      ]
+    },
+    "SuperLocrian": {
+      "sourceScale": {
+        "name": "D# Super Locrian (Altered)",
+        "formula": [0, 1, 3, 4, 6, 8, 10],
+        "family": "melodic-minor-modes",
+        "quality": "diminished"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Locrian",
+          "keyQuality": "diminished",
+          "compatibilityScore": 8,
+          "relationship": "Locrian is less altered than super Locrian",
+          "rationale": "Super Locrian has even more alterations (b4/bb5). Regular Locrian is more conventional for half-diminished",
+          "musicalContext": "When super Locrian is too altered. Regular Locrian provides standard half-diminished sound",
+          "musicGenreRecommendations": "Jazz, Contemporary Jazz, Classical",
+          "recommendedUse": "Use Locrian for conventional half-diminished. Super Locrian for maximum altered dominant tension",
+          "targetNotes": ["D#", "E", "A"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "E Melodic Minor",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent melodic minor scale (Super Locrian is 7th mode)",
+          "rationale": "D# Super Locrian is the vii alt scale in E melodic minor system. Maximum altered dominant scale",
+          "musicalContext": "Modern jazz and bebop. The most altered scale possible. Essential for altered dominant jazz harmony",
+          "musicGenreRecommendations": "Modern Jazz, Bebop, Post-Bop, Free Jazz, Avant-Garde",
+          "recommendedUse": "Think in E melodic minor for context. Use over D#7alt chords. All altered tensions (b9,#9,#11,b13) available",
+          "targetNotes": ["E", "G", "A", "C"],
+          "difficultyLevel": 5
+        },
+        {
+          "scaleName": "D# Diminished (Whole-Half)",
+          "keyQuality": "diminished",
+          "compatibilityScore": 8,
+          "relationship": "Symmetrical diminished scale for altered dominant",
+          "rationale": "Both work over altered dominants. Diminished is more symmetrical, super Locrian more linear. Different approaches",
+          "musicalContext": "Jazz and bebop. When super Locrian needs symmetrical structure. Diminished provides different altered vocabulary",
+          "musicGenreRecommendations": "Jazz, Bebop, Contemporary Jazz, Post-Bop",
+          "recommendedUse": "Use diminished for symmetrical altered approach. Super Locrian for linear altered lines. Both work on D#7alt",
+          "targetNotes": ["D#", "F##", "A", "C"],
+          "difficultyLevel": 5
+        }
+      ]
+    },
+    "MajorPentatonic": {
+      "sourceScale": {
+        "name": "D# Major Pentatonic",
+        "formula": [0, 2, 4, 7, 9],
+        "family": "pentatonic",
+        "quality": "major"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Major (Ionian)",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Parent major scale - pentatonic is subset removing 4th and 7th",
+          "rationale": "Major pentatonic contains only the most consonant notes of D# major. Adding 4th and 7th creates full major scale",
+          "musicalContext": "Universal in all genres. Major pentatonic is the safest foundation, full major scale adds all diatonic notes",
+          "musicGenreRecommendations": "All Genres, Pop, Rock, Country, Blues, Folk",
+          "recommendedUse": "Start with pentatonic for safety, add full major scale for complete diatonic vocabulary. Natural progression",
+          "targetNotes": ["D#", "F##", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D# Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "Lydian contains all pentatonic notes plus #4 and 7th",
+          "rationale": "Major pentatonic fits perfectly into Lydian. Adding #4 and 7th creates bright Lydian character",
+          "musicalContext": "Jazz and progressive rock. Pentatonic provides foundation, Lydian adds characteristic brightness",
+          "musicGenreRecommendations": "Jazz, Progressive Rock, Fusion, Film Score",
+          "recommendedUse": "Use pentatonic as base, add G## (#4) for Lydian color. Creates bright sophisticated major sound",
+          "targetNotes": ["D#", "G##", "A#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 9,
+          "relationship": "Mixolydian contains all pentatonic notes plus 4th and b7",
+          "rationale": "Major pentatonic fits perfectly into Mixolydian. Adding 4th and b7 creates bluesy dominant character",
+          "musicalContext": "Rock, blues, and funk. Pentatonic provides foundation, Mixolydian adds dominant groove",
+          "musicGenreRecommendations": "Rock, Blues, Funk, Jam Band, Southern Rock",
+          "recommendedUse": "Use pentatonic as base, add C# (b7) for dominant flavor. Creates blues-rock groove",
+          "targetNotes": ["D#", "C#", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "B Major Pentatonic",
+          "keyQuality": "major",
+          "compatibilityScore": 9,
+          "relationship": "Relative major pentatonic from the 6th degree",
+          "rationale": "B major pentatonic (from the 6th of D#) shares many notes and creates relative major color",
+          "musicalContext": "Rock, pop, and blues. Creates fresh perspective by emphasizing the 6th degree area. Common melodic variation",
+          "musicGenreRecommendations": "Pop, Rock, Blues, Country",
+          "recommendedUse": "Use for melodic variety over D# major. B pentatonic provides relative major perspective. Simple but effective",
+          "targetNotes": ["B", "D#", "F#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "F## (G) Major Pentatonic",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "Major pentatonic from major 3rd creates bright color",
+          "rationale": "G major pentatonic (enharmonically F##) emphasizes the major 3rd area. Creates bright melodic color",
+          "musicalContext": "Rock and blues. Creates melodic interest by emphasizing different scale degrees. Common soloing technique",
+          "musicGenreRecommendations": "Rock, Blues, Country, Folk",
+          "recommendedUse": "Use for melodic variety emphasizing the 3rd degree area. G pentatonic provides fresh perspective",
+          "targetNotes": ["G", "B", "D"],
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "MinorPentatonic": {
+      "sourceScale": {
+        "name": "D# Minor Pentatonic",
+        "formula": [0, 3, 5, 7, 10],
+        "family": "pentatonic",
+        "quality": "minor"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Aeolian (Natural Minor)",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Parent natural minor - pentatonic is subset removing 2nd and b6",
+          "rationale": "Minor pentatonic contains the core consonant notes of natural minor. Adding 2nd and b6 creates full natural minor",
+          "musicalContext": "Universal minor sound. Pentatonic is safest foundation, natural minor adds all diatonic notes",
+          "musicGenreRecommendations": "All Genres, Rock, Blues, Metal, Folk",
+          "recommendedUse": "Start with pentatonic for safety, add full natural minor for complete diatonic vocabulary. Natural progression",
+          "targetNotes": ["D#", "F#", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D# Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Dorian contains all pentatonic notes plus 2nd and natural 6th",
+          "rationale": "Minor pentatonic fits perfectly into Dorian. Adding 2nd and natural 6 creates modern minor brightness",
+          "musicalContext": "Jazz, funk, and contemporary music. Pentatonic provides foundation, Dorian adds characteristic major 6th",
+          "musicGenreRecommendations": "Jazz, Funk, Rock, R&B, Contemporary",
+          "recommendedUse": "Use pentatonic as base, add B# (natural 6) for Dorian character. Creates modern minor sound",
+          "targetNotes": ["D#", "B#", "F#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D# Blues Scale",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Blues scale is minor pentatonic plus blue note (b5)",
+          "rationale": "Blues scale adds A natural (b5) to minor pentatonic. The blue note creates essential blues character",
+          "musicalContext": "Blues, blues-rock, and rock. The defining scale of blues guitar. Essential for authentic blues sound",
+          "musicGenreRecommendations": "Blues, Blues Rock, Rock, Hard Rock, Southern Rock",
+          "recommendedUse": "Add A natural (blue note) to minor pentatonic for blues flavor. Emphasize and bend into b5",
+          "targetNotes": ["A", "F#", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D# Phrygian",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Phrygian contains pentatonic notes plus b2 and b6",
+          "rationale": "Minor pentatonic fits into Phrygian. Adding b2 and b6 creates exotic Spanish/Middle Eastern character",
+          "musicalContext": "Flamenco and metal. Pentatonic provides foundation, Phrygian adds characteristic b2 darkness",
+          "musicGenreRecommendations": "Flamenco, Metal, Spanish, Middle Eastern",
+          "recommendedUse": "Use pentatonic as base, add E (b2) for Spanish exotic flavor. Creates flamenco character",
+          "targetNotes": ["E", "F#", "D#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "F# Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Relative minor pentatonic from minor 3rd area",
+          "rationale": "F# minor pentatonic shares notes with D# minor pentatonic. Creates fresh perspective from minor 3rd",
+          "musicalContext": "Rock and blues. Creates melodic variety by emphasizing different scale degrees. Common soloing technique",
+          "musicGenreRecommendations": "Rock, Blues, Metal, Hard Rock",
+          "recommendedUse": "Use for melodic variety over D# minor. F# pentatonic provides different tonal center",
+          "targetNotes": ["F#", "A", "C#"],
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "BluesScale": {
+      "sourceScale": {
+        "name": "D# Blues Scale",
+        "formula": [0, 3, 5, 6, 7, 10],
+        "family": "pentatonic",
+        "quality": "minor"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Blues scale is minor pentatonic with added b5",
+          "rationale": "Removing the blue note (A natural) creates minor pentatonic. Blues scale adds characteristic blues tension",
+          "musicalContext": "When blues character is too strong. Minor pentatonic is cleaner without blue note tension",
+          "musicGenreRecommendations": "All Minor Contexts, Rock, Blues, Metal",
+          "recommendedUse": "Use minor pentatonic when blues flavor is too intense. Remove A natural for cleaner minor sound",
+          "targetNotes": ["D#", "F#", "A#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D# Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 9,
+          "relationship": "Blues scale fits within Dorian framework",
+          "rationale": "Blues scale works perfectly over Dorian. Dorian's natural 6 complements blues pentatonic foundation",
+          "musicalContext": "Jazz and funk. Blues scale provides bluesy foundation, Dorian adds sophisticated natural 6",
+          "musicGenreRecommendations": "Jazz, Funk, Blues, R&B, Soul",
+          "recommendedUse": "Use blues scale for blues phrases, add Dorian's natural 6 for jazz sophistication. Creates blues-jazz fusion",
+          "targetNotes": ["D#", "A", "B#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 9,
+          "relationship": "Blues scale works perfectly over dominant 7th chords",
+          "rationale": "Blues scale over Mixolydian/dominant creates authentic blues sound. The essence of blues tonality",
+          "musicalContext": "Blues, blues-rock, and rock. Essential for blues improvisation over dominant 7th chords",
+          "musicGenreRecommendations": "Blues, Blues Rock, Rock, Southern Rock, Jam Band",
+          "recommendedUse": "Essential for blues over D#7 chords. Creates authentic major-minor blues ambiguity",
+          "targetNotes": ["A", "C#", "F#"],
+          "difficultyLevel": 1
+        },
+        {
+          "scaleName": "D# Major (Ionian)",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "Blues scale creates blues tonality over major chords",
+          "rationale": "Blues scale over major creates major-minor blues ambiguity. Essential blues guitar technique",
+          "musicalContext": "Blues and rock. The signature sound of blues guitar over major progressions",
+          "musicGenreRecommendations": "Blues, Blues Rock, Rock, Country Blues",
+          "recommendedUse": "Use blues scale over D# major for authentic blues sound. Creates major-minor tension characteristic of blues",
+          "targetNotes": ["F#", "A", "C#"],
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "JapanesePentatonic": {
+      "sourceScale": {
+        "name": "D# Japanese Pentatonic (In Sen)",
+        "formula": [0, 1, 5, 7, 10],
+        "family": "pentatonic",
+        "quality": "other"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Phrygian",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Japanese pentatonic shares Phrygian's characteristic b2",
+          "rationale": "The b2 (E natural) is central to both scales. Japanese pentatonic is a subset emphasizing this exotic interval",
+          "musicalContext": "World music and fusion. Both create exotic Asian/Spanish character through the b2 interval",
+          "musicGenreRecommendations": "World Music, Asian, Fusion, Ambient, Film Score",
+          "recommendedUse": "Use Japanese pentatonic for Asian flavor, Phrygian for Spanish. Both share exotic b2 character",
+          "targetNotes": ["E", "D#", "G#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "D# Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Both are five-note minor scales with different intervallic structures",
+          "rationale": "Minor pentatonic is more universal blues-based. Japanese pentatonic is more exotic and modal",
+          "musicalContext": "When Asian flavor is too exotic. Minor pentatonic provides universal minor sound",
+          "musicGenreRecommendations": "Rock, Blues, Metal, Universal Minor",
+          "recommendedUse": "Use minor pentatonic for conventional minor, Japanese for Asian exotic character",
+          "targetNotes": ["D#", "F#", "A#"],
+          "difficultyLevel": 1
+        }
+      ]
+    },
+    "EgyptianPentatonic": {
+      "sourceScale": {
+        "name": "D# Egyptian Pentatonic",
+        "formula": [0, 2, 5, 7, 10],
+        "family": "pentatonic",
+        "quality": "other"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Minor Pentatonic",
+          "keyQuality": "minor",
+          "compatibilityScore": 8,
+          "relationship": "Both are minor pentatonics with different intervallic emphasis",
+          "rationale": "Egyptian pentatonic emphasizes 2nd degree, minor pentatonic emphasizes minor 3rd. Different minor flavors",
+          "musicalContext": "Egyptian creates more suspended minor quality. Minor pentatonic is more bluesy and grounded",
+          "musicGenreRecommendations": "World Music, Ethnic, Ambient, Film Score",
+          "recommendedUse": "Use Egyptian for suspended exotic minor, standard minor pentatonic for blues-based minor",
+          "targetNotes": ["E#", "G#", "C#"],
+          "difficultyLevel": 2
+        },
+        {
+          "scaleName": "D# Dorian",
+          "keyQuality": "minor",
+          "compatibilityScore": 7,
+          "relationship": "Egyptian pentatonic fits within Dorian framework",
+          "rationale": "Egyptian pentatonic notes are contained in Dorian. Creates suspended minor sound within modern minor context",
+          "musicalContext": "World fusion and ambient. Egyptian provides exotic color, Dorian provides modern minor framework",
+          "musicGenreRecommendations": "World Fusion, Ambient, Contemporary, Ethnic",
+          "recommendedUse": "Use Egyptian pentatonic for exotic suspended passages within Dorian minor contexts",
+          "targetNotes": ["D#", "E#", "A#"],
+          "difficultyLevel": 2
+        }
+      ]
+    },
+    "Chromatic": {
+      "sourceScale": {
+        "name": "D# Chromatic",
+        "formula": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+        "family": "symmetrical",
+        "quality": "other"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Major (Ionian)",
+          "keyQuality": "major",
+          "compatibilityScore": 10,
+          "relationship": "Chromatic contains all notes including entire major scale",
+          "rationale": "Major scale provides diatonic framework. Chromatic adds all chromatic passing tones for maximum melodic flexibility",
+          "musicalContext": "All genres. Major provides harmonic structure, chromatic adds melodic embellishment and passing tones",
+          "musicGenreRecommendations": "All Genres, Jazz, Classical, Contemporary",
+          "recommendedUse": "Use major scale for harmonic grounding, chromatic for passing tones and embellishments. Essential for sophisticated melody",
+          "targetNotes": ["D#", "F##", "A#"],
+          "difficultyLevel": 3
+        },
+        {
+          "scaleName": "D# Minor (Aeolian)",
+          "keyQuality": "minor",
+          "compatibilityScore": 10,
+          "relationship": "Chromatic contains all notes including entire natural minor scale",
+          "rationale": "Natural minor provides diatonic framework. Chromatic adds all chromatic passing tones for melodic flexibility",
+          "musicalContext": "All genres. Minor provides harmonic structure, chromatic adds melodic embellishment",
+          "musicGenreRecommendations": "All Genres, Jazz, Classical, Contemporary",
+          "recommendedUse": "Use natural minor for harmonic grounding, chromatic for passing tones. Essential for sophisticated minor melody",
+          "targetNotes": ["D#", "F#", "A#"],
+          "difficultyLevel": 3
+        }
+      ]
+    },
+    "WholeTone": {
+      "sourceScale": {
+        "name": "D# Whole Tone",
+        "formula": [0, 2, 4, 6, 8, 10],
+        "family": "symmetrical",
+        "quality": "augmented"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Lydian",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "Both create upward, bright floating quality",
+          "rationale": "Lydian has #4 brightness, whole tone takes it further to complete ambiguity. Both create suspended floating feeling",
+          "musicalContext": "Impressionist and film music. Lydian is brighter major, whole tone is completely ambiguous. Progressive relationship",
+          "musicGenreRecommendations": "Impressionist, Film Score, Jazz, Avant-Garde, Ambient",
+          "recommendedUse": "Use Lydian for bright major with grounding, whole tone for complete ambiguous suspension. Debussy-like atmosphere",
+          "targetNotes": ["D#", "F##", "A"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Augmented",
+          "keyQuality": "augmented",
+          "compatibilityScore": 9,
+          "relationship": "Both symmetrical scales creating augmented quality",
+          "rationale": "Augmented scale is a subset. Both divide octave symmetrically and create augmented tonality. Different approaches",
+          "musicalContext": "Jazz and avant-garde. Both create augmented tension. Augmented is more structured, whole tone more ambiguous",
+          "musicGenreRecommendations": "Jazz, Avant-Garde, Contemporary, Experimental",
+          "recommendedUse": "Use augmented for structured augmented harmony, whole tone for floating ambiguity. Both work over D#aug",
+          "targetNotes": ["D#", "F##", "A##"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Lydian Augmented",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "Both feature augmented 5th creating floating quality",
+          "rationale": "Lydian augmented maintains major Lydian character with #5. Whole tone is more ambiguous. Both create augmented tension",
+          "musicalContext": "Jazz and fusion. Lydian augmented has major grounding, whole tone is completely ambiguous",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary Jazz, Film Score",
+          "recommendedUse": "Use Lydian augmented for major with #5, whole tone for complete ambiguity. Progressive augmentation levels",
+          "targetNotes": ["D#", "G##", "A##"],
+          "difficultyLevel": 4
+        }
+      ]
+    },
+    "DiminishedHalfWhole": {
+      "sourceScale": {
+        "name": "D# Diminished (Half-Whole)",
+        "formula": [0, 1, 3, 4, 6, 7, 9, 10],
+        "family": "symmetrical",
+        "quality": "diminished"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Locrian",
+          "keyQuality": "diminished",
+          "compatibilityScore": 8,
+          "relationship": "Both create half-diminished/diminished quality",
+          "rationale": "Locrian is diatonic half-diminished. Diminished adds chromatic richness. Both work over m7b5 chords",
+          "musicalContext": "Jazz and contemporary music. Locrian is more diatonic, diminished adds chromatic options",
+          "musicGenreRecommendations": "Jazz, Bebop, Contemporary Jazz, Avant-Garde",
+          "recommendedUse": "Use Locrian for diatonic half-diminished, diminished for chromatic richness. Both over D#m7b5",
+          "targetNotes": ["D#", "E", "A"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Super Locrian",
+          "keyQuality": "diminished",
+          "compatibilityScore": 7,
+          "relationship": "Both extremely altered scales for diminished/altered harmony",
+          "rationale": "Super Locrian is linear altered scale. Diminished is symmetrical. Different approaches to extreme alteration",
+          "musicalContext": "Modern jazz and bebop. Super Locrian for linear altered lines, diminished for symmetrical approach",
+          "musicGenreRecommendations": "Modern Jazz, Bebop, Post-Bop, Free Jazz",
+          "recommendedUse": "Use super Locrian for altered dominant lines, diminished for symmetrical diminished harmony. Both extremely altered",
+          "targetNotes": ["D#", "E", "G"],
+          "difficultyLevel": 5
+        }
+      ]
+    },
+    "DiminishedWholeHalf": {
+      "sourceScale": {
+        "name": "D# Diminished (Whole-Half)",
+        "formula": [0, 2, 3, 5, 6, 8, 9, 11],
+        "family": "symmetrical",
+        "quality": "diminished"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Mixolydian",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "Both work over dominant 7th chords",
+          "rationale": "Mixolydian is diatonic dominant. Whole-half diminished adds all dominant tensions (b9,#9,#11,13). Different approaches",
+          "musicalContext": "Jazz and bebop. Mixolydian for diatonic dominant, diminished for chromatic altered dominant",
+          "musicGenreRecommendations": "Jazz, Bebop, Blues, Rock, Contemporary Jazz",
+          "recommendedUse": "Use Mixolydian for conventional dominant, whole-half diminished for altered D#7b9 chords with all tensions",
+          "targetNotes": ["D#", "F##", "C#"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Bebop Dominant",
+          "keyQuality": "dominant",
+          "compatibilityScore": 8,
+          "relationship": "Both eight-note scales for dominant harmony",
+          "rationale": "Bebop dominant adds chromatic passing tone to Mixolydian. Diminished provides all tensions symmetrically. Different bebop approaches",
+          "musicalContext": "Bebop and jazz. Bebop dominant for linear bebop lines, diminished for symmetrical tension",
+          "musicGenreRecommendations": "Bebop, Jazz, Post-Bop, Hard Bop",
+          "recommendedUse": "Use bebop dominant for bebop phrases, whole-half diminished for D#7b9 with maximum tensions",
+          "targetNotes": ["D#", "A#", "C#"],
+          "difficultyLevel": 4
+        }
+      ]
+    },
+    "Augmented": {
+      "sourceScale": {
+        "name": "D# Augmented",
+        "formula": [0, 3, 4, 7, 8, 11],
+        "family": "symmetrical",
+        "quality": "augmented"
+      },
+      "compatibleScales": [
+        {
+          "scaleName": "D# Whole Tone",
+          "keyQuality": "augmented",
+          "compatibilityScore": 9,
+          "relationship": "Both symmetrical scales creating augmented quality",
+          "rationale": "Whole tone divides octave by 6 whole steps. Augmented is a hexatonic subset. Both create augmented tension",
+          "musicalContext": "Jazz and impressionist music. Augmented is more structured, whole tone more ambiguous. Both for augmented chords",
+          "musicGenreRecommendations": "Jazz, Impressionist, Avant-Garde, Contemporary",
+          "recommendedUse": "Use augmented for structured augmented harmony, whole tone for complete ambiguity. Both over D#aug",
+          "targetNotes": ["D#", "F##", "A##"],
+          "difficultyLevel": 4
+        },
+        {
+          "scaleName": "D# Lydian Augmented",
+          "keyQuality": "major",
+          "compatibilityScore": 8,
+          "relationship": "Both feature augmented 5th",
+          "rationale": "Lydian augmented is major scale with #4 and #5. Augmented scale is more abstract. Both create augmented quality",
+          "musicalContext": "Jazz and fusion. Lydian augmented maintains major character, augmented is more symmetrical and abstract",
+          "musicGenreRecommendations": "Jazz, Fusion, Contemporary Jazz, Modern Jazz",
+          "recommendedUse": "Use Lydian augmented for major with #5, augmented scale for abstract augmented harmony. Different augmented approaches",
+          "targetNotes": ["D#", "G##", "A##"],
+          "difficultyLevel": 4
+        }
+      ]
+    }
+  },
+  "status": "D# key complete"
+}

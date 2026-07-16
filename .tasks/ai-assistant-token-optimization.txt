@@ -1,0 +1,166 @@
+AI ASSISTANT TOKEN OPTIMIZATION - TASK LIST
+============================================
+Created: 2026-01-11
+Goal: Reduce AI API token usage by 60-70% while preserving full functionality
+
+OVERVIEW:
+---------
+Currently, the AI assistant returns full scale data (intervals, noteDegrees, chordTones) 
+for each recommendation, which uses excessive tokens. We will optimize by:
+1. Having AI return only: scaleName, rootNote, rationale, genreContext, difficulty
+2. Using GPT-4o-mini's consistent naming to map to our internal scale database
+3. Populating intervals, noteDegrees, chordTones from our EXTENDED_SCALE_INTERVALS
+
+GPT-4O-MINI CANONICAL NAMING SPECIFICATION:
+-------------------------------------------
+Keys (12 only, no flats): C, C#, D, D#, E, F, F#, G, G#, A, A#, B
+Scales/Modes (exact spelling with Unicode symbols):
+- Aeolian (Natural Minor)
+- Aeolian ♭5
+- Augmented
+- Blues
+- Chromatic
+- Diminished (Half-Whole)
+- Diminished (Whole-Half)
+- Dorian
+- Dorian ♭2
+- Dorian ♯4
+- Egyptian Pentatonic
+- Harmonic Minor
+- Ionian (Major)
+- Ionian ♯5
+- Japanese Pentatonic
+- Locrian
+- Locrian ♮6
+- Lydian
+- Lydian ♯2
+- Lydian Augmented
+- Lydian Dominant
+- Melodic Minor
+- Mixolydian
+- Mixolydian ♭6
+- Mixolydian ♭9 ♭13
+- Pentatonic Major
+- Pentatonic Minor
+- Phrygian
+- Phrygian Dominant
+- Super Locrian
+- Whole Tone
+
+TASKS:
+------
+
+[X] 1. CREATE SCALE DATABASE MAPPING SYSTEM
+    - Create new file: lib/ai-assistant/scale-database-mapper.ts
+    - Map GPT-4o-mini canonical names to EXTENDED_SCALE_INTERVALS keys
+    - Handle name variations and Unicode symbols
+    - Create function: mapAIScaleNameToDatabase(scaleName: string): string | null
+    - Create function: getScaleIntervals(scaleName: string, rootNote: string): number[]
+    - Create function: calculateNoteDegrees(rootNote: string, intervals: number[]): NoteDegree[]
+    - Create function: extractChordTones(noteDegrees: NoteDegree[]): string[]
+    - Add comprehensive error handling and fallbacks
+    ✓ COMPLETED
+
+[X] 2. UPDATE AI RESPONSE TYPES
+    - Update lib/ai-assistant/types.ts
+    - Create new interface: AIScaleRecommendationSlim (without intervals, noteDegrees, chordTones)
+    - Keep existing AIScaleRecommendation for backward compatibility
+    - Add type: AIScaleRecommendationResponse = AIScaleRecommendationSlim | AIScaleRecommendation
+    - Update AIAssistantResponse to use new slim type
+    - Made maxTokens optional in AIAssistantConfig
+    ✓ COMPLETED
+
+[X] 3. UPDATE PROMPT BUILDER
+    - Update lib/ai-assistant/prompt-builder.ts
+    - Remove intervals, noteDegrees, chordTones from example response
+    - Update JSON schema to only include: scaleName, rootNote, rationale, genreContext, difficulty
+    - Add instruction: "Use exact scale names from the canonical list provided"
+    - Add canonical scale name list to prompt
+    - Reduce token usage from ~1000 to ~400 tokens
+    ✓ COMPLETED
+
+[X] 4. CREATE SCALE ENRICHMENT SERVICE
+    - Create new file: lib/ai-assistant/scale-enrichment.ts
+    - Function: enrichScaleRecommendation(slim: AIScaleRecommendationSlim): AIScaleRecommendation
+    - Use scale-database-mapper to populate missing fields
+    - Handle cases where AI returns unknown scale names
+    - Add logging for debugging mismatches
+    - Return fully populated AIScaleRecommendation
+    - Added enrichScaleRecommendations() for batch processing
+    - Added getEnrichmentStats() for monitoring
+    ✓ COMPLETED
+
+[X] 5. UPDATE OPENAI SERVICE
+    - Update lib/ai-assistant/openai-service.ts
+    - Parse AI response as slim recommendations
+    - Call enrichScaleRecommendations() for batch enrichment
+    - Return enriched AIScaleRecommendation[] to client
+    - Maintain backward compatibility
+    - Add error handling for enrichment failures
+    - Add logging for token usage and enrichment stats
+    ✓ COMPLETED
+
+[X] 6. UPDATE SCALE PARSER
+    - Update lib/ai-assistant/scale-parser.ts
+    - Ensure parseAIScaleToFretboard works with enriched data
+    - Add validation that intervals exist before parsing
+    - Add fallback to EXTENDED_SCALE_INTERVALS if AI data is incomplete
+    - Test with various scale types
+    ✓ VERIFIED - Parser already validates intervals and works with enriched data
+
+[X] 7. ADD VALIDATION & TESTING
+    - Create test file: lib/ai-assistant/__tests__/scale-enrichment.test.ts
+    - Test all canonical scale names map correctly
+    - Test all 12 keys work properly
+    - Test noteDegree calculation accuracy
+    - Test chordTone extraction
+    - Test edge cases and error handling
+    ✓ COMPLETED - Comprehensive test suite created
+
+[X] 8. UPDATE DOCUMENTATION
+    - Create blueprints/ai-assistant-token-optimization.md
+    - Document new token optimization approach
+    - Document canonical naming specification
+    - Add troubleshooting guide for name mismatches
+    - Update API response examples
+    - Document architecture and token savings
+    ✓ COMPLETED
+
+[ ] 9. PERFORMANCE MONITORING
+    - Add token usage comparison logging
+    - Track before/after token counts
+    - Monitor for AI naming inconsistencies
+    - Create dashboard for token savings metrics
+
+[ ] 10. DEPLOYMENT & ROLLBACK PLAN
+    - Test thoroughly in development
+    - Create feature flag for gradual rollout
+    - Monitor error rates after deployment
+    - Have rollback plan ready
+    - Document any issues encountered
+
+EXPECTED RESULTS:
+-----------------
+- Token usage reduction: 60-70% per request
+- Response time improvement: 30-40% faster
+- Cost savings: ~$0.002 per request
+- Maintained functionality: 100%
+- User experience: Unchanged or improved
+
+DEPENDENCIES:
+-------------
+- EXTENDED_SCALE_INTERVALS (lib/musicalCompatibility.ts)
+- musicTheory functions (lib/musicTheory.ts)
+- Existing AI assistant infrastructure
+
+RISKS & MITIGATION:
+-------------------
+Risk: AI uses inconsistent scale naming
+Mitigation: Fuzzy matching, fallback to full response, logging
+
+Risk: Missing scales in EXTENDED_SCALE_INTERVALS
+Mitigation: Add missing scales, fallback handling
+
+Risk: Breaking existing functionality
+Mitigation: Comprehensive testing, gradual rollout, feature flag
+

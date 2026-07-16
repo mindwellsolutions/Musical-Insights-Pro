@@ -1,0 +1,289 @@
+═══════════════════════════════════════════════════════════════════════════════
+  AI ASSISTANT CHAT HISTORY SYSTEM - COMPREHENSIVE TASK LIST
+═══════════════════════════════════════════════════════════════════════════════
+
+PROJECT OVERVIEW:
+Build a complete chat history system for the AI Assistant that allows users to:
+- Save and manage multiple conversation threads
+- View conversation history in a modern, sleek modal interface
+- Continue previous conversations seamlessly
+- Search and filter conversations
+- Delete or archive old conversations
+
+═══════════════════════════════════════════════════════════════════════════════
+PHASE 1: DATABASE DESIGN & SETUP
+═══════════════════════════════════════════════════════════════════════════════
+
+[ ] 1.1 Design Supabase SQL Schema
+    - Create 'ai_conversations' table
+      * id (uuid, primary key)
+      * user_id (uuid, foreign key to auth.users)
+      * title (text) - Auto-generated from first message or user-defined
+      * created_at (timestamp with time zone)
+      * updated_at (timestamp with time zone)
+      * is_archived (boolean, default false)
+      * message_count (integer, default 0)
+      * preview_text (text) - First 100 chars of conversation
+      * metadata (jsonb) - For extensibility
+    
+    - Create 'ai_messages' table
+      * id (uuid, primary key)
+      * conversation_id (uuid, foreign key to ai_conversations)
+      * role (text) - 'user' or 'assistant'
+      * content (text)
+      * created_at (timestamp with time zone)
+      * tokens_used (integer, nullable)
+      * metadata (jsonb) - For tool calls, errors, etc.
+
+[ ] 1.2 Set up RLS (Row Level Security) Policies
+    - ai_conversations: Users can only access their own conversations
+    - ai_messages: Users can only access messages from their conversations
+    - Service role admin access for both tables
+
+[ ] 1.3 Create Database Indexes
+    - Index on ai_conversations.user_id for fast user lookups
+    - Index on ai_conversations.updated_at for sorting
+    - Index on ai_messages.conversation_id for message retrieval
+    - Index on ai_messages.created_at for chronological ordering
+
+[ ] 1.4 Create Database Functions
+    - update_conversation_timestamp() - Trigger to update updated_at
+    - increment_message_count() - Trigger to update message_count
+    - update_preview_text() - Function to update conversation preview
+
+═══════════════════════════════════════════════════════════════════════════════
+PHASE 2: BACKEND API DEVELOPMENT
+═══════════════════════════════════════════════════════════════════════════════
+
+[ ] 2.1 Create API Route: /api/ai-assistant/conversations
+    - GET: List all conversations for authenticated user
+      * Support pagination (limit, offset)
+      * Support sorting (created_at, updated_at)
+      * Support filtering (archived, search query)
+      * Return: { conversations: [], total: number, hasMore: boolean }
+    
+    - POST: Create new conversation
+      * Input: { title?: string, firstMessage?: string }
+      * Auto-generate title if not provided
+      * Return: { conversation: {...}, id: string }
+
+[ ] 2.2 Create API Route: /api/ai-assistant/conversations/[id]
+    - GET: Retrieve full conversation with all messages
+      * Include pagination for messages if conversation is very long
+      * Return: { conversation: {...}, messages: [] }
+    
+    - PATCH: Update conversation
+      * Allow updating: title, is_archived
+      * Return: { conversation: {...} }
+    
+    - DELETE: Delete conversation and all messages
+      * Cascade delete all associated messages
+      * Return: { success: boolean }
+
+[ ] 2.3 Create API Route: /api/ai-assistant/conversations/[id]/messages
+    - POST: Add message to conversation
+      * Input: { role: 'user' | 'assistant', content: string, metadata?: {} }
+      * Update conversation.updated_at and message_count
+      * Update preview_text if first message
+      * Return: { message: {...} }
+
+[ ] 2.4 Update Existing Chat API
+    - Modify /api/ai-assistant/chat to accept conversation_id
+    - Save all messages to database when conversation_id provided
+    - Create new conversation if conversation_id not provided
+    - Return conversation_id in response
+
+═══════════════════════════════════════════════════════════════════════════════
+PHASE 3: FRONTEND STATE MANAGEMENT
+═══════════════════════════════════════════════════════════════════════════════
+
+[ ] 3.1 Create TypeScript Types
+    - File: lib/ai-assistant/types.ts
+    - Define: Conversation, Message, ConversationListItem
+    - Define: ConversationFilters, PaginationParams
+
+[ ] 3.2 Create React Query Hooks
+    - File: hooks/useAIConversations.ts
+    - useConversations() - List conversations with filters
+    - useConversation(id) - Get single conversation with messages
+    - useCreateConversation() - Mutation for creating conversation
+    - useUpdateConversation() - Mutation for updating conversation
+    - useDeleteConversation() - Mutation for deleting conversation
+    - useAddMessage() - Mutation for adding message
+
+[ ] 3.3 Create Conversation Context
+    - File: contexts/ConversationContext.tsx
+    - Manage current active conversation
+    - Handle switching between conversations
+    - Provide conversation state to AI Assistant component
+
+═══════════════════════════════════════════════════════════════════════════════
+PHASE 4: GUI COMPONENTS DEVELOPMENT
+═══════════════════════════════════════════════════════════════════════════════
+
+[ ] 4.1 Create ChatHistoryModal Component
+    - File: components/ai-assistant/ChatHistoryModal.tsx
+    - Full-screen modal with backdrop blur
+    - Two-panel layout: Sidebar (left) + Preview (right)
+    - Responsive: Stack vertically on mobile
+    - Close button with smooth animation
+    - Theme-aware styling using app's color palette
+
+[ ] 4.2 Create ConversationSidebar Component
+    - File: components/ai-assistant/ConversationSidebar.tsx
+    - Search bar at top for filtering conversations
+    - Sort dropdown (Recent, Oldest, A-Z)
+    - Filter tabs: All, Active, Archived
+    - Scrollable list of conversation items
+    - "New Conversation" button at top
+    - Loading skeleton states
+    - Empty state when no conversations
+
+[ ] 4.3 Create ConversationListItem Component
+    - File: components/ai-assistant/ConversationListItem.tsx
+    - Display: Title, preview text, timestamp, message count
+    - Hover effects with accent color
+    - Selected state highlighting
+    - Context menu button (3 dots) for actions
+    - Truncate long titles and previews
+    - Relative timestamps (e.g., "2 hours ago", "Yesterday")
+
+[ ] 4.4 Create ConversationPreview Component
+    - File: components/ai-assistant/ConversationPreview.tsx
+    - Display full conversation messages
+    - Scrollable message list
+    - Message bubbles (user vs assistant styling)
+    - Timestamp for each message
+    - Action buttons: "Open in Assistant", "Delete", "Archive"
+    - Loading state while fetching messages
+    - Empty state for new/empty conversations
+
+[ ] 4.5 Create ConversationActions Component
+    - File: components/ai-assistant/ConversationActions.tsx
+    - Dropdown menu with actions:
+      * Rename conversation
+      * Archive/Unarchive
+      * Delete conversation
+      * Export as text/JSON
+    - Confirmation dialogs for destructive actions
+    - Toast notifications for success/error
+
+═══════════════════════════════════════════════════════════════════════════════
+PHASE 5: AI ASSISTANT INTEGRATION
+═══════════════════════════════════════════════════════════════════════════════
+
+[ ] 5.1 Update AIAssistant Component
+    - Add "History" button to header
+    - Connect to ConversationContext
+    - Load conversation when selected from history
+    - Save messages to current conversation
+    - Create new conversation on first message if none exists
+
+[ ] 5.2 Implement Auto-Save Functionality
+    - Save user messages immediately when sent
+    - Save assistant responses when received
+    - Update conversation title based on first exchange
+    - Handle network errors gracefully with retry logic
+
+[ ] 5.3 Add Conversation Switching
+    - Clear current chat when switching conversations
+    - Load all messages from selected conversation
+    - Smooth transition animation
+    - Preserve scroll position when switching back
+
+═══════════════════════════════════════════════════════════════════════════════
+PHASE 6: ADVANCED FEATURES
+═══════════════════════════════════════════════════════════════════════════════
+
+[ ] 6.1 Implement Search Functionality
+    - Full-text search across conversation titles and messages
+    - Highlight search matches in results
+    - Debounced search input (300ms)
+    - Clear search button
+
+[ ] 6.2 Add Conversation Export
+    - Export as plain text
+    - Export as JSON
+    - Export as Markdown
+    - Download file with conversation title as filename
+
+[ ] 6.3 Implement Keyboard Shortcuts
+    - Ctrl/Cmd + K: Open chat history
+    - Ctrl/Cmd + N: New conversation
+    - Esc: Close modal
+    - Arrow keys: Navigate conversation list
+
+[ ] 6.4 Add Conversation Analytics
+    - Track total conversations
+    - Track total messages sent
+    - Track tokens used (if available)
+    - Display in user profile or settings
+
+═══════════════════════════════════════════════════════════════════════════════
+PHASE 7: TESTING & POLISH
+═══════════════════════════════════════════════════════════════════════════════
+
+[ ] 7.1 Test Database Operations
+    - Test RLS policies with different users
+    - Test cascade deletes
+    - Test concurrent updates
+    - Test pagination with large datasets
+
+[ ] 7.2 Test UI/UX
+    - Test responsive design on mobile/tablet/desktop
+    - Test dark/light theme compatibility
+    - Test loading states and error handling
+    - Test keyboard navigation and accessibility
+
+[ ] 7.3 Performance Optimization
+    - Implement virtual scrolling for long conversation lists
+    - Lazy load messages in preview
+    - Optimize database queries with proper indexes
+    - Add caching with React Query
+
+[ ] 7.4 Error Handling & Edge Cases
+    - Handle network failures gracefully
+    - Handle deleted conversations
+    - Handle concurrent edits
+    - Show user-friendly error messages
+
+═══════════════════════════════════════════════════════════════════════════════
+DESIGN SPECIFICATIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+COLOR PALETTE (from webapp theme):
+- Primary Accent: theme.accentPrimary (vibrant blue/purple)
+- Secondary Accent: theme.accentSecondary (complementary color)
+- Background Primary: theme.bgPrimary (main background)
+- Background Secondary: theme.bgSecondary (cards, panels)
+- Background Tertiary: theme.bgTertiary (nested elements)
+- Text Primary: theme.textPrimary (main text)
+- Text Secondary: theme.textSecondary (muted text)
+- Border: theme.border (dividers, outlines)
+
+MODAL LAYOUT:
+┌─────────────────────────────────────────────────────────────┐
+│  Chat History                                    [X] Close  │
+├──────────────────┬──────────────────────────────────────────┤
+│  SIDEBAR (30%)   │  PREVIEW PANEL (70%)                     │
+│                  │                                           │
+│  [Search...]     │  Conversation Title              [Actions]│
+│  [Sort ▼]        │  ─────────────────────────────────────── │
+│                  │                                           │
+│  ┌────────────┐  │  ┌─────────────────────────────────────┐│
+│  │ Conv 1     │  │  │ User: How do I...                   ││
+│  │ Preview... │  │  │ 2:30 PM                             ││
+│  │ 5 msgs     │  │  └─────────────────────────────────────┘│
+│  └────────────┘  │                                           │
+│  ┌────────────┐  │  ┌─────────────────────────────────────┐│
+│  │ Conv 2     │  │  │ Assistant: You can...               ││
+│  │ Preview... │  │  │ 2:31 PM                             ││
+│  │ 12 msgs    │  │  └─────────────────────────────────────┘│
+│  └────────────┘  │                                           │
+│                  │  [Open in Assistant] [Archive] [Delete]  │
+└──────────────────┴──────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+END OF TASK LIST
+═══════════════════════════════════════════════════════════════════════════════
+

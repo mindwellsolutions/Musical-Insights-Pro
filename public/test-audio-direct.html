@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direct Audio Test - smplr</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        button:hover {
+            background: #2563eb;
+        }
+        button:disabled {
+            background: #6b7280;
+            cursor: not-allowed;
+        }
+        #log {
+            background: #000;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .success { color: #10b981; }
+        .error { color: #ef4444; }
+        .info { color: #3b82f6; }
+    </style>
+</head>
+<body>
+    <h1>🎵 Direct Audio Test - smplr</h1>
+    <p>This page tests the smplr audio engine directly without any framework overhead.</p>
+    
+    <div>
+        <button id="testBtn">🔊 Test Single Note (C4)</button>
+        <button id="testChordBtn">🎹 Test Chord (C Major)</button>
+        <button id="testSequenceBtn">🎼 Test Sequence</button>
+    </div>
+    
+    <div id="log"></div>
+
+    <script type="module">
+        import { Soundfont } from 'https://unpkg.com/smplr@0.18.1/dist/index.mjs';
+
+        const log = document.getElementById('log');
+        
+        function addLog(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = type;
+            div.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            log.appendChild(div);
+            log.scrollTop = log.scrollHeight;
+            console.log(message);
+        }
+
+        let context = null;
+        let piano = null;
+
+        async function initAudio() {
+            if (context) return;
+            
+            addLog('🎹 Creating AudioContext...', 'info');
+            context = new AudioContext();
+            addLog(`✅ AudioContext created - State: ${context.state}`, 'success');
+            addLog(`   Sample Rate: ${context.sampleRate}Hz`, 'info');
+            
+            await context.resume();
+            addLog(`✅ AudioContext resumed - State: ${context.state}`, 'success');
+            
+            addLog('🎹 Creating Soundfont (Piano)...', 'info');
+            piano = new Soundfont(context, {
+                instrument: 'acoustic_grand_piano',
+            });
+            
+            addLog('⏳ Loading samples...', 'info');
+            await piano.load;
+            addLog('✅ Samples loaded!', 'success');
+            
+            if (piano.output) {
+                addLog('✅ Piano has output node', 'success');
+                piano.output.setVolume(127);
+                addLog('✅ Volume set to 127 (max)', 'success');
+            } else {
+                addLog('❌ Piano has NO output node!', 'error');
+            }
+        }
+
+        document.getElementById('testBtn').onclick = async () => {
+            try {
+                await initAudio();
+                
+                addLog('🎵 Playing C4 (MIDI 60)...', 'info');
+                piano.start({ note: 60, velocity: 100 });
+                
+                setTimeout(() => {
+                    piano.stop({ note: 60 });
+                    addLog('✅ Note stopped', 'success');
+                }, 2000);
+                
+                addLog('✅ Note triggered - You should hear a piano note!', 'success');
+            } catch (error) {
+                addLog(`❌ Error: ${error.message}`, 'error');
+                console.error(error);
+            }
+        };
+
+        document.getElementById('testChordBtn').onclick = async () => {
+            try {
+                await initAudio();
+                
+                const chord = [60, 64, 67]; // C, E, G
+                addLog(`🎹 Playing C major chord: ${chord.join(', ')}`, 'info');
+                
+                chord.forEach(note => {
+                    piano.start({ note, velocity: 100 });
+                });
+                
+                setTimeout(() => {
+                    chord.forEach(note => {
+                        piano.stop({ note });
+                    });
+                    addLog('✅ Chord stopped', 'success');
+                }, 2000);
+                
+                addLog('✅ Chord triggered - You should hear a C major chord!', 'success');
+            } catch (error) {
+                addLog(`❌ Error: ${error.message}`, 'error');
+                console.error(error);
+            }
+        };
+
+        document.getElementById('testSequenceBtn').onclick = async () => {
+            try {
+                await initAudio();
+                
+                const notes = [60, 64, 67, 72]; // C, E, G, C
+                addLog(`🎼 Playing sequence: C4, E4, G4, C5`, 'info');
+                
+                const now = context.currentTime;
+                notes.forEach((note, i) => {
+                    const time = now + (i * 0.5);
+                    piano.start({ note, velocity: 100, time });
+                    piano.stop({ note, time: time + 0.4 });
+                });
+                
+                addLog('✅ Sequence scheduled - You should hear an arpeggio!', 'success');
+            } catch (error) {
+                addLog(`❌ Error: ${error.message}`, 'error');
+                console.error(error);
+            }
+        };
+
+        addLog('👋 Ready! Click a button to test audio.', 'info');
+        addLog('⚠️  Make sure your system volume is up!', 'info');
+    </script>
+</body>
+</html>
+

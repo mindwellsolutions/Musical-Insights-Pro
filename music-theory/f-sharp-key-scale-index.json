@@ -1,0 +1,150 @@
+{
+  "key": "F#",
+  "totalScales": 20,
+  "scaleIndex": [
+    {
+      "scalesArrayKey": "Key_of_F_Sharp",
+      "fullScaleName": "F# Key Center",
+      "family": "key-center",
+      "quality": "major/minor"
+    },
+    {
+      "scalesArrayKey": "Ionian",
+      "fullScaleName": "F# Major (Ionian)",
+      "family": "major-modes",
+      "quality": "major"
+    },
+    {
+      "scalesArrayKey": "Dorian",
+      "fullScaleName": "F# Dorian",
+      "family": "major-modes",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "Phrygian",
+      "fullScaleName": "F# Phrygian",
+      "family": "major-modes",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "Lydian",
+      "fullScaleName": "F# Lydian",
+      "family": "major-modes",
+      "quality": "major"
+    },
+    {
+      "scalesArrayKey": "Mixolydian",
+      "fullScaleName": "F# Mixolydian",
+      "family": "major-modes",
+      "quality": "dominant"
+    },
+    {
+      "scalesArrayKey": "Aeolian",
+      "fullScaleName": "F# Natural Minor (Aeolian)",
+      "family": "major-modes",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "HarmonicMinor",
+      "fullScaleName": "F# Harmonic Minor",
+      "family": "minor-variants",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "MelodicMinor",
+      "fullScaleName": "F# Melodic Minor",
+      "family": "minor-variants",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "PhrygianDominant",
+      "fullScaleName": "F# Phrygian Dominant",
+      "family": "harmonic-minor-modes",
+      "quality": "dominant"
+    },
+    {
+      "scalesArrayKey": "LydianDominant",
+      "fullScaleName": "F# Lydian Dominant",
+      "family": "melodic-minor-modes",
+      "quality": "dominant"
+    },
+    {
+      "scalesArrayKey": "MajorPentatonic",
+      "fullScaleName": "F# Major Pentatonic",
+      "family": "pentatonic",
+      "quality": "major"
+    },
+    {
+      "scalesArrayKey": "MinorPentatonic",
+      "fullScaleName": "F# Minor Pentatonic",
+      "family": "pentatonic",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "BluesScale",
+      "fullScaleName": "F# Blues Scale",
+      "family": "pentatonic",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "WholeTone",
+      "fullScaleName": "F# Whole Tone",
+      "family": "symmetrical",
+      "quality": "augmented"
+    },
+    {
+      "scalesArrayKey": "DiminishedHalfWhole",
+      "fullScaleName": "F# Diminished (Half-Whole)",
+      "family": "symmetrical",
+      "quality": "diminished"
+    },
+    {
+      "scalesArrayKey": "C_Sharp_Major",
+      "fullScaleName": "C# Major",
+      "family": "related-keys",
+      "quality": "major"
+    },
+    {
+      "scalesArrayKey": "B_Major",
+      "fullScaleName": "B Major",
+      "family": "related-keys",
+      "quality": "major"
+    },
+    {
+      "scalesArrayKey": "D_Sharp_Minor",
+      "fullScaleName": "D# Minor (Relative Minor of F# Major)",
+      "family": "related-keys",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "A_Sharp_Minor",
+      "fullScaleName": "A# Minor (Relative Minor of C# Major)",
+      "family": "related-keys",
+      "quality": "minor"
+    },
+    {
+      "scalesArrayKey": "G_Sharp_Minor",
+      "fullScaleName": "G# Minor (ii chord area)",
+      "family": "related-keys",
+      "quality": "minor"
+    }
+  ],
+  "scalesByFamily": {
+    "key-center": ["Key_of_F_Sharp"],
+    "major-modes": ["Ionian", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian"],
+    "minor-variants": ["HarmonicMinor", "MelodicMinor"],
+    "harmonic-minor-modes": ["PhrygianDominant"],
+    "melodic-minor-modes": ["LydianDominant"],
+    "pentatonic": ["MajorPentatonic", "MinorPentatonic", "BluesScale"],
+    "symmetrical": ["WholeTone", "DiminishedHalfWhole"],
+    "related-keys": ["C_Sharp_Major", "B_Major", "D_Sharp_Minor", "A_Sharp_Minor", "G_Sharp_Minor"]
+  },
+  "scalesByQuality": {
+    "major": ["Ionian", "Lydian", "MajorPentatonic", "C_Sharp_Major", "B_Major"],
+    "minor": ["Dorian", "Phrygian", "Aeolian", "HarmonicMinor", "MelodicMinor", "MinorPentatonic", "BluesScale", "D_Sharp_Minor", "A_Sharp_Minor", "G_Sharp_Minor"],
+    "dominant": ["Mixolydian", "PhrygianDominant", "LydianDominant"],
+    "diminished": ["DiminishedHalfWhole"],
+    "augmented": ["WholeTone"],
+    "major/minor": ["Key_of_F_Sharp"]
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "chordQuality": "major",
+  "displayName": "Major",
+  "suffix": "",
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-09",
+  "description": "Major chord compatibility data",
+  "intervals": [
+    0,
+    4,
+    7
+  ],
+  "compatibleScales": [
+    {
+      "scaleName": "C Major Pentatonic",
+      "scaleDbKey": "MajorPentatonic",
+      "compatibilityScore": 10,
+      "relationship": "Primary pentatonic - perfect consonance",
+      "musicalContext": "Contains all chord tones (C, E, G) plus safe extensions (D, A). The most foolproof scale for C major improvisation with zero avoid notes.",
+      "chordTones": [
+        "C",
+        "E",
+        "G"
+      ],
+      "tensions": [
+        "D (9th)",
+        "A (13th)"
+      ],
+      "avoidNotes": [],
+      "musicGenreRecommendations": "General",
+      "difficultyLevel": 1,
+      "commonUse": "The go-to scale for C major in rock, country, blues, and pop. Guaranteed consonance. Ideal for beginners and memorable hooks.",
+      "famousExamples": "Target the root (C) and major 3rd (E) for resolution. The A (13th) adds brightness. Perfect for simple, memorable melodies."
+    },
+    {
+      "scaleName": "C Major (Ionian)",
+      "scaleDbKey": "Ionian",
+      "compatibilityScore": 10,
+      "relationship": "Parent scale - complete diatonic harmony",
+      "musicalContext": "The fundamental scale of C major. No sharps or flats - the natural scale. Contains all chord tones and available extensions for complete melodic freedom.",
+      "chordTones": [
+        "C",
+        "E",
+        "G"
+      ],
+      "tensions": [
+        "D (9th)",
+        "F (11th)",
+        "A (13th)",
+        "B (maj7)"
+      ],
+      "avoidNotes": [],
+      "musicGenreRecommendations": "General",
+      "difficultyLevel": 1,
+      "commonUse": "Complete freedom over C major. The foundation of Western music. Works in classical, pop, jazz, folk, and all styles.",
+      "famousExamples": "All notes work over I major. The F (11th) can sound suspended - resolve to E or G. Emphasize chord tones on downbeats."
+    },
+    {
+      "scaleName": "C Lydian",
+      "scaleDbKey": "Lydian",
+      "compatibilityScore": 9,
+      "relationship": "Bright major with #11",
+      "musicalContext": "Raises F to F# (#11) creating dreamy, ethereal major sound. The characteristic Lydian sound - bright, floating, modern.",
+      "chordTones": [
+        "C",
+        "E",
+        "G"
+      ],
+      "tensions": [
+        "D (9th)",
+        "F# (#11)",
+        "A (13th)",
+        "B (maj7)"
+      ],
+      "avoidNotes": [],
+      "musicGenreRecommendations": "General",
+      "difficultyLevel": 2,
+      "commonUse": "Use for Cmaj7#11 or modern I major sounds. Essential for film scores, jazz, fusion, and progressive rock. Creates magical, floating quality.",
+      "famousExamples": "Emphasize the #11 (F#) for signature Lydian color. Creates uplifting, optimistic quality. Perfect for sustained I major chords."
+    },
+    {
+      "scaleName": "C Mixolydian",
+      "scaleDbKey": "Mixolydian",
+      "compatibilityScore": 9,
+      "relationship": "Dominant major with b7",
+      "musicalContext": "Lowers B to Bb (b7) creating dominant 7th character. Perfect for bluesy, rock-oriented C major. The I7 sound common in blues.",
+      "chordTones": [
+        "C",
+        "E",
+        "G"
+      ],
+      "tensions": [
+        "D (9th)",
+        "F (11th)",
+        "A (13th)",
+        "Bb (b7)"
+      ],
+      "avoidNotes": [],
+      "musicGenreRecommendations": "General",
+      "difficultyLevel": 2,
+      "commonUse": "Perfect for C7 chords and blues/rock vamps. Essential for jam bands, folk rock, and Americana. Use when you want major with bluesy flavor.",
+      "famousExamples": "The Bb (b7) creates bluesy edge. Emphasize E and Bb for dominant character. Great for rock and blues guitar."
+    },
+    {
+      "scaleName": "G Minor Pentatonic",
+      "scaleDbKey": "MinorPentatonic",
+      "compatibilityScore": 8,
+      "relationship": "Built on V - creates bluesy major sound",
+      "musicalContext": "All notes diatonic to C major. The minor pentatonic from the V creates safe blues-rock sound over I major.",
+      "chordTones": [
+        "G",
+        "Bb",
+        "D"
+      ],
+      "tensions": [
+        "F (11th)",
+        "C (root)"
+      ],
+      "avoidNotes": [],
+      "musicGenreRecommendations": "General",
+      "difficultyLevel": 1,
+      "commonUse": "Essential rock guitar scale over C major. Safe and bluesy. Perfect for rock solos in major keys from Led Zeppelin to modern rock.",
+      "famousExamples": "Creates bluesy major without clash. The Bb adds slight tension. Classic rock guitar approach to major chords."
+    }
+  ]
+}

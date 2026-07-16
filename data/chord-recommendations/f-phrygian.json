@@ -1,0 +1,155 @@
+{
+  "key": "F",
+  "scale": "Phrygian",
+  "quality": "minor",
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-25",
+  "diatonicChords": [
+    {
+      "degree": "I",
+      "symbol": "Fm",
+      "fullName": "Fm Minor",
+      "quality": "minor",
+      "notes": [
+        "F",
+        "G#",
+        "C"
+      ],
+      "function": "Tonic - Home base, resolution",
+      "commonUse": "Degree 1 in Phrygian",
+      "compatibilityScore": 10
+    },
+    {
+      "degree": "ii",
+      "symbol": "F#",
+      "fullName": "F# Major",
+      "quality": "major",
+      "notes": [
+        "F#",
+        "A#",
+        "C#"
+      ],
+      "function": "Supertonic - Pre-dominant function",
+      "commonUse": "Degree 2 in Phrygian",
+      "compatibilityScore": 8
+    },
+    {
+      "degree": "iii",
+      "symbol": "G#",
+      "fullName": "G# Major",
+      "quality": "major",
+      "notes": [
+        "G#",
+        "C",
+        "D#"
+      ],
+      "function": "Mediant - Tonic extension",
+      "commonUse": "Degree 3 in Phrygian",
+      "compatibilityScore": 8
+    },
+    {
+      "degree": "IV",
+      "symbol": "A#m",
+      "fullName": "A#m Minor",
+      "quality": "minor",
+      "notes": [
+        "A#",
+        "C#",
+        "F"
+      ],
+      "function": "Subdominant - Pre-dominant, sets up dominant",
+      "commonUse": "Degree 4 in Phrygian",
+      "compatibilityScore": 10
+    },
+    {
+      "degree": "V",
+      "symbol": "C°",
+      "fullName": "C° Diminished",
+      "quality": "diminished",
+      "notes": [
+        "C",
+        "D#",
+        "F#"
+      ],
+      "function": "Dominant - Tension, leads to tonic",
+      "commonUse": "Degree 5 in Phrygian",
+      "compatibilityScore": 10
+    },
+    {
+      "degree": "vi",
+      "symbol": "C#",
+      "fullName": "C# Major",
+      "quality": "major",
+      "notes": [
+        "C#",
+        "F",
+        "G#"
+      ],
+      "function": "Submediant - Relative minor/major",
+      "commonUse": "Degree 6 in Phrygian",
+      "compatibilityScore": 8
+    },
+    {
+      "degree": "vii°",
+      "symbol": "D#m",
+      "fullName": "D#m Minor",
+      "quality": "minor",
+      "notes": [
+        "D#",
+        "F#",
+        "A#"
+      ],
+      "function": "Leading tone - Strong pull to tonic",
+      "commonUse": "Degree 7 in Phrygian",
+      "compatibilityScore": 8
+    }
+  ],
+  "extendedChords": [
+    {
+      "degree": "Imaj7",
+      "symbol": "Fmaj7",
+      "fullName": "F Major 7th",
+      "quality": "maj7",
+      "notes": [
+        "F",
+        "A",
+        "C",
+        "E"
+      ],
+      "function": "Tonic with color",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    },
+    {
+      "degree": "IVmaj7",
+      "symbol": "A#maj7",
+      "fullName": "A# Major 7th",
+      "quality": "maj7",
+      "notes": [
+        "A#",
+        "D",
+        "F",
+        "A"
+      ],
+      "function": "Subdominant with color",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    },
+    {
+      "degree": "V7",
+      "symbol": "Cmaj7",
+      "fullName": "C Major 7th",
+      "quality": "maj7",
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B"
+      ],
+      "function": "Dominant with tension",
+      "commonUse": "Jazz, R&B, sophisticated pop",
+      "compatibilityScore": 9
+    }
+  ],
+  "modalInterchangeChords": []
+}
