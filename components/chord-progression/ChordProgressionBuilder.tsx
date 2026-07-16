@@ -4,7 +4,7 @@
  * Main container component for Chord Progression Builder
  */
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { useChordProgressionState } from '@/hooks/chord-progression/useChordProgressionState';
 import { useTimelinePlayback } from '@/hooks/chord-progression/useTimelinePlayback';
 import { useKeyboardShortcuts } from '@/hooks/chord-progression/useKeyboardShortcuts';
@@ -31,7 +31,7 @@ import CircleOf5ths from '@/components/CircleOf5ths';
 import HamburgerMenu from '@/components/HamburgerMenu';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Download, HelpCircle, ArrowLeft, Menu, Undo, Redo, History, ChevronLeft, Play, Pause, Square, RotateCcw } from 'lucide-react';
+import { Download, HelpCircle, ArrowLeft, Menu, Undo, Redo, History, ChevronLeft, Play, Pause, Square, RotateCcw, Sparkles, Music2, Plus, Wand2, GitBranch } from 'lucide-react';
 import Image from 'next/image';
 import { useToast } from '@/hooks/use-toast';
 import { ScaleModeInstance } from '@/lib/chord-progression/types';
@@ -148,7 +148,9 @@ export default function ChordProgressionBuilder() {
   const [generatorPanelRef, setGeneratorPanelRef] = useState<{
     triggerUpdateRecommendations: (updates: any[]) => void;
     setGeneratingUpdates: (isGenerating: boolean) => void;
+    switchToTab?: (tab: string) => void;
   } | null>(null);
+  const generatorScrollRef = useRef<HTMLDivElement>(null);
 
   const {
     playbackState,
@@ -674,7 +676,125 @@ export default function ChordProgressionBuilder() {
 
       {/* Main Content Area - Timeline + Generator */}
       <div className="flex-1 overflow-hidden flex flex-col">
-        {/* Timeline Visualization */}
+        {/* Empty State — shown only when timeline has no chords */}
+        {(!activeVerse || activeVerse.chordProgression.length === 0) ? (
+          <div className="flex-1 flex flex-col items-center justify-center relative overflow-hidden bg-[#080810]" style={{ minHeight: 240 }}>
+            {/* Animated background grid */}
+            <div className="absolute inset-0 pointer-events-none" style={{
+              backgroundImage: 'linear-gradient(rgba(59,130,246,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.06) 1px, transparent 1px)',
+              backgroundSize: '40px 40px',
+            }} />
+            {/* Radial glow */}
+            <div className="absolute inset-0 pointer-events-none" style={{
+              background: 'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(59,130,246,0.10) 0%, transparent 70%)',
+            }} />
+
+            {/* Content */}
+            <div className="relative z-10 flex flex-col items-center gap-6 px-6 text-center max-w-2xl">
+              {/* Icon cluster */}
+              <div className="relative flex items-center justify-center">
+                <div className="w-20 h-20 rounded-2xl flex items-center justify-center" style={{
+                  background: 'linear-gradient(135deg, rgba(59,130,246,0.20) 0%, rgba(139,92,246,0.20) 100%)',
+                  border: '1px solid rgba(59,130,246,0.3)',
+                  boxShadow: '0 0 40px rgba(59,130,246,0.15), inset 0 1px 0 rgba(255,255,255,0.06)',
+                }}>
+                  <Music2 className="w-9 h-9 text-[#3b82f6]" style={{ filter: 'drop-shadow(0 0 8px rgba(59,130,246,0.6))' }} />
+                </div>
+                <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full flex items-center justify-center" style={{
+                  background: 'linear-gradient(135deg, #f59e0b, #ef4444)',
+                  boxShadow: '0 0 12px rgba(245,158,11,0.5)',
+                }}>
+                  <Sparkles className="w-3 h-3 text-white" />
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-bold text-white mb-2" style={{ letterSpacing: '-0.02em' }}>
+                  Start Your Progression
+                </h2>
+                <p className="text-[#888] text-sm leading-relaxed">
+                  Build a chord progression from scratch, or let AI generate one for you based on key, genre, and mood — then play it back with full musical insights.
+                </p>
+              </div>
+
+              {/* Two primary CTAs */}
+              <div className="flex flex-col sm:flex-row gap-3 w-full max-w-md">
+                {/* Manual build */}
+                <button
+                  onClick={() => { setEditingChord(null); setShowAddChordModal(true); }}
+                  className="flex-1 group flex flex-col items-center gap-2 p-4 rounded-xl transition-all duration-200"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(59,130,246,0.12) 0%, rgba(37,99,235,0.08) 100%)',
+                    border: '1px solid rgba(59,130,246,0.3)',
+                  }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(59,130,246,0.7)'; (e.currentTarget as HTMLElement).style.boxShadow = '0 0 24px rgba(59,130,246,0.2)'; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(59,130,246,0.3)'; (e.currentTarget as HTMLElement).style.boxShadow = 'none'; }}
+                >
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: 'rgba(59,130,246,0.15)' }}>
+                    <Plus className="w-5 h-5 text-[#3b82f6]" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-white">Add Chord</div>
+                    <div className="text-xs text-[#666] mt-0.5">Build manually, chord by chord</div>
+                  </div>
+                </button>
+
+                {/* AI generate */}
+                <button
+                  onClick={() => {
+                    generatorScrollRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    if (generatorPanelRef?.switchToTab) generatorPanelRef.switchToTab('chords');
+                  }}
+                  className="flex-1 group flex flex-col items-center gap-2 p-4 rounded-xl transition-all duration-200"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(245,158,11,0.12) 0%, rgba(239,68,68,0.08) 100%)',
+                    border: '1px solid rgba(245,158,11,0.3)',
+                  }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(245,158,11,0.7)'; (e.currentTarget as HTMLElement).style.boxShadow = '0 0 24px rgba(245,158,11,0.2)'; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(245,158,11,0.3)'; (e.currentTarget as HTMLElement).style.boxShadow = 'none'; }}
+                >
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: 'rgba(245,158,11,0.15)' }}>
+                    <Wand2 className="w-5 h-5 text-[#f59e0b]" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-white">Generate with AI</div>
+                    <div className="text-xs text-[#666] mt-0.5">Key, genre &amp; mood-based</div>
+                  </div>
+                </button>
+
+                {/* Genre presets */}
+                <button
+                  onClick={() => {
+                    generatorScrollRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    if (generatorPanelRef?.switchToTab) generatorPanelRef.switchToTab('genre');
+                  }}
+                  className="flex-1 group flex flex-col items-center gap-2 p-4 rounded-xl transition-all duration-200"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(139,92,246,0.12) 0%, rgba(109,40,217,0.08) 100%)',
+                    border: '1px solid rgba(139,92,246,0.3)',
+                  }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(139,92,246,0.7)'; (e.currentTarget as HTMLElement).style.boxShadow = '0 0 24px rgba(139,92,246,0.2)'; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(139,92,246,0.3)'; (e.currentTarget as HTMLElement).style.boxShadow = 'none'; }}
+                >
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: 'rgba(139,92,246,0.15)' }}>
+                    <GitBranch className="w-5 h-5 text-[#8b5cf6]" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-white">Genre Presets</div>
+                    <div className="text-xs text-[#666] mt-0.5">Jazz, blues, pop &amp; more</div>
+                  </div>
+                </button>
+              </div>
+
+              {/* Quick tip */}
+              <p className="text-xs text-[#555]">
+                Current key: <span className="text-[#3b82f6] font-semibold">{activeVerse?.key || 'C'}</span>
+                &nbsp;·&nbsp;Use the generator below or click any option above to begin
+              </p>
+            </div>
+          </div>
+        ) : (
+        /* Timeline Visualization — only shown when chords exist */
         <TimelineVisualization
           chords={activeVerse?.chordProgression || []}
           scaleModes={activeVerse?.scaleModeAssignments || []}
@@ -699,31 +819,34 @@ export default function ChordProgressionBuilder() {
           onChordClick={setSelectedChord}
           onSeek={seek}
         />
+        )}
 
         {/* Generator Panel - Always Visible, Below Timeline */}
-        <GeneratorPanel
-          currentKey={activeVerse?.key || 'C'}
-          pixelsPerBeat={pixelsPerBeat}
-          onProgressionLoad={(chords) => {
-            updateChords(chords);
-          }}
-          currentProgression={activeVerse?.chordProgression || []}
-          currentScaleModes={activeVerse?.scaleModeAssignments || []}
-          onAddScaleToTimeline={handleAddScaleFromRecommendations}
-          onKeyChangeClick={() => setShowKeySelector(true)}
-          verseId={activeVerseId || ''}
-          selectedChord={displayChord}
-          isPlaying={playbackState.isPlaying}
-          currentTime={playbackState.currentTime}
-          showColorfulStrings={showColorfulStrings}
-          onShowColorfulStringsChange={setShowColorfulStrings}
-          stringBrightness={stringBrightness}
-          onStringBrightnessChange={setStringBrightness}
-          selectedInstrument={selectedInstrument}
-          activeVerse={activeVerse}
-          onVerseUpdate={updateVerse}
-          onGeneratorRef={setGeneratorPanelRef}
-        />
+        <div ref={generatorScrollRef}>
+          <GeneratorPanel
+            currentKey={activeVerse?.key || 'C'}
+            pixelsPerBeat={pixelsPerBeat}
+            onProgressionLoad={(chords) => {
+              updateChords(chords);
+            }}
+            currentProgression={activeVerse?.chordProgression || []}
+            currentScaleModes={activeVerse?.scaleModeAssignments || []}
+            onAddScaleToTimeline={handleAddScaleFromRecommendations}
+            onKeyChangeClick={() => setShowKeySelector(true)}
+            verseId={activeVerseId || ''}
+            selectedChord={displayChord}
+            isPlaying={playbackState.isPlaying}
+            currentTime={playbackState.currentTime}
+            showColorfulStrings={showColorfulStrings}
+            onShowColorfulStringsChange={setShowColorfulStrings}
+            stringBrightness={stringBrightness}
+            onStringBrightnessChange={setStringBrightness}
+            selectedInstrument={selectedInstrument}
+            activeVerse={activeVerse}
+            onVerseUpdate={updateVerse}
+            onGeneratorRef={setGeneratorPanelRef}
+          />
+        </div>
       </div>
 
       {/* Playback Controls */}

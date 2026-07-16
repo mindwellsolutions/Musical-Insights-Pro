@@ -29,6 +29,7 @@ interface GeneratorPanelProps {
   onGeneratorRef?: (ref: {
     triggerUpdateRecommendations: (updates: any[]) => void;
     setGeneratingUpdates: (isGenerating: boolean) => void;
+    switchToTab?: (tab: string) => void;
   } | null) => void;
 }
 

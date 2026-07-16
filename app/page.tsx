@@ -1193,10 +1193,23 @@ export default function Home() {
     // Write directly to localStorage cache so the guard in the startup useEffect
     // fires synchronously on the very next page load (before Supabase resolves).
     try { localStorage.setItem('cache-guitar-app-show-guide-at-start', 'false'); } catch {}
+    // Persist to Supabase via the hook setter (which uses the current userId).
     setShowGuideAtStart(false);
+    // Belt-and-suspenders: also write directly to Supabase in case userId
+    // hasn't resolved yet inside the hook's debounced closure.
+    import('@/lib/supabase/client-ssr').then(({ createClient }) => {
+      const supabase = createClient();
+      supabase.auth.getUser().then(({ data: { user } }) => {
+        if (user) {
+          supabase.from('user_settings').upsert(
+            { user_id: user.id, show_guide_at_start: false },
+            { onConflict: 'user_id' }
+          );
+        }
+      });
+    });
     setShowGuide(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [setShowGuideAtStart]);
 
   // Handle show guide manually
   const handleShowGuide = useCallback(() => {

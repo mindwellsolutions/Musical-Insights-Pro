@@ -39,6 +39,7 @@ interface ChordProgressionGeneratorProps {
   onGeneratorRef?: (ref: {
     triggerUpdateRecommendations: (updates: any[]) => void;
     setGeneratingUpdates: (isGenerating: boolean) => void;
+    switchToTab?: (tab: string) => void;
   } | null) => void;
 }
 
@@ -94,6 +95,11 @@ export default function ChordProgressionGenerator({
             setActiveTab('chords');
             setAiSubTab('ai');
           }
+        },
+        switchToTab: (tab: string) => {
+          setActiveTab(tab === 'genre' ? 'chords' : tab);
+          if (tab === 'genre') setAiSubTab('genre');
+          if (tab === 'chords') setAiSubTab('ai');
         },
       });
     }
