@@ -66,7 +66,7 @@ export interface AddChordModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   currentKey: string;
-  onChordSelect: (chordSymbol: string, duration: number, voicingIndex?: number) => void;
+  onChordSelect: (chordSymbol: string, duration: number, voicingIndex?: number, voicingForced?: boolean) => void;
   editingChord?: ChordInstance | null;
   currentProgression?: ChordInstance[];
   currentScaleModes?: ScaleModeInstance[];
@@ -161,11 +161,15 @@ function VoicingSelector({
   chord,
   selectedVoicingIndex,
   onVoicingSelect,
+  voicingForced,
+  onVoicingForcedChange,
   tuning,
 }: {
   chord: ChordDefinition;
   selectedVoicingIndex: number;
   onVoicingSelect: (idx: number) => void;
+  voicingForced: boolean;
+  onVoicingForcedChange: (forced: boolean) => void;
   tuning: string[];
 }) {
   const voicings = useMemo((): ChordVoicing[] => {
@@ -177,9 +181,38 @@ function VoicingSelector({
 
   return (
     <div className="shrink-0 border-t border-white/10 pt-3 mt-3">
-      <p className="text-[10px] font-bold tracking-widest text-white/30 uppercase mb-2.5">
-        Guitar Voicings <span className="text-white/15 font-normal normal-case tracking-normal ml-1">— select a position to use on the fretboard</span>
-      </p>
+      {/* Header row with title + force toggle */}
+      <div className="flex items-center justify-between mb-2.5">
+        <p className="text-[10px] font-bold tracking-widest text-white/30 uppercase">
+          Guitar Voicings <span className="text-white/15 font-normal normal-case tracking-normal ml-1">— select a position to use on the fretboard</span>
+        </p>
+        {/* Force Voicing Position toggle */}
+        <button
+          type="button"
+          onClick={() => onVoicingForcedChange(!voicingForced)}
+          className="flex items-center gap-2 px-2.5 py-1 rounded-lg text-[10px] font-semibold transition-all duration-200 shrink-0 ml-4"
+          style={{
+            background: voicingForced
+              ? 'linear-gradient(135deg,rgba(245,158,11,0.2),rgba(234,88,12,0.15))'
+              : 'rgba(255,255,255,0.04)',
+            border: `1.5px solid ${voicingForced ? 'rgba(245,158,11,0.5)' : 'rgba(255,255,255,0.1)'}`,
+            color: voicingForced ? '#f59e0b' : 'rgba(255,255,255,0.35)',
+          }}
+          title="When on, this chord always appears in the selected voicing position even as you navigate other chord neighborhoods"
+        >
+          {/* Toggle pill */}
+          <span
+            className="relative inline-flex items-center w-7 h-4 rounded-full transition-colors duration-200 shrink-0"
+            style={{ background: voicingForced ? '#f59e0b' : 'rgba(255,255,255,0.15)' }}
+          >
+            <span
+              className="absolute w-3 h-3 rounded-full bg-white shadow transition-transform duration-200"
+              style={{ transform: voicingForced ? 'translateX(14px)' : 'translateX(2px)' }}
+            />
+          </span>
+          Force Voicing Position
+        </button>
+      </div>
       <div className="flex gap-3 overflow-x-auto pb-2 pr-1">
         {voicings.map((voicing, idx) => {
           const isSel = idx === selectedVoicingIndex;
@@ -708,16 +741,19 @@ export default function AddChordModal({
   const [selectedChord, setSelectedChord] = useState<ChordDefinition | null>(null);
   const [duration, setDuration] = useState('4');
   const [selectedVoicingIndex, setSelectedVoicingIndex] = useState(0);
+  const [voicingForced, setVoicingForced] = useState(false);
 
   // Reset on open/close
   useEffect(() => {
     if (open) {
       setSelectedChord(null);
       setSelectedVoicingIndex(0);
+      setVoicingForced(false);
       setActiveTab(hasChords && !editingChord ? 'ai' : 'library');
       if (editingChord) {
         setDuration(editingChord.duration.toString());
         setSelectedVoicingIndex(editingChord.voicingIndex ?? 0);
+        setVoicingForced(editingChord.voicingForced ?? false);
         const match = Object.values(CHORD_LIBRARY).flat().find(c => c.symbol === editingChord.chordSymbol);
         if (match) setSelectedChord(match);
       } else {
@@ -730,11 +766,12 @@ export default function AddChordModal({
   const handleChordSelect = (chord: ChordDefinition) => {
     setSelectedChord(chord);
     setSelectedVoicingIndex(0);
+    setVoicingForced(false);
   };
 
   const handleConfirm = () => {
     if (!selectedChord) return;
-    onChordSelect(selectedChord.symbol, parseFloat(duration), selectedVoicingIndex);
+    onChordSelect(selectedChord.symbol, parseFloat(duration), selectedVoicingIndex, voicingForced);
     onOpenChange(false);
   };
 
@@ -835,6 +872,8 @@ export default function AddChordModal({
                   chord={selectedChord}
                   selectedVoicingIndex={selectedVoicingIndex}
                   onVoicingSelect={setSelectedVoicingIndex}
+                  voicingForced={voicingForced}
+                  onVoicingForcedChange={setVoicingForced}
                   tuning={tuning}
                 />
               )}
@@ -861,6 +900,8 @@ export default function AddChordModal({
                     chord={selectedChord}
                     selectedVoicingIndex={selectedVoicingIndex}
                     onVoicingSelect={setSelectedVoicingIndex}
+                    voicingForced={voicingForced}
+                    onVoicingForcedChange={setVoicingForced}
                     tuning={tuning}
                   />
                 )}
@@ -904,6 +945,8 @@ export default function AddChordModal({
                         chord={selectedChord}
                         selectedVoicingIndex={selectedVoicingIndex}
                         onVoicingSelect={setSelectedVoicingIndex}
+                        voicingForced={voicingForced}
+                        onVoicingForcedChange={setVoicingForced}
                         tuning={tuning}
                       />
                     )}

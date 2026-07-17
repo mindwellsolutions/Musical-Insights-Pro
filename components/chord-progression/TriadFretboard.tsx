@@ -101,16 +101,15 @@ export default function TriadFretboard({
   // Each entry maps chordId → current voicingIndex being shown
   const [chordVoicingIndices, setChordVoicingIndices] = useState<Map<string, number>>(new Map());
 
-  // Anchor fret for Chords mode neighborhood display.
-  // Initialized from selectedTriadPosition; arrow presses shift it through voicing positions.
-  // null means "follow selectedTriadPosition automatically"
-  const [chordModeAnchorFret, setChordModeAnchorFret] = useState<number | null>(null);
+  // Chord mode navigation index: a single integer that advances through the sorted
+  // voicing list of the *selected* chord when arrows are pressed.
+  // null = follow selectedTriadPosition automatically (resets on triad position change).
+  const [chordModeNavIndex, setChordModeNavIndex] = useState<number | null>(null);
 
-  // Keep the anchor in sync when triads position changes (resets chord mode navigation to the new zone)
+  // When the triad position changes, reset chord mode navigation so the zone
+  // re-centers on the new selected position automatically.
   useEffect(() => {
-    if (selectedTriadPosition) {
-      setChordModeAnchorFret(selectedTriadPosition.fretPosition);
-    }
+    setChordModeNavIndex(null);
   }, [selectedTriadPosition]);
 
   // Sidebar hover override: when a sidebar chord card is hovered, show only its voicing
@@ -348,23 +347,34 @@ export default function TriadFretboard({
   };
 
   // Helper: get the voicing for a chord closest to a given fret position
-  // Uses actual note positions (startFret = actual min note fret after fix in chord-voicings.ts)
-  // Returns the globally nearest voicing (no hard cutoff) so every chord always renders
+  // Returns the globally nearest voicing so every chord always renders
   const getVoicingNearFret = (chord: ChordInstance, anchorFret: number): ChordVoicing | undefined => {
     const custom = customVoicings.get(chord.id);
     if (custom) return custom;
     if (!chord.notes || chord.notes.length === 0) return undefined;
     const all = calculateChordVoicingsFullFretboard(chord.notes, chord.rootNote, tuning, 24);
     if (all.length === 0) return undefined;
-    // Return the voicing whose actual startFret is closest to anchorFret
     return all.reduce((best, v) =>
       Math.abs(v.startFret - anchorFret) < Math.abs(best.startFret - anchorFret) ? v : best
     );
   };
 
-  // ── CHORDS MODE: compute NotePositions from voicings (respects chordModeAnchorFret) ─
+  // Compute the anchor fret from chordModeNavIndex.
+  // chordModeNavIndex is an index into the selected chord's sorted voicing list.
+  // null = auto-follow selectedTriadPosition.
+  const chordModeAnchorFret = useMemo((): number => {
+    if (chordModeNavIndex === null || !selectedChord) {
+      return selectedTriadPosition?.fretPosition ?? 0;
+    }
+    const voicings = getVoicingsForChord(selectedChord);
+    if (voicings.length === 0) return selectedTriadPosition?.fretPosition ?? 0;
+    const clamped = Math.max(0, Math.min(chordModeNavIndex, voicings.length - 1));
+    return voicings[clamped].startFret;
+  }, [chordModeNavIndex, selectedChord, selectedTriadPosition, customVoicings, tuning]);
+
+  // ── CHORDS MODE: compute NotePositions from voicings (respects chordModeNavIndex) ─
   // In neighborhood mode each chord shows its voicing closest to chordModeAnchorFret.
-  // Arrow presses update chordModeAnchorFret to shift the entire neighborhood zone.
+  // Arrow presses update chordModeNavIndex (a simple integer) to step through positions.
   // In Show All mode, shows navigation-index voicings for each chord.
   const chordModeNotePositions = useMemo((): NotePosition[] => {
     if (displayMode !== 'chords') return [];
@@ -372,19 +382,20 @@ export default function TriadFretboard({
     const chordsToShow = allChords.filter(c => visibleChordIds.has(c.id));
     const positionMap = new Map<string, { position: NotePosition; colors: string[] }>();
 
-    // Use chordModeAnchorFret if set, otherwise fall back to selectedTriadPosition
-    const anchorFret = chordModeAnchorFret ?? selectedTriadPosition?.fretPosition ?? 0;
-
     chordsToShow.forEach((chord) => {
       const color = NOTE_COLORS[chord.rootNote] || '#6b7280';
 
       let voicing: ChordVoicing | undefined;
       if (showAllPositions) {
-        // Show All: use navigation-index voicing for each chord
         voicing = getActiveVoicingForChord(chord);
+      } else if (chord.voicingForced) {
+        // Forced: always show the exact voicingIndex stored on the chord
+        const forced = calculateChordVoicingsFullFretboard(chord.notes, chord.rootNote, tuning, 24);
+        const idx = Math.min(chord.voicingIndex ?? 0, forced.length - 1);
+        voicing = forced[idx];
       } else {
-        // Neighborhood mode: show the voicing closest to the anchor fret
-        voicing = getVoicingNearFret(chord, anchorFret);
+        // Neighborhood mode: show the voicing closest to the current anchor fret
+        voicing = getVoicingNearFret(chord, chordModeAnchorFret);
       }
 
       if (!voicing) return;
@@ -486,32 +497,32 @@ export default function TriadFretboard({
     }
   };
 
-  // ── CHORD MODE navigation: cycle voicing positions for the selected chord ──
+  // ── CHORD MODE navigation: step through voicing positions for the selected chord ──
+  // Uses a plain integer index (chordModeNavIndex) into the sorted voicing list.
+  // This avoids the React async-state re-compute bug where "find closest to anchor"
+  // picks the same position repeatedly because the state hasn't committed yet.
   const navigateChordVoicing = (direction: 'prev' | 'next') => {
     if (!selectedChord) return;
-    // Get all voicings for the selected chord, sorted by startFret ascending
     const voicings = getVoicingsForChord(selectedChord);
     if (voicings.length === 0) return;
 
-    // Determine current anchor fret (what's currently visible)
-    const currentAnchor = chordModeAnchorFret ?? selectedTriadPosition?.fretPosition ?? 0;
-
-    // Find which voicing index is currently closest to the anchor
-    const currentIdx = voicings.reduce((bestIdx, v, i) =>
-      Math.abs(v.startFret - currentAnchor) < Math.abs(voicings[bestIdx].startFret - currentAnchor) ? i : bestIdx
-    , 0);
+    // Resolve current index: if null, find the voicing closest to the triad position
+    const anchorFret = selectedTriadPosition?.fretPosition ?? 0;
+    const resolvedCurrent = chordModeNavIndex !== null
+      ? Math.max(0, Math.min(chordModeNavIndex, voicings.length - 1))
+      : voicings.reduce((bestIdx, v, i) =>
+          Math.abs(v.startFret - anchorFret) < Math.abs(voicings[bestIdx].startFret - anchorFret) ? i : bestIdx
+        , 0);
 
     const maxIdx = voicings.length - 1;
     const newIdx = direction === 'prev'
-      ? (currentIdx <= 0 ? maxIdx : currentIdx - 1)
-      : (currentIdx >= maxIdx ? 0 : currentIdx + 1);
+      ? (resolvedCurrent <= 0 ? maxIdx : resolvedCurrent - 1)
+      : (resolvedCurrent >= maxIdx ? 0 : resolvedCurrent + 1);
 
-    // Shift the anchor fret to the new voicing's startFret
-    // This moves the entire neighborhood zone so all chords update together
-    const newAnchorFret = voicings[newIdx].startFret;
-    setChordModeAnchorFret(newAnchorFret);
+    // Set a stable integer index — no async re-compute problem
+    setChordModeNavIndex(newIdx);
 
-    // Also update chordVoicingIndices for Show All mode and audio engine
+    // Also update chordVoicingIndices for Show All mode / audio engine
     setChordVoicingIndices(prev => {
       const next = new Map(prev);
       next.set(selectedChord.id, newIdx);

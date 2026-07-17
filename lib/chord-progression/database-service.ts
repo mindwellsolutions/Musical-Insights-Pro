@@ -86,6 +86,7 @@ export async function saveProject(
           width: chord.width,
           color: chord.color,
           voicing_index: chord.voicingIndex,
+          voicing_forced: chord.voicingForced ?? false,
           order_index: idx,
         }));
 
@@ -209,6 +210,7 @@ export async function loadProject(projectId: string): Promise<{
           width: parseFloat(c.width),
           color: c.color,
           voicingIndex: c.voicing_index,
+          voicingForced: c.voicing_forced ?? false,
         })),
         scaleModeAssignments: (scaleModes || []).map(sm => ({
           id: sm.id,
@@ -333,6 +335,7 @@ export async function updateProject(
           width: chord.width,
           color: chord.color,
           voicing_index: chord.voicingIndex,
+          voicing_forced: chord.voicingForced ?? false,
           order_index: idx,
         }));
 

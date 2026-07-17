@@ -50,6 +50,7 @@ export interface ChordInstance {
   width: number;                        // Visual width in pixels (calculated)
   color: string;                        // Chord color (from NOTE_COLORS)
   voicingIndex: number;                 // Selected voicing (0-n)
+  voicingForced?: boolean;              // When true, chord always shows at voicingIndex regardless of neighborhood navigation
 }
 
 /**

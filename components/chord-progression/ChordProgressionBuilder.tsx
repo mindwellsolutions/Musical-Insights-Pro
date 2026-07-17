@@ -257,7 +257,7 @@ export default function ChordProgressionBuilder() {
     }
   };
 
-  const handleAddChord = (chordSymbol: string, duration: number, voicingIndex?: number) => {
+  const handleAddChord = (chordSymbol: string, duration: number, voicingIndex?: number, voicingForced?: boolean) => {
     if (!activeVerse) return;
 
     // Calculate position at the end of the rightmost chord (not just the last in the array)
@@ -297,6 +297,7 @@ export default function ChordProgressionBuilder() {
       duration,
       color,
       voicingIndex: voicingIndex ?? 0,
+      voicingForced: voicingForced ?? false,
     };
 
     updateChords([...activeVerse.chordProgression, newChord], `Add chord ${chordSymbol}`);
@@ -307,7 +308,7 @@ export default function ChordProgressionBuilder() {
     setShowAddChordModal(true);
   };
 
-  const handleUpdateChord = (chordSymbol: string, duration: number, voicingIndex?: number) => {
+  const handleUpdateChord = (chordSymbol: string, duration: number, voicingIndex?: number, voicingForced?: boolean) => {
     if (!activeVerse || !editingChord) return;
 
     // Import chord utilities
@@ -332,6 +333,7 @@ export default function ChordProgressionBuilder() {
             width: duration * pixelsPerBeat,
             color,
             voicingIndex: voicingIndex ?? c.voicingIndex ?? 0,
+            voicingForced: voicingForced ?? false,
           }
         : c
     );
