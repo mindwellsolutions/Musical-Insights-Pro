@@ -1011,22 +1011,55 @@ export default function Fretboard({
 
                           if (triadFocusOn && focusTriad) {
                             const inFocusTriad = focusTriad.notes.includes(normalizedNote);
+
+                            // Compute Root and 7th of the focused triad for checkbox highlights
+                            const focusRootNormalized = normalizeNoteToSharp(focusTriad.rootNote);
+                            const focusRootIndex = CHROMATIC_NOTES.indexOf(focusRootNormalized);
+                            // 7th = both m7 (+10) and M7 (+11) above the triad root
+                            const seventh1 = focusRootIndex !== -1 ? CHROMATIC_NOTES[(focusRootIndex + 10) % 12] : null;
+                            const seventh2 = focusRootIndex !== -1 ? CHROMATIC_NOTES[(focusRootIndex + 11) % 12] : null;
+                            const isRootNote = normalizedNote === focusRootNormalized;
+                            const is7thNote = (normalizedNote === seventh1 || normalizedNote === seventh2);
+
+                            const ROOT_HL_COLOR = '#E85555';
+                            const SEVENTH_HL_COLOR = '#A07ED4';
+
                             if (inFocusTriad) {
                               // Keep each note's true identity color (circleFill already set above)
                               // Bump root note size +12%
-                              if (normalizedNote === normalizeNoteToSharp(focusTriad.rootNote)) {
+                              if (isRootNote) {
                                 circleDiameter = 36;
                               }
-                              // In Colors mode: overlay a solid triad-degree ring so these notes
-                              // stand out clearly against the other colorful non-triad dots
-                              if (nonTriadColorMode) {
+                              // Root highlight: override the focus triad border/glow with red
+                              if (showRootNoteHighlight && isRootNote) {
+                                borderColor = `3px solid ${ROOT_HL_COLOR}`;
+                                finalBoxShadow = `0 0 0 6px ${hexToRgba(ROOT_HL_COLOR, 0.7)}, 0 0 14px ${hexToRgba(ROOT_HL_COLOR, 0.5)}`;
+                              } else if (nonTriadColorMode) {
+                                // Monocolor mode: overlay a solid triad-degree ring so these notes
+                                // stand out clearly against the other colorful non-triad dots
                                 borderColor = `3px solid ${focusTriad.color}`;
                                 finalBoxShadow = `0 0 0 4px ${hexToRgba(focusTriad.color, 0.55)}, 0 0 12px ${hexToRgba(focusTriad.color, 0.35)}`;
                               }
+                              // Interval mode in-triad notes: no extra border (interval coloring is for bg notes context)
                             } else {
-                              // Use slider-driven opacity; desaturate in B&W mode, keep colors in Colors mode
-                              circleOpacity = nonTriadOpacity / 100;
-                              circleFilter = nonTriadColorMode ? 'none' : 'saturate(0) brightness(0.75)';
+                              // Non-triad scale note: check if it's a highlighted Root or 7th
+                              if (showRootNoteHighlight && isRootNote) {
+                                // Root note outside triad: render as forefront with red border/glow
+                                circleDiameter = 34;
+                                borderColor = `3px solid ${ROOT_HL_COLOR}`;
+                                finalBoxShadow = `0 0 0 6px ${hexToRgba(ROOT_HL_COLOR, 0.7)}, 0 0 14px ${hexToRgba(ROOT_HL_COLOR, 0.5)}`;
+                                // Full opacity — do NOT dim
+                              } else if (show7thNoteHighlight && is7thNote) {
+                                // 7th note: render as forefront with purple border/glow
+                                circleDiameter = 32;
+                                borderColor = `3px solid ${SEVENTH_HL_COLOR}`;
+                                finalBoxShadow = `0 0 0 6px ${hexToRgba(SEVENTH_HL_COLOR, 0.7)}, 0 0 14px ${hexToRgba(SEVENTH_HL_COLOR, 0.5)}`;
+                                // Full opacity — do NOT dim
+                              } else {
+                                // Regular background note: apply opacity + always keep color (no B&W desaturation)
+                                circleOpacity = nonTriadOpacity / 100;
+                                circleFilter = 'none'; // Always colorful — Interval and Monocolor both keep NOTE_COLORS
+                              }
                             }
                           } else if (showTriadArcBands && (notePos.triadMembership?.length ?? 0) > 0) {
                             letterNudge = true;
