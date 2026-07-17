@@ -222,10 +222,10 @@ function findVoicingAtPosition(
   return {
     name: minFret === 0 ? 'Open Position' : `Frets ${actualMinFret}-${actualMaxFret}`,
     positions,
-    startFret: minFret,
-    endFret: maxFret,
+    startFret: actualMinFret,  // Use actual min note fret, not scan window start
+    endFret: actualMaxFret,
     difficulty,
-    commonName: getCommonName(minFret, fretSpan),
+    commonName: getCommonName(actualMinFret, fretSpan),
   };
 }
 
