@@ -8,7 +8,7 @@
 import { useMemo, useState, useEffect } from 'react';
 import { ChordInstance } from '@/lib/chord-progression/types';
 import { TriadPosition } from '@/lib/triad-positions';
-import { ChordVoicing, calculateChordVoicings } from '@/lib/chord-voicings';
+import { ChordVoicing, calculateChordVoicings, calculateChordVoicingsFullFretboard } from '@/lib/chord-voicings';
 import { ThemeConfig } from '@/lib/themes';
 import { ShapeRegion } from '@/lib/caged';
 import { NotePosition, NOTE_COLORS } from '@/lib/musicTheory';
@@ -315,12 +315,13 @@ export default function TriadFretboard({
     }
   }, [chordsInZone, selectedTriadPosition, showAllPositions, visibleChordIds]);
 
-  // Helper: get all voicings for a chord (custom first, then calculated)
+  // Helper: get ALL voicings for a chord across the full fretboard (0-24 frets)
+  // Used for Chords mode neighborhood display and navigation (mirrors triads coverage)
   const getVoicingsForChord = (chord: ChordInstance): ChordVoicing[] => {
     const custom = customVoicings.get(chord.id);
     if (custom) return [custom]; // custom voicing is the only option shown
     if (!chord.notes || chord.notes.length === 0) return [];
-    return calculateChordVoicings(chord.notes, chord.rootNote, tuning, 24);
+    return calculateChordVoicingsFullFretboard(chord.notes, chord.rootNote, tuning, 24);
   };
 
   // Helper: get the active voicing for a chord using chordVoicingIndices
@@ -328,25 +329,53 @@ export default function TriadFretboard({
     const custom = customVoicings.get(chord.id);
     if (custom) return custom;
     if (!chord.notes || chord.notes.length === 0) return undefined;
-    const computed = calculateChordVoicings(chord.notes, chord.rootNote, tuning, 24);
+    const computed = calculateChordVoicingsFullFretboard(chord.notes, chord.rootNote, tuning, 24);
     if (computed.length === 0) return undefined;
     const navIdx = chordVoicingIndices.get(chord.id) ?? (chord.voicingIndex ?? 0);
     return computed[Math.min(navIdx, computed.length - 1)];
   };
 
+  // Helper: get the voicing for a chord closest to a given fret position
+  // Mirrors triads mode logic: find the voicing whose startFret is closest to anchor fret
+  const getVoicingNearFret = (chord: ChordInstance, anchorFret: number): ChordVoicing | undefined => {
+    const custom = customVoicings.get(chord.id);
+    if (custom) return custom;
+    if (!chord.notes || chord.notes.length === 0) return undefined;
+    const all = calculateChordVoicingsFullFretboard(chord.notes, chord.rootNote, tuning, 24);
+    if (all.length === 0) return undefined;
+    // Find the voicing whose startFret is within ±4 of anchorFret (matches triads filter)
+    const nearby = all.filter(v => Math.abs(v.startFret - anchorFret) <= 4);
+    if (nearby.length === 0) return undefined;
+    // Return the one closest to the anchor fret
+    return nearby.reduce((best, v) =>
+      Math.abs(v.startFret - anchorFret) < Math.abs(best.startFret - anchorFret) ? v : best
+    );
+  };
+
   // ── CHORDS MODE: compute NotePositions from voicings (respects navigation index) ─
+  // Like triads: in "single position" mode, each chord shows its voicing closest
+  // to the selected triad's fret position (neighborhood grouping). In Show All mode,
+  // shows the navigation-index voicing for each chord.
   const chordModeNotePositions = useMemo((): NotePosition[] => {
     if (displayMode !== 'chords') return [];
 
-    // Always show ALL chords from the timeline in Chords mode (regardless of showAllPositions)
     const chordsToShow = allChords.filter(c => visibleChordIds.has(c.id));
-
     const positionMap = new Map<string, { position: NotePosition; colors: string[] }>();
 
     chordsToShow.forEach((chord) => {
       const color = NOTE_COLORS[chord.rootNote] || '#6b7280';
-      // Use active voicing (navigation-aware for selected chord, default for others)
-      const voicing = getActiveVoicingForChord(chord);
+
+      let voicing: ChordVoicing | undefined;
+      if (showAllPositions) {
+        // Show All: use navigation-index voicing for each chord
+        voicing = getActiveVoicingForChord(chord);
+      } else if (selectedTriadPosition) {
+        // Neighborhood mode: show the voicing closest to the selected triad fret position
+        voicing = getVoicingNearFret(chord, selectedTriadPosition.fretPosition);
+      } else {
+        voicing = getActiveVoicingForChord(chord);
+      }
+
       if (!voicing) return;
 
       voicing.positions.forEach(fp => {
@@ -374,7 +403,7 @@ export default function TriadFretboard({
       sharedChordColors: colors,
       customColor: colors[0],
     }));
-  }, [displayMode, allChords, selectedChord, customVoicings, tuning, showAllPositions, visibleChordIds, chordVoicingIndices]);
+  }, [displayMode, allChords, selectedChord, selectedTriadPosition, customVoicings, tuning, showAllPositions, visibleChordIds, chordVoicingIndices]);
 
   // ── VOICING OUTLINE GROUPS for SVG overlay ───────────────────────────────────
   const voicingOutlineGroups = useMemo(() => {

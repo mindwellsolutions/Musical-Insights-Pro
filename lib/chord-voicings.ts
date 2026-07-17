@@ -76,31 +76,51 @@ export function calculateChordVoicings(
     return standardVoicings.slice(0, 5);
   }
 
-  // Fallback to algorithmic approach if chord not found in database
-  const voicings: ChordVoicing[] = [];
+  return calculateChordVoicingsFullFretboard(chordNotes, rootNote, tuning, maxFret).slice(0, 5);
+}
 
-  // Find common chord shapes in different positions
-  // We'll look for voicings in position blocks (4-fret spans)
-  for (let startFret = 0; startFret <= maxFret - 3; startFret++) {
-    const voicing = findVoicingAtPosition(chordNotes, rootNote, tuning, startFret, Math.min(startFret + 4, maxFret));
+/**
+ * Generate chord voicings across the FULL fretboard (0-24 frets) algorithmically,
+ * producing one best voicing per 4-fret window — mirrors how calculateTriadPositions
+ * scans the fretboard so Chords mode has the same neighborhood coverage as Triads mode.
+ *
+ * This is used for Song Builder Chords mode neighborhood display; it is NOT capped at 5.
+ */
+export function calculateChordVoicingsFullFretboard(
+  chordNotes: string[],
+  rootNote: string,
+  tuning: string[],
+  maxFret: number = 24
+): ChordVoicing[] {
+  const NOTES_CHROMATIC = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+
+  function getNoteAt(stringNote: string, fret: number): string {
+    const idx = NOTES_CHROMATIC.indexOf(stringNote);
+    return NOTES_CHROMATIC[(idx + fret) % 12];
+  }
+
+  const voicings: ChordVoicing[] = [];
+  // Scan every fret as a potential "lowest fret" in a 4-fret window
+  // Step by 1 so we don't miss any position; dedup removes redundant shapes
+  for (let startFret = 0; startFret <= maxFret; startFret++) {
+    const endFret = Math.min(startFret + 4, maxFret);
+    const voicing = findVoicingAtPosition(chordNotes, rootNote, tuning, startFret, endFret);
     if (voicing && voicing.positions.filter(p => p.fret >= 0).length >= 3) {
       voicings.push(voicing);
     }
   }
 
-  // Remove duplicate voicings (same fret pattern)
-  const uniqueVoicings = voicings.filter((v, idx, arr) => {
-    const pattern = v.positions.map(p => p.fret).join(',');
-    return arr.findIndex(v2 => v2.positions.map(p => p.fret).join(',') === pattern) === idx;
+  // Remove duplicate voicings (same exact fret pattern on each string)
+  const seen = new Set<string>();
+  const unique = voicings.filter(v => {
+    const key = v.positions.map(p => p.fret).join(',');
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
   });
 
-  // Sort by difficulty and position
-  return uniqueVoicings
-    .sort((a, b) => {
-      if (a.difficulty !== b.difficulty) return a.difficulty - b.difficulty;
-      return a.startFret - b.startFret;
-    })
-    .slice(0, 5); // Return top 5 voicings
+  // Sort by fret position ascending (mirrors triads behavior — low frets first)
+  return unique.sort((a, b) => a.startFret - b.startFret);
 }
 
 /**
