@@ -93,8 +93,9 @@ interface FretboardProps {
   nonTriadOpacity?: number;             // 0–100; how visible background notes are; default 30
   nonTriadColorMode?: boolean;          // false = Interval (ALL_INTERVAL_COLORS borders), true = Monocolor (NOTE_COLORS); default false
   // ── Triad in Scale foreground highlights ────────────────────────────────────
-  showRootNoteHighlight?: boolean;      // always render Root notes at full opacity with Red (#E85555) ring
+  showRootNoteHighlight?: boolean;      // always render Key notes at full opacity with Red (#E85555) ring
   show7thNoteHighlight?: boolean;       // always render 7th notes at full opacity with Purple (#A07ED4) ring
+  highlightKeyNote?: string;            // when set, Root highlight targets this key note instead of the focused triad's root
   // ── Pattern highlight root override ─────────────────────────────────────────
   // When set, this note is used as root for chord-tone color hierarchy instead of selectedChordNotes[0].
   // Required when selectedChordNotes contains only non-root pattern notes (e.g. degree 3 + 7 only).
@@ -342,6 +343,7 @@ export default function Fretboard({
   nonTriadColorMode = false,
   showRootNoteHighlight = false,
   show7thNoteHighlight = false,
+  highlightKeyNote = undefined,
   patternHighlightRootNote = undefined,
   patternBgNotesOpacity = 100,
   fretWidth = 50,
@@ -1018,7 +1020,9 @@ export default function Fretboard({
                             // 7th = both m7 (+10) and M7 (+11) above the triad root
                             const seventh1 = focusRootIndex !== -1 ? CHROMATIC_NOTES[(focusRootIndex + 10) % 12] : null;
                             const seventh2 = focusRootIndex !== -1 ? CHROMATIC_NOTES[(focusRootIndex + 11) % 12] : null;
-                            const isRootNote = normalizedNote === focusRootNormalized;
+                            // Key Note highlight: use the provided key note instead of the triad's own root
+                            const keyNoteNormalized = highlightKeyNote ? normalizeNoteToSharp(highlightKeyNote) : focusRootNormalized;
+                            const isRootNote = normalizedNote === keyNoteNormalized;
                             const is7thNote = (normalizedNote === seventh1 || normalizedNote === seventh2);
 
                             const ROOT_HL_COLOR = '#E85555';

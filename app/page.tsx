@@ -3592,7 +3592,7 @@ export default function Home() {
                             {/* Root Note & 7th highlight checkboxes */}
                             <div style={{ width: 1, height: 20, background: theme.border, flexShrink: 0 }} />
                             {[
-                              { label: 'Root', key: 'root', checked: showRootNoteHighlight as boolean, set: setShowRootNoteHighlight, color: '#E85555' },
+                              { label: 'Key', key: 'root', checked: showRootNoteHighlight as boolean, set: setShowRootNoteHighlight, color: '#E85555' },
                               { label: '7th', key: '7th', checked: show7thNoteHighlight as boolean, set: setShow7thNoteHighlight, color: '#A07ED4' },
                             ].map(({ label, key, checked, set, color }) => (
                               <label
@@ -3969,6 +3969,7 @@ export default function Home() {
                   nonTriadColorMode={nonTriadColorMode}
                   showRootNoteHighlight={showTriadArcBands && (showRootNoteHighlight as boolean)}
                   show7thNoteHighlight={showTriadArcBands && (show7thNoteHighlight as boolean)}
+                  highlightKeyNote={showTriadArcBands && (showRootNoteHighlight as boolean) ? (manualKey || rootNote) : undefined}
                   patternBgNotesOpacity={
                     patternHighlightNotes && !showTriadArcBands ? patternBgNotesOpacity :
                     !patternHighlightNotes && !customHighlightNotes && !zoneHighlightedChordNotes && showChordTones && !showTriadArcBands ? chordToneBgNotesOpacity :
