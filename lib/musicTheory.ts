@@ -174,7 +174,7 @@ export interface NotePosition {
   isHarmonyNote?: boolean;  // Indicates if this is a harmony note (not original scale note)
   harmonyType?: '3rds' | '5ths' | '6ths' | '7ths';  // Type of harmony if isHarmonyNote is true
   originalNote?: string;  // For harmony notes, which original note this harmonizes with
-  chordTone?: 'root' | 'third' | 'fifth';  // For triad mode: which chord tone this note represents
+  chordTone?: 'root' | 'third' | 'fifth' | 'seventh';  // For triad/chord mode: which chord tone this note represents
   customColor?: string;  // Custom color for special overlays (e.g., nearby chords) - DEPRECATED: use sharedChordColors instead
   sharedChordColors?: string[];  // Array of colors for notes shared by multiple nearby chords (for multi-ring display)
   // Triad Arc Band & Focus Mode — populated by page.tsx useMemo when features are active

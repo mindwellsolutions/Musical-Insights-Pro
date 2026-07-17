@@ -91,7 +91,10 @@ interface FretboardProps {
   showTriadFocusLines?: boolean;        // optional dashed SVG lines; default false
   // ── Non-triad background note appearance ────────────────────────────────────
   nonTriadOpacity?: number;             // 0–100; how visible background notes are; default 30
-  nonTriadColorMode?: boolean;          // false = B&W (desaturate), true = full NOTE_COLORS; default false
+  nonTriadColorMode?: boolean;          // false = Interval (ALL_INTERVAL_COLORS borders), true = Monocolor (NOTE_COLORS); default false
+  // ── Triad in Scale foreground highlights ────────────────────────────────────
+  showRootNoteHighlight?: boolean;      // always render Root notes at full opacity with Red (#E85555) ring
+  show7thNoteHighlight?: boolean;       // always render 7th notes at full opacity with Purple (#A07ED4) ring
   // ── Pattern highlight root override ─────────────────────────────────────────
   // When set, this note is used as root for chord-tone color hierarchy instead of selectedChordNotes[0].
   // Required when selectedChordNotes contains only non-root pattern notes (e.g. degree 3 + 7 only).
@@ -337,6 +340,8 @@ export default function Fretboard({
   showTriadFocusLines = false,
   nonTriadOpacity = 30,
   nonTriadColorMode = false,
+  showRootNoteHighlight = false,
+  show7thNoteHighlight = false,
   patternHighlightRootNote = undefined,
   patternBgNotesOpacity = 100,
   fretWidth = 50,
@@ -675,9 +680,27 @@ export default function Fretboard({
                                 chordToneType = '3rd';
                               } else if (notePos.chordTone === 'fifth') {
                                 chordToneType = '5th';
+                              } else if (notePos.chordTone === 'seventh') {
+                                chordToneType = '7th';
                               }
 
-                              const borderColor = `3px solid ${noteColor}`;
+                              // Interval mode (nonTriadColorMode=false): use ALL_INTERVAL_COLORS by chord tone semitone
+                              // Monocolor mode (nonTriadColorMode=true): use the note's own NOTE_COLOR
+                              const getIntervalBorderColor = (): string => {
+                                if (nonTriadColorMode) return noteColor; // Monocolor
+                                // Map chord tone type to semitone interval for ALL_INTERVAL_COLORS
+                                const toneToSemitone: Record<string, number> = {
+                                  root: 0,    // Root → #E85555 Red
+                                  third: 4,   // Major 3rd (use M3 as representative) → #F5BC3C Yellow/Gold
+                                  fifth: 7,   // Perfect 5th → #5DB572 Green
+                                  seventh: 11, // Major 7th (use M7 as representative) → #A07ED4 Lavender
+                                };
+                                const semitone = toneToSemitone[notePos.chordTone ?? ''] ?? 0;
+                                return ALL_INTERVAL_COLORS[semitone] ?? noteColor;
+                              };
+
+                              const intervalBorderColor = getIntervalBorderColor();
+                              const borderColor = `3px solid ${intervalBorderColor}`;
 
                               // Find ALL triad positions that contain this note at this string/fret
                               const findAllTriadPositions = () => {
@@ -701,10 +724,26 @@ export default function Fretboard({
                                   hoveredTriadPositions.some(hovered => hovered.positionIndex === pos.positionIndex)
                                 );
 
+                              // Root/7th highlight: show these notes in the forefront with fixed colors
+                              const isRootTone = notePos.chordTone === 'root';
+                              const is7thTone = notePos.chordTone === 'seventh';
+                              const rootHighlightActive = showRootNoteHighlight && isRootTone;
+                              const seventhHighlightActive = show7thNoteHighlight && is7thTone;
+                              const ROOT_HIGHLIGHT_COLOR = '#E85555';   // Red
+                              const SEVENTH_HIGHLIGHT_COLOR = '#A07ED4'; // Lavender/Purple
+
                               // Create multi-colored glow rings if this note is part of multiple hovered chords
                               const createMultiColorGlow = () => {
+                                // Root/7th highlight overrides glow color when checkbox is checked
+                                if (rootHighlightActive) {
+                                  return `0 0 0 6px ${hexToRgba(ROOT_HIGHLIGHT_COLOR, 0.7)}, 0 0 14px ${hexToRgba(ROOT_HIGHLIGHT_COLOR, 0.5)}`;
+                                }
+                                if (seventhHighlightActive) {
+                                  return `0 0 0 6px ${hexToRgba(SEVENTH_HIGHLIGHT_COLOR, 0.7)}, 0 0 14px ${hexToRgba(SEVENTH_HIGHLIGHT_COLOR, 0.5)}`;
+                                }
+
                                 if (!isHovered || hoveredTriadPositions.length === 0) {
-                                  return `0 0 0 6px ${hexToRgba(noteColor, 0.6)}, 0 0 12px ${hexToRgba(noteColor, 0.4)}`;
+                                  return `0 0 0 6px ${hexToRgba(intervalBorderColor, 0.6)}, 0 0 12px ${hexToRgba(intervalBorderColor, 0.4)}`;
                                 }
 
                                 // Get colors ONLY for chords that contain THIS EXACT note position
@@ -737,6 +776,13 @@ export default function Fretboard({
                               };
 
                               const glowColor = createMultiColorGlow();
+
+                              // When Root/7th highlight is active, override the border color too
+                              const finalBorderColor = rootHighlightActive
+                                ? `3px solid ${ROOT_HIGHLIGHT_COLOR}`
+                                : seventhHighlightActive
+                                  ? `3px solid ${SEVENTH_HIGHLIGHT_COLOR}`
+                                  : borderColor;
 
                               const handleClick = () => {
                                 if (onTriadVoicingClick && allTriadPositionsForNote.length > 0) {
@@ -775,7 +821,7 @@ export default function Fretboard({
                                     borderRadius: '50%',
                                     backgroundColor: noteColor,
                                     color: '#ffffff',
-                                    border: borderColor,
+                                    border: finalBorderColor,
                                     boxShadow: glowColor,
                                     cursor: onTriadVoicingClick ? 'pointer' : 'help',
                                     transform: isHovered ? 'scale(1.1)' : 'scale(1)',

@@ -149,7 +149,9 @@ export default function Home() {
   const [triadFocusMemory, setTriadFocusMemory] = useState<Record<string, string>>({});
   // Background (non-triad) note appearance controls
   const [nonTriadOpacity, setNonTriadOpacity] = useState(30);   // 0-100
-  const [nonTriadColorMode, setNonTriadColorMode] = useLocalStorage('guitar-app-non-triad-color-mode', true); // false=B&W, true=Colors; defaults to Colors
+  const [nonTriadColorMode, setNonTriadColorMode] = useLocalStorage('guitar-app-non-triad-color-mode', true); // false=Interval, true=Monocolor; defaults to Monocolor
+  const [showRootNoteHighlight, setShowRootNoteHighlight] = useLocalStorage('guitar-app-show-root-note-highlight', false);
+  const [show7thNoteHighlight, setShow7thNoteHighlight] = useLocalStorage('guitar-app-show-7th-note-highlight', false);
   // ───────────────────────────────────────────────────────────────────────────
 
   // Individual Notes mode state - shows all positions of a single note on the fretboard
@@ -3568,7 +3570,8 @@ export default function Home() {
                                   transition: 'all 150ms',
                                   whiteSpace: 'nowrap',
                                 }}
-                              >B&W</button>
+                                title="Interval: triad note borders use interval colors (Root=Red, 3rd=Gold, 5th=Green, 7th=Lavender)"
+                              >Interval</button>
                               <button
                                 onClick={() => setNonTriadColorMode(true)}
                                 style={{
@@ -3583,8 +3586,45 @@ export default function Home() {
                                   transition: 'all 150ms',
                                   whiteSpace: 'nowrap',
                                 }}
-                              >Colors</button>
+                                title="Monocolor: triad note borders use the note's own color"
+                              >Monocolor</button>
                             </div>
+                            {/* Root Note & 7th highlight checkboxes */}
+                            <div style={{ width: 1, height: 20, background: theme.border, flexShrink: 0 }} />
+                            {[
+                              { label: 'Root', key: 'root', checked: showRootNoteHighlight as boolean, set: setShowRootNoteHighlight, color: '#E85555' },
+                              { label: '7th', key: '7th', checked: show7thNoteHighlight as boolean, set: setShow7thNoteHighlight, color: '#A07ED4' },
+                            ].map(({ label, key, checked, set, color }) => (
+                              <label
+                                key={key}
+                                style={{ display: 'flex', alignItems: 'center', gap: 5, cursor: 'pointer', flexShrink: 0, userSelect: 'none' }}
+                                title={`Highlight all ${label} notes in the forefront with ${color === '#E85555' ? 'Red' : 'Purple'}`}
+                              >
+                                <span
+                                  onClick={() => set(!checked)}
+                                  style={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    width: 16,
+                                    height: 16,
+                                    borderRadius: 5,
+                                    border: `2px solid ${checked ? color : theme.border}`,
+                                    background: checked ? color : 'transparent',
+                                    transition: 'all 150ms',
+                                    cursor: 'pointer',
+                                    flexShrink: 0,
+                                  }}
+                                >
+                                  {checked && (
+                                    <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
+                                      <path d="M1 3.5L3.5 6L8 1" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                  )}
+                                </span>
+                                <span style={{ fontSize: 11, color: checked ? color : theme.textSecondary, fontWeight: checked ? 600 : 400, whiteSpace: 'nowrap', transition: 'color 150ms' }}>{label}</span>
+                              </label>
+                            ))}
                           </>
                         )}
                       </div>
@@ -3927,6 +3967,8 @@ export default function Home() {
                   focusTriad={focusTriad}
                   nonTriadOpacity={nonTriadOpacity}
                   nonTriadColorMode={nonTriadColorMode}
+                  showRootNoteHighlight={showTriadArcBands && (showRootNoteHighlight as boolean)}
+                  show7thNoteHighlight={showTriadArcBands && (show7thNoteHighlight as boolean)}
                   patternBgNotesOpacity={
                     patternHighlightNotes && !showTriadArcBands ? patternBgNotesOpacity :
                     !patternHighlightNotes && !customHighlightNotes && !zoneHighlightedChordNotes && showChordTones && !showTriadArcBands ? chordToneBgNotesOpacity :
