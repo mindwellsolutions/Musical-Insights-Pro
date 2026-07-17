@@ -97,6 +97,10 @@ export default function TriadFretboard({
   // State for voicing outlines toggle
   const [showVoicingOutlines, setShowVoicingOutlines] = useState(false);
 
+  // State for chord mode position navigation: index into the voicings array for the selected chord
+  // Each entry maps chordId → current voicingIndex being shown
+  const [chordVoicingIndices, setChordVoicingIndices] = useState<Map<string, number>>(new Map());
+
   // Sidebar hover override: when a sidebar chord card is hovered, show only its voicing
   // (injected from parent via prop — see interface below)
 
@@ -311,7 +315,26 @@ export default function TriadFretboard({
     }
   }, [chordsInZone, selectedTriadPosition, showAllPositions, visibleChordIds]);
 
-  // ── CHORDS MODE: compute NotePositions from CustomVoicings ──────────────────
+  // Helper: get all voicings for a chord (custom first, then calculated)
+  const getVoicingsForChord = (chord: ChordInstance): ChordVoicing[] => {
+    const custom = customVoicings.get(chord.id);
+    if (custom) return [custom]; // custom voicing is the only option shown
+    if (!chord.notes || chord.notes.length === 0) return [];
+    return calculateChordVoicings(chord.notes, chord.rootNote, tuning, 24);
+  };
+
+  // Helper: get the active voicing for a chord using chordVoicingIndices
+  const getActiveVoicingForChord = (chord: ChordInstance): ChordVoicing | undefined => {
+    const custom = customVoicings.get(chord.id);
+    if (custom) return custom;
+    if (!chord.notes || chord.notes.length === 0) return undefined;
+    const computed = calculateChordVoicings(chord.notes, chord.rootNote, tuning, 24);
+    if (computed.length === 0) return undefined;
+    const navIdx = chordVoicingIndices.get(chord.id) ?? (chord.voicingIndex ?? 0);
+    return computed[Math.min(navIdx, computed.length - 1)];
+  };
+
+  // ── CHORDS MODE: compute NotePositions from voicings (respects navigation index) ─
   const chordModeNotePositions = useMemo((): NotePosition[] => {
     if (displayMode !== 'chords') return [];
 
@@ -322,13 +345,8 @@ export default function TriadFretboard({
 
     chordsToShow.forEach((chord) => {
       const color = NOTE_COLORS[chord.rootNote] || '#6b7280';
-      // Prefer user-defined voicing, then use chord.voicingIndex to pick from computed list
-      let voicing: ChordVoicing | undefined = customVoicings.get(chord.id);
-      if (!voicing && chord.notes && chord.notes.length > 0) {
-        const computed = calculateChordVoicings(chord.notes, chord.rootNote, tuning, 24);
-        const idx = Math.min(chord.voicingIndex ?? 0, computed.length - 1);
-        voicing = computed[Math.max(0, idx)];
-      }
+      // Use active voicing (navigation-aware for selected chord, default for others)
+      const voicing = getActiveVoicingForChord(chord);
       if (!voicing) return;
 
       voicing.positions.forEach(fp => {
@@ -356,7 +374,7 @@ export default function TriadFretboard({
       sharedChordColors: colors,
       customColor: colors[0],
     }));
-  }, [displayMode, allChords, selectedChord, customVoicings, tuning, showAllPositions, visibleChordIds]);
+  }, [displayMode, allChords, selectedChord, customVoicings, tuning, showAllPositions, visibleChordIds, chordVoicingIndices]);
 
   // ── VOICING OUTLINE GROUPS for SVG overlay ───────────────────────────────────
   const voicingOutlineGroups = useMemo(() => {
@@ -367,12 +385,8 @@ export default function TriadFretboard({
 
     return chordsToShow.map((chord) => {
       const color = NOTE_COLORS[chord.rootNote] || '#6b7280';
-      let voicing: ChordVoicing | undefined = customVoicings.get(chord.id);
-      if (!voicing && chord.notes && chord.notes.length > 0) {
-        const computed = calculateChordVoicings(chord.notes, chord.rootNote, tuning, 24);
-        const idx = Math.min(chord.voicingIndex ?? 0, computed.length - 1);
-        voicing = computed[Math.max(0, idx)];
-      }
+      // Use navigation-aware active voicing
+      const voicing = getActiveVoicingForChord(chord);
       if (!voicing) return null;
 
       const positions = voicing.positions
@@ -381,7 +395,7 @@ export default function TriadFretboard({
 
       return { color, label: chord.chordSymbol, positions };
     }).filter(Boolean) as { color: string; label: string; positions: { stringIndex: number; fretIndex: number }[] }[];
-  }, [showVoicingOutlines, displayMode, allChords, selectedChord, customVoicings, tuning, showAllPositions, visibleChordIds]);
+  }, [showVoicingOutlines, displayMode, allChords, selectedChord, customVoicings, tuning, showAllPositions, visibleChordIds, chordVoicingIndices]);
 
   // ── SIDEBAR HOVER PREVIEW: override notePositions ───────────────────────────
   const hoveredSidebarNotePositions = useMemo((): NotePosition[] => {
@@ -432,6 +446,49 @@ export default function TriadFretboard({
     }
   };
 
+  // ── CHORD MODE navigation: cycle voicing positions for the selected chord ──
+  const navigateChordVoicing = (direction: 'prev' | 'next') => {
+    if (!selectedChord) return;
+    const voicings = getVoicingsForChord(selectedChord);
+    if (voicings.length <= 1) return; // nothing to cycle
+
+    const currentIdx = chordVoicingIndices.get(selectedChord.id) ?? (selectedChord.voicingIndex ?? 0);
+    const maxIdx = voicings.length - 1;
+    const newIdx = direction === 'prev'
+      ? (currentIdx <= 0 ? maxIdx : currentIdx - 1)
+      : (currentIdx >= maxIdx ? 0 : currentIdx + 1);
+
+    setChordVoicingIndices(prev => {
+      const next = new Map(prev);
+      next.set(selectedChord.id, newIdx);
+      return next;
+    });
+
+    // Notify parent so audio engine uses the correct voicing
+    const chordIndex = allChords.findIndex(c => c.id === selectedChord.id);
+    if (chordIndex >= 0) {
+      onVoicingChange(chordIndex, voicings[newIdx]);
+    }
+  };
+
+  // Mode-aware navigation handlers: Chords mode uses local voicing index,
+  // Triads mode delegates to parent (PlaySongPanel)
+  const handleNavigatePreviousLocal = () => {
+    if (displayMode === 'chords') {
+      navigateChordVoicing('prev');
+    } else {
+      onNavigatePrevious();
+    }
+  };
+
+  const handleNavigateNextLocal = () => {
+    if (displayMode === 'chords') {
+      navigateChordVoicing('next');
+    } else {
+      onNavigateNext();
+    }
+  };
+
   // Calculate fret range for current zone
   const fretRange = useMemo(() => {
     if (triadPositions.length === 0) return null;
@@ -475,7 +532,7 @@ export default function TriadFretboard({
           <div className="flex flex-wrap gap-2 items-center">
             {/* Navigation Arrows */}
             <button
-              onClick={onNavigatePrevious}
+              onClick={handleNavigatePreviousLocal}
               className="p-2 rounded-lg hover:opacity-70 transition-all"
               style={{
                 backgroundColor: theme.bgPrimary,
@@ -489,7 +546,7 @@ export default function TriadFretboard({
               </svg>
             </button>
             <button
-              onClick={onNavigateNext}
+              onClick={handleNavigateNextLocal}
               className="p-2 rounded-lg hover:opacity-70 transition-all"
               style={{
                 backgroundColor: theme.bgPrimary,
@@ -699,8 +756,8 @@ export default function TriadFretboard({
           onNoteClick={displayMode === 'chords' && !hoveredSidebarVoicing ? handleChordNoteClick : undefined}
           showNavigationArrows={true}
           anchorChordPositions={anchorChordPositions}
-          onNavigatePrevious={onNavigatePrevious}
-          onNavigateNext={onNavigateNext}
+          onNavigatePrevious={handleNavigatePreviousLocal}
+          onNavigateNext={handleNavigateNextLocal}
           showColorfulStrings={showColorfulStrings}
           stringBrightness={stringBrightness}
           showTopFretNumbers={false}
