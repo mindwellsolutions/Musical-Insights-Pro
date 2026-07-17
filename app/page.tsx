@@ -3664,45 +3664,72 @@ export default function Home() {
                         flexShrink: 0,
                       }}
                     >
-                      {/* Triad notes: color-coded Root / 3rd / 5th circles */}
-                      {showTriadArcBands && focusTriad && (
-                        <>
-                          <span style={{ fontSize: 12, color: theme.textSecondary, fontWeight: 500, whiteSpace: 'nowrap', paddingBottom: 4 }}>
-                            Notes in{' '}
-                            <span style={{ color: focusTriad.color, fontWeight: 700 }}>{focusTriad.degree}</span>:
-                          </span>
-                          {['Root', '3rd', '5th'].map((role, i) => {
-                            const note = focusTriad.notes[i];
-                            if (!note) return null;
-                            return (
-                              <div key={`${note}-${i}`} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3 }}>
-                                <div style={{
-                                  width: 34,
-                                  height: 34,
-                                  borderRadius: '50%',
-                                  backgroundColor: NOTE_COLORS[note] ?? '#6b7280',
-                                  border: `2px solid ${focusTriad.color}`,
-                                  boxShadow: `0 0 10px ${NOTE_COLORS[note] ?? '#6b7280'}55, 0 0 5px ${focusTriad.color}70`,
-                                  display: 'flex',
-                                  alignItems: 'center',
-                                  justifyContent: 'center',
-                                  color: '#fff',
-                                  fontSize: 11,
-                                  fontWeight: 700,
-                                  textShadow: '0 1px 3px rgba(0,0,0,0.9)',
+                      {/* Triad notes: color-coded Root / 3rd / 5th circles, + optional 7th */}
+                      {showTriadArcBands && focusTriad && (() => {
+                        // Compute the diatonic 7th for the focused triad
+                        const triadRootNorm = normalizeNoteToSharp(focusTriad.rootNote);
+                        const rootIdx = NOTES.indexOf(triadRootNorm);
+                        // major/augmented → M7 (+11); minor/diminished → m7 (+10)
+                        const seventhInterval = (focusTriad.quality === 'major' || focusTriad.quality === 'augmented') ? 11 : 10;
+                        const seventhNote = rootIdx !== -1 ? NOTES[(rootIdx + seventhInterval) % 12] : null;
+                        const SEVENTH_COLOR = '#A07ED4';
+
+                        const noteCircle = (note: string, role: string, borderColor: string, glowColor?: string) => (
+                          <div key={`${note}-${role}`} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3 }}>
+                            <div style={{
+                              width: 34,
+                              height: 34,
+                              borderRadius: '50%',
+                              backgroundColor: NOTE_COLORS[note] ?? '#6b7280',
+                              border: `2px solid ${borderColor}`,
+                              boxShadow: `0 0 10px ${NOTE_COLORS[note] ?? '#6b7280'}55, 0 0 5px ${glowColor ?? borderColor}70`,
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              color: '#fff',
+                              fontSize: 11,
+                              fontWeight: 700,
+                              textShadow: '0 1px 3px rgba(0,0,0,0.9)',
+                              flexShrink: 0,
+                              transition: 'all 150ms ease-out',
+                            }}>
+                              {getNoteDisplayName(note)}
+                            </div>
+                            <span style={{ fontSize: 9, color: glowColor ?? theme.textSecondary, fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                              {role}
+                            </span>
+                          </div>
+                        );
+
+                        return (
+                          <>
+                            <span style={{ fontSize: 12, color: theme.textSecondary, fontWeight: 500, whiteSpace: 'nowrap', paddingBottom: 4 }}>
+                              Notes in{' '}
+                              <span style={{ color: focusTriad.color, fontWeight: 700 }}>{focusTriad.degree}</span>:
+                            </span>
+                            {(['Root', '3rd', '5th'] as const).map((role, i) => {
+                              const note = focusTriad.notes[i];
+                              if (!note) return null;
+                              return noteCircle(note, role, focusTriad.color);
+                            })}
+                            {/* 7th extension — only shown when 7th checkbox is checked */}
+                            {(show7thNoteHighlight as boolean) && seventhNote && (
+                              <>
+                                {/* + separator */}
+                                <span style={{
+                                  fontSize: 18,
+                                  fontWeight: 300,
+                                  color: theme.textSecondary,
+                                  paddingBottom: 14,
                                   flexShrink: 0,
-                                  transition: 'all 150ms ease-out',
-                                }}>
-                                  {getNoteDisplayName(note)}
-                                </div>
-                                <span style={{ fontSize: 9, color: theme.textSecondary, fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
-                                  {role}
-                                </span>
-                              </div>
-                            );
-                          })}
-                        </>
-                      )}
+                                  lineHeight: 1,
+                                }}>+</span>
+                                {noteCircle(seventhNote, '7th', SEVENTH_COLOR, SEVENTH_COLOR)}
+                              </>
+                            )}
+                          </>
+                        );
+                      })()}
 
                       {/* Progression pill — absolutely positioned, draggable horizontally */}
                       {selectedChordTonePattern && (
