@@ -282,9 +282,12 @@ export default function TargetNotesPanel({
 
   return (
     <div style={{ background: bgSec, border: `1px solid ${border}`, borderRadius: 12, overflow: 'hidden', marginTop: 12 }}>
-      {/* Panel header */}
-      <button
+      {/* Panel header — use div to avoid nested <button> hydration error */}
+      <div
+        role="button"
+        tabIndex={0}
         onClick={() => setIsCollapsed((c) => !c)}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setIsCollapsed((c) => !c); }}
         style={{
           width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           padding: '10px 14px', background: 'none', border: 'none', cursor: 'pointer',
@@ -315,7 +318,7 @@ export default function TargetNotesPanel({
           )}
           <span style={{ fontSize: 11, color: theme.textSecondary }}>{isCollapsed ? '▼' : '▲'}</span>
         </div>
-      </button>
+      </div>
       {/* Body rendered below — see continuation */}
       {!isCollapsed && <TargetNotesPanelBody
         currentKey={currentKey} currentScale={currentScale} scaleNotes={scaleNotes}
