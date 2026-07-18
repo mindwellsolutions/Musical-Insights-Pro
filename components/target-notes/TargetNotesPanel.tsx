@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import { Loader2, Target, X } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { TargetNoteSet, TargetNoteHighlight, TargetNoteSetSlim, CARD_COLORS } from '@/lib/target-notes/types';
 import { ThemeConfig } from '@/lib/themes';
 import { NOTE_COLORS } from '@/lib/musicTheory';
@@ -18,6 +18,8 @@ interface TargetNotesPanelProps {
   bgOpacity: number;
   onBgOpacityChange: (v: number) => void;
   theme: ThemeConfig;
+  /** When true, renders without the outer card wrapper (used when hosted inside a tab container) */
+  inTabContainer?: boolean;
 }
 
 function enrichRecommendations(slims: TargetNoteSetSlim[], scaleNotes: string[]): TargetNoteSet[] {
@@ -35,11 +37,15 @@ interface BodyProps {
   currentKey: string; currentScale: string; scaleNotes: string[];
   activeHighlight: TargetNoteHighlight | null;
   onLoadHighlight: (h: TargetNoteHighlight) => void;
+  onClearHighlight: () => void;
   bgOpacity: number; onBgOpacityChange: (v: number) => void;
   theme: ThemeConfig;
   userPrompt: string; setUserPrompt: (v: string) => void;
   isLoading: boolean; error: string | null;
   recommendations: TargetNoteSet[];
+  /** Key+scale context that was used when current recommendations were generated */
+  generatedForKey: string | null;
+  generatedForScale: string | null;
   handleGenerate: () => void;
   manualSelected: string[]; toggleManualNote: (n: string) => void;
   resetManualSelected: () => void;
@@ -49,9 +55,10 @@ interface BodyProps {
 
 function TargetNotesPanelBody({
   currentKey, currentScale, scaleNotes,
-  activeHighlight, onLoadHighlight,
+  activeHighlight, onLoadHighlight, onClearHighlight,
   bgOpacity, onBgOpacityChange, theme,
   userPrompt, setUserPrompt, isLoading, error, recommendations,
+  generatedForKey, generatedForScale,
   handleGenerate, manualSelected, toggleManualNote, resetManualSelected, handleLoadManual, isRecActive,
 }: BodyProps) {
   const sec = theme.textSecondary;
@@ -59,8 +66,62 @@ function TargetNotesPanelBody({
   const border = theme.border;
   const accent = theme.accentPrimary;
 
+  // Stale: active highlight exists but key/scale has changed since generation
+  const isStale = !!(activeHighlight && generatedForKey && generatedForScale &&
+    (generatedForKey !== currentKey || generatedForScale !== currentScale));
+
   return (
-    <div style={{ padding: '0 14px 14px', display: 'flex', flexDirection: 'column', gap: 14 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+
+      {/* ── STALE KEY/SCALE WARNING ── */}
+      {isStale && (
+        <div style={{
+          background: `${accent}12`, border: `1px solid ${accent}45`,
+          borderRadius: 8, padding: '10px 12px',
+          display: 'flex', alignItems: 'flex-start', gap: 10,
+        }}>
+          <span style={{ fontSize: 15, flexShrink: 0, lineHeight: 1.4 }}>⚠️</span>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <p style={{ fontSize: 12, fontWeight: 700, color: accent, margin: 0, marginBottom: 3 }}>
+              Key / Scale Changed
+            </p>
+            <p style={{ fontSize: 11, color: sec, margin: 0, marginBottom: 8, lineHeight: 1.45 }}>
+              Active notes were generated for{' '}
+              <strong style={{ color: theme.textPrimary }}>{generatedForKey} {generatedForScale}</strong>.
+              You&apos;re now on{' '}
+              <strong style={{ color: theme.textPrimary }}>{currentKey} {currentScale}</strong>.
+            </p>
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              <button
+                onClick={handleGenerate}
+                disabled={isLoading || !userPrompt.trim()}
+                style={{
+                  padding: '6px 14px', borderRadius: 6,
+                  background: (!isLoading && userPrompt.trim()) ? accent : `${accent}55`,
+                  color: '#fff', fontSize: 11, fontWeight: 700, border: 'none',
+                  cursor: (!isLoading && userPrompt.trim()) ? 'pointer' : 'not-allowed',
+                  display: 'flex', alignItems: 'center', gap: 5,
+                  transition: 'all 150ms ease-out',
+                }}
+              >
+                {isLoading
+                  ? <><Loader2 size={12} className="animate-spin" /> Regenerating…</>
+                  : userPrompt.trim() ? '🎯 Regenerate' : 'Enter a mood above first'}
+              </button>
+              <button
+                onClick={onClearHighlight}
+                style={{
+                  padding: '6px 14px', borderRadius: 6,
+                  background: bg3, border: `1px solid ${border}`,
+                  color: sec, fontSize: 11, fontWeight: 600, cursor: 'pointer',
+                }}
+              >
+                Clear Active
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ── AI GENERATOR ── */}
       <div>
@@ -80,20 +141,22 @@ function TargetNotesPanelBody({
             fontFamily: 'inherit', outline: 'none',
           }}
         />
-        <button
-          onClick={handleGenerate}
-          disabled={isLoading || !userPrompt.trim()}
-          style={{
-            marginTop: 8, width: '100%', padding: '8px 0', borderRadius: 8,
-            background: (!isLoading && userPrompt.trim()) ? accent : `${accent}55`,
-            color: '#fff', fontSize: 12, fontWeight: 700, border: 'none',
-            cursor: (!isLoading && userPrompt.trim()) ? 'pointer' : 'not-allowed',
-            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-            transition: 'all 150ms ease-out',
-          }}
-        >
-          {isLoading ? <><Loader2 size={13} className="animate-spin" /> Generating…</> : '✨ Generate Recommendations'}
-        </button>
+        <div style={{ marginTop: 8 }}>
+          <button
+            onClick={handleGenerate}
+            disabled={isLoading || !userPrompt.trim()}
+            style={{
+              padding: '7px 18px', borderRadius: 8,
+              background: (!isLoading && userPrompt.trim()) ? accent : `${accent}55`,
+              color: '#fff', fontSize: 12, fontWeight: 700, border: 'none',
+              cursor: (!isLoading && userPrompt.trim()) ? 'pointer' : 'not-allowed',
+              display: 'inline-flex', alignItems: 'center', gap: 6,
+              transition: 'all 150ms ease-out',
+            }}
+          >
+            {isLoading ? <><Loader2 size={13} className="animate-spin" /> Generating…</> : '🎯 Generate Recommendations'}
+          </button>
+        </div>
         {error && <p style={{ fontSize: 11, color: '#ef4444', marginTop: 6 }}>{error}</p>}
       </div>
 
@@ -164,11 +227,11 @@ function TargetNotesPanelBody({
           </div>
         )}
 
-        <div style={{ display: 'flex', gap: 8 }}>
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
           <button
             onClick={resetManualSelected}
             style={{
-              flex: 1, padding: '7px 0', borderRadius: 7, background: bg3,
+              padding: '7px 16px', borderRadius: 7, background: bg3,
               border: `1px solid ${border}`, color: sec, fontSize: 11, fontWeight: 600, cursor: 'pointer',
             }}
           >
@@ -178,7 +241,7 @@ function TargetNotesPanelBody({
             onClick={handleLoadManual}
             disabled={manualSelected.length === 0}
             style={{
-              flex: 2, padding: '7px 0', borderRadius: 7,
+              padding: '7px 20px', borderRadius: 7,
               background: manualSelected.length > 0 ? accent : `${accent}55`,
               border: 'none', color: '#fff', fontSize: 11, fontWeight: 700,
               cursor: manualSelected.length > 0 ? 'pointer' : 'not-allowed',
@@ -214,13 +277,16 @@ export default function TargetNotesPanel({
   bgOpacity,
   onBgOpacityChange,
   theme,
+  inTabContainer = false,
 }: TargetNotesPanelProps) {
-  const [isCollapsed, setIsCollapsed] = useState(false);
   const [userPrompt, setUserPrompt] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [recommendations, setRecommendations] = useState<TargetNoteSet[]>([]);
   const [manualSelected, setManualSelected] = useLocalStorage<string[]>('guitar-app-manual-target-notes', []);
+  // Track which key/scale was active when last generation ran
+  const [generatedForKey, setGeneratedForKey] = useState<string | null>(null);
+  const [generatedForScale, setGeneratedForScale] = useState<string | null>(null);
 
   const handleGenerate = useCallback(async () => {
     if (!userPrompt.trim() || isLoading) return;
@@ -238,6 +304,8 @@ export default function TargetNotesPanel({
       }
       const data = await res.json();
       setRecommendations(enrichRecommendations(data.recommendations, scaleNotes));
+      setGeneratedForKey(currentKey);
+      setGeneratedForScale(currentScale);
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Error generating recommendations');
     } finally {
@@ -261,7 +329,7 @@ export default function TargetNotesPanel({
   const handleLoadManual = useCallback(() => {
     if (manualSelected.length === 0) return;
     onLoadHighlight({
-      notes: manualSelected,
+      notes: manualSelected as string[],
       label: 'Manual Selection',
       color: '#EF9F27',
       source: 'manual',
@@ -277,60 +345,30 @@ export default function TargetNotesPanel({
     );
   }, [activeHighlight]);
 
-  const border = theme.border;
-  const bgSec = theme.bgSecondary;
+  const body = (
+    <TargetNotesPanelBody
+      currentKey={currentKey} currentScale={currentScale} scaleNotes={scaleNotes}
+      activeHighlight={activeHighlight} onLoadHighlight={onLoadHighlight} onClearHighlight={onClearHighlight}
+      bgOpacity={bgOpacity} onBgOpacityChange={onBgOpacityChange} theme={theme}
+      userPrompt={userPrompt} setUserPrompt={setUserPrompt}
+      isLoading={isLoading} error={error} recommendations={recommendations}
+      generatedForKey={generatedForKey} generatedForScale={generatedForScale}
+      handleGenerate={handleGenerate}
+      manualSelected={manualSelected as string[]} toggleManualNote={toggleManualNote}
+      resetManualSelected={resetManualSelected}
+      handleLoadManual={handleLoadManual} isRecActive={isRecActive}
+    />
+  );
 
+  // When hosted inside a tab container, render the body flat (no card wrapper, no collapse)
+  if (inTabContainer) {
+    return body;
+  }
+
+  // Standalone card mode (legacy — kept for if used outside tabs)
   return (
-    <div style={{ background: bgSec, border: `1px solid ${border}`, borderRadius: 12, overflow: 'hidden', marginTop: 12 }}>
-      {/* Panel header — use div to avoid nested <button> hydration error */}
-      <div
-        role="button"
-        tabIndex={0}
-        onClick={() => setIsCollapsed((c) => !c)}
-        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setIsCollapsed((c) => !c); }}
-        style={{
-          width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          padding: '10px 14px', background: 'none', border: 'none', cursor: 'pointer',
-        }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <Target size={14} style={{ color: theme.accentPrimary }} />
-          <span style={{ fontSize: 13, fontWeight: 700, color: theme.textPrimary }}>Target Notes</span>
-          {activeHighlight && (
-            <span style={{
-              fontSize: 10, fontWeight: 700, color: activeHighlight.color,
-              background: `${activeHighlight.color}20`, border: `1px solid ${activeHighlight.color}50`,
-              borderRadius: 999, padding: '1px 7px',
-            }}>
-              Active
-            </span>
-          )}
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          {activeHighlight && (
-            <button
-              onClick={(e) => { e.stopPropagation(); onClearHighlight(); }}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', color: theme.textSecondary, padding: 2 }}
-              title="Clear target notes"
-            >
-              <X size={13} />
-            </button>
-          )}
-          <span style={{ fontSize: 11, color: theme.textSecondary }}>{isCollapsed ? '▼' : '▲'}</span>
-        </div>
-      </div>
-      {/* Body rendered below — see continuation */}
-      {!isCollapsed && <TargetNotesPanelBody
-        currentKey={currentKey} currentScale={currentScale} scaleNotes={scaleNotes}
-        activeHighlight={activeHighlight} onLoadHighlight={onLoadHighlight}
-        bgOpacity={bgOpacity} onBgOpacityChange={onBgOpacityChange} theme={theme}
-        userPrompt={userPrompt} setUserPrompt={setUserPrompt}
-        isLoading={isLoading} error={error} recommendations={recommendations}
-        handleGenerate={handleGenerate}
-        manualSelected={manualSelected as string[]} toggleManualNote={toggleManualNote}
-        resetManualSelected={resetManualSelected}
-        handleLoadManual={handleLoadManual} isRecActive={isRecActive}
-      />}
+    <div style={{ background: theme.bgSecondary, border: `1px solid ${theme.border}`, borderRadius: 12, overflow: 'hidden', marginTop: 12 }}>
+      {body}
     </div>
   );
 }

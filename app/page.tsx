@@ -1039,8 +1039,8 @@ export default function Home() {
   // Harmonization state
   const [selectedHarmonization, setSelectedHarmonization] = useSupabaseStorage<'original' | '3rds' | '5ths' | '6ths' | '7ths'>('guitar-app-harmonization', 'original');
 
-  // Harmonization panel tab: 'harmonization' | 'recommended' | 'custom'
-  type HarmonizationTabKey = 'harmonization' | 'recommended' | 'custom';
+  // Harmonization panel tab: 'harmonization' | 'recommended' | 'custom' | 'targetNotes'
+  type HarmonizationTabKey = 'harmonization' | 'recommended' | 'custom' | 'targetNotes';
   const [harmonizationTab, setHarmonizationTab] = useSupabaseStorage<HarmonizationTabKey>('guitar-app-harmonization-tab', 'harmonization');
   // Keep carousel state for the 'recommended' tab
   const [selectedChordTonePattern, setSelectedChordTonePattern] = useState<import('@/components/ChordToneProgressionCarousel').ProgressionPattern | null>(null);
@@ -2694,8 +2694,19 @@ export default function Home() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                       </svg>
                     )},
-                  ] as { key: 'harmonization' | 'recommended' | 'custom'; label: string; icon: React.ReactNode }[]).map(({ key, label, icon }) => {
+                    { key: 'targetNotes' as const, label: 'Target Notes', icon: (
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" strokeWidth={2} />
+                        <circle cx="12" cy="12" r="4" strokeWidth={2} />
+                        <line x1="12" y1="2" x2="12" y2="6" strokeWidth={2} strokeLinecap="round" />
+                        <line x1="12" y1="18" x2="12" y2="22" strokeWidth={2} strokeLinecap="round" />
+                        <line x1="2" y1="12" x2="6" y2="12" strokeWidth={2} strokeLinecap="round" />
+                        <line x1="18" y1="12" x2="22" y2="12" strokeWidth={2} strokeLinecap="round" />
+                      </svg>
+                    )},
+                  ] as { key: 'harmonization' | 'recommended' | 'custom' | 'targetNotes'; label: string; icon: React.ReactNode }[]).map(({ key, label, icon }) => {
                     const isActive = harmonizationTab === key;
+                    const hasActiveTargetNotes = key === 'targetNotes' && !!targetNoteHighlight;
                     return (
                       <button
                         key={key}
@@ -2712,6 +2723,14 @@ export default function Home() {
                       >
                         {icon}
                         {label}
+                        {hasActiveTargetNotes && (
+                          <span style={{
+                            width: 6, height: 6, borderRadius: '50%',
+                            background: targetNoteHighlight!.color,
+                            display: 'inline-block', flexShrink: 0,
+                            boxShadow: `0 0 4px ${targetNoteHighlight!.color}`,
+                          }} />
+                        )}
                       </button>
                     );
                   })}
@@ -2746,6 +2765,25 @@ export default function Home() {
                       diatonicDegrees={diatonicTriads}
                       sequence={customProgressionSequence}
                       onSequenceChange={setCustomProgressionSequence}
+                    />
+                  )}
+                  {harmonizationTab === 'targetNotes' && rootNote && scaleName && (
+                    <TargetNotesPanel
+                      currentKey={manualKey || rootNote}
+                      currentScale={manualScaleName || scaleName}
+                      scaleNotes={getScaleNotes(manualKey || rootNote, manualScaleName || scaleName)}
+                      activeHighlight={targetNoteHighlight}
+                      onLoadHighlight={(highlight) => {
+                        if (!highlight.notes || highlight.notes.length === 0) { setTargetNoteHighlight(null); return; }
+                        setTargetNoteHighlight(highlight);
+                        setShowTriadArcBands(false);
+                        setTriadFocusOn(false);
+                      }}
+                      onClearHighlight={() => setTargetNoteHighlight(null)}
+                      bgOpacity={targetNoteBgOpacity as number}
+                      onBgOpacityChange={(v) => setTargetNoteBgOpacity(v)}
+                      theme={theme}
+                      inTabContainer
                     />
                   )}
                 </div>
@@ -3943,26 +3981,6 @@ export default function Home() {
                         </div>
                       )}
                     </div>
-                  )}
-
-                  {/* ── Target Notes Panel ── */}
-                  {rootNote && scaleName && (
-                    <TargetNotesPanel
-                      currentKey={manualKey || rootNote}
-                      currentScale={manualScaleName || scaleName}
-                      scaleNotes={getScaleNotes(manualKey || rootNote, manualScaleName || scaleName)}
-                      activeHighlight={targetNoteHighlight}
-                      onLoadHighlight={(highlight) => {
-                        if (!highlight.notes || highlight.notes.length === 0) { setTargetNoteHighlight(null); return; }
-                        setTargetNoteHighlight(highlight);
-                        setShowTriadArcBands(false);
-                        setTriadFocusOn(false);
-                      }}
-                      onClearHighlight={() => setTargetNoteHighlight(null)}
-                      bgOpacity={targetNoteBgOpacity as number}
-                      onBgOpacityChange={(v) => setTargetNoteBgOpacity(v)}
-                      theme={theme}
-                    />
                   )}
 
                   <div ref={scaleFretboardRef}>
