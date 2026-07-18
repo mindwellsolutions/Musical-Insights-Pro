@@ -100,7 +100,7 @@ function TargetNotesPanelBody({
                   background: (!isLoading && userPrompt.trim()) ? accent : `${accent}55`,
                   color: '#fff', fontSize: 11, fontWeight: 700, border: 'none',
                   cursor: (!isLoading && userPrompt.trim()) ? 'pointer' : 'not-allowed',
-                  display: 'flex', alignItems: 'center', gap: 5,
+                  display: 'inline-flex', alignItems: 'center', gap: 5,
                   transition: 'all 150ms ease-out',
                 }}
               >
@@ -123,144 +123,164 @@ function TargetNotesPanelBody({
         </div>
       )}
 
-      {/* ── AI GENERATOR ── */}
-      <div>
-        <p style={{ fontSize: 10, fontWeight: 700, color: sec, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 8 }}>
-          AI Generator
-        </p>
-        <textarea
-          value={userPrompt}
-          onChange={(e) => setUserPrompt(e.target.value)}
-          onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleGenerate(); } }}
-          rows={2}
-          placeholder={`What mood or feeling? e.g. "dark cinematic tension" or "warm hopeful sunrise"`}
-          style={{
-            width: '100%', boxSizing: 'border-box', resize: 'none',
-            background: bg3, border: `1px solid ${border}`, borderRadius: 8,
-            color: theme.textPrimary, fontSize: 12, padding: '8px 10px',
-            fontFamily: 'inherit', outline: 'none',
-          }}
-        />
-        <div style={{ marginTop: 8 }}>
-          <button
-            onClick={handleGenerate}
-            disabled={isLoading || !userPrompt.trim()}
+      {/* ── TWO-COLUMN MAIN BODY: AI Generator (left) + Manual Picker (right) ── */}
+      <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start', flexWrap: 'wrap' }}>
+
+        {/* LEFT COLUMN — AI Generator */}
+        <div style={{ flex: '1 1 240px', minWidth: 200 }}>
+          <p style={{ fontSize: 10, fontWeight: 700, color: sec, letterSpacing: '0.08em', textTransform: 'uppercase', margin: 0, marginBottom: 8 }}>
+            AI Generator
+          </p>
+          <textarea
+            value={userPrompt}
+            onChange={(e) => setUserPrompt(e.target.value)}
+            onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleGenerate(); } }}
+            rows={3}
+            placeholder={`Mood or feeling?\ne.g. "dark cinematic tension"\nor "warm hopeful sunrise"`}
             style={{
-              padding: '7px 18px', borderRadius: 8,
-              background: (!isLoading && userPrompt.trim()) ? accent : `${accent}55`,
-              color: '#fff', fontSize: 12, fontWeight: 700, border: 'none',
-              cursor: (!isLoading && userPrompt.trim()) ? 'pointer' : 'not-allowed',
-              display: 'inline-flex', alignItems: 'center', gap: 6,
-              transition: 'all 150ms ease-out',
+              width: '100%', boxSizing: 'border-box', resize: 'vertical',
+              background: bg3, border: `1px solid ${border}`, borderRadius: 8,
+              color: theme.textPrimary, fontSize: 12, padding: '8px 10px',
+              fontFamily: 'inherit', outline: 'none', display: 'block',
             }}
-          >
-            {isLoading ? <><Loader2 size={13} className="animate-spin" /> Generating…</> : '🎯 Generate Recommendations'}
-          </button>
+          />
+          <div style={{ marginTop: 8 }}>
+            <button
+              onClick={handleGenerate}
+              disabled={isLoading || !userPrompt.trim()}
+              style={{
+                padding: '7px 18px', borderRadius: 8,
+                background: (!isLoading && userPrompt.trim()) ? accent : `${accent}55`,
+                color: '#fff', fontSize: 12, fontWeight: 700, border: 'none',
+                cursor: (!isLoading && userPrompt.trim()) ? 'pointer' : 'not-allowed',
+                display: 'inline-flex', alignItems: 'center', gap: 6,
+                transition: 'all 150ms ease-out',
+              }}
+            >
+              {isLoading ? <><Loader2 size={13} className="animate-spin" /> Generating…</> : '🎯 Generate'}
+            </button>
+          </div>
+          {error && <p style={{ fontSize: 11, color: '#ef4444', marginTop: 6 }}>{error}</p>}
         </div>
-        {error && <p style={{ fontSize: 11, color: '#ef4444', marginTop: 6 }}>{error}</p>}
+
+        {/* DIVIDER — vertical between columns */}
+        <div style={{ width: 1, background: border, alignSelf: 'stretch', opacity: 0.5, flexShrink: 0 }} />
+
+        {/* RIGHT COLUMN — Manual Picker */}
+        <div style={{ flex: '1 1 200px', minWidth: 180 }}>
+          <p style={{ fontSize: 10, fontWeight: 700, color: sec, letterSpacing: '0.08em', textTransform: 'uppercase', margin: 0, marginBottom: 8 }}>
+            Manual — {currentKey} {currentScale}
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5, marginBottom: 8 }}>
+            {scaleNotes.map((note) => {
+              const isSelected = manualSelected.includes(note);
+              const noteColor = (NOTE_COLORS as Record<string, string>)[note] || '#6b7280';
+              return (
+                <button
+                  key={note}
+                  onClick={() => toggleManualNote(note)}
+                  style={{
+                    width: 34, height: 34, borderRadius: '50%', border: 'none',
+                    background: isSelected ? noteColor : bg3,
+                    color: isSelected ? '#fff' : sec,
+                    fontSize: 10, fontWeight: 700, cursor: 'pointer',
+                    boxShadow: isSelected ? `0 0 8px ${noteColor}80` : 'none',
+                    opacity: isSelected ? 1 : 0.45,
+                    transition: 'all 150ms ease-out',
+                  }}
+                  title={note}
+                >
+                  {note}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Selected note pills */}
+          {manualSelected.length > 0 && (
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginBottom: 8 }}>
+              {manualSelected.map((n) => {
+                const nc = (NOTE_COLORS as Record<string, string>)[n] || '#6b7280';
+                return (
+                  <span key={n} style={{ borderRadius: 999, padding: '2px 8px', fontSize: 11, fontWeight: 700, background: `${nc}28`, color: nc }}>
+                    {n}
+                  </span>
+                );
+              })}
+            </div>
+          )}
+
+          <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
+            <button
+              onClick={resetManualSelected}
+              style={{
+                padding: '6px 13px', borderRadius: 7, background: bg3,
+                border: `1px solid ${border}`, color: sec, fontSize: 11, fontWeight: 600, cursor: 'pointer',
+              }}
+            >
+              Reset
+            </button>
+            <button
+              onClick={handleLoadManual}
+              disabled={manualSelected.length === 0}
+              style={{
+                padding: '6px 16px', borderRadius: 7,
+                background: manualSelected.length > 0 ? accent : `${accent}55`,
+                border: 'none', color: '#fff', fontSize: 11, fontWeight: 700,
+                cursor: manualSelected.length > 0 ? 'pointer' : 'not-allowed',
+                transition: 'all 150ms ease-out',
+              }}
+            >
+              Load to Fretboard
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* ── RECOMMENDATION CARDS ── */}
       {recommendations.length > 0 && (
-        <div
-          style={{
-            display: 'flex', gap: 10, overflowX: 'auto', paddingBottom: 4,
-            scrollbarWidth: 'none',
-          }}
-        >
-          {recommendations.map((rec) => (
-            <TargetNoteCard
-              key={rec.id}
-              noteSet={rec}
-              isActive={isRecActive(rec)}
-              onLoad={() => onLoadHighlight({ notes: rec.notes, label: rec.label, color: rec.color, source: 'ai' })}
-              theme={theme}
-            />
-          ))}
-        </div>
+        <>
+          <div style={{ height: 1, background: border, opacity: 0.4 }} />
+          <div style={{ display: 'flex', gap: 10, overflowX: 'auto', paddingBottom: 4, scrollbarWidth: 'none' }}>
+            {recommendations.map((rec) => (
+              <TargetNoteCard
+                key={rec.id}
+                noteSet={rec}
+                isActive={isRecActive(rec)}
+                onLoad={() => onLoadHighlight({ notes: rec.notes, label: rec.label, color: rec.color, source: 'ai' })}
+                theme={theme}
+              />
+            ))}
+          </div>
+        </>
       )}
 
-      {/* ── DIVIDER ── */}
-      <div style={{ height: 1, background: border, opacity: 0.5 }} />
-
-      {/* ── MANUAL PICKER ── */}
-      <div>
-        <p style={{ fontSize: 10, fontWeight: 700, color: sec, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 8 }}>
-          Manual — {currentKey} {currentScale}
-        </p>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 10 }}>
-          {scaleNotes.map((note) => {
-            const isSelected = manualSelected.includes(note);
-            const noteColor = (NOTE_COLORS as Record<string, string>)[note] || '#6b7280';
-            return (
-              <button
-                key={note}
-                onClick={() => toggleManualNote(note)}
-                style={{
-                  width: 38, height: 38, borderRadius: '50%', border: 'none',
-                  background: isSelected ? noteColor : bg3,
-                  color: isSelected ? '#fff' : sec,
-                  fontSize: 11, fontWeight: 700, cursor: 'pointer',
-                  boxShadow: isSelected ? `0 0 10px ${noteColor}80` : 'none',
-                  opacity: isSelected ? 1 : 0.5,
-                  transition: 'all 150ms ease-out',
-                }}
-                title={note}
-              >
-                {note}
-              </button>
-            );
-          })}
+      {/* ── BG OPACITY — styled pill slider matching the Bg Notes slider ── */}
+      <div style={{ height: 1, background: border, opacity: 0.4 }} />
+      <div className="flex items-center gap-2" style={{ flexShrink: 0 }}>
+        <span style={{ fontSize: 11, color: sec, whiteSpace: 'nowrap', fontWeight: 500 }}>Bg Notes Opacity</span>
+        <div style={{
+          position: 'relative', display: 'flex', alignItems: 'center',
+          width: 90, height: 24, borderRadius: 12,
+          background: 'rgba(0,0,0,0.35)',
+          border: `1px solid ${border}`,
+          boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.4)',
+          padding: '0 8px',
+        }}>
+          <div style={{
+            position: 'absolute', left: 8, right: 8,
+            top: '50%', transform: 'translateY(-50%)',
+            height: 4, borderRadius: 2,
+            background: `linear-gradient(to right, ${accent} 0%, ${accent} ${bgOpacity}%, rgba(255,255,255,0.12) ${bgOpacity}%, rgba(255,255,255,0.12) 100%)`,
+            pointerEvents: 'none',
+          }} />
+          <input
+            type="range" min={0} max={100} step={5} value={bgOpacity}
+            onChange={(e) => onBgOpacityChange(parseInt(e.target.value))}
+            title={`Background note opacity: ${bgOpacity}%`}
+            style={{ position: 'relative', width: '100%', height: '100%', opacity: 0, cursor: 'pointer', zIndex: 1, margin: 0 }}
+          />
         </div>
-
-        {/* Selected note pills */}
-        {manualSelected.length > 0 && (
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginBottom: 8 }}>
-            {manualSelected.map((n) => {
-              const nc = (NOTE_COLORS as Record<string, string>)[n] || '#6b7280';
-              return (
-                <span key={n} style={{ borderRadius: 999, padding: '2px 8px', fontSize: 11, fontWeight: 700, background: `${nc}30`, color: nc }}>
-                  {n}
-                </span>
-              );
-            })}
-          </div>
-        )}
-
-        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-          <button
-            onClick={resetManualSelected}
-            style={{
-              padding: '7px 16px', borderRadius: 7, background: bg3,
-              border: `1px solid ${border}`, color: sec, fontSize: 11, fontWeight: 600, cursor: 'pointer',
-            }}
-          >
-            Reset
-          </button>
-          <button
-            onClick={handleLoadManual}
-            disabled={manualSelected.length === 0}
-            style={{
-              padding: '7px 20px', borderRadius: 7,
-              background: manualSelected.length > 0 ? accent : `${accent}55`,
-              border: 'none', color: '#fff', fontSize: 11, fontWeight: 700,
-              cursor: manualSelected.length > 0 ? 'pointer' : 'not-allowed',
-              transition: 'all 150ms ease-out',
-            }}
-          >
-            Load to Fretboard
-          </button>
-        </div>
-      </div>
-
-      {/* ── BG OPACITY ── */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <span style={{ fontSize: 11, color: sec, whiteSpace: 'nowrap' }}>Background opacity</span>
-        <input
-          type="range" min={0} max={100} value={bgOpacity}
-          onChange={(e) => onBgOpacityChange(parseInt(e.target.value))}
-          style={{ flex: 1 }}
-        />
         <span style={{ fontSize: 11, fontFamily: 'monospace', color: sec, minWidth: 30 }}>{bgOpacity}%</span>
       </div>
     </div>

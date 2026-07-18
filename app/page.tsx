@@ -3387,6 +3387,36 @@ export default function Home() {
                           <span style={{ fontWeight: 500 }}>Triads in Scale</span>
                         </label>
 
+                        {/* Clear Target Notes pill — only shown when a target note highlight is active */}
+                        {targetNoteHighlight && (
+                          <>
+                            <div style={{ width: 1, height: 20, background: theme.border, flexShrink: 0 }} />
+                            <button
+                              onClick={() => setTargetNoteHighlight(null)}
+                              style={{
+                                display: 'inline-flex', alignItems: 'center', gap: 5,
+                                padding: '3px 10px', borderRadius: 999,
+                                background: `${targetNoteHighlight.color}20`,
+                                border: `1px solid ${targetNoteHighlight.color}60`,
+                                color: targetNoteHighlight.color,
+                                fontSize: 11, fontWeight: 700, cursor: 'pointer',
+                                whiteSpace: 'nowrap', flexShrink: 0,
+                                transition: 'all 150ms ease-out',
+                              }}
+                              title="Clear active target notes"
+                            >
+                              <span style={{
+                                width: 6, height: 6, borderRadius: '50%',
+                                background: targetNoteHighlight.color,
+                                display: 'inline-block', flexShrink: 0,
+                                boxShadow: `0 0 5px ${targetNoteHighlight.color}`,
+                              }} />
+                              Target Notes: {targetNoteHighlight.label}
+                              <span style={{ opacity: 0.7, fontSize: 10 }}>✕</span>
+                            </button>
+                          </>
+                        )}
+
                         {/* Glow slider — shown when a chord tone pattern is active */}
                         {selectedChordTonePattern && (
                           <>
