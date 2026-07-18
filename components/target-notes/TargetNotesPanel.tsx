@@ -300,39 +300,76 @@ export default function TargetNotesPanel({
   theme,
   inTabContainer = false,
 }: TargetNotesPanelProps) {
-  const [userPrompt, setUserPrompt] = useState('');
+  // ── Persisted session (prompt + last results) ──────────────────────────────
+  // Stored as a single compact object so we only use one localStorage slot.
+  // recommendations are plain JSON-serializable TargetNoteSet objects — no
+  // enrichment needed on restore (enrichRecommendations only adds id+color
+  // which are already present on the stored value).
+  const [session, setSession] = useLocalStorage<{
+    prompt: string;
+    generatedForKey: string | null;
+    generatedForScale: string | null;
+    recommendations: TargetNoteSet[];
+  }>('guitar-app-target-notes-session', {
+    prompt: '',
+    generatedForKey: null,
+    generatedForScale: null,
+    recommendations: [],
+  });
+
+  // Ephemeral UI state — never persisted
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [recommendations, setRecommendations] = useState<TargetNoteSet[]>([]);
   const [manualSelected, setManualSelected] = useLocalStorage<string[]>('guitar-app-manual-target-notes', []);
-  // Track which key/scale was active when last generation ran
-  const [generatedForKey, setGeneratedForKey] = useState<string | null>(null);
-  const [generatedForScale, setGeneratedForScale] = useState<string | null>(null);
+
+  // Convenience aliases so the JSX below stays unchanged
+  const userPrompt = session.prompt;
+  const recommendations = session.recommendations;
+  const generatedForKey = session.generatedForKey;
+  const generatedForScale = session.generatedForScale;
+
+  // useLocalStorage setter is stable (useCallback-wrapped inside the hook),
+  // so we can safely derive setUserPrompt without capturing session in deps.
+  const setUserPrompt = useCallback((p: string) => {
+    // Read current stored value directly to avoid stale closure on session
+    try {
+      const raw = typeof window !== 'undefined' ? window.localStorage.getItem('guitar-app-target-notes-session') : null;
+      const current = raw ? JSON.parse(raw) : { prompt: '', generatedForKey: null, generatedForScale: null, recommendations: [] };
+      setSession({ ...current, prompt: p });
+    } catch {
+      setSession({ prompt: p, generatedForKey: null, generatedForScale: null, recommendations: [] });
+    }
+  }, [setSession]);
 
   const handleGenerate = useCallback(async () => {
-    if (!userPrompt.trim() || isLoading) return;
+    if (!session.prompt.trim() || isLoading) return;
     setIsLoading(true);
     setError(null);
     try {
       const res = await fetch('/api/target-notes/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ currentKey, currentScale, scaleNotes, userPrompt }),
+        body: JSON.stringify({ currentKey, currentScale, scaleNotes, userPrompt: session.prompt }),
       });
       if (!res.ok) {
         const d = await res.json();
         throw new Error(d.error || 'Failed to generate');
       }
       const data = await res.json();
-      setRecommendations(enrichRecommendations(data.recommendations, scaleNotes));
-      setGeneratedForKey(currentKey);
-      setGeneratedForScale(currentScale);
+      const enriched = enrichRecommendations(data.recommendations, scaleNotes);
+      // Single atomic write — persists prompt + results + context together
+      setSession({
+        prompt: session.prompt,
+        generatedForKey: currentKey,
+        generatedForScale: currentScale,
+        recommendations: enriched,
+      });
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Error generating recommendations');
     } finally {
       setIsLoading(false);
     }
-  }, [userPrompt, isLoading, currentKey, currentScale, scaleNotes]);
+  }, [session, isLoading, currentKey, currentScale, scaleNotes, setSession]);
 
   const toggleManualNote = useCallback((note: string) => {
     const current: string[] = (manualSelected as string[]) ?? [];
