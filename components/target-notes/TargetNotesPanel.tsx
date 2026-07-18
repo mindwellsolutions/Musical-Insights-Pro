@@ -129,7 +129,7 @@ function TargetNotesPanelBody({
         {/* LEFT COLUMN — AI Generator */}
         <div style={{ flex: '1 1 240px', minWidth: 200 }}>
           <p style={{ fontSize: 10, fontWeight: 700, color: sec, letterSpacing: '0.08em', textTransform: 'uppercase', margin: 0, marginBottom: 8 }}>
-            AI Generator
+            Target Note Recommendations
           </p>
           <textarea
             value={userPrompt}
