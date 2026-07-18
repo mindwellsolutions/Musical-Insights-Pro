@@ -144,7 +144,7 @@ function TargetNotesPanelBody({
               fontFamily: 'inherit', outline: 'none', display: 'block',
             }}
           />
-          <div style={{ marginTop: 8 }}>
+          <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
             <button
               onClick={handleGenerate}
               disabled={isLoading || !userPrompt.trim()}
@@ -154,11 +154,39 @@ function TargetNotesPanelBody({
                 color: '#fff', fontSize: 12, fontWeight: 700, border: 'none',
                 cursor: (!isLoading && userPrompt.trim()) ? 'pointer' : 'not-allowed',
                 display: 'inline-flex', alignItems: 'center', gap: 6,
-                transition: 'all 150ms ease-out',
+                transition: 'all 150ms ease-out', flexShrink: 0,
               }}
             >
               {isLoading ? <><Loader2 size={13} className="animate-spin" /> Generating…</> : '🎯 Generate'}
             </button>
+
+            {/* Bg Notes Opacity — inline with Generate button */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0 }}>
+              <span style={{ fontSize: 11, color: sec, whiteSpace: 'nowrap', fontWeight: 500 }}>Bg Opacity</span>
+              <div style={{
+                position: 'relative', display: 'flex', alignItems: 'center',
+                width: 80, height: 22, borderRadius: 11,
+                background: 'rgba(0,0,0,0.35)',
+                border: `1px solid ${border}`,
+                boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.4)',
+                padding: '0 7px',
+              }}>
+                <div style={{
+                  position: 'absolute', left: 7, right: 7,
+                  top: '50%', transform: 'translateY(-50%)',
+                  height: 4, borderRadius: 2,
+                  background: `linear-gradient(to right, ${accent} 0%, ${accent} ${bgOpacity}%, rgba(255,255,255,0.12) ${bgOpacity}%, rgba(255,255,255,0.12) 100%)`,
+                  pointerEvents: 'none',
+                }} />
+                <input
+                  type="range" min={0} max={100} step={5} value={bgOpacity}
+                  onChange={(e) => onBgOpacityChange(parseInt(e.target.value))}
+                  title={`Background note opacity: ${bgOpacity}%`}
+                  style={{ position: 'relative', width: '100%', height: '100%', opacity: 0, cursor: 'pointer', zIndex: 1, margin: 0 }}
+                />
+              </div>
+              <span style={{ fontSize: 11, fontFamily: 'monospace', color: sec, minWidth: 28 }}>{bgOpacity}%</span>
+            </div>
           </div>
           {error && <p style={{ fontSize: 11, color: '#ef4444', marginTop: 6 }}>{error}</p>}
         </div>
@@ -255,34 +283,7 @@ function TargetNotesPanelBody({
         </>
       )}
 
-      {/* ── BG OPACITY — styled pill slider matching the Bg Notes slider ── */}
-      <div style={{ height: 1, background: border, opacity: 0.4 }} />
-      <div className="flex items-center gap-2" style={{ flexShrink: 0 }}>
-        <span style={{ fontSize: 11, color: sec, whiteSpace: 'nowrap', fontWeight: 500 }}>Bg Notes Opacity</span>
-        <div style={{
-          position: 'relative', display: 'flex', alignItems: 'center',
-          width: 90, height: 24, borderRadius: 12,
-          background: 'rgba(0,0,0,0.35)',
-          border: `1px solid ${border}`,
-          boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.4)',
-          padding: '0 8px',
-        }}>
-          <div style={{
-            position: 'absolute', left: 8, right: 8,
-            top: '50%', transform: 'translateY(-50%)',
-            height: 4, borderRadius: 2,
-            background: `linear-gradient(to right, ${accent} 0%, ${accent} ${bgOpacity}%, rgba(255,255,255,0.12) ${bgOpacity}%, rgba(255,255,255,0.12) 100%)`,
-            pointerEvents: 'none',
-          }} />
-          <input
-            type="range" min={0} max={100} step={5} value={bgOpacity}
-            onChange={(e) => onBgOpacityChange(parseInt(e.target.value))}
-            title={`Background note opacity: ${bgOpacity}%`}
-            style={{ position: 'relative', width: '100%', height: '100%', opacity: 0, cursor: 'pointer', zIndex: 1, margin: 0 }}
-          />
-        </div>
-        <span style={{ fontSize: 11, fontFamily: 'monospace', color: sec, minWidth: 30 }}>{bgOpacity}%</span>
-      </div>
+
     </div>
   );
 }
