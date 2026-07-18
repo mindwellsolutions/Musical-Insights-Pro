@@ -20,6 +20,8 @@ interface TargetNotesPanelProps {
   theme: ThemeConfig;
   /** When true, renders without the outer card wrapper (used when hosted inside a tab container) */
   inTabContainer?: boolean;
+  /** Switch the app's active key+scale (called before loading a card from a different context) */
+  onSwitchContext?: (key: string, scale: string) => void;
 }
 
 function enrichRecommendations(slims: TargetNoteSetSlim[], scaleNotes: string[]): TargetNoteSet[] {
@@ -51,6 +53,7 @@ interface BodyProps {
   resetManualSelected: () => void;
   handleLoadManual: () => void;
   isRecActive: (rec: TargetNoteSet) => boolean;
+  onSwitchContext?: (key: string, scale: string) => void;
 }
 
 function TargetNotesPanelBody({
@@ -60,6 +63,7 @@ function TargetNotesPanelBody({
   userPrompt, setUserPrompt, isLoading, error, recommendations,
   generatedForKey, generatedForScale,
   handleGenerate, manualSelected, toggleManualNote, resetManualSelected, handleLoadManual, isRecActive,
+  onSwitchContext,
 }: BodyProps) {
   const sec = theme.textSecondary;
   const bg3 = theme.bgTertiary;
@@ -126,8 +130,8 @@ function TargetNotesPanelBody({
       {/* ── TWO-COLUMN MAIN BODY: AI Generator (left) + Manual Picker (right) ── */}
       <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start', flexWrap: 'wrap' }}>
 
-        {/* LEFT COLUMN — AI Generator */}
-        <div style={{ flex: '1 1 240px', minWidth: 200 }}>
+        {/* LEFT COLUMN — Target Note Recommendations (fixed ~1/3 width) */}
+        <div style={{ flex: '0 0 280px', maxWidth: 280 }}>
           <p style={{ fontSize: 10, fontWeight: 700, color: sec, letterSpacing: '0.08em', textTransform: 'uppercase', margin: 0, marginBottom: 8 }}>
             Target Note Recommendations
           </p>
@@ -269,13 +273,29 @@ function TargetNotesPanelBody({
       {recommendations.length > 0 && (
         <>
           <div style={{ height: 1, background: border, opacity: 0.4 }} />
+          {/* Context badge — shown when cards are from a different key/scale */}
+          {generatedForKey && generatedForScale && (generatedForKey !== currentKey || generatedForScale !== currentScale) && (
+            <p style={{ fontSize: 10, color: theme.textSecondary, margin: 0, fontStyle: 'italic' }}>
+              ⚠️ Cards below are for <strong style={{ color: theme.textPrimary }}>{generatedForKey} {generatedForScale}</strong> — loading will switch your key &amp; scale automatically.
+            </p>
+          )}
           <div style={{ display: 'flex', gap: 10, overflowX: 'auto', paddingBottom: 4, scrollbarWidth: 'none' }}>
             {recommendations.map((rec) => (
               <TargetNoteCard
                 key={rec.id}
                 noteSet={rec}
                 isActive={isRecActive(rec)}
-                onLoad={() => onLoadHighlight({ notes: rec.notes, label: rec.label, color: rec.color, source: 'ai' })}
+                onLoad={() => {
+                  // If cards were generated for a different key/scale, switch first
+                  if (
+                    onSwitchContext &&
+                    generatedForKey && generatedForScale &&
+                    (generatedForKey !== currentKey || generatedForScale !== currentScale)
+                  ) {
+                    onSwitchContext(generatedForKey, generatedForScale);
+                  }
+                  onLoadHighlight({ notes: rec.notes, label: rec.label, color: rec.color, source: 'ai' });
+                }}
                 theme={theme}
               />
             ))}
@@ -299,6 +319,7 @@ export default function TargetNotesPanel({
   onBgOpacityChange,
   theme,
   inTabContainer = false,
+  onSwitchContext,
 }: TargetNotesPanelProps) {
   // ── Persisted session (prompt + last results) ──────────────────────────────
   // Stored as a single compact object so we only use one localStorage slot.
@@ -415,6 +436,7 @@ export default function TargetNotesPanel({
       manualSelected={manualSelected as string[]} toggleManualNote={toggleManualNote}
       resetManualSelected={resetManualSelected}
       handleLoadManual={handleLoadManual} isRecActive={isRecActive}
+      onSwitchContext={onSwitchContext}
     />
   );
 

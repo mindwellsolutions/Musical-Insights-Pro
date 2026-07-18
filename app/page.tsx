@@ -2784,6 +2784,12 @@ export default function Home() {
                       onBgOpacityChange={(v) => setTargetNoteBgOpacity(v)}
                       theme={theme}
                       inTabContainer
+                      onSwitchContext={(key, scale) => {
+                        setRootNote(key);
+                        setScaleName(scale);
+                        setManualKey(key);
+                        setManualScaleName(scale);
+                      }}
                     />
                   )}
                 </div>
