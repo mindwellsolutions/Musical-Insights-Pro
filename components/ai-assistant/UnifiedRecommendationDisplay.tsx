@@ -2,16 +2,21 @@
 
 import { useState } from 'react';
 import { AIScaleRecommendation, AIChordRecommendation, AIChordProgressionRecommendation } from '@/lib/ai-assistant/types';
+import { AITargetNoteRecommendation, TargetNoteHighlight } from '@/lib/target-notes/types';
 import { ThemeConfig } from '@/lib/themes';
 import RecommendationTabs, { RecommendationType } from './RecommendationTabs';
 import ScaleRecommendationCarousel from './ScaleRecommendationCarousel';
 import ChordRecommendationCarousel from './ChordRecommendationCarousel';
 import ProgressionRecommendationCarousel from './ProgressionRecommendationCarousel';
+import TargetNoteRecommendationCarousel from './TargetNoteRecommendationCarousel';
 
 interface UnifiedRecommendationDisplayProps {
   scaleRecommendations?: AIScaleRecommendation[];
   chordRecommendations?: AIChordRecommendation[];
   progressionRecommendations?: AIChordProgressionRecommendation[];
+  targetNoteRecommendations?: AITargetNoteRecommendation[];
+  activeTargetNoteHighlight?: TargetNoteHighlight | null;
+  onLoadTargetNotes?: (highlight: TargetNoteHighlight) => void;
   theme: ThemeConfig;
   loadedScales: Set<string>;
   onLoadScale: (scale: AIScaleRecommendation) => void;
@@ -23,6 +28,9 @@ export default function UnifiedRecommendationDisplay({
   scaleRecommendations = [],
   chordRecommendations = [],
   progressionRecommendations = [],
+  targetNoteRecommendations = [],
+  activeTargetNoteHighlight,
+  onLoadTargetNotes,
   theme,
   loadedScales,
   onLoadScale,
@@ -31,6 +39,7 @@ export default function UnifiedRecommendationDisplay({
 }: UnifiedRecommendationDisplayProps) {
   // Determine initial active tab based on what's available
   const getInitialTab = (): RecommendationType => {
+    if (targetNoteRecommendations.length > 0) return 'targetNotes';
     if (scaleRecommendations.length > 0) return 'scales';
     if (chordRecommendations.length > 0) return 'chords';
     if (progressionRecommendations.length > 0) return 'progressions';
@@ -43,10 +52,11 @@ export default function UnifiedRecommendationDisplay({
     scales: scaleRecommendations.length,
     chords: chordRecommendations.length,
     progressions: progressionRecommendations.length,
+    targetNotes: targetNoteRecommendations.length,
   };
 
   // If no recommendations at all, return null
-  if (counts.scales === 0 && counts.chords === 0 && counts.progressions === 0) {
+  if (counts.scales === 0 && counts.chords === 0 && counts.progressions === 0 && counts.targetNotes === 0) {
     return null;
   }
 
@@ -55,6 +65,7 @@ export default function UnifiedRecommendationDisplay({
     counts.scales > 0,
     counts.chords > 0,
     counts.progressions > 0,
+    counts.targetNotes > 0,
   ].filter(Boolean).length;
 
   return (
@@ -95,6 +106,15 @@ export default function UnifiedRecommendationDisplay({
             theme={theme}
             tuning={tuning}
             stringCount={stringCount}
+          />
+        )}
+
+        {activeTab === 'targetNotes' && targetNoteRecommendations.length > 0 && (
+          <TargetNoteRecommendationCarousel
+            recommendations={targetNoteRecommendations}
+            activeHighlight={activeTargetNoteHighlight ?? null}
+            onLoadTargetNotes={onLoadTargetNotes ?? (() => {})}
+            theme={theme}
           />
         )}
       </div>

@@ -4,6 +4,7 @@ import { useState, useCallback, useRef, useEffect } from 'react';
 import { X, Sparkles, Send, Plus, Loader2, Info, History } from 'lucide-react';
 import { ThemeConfig } from '@/lib/themes';
 import { ChatMessage, AIScaleRecommendation, FretboardScaleData, TokenUsage } from '@/lib/ai-assistant/types';
+import { TargetNoteHighlight } from '@/lib/target-notes/types';
 import { parseAIScaleToFretboard } from '@/lib/ai-assistant/scale-parser';
 import { getSuggestedQuestions } from '@/lib/ai-assistant/prompt-builder';
 import { useSharedSkillLevel } from '@/hooks/useSharedSkillLevel';
@@ -26,6 +27,8 @@ interface AIAssistantSidebarProps {
   stringCount?: number;
   onLoadScale: (scaleData: FretboardScaleData) => void;
   onLoadChord?: (chordNotes: string[]) => void;
+  onLoadTargetNotes?: (highlight: TargetNoteHighlight) => void;
+  activeTargetNoteHighlight?: TargetNoteHighlight | null;
 }
 
 export default function AIAssistantSidebar({
@@ -38,6 +41,8 @@ export default function AIAssistantSidebar({
   stringCount = 6,
   onLoadScale,
   onLoadChord,
+  onLoadTargetNotes,
+  activeTargetNoteHighlight,
 }: AIAssistantSidebarProps) {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [inputValue, setInputValue] = useState('');
@@ -152,6 +157,7 @@ export default function AIAssistantSidebar({
         chordRecommendations: data.response.chordRecommendations,
         progressionRecommendations: data.response.progressionRecommendations,
         progressionSuggestions: data.response.progressionSuggestions,
+        targetNoteRecommendations: data.response.targetNoteRecommendations,
         usage: data.usage,
       };
 
@@ -370,6 +376,8 @@ export default function AIAssistantSidebar({
           onSuggestedQuestion={handleSuggestedQuestion}
           tuning={tuning}
           stringCount={stringCount}
+          activeTargetNoteHighlight={activeTargetNoteHighlight}
+          onLoadTargetNotes={onLoadTargetNotes}
         />
 
         {isLoading && (

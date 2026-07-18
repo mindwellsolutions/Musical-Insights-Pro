@@ -1,6 +1,7 @@
 'use client';
 
 import { ChatMessage, AIScaleRecommendation } from '@/lib/ai-assistant/types';
+import { TargetNoteHighlight } from '@/lib/target-notes/types';
 import { ThemeConfig } from '@/lib/themes';
 import { User, Sparkles } from 'lucide-react';
 import UnifiedRecommendationDisplay from './UnifiedRecommendationDisplay';
@@ -13,6 +14,8 @@ interface MessageListProps {
   onSuggestedQuestion: (question: string) => void;
   tuning: string[];
   stringCount: number;
+  activeTargetNoteHighlight?: TargetNoteHighlight | null;
+  onLoadTargetNotes?: (highlight: TargetNoteHighlight) => void;
 }
 
 export default function MessageList({
@@ -23,6 +26,8 @@ export default function MessageList({
   onSuggestedQuestion,
   tuning,
   stringCount,
+  activeTargetNoteHighlight,
+  onLoadTargetNotes,
 }: MessageListProps) {
   if (messages.length === 0) {
     return null;
@@ -59,13 +64,17 @@ export default function MessageList({
             {message.role === 'assistant' && (
               (message.scaleRecommendations && message.scaleRecommendations.length > 0) ||
               (message.chordRecommendations && message.chordRecommendations.length > 0) ||
-              (message.progressionRecommendations && message.progressionRecommendations.length > 0)
+              (message.progressionRecommendations && message.progressionRecommendations.length > 0) ||
+              (message.targetNoteRecommendations && message.targetNoteRecommendations.length > 0)
             ) && (
               <div className="mt-3">
                 <UnifiedRecommendationDisplay
                   scaleRecommendations={message.scaleRecommendations}
                   chordRecommendations={message.chordRecommendations}
                   progressionRecommendations={message.progressionRecommendations}
+                  targetNoteRecommendations={message.targetNoteRecommendations}
+                  activeTargetNoteHighlight={activeTargetNoteHighlight}
+                  onLoadTargetNotes={onLoadTargetNotes}
                   theme={theme}
                   loadedScales={loadedScales}
                   onLoadScale={onLoadScale}

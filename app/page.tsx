@@ -30,6 +30,8 @@ import { dbScaleNameToIntervalsKey } from '@/lib/music-theory-database/scale-map
 import { ManualSelection } from '@/components/ManualSelectionList';
 import { useMIDIButtonHandlers } from '@/hooks/useMIDIButtonHandlers';
 import { FretboardScaleData } from '@/lib/ai-assistant/types';
+import TargetNotesPanel from '@/components/target-notes/TargetNotesPanel';
+import { TargetNoteHighlight } from '@/lib/target-notes/types';
 import { TriadInversion, CAGEDShape } from '@/lib/triad-theory';
 import { useCAGED, type NoteName, type ChordQuality, type CAGEDShapeName } from '@/lib/caged';
 import { NotePosition } from '@/lib/musicTheory';
@@ -152,6 +154,9 @@ export default function Home() {
   const [nonTriadColorMode, setNonTriadColorMode] = useLocalStorage('guitar-app-non-triad-color-mode', true); // false=Interval, true=Monocolor; defaults to Monocolor
   const [showRootNoteHighlight, setShowRootNoteHighlight] = useLocalStorage('guitar-app-show-root-note-highlight', false);
   const [show7thNoteHighlight, setShow7thNoteHighlight] = useLocalStorage('guitar-app-show-7th-note-highlight', false);
+  // ── Target Note Highlight ──────────────────────────────────────────────────
+  const [targetNoteHighlight, setTargetNoteHighlight] = useState<TargetNoteHighlight | null>(null);
+  const [targetNoteBgOpacity, setTargetNoteBgOpacity] = useLocalStorage('guitar-app-target-note-bg-opacity', 25);
   // ───────────────────────────────────────────────────────────────────────────
 
   // Individual Notes mode state - shows all positions of a single note on the fretboard
@@ -3325,6 +3330,7 @@ export default function Home() {
                               const next = !showTriadArcBands;
                               setShowTriadArcBands(next);
                               setTriadFocusOn(next);
+                              if (next) setTargetNoteHighlight(null);
                             }}
                             style={{
                               width: 38, height: 20, borderRadius: 10,
@@ -3939,6 +3945,26 @@ export default function Home() {
                     </div>
                   )}
 
+                  {/* ── Target Notes Panel ── */}
+                  {rootNote && scaleName && (
+                    <TargetNotesPanel
+                      currentKey={manualKey || rootNote}
+                      currentScale={manualScaleName || scaleName}
+                      scaleNotes={getScaleNotes(manualKey || rootNote, manualScaleName || scaleName)}
+                      activeHighlight={targetNoteHighlight}
+                      onLoadHighlight={(highlight) => {
+                        if (!highlight.notes || highlight.notes.length === 0) { setTargetNoteHighlight(null); return; }
+                        setTargetNoteHighlight(highlight);
+                        setShowTriadArcBands(false);
+                        setTriadFocusOn(false);
+                      }}
+                      onClearHighlight={() => setTargetNoteHighlight(null)}
+                      bgOpacity={targetNoteBgOpacity as number}
+                      onBgOpacityChange={(v) => setTargetNoteBgOpacity(v)}
+                      theme={theme}
+                    />
+                  )}
+
                   <div ref={scaleFretboardRef}>
                   <Fretboard
                   stringCount={stringCount}
@@ -3948,16 +3974,16 @@ export default function Home() {
                   isInverted={isInverted}
                   fretDotColor={fretDotColor}
                   showMiddleDots={showMiddleDots}
-                  selectedChordNotes={customHighlightNotes ?? patternHighlightNotes ?? zoneHighlightedChordNotes ?? activeChordNotes}
-                  selectedGuideTones={(customHighlightNotes || patternHighlightNotes) ? null : (allIntervalsMode ? null : selectedGuideTones)}
+                  selectedChordNotes={customHighlightNotes ?? patternHighlightNotes ?? (targetNoteHighlight?.notes ?? null) ?? zoneHighlightedChordNotes ?? activeChordNotes}
+                  selectedGuideTones={(customHighlightNotes || patternHighlightNotes || targetNoteHighlight) ? null : (allIntervalsMode ? null : selectedGuideTones)}
                   chordHighlightColor={chordHighlightColor}
                   guideTonesColor={guideTonesColor}
-                  showChordTones={(customHighlightNotes || patternHighlightNotes) ? true : showChordTones}
-                  showGuideTones={(customHighlightNotes || patternHighlightNotes) ? false : (allIntervalsMode ? false : showGuideTones)}
-                  showChordGlow={(customHighlightNotes || patternHighlightNotes) ? true : showChordGlow}
-                  colorGuideEnabled={(customHighlightNotes || patternHighlightNotes) ? true : (allIntervalsMode ? true : colorGuideEnabled)}
+                  showChordTones={(customHighlightNotes || patternHighlightNotes || targetNoteHighlight) ? true : showChordTones}
+                  showGuideTones={(customHighlightNotes || patternHighlightNotes || targetNoteHighlight) ? false : (allIntervalsMode ? false : showGuideTones)}
+                  showChordGlow={(customHighlightNotes || patternHighlightNotes || targetNoteHighlight) ? true : showChordGlow}
+                  colorGuideEnabled={(customHighlightNotes || patternHighlightNotes || targetNoteHighlight) ? true : (allIntervalsMode ? true : colorGuideEnabled)}
                   glowOpacity={customHighlightNotes ? customProgressionGlowBrightness : patternHighlightNotes ? patternGlowBrightness : glowOpacity}
-                  patternHighlightRootNote={(customHighlightNotes || patternHighlightNotes) ? rootNote : undefined}
+                  patternHighlightRootNote={(customHighlightNotes || patternHighlightNotes || targetNoteHighlight) ? (manualKey || rootNote) : undefined}
                   showWhiteBorder={showWhiteBorder}
                   selectedHarmonization={selectedHarmonization}
                   showColorfulStrings={showColorfulStrings}
@@ -3998,6 +4024,7 @@ export default function Home() {
                   show7thNoteHighlight={showTriadArcBands && (show7thNoteHighlight as boolean)}
                   highlightKeyNote={showTriadArcBands && (showRootNoteHighlight as boolean) ? (manualKey || rootNote) : undefined}
                   patternBgNotesOpacity={
+                    targetNoteHighlight ? (targetNoteBgOpacity as number) :
                     patternHighlightNotes && !showTriadArcBands ? patternBgNotesOpacity :
                     !patternHighlightNotes && !customHighlightNotes && !zoneHighlightedChordNotes && showChordTones && !showTriadArcBands ? chordToneBgNotesOpacity :
                     100
@@ -4211,10 +4238,16 @@ export default function Home() {
           theme={theme}
           isExpanded={isAIAssistantExpanded}
           onToggle={() => setIsAIAssistantExpanded(!isAIAssistantExpanded)}
-          currentKey={rootNote}
-          currentScale={scaleName}
+          currentKey={manualKey || rootNote}
+          currentScale={manualScaleName || scaleName}
           tuning={tuning}
           onLoadScale={handleLoadScaleFromAI}
+          activeTargetNoteHighlight={targetNoteHighlight}
+          onLoadTargetNotes={(highlight) => {
+            setTargetNoteHighlight(highlight);
+            setShowTriadArcBands(false);
+            setTriadFocusOn(false);
+          }}
         />
       )}
 

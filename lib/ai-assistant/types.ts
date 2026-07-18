@@ -5,6 +5,7 @@
  */
 
 import { NotePosition } from '@/lib/musicTheory';
+import { AITargetNoteRecommendation } from '@/lib/target-notes/types';
 
 /**
  * Detailed information about a note degree in a scale
@@ -118,6 +119,7 @@ export interface AIAssistantResponse {
   chordRecommendations?: AIChordRecommendation[];                 // 0-5 chord recommendations
   progressionRecommendations?: AIChordProgressionRecommendation[]; // 0-5 progression recommendations
   progressionSuggestions?: ProgressionSuggestion[];               // Legacy - kept for backwards compatibility
+  targetNoteRecommendations?: AITargetNoteRecommendation[];        // 0-5 target note recommendations
   usage?: TokenUsage;                                             // Token usage metadata
 }
 
@@ -133,6 +135,7 @@ export interface ChatMessage {
   chordRecommendations?: AIChordRecommendation[];                 // AI chord recommendations
   progressionRecommendations?: AIChordProgressionRecommendation[]; // AI progression recommendations
   progressionSuggestions?: ProgressionSuggestion[];               // Legacy - kept for backwards compatibility
+  targetNoteRecommendations?: AITargetNoteRecommendation[];        // AI target note recommendations
   usage?: TokenUsage;                                             // Token usage for this message (assistant only)
 }
 

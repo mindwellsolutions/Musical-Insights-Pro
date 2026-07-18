@@ -1,9 +1,9 @@
 'use client';
 
 import { ThemeConfig } from '@/lib/themes';
-import { Music, Guitar, ListMusic } from 'lucide-react';
+import { Music, Guitar, ListMusic, Target } from 'lucide-react';
 
-export type RecommendationType = 'scales' | 'chords' | 'progressions';
+export type RecommendationType = 'scales' | 'chords' | 'progressions' | 'targetNotes';
 
 interface RecommendationTabsProps {
   activeTab: RecommendationType;
@@ -13,6 +13,7 @@ interface RecommendationTabsProps {
     scales: number;
     chords: number;
     progressions: number;
+    targetNotes?: number;
   };
 }
 
@@ -31,6 +32,7 @@ export default function RecommendationTabs({
     { id: 'scales', label: 'Scales', icon: Music, count: counts.scales },
     { id: 'chords', label: 'Chords', icon: Guitar, count: counts.chords },
     { id: 'progressions', label: 'Progressions', icon: ListMusic, count: counts.progressions },
+    { id: 'targetNotes', label: 'Target Notes', icon: Target, count: counts.targetNotes ?? 0 },
   ];
 
   // Only show tabs that have recommendations

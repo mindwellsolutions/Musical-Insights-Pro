@@ -16,6 +16,7 @@
 
 import OpenAI from 'openai';
 import { AIAssistantResponse, AIScaleRecommendationSlim, AIChordRecommendationSlim, AIChordProgressionRecommendationSlim, ChatMessage, AIContext, AIAssistantConfig, TokenUsage } from './types';
+import { AITargetNoteRecommendation, CARD_COLORS } from '@/lib/target-notes/types';
 import { buildSystemPrompt } from './prompt-builder';
 import { enrichScaleRecommendations, getEnrichmentStats } from './scale-enrichment';
 import { enrichChordRecommendations, getChordEnrichmentStats } from './chord-enrichment';
@@ -174,6 +175,9 @@ export async function getChatCompletion(
     if (!Array.isArray(parsedResponse.progressionRecommendations)) {
       parsedResponse.progressionRecommendations = [];
     }
+    if (!Array.isArray(parsedResponse.targetNoteRecommendations)) {
+      parsedResponse.targetNoteRecommendations = [];
+    }
 
     // Validate and filter slim scale recommendations
     const slimScaleRecommendations: AIScaleRecommendationSlim[] = parsedResponse.scaleRecommendations.filter((scale: any) => {
@@ -216,6 +220,20 @@ export async function getChatCompletion(
     const enrichedChordRecommendations = enrichChordRecommendations(slimChordRecommendations);
     // Progressions don't need enrichment currently
 
+    // Validate and enrich target note recommendations
+    const enrichedTargetNoteRecs: AITargetNoteRecommendation[] = parsedResponse.targetNoteRecommendations
+      .filter((tn: any) => tn.label && Array.isArray(tn.notes) && tn.notes.length > 0)
+      .slice(0, 5)
+      .map((tn: any, i: number) => ({
+        id: tn.id || `tn-${i}`,
+        label: tn.label,
+        notes: tn.notes,
+        rationale: tn.rationale || '',
+        moodKeywords: Array.isArray(tn.moodKeywords) ? tn.moodKeywords : [],
+        theoryBasis: tn.theoryBasis || '',
+        color: CARD_COLORS[i % CARD_COLORS.length],
+      }));
+
     // Build final response with enriched recommendations
     const finalResponse: AIAssistantResponse = {
       messageText: parsedResponse.messageText,
@@ -223,6 +241,7 @@ export async function getChatCompletion(
       chordRecommendations: enrichedChordRecommendations,
       progressionRecommendations: slimProgressionRecommendations,
       progressionSuggestions: parsedResponse.progressionSuggestions, // Legacy support
+      targetNoteRecommendations: enrichedTargetNoteRecs,
     };
 
     // Extract and calculate token usage

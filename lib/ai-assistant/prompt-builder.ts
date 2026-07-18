@@ -12,6 +12,7 @@
  */
 
 import { AIContext } from './types';
+import { getScaleNotes } from '@/lib/musicTheory';
 
 /**
  * Analyze user query to determine what types of recommendations to provide
@@ -20,6 +21,7 @@ export function analyzeQueryIntent(query: string): {
   recommendScales: boolean;
   recommendChords: boolean;
   recommendProgressions: boolean;
+  recommendTargetNotes: boolean;
 } {
   const lowerQuery = query.toLowerCase();
 
@@ -27,6 +29,7 @@ export function analyzeQueryIntent(query: string): {
   const scaleKeywords = ['scale', 'mode', 'dorian', 'phrygian', 'lydian', 'mixolydian', 'aeolian', 'locrian', 'pentatonic', 'blues scale', 'harmonic', 'melodic'];
   const chordKeywords = ['chord', 'voicing', 'triad', 'seventh', 'maj7', 'min7', 'dom7', 'diminished', 'augmented'];
   const progressionKeywords = ['progression', 'changes', 'turnaround', 'cadence', 'ii-v-i', 'i-iv-v', 'sequence'];
+  const targetNoteKeywords = ['target note', 'target notes', 'mood', 'feeling', 'soundscape', 'emotion', 'scene', 'cinematic', 'dark', 'bright', 'tense', 'hopeful', 'melancholic', 'ethereal', 'emphasize', 'highlight note', 'focus note', 'note selection', 'note emphasis'];
 
   // General music keywords that could apply to multiple types
   const generalKeywords = ['jazz', 'blues', 'rock', 'funk', 'improvise', 'solo', 'play', 'practice'];
@@ -34,12 +37,14 @@ export function analyzeQueryIntent(query: string): {
   const hasScaleKeyword = scaleKeywords.some(kw => lowerQuery.includes(kw));
   const hasChordKeyword = chordKeywords.some(kw => lowerQuery.includes(kw));
   const hasProgressionKeyword = progressionKeywords.some(kw => lowerQuery.includes(kw));
+  const hasTargetNoteKeyword = targetNoteKeywords.some(kw => lowerQuery.includes(kw));
   const hasGeneralKeyword = generalKeywords.some(kw => lowerQuery.includes(kw));
 
   // Determine what to recommend
   let recommendScales = hasScaleKeyword;
   let recommendChords = hasChordKeyword;
   let recommendProgressions = hasProgressionKeyword;
+  let recommendTargetNotes = hasTargetNoteKeyword;
 
   // If general keywords but no specific type, recommend scales + chords
   if (hasGeneralKeyword && !hasScaleKeyword && !hasChordKeyword && !hasProgressionKeyword) {
@@ -55,11 +60,11 @@ export function analyzeQueryIntent(query: string): {
   }
 
   // Default: if nothing specific detected, recommend scales only
-  if (!recommendScales && !recommendChords && !recommendProgressions) {
+  if (!recommendScales && !recommendChords && !recommendProgressions && !recommendTargetNotes) {
     recommendScales = true;
   }
 
-  return { recommendScales, recommendChords, recommendProgressions };
+  return { recommendScales, recommendChords, recommendProgressions, recommendTargetNotes };
 }
 
 /**
@@ -70,7 +75,7 @@ export function analyzeQueryIntent(query: string): {
  */
 export function buildSystemPrompt(context?: AIContext, userQuery?: string): string {
   // Analyze query intent to determine what to recommend
-  const intent = userQuery ? analyzeQueryIntent(userQuery) : { recommendScales: true, recommendChords: false, recommendProgressions: false };
+  const intent = userQuery ? analyzeQueryIntent(userQuery) : { recommendScales: true, recommendChords: false, recommendProgressions: false, recommendTargetNotes: false };
 
   const basePrompt = `You are a music theory expert for guitar. You MUST respond with valid JSON only.
 
@@ -108,11 +113,21 @@ Response format (include only the recommendation types that are appropriate for 
       "genreContext": "Jazz, Bossa Nova",
       "difficulty": 4
     }
+  ],
+  "targetNoteRecommendations": [
+    {
+      "id": "tn-0",
+      "label": "Tension Core",
+      "notes": ["B", "F"],
+      "rationale": "The tritone between the 7th and 3rd of the dominant creates maximum tension.",
+      "moodKeywords": ["tense", "unstable", "dramatic"],
+      "theoryBasis": "Scale degrees 3 and 7 — the tritone"
+    }
   ]
 }
 
 QUERY ANALYSIS:
-- User query suggests: ${intent.recommendScales ? 'SCALES' : ''} ${intent.recommendChords ? 'CHORDS' : ''} ${intent.recommendProgressions ? 'PROGRESSIONS' : ''}
+- User query suggests: ${intent.recommendScales ? 'SCALES' : ''} ${intent.recommendChords ? 'CHORDS' : ''} ${intent.recommendProgressions ? 'PROGRESSIONS' : ''} ${intent.recommendTargetNotes ? 'TARGET_NOTES' : ''}
 - Provide 2-5 recommendations for each type that applies
 
 RULES FOR ALL RECOMMENDATIONS:
@@ -134,14 +149,26 @@ PROGRESSION RULES:
 - Provide chord symbols in the "chords" array
 - Provide roman numerals in the "romanNumerals" array
 - Name should describe the progression (e.g., "ii-V-I in C Major")
-- Recommend 1-4 progressions when appropriate`;
+- Recommend 1-4 progressions when appropriate
+
+TARGET NOTES RULES (only when TARGET_NOTES is indicated):
+- Include "targetNoteRecommendations" array with 3-5 items
+- Each item: { "id": "tn-0", "label": string, "notes": string[], "rationale": string, "moodKeywords": string[], "theoryBasis": string }
+- Notes MUST only come from the current scale notes (scale context is provided below)
+- Each set should be 2-5 notes, meaningfully different from each other
+- Label should be short and evocative (2-4 words)
+- moodKeywords: 3-5 single words describing emotional quality`;
 
   // Build context additions
   let contextAdditions = '';
 
   // Add current key/scale context
   if (context?.key && context?.scale) {
+    const scaleNotes = getScaleNotes(context.key, context.scale);
     contextAdditions += `\n\nCURRENT CONTEXT: User is viewing & playing ${context.key} ${context.scale} on fretboard. Only if they ask for complementary scales, chords, or progressions to what they are playing currently, use this context for recommendations.`;
+    if (scaleNotes.length > 0) {
+      contextAdditions += `\n\nCURRENT SCALE NOTES (for target note recommendations): ${scaleNotes.join(', ')}. Any targetNoteRecommendations MUST use ONLY these note names.`;
+    }
   }
 
   // Add skill level context
