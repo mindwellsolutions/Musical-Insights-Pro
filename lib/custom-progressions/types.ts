@@ -5,7 +5,7 @@ export interface IntervalStep {
   degree: string;          // 'I', 'ii', 'iii', 'IV', 'V', 'vi', 'vii°'
   degreeIndex: number;     // 0–6
   rootNote: string;        // resolved note name for current key, e.g. 'C'
-  quality: 'major' | 'minor' | 'diminished' | 'augmented';
+  quality: 'major' | 'minor' | 'diminished' | 'augmented' | 'suspended4' | 'power' | 'no5th';
   color: string;           // TRIAD_PALETTE[degreeIndex]
 }
 

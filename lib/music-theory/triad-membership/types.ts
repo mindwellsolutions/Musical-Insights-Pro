@@ -7,7 +7,7 @@ export interface DiatonicTriad {
   rootNote: string;      // e.g. 'C', 'D', 'E' (sharp-normalized)
   notes: string[];       // all 3 pitch classes (sharp-normalized), e.g. ['C','E','G']
   color: string;         // TRIAD_PALETTE[degreeIndex]
-  quality: 'major' | 'minor' | 'diminished' | 'augmented';
+  quality: 'major' | 'minor' | 'diminished' | 'augmented' | 'suspended4' | 'power' | 'no5th';
 }
 
 export interface TriadMembershipEntry {

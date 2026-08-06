@@ -222,7 +222,7 @@ export default function SongProgressionChordTonesTabs({
               color: !allIntervalsMode ? '#ffffff' : theme.textSecondary,
             }}
           >
-            Chord Tones
+            Target Tones
           </button>
           <button
             onClick={() => onAllIntervalsModeChange?.(true)}

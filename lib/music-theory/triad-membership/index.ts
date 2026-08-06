@@ -7,6 +7,7 @@
 import { getScaleNotes, NOTES } from '@/lib/musicTheory';
 import { normalizeNoteToSharp } from '@/lib/triad-theory';
 import { DiatonicTriad, TriadMembershipEntry, TRIAD_PALETTE } from './types';
+import { NON_HEPTATONIC_TRIADS } from '@/data/triads-by-scale/non-heptatonic-triads-db';
 
 const ROMAN_UPPER = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII'];
 const ROMAN_LOWER = ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii'];
@@ -43,10 +44,51 @@ function getDegreeLabel(
 }
 
 /**
+ * Transpose a pitch class name by a semitone offset.
+ * Returns the sharp-normalized note name.
+ */
+function transposePitchClass(noteName: string, semitones: number): string {
+  const idx = NOTES.indexOf(normalizeNoteToSharp(noteName));
+  if (idx === -1) return noteName;
+  return NOTES[(idx + semitones + 12) % 12];
+}
+
+/**
  * Build the array of diatonic triads for a given key + scale.
- * Stacks thirds from scale notes to derive each triad and its quality.
+ *
+ * For non-heptatonic scales (pentatonic, hexatonic, octatonic, chromatic),
+ * uses the precomputed NON_HEPTATONIC_TRIADS database which has correct
+ * music-theory note selections and quality labels.
+ *
+ * For all 7-note (heptatonic) scales the original "stack thirds by scale degree"
+ * algorithm is used, as it is mathematically correct for those scales.
  */
 export function computeDiatonicTriads(key: string, scaleName: string): DiatonicTriad[] {
+  // ── Non-heptatonic path ──────────────────────────────────────────────────
+  const precomputed = NON_HEPTATONIC_TRIADS[scaleName];
+  if (precomputed) {
+    const keyIdx = NOTES.indexOf(normalizeNoteToSharp(key));
+    if (keyIdx === -1) return [];
+
+    return precomputed.map((entry) => {
+      // Transpose each note from C-rooted DB to the actual key
+      const root  = transposePitchClass(entry.notes_from_c[0], keyIdx);
+      const third = transposePitchClass(entry.notes_from_c[1], keyIdx);
+      const fifth = transposePitchClass(entry.notes_from_c[2], keyIdx);
+
+      return {
+        degree: entry.romanNumeral,
+        degreeIndex: entry.degreeIndex,
+        romanNumeral: entry.romanNumeral,
+        rootNote: root,
+        notes: [root, third, fifth],
+        color: TRIAD_PALETTE[entry.degreeIndex] ?? '#888888',
+        quality: entry.quality,
+      };
+    });
+  }
+
+  // ── Heptatonic path (original stacking-thirds algorithm) ─────────────────
   const scaleNotes = getScaleNotes(key, scaleName);
   if (scaleNotes.length < 3) return [];
 
