@@ -267,8 +267,11 @@ export default function CircleOf5ths({
 
   // Calculate dimensions based on circleSize
   // Increased spacing between outer and inner circles for better visibility
-  const centerX = circleSize / 2;
-  const centerY = circleSize / 2;
+  // svgPadding: extra space around the circle so outer-ring position numbers at the
+  // four cardinal points (C=top, A=right, F#=bottom, D#=left) aren't clipped by the viewBox.
+  const svgPadding = 20;
+  const centerX = circleSize / 2 + svgPadding;
+  const centerY = circleSize / 2 + svgPadding;
   const radius = (circleSize / 300) * 125; // Increased from 120 to 125
   const innerRadius = (circleSize / 300) * 72; // Decreased from 80 to 72 for more spacing
 
@@ -576,8 +579,13 @@ export default function CircleOf5ths({
 
       {!isCollapsed && (
         <>
-      {/* SVG Circle */}
-      <svg width={circleSize} height={circleSize} viewBox={`0 0 ${circleSize} ${circleSize}`}>
+      {/* SVG Circle — viewBox extended by svgPadding on all sides so outer-ring
+           position numerals at the cardinal points (C/A/F#/D#) are not clipped */}
+      <svg
+        width={circleSize + svgPadding * 2}
+        height={circleSize + svgPadding * 2}
+        viewBox={`0 0 ${circleSize + svgPadding * 2} ${circleSize + svgPadding * 2}`}
+      >
         <defs>
           <style>
             {`
