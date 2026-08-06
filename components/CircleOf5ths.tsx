@@ -355,15 +355,34 @@ export default function CircleOf5ths({
           )}
         </div>
 
-        {/* Collapsible Settings Area */}
-        {!isCollapsed && isSettingsExpanded && (
+      </div>
+      )}
+
+      {!isCollapsed && (
+        /* relative wrapper so the settings overlay can be positioned over the circle */
+        <div className="relative">
+
+        {/* ── Settings Slide-Over Overlay ── */}
+        {isSettingsExpanded && (
           <div
-            className="p-3 rounded-lg space-y-3"
+            className="absolute inset-x-0 top-0 z-10 rounded-lg p-3 space-y-3 overflow-y-auto"
             style={{
-              background: theme.bgTertiary,
+              background: `rgba(${theme.bgTertiary.startsWith('#')
+                ? `${parseInt(theme.bgTertiary.slice(1,3),16)},${parseInt(theme.bgTertiary.slice(3,5),16)},${parseInt(theme.bgTertiary.slice(5,7),16)}`
+                : '30,30,40'}, 0.88)`,
+              backdropFilter: 'blur(6px)',
               border: `1px solid ${theme.border}`,
+              animation: 'settingsSlideDown 0.22s ease forwards',
+              maxHeight: `${circleSize + svgPadding * 2}px`,
             }}
           >
+            <style>{`
+              @keyframes settingsSlideDown {
+                from { opacity: 0; transform: translateY(-10px); }
+                to   { opacity: 1; transform: translateY(0);     }
+              }
+            `}</style>
+
             {/* Note Colors Dropdown */}
             <div>
               <label className="block text-xs font-medium mb-1.5" style={{ color: theme.textSecondary }}>
@@ -389,12 +408,7 @@ export default function CircleOf5ths({
               <label className="block text-xs font-medium mb-1.5" style={{ color: theme.textSecondary }}>
                 Chords
               </label>
-              <div
-                className="flex rounded overflow-hidden w-full"
-                style={{
-                  border: `1px solid ${theme.border}`,
-                }}
-              >
+              <div className="flex rounded overflow-hidden w-full" style={{ border: `1px solid ${theme.border}` }}>
                 <button
                   onClick={() => setChordDisplayMode('traditional')}
                   className="flex-1 px-3 py-1.5 text-xs font-medium transition-all"
@@ -404,9 +418,7 @@ export default function CircleOf5ths({
                     borderRight: `1px solid ${theme.border}`,
                   }}
                   title="Show all 7 chord positions"
-                >
-                  Traditional
-                </button>
+                >Traditional</button>
                 <button
                   onClick={() => setChordDisplayMode('compact')}
                   className="flex-1 px-3 py-1.5 text-xs font-medium transition-all"
@@ -415,9 +427,7 @@ export default function CircleOf5ths({
                     color: chordDisplayMode === 'compact' ? '#ffffff' : theme.textPrimary,
                   }}
                   title="Show 4,1,5,2,6,3 positions"
-                >
-                  Compact
-                </button>
+                >Compact</button>
               </div>
             </div>
 
@@ -426,12 +436,7 @@ export default function CircleOf5ths({
               <label className="block text-xs font-medium mb-1.5" style={{ color: theme.textSecondary }}>
                 Style
               </label>
-              <div
-                className="flex rounded overflow-hidden w-full"
-                style={{
-                  border: `1px solid ${theme.border}`,
-                }}
-              >
+              <div className="flex rounded overflow-hidden w-full" style={{ border: `1px solid ${theme.border}` }}>
                 <button
                   onClick={() => setVisualStyle('circles')}
                   className="flex-1 px-3 py-1.5 text-xs font-medium transition-all"
@@ -441,9 +446,7 @@ export default function CircleOf5ths({
                     borderRight: `1px solid ${theme.border}`,
                   }}
                   title="Colorful floating circles"
-                >
-                  Circles
-                </button>
+                >Circles</button>
                 <button
                   onClick={() => setVisualStyle('wedges')}
                   className="flex-1 px-3 py-1.5 text-xs font-medium transition-all"
@@ -452,9 +455,7 @@ export default function CircleOf5ths({
                     color: visualStyle === 'wedges' ? '#ffffff' : theme.textPrimary,
                   }}
                   title="Connected wedge segments"
-                >
-                  Wedges
-                </button>
+                >Wedges</button>
               </div>
             </div>
 
@@ -476,9 +477,7 @@ export default function CircleOf5ths({
                 <button
                   onClick={() => onShowFretboardGlowChange?.(!showFretboardGlow)}
                   className="relative inline-flex h-6 w-11 items-center rounded-full transition-colors"
-                  style={{
-                    background: showFretboardGlow ? '#ffffff' : 'rgba(255,255,255,0.3)',
-                  }}
+                  style={{ background: showFretboardGlow ? '#ffffff' : 'rgba(255,255,255,0.3)' }}
                 >
                   <span
                     className="inline-block h-4 w-4 transform rounded-full transition-transform"
@@ -491,10 +490,9 @@ export default function CircleOf5ths({
               </div>
             </div>
 
-            {/* Advanced Fretboard Glow Settings - Show when glow is enabled */}
+            {/* Advanced Fretboard Glow Settings */}
             {showFretboardGlow && (
               <>
-                {/* Glow Color */}
                 <div>
                   <label className="block text-xs font-medium mb-1.5" style={{ color: theme.textSecondary }}>
                     Glow Color
@@ -505,87 +503,68 @@ export default function CircleOf5ths({
                       value={fretboardGlowColor}
                       onChange={(e) => onFretboardGlowColorChange?.(e.target.value)}
                       className="w-10 h-8 rounded cursor-pointer"
-                      style={{
-                        border: `1px solid ${theme.border}`,
-                      }}
+                      style={{ border: `1px solid ${theme.border}` }}
                     />
                     <div
                       className="flex-1 px-2 py-1.5 rounded text-xs font-mono"
-                      style={{
-                        background: theme.bgSecondary,
-                        color: theme.textPrimary,
-                        border: `1px solid ${theme.border}`,
-                      }}
-                    >
-                      {fretboardGlowColor}
-                    </div>
+                      style={{ background: theme.bgSecondary, color: theme.textPrimary, border: `1px solid ${theme.border}` }}
+                    >{fretboardGlowColor}</div>
                   </div>
                 </div>
-
-                {/* Opacity Slider */}
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
-                    <label className="text-xs font-medium" style={{ color: theme.textSecondary }}>
-                      Opacity
-                    </label>
-                    <span className="text-xs font-semibold" style={{ color: theme.textPrimary }}>
-                      {fretboardGlowOpacity}%
-                    </span>
+                    <label className="text-xs font-medium" style={{ color: theme.textSecondary }}>Opacity</label>
+                    <span className="text-xs font-semibold" style={{ color: theme.textPrimary }}>{fretboardGlowOpacity}%</span>
                   </div>
                   <input
-                    type="range"
-                    min="0"
-                    max="100"
-                    value={fretboardGlowOpacity}
+                    type="range" min="0" max="100" value={fretboardGlowOpacity}
                     onChange={(e) => onFretboardGlowOpacityChange?.(parseInt(e.target.value))}
                     className="w-full h-2 rounded-lg appearance-none cursor-pointer"
-                    style={{
-                      background: `linear-gradient(to right, ${theme.border} 0%, #667eea ${fretboardGlowOpacity}%, ${theme.border} ${fretboardGlowOpacity}%)`,
-                    }}
+                    style={{ background: `linear-gradient(to right, ${theme.border} 0%, #667eea ${fretboardGlowOpacity}%, ${theme.border} ${fretboardGlowOpacity}%)` }}
                   />
                 </div>
-
-                {/* Glow Width Slider */}
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
-                    <label className="text-xs font-medium" style={{ color: theme.textSecondary }}>
-                      Glow Width
-                    </label>
-                    <span className="text-xs font-semibold" style={{ color: theme.textPrimary }}>
-                      {fretboardGlowWidth}px
-                    </span>
+                    <label className="text-xs font-medium" style={{ color: theme.textSecondary }}>Glow Width</label>
+                    <span className="text-xs font-semibold" style={{ color: theme.textPrimary }}>{fretboardGlowWidth}px</span>
                   </div>
                   <input
-                    type="range"
-                    min="5"
-                    max="35"
-                    step="1"
-                    value={fretboardGlowWidth}
+                    type="range" min="5" max="35" step="1" value={fretboardGlowWidth}
                     onChange={(e) => onFretboardGlowWidthChange?.(parseInt(e.target.value))}
                     className="w-full h-2 rounded-lg appearance-none cursor-pointer"
-                    style={{
-                      background: `linear-gradient(to right, ${theme.border} 0%, #667eea ${((fretboardGlowWidth - 5) / 30) * 100}%, ${theme.border} ${((fretboardGlowWidth - 5) / 30) * 100}%)`,
-                    }}
+                    style={{ background: `linear-gradient(to right, ${theme.border} 0%, #667eea ${((fretboardGlowWidth - 5) / 30) * 100}%, ${theme.border} ${((fretboardGlowWidth - 5) / 30) * 100}%)` }}
                   />
                 </div>
               </>
             )}
+
+            {/* Close button — bottom right */}
+            <div className="flex justify-end pt-1">
+              <button
+                onClick={() => setIsSettingsExpanded(false)}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all hover:opacity-80"
+                style={{
+                  background: theme.bgSecondary,
+                  color: theme.textSecondary,
+                  border: `1px solid ${theme.border}`,
+                }}
+              >
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="18 15 12 9 6 15"/>
+                </svg>
+                Close
+              </button>
+            </div>
           </div>
         )}
 
-
-      </div>
-      )}
-
-      {!isCollapsed && (
-        <>
-      {/* SVG Circle — viewBox extended by svgPadding on all sides so outer-ring
-           position numerals at the cardinal points (C/A/F#/D#) are not clipped */}
-      <svg
-        width={circleSize + svgPadding * 2}
-        height={circleSize + svgPadding * 2}
-        viewBox={`0 0 ${circleSize + svgPadding * 2} ${circleSize + svgPadding * 2}`}
-      >
+        {/* SVG Circle — viewBox extended by svgPadding on all sides so outer-ring
+             position numerals at the cardinal points (C/A/F#/D#) are not clipped */}
+        <svg
+          width={circleSize + svgPadding * 2}
+          height={circleSize + svgPadding * 2}
+          viewBox={`0 0 ${circleSize + svgPadding * 2} ${circleSize + svgPadding * 2}`}
+        >
         <defs>
           <style>
             {`
@@ -857,8 +836,8 @@ export default function CircleOf5ths({
               {/* Position number for chords in selected key - placed OUTSIDE the major circle */}
               {chordHighlight.isHighlighted && chordHighlight.position && (
                 (() => {
-                  // Calculate position outside the circle along the same angle
-                  const positionRadius = radius + 30; // Place 30 units outside the circle
+                  // noteCircle r=18; push numeral far enough to clear circle edge with ~12px gap
+                  const positionRadius = radius + 44; // was 30 — increased to prevent overlap
                   const posX = Math.round((centerX + positionRadius * Math.cos(angle)) * 100) / 100;
                   const posY = Math.round((centerY + positionRadius * Math.sin(angle)) * 100) / 100;
 
@@ -1015,7 +994,7 @@ export default function CircleOf5ths({
           ))}
         </div>
       )}
-        </>
+        </div>
       )}
       </div>
 
