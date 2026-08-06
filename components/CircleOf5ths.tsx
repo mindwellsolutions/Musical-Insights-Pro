@@ -285,11 +285,13 @@ export default function CircleOf5ths({
         maxWidth: '420px',
       }}
     >
-      {/* Main Circle Container */}
-      <div className="rounded-lg p-4" style={{ width: '100%' }}>
+      {/* Main Circle Container — overflow:visible so the SVG's built-in svgPadding
+          (which extends 20px beyond the circle edge) isn't clipped by border-radius.
+          Horizontal padding kept via px-4; vertical padding handled by svgPadding itself. */}
+      <div className="rounded-lg px-4 pt-4" style={{ width: '100%', overflow: 'visible' }}>
       {/* Header with Title and Settings Toggle */}
       {!hideControls && (
-      <div className="mb-3">
+      <div className="mb-2">
         <div className="flex items-center mb-2">
           {/* Title + eye icon — kept close together on the left */}
           <h3 className="text-sm font-semibold mr-1.5" style={{ color: theme.textPrimary }}>
