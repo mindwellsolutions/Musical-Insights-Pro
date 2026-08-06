@@ -1169,18 +1169,18 @@ export default function Home() {
   }, [rootNote, scaleName]);
 
   // Show guide on first load if enabled.
-  // Read localStorage cache synchronously so the 500 ms delay never races against the
-  // async Supabase load that would otherwise always see the default value of `true`.
+  // Depends on showGuideAtStart so it re-evaluates once the DB-authoritative value loads.
+  // A ref prevents re-opening the guide if the user manually closes it during the same session.
+  const guideShownThisSessionRef = useRef(false);
   useEffect(() => {
-    try {
-      const cached = localStorage.getItem('cache-guitar-app-show-guide-at-start');
-      if (cached !== null && JSON.parse(cached) === false) return; // user clicked "never show again"
-    } catch {}
+    if (guideShownThisSessionRef.current) return; // already shown or dismissed this session
+    if (!showGuideAtStart) return; // DB (or cache) says "never show again"
     const timer = setTimeout(() => {
+      guideShownThisSessionRef.current = true;
       setShowGuide(true);
     }, 500);
     return () => clearTimeout(timer);
-  }, []); // Only run on mount
+  }, [showGuideAtStart]); // re-runs when DB value resolves
 
   // Handle guide close — restore sidebar state if guide opened it
   const handleGuideClose = useCallback(() => {

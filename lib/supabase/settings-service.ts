@@ -43,6 +43,9 @@ export interface UserSettings {
 
   // Fretboard Width Setting (20–100, default 50)
   fret_width: number;
+
+  // Fret Count Setting (1–28, default 24)
+  fret_count: number;
 }
 
 export const DEFAULT_SETTINGS: UserSettings = {
@@ -68,6 +71,7 @@ export const DEFAULT_SETTINGS: UserSettings = {
   selected_guide_tones: null,
   show_guide_at_start: true,
   fret_width: 50,
+  fret_count: 24,
 };
 
 /**
@@ -109,6 +113,7 @@ export async function loadUserSettings(userId: string): Promise<UserSettings> {
     selected_guide_tones: data.selected_guide_tones,
     show_guide_at_start: data.show_guide_at_start ?? true,
     fret_width: data.fret_width ?? 50,
+    fret_count: data.fret_count ?? 24,
   };
 }
 

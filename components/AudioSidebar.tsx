@@ -565,14 +565,17 @@ export function AudioSidebar({
                   Number of Frets:
                 </span>
                 <input
-                  type="number"
-                  min="12"
-                  max="24"
+                  type="text"
+                  inputMode="numeric"
                   value={fretCount}
                   onChange={(e) => {
-                    const value = parseInt(e.target.value);
-                    if (!isNaN(value) && value >= 12 && value <= 24) {
-                      onFretCountChange(value);
+                    // Strip non-numeric characters
+                    const raw = e.target.value.replace(/[^0-9]/g, '');
+                    if (raw === '') return;
+                    const value = parseInt(raw, 10);
+                    if (!isNaN(value)) {
+                      // Enforce cap at 28, floor at 1
+                      onFretCountChange(Math.min(28, Math.max(1, value)));
                     }
                   }}
                   className="w-full py-1.5 px-3 rounded text-xs font-medium transition-all border"

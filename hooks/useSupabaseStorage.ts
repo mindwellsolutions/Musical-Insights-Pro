@@ -212,10 +212,21 @@ export function useSupabaseStorage<T>(key: string, defaultValue: T): [T, (value:
                 console.log(`🔍 Database loaded ${key}:`, loadedValue, '(default was:', defaultValue, ')');
               }
 
-              // CRITICAL: Cache takes precedence over database
-              // Only use database value if cache is empty (user hasn't set anything yet)
-              // This prevents database from overwriting user's current session selections
-              if (cachedValue !== null) {
+              // For settings where the DB value represents an explicit user opt-out (e.g. "Never
+              // show again"), the database is always authoritative regardless of cache.
+              const DB_AUTHORITATIVE_KEYS = new Set([
+                'guitar-app-show-guide-at-start',
+                'guitar-app-fret-count',
+              ]);
+
+              if (DB_AUTHORITATIVE_KEYS.has(key)) {
+                // Always trust database over cache for these keys
+                setValue(loadedValue);
+                // Also update the localStorage cache to stay in sync
+                try {
+                  localStorage.setItem(`cache-${key}`, JSON.stringify(loadedValue));
+                } catch {}
+              } else if (cachedValue !== null) {
                 // Cache exists, keep it and ignore database (cache is more recent)
                 if (key === 'guitar-app-root-note' || key === 'guitar-app-scale-name') {
                   console.log(`✅ Cache exists for ${key}, ignoring database value. Cache:`, cachedValue, 'Database:', loadedValue);
