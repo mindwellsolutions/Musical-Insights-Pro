@@ -225,7 +225,11 @@ export default function SongProgressionChordTonesTabs({
             Target Tones
           </button>
           <button
-            onClick={() => onAllIntervalsModeChange?.(true)}
+            onClick={() => {
+              onAllIntervalsModeChange?.(true);
+              // Auto-enable the glow when switching to All Intervals
+              onShowChordTonesChange(true);
+            }}
             className="px-2 py-0.5 text-xs font-semibold transition-all whitespace-nowrap"
             style={{
               background: allIntervalsMode ? theme.accentPrimary : 'transparent',
@@ -236,15 +240,17 @@ export default function SongProgressionChordTonesTabs({
           </button>
         </div>
 
-        {/* Enable/Disable Checkbox */}
-        <input
-          type="checkbox"
-          id="showChordTones"
-          checked={showChordTones}
-          onChange={(e) => onShowChordTonesChange(e.target.checked)}
-          className="w-4 h-4 cursor-pointer flex-shrink-0"
-          title="Enable/disable chord tones on fretboard"
-        />
+        {/* Enable/Disable Checkbox — hidden in All Intervals mode (always on there) */}
+        {!allIntervalsMode && (
+          <input
+            type="checkbox"
+            id="showChordTones"
+            checked={showChordTones}
+            onChange={(e) => onShowChordTonesChange(e.target.checked)}
+            className="w-4 h-4 cursor-pointer flex-shrink-0"
+            title="Enable/disable chord tones on fretboard"
+          />
+        )}
 
         {/* Only toggle (chord tones mode only) */}
         {!allIntervalsMode && (
