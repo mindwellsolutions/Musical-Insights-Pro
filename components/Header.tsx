@@ -97,6 +97,9 @@ interface HeaderProps {
   onAllIntervalsModeChange?: (enabled: boolean) => void;
   selectedIntervalDegrees?: number[];
   onSelectedIntervalDegreesChange?: (degrees: number[]) => void;
+  // All Intervals display mode
+  allIntervalsDisplayMode?: 'glow' | 'solid';
+  onAllIntervalsDisplayModeChange?: (mode: 'glow' | 'solid') => void;
   // Focus mode props
   isFocusMode?: boolean;
   onFocusModeChange?: (enabled: boolean) => void;
@@ -260,6 +263,8 @@ export default function Header({
   onAllIntervalsModeChange,
   selectedIntervalDegrees = [0, 1, 2, 3, 4, 5, 6],
   onSelectedIntervalDegreesChange,
+  allIntervalsDisplayMode = 'glow',
+  onAllIntervalsDisplayModeChange,
   showTriadMode = false,
   onTriadModeChange,
   onTriadDataChange,
@@ -861,6 +866,8 @@ export default function Header({
                     onAllIntervalsModeChange={onAllIntervalsModeChange}
                     selectedIntervalDegrees={selectedIntervalDegrees}
                     onSelectedIntervalDegreesChange={onSelectedIntervalDegreesChange}
+                    allIntervalsDisplayMode={allIntervalsDisplayMode}
+                    onAllIntervalsDisplayModeChange={onAllIntervalsDisplayModeChange}
                     onShowChordToneInfo={() => setIsChordToneInfoModalOpen(true)}
                     getTonicChordTones={getTonicChordTones}
                     progressionsOpen={progressionsOpen}

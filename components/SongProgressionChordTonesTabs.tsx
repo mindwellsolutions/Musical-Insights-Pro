@@ -52,6 +52,9 @@ interface SongProgressionChordTonesTabsProps {
   onAllIntervalsModeChange?: (enabled: boolean) => void;
   selectedIntervalDegrees?: number[];
   onSelectedIntervalDegreesChange?: (degrees: number[]) => void;
+  // All Intervals display mode: glow (default) or solid colors
+  allIntervalsDisplayMode?: 'glow' | 'solid';
+  onAllIntervalsDisplayModeChange?: (mode: 'glow' | 'solid') => void;
   // Recommended Progressions (external state lifted to page level)
   progressionsOpen?: boolean;
   onProgressionsOpenChange?: (open: boolean) => void;
@@ -128,6 +131,8 @@ export default function SongProgressionChordTonesTabs({
   onAllIntervalsModeChange,
   selectedIntervalDegrees = [0, 1, 2, 3, 4, 5, 6],
   onSelectedIntervalDegreesChange,
+  allIntervalsDisplayMode = 'glow',
+  onAllIntervalsDisplayModeChange,
   progressionsOpen = false,
   onProgressionsOpenChange,
 }: SongProgressionChordTonesTabsProps) {
@@ -240,39 +245,7 @@ export default function SongProgressionChordTonesTabs({
           </button>
         </div>
 
-        {/* Enable/Disable Checkbox — hidden in All Intervals mode (always on there) */}
-        {!allIntervalsMode && (
-          <input
-            type="checkbox"
-            id="showChordTones"
-            checked={showChordTones}
-            onChange={(e) => onShowChordTonesChange(e.target.checked)}
-            className="w-4 h-4 cursor-pointer flex-shrink-0"
-            title="Enable/disable chord tones on fretboard"
-          />
-        )}
 
-        {/* Only toggle (chord tones mode only) */}
-        {!allIntervalsMode && (
-          <div className="flex items-center gap-1 px-2 py-0.5 rounded-md" style={{ background: theme.bgSecondary }}>
-            <input
-              type="checkbox"
-              id="onlyChordTones"
-              checked={onlyChordTones}
-              onChange={(e) => onOnlyChordTonesChange?.(e.target.checked)}
-              className="w-3 h-3 cursor-pointer"
-              disabled={!showChordTones}
-            />
-            <label
-              htmlFor="onlyChordTones"
-              className="text-xs cursor-pointer whitespace-nowrap"
-              style={{ color: theme.textSecondary, opacity: showChordTones ? 1 : 0.5 }}
-              title="Show only chord tones on the fretboard"
-            >
-              Only
-            </label>
-          </div>
-        )}
 
         {/* (i) Info button — same toggle behaviour as the guide arrow */}
         {!allIntervalsMode && (
@@ -392,47 +365,78 @@ export default function SongProgressionChordTonesTabs({
                   {/* Expanded settings panel */}
                   {glowSettingsOpen && (
                     <div className="mt-2 pt-2 border-t" style={{ borderColor: theme.border }}>
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <label className="text-xs font-medium whitespace-nowrap" style={{ color: theme.textSecondary }}>Glow:</label>
-                        <button
-                          onClick={() => onShowChordGlowChange(!showChordGlow)}
-                          className="px-2.5 py-0.5 rounded text-xs font-medium transition-colors"
-                          style={{
-                            background: showChordGlow ? theme.buttonPrimary : theme.bgSecondary,
-                            color: showChordGlow ? '#ffffff' : theme.textPrimary,
-                            border: `1px solid ${showChordGlow ? theme.buttonPrimary : theme.border}`,
-                          }}
-                        >
-                          {showChordGlow ? 'On' : 'Off'}
-                        </button>
-                        <label className="text-xs font-medium whitespace-nowrap ml-1" style={{ color: theme.textSecondary }}>W.Border:</label>
-                        <button
-                          onClick={() => onShowWhiteBorderChange?.(!showWhiteBorder)}
-                          className="px-2.5 py-0.5 rounded text-xs font-medium transition-colors"
-                          style={{
-                            background: showWhiteBorder ? theme.buttonPrimary : theme.bgSecondary,
-                            color: showWhiteBorder ? '#ffffff' : theme.textPrimary,
-                            border: `1px solid ${showWhiteBorder ? theme.buttonPrimary : theme.border}`,
-                          }}
-                        >
-                          {showWhiteBorder ? 'On' : 'Off'}
-                        </button>
-                      </div>
-                      {showChordGlow && onGlowOpacityChange && (
-                        <div className="flex items-center gap-2 mt-2">
-                          <div className="flex items-center gap-1">
-                            <label className="text-xs font-medium whitespace-nowrap" style={{ color: theme.textSecondary }}>
-                              Opacity: <span style={{ color: theme.textPrimary }}>{glowOpacity}%</span>
-                            </label>
-                            <SliderResetButton onReset={() => onGlowOpacityChange(40)} theme={theme} label="Reset opacity to 40%" />
-                          </div>
-                          <input
-                            type="range" min="0" max="100" value={glowOpacity}
-                            onChange={(e) => onGlowOpacityChange(parseInt(e.target.value))}
-                            className="h-2 rounded-lg appearance-none cursor-pointer flex-none"
-                            style={{ width: '55%', background: `linear-gradient(to right, ${theme.buttonPrimary} 0%, ${theme.buttonPrimary} ${glowOpacity}%, ${theme.bgSecondary} ${glowOpacity}%, ${theme.bgSecondary} 100%)` }}
-                          />
+                      {/* Display mode: Glow vs Solid Colors */}
+                      <div className="flex items-center gap-2 flex-wrap mb-2">
+                        <label className="text-xs font-medium whitespace-nowrap" style={{ color: theme.textSecondary }}>Display:</label>
+                        <div className="flex rounded-md overflow-hidden" style={{ border: `1px solid ${theme.border}` }}>
+                          <button
+                            onClick={() => onAllIntervalsDisplayModeChange?.('glow')}
+                            className="px-2.5 py-0.5 text-xs font-medium transition-all"
+                            style={{
+                              background: allIntervalsDisplayMode === 'glow' ? theme.accentPrimary : 'transparent',
+                              color: allIntervalsDisplayMode === 'glow' ? '#ffffff' : theme.textSecondary,
+                            }}
+                          >
+                            Glow
+                          </button>
+                          <button
+                            onClick={() => onAllIntervalsDisplayModeChange?.('solid')}
+                            className="px-2.5 py-0.5 text-xs font-medium transition-all"
+                            style={{
+                              background: allIntervalsDisplayMode === 'solid' ? theme.accentPrimary : 'transparent',
+                              color: allIntervalsDisplayMode === 'solid' ? '#ffffff' : theme.textSecondary,
+                            }}
+                          >
+                            Solid Colors
+                          </button>
                         </div>
+                      </div>
+                      {/* Glow controls — only shown in Glow mode */}
+                      {allIntervalsDisplayMode === 'glow' && (
+                        <>
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <label className="text-xs font-medium whitespace-nowrap" style={{ color: theme.textSecondary }}>Glow:</label>
+                            <button
+                              onClick={() => onShowChordGlowChange(!showChordGlow)}
+                              className="px-2.5 py-0.5 rounded text-xs font-medium transition-colors"
+                              style={{
+                                background: showChordGlow ? theme.buttonPrimary : theme.bgSecondary,
+                                color: showChordGlow ? '#ffffff' : theme.textPrimary,
+                                border: `1px solid ${showChordGlow ? theme.buttonPrimary : theme.border}`,
+                              }}
+                            >
+                              {showChordGlow ? 'On' : 'Off'}
+                            </button>
+                            <label className="text-xs font-medium whitespace-nowrap ml-1" style={{ color: theme.textSecondary }}>W.Border:</label>
+                            <button
+                              onClick={() => onShowWhiteBorderChange?.(!showWhiteBorder)}
+                              className="px-2.5 py-0.5 rounded text-xs font-medium transition-colors"
+                              style={{
+                                background: showWhiteBorder ? theme.buttonPrimary : theme.bgSecondary,
+                                color: showWhiteBorder ? '#ffffff' : theme.textPrimary,
+                                border: `1px solid ${showWhiteBorder ? theme.buttonPrimary : theme.border}`,
+                              }}
+                            >
+                              {showWhiteBorder ? 'On' : 'Off'}
+                            </button>
+                          </div>
+                          {showChordGlow && onGlowOpacityChange && (
+                            <div className="flex items-center gap-2 mt-2">
+                              <div className="flex items-center gap-1">
+                                <label className="text-xs font-medium whitespace-nowrap" style={{ color: theme.textSecondary }}>
+                                  Opacity: <span style={{ color: theme.textPrimary }}>{glowOpacity}%</span>
+                                </label>
+                                <SliderResetButton onReset={() => onGlowOpacityChange(40)} theme={theme} label="Reset opacity to 40%" />
+                              </div>
+                              <input
+                                type="range" min="0" max="100" value={glowOpacity}
+                                onChange={(e) => onGlowOpacityChange(parseInt(e.target.value))}
+                                className="h-2 rounded-lg appearance-none cursor-pointer flex-none"
+                                style={{ width: '55%', background: `linear-gradient(to right, ${theme.buttonPrimary} 0%, ${theme.buttonPrimary} ${glowOpacity}%, ${theme.bgSecondary} ${glowOpacity}%, ${theme.bgSecondary} 100%)` }}
+                              />
+                            </div>
+                          )}
+                        </>
                       )}
                     </div>
                   )}
@@ -521,6 +525,26 @@ export default function SongProgressionChordTonesTabs({
                       />
                       Settings
                     </button>
+                  </div>
+
+                  {/* Only toggle — Target Tones only, right above settings panel */}
+                  <div className="flex items-center gap-1.5 mt-2">
+                    <input
+                      type="checkbox"
+                      id="onlyChordTones"
+                      checked={onlyChordTones}
+                      onChange={(e) => onOnlyChordTonesChange?.(e.target.checked)}
+                      className="w-3 h-3 cursor-pointer"
+                      disabled={!showChordTones}
+                    />
+                    <label
+                      htmlFor="onlyChordTones"
+                      className="text-xs cursor-pointer whitespace-nowrap"
+                      style={{ color: theme.textSecondary, opacity: showChordTones ? 1 : 0.5 }}
+                      title="Show only chord tones on the fretboard"
+                    >
+                      Only
+                    </label>
                   </div>
 
                   {/* Expanded settings panel — shown below the note squares row */}

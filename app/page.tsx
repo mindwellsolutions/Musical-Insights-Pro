@@ -129,6 +129,7 @@ export default function Home() {
   );
   // All Intervals mode
   const [allIntervalsMode, setAllIntervalsMode] = useSupabaseStorage('guitar-app-all-intervals-mode', false);
+  const [allIntervalsDisplayMode, setAllIntervalsDisplayMode] = useSupabaseStorage<'glow' | 'solid'>('guitar-app-all-intervals-display-mode', 'glow');
   const [selectedIntervalDegrees, setSelectedIntervalDegrees] = useSupabaseStorage<number[]>(
     'guitar-app-selected-interval-degrees',
     [0, 1, 2, 3, 4, 5, 6]
@@ -2647,6 +2648,8 @@ export default function Home() {
         onAllIntervalsModeChange={setAllIntervalsMode}
         selectedIntervalDegrees={selectedIntervalDegrees}
         onSelectedIntervalDegreesChange={setSelectedIntervalDegrees}
+        allIntervalsDisplayMode={allIntervalsDisplayMode}
+        onAllIntervalsDisplayModeChange={setAllIntervalsDisplayMode}
         showTriadMode={showTriadMode}
         onTriadModeChange={handleTriadModeChange}
         onTriadDataChange={handleTriadDataChange}
@@ -3019,6 +3022,7 @@ export default function Home() {
                     selectedChordToneTypes={selectedChordToneTypes}
                     allIntervalsMode={allIntervalsMode}
                     rootNoteForIntervals={rootNote}
+                    allIntervalsDisplayMode={allIntervalsDisplayMode}
                     showTriadMode={fretboardOrder === 'triads-top'}
                     triadNotes={fretboardOrder === 'triads-top' ? displayedTriadNotes : []}
                     triadPositions={fretboardOrder === 'triads-top' ? displayedTriadNotePositions : []}
@@ -3194,6 +3198,7 @@ export default function Home() {
                     selectedChordToneTypes={selectedChordToneTypes}
                     allIntervalsMode={allIntervalsMode}
                     rootNoteForIntervals={rootNote}
+                    allIntervalsDisplayMode={allIntervalsDisplayMode}
                     showTriadMode={fretboardOrder === 'pentatonics-top' || (fretboardOrder === 'triads-top' && showTriadsOnScaleFretboard)}
                     triadNotes={fretboardOrder === 'pentatonics-top' ? displayedTriadNotes : (showTriadsOnScaleFretboard ? (triadData?.triadNotes || []) : [])}
                     triadPositions={fretboardOrder === 'pentatonics-top' ? displayedTriadNotePositions : (showTriadsOnScaleFretboard ? (triadData?.notePositions || []) : [])}
@@ -4111,6 +4116,7 @@ export default function Home() {
                   selectedChordToneTypes={selectedChordToneTypes}
                   allIntervalsMode={allIntervalsMode}
                   rootNoteForIntervals={rootNote}
+                  allIntervalsDisplayMode={allIntervalsDisplayMode}
                   showTriadMode={showTriadMode}
                   triadNotes={displayedTriadNotes}
                   triadPositions={displayedTriadNotePositions}

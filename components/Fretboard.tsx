@@ -50,6 +50,7 @@ interface FretboardProps {
   // All Intervals mode
   allIntervalsMode?: boolean;
   rootNoteForIntervals?: string;
+  allIntervalsDisplayMode?: 'glow' | 'solid';
   // Triad mode props
   showTriadMode?: boolean;
   triadNotes?: string[];
@@ -302,6 +303,7 @@ export default function Fretboard({
   selectedChordToneTypes = ['root', 'third', 'fifth', 'seventh'],
   allIntervalsMode = false,
   rootNoteForIntervals = 'C',
+  allIntervalsDisplayMode = 'glow',
   liveNotesGlowEnabled = false,
   onChordHighlightColorChange,
   onGuideTonesColorChange,
@@ -887,15 +889,22 @@ export default function Fretboard({
                           } else if (allIntervalsMode && isChordTone) {
                             // ALL INTERVALS MODE - color each note by its interval from root
                             const intervalColor = getAllIntervalColor(notePos.note, rootNoteForIntervals);
-                            const normalizedOpacity = glowOpacity / 100;
-                            borderColor = (normalizedOpacity > 0.8 || showWhiteBorder) && showChordGlow
-                              ? `1px solid #ffffff`
-                              : `4px solid ${intervalColor}`;
-                            if (showChordGlow) {
-                              if (normalizedOpacity > 0.8 || showWhiteBorder) {
-                                glowColor = `0 0 0 1px #ffffff, 0 0 0 8px ${hexToRgba(intervalColor, normalizedOpacity)}`;
-                              } else {
-                                glowColor = `0 0 0 6px ${hexToRgba(intervalColor, normalizedOpacity)}`;
+                            if (allIntervalsDisplayMode === 'solid') {
+                              // Solid Colors mode: fill circle with interval color (circleFill override applied below after declaration)
+                              borderColor = 'none';
+                              glowColor = '0 2px 8px rgba(0,0,0,0.3)';
+                            } else {
+                              // Glow mode (default)
+                              const normalizedOpacity = glowOpacity / 100;
+                              borderColor = (normalizedOpacity > 0.8 || showWhiteBorder) && showChordGlow
+                                ? `1px solid #ffffff`
+                                : `4px solid ${intervalColor}`;
+                              if (showChordGlow) {
+                                if (normalizedOpacity > 0.8 || showWhiteBorder) {
+                                  glowColor = `0 0 0 1px #ffffff, 0 0 0 8px ${hexToRgba(intervalColor, normalizedOpacity)}`;
+                                } else {
+                                  glowColor = `0 0 0 6px ${hexToRgba(intervalColor, normalizedOpacity)}`;
+                                }
                               }
                             }
                           } else {
@@ -1006,6 +1015,10 @@ export default function Fretboard({
 
                           // Focus mode: determine if this note is in the spotlighted triad
                           let circleFill = NOTE_COLORS[notePos.note] ?? '#6b7280';
+                          // Solid Colors override: replace note color with interval color
+                          if (allIntervalsMode && allIntervalsDisplayMode === 'solid' && isChordTone) {
+                            circleFill = getAllIntervalColor(notePos.note, rootNoteForIntervals);
+                          }
                           let circleOpacity = 1;
                           let circleFilter = 'none';
                           let letterNudge = false;
