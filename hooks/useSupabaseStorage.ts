@@ -14,6 +14,14 @@ import { queryKeys } from '@/lib/react-query/query-client';
 
 const DEBOUNCE_DELAY = 1000; // 1 second debounce for saves
 
+// Keys where the database value is always authoritative and must never be overwritten
+// by the local default or cache until after the DB load has resolved.
+// This prevents the mount-time defaultValue from stomping a user's saved "false".
+const DB_AUTHORITATIVE_KEYS = new Set([
+  'guitar-app-show-guide-at-start',
+  'guitar-app-fret-count',
+]);
+
 // Map of localStorage keys to Supabase column names
 const KEY_TO_COLUMN_MAP: Record<string, string> = {
   // Core settings
@@ -134,13 +142,18 @@ export function useSupabaseStorage<T>(key: string, defaultValue: T): [T, (value:
       return;
     }
 
+    // CRITICAL: For DB-authoritative keys, never write to cache until after the DB load
+    // has resolved. Without this guard the mount-time defaultValue (e.g. `true` for
+    // show_guide_at_start) would immediately stomp whatever the user previously saved.
+    if (DB_AUTHORITATIVE_KEYS.has(key) && !isLoaded) return;
+
     try {
       const localStorageKey = `cache-${key}`;
       localStorage.setItem(localStorageKey, JSON.stringify(value));
     } catch (error) {
       // Ignore localStorage errors
     }
-  }, [value, key, isClient]);
+  }, [value, key, isClient, isLoaded]);
 
   // Load value on mount
   useEffect(() => {
@@ -211,13 +224,6 @@ export function useSupabaseStorage<T>(key: string, defaultValue: T): [T, (value:
               else if (key === 'guitar-app-root-note' || key === 'guitar-app-scale-name') {
                 console.log(`🔍 Database loaded ${key}:`, loadedValue, '(default was:', defaultValue, ')');
               }
-
-              // For settings where the DB value represents an explicit user opt-out (e.g. "Never
-              // show again"), the database is always authoritative regardless of cache.
-              const DB_AUTHORITATIVE_KEYS = new Set([
-                'guitar-app-show-guide-at-start',
-                'guitar-app-fret-count',
-              ]);
 
               if (DB_AUTHORITATIVE_KEYS.has(key)) {
                 // Always trust database over cache for these keys

@@ -1169,18 +1169,72 @@ export default function Home() {
   }, [rootNote, scaleName]);
 
   // Show guide on first load if enabled.
-  // Depends on showGuideAtStart so it re-evaluates once the DB-authoritative value loads.
-  // A ref prevents re-opening the guide if the user manually closes it during the same session.
+  // Reads Supabase directly on mount so we never race against the hook's async load.
+  // The 500ms delay only fires AFTER we have the authoritative DB answer.
+  // showGuideAtStart (from the hook) is used only for the settings-panel toggle UI.
   const guideShownThisSessionRef = useRef(false);
   useEffect(() => {
-    if (guideShownThisSessionRef.current) return; // already shown or dismissed this session
-    if (!showGuideAtStart) return; // DB (or cache) says "never show again"
-    const timer = setTimeout(() => {
-      guideShownThisSessionRef.current = true;
-      setShowGuide(true);
-    }, 500);
-    return () => clearTimeout(timer);
-  }, [showGuideAtStart]); // re-runs when DB value resolves
+    // Run once on mount — do NOT make this reactive to showGuideAtStart state changes.
+    // Reactivity caused a race: default `true` would schedule the timer before DB resolved.
+    let cancelled = false;
+
+    async function checkAndShowGuide() {
+      try {
+        // Fast path: check localStorage cache written by handleNeverShowAgain.
+        // This key is only ever written as `false` (the "never" value), so if it is
+        // present and false we can skip the DB round-trip entirely.
+        try {
+          const cached = localStorage.getItem('cache-guitar-app-show-guide-at-start');
+          if (cached !== null && JSON.parse(cached) === false) return;
+        } catch {}
+
+        // Authoritative path: fetch from DB to handle the case where the user said
+        // "never show again" on a different device / cleared localStorage.
+        const { createClient } = await import('@/lib/supabase/client-ssr');
+        const supabase = createClient();
+        const { data: { user } } = await supabase.auth.getUser();
+
+        if (cancelled) return;
+
+        if (user) {
+          const { data } = await supabase
+            .from('user_settings')
+            .select('show_guide_at_start')
+            .eq('user_id', user.id)
+            .single();
+
+          if (cancelled) return;
+
+          // If the DB explicitly says false, respect it and sync cache.
+          if (data && data.show_guide_at_start === false) {
+            try {
+              localStorage.setItem('cache-guitar-app-show-guide-at-start', 'false');
+            } catch {}
+            return;
+          }
+        }
+
+        // DB says true (or user is not logged in) — show the guide after a short delay.
+        if (!guideShownThisSessionRef.current && !cancelled) {
+          guideShownThisSessionRef.current = true;
+          setShowGuide(true);
+        }
+      } catch {
+        // On any error, show the guide (safe default for new users).
+        if (!guideShownThisSessionRef.current && !cancelled) {
+          guideShownThisSessionRef.current = true;
+          setShowGuide(true);
+        }
+      }
+    }
+
+    // Small delay so the page finishes painting before the modal appears.
+    const timer = setTimeout(checkAndShowGuide, 500);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps — intentionally mount-only
 
   // Handle guide close — restore sidebar state if guide opened it
   const handleGuideClose = useCallback(() => {
