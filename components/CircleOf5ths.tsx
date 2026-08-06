@@ -122,7 +122,7 @@ export default function CircleOf5ths({
   const [keyChords, setKeyChords] = useState<KeyChord[]>([]);
 
   // Chord Display Mode: Traditional (all 7 positions) vs Compact (4,1,5,2,6,3 trick)
-  const [chordDisplayMode, setChordDisplayMode] = useLocalStorage<'traditional' | 'compact'>('circle-of-5ths-chord-display-mode', 'traditional');
+  const [chordDisplayMode, setChordDisplayMode] = useLocalStorage<'traditional' | 'compact'>('circle-of-5ths-chord-display-mode', 'compact');
 
   // Visual Style: Circles (colorful floating) vs Wedges (connected segments)
   const [visualStyle, setVisualStyle] = useLocalStorage<'circles' | 'wedges'>('circle-of-5ths-visual-style', 'circles');
