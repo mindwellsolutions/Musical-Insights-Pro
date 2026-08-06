@@ -287,80 +287,69 @@ export default function CircleOf5ths({
       {/* Header with Title and Settings Toggle */}
       {!hideControls && (
       <div className="mb-3">
-        <div className="flex items-center justify-between mb-2">
-          <h3 className="text-sm font-semibold" style={{ color: theme.textPrimary }}>
+        <div className="flex items-center mb-2">
+          {/* Title + eye icon — kept close together on the left */}
+          <h3 className="text-sm font-semibold mr-1.5" style={{ color: theme.textPrimary }}>
             Circle of 5ths
           </h3>
 
-          {/* Hide / View + Settings buttons — all on the same line */}
-          <div className="flex items-center gap-2">
-            {/* Hide/View (collapse) button */}
+          {/* Eye icon toggle — visible/hidden, no text, sits right next to the title */}
+          <button
+            onClick={() => setIsCollapsed(!isCollapsed)}
+            className="flex items-center justify-center p-1 rounded transition-all hover:opacity-60"
+            style={{ color: isCollapsed ? theme.textSecondary : theme.textPrimary }}
+            title={isCollapsed ? 'Show Circle of 5ths' : 'Hide Circle of 5ths'}
+          >
             {isCollapsed ? (
-              <button
-                onClick={() => setIsCollapsed(false)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all hover:opacity-80"
-                style={{
-                  background: theme.buttonPrimary,
-                  color: '#ffffff',
-                  border: `1px solid ${theme.buttonPrimary}`,
-                }}
-                title="Expand Circle of 5ths"
-              >
-                <span>View</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="6 9 12 15 18 9"/>
-                </svg>
-              </button>
+              /* Eye with slash — hidden state */
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+                <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+                <line x1="1" y1="1" x2="23" y2="23"/>
+              </svg>
             ) : (
-              <button
-                onClick={() => setIsCollapsed(true)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all hover:opacity-80"
-                style={{
-                  background: theme.bgTertiary,
-                  color: theme.textPrimary,
-                  border: `1px solid ${theme.border}`,
-                }}
-                title="Collapse Circle of 5ths"
-              >
-                <span>Hide</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="18 15 12 9 6 15"/>
-                </svg>
-              </button>
+              /* Open eye — visible state */
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
             )}
+          </button>
 
-            {/* Settings Dropdown Arrow Button */}
-            {!isCollapsed && (
-              <button
-                onClick={() => setIsSettingsExpanded(!isSettingsExpanded)}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-lg transition-all hover:opacity-80"
+          {/* Spacer pushes Settings to the far right */}
+          <div className="flex-1" />
+
+          {/* Settings Dropdown Arrow Button — only shown when expanded */}
+          {!isCollapsed && (
+            <button
+              onClick={() => setIsSettingsExpanded(!isSettingsExpanded)}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg transition-all hover:opacity-80"
+              style={{
+                background: theme.bgTertiary,
+                border: `1px solid ${theme.border}`,
+                color: theme.textPrimary,
+              }}
+              title={isSettingsExpanded ? 'Hide Settings' : 'Show Settings'}
+            >
+              <span className="text-xs font-medium">Settings</span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 style={{
-                  background: theme.bgTertiary,
-                  border: `1px solid ${theme.border}`,
-                  color: theme.textPrimary,
+                  transform: isSettingsExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                  transition: 'transform 0.2s ease',
                 }}
-                title={isSettingsExpanded ? "Hide Settings" : "Show Settings"}
               >
-                <span className="text-xs font-medium">Settings</span>
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  style={{
-                    transform: isSettingsExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
-                    transition: 'transform 0.2s ease',
-                  }}
-                >
-                  <polyline points="6 9 12 15 18 9"/>
-                </svg>
-              </button>
-            )}
-          </div>
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+          )}
         </div>
 
         {/* Collapsible Settings Area */}
