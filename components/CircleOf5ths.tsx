@@ -267,9 +267,10 @@ export default function CircleOf5ths({
 
   // Calculate dimensions based on circleSize
   // Increased spacing between outer and inner circles for better visibility
-  // svgPadding: extra space around the circle so outer-ring position numbers at the
-  // four cardinal points (C=top, A=right, F#=bottom, D#=left) aren't clipped by the viewBox.
-  const svgPadding = 20;
+  // svgPadding: extra space around the circle so the outer-ring circles and position
+  // numbers at the four cardinal points (C=top, A=right, F#=bottom, D#=left) have
+  // enough breathing room and aren't clipped. 36px gives ~18px clear of the circle edge.
+  const svgPadding = 36;
   const centerX = circleSize / 2 + svgPadding;
   const centerY = circleSize / 2 + svgPadding;
   const radius = (circleSize / 300) * 125; // Increased from 120 to 125
