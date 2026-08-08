@@ -167,6 +167,9 @@ interface HeaderProps {
   // Recommended Progressions (lifted state from SongProgressionChordTonesTabs)
   progressionsOpen?: boolean;
   onProgressionsOpenChange?: (open: boolean) => void;
+  // Overlay mode (replaces hard-coded "Triads in Scale")
+  overlayMode?: string;
+  onOverlayModeChange?: (mode: string) => void;
 }
 
 export default function Header({
@@ -293,6 +296,8 @@ export default function Header({
   selectedTriadType = 'major',
   progressionsOpen = false,
   onProgressionsOpenChange,
+  overlayMode = 'triads',
+  onOverlayModeChange,
 }: HeaderProps) {
   const themeKeys = Object.keys(themes) as Theme[];
   const availableTunings = Object.keys(TUNINGS[stringCount]);
@@ -803,6 +808,50 @@ export default function Header({
                     fretboardGlowWidth={circleFretboardGlowWidth}
                     onFretboardGlowWidthChange={onCircleFretboardGlowWidthChange}
                   />
+                </div>
+              )}
+
+              {/* Overlay Mode Dropdown - Show when triad mode is active */}
+              {showTriadMode && (
+                <div
+                  className="p-3 rounded-lg"
+                  style={{
+                    background: theme.bgTertiary,
+                    border: `1px solid ${theme.border}`,
+                    minWidth: '220px',
+                  }}
+                >
+                  <label className="block text-xs font-medium mb-2" style={{ color: theme.textSecondary }}>
+                    Foreground Overlay
+                  </label>
+                  <select
+                    value={overlayMode}
+                    onChange={(e) => onOverlayModeChange?.(e.target.value)}
+                    className="w-full px-3 py-1.5 rounded-lg text-xs font-medium"
+                    style={{
+                      background: theme.bgSecondary,
+                      color: theme.textPrimary,
+                      border: `1px solid ${theme.border}`,
+                      cursor: 'pointer',
+                    }}
+                  >
+                    <option value="triads">Triads in Scale</option>
+                    <option value="seventh-chords">7th Chords in Scale</option>
+                    <option value="modes">Mode Shapes per Degree</option>
+                    <option value="pentatonic">Pentatonic per Chord</option>
+                    <option value="arpeggios">Arpeggio Shapes (CAGED)</option>
+                    <option value="diatonic-intervals">Diatonic Intervals (3rds/6ths)</option>
+                    <option value="tritone">Tritone Tension &amp; Resolution</option>
+                  </select>
+                  <div className="mt-1.5 text-xs" style={{ color: theme.textSecondary }}>
+                    {overlayMode === 'triads' && 'Diatonic triads I–VII over the scale'}
+                    {overlayMode === 'seventh-chords' && '4-note diatonic 7th chords (Maj7, min7, dom7, m7b5)'}
+                    {overlayMode === 'modes' && 'Mode shape per chord degree (Dorian on ii, etc.)'}
+                    {overlayMode === 'pentatonic' && 'Matching pentatonic scale for selected chord degree'}
+                    {overlayMode === 'arpeggios' && 'Chord tone arpeggio within CAGED position'}
+                    {overlayMode === 'diatonic-intervals' && 'Diatonic 3rds and 6ths from a starting note'}
+                    {overlayMode === 'tritone' && 'Tritone pairs (b5) and their resolution targets'}
+                  </div>
                 </div>
               )}
 

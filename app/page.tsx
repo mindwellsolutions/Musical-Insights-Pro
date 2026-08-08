@@ -130,6 +130,8 @@ export default function Home() {
   // All Intervals mode
   const [allIntervalsMode, setAllIntervalsMode] = useSupabaseStorage('guitar-app-all-intervals-mode', false);
   const [allIntervalsDisplayMode, setAllIntervalsDisplayMode] = useSupabaseStorage<'glow' | 'solid'>('guitar-app-all-intervals-display-mode', 'glow');
+  // Foreground overlay mode (triads dropdown)
+  const [overlayMode, setOverlayMode] = useSupabaseStorage<string>('guitar-app-overlay-mode', 'triads');
   const [selectedIntervalDegrees, setSelectedIntervalDegrees] = useSupabaseStorage<number[]>(
     'guitar-app-selected-interval-degrees',
     [0, 1, 2, 3, 4, 5, 6]
@@ -2678,6 +2680,8 @@ export default function Home() {
         selectedTriadType={selectedTriadType}
         progressionsOpen={harmonizationTab === 'recommended'}
         onProgressionsOpenChange={(open) => setHarmonizationTab(open ? 'recommended' : 'harmonization')}
+        overlayMode={overlayMode}
+        onOverlayModeChange={setOverlayMode}
       />
       )}
 
@@ -2864,7 +2868,9 @@ export default function Home() {
                       {/* Triads Info and Controls */}
                       <div className="flex flex-col gap-2">
                         {/* Top row: Chord text, Triad Positions, and Nearby Chords Navigator */}
-                        <div className="flex items-center gap-3 flex-wrap">
+                        <div className="flex items-center justify-between gap-3 flex-wrap">
+                          {/* LEFT group: chord badge + navigator + notification */}
+                          <div className="flex items-center gap-3 flex-wrap">
                           {/* Triads Key/Type */}
                           <span className="text-sm font-semibold px-3 py-1 rounded" style={{
                             background: theme.bgTertiary,
@@ -2877,16 +2883,6 @@ export default function Home() {
                                 : `Triads - ${manualKey || rootNote} ${selectedTriadType === 'major' ? 'Major' : selectedTriadType === 'minor' ? 'Minor' : selectedTriadType === 'diminished' ? 'Diminished' : 'Augmented'}`
                               : getScaleNameForTriad(manualKey || rootNote, selectedTriadType, selectedScaleIndex)}
                           </span>
-
-                          {/* Triad Positions - Always show for triads fretboard */}
-                          {fretboardOrder === 'triads-top' && (
-                            <TriadPositionsCard
-                              theme={theme}
-                              selectedInversion={selectedTriadInversion}
-                              onInversionChange={setSelectedTriadInversion}
-                              positionCountsByInversion={positionCountsByInversion}
-                            />
-                          )}
 
                           {/* Chord Progression Navigator - Show when chord neighborhood panel is visible */}
                           {fretboardOrder === 'triads-top' && chordNeighborhoodState.isPanelVisible && chordNeighborhoodState.nearbyChords.length > 0 && (
@@ -2966,6 +2962,19 @@ export default function Home() {
                                   See which diatonic chords are within easy reach
                                 </span>
                               </div>
+                            </div>
+                          )}
+                          </div>{/* END LEFT group */}
+
+                          {/* RIGHT: Zones GUI (TriadPositionsCard) */}
+                          {fretboardOrder === 'triads-top' && (
+                            <div className="flex-shrink-0 ml-auto">
+                              <TriadPositionsCard
+                                theme={theme}
+                                selectedInversion={selectedTriadInversion}
+                                onInversionChange={setSelectedTriadInversion}
+                                positionCountsByInversion={positionCountsByInversion}
+                              />
                             </div>
                           )}
                         </div>
