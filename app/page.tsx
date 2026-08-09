@@ -78,6 +78,15 @@ import { computeDiatonicTriads, computeTriadMembership } from '@/lib/music-theor
 import type { DiatonicTriad } from '@/lib/music-theory/triad-membership/types';
 import { TriadFocusSelector } from '@/components/scale-triads/TriadFocusSelector';
 import { normalizeNoteToSharp } from '@/lib/triad-theory';
+import {
+  get7thChordNotes,
+  getModeNotes,
+  getPentatonicNotes,
+  getArpeggioNotes,
+  getDiatonicIntervalNotes,
+  getTritoneNotes,
+  DEGREE_LABELS,
+} from '@/lib/overlay-patterns';
 import { useNoteDisplay } from '@/hooks/useNoteDisplay';
 import { SliderResetButton } from '@/components/shared/SliderResetButton';
 
@@ -132,6 +141,7 @@ export default function Home() {
   const [allIntervalsDisplayMode, setAllIntervalsDisplayMode] = useSupabaseStorage<'glow' | 'solid'>('guitar-app-all-intervals-display-mode', 'glow');
   // Foreground overlay mode (triads dropdown)
   const [overlayMode, setOverlayMode] = useSupabaseStorage<string>('guitar-app-overlay-mode', 'triads');
+  const [overlayDegree, setOverlayDegree] = useSupabaseStorage<number>('guitar-app-overlay-degree', 0);
   const [selectedIntervalDegrees, setSelectedIntervalDegrees] = useSupabaseStorage<number[]>(
     'guitar-app-selected-interval-degrees',
     [0, 1, 2, 3, 4, 5, 6]
@@ -2176,6 +2186,30 @@ export default function Home() {
     return triadData?.notePositions || [];
   }, [enabledNearbyChords.length, selectedNearbyChords, showAllNearbyChords, allNearbyChordPositions, overlayNotePositions, triadData?.notePositions]);
 
+  // Compute the foreground notes for overlay modes other than "triads"
+  const foregroundNotes = useMemo((): string[] => {
+    if (overlayMode === 'triads') return [];
+    const key = rootNote;
+    const scale = scaleName;
+    const deg = overlayDegree;
+    switch (overlayMode) {
+      case 'seventh-chords':
+        return get7thChordNotes(key, scale, deg);
+      case 'modes':
+        return getModeNotes(key, scale);
+      case 'pentatonic':
+        return getPentatonicNotes(key, scale, deg);
+      case 'arpeggios':
+        return getArpeggioNotes(key, scale, deg);
+      case 'diatonic-intervals':
+        return getDiatonicIntervalNotes(key, scale, getScaleNotes(key, scale)[deg] ?? key, '3rd');
+      case 'tritone':
+        return getTritoneNotes(key, scale, deg);
+      default:
+        return [];
+    }
+  }, [overlayMode, overlayDegree, rootNote, scaleName]);
+
   // Determine which triad notes to highlight
   const displayedTriadNotes = useMemo(() => {
     // Priority 1: If an overlay is selected and no enabled chords, show only the overlay chord's notes
@@ -2219,9 +2253,9 @@ export default function Home() {
       });
       return allNotes;
     }
-    // Otherwise show the regular triad notes
-    return triadData?.triadNotes || [];
-  }, [enabledNearbyChords, selectedNearbyChords, showAllNearbyChords, chordNeighborhoodState.nearbyChords, chordNeighborhoodState.selectedOverlay, triadData?.triadNotes]);
+    // Otherwise show the regular triad notes, or foreground overlay notes if a non-triad mode is active
+    return triadData?.triadNotes || foregroundNotes;
+  }, [enabledNearbyChords, selectedNearbyChords, showAllNearbyChords, chordNeighborhoodState.nearbyChords, chordNeighborhoodState.selectedOverlay, triadData?.triadNotes, foregroundNotes]);
 
   // Calculate live note positions for real-time detection
   // NEW: Use frequency-based detection for exact position
@@ -3481,6 +3515,31 @@ export default function Home() {
                             <option value="diatonic-intervals">Diatonic Intervals</option>
                             <option value="tritone">Tritone Tension &amp; Resolution</option>
                           </select>
+
+                          {/* Degree selector — shown for modes that require a scale degree */}
+                          {overlayMode !== 'triads' && overlayMode !== 'modes' && (
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 3, marginLeft: 6 }}>
+                              {DEGREE_LABELS.map((label, idx) => (
+                                <button
+                                  key={idx}
+                                  onClick={(e) => { e.stopPropagation(); setOverlayDegree(idx); }}
+                                  style={{
+                                    padding: '1px 6px',
+                                    borderRadius: 4,
+                                    fontSize: 11,
+                                    fontWeight: overlayDegree === idx ? 700 : 500,
+                                    cursor: 'pointer',
+                                    border: `1px solid ${overlayDegree === idx ? theme.accentPrimary : theme.border}`,
+                                    background: overlayDegree === idx ? `${theme.accentPrimary}30` : theme.bgSecondary,
+                                    color: overlayDegree === idx ? theme.accentPrimary : theme.textSecondary,
+                                    transition: 'all 120ms ease-out',
+                                  }}
+                                >
+                                  {label}
+                                </button>
+                              ))}
+                            </div>
+                          )}
                         </label>
 
                         {/* Clear Target Notes pill — only shown when a target note highlight is active */}
