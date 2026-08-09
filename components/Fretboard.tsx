@@ -1063,11 +1063,10 @@ export default function Fretboard({
                                 borderColor = `3px solid ${perNoteColor}`;
                                 finalBoxShadow = `0 0 0 5px ${hexToRgba(perNoteColor, 0.65)}, 0 0 14px ${hexToRgba(perNoteColor, 0.45)}`;
                               } else if (nonTriadColorMode) {
-                                // Color/Monocolor mode: use the note's own NOTE_COLOR as border/glow
-                                // so each note stands out with its own identity color
-                                const noteOwnColor = NOTE_COLORS[notePos.note] ?? focusTriad.color;
-                                borderColor = `3px solid ${noteOwnColor}`;
-                                finalBoxShadow = `0 0 0 4px ${hexToRgba(noteOwnColor, 0.6)}, 0 0 12px ${hexToRgba(noteOwnColor, 0.4)}`;
+                                // Monocolor mode: all foreground notes glow in the triad's degree color
+                                // (e.g. mustard for III, blue for IV) — uniform single color per selected degree
+                                borderColor = `3px solid ${focusTriad.color}`;
+                                finalBoxShadow = `0 0 0 4px ${hexToRgba(focusTriad.color, 0.55)}, 0 0 12px ${hexToRgba(focusTriad.color, 0.35)}`;
                               }
                               // Interval mode in-triad notes: no extra border (interval coloring is for bg notes context)
                             } else {
