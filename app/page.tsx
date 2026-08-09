@@ -3458,7 +3458,29 @@ export default function Home() {
                               background: '#fff', transition: 'left 150ms',
                             }} />
                           </div>
-                          <span style={{ fontWeight: 500 }}>Triads in Scale</span>
+                          <select
+                            value={overlayMode}
+                            onChange={(e) => setOverlayMode(e.target.value)}
+                            onClick={(e) => e.stopPropagation()}
+                            style={{
+                              fontSize: 13, fontWeight: 600,
+                              color: theme.textPrimary,
+                              background: theme.bgSecondary,
+                              border: `1px solid ${theme.border}`,
+                              borderRadius: 6,
+                              padding: '2px 6px',
+                              cursor: 'pointer',
+                              outline: 'none',
+                            }}
+                          >
+                            <option value="triads">Triads in Scale</option>
+                            <option value="seventh-chords">7th Chords in Scale</option>
+                            <option value="modes">Mode Shapes per Degree</option>
+                            <option value="pentatonic">Pentatonic per Chord</option>
+                            <option value="arpeggios">Arpeggio Shapes (CAGED)</option>
+                            <option value="diatonic-intervals">Diatonic Intervals</option>
+                            <option value="tritone">Tritone Tension &amp; Resolution</option>
+                          </select>
                         </label>
 
                         {/* Clear Target Notes pill — only shown when a target note highlight is active */}
