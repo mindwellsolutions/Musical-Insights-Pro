@@ -101,6 +101,11 @@ interface FretboardProps {
   // When set, this note is used as root for chord-tone color hierarchy instead of selectedChordNotes[0].
   // Required when selectedChordNotes contains only non-root pattern notes (e.g. degree 3 + 7 only).
   patternHighlightRootNote?: string;
+  // ── Per-note foreground color override ───────────────────────────────────────
+  // When set, a foreground note whose pitch class matches a key in this map gets that color
+  // as its border/glow instead of the nonTriadColorMode-derived color.
+  // Used for semantic coloring (e.g. tritone tension=orange, resolution=green).
+  foregroundNoteColors?: Record<string, string>;
   // ── Bg notes opacity when a chord-tone pattern is active (Triads in Scale off) ─
   patternBgNotesOpacity?: number;       // 0–100; dims scale notes NOT in selectedChordNotes; default 100 (no dim)
 }
@@ -348,6 +353,7 @@ export default function Fretboard({
   highlightKeyNote = undefined,
   patternHighlightRootNote = undefined,
   patternBgNotesOpacity = 100,
+  foregroundNoteColors = undefined,
   fretWidth = 50,
 }: FretboardProps) {
   const { getNoteDisplayName } = useNoteDisplay();
@@ -1051,11 +1057,17 @@ export default function Fretboard({
                               if (showRootNoteHighlight && isRootNote) {
                                 borderColor = `3px solid ${ROOT_HL_COLOR}`;
                                 finalBoxShadow = `0 0 0 6px ${hexToRgba(ROOT_HL_COLOR, 0.7)}, 0 0 14px ${hexToRgba(ROOT_HL_COLOR, 0.5)}`;
+                              } else if (foregroundNoteColors && foregroundNoteColors[normalizedNote]) {
+                                // Per-note semantic color override (e.g. tritone tension=orange, resolution=green)
+                                const perNoteColor = foregroundNoteColors[normalizedNote];
+                                borderColor = `3px solid ${perNoteColor}`;
+                                finalBoxShadow = `0 0 0 5px ${hexToRgba(perNoteColor, 0.65)}, 0 0 14px ${hexToRgba(perNoteColor, 0.45)}`;
                               } else if (nonTriadColorMode) {
-                                // Monocolor mode: overlay a solid triad-degree ring so these notes
-                                // stand out clearly against the other colorful non-triad dots
-                                borderColor = `3px solid ${focusTriad.color}`;
-                                finalBoxShadow = `0 0 0 4px ${hexToRgba(focusTriad.color, 0.55)}, 0 0 12px ${hexToRgba(focusTriad.color, 0.35)}`;
+                                // Color/Monocolor mode: use the note's own NOTE_COLOR as border/glow
+                                // so each note stands out with its own identity color
+                                const noteOwnColor = NOTE_COLORS[notePos.note] ?? focusTriad.color;
+                                borderColor = `3px solid ${noteOwnColor}`;
+                                finalBoxShadow = `0 0 0 4px ${hexToRgba(noteOwnColor, 0.6)}, 0 0 12px ${hexToRgba(noteOwnColor, 0.4)}`;
                               }
                               // Interval mode in-triad notes: no extra border (interval coloring is for bg notes context)
                             } else {

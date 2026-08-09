@@ -85,6 +85,7 @@ import {
   getArpeggioNotes,
   getDiatonicIntervalNotes,
   getTritoneNotes,
+  getTritonePairs,
 } from '@/lib/overlay-patterns';
 import { useNoteDisplay } from '@/hooks/useNoteDisplay';
 import { SliderResetButton } from '@/components/shared/SliderResetButton';
@@ -2070,6 +2071,39 @@ export default function Home() {
     }
   }, [overlayMode, selectedFocusDegree, diatonicTriads, rootNote, scaleName]);
 
+  // Per-note semantic color overrides for overlays that use distinct role-colors.
+  // Currently used by the Tritone mode: tension note = orange-red, resolution notes = green.
+  // For all other modes, this is null (no override) and the normal nonTriadColorMode logic applies.
+  const foregroundNoteColors = useMemo((): Record<string, string> | null => {
+    if (overlayMode !== 'tritone') return null;
+    const key = rootNote;
+    const scale = scaleName;
+    const degObj = diatonicTriads.find(t => t.degree === selectedFocusDegree);
+    const deg = degObj?.degreeIndex ?? 0;
+    const pairs = getTritonePairs(key, scale);
+    if (pairs.length === 0) return null;
+    const pair = pairs[deg % pairs.length];
+    const TENSION_COLOR = '#E85555';    // Red-orange — tension / tritone interval note
+    const RESOLUTION_COLOR = '#5DB572'; // Green — resolution / leading tone notes
+    const colorMap: Record<string, string> = {};
+    // Fretboard normalizes note names to sharp form via normalizeNoteToSharp (imported at top)
+    colorMap[normalizeNoteToSharp(pair.tensionNote)] = TENSION_COLOR;
+    pair.resolutionNotes.forEach(n => { colorMap[normalizeNoteToSharp(n)] = RESOLUTION_COLOR; });
+    return colorMap;
+  }, [overlayMode, rootNote, scaleName, selectedFocusDegree, diatonicTriads]);
+
+  // Effective nonTriadColorMode passed to Fretboard.
+  // For modes where note IDENTITY colors (NOTE_COLORS) are more meaningful than structural interval colors:
+  //   modes, pentatonic, diatonic-intervals → always force Color (nonTriadColorMode=true)
+  //   triads, 7th-chords, arpeggios → user's toggle value (structural chord-tone roles)
+  //   tritone → forced true (semantic coloring handled by foregroundNoteColors instead)
+  const effectiveNonTriadColorMode = useMemo((): boolean => {
+    if (overlayMode === 'modes' || overlayMode === 'pentatonic' || overlayMode === 'diatonic-intervals' || overlayMode === 'tritone') {
+      return true; // Force Color/NOTE_COLORS; tritone gets further per-note override
+    }
+    return nonTriadColorMode;
+  }, [overlayMode, nonTriadColorMode]);
+
   // Focused triad object — when a non-triad overlay is active, synthesize a focus object
   // using foregroundNotes so the Fretboard's dimming logic highlights the right notes.
   const focusTriad = useMemo((): DiatonicTriad | null => {
@@ -3773,37 +3807,72 @@ export default function Home() {
                               overflow: 'hidden',
                               flexShrink: 0,
                             }}>
-                              <button
-                                onClick={() => setNonTriadColorMode(false)}
-                                style={{
-                                  padding: '4px 10px',
-                                  fontSize: 11,
-                                  fontWeight: !nonTriadColorMode ? 700 : 500,
-                                  background: !nonTriadColorMode ? theme.accentPrimary : theme.bgTertiary,
-                                  color: !nonTriadColorMode ? '#fff' : theme.textSecondary,
-                                  border: 'none',
-                                  cursor: 'pointer',
-                                  transition: 'all 150ms',
-                                  whiteSpace: 'nowrap',
-                                }}
-                                title="Interval: triad note borders use interval colors (Root=Red, 3rd=Gold, 5th=Green, 7th=Lavender)"
-                              >Interval</button>
-                              <button
-                                onClick={() => setNonTriadColorMode(true)}
-                                style={{
-                                  padding: '4px 10px',
-                                  fontSize: 11,
-                                  fontWeight: nonTriadColorMode ? 700 : 500,
-                                  background: nonTriadColorMode ? theme.accentPrimary : theme.bgTertiary,
-                                  color: nonTriadColorMode ? '#fff' : theme.textSecondary,
-                                  border: 'none',
-                                  borderLeft: `1px solid ${theme.border}`,
-                                  cursor: 'pointer',
-                                  transition: 'all 150ms',
-                                  whiteSpace: 'nowrap',
-                                }}
-                                title="Monocolor: triad note borders use the note's own color"
-                              >Monocolor</button>
+                              {/* Interval / Color toggle — label and behavior depends on overlay mode */}
+                              {/* For modes/pentatonic/diatonic-intervals/tritone: Color is forced (interval makes no sense); Interval button hidden */}
+                              {(() => {
+                                const colorForcedModes = ['modes', 'pentatonic', 'diatonic-intervals', 'tritone'];
+                                const isColorForced = colorForcedModes.includes(overlayMode);
+                                const colorLabel = overlayMode === 'tritone' ? 'Semantic' : 'Color';
+                                const colorTitle = overlayMode === 'tritone'
+                                  ? 'Semantic: tension notes shown in Red, resolution notes in Green'
+                                  : 'Color: each note shown with its own identity color';
+                                if (isColorForced) {
+                                  // Only show a single "Color" or "Semantic" button (active, non-clickable style)
+                                  return (
+                                    <button
+                                      disabled
+                                      style={{
+                                        padding: '4px 10px',
+                                        fontSize: 11,
+                                        fontWeight: 700,
+                                        background: theme.accentPrimary,
+                                        color: '#fff',
+                                        border: 'none',
+                                        cursor: 'default',
+                                        whiteSpace: 'nowrap',
+                                        borderRadius: 0,
+                                        opacity: 0.85,
+                                      }}
+                                      title={colorTitle}
+                                    >{colorLabel}</button>
+                                  );
+                                }
+                                return (
+                                  <>
+                                    <button
+                                      onClick={() => setNonTriadColorMode(false)}
+                                      style={{
+                                        padding: '4px 10px',
+                                        fontSize: 11,
+                                        fontWeight: !nonTriadColorMode ? 700 : 500,
+                                        background: !nonTriadColorMode ? theme.accentPrimary : theme.bgTertiary,
+                                        color: !nonTriadColorMode ? '#fff' : theme.textSecondary,
+                                        border: 'none',
+                                        cursor: 'pointer',
+                                        transition: 'all 150ms',
+                                        whiteSpace: 'nowrap',
+                                      }}
+                                      title="Interval: note borders use interval colors (Root=Red, 3rd=Gold, 5th=Green, 7th=Lavender)"
+                                    >Interval</button>
+                                    <button
+                                      onClick={() => setNonTriadColorMode(true)}
+                                      style={{
+                                        padding: '4px 10px',
+                                        fontSize: 11,
+                                        fontWeight: nonTriadColorMode ? 700 : 500,
+                                        background: nonTriadColorMode ? theme.accentPrimary : theme.bgTertiary,
+                                        color: nonTriadColorMode ? '#fff' : theme.textSecondary,
+                                        border: 'none',
+                                        borderLeft: `1px solid ${theme.border}`,
+                                        cursor: 'pointer',
+                                        transition: 'all 150ms',
+                                        whiteSpace: 'nowrap',
+                                      }}
+                                      title="Color: note borders use each note's own identity color"
+                                    >Color</button>
+                                  </>
+                                );
+                              })()}
                             </div>
                             {/* Root Note & 7th highlight checkboxes */}
                             <div style={{ width: 1, height: 20, background: theme.border, flexShrink: 0 }} />
@@ -4210,7 +4279,8 @@ export default function Home() {
                   triadFocusOn={triadFocusOn}
                   focusTriad={focusTriad}
                   nonTriadOpacity={nonTriadOpacity}
-                  nonTriadColorMode={nonTriadColorMode}
+                  nonTriadColorMode={effectiveNonTriadColorMode}
+                  foregroundNoteColors={foregroundNoteColors ?? undefined}
                   showRootNoteHighlight={triadFocusOn && (showRootNoteHighlight as boolean)}
                   show7thNoteHighlight={triadFocusOn && (show7thNoteHighlight as boolean)}
                   highlightKeyNote={triadFocusOn && (showRootNoteHighlight as boolean) ? (manualKey || rootNote) : undefined}
