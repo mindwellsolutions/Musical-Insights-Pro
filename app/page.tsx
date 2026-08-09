@@ -2098,7 +2098,7 @@ export default function Home() {
   //   triads, 7th-chords, arpeggios → user's toggle value (structural chord-tone roles)
   //   tritone → forced true (semantic coloring handled by foregroundNoteColors instead)
   const effectiveNonTriadColorMode = useMemo((): boolean => {
-    if (overlayMode === 'modes' || overlayMode === 'pentatonic' || overlayMode === 'diatonic-intervals' || overlayMode === 'tritone') {
+    if (overlayMode === 'pentatonic' || overlayMode === 'diatonic-intervals' || overlayMode === 'tritone') {
       return true; // Force Color/NOTE_COLORS; tritone gets further per-note override
     }
     return nonTriadColorMode;
@@ -3554,7 +3554,6 @@ export default function Home() {
                           >
                             <option value="triads">Triads in Scale</option>
                             <option value="seventh-chords">7th Chords in Scale</option>
-                            <option value="modes">Mode Shapes per Degree</option>
                             <option value="pentatonic">Pentatonic per Chord</option>
                             <option value="arpeggios">Arpeggio Shapes (CAGED)</option>
                             <option value="diatonic-intervals">Diatonic Intervals</option>
@@ -3808,16 +3807,18 @@ export default function Home() {
                               flexShrink: 0,
                             }}>
                               {/* Interval / Color toggle — label and behavior depends on overlay mode */}
-                              {/* For modes/pentatonic/diatonic-intervals/tritone: Color is forced (interval makes no sense); Interval button hidden */}
+                              {/* pentatonic/diatonic-intervals/tritone: Color is forced; Interval hidden */}
+                              {/* triads: shows Interval / Monocolor (original behavior) */}
+                              {/* seventh-chords/arpeggios: shows Interval / Color */}
                               {(() => {
-                                const colorForcedModes = ['modes', 'pentatonic', 'diatonic-intervals', 'tritone'];
+                                const colorForcedModes = ['pentatonic', 'diatonic-intervals', 'tritone'];
                                 const isColorForced = colorForcedModes.includes(overlayMode);
                                 const colorLabel = overlayMode === 'tritone' ? 'Semantic' : 'Color';
                                 const colorTitle = overlayMode === 'tritone'
                                   ? 'Semantic: tension notes shown in Red, resolution notes in Green'
                                   : 'Color: each note shown with its own identity color';
                                 if (isColorForced) {
-                                  // Only show a single "Color" or "Semantic" button (active, non-clickable style)
+                                  // Only show a single locked "Color" or "Semantic" button
                                   return (
                                     <button
                                       disabled
@@ -3837,6 +3838,11 @@ export default function Home() {
                                     >{colorLabel}</button>
                                   );
                                 }
+                                // Triads uses "Monocolor"; all other chord-structure modes use "Color"
+                                const secondLabel = overlayMode === 'triads' ? 'Monocolor' : 'Color';
+                                const secondTitle = overlayMode === 'triads'
+                                  ? 'Monocolor: triad note borders use the note\'s own color'
+                                  : 'Color: note borders use each note\'s own identity color';
                                 return (
                                   <>
                                     <button
@@ -3868,8 +3874,8 @@ export default function Home() {
                                         transition: 'all 150ms',
                                         whiteSpace: 'nowrap',
                                       }}
-                                      title="Color: note borders use each note's own identity color"
-                                    >Color</button>
+                                      title={secondTitle}
+                                    >{secondLabel}</button>
                                   </>
                                 );
                               })()}
