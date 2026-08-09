@@ -123,15 +123,23 @@ export default function FretZoneChordHUD({
   }, [selectedChord, onChordHighlight, onChordSelected]);
 
   const handleChordHover = useCallback((chord: ZoneChord | null) => {
-    if (selectedChord) return; // Don't override locked selection with hover
     if (chord) {
+      // Always show hover preview — even when a chord is selected, hovering another shows that chord's notes
       onChordHighlight(chord.notes);
+      onChordSelected?.(true); // Keep bg notes hidden during hover previews too
       setHoveredChordSymbol(chord.symbol);
     } else {
-      onChordHighlight(null);
+      // Mouse left: restore the selected chord (if any) or clear
+      if (selectedChord) {
+        onChordHighlight(selectedChord.notes);
+        onChordSelected?.(true);
+      } else {
+        onChordHighlight(null);
+        onChordSelected?.(false);
+      }
       setHoveredChordSymbol(null);
     }
-  }, [selectedChord, onChordHighlight]);
+  }, [selectedChord, onChordHighlight, onChordSelected]);
 
   const visibleZones = FRET_ZONES.filter(z => z.midFret <= fretCount);
 
@@ -145,17 +153,6 @@ export default function FretZoneChordHUD({
   // ── Sidebar via portal ──────────────────────────────────────────────────────
   const sidebar = mounted && typeof document !== 'undefined' ? createPortal(
     <>
-      {/* Backdrop (translucent, click to close) */}
-      <div
-        onClick={closeSidebar}
-        style={{
-          position: 'fixed', inset: 0, zIndex: 1099,
-          background: 'rgba(0,0,0,0.35)',
-          opacity: sidebarOpen ? 1 : 0,
-          pointerEvents: sidebarOpen ? 'auto' : 'none',
-          transition: 'opacity 250ms ease',
-        }}
-      />
 
       {/* Sidebar panel */}
       <div
