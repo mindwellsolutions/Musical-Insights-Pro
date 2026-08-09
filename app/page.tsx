@@ -284,6 +284,8 @@ export default function Home() {
   const [progressionGlowBrightness, setProgressionGlowBrightness] = useState(100);
   // Feature B: zone-highlighted chord notes (ephemeral, not persisted)
   const [zoneHighlightedChordNotes, setZoneHighlightedChordNotes] = useState<string[] | null>(null);
+  // true when user has clicked/locked a chord in the zone sidebar (triggers full bg-note hiding)
+  const [zoneChordSelected, setZoneChordSelected] = useState(false);
 
   // Chord progression state persistence
   const [chordProgressionState, setChordProgressionState] = useSupabaseStorage<any>('guitar-app-chord-progression-state', null);
@@ -3506,6 +3508,7 @@ export default function Home() {
                       fretCount={fretCount}
                       theme={theme}
                       onChordHighlight={setZoneHighlightedChordNotes}
+                      onChordSelected={setZoneChordSelected}
                     />
                   )}
 
@@ -4293,6 +4296,8 @@ export default function Home() {
                   patternBgNotesOpacity={
                     targetNoteHighlight ? (targetNoteBgOpacity as number) :
                     patternHighlightNotes && !showTriadArcBands ? patternBgNotesOpacity :
+                    // When a zone chord is locked in the sidebar, hide ALL non-chord notes (opacity 0)
+                    zoneChordSelected && zoneHighlightedChordNotes ? 0 :
                     !patternHighlightNotes && !customHighlightNotes && !zoneHighlightedChordNotes && showChordTones && !showTriadArcBands ? chordToneBgNotesOpacity :
                     100
                   }
