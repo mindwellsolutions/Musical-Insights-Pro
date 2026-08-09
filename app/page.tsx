@@ -1055,9 +1055,9 @@ export default function Home() {
   // Harmonization state
   const [selectedHarmonization, setSelectedHarmonization] = useSupabaseStorage<'original' | '3rds' | '5ths' | '6ths' | '7ths'>('guitar-app-harmonization', 'original');
 
-  // Harmonization panel tab: 'harmonization' | 'recommended' | 'custom' | 'targetNotes' | 'zones'
-  type HarmonizationTabKey = 'harmonization' | 'recommended' | 'custom' | 'targetNotes' | 'zones';
-  const [harmonizationTab, setHarmonizationTab] = useSupabaseStorage<HarmonizationTabKey>('guitar-app-harmonization-tab', 'harmonization');
+  // Harmonization panel tab: 'visualInsights' | 'harmonization' | 'recommended' | 'custom' | 'targetNotes' | 'zones'
+  type HarmonizationTabKey = 'visualInsights' | 'harmonization' | 'recommended' | 'custom' | 'targetNotes' | 'zones';
+  const [harmonizationTab, setHarmonizationTab] = useSupabaseStorage<HarmonizationTabKey>('guitar-app-harmonization-tab', 'visualInsights');
   // Keep carousel state for the 'recommended' tab
   const [selectedChordTonePattern, setSelectedChordTonePattern] = useState<import('@/components/ChordToneProgressionCarousel').ProgressionPattern | null>(null);
   const [patternGlowBrightness, setPatternGlowBrightness] = useState(100);
@@ -2823,6 +2823,12 @@ export default function Home() {
                   style={{ borderBottom: `1px solid ${theme.border}` }}
                 >
                   {([
+                    { key: 'visualInsights' as const, label: 'Visual Insights', icon: (
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                      </svg>
+                    )},
                     { key: 'harmonization' as const, label: 'Harmonization', icon: (
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
@@ -2853,7 +2859,7 @@ export default function Home() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                       </svg>
                     )},
-                  ] as { key: 'harmonization' | 'recommended' | 'custom' | 'targetNotes' | 'zones'; label: string; icon: React.ReactNode }[]).map(({ key, label, icon }) => {
+                  ] as { key: 'visualInsights' | 'harmonization' | 'recommended' | 'custom' | 'targetNotes' | 'zones'; label: string; icon: React.ReactNode }[]).map(({ key, label, icon }) => {
                     const isActive = harmonizationTab === key;
                     const hasActiveTargetNotes = key === 'targetNotes' && !!targetNoteHighlight;
                     return (
@@ -2887,6 +2893,720 @@ export default function Home() {
 
                 {/* Tab body */}
                 <div className="p-3">
+                  {harmonizationTab === 'visualInsights' && (
+                    <div>
+                      {/* ── Triads in Scale Controls ── */}
+                      {rootNote && scaleName && (
+                        <div className="flex flex-col gap-2 mb-3" style={{ maxWidth: 1100 }}>
+                          {/* Row 1: Triads in Scale toggle + optional chord-tone glow slider */}
+                          <div className="flex items-center gap-2 flex-wrap">
+                            {/* Triads in Scale toggle → activates Triad Focus mode directly */}
+                            <label className="flex items-center gap-2 cursor-pointer select-none" style={{ fontSize: 13, color: theme.textPrimary }}>
+                              <div
+                                onClick={() => {
+                                  const next = !showTriadArcBands;
+                                  setShowTriadArcBands(next);
+                                  setTriadFocusOn(next);
+                                  if (next) setTargetNoteHighlight(null);
+                                }}
+                                style={{
+                                  width: 38, height: 20, borderRadius: 10,
+                                  background: showTriadArcBands ? theme.accentPrimary : theme.bgTertiary,
+                                  border: `1px solid ${theme.border}`,
+                                  position: 'relative', cursor: 'pointer', transition: 'background 150ms',
+                                }}
+                              >
+                                <div style={{
+                                  position: 'absolute', top: 2,
+                                  left: showTriadArcBands ? 18 : 2,
+                                  width: 14, height: 14, borderRadius: 7,
+                                  background: '#fff', transition: 'left 150ms',
+                                }} />
+                              </div>
+                              <select
+                                value={overlayMode}
+                                onChange={(e) => setOverlayMode(e.target.value)}
+                                onClick={(e) => e.stopPropagation()}
+                                style={{
+                                  fontSize: 13, fontWeight: 600,
+                                  color: theme.textPrimary,
+                                  background: theme.bgSecondary,
+                                  border: `1px solid ${theme.border}`,
+                                  borderRadius: 6,
+                                  padding: '2px 6px',
+                                  cursor: 'pointer',
+                                  outline: 'none',
+                                }}
+                              >
+                                <option value="triads">Triads in Scale</option>
+                                <option value="seventh-chords">7th Chords in Scale</option>
+                                <option value="pentatonic">Pentatonic per Chord</option>
+                                <option value="arpeggios">Arpeggio Shapes (CAGED)</option>
+                                <option value="diatonic-intervals">Diatonic Intervals</option>
+                                <option value="tritone">Tritone Tension &amp; Resolution</option>
+                              </select>
+
+                            </label>
+
+                            {/* Clear Target Notes pill — only shown when a target note highlight is active */}
+                            {targetNoteHighlight && (() => { const tnh = targetNoteHighlight; return (
+                              <>
+                                <div style={{ width: 1, height: 20, background: theme.border, flexShrink: 0 }} />
+                                <button
+                                  onClick={() => setTargetNoteHighlight(null)}
+                                  style={{
+                                    display: 'inline-flex', alignItems: 'center', gap: 5,
+                                    padding: '3px 10px', borderRadius: 999,
+                                    background: `${tnh.color}20`,
+                                    border: `1px solid ${tnh.color}60`,
+                                    color: tnh.color,
+                                    fontSize: 11, fontWeight: 700, cursor: 'pointer',
+                                    whiteSpace: 'nowrap', flexShrink: 0,
+                                    transition: 'all 150ms ease-out',
+                                  }}
+                                  title="Clear active target notes"
+                                >
+                                  <span style={{
+                                    width: 6, height: 6, borderRadius: '50%',
+                                    background: tnh.color,
+                                    display: 'inline-block', flexShrink: 0,
+                                    boxShadow: `0 0 5px ${tnh.color}`,
+                                  }} />
+                                  Target Notes: {tnh.label}
+                                  <span style={{ opacity: 0.7, fontSize: 10 }}>✕</span>
+                                </button>
+                              </>
+                            ); })()}
+
+                            {/* Glow slider — shown when a chord tone pattern is active */}
+                            {selectedChordTonePattern && (() => { const scp = selectedChordTonePattern; return (
+                              <>
+                                <div style={{ width: 1, height: 20, background: theme.border, flexShrink: 0 }} />
+                                <div className="flex items-center gap-2" style={{ flexShrink: 0 }}>
+                                  <span style={{ fontSize: 13, fontWeight: 600, color: theme.textSecondary, whiteSpace: 'nowrap', letterSpacing: '0.01em' }}>✦ Glow</span>
+                                  <div style={{
+                                    position: 'relative',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    width: 100,
+                                    height: 24,
+                                    borderRadius: 12,
+                                    background: `rgba(0,0,0,0.35)`,
+                                    border: `1px solid ${scp.genreColor}40`,
+                                    boxShadow: `inset 0 1px 3px rgba(0,0,0,0.4), 0 0 8px ${scp.genreColor}20`,
+                                    padding: '0 8px',
+                                  }}>
+                                    <div style={{
+                                      position: 'absolute',
+                                      left: 8, right: 8,
+                                      top: '50%', transform: 'translateY(-50%)',
+                                      height: 4, borderRadius: 2,
+                                      background: `linear-gradient(to right, ${scp.genreColor} 0%, ${scp.genreColor} ${patternGlowBrightness}%, rgba(255,255,255,0.12) ${patternGlowBrightness}%, rgba(255,255,255,0.12) 100%)`,
+                                      boxShadow: `0 0 6px ${scp.genreColor}60`,
+                                      pointerEvents: 'none',
+                                    }} />
+                                    <input
+                                      type="range"
+                                      min={0} max={100} step={5}
+                                      value={patternGlowBrightness}
+                                      onChange={(e) => setPatternGlowBrightness(parseInt(e.target.value))}
+                                      title={`Pattern highlight glow: ${patternGlowBrightness}%`}
+                                      style={{ position: 'relative', width: '100%', height: '100%', opacity: 0, cursor: 'pointer', zIndex: 1, margin: 0 }}
+                                    />
+                                  </div>
+                                  <span style={{ fontSize: 11, fontFamily: 'monospace', color: scp.genreColor, fontWeight: 700, minWidth: 34, textShadow: `0 0 8px ${scp.genreColor}80` }}>{patternGlowBrightness}%</span>
+                                  <SliderResetButton onReset={() => setPatternGlowBrightness(100)} theme={theme} label="Reset glow to 100%" />
+                                </div>
+
+                                {/* Bg Notes opacity — only when Triads in Scale is off */}
+                                {!showTriadArcBands && (
+                                  <>
+                                    <div style={{ width: 1, height: 20, background: theme.border, flexShrink: 0 }} />
+                                    <span style={{ fontSize: 12, color: theme.textSecondary, fontWeight: 500, whiteSpace: 'nowrap' }}>Bg Notes:</span>
+                                    <div className="flex items-center gap-2" style={{ flexShrink: 0 }}>
+                                      <span style={{ fontSize: 11, color: theme.textSecondary, whiteSpace: 'nowrap' }}>Opacity</span>
+                                      <div style={{
+                                        position: 'relative',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        width: 90,
+                                        height: 24,
+                                        borderRadius: 12,
+                                        background: 'rgba(0,0,0,0.35)',
+                                        border: `1px solid ${theme.border}`,
+                                        boxShadow: `inset 0 1px 3px rgba(0,0,0,0.4)`,
+                                        padding: '0 8px',
+                                      }}>
+                                        <div style={{
+                                          position: 'absolute',
+                                          left: 8, right: 8,
+                                          top: '50%', transform: 'translateY(-50%)',
+                                          height: 4, borderRadius: 2,
+                                          background: `linear-gradient(to right, ${theme.accentPrimary} 0%, ${theme.accentPrimary} ${patternBgNotesOpacity}%, rgba(255,255,255,0.12) ${patternBgNotesOpacity}%, rgba(255,255,255,0.12) 100%)`,
+                                          pointerEvents: 'none',
+                                        }} />
+                                        <input
+                                          type="range"
+                                          min={0} max={100} step={5}
+                                          value={patternBgNotesOpacity}
+                                          onChange={(e) => setPatternBgNotesOpacity(parseInt(e.target.value))}
+                                          title={`Background note opacity: ${patternBgNotesOpacity}%`}
+                                          style={{ position: 'relative', width: '100%', height: '100%', opacity: 0, cursor: 'pointer', zIndex: 1, margin: 0 }}
+                                        />
+                                      </div>
+                                      <span style={{ fontSize: 11, fontFamily: 'monospace', color: theme.textSecondary, minWidth: 30 }}>{patternBgNotesOpacity}%</span>
+                                      <SliderResetButton onReset={() => setPatternBgNotesOpacity(70)} theme={theme} label="Reset bg notes opacity to 70%" />
+                                    </div>
+                                  </>
+                                )}
+                              </>
+                            ); })()}
+
+                            {/* Glow slider — shown when a custom progression has steps */}
+                            {customHighlightNotes && (
+                              <>
+                                <div style={{ width: 1, height: 20, background: theme.border, flexShrink: 0 }} />
+                                <div className="flex items-center gap-2" style={{ flexShrink: 0 }}>
+                                  <span style={{ fontSize: 13, fontWeight: 600, color: theme.textSecondary, whiteSpace: 'nowrap', letterSpacing: '0.01em' }}>✦ Glow</span>
+                                  <div style={{
+                                    position: 'relative',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    width: 100,
+                                    height: 24,
+                                    borderRadius: 12,
+                                    background: `rgba(0,0,0,0.35)`,
+                                    border: `1px solid ${theme.accentPrimary}40`,
+                                    boxShadow: `inset 0 1px 3px rgba(0,0,0,0.4), 0 0 8px ${theme.accentPrimary}20`,
+                                    padding: '0 8px',
+                                  }}>
+                                    <div style={{
+                                      position: 'absolute',
+                                      left: 8, right: 8,
+                                      top: '50%', transform: 'translateY(-50%)',
+                                      height: 4, borderRadius: 2,
+                                      background: `linear-gradient(to right, ${theme.accentPrimary} 0%, ${theme.accentPrimary} ${customProgressionGlowBrightness}%, rgba(255,255,255,0.12) ${customProgressionGlowBrightness}%, rgba(255,255,255,0.12) 100%)`,
+                                      boxShadow: `0 0 6px ${theme.accentPrimary}60`,
+                                      pointerEvents: 'none',
+                                    }} />
+                                    <input
+                                      type="range"
+                                      min={0} max={100} step={5}
+                                      value={customProgressionGlowBrightness}
+                                      onChange={(e) => setCustomProgressionGlowBrightness(parseInt(e.target.value))}
+                                      title={`Custom progression glow: ${customProgressionGlowBrightness}%`}
+                                      style={{ position: 'relative', width: '100%', height: '100%', opacity: 0, cursor: 'pointer', zIndex: 1, margin: 0 }}
+                                    />
+                                  </div>
+                                  <span style={{ fontSize: 11, fontFamily: 'monospace', color: theme.accentPrimary, fontWeight: 700, minWidth: 34, textShadow: `0 0 8px ${theme.accentPrimary}80` }}>{customProgressionGlowBrightness}%</span>
+                                  <SliderResetButton onReset={() => setCustomProgressionGlowBrightness(80)} theme={theme} label="Reset glow to 80%" />
+                                </div>
+                              </>
+                            )}
+
+                            {/* Bg Notes opacity for chord tones — shown when chord tones are active, no pattern/custom/zone override, triads off */}
+                            {showChordTones && !selectedChordTonePattern && !customHighlightNotes && !zoneHighlightedChordNotes && !showTriadArcBands && (
+                              <>
+                                <div style={{ width: 1, height: 20, background: theme.border, flexShrink: 0 }} />
+                                <span style={{ fontSize: 12, color: theme.textSecondary, fontWeight: 500, whiteSpace: 'nowrap' }}>Bg Notes:</span>
+                                <div className="flex items-center gap-2" style={{ flexShrink: 0 }}>
+                                  <span style={{ fontSize: 11, color: theme.textSecondary, whiteSpace: 'nowrap' }}>Opacity</span>
+                                  <div style={{
+                                    position: 'relative',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    width: 90,
+                                    height: 24,
+                                    borderRadius: 12,
+                                    background: 'rgba(0,0,0,0.35)',
+                                    border: `1px solid ${theme.border}`,
+                                    boxShadow: `inset 0 1px 3px rgba(0,0,0,0.4)`,
+                                    padding: '0 8px',
+                                  }}>
+                                    <div style={{
+                                      position: 'absolute',
+                                      left: 8, right: 8,
+                                      top: '50%', transform: 'translateY(-50%)',
+                                      height: 4, borderRadius: 2,
+                                      background: `linear-gradient(to right, ${theme.accentPrimary} 0%, ${theme.accentPrimary} ${chordToneBgNotesOpacity}%, rgba(255,255,255,0.12) ${chordToneBgNotesOpacity}%, rgba(255,255,255,0.12) 100%)`,
+                                      pointerEvents: 'none',
+                                    }} />
+                                    <input
+                                      type="range"
+                                      min={0} max={100} step={5}
+                                      value={chordToneBgNotesOpacity}
+                                      onChange={(e) => setChordToneBgNotesOpacity(parseInt(e.target.value))}
+                                      title={`Background note opacity: ${chordToneBgNotesOpacity}%`}
+                                      style={{ position: 'relative', width: '100%', height: '100%', opacity: 0, cursor: 'pointer', zIndex: 1, margin: 0 }}
+                                    />
+                                  </div>
+                                  <span style={{ fontSize: 11, fontFamily: 'monospace', color: theme.textSecondary, minWidth: 30 }}>{chordToneBgNotesOpacity}%</span>
+                                  <SliderResetButton onReset={() => setChordToneBgNotesOpacity(70)} theme={theme} label="Reset bg notes opacity to 70%" />
+                                </div>
+                              </>
+                            )}
+
+                            {/* Background notes opacity + B&W/Colors — same row as toggle, shown when active */}
+                            {showTriadArcBands && (
+                              <>
+                                <div style={{ width: 1, height: 20, background: theme.border, flexShrink: 0 }} />
+                                <span style={{ fontSize: 12, color: theme.textSecondary, fontWeight: 500, whiteSpace: 'nowrap' }}>Bg Notes:</span>
+                                <div className="flex items-center gap-2" style={{ flexShrink: 0 }}>
+                                  <span style={{ fontSize: 11, color: theme.textSecondary, whiteSpace: 'nowrap' }}>Opacity</span>
+                                  <div style={{
+                                    position: 'relative',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    width: 90,
+                                    height: 24,
+                                    borderRadius: 12,
+                                    background: 'rgba(0,0,0,0.35)',
+                                    border: `1px solid ${theme.border}`,
+                                    boxShadow: `inset 0 1px 3px rgba(0,0,0,0.4)`,
+                                    padding: '0 8px',
+                                  }}>
+                                    <div style={{
+                                      position: 'absolute',
+                                      left: 8, right: 8,
+                                      top: '50%', transform: 'translateY(-50%)',
+                                      height: 4, borderRadius: 2,
+                                      background: `linear-gradient(to right, ${theme.accentPrimary} 0%, ${theme.accentPrimary} ${nonTriadOpacity}%, rgba(255,255,255,0.12) ${nonTriadOpacity}%, rgba(255,255,255,0.12) 100%)`,
+                                      pointerEvents: 'none',
+                                    }} />
+                                    <input
+                                      type="range"
+                                      min={0} max={100} step={5}
+                                      value={nonTriadOpacity}
+                                      onChange={(e) => setNonTriadOpacity(parseInt(e.target.value))}
+                                      title={`Background note opacity: ${nonTriadOpacity}%`}
+                                      style={{ position: 'relative', width: '100%', height: '100%', opacity: 0, cursor: 'pointer', zIndex: 1, margin: 0 }}
+                                    />
+                                  </div>
+                                  <span style={{ fontSize: 11, fontFamily: 'monospace', color: theme.textSecondary, minWidth: 30 }}>{nonTriadOpacity}%</span>
+                                  <SliderResetButton onReset={() => setNonTriadOpacity(30)} theme={theme} label="Reset non-triad opacity to 30%" />
+                                </div>
+                                <div style={{
+                                  display: 'flex',
+                                  borderRadius: 8,
+                                  border: `1px solid ${theme.border}`,
+                                  overflow: 'hidden',
+                                  flexShrink: 0,
+                                }}>
+                                  {/* Interval / Color toggle — label and behavior depends on overlay mode */}
+                                  {(() => {
+                                    const colorForcedModes = ['pentatonic', 'diatonic-intervals', 'tritone'];
+                                    const isColorForced = colorForcedModes.includes(overlayMode);
+                                    const colorLabel = overlayMode === 'tritone' ? 'Semantic' : 'Color';
+                                    const colorTitle = overlayMode === 'tritone'
+                                      ? 'Semantic: tension notes shown in Red, resolution notes in Green'
+                                      : 'Color: each note shown with its own identity color';
+                                    if (isColorForced) {
+                                      return (
+                                        <button
+                                          disabled
+                                          style={{
+                                            padding: '4px 10px',
+                                            fontSize: 11,
+                                            fontWeight: 700,
+                                            background: theme.accentPrimary,
+                                            color: '#fff',
+                                            border: 'none',
+                                            cursor: 'default',
+                                            whiteSpace: 'nowrap',
+                                            borderRadius: 0,
+                                            opacity: 0.85,
+                                          }}
+                                          title={colorTitle}
+                                        >{colorLabel}</button>
+                                      );
+                                    }
+                                    const secondLabel = overlayMode === 'triads' ? 'Monocolor' : 'Color';
+                                    const secondTitle = overlayMode === 'triads'
+                                      ? 'Monocolor: triad note borders use the note\'s own color'
+                                      : 'Color: note borders use each note\'s own identity color';
+                                    return (
+                                      <>
+                                        <button
+                                          onClick={() => setNonTriadColorMode(false)}
+                                          style={{
+                                            padding: '4px 10px',
+                                            fontSize: 11,
+                                            fontWeight: !nonTriadColorMode ? 700 : 500,
+                                            background: !nonTriadColorMode ? theme.accentPrimary : theme.bgTertiary,
+                                            color: !nonTriadColorMode ? '#fff' : theme.textSecondary,
+                                            border: 'none',
+                                            cursor: 'pointer',
+                                            transition: 'all 150ms',
+                                            whiteSpace: 'nowrap',
+                                          }}
+                                          title="Interval: note borders use interval colors (Root=Red, 3rd=Gold, 5th=Green, 7th=Lavender)"
+                                        >Interval</button>
+                                        <button
+                                          onClick={() => setNonTriadColorMode(true)}
+                                          style={{
+                                            padding: '4px 10px',
+                                            fontSize: 11,
+                                            fontWeight: nonTriadColorMode ? 700 : 500,
+                                            background: nonTriadColorMode ? theme.accentPrimary : theme.bgTertiary,
+                                            color: nonTriadColorMode ? '#fff' : theme.textSecondary,
+                                            border: 'none',
+                                            borderLeft: `1px solid ${theme.border}`,
+                                            cursor: 'pointer',
+                                            transition: 'all 150ms',
+                                            whiteSpace: 'nowrap',
+                                          }}
+                                          title={secondTitle}
+                                        >{secondLabel}</button>
+                                      </>
+                                    );
+                                  })()}
+                                </div>
+                                {/* Root Note & 7th highlight checkboxes */}
+                                <div style={{ width: 1, height: 20, background: theme.border, flexShrink: 0 }} />
+                                {[
+                                  { label: 'Key', key: 'root', checked: showRootNoteHighlight as boolean, set: setShowRootNoteHighlight, color: '#E85555' },
+                                  { label: '7th', key: '7th', checked: show7thNoteHighlight as boolean, set: setShow7thNoteHighlight, color: '#A07ED4' },
+                                ].map(({ label, key, checked, set, color }) => (
+                                  <label
+                                    key={key}
+                                    style={{ display: 'flex', alignItems: 'center', gap: 5, cursor: 'pointer', flexShrink: 0, userSelect: 'none' }}
+                                    title={`Highlight all ${label} notes in the forefront with ${color === '#E85555' ? 'Red' : 'Purple'}`}
+                                  >
+                                    <span
+                                      onClick={() => set(!checked)}
+                                      style={{
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        width: 16,
+                                        height: 16,
+                                        borderRadius: 5,
+                                        border: `2px solid ${checked ? color : theme.border}`,
+                                        background: checked ? color : 'transparent',
+                                        transition: 'all 150ms',
+                                        cursor: 'pointer',
+                                        flexShrink: 0,
+                                      }}
+                                    >
+                                      {checked && (
+                                        <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
+                                          <path d="M1 3.5L3.5 6L8 1" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
+                                      )}
+                                    </span>
+                                    <span style={{ fontSize: 11, color: checked ? color : theme.textSecondary, fontWeight: checked ? 600 : 400, whiteSpace: 'nowrap', transition: 'color 150ms' }}>{label}</span>
+                                  </label>
+                                ))}
+                              </>
+                            )}
+                          </div>
+
+                          {/* Rows 2–3: shown when Triads in Scale is active */}
+                          {showTriadArcBands && diatonicTriads.length > 0 && (
+                            <>
+                              {/* Row 2: Triad degree selector strip */}
+                              <TriadFocusSelector
+                                available={diatonicTriads}
+                                selectedDegree={selectedFocusDegree}
+                                onSelect={handleFocusDegreeSelect}
+                                onPrevious={handleFocusPrevious}
+                                onNext={handleFocusNext}
+                                theme={theme}
+                              />
+                            </>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Combined row: triad notes (left) + draggable progression pill (center) */}
+                      {((showTriadArcBands && !!focusTriad) || !!selectedChordTonePattern || !!customHighlightNotes) && (
+                        <div
+                          ref={progressionPillContainerRef}
+                          style={{
+                            position: 'relative',
+                            display: 'flex',
+                            alignItems: 'flex-end',
+                            gap: 10,
+                            paddingLeft: 2,
+                            flexWrap: 'wrap',
+                            minHeight: 50,
+                            marginBottom: 4,
+                            flexShrink: 0,
+                          }}
+                        >
+                          {/* Triad notes: color-coded Root / 3rd / 5th circles, + optional 7th */}
+                          {showTriadArcBands && focusTriad && (() => {
+                            const triadRootNorm = normalizeNoteToSharp(focusTriad.rootNote);
+                            const rootIdx = NOTES.indexOf(triadRootNorm);
+                            const seventhInterval = (focusTriad.quality === 'major' || focusTriad.quality === 'augmented') ? 11 : 10;
+                            const seventhNote = rootIdx !== -1 ? NOTES[(rootIdx + seventhInterval) % 12] : null;
+                            const SEVENTH_COLOR = '#A07ED4';
+
+                            const noteCircle = (note: string, role: string, borderColor: string, glowColor?: string) => (
+                              <div key={`${note}-${role}`} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3 }}>
+                                <div style={{
+                                  width: 34,
+                                  height: 34,
+                                  borderRadius: '50%',
+                                  backgroundColor: NOTE_COLORS[note] ?? '#6b7280',
+                                  border: `2px solid ${borderColor}`,
+                                  boxShadow: `0 0 10px ${NOTE_COLORS[note] ?? '#6b7280'}55, 0 0 5px ${glowColor ?? borderColor}70`,
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  color: '#fff',
+                                  fontSize: 11,
+                                  fontWeight: 700,
+                                  textShadow: '0 1px 3px rgba(0,0,0,0.9)',
+                                  flexShrink: 0,
+                                  transition: 'all 150ms ease-out',
+                                }}>
+                                  {getNoteDisplayName(note)}
+                                </div>
+                                <span style={{ fontSize: 9, color: glowColor ?? theme.textSecondary, fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                                  {role}
+                                </span>
+                              </div>
+                            );
+
+                            return (
+                              <>
+                                <span style={{ fontSize: 12, color: theme.textSecondary, fontWeight: 500, whiteSpace: 'nowrap', paddingBottom: 4 }}>
+                                  Notes in{' '}
+                                  <span style={{ color: focusTriad.color, fontWeight: 700 }}>{focusTriad.degree}</span>:
+                                </span>
+                                {(['Root', '3rd', '5th'] as const).map((role, i) => {
+                                  const note = focusTriad.notes[i];
+                                  if (!note) return null;
+                                  return noteCircle(note, role, focusTriad.color);
+                                })}
+                                {/* 7th extension — only shown when 7th checkbox is checked */}
+                                {(show7thNoteHighlight as boolean) && seventhNote && (
+                                  <>
+                                    <span style={{
+                                      fontSize: 18,
+                                      fontWeight: 300,
+                                      color: theme.textSecondary,
+                                      paddingBottom: 14,
+                                      flexShrink: 0,
+                                      lineHeight: 1,
+                                    }}>+</span>
+                                    {noteCircle(seventhNote, '7th', SEVENTH_COLOR, SEVENTH_COLOR)}
+                                  </>
+                                )}
+                              </>
+                            );
+                          })()}
+
+                          {/* Progression pill — absolutely positioned, draggable horizontally */}
+                          {selectedChordTonePattern && (
+                            <div
+                              style={{
+                                position: 'absolute',
+                                left: progressionPillLeftPx !== null ? `${progressionPillLeftPx}px` : '50%',
+                                top: '50%',
+                                transform: 'translate(-50%, -50%)',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: 8,
+                                padding: '6px 12px 6px 8px',
+                                borderRadius: 10,
+                                background: `${selectedChordTonePattern.genreColor}15`,
+                                border: `1px solid ${selectedChordTonePattern.genreColor}50`,
+                                boxShadow: `0 0 14px ${selectedChordTonePattern.genreColor}25`,
+                                cursor: isDraggingProgressionPill ? 'grabbing' : 'grab',
+                                userSelect: 'none',
+                                touchAction: 'none',
+                                whiteSpace: 'nowrap',
+                                zIndex: 2,
+                              }}
+                              title="Drag to reposition above any fret"
+                              onPointerDown={(e) => {
+                                e.preventDefault();
+                                (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+                                const containerWidth = progressionPillContainerRef.current?.offsetWidth ?? 0;
+                                const currentLeft = progressionPillLeftPx !== null ? progressionPillLeftPx : containerWidth * 0.5;
+                                progressionPillDragRef.current = { startX: e.clientX, startPx: currentLeft };
+                                setIsDraggingProgressionPill(true);
+                              }}
+                              onPointerMove={(e) => {
+                                if (!progressionPillDragRef.current || !progressionPillContainerRef.current) return;
+                                const containerWidth = progressionPillContainerRef.current.offsetWidth;
+                                const delta = e.clientX - progressionPillDragRef.current.startX;
+                                const newLeft = Math.max(0, Math.min(containerWidth, progressionPillDragRef.current.startPx + delta));
+                                setProgressionPillLeftPx(newLeft);
+                              }}
+                              onPointerUp={() => {
+                                progressionPillDragRef.current = null;
+                                setIsDraggingProgressionPill(false);
+                              }}
+                            >
+                              {/* Drag grip indicator */}
+                              <svg width="10" height="16" viewBox="0 0 10 16" fill="none" style={{ opacity: 0.35, flexShrink: 0 }}>
+                                <circle cx="3" cy="3" r="1.5" fill={selectedChordTonePattern.genreColor} />
+                                <circle cx="7" cy="3" r="1.5" fill={selectedChordTonePattern.genreColor} />
+                                <circle cx="3" cy="8" r="1.5" fill={selectedChordTonePattern.genreColor} />
+                                <circle cx="7" cy="8" r="1.5" fill={selectedChordTonePattern.genreColor} />
+                                <circle cx="3" cy="13" r="1.5" fill={selectedChordTonePattern.genreColor} />
+                                <circle cx="7" cy="13" r="1.5" fill={selectedChordTonePattern.genreColor} />
+                              </svg>
+                              {/* Genre dot */}
+                              <div style={{
+                                width: 8, height: 8, borderRadius: '50%',
+                                background: selectedChordTonePattern.genreColor,
+                                boxShadow: `0 0 6px ${selectedChordTonePattern.genreColor}`,
+                                flexShrink: 0,
+                              }} />
+                              {/* Title */}
+                              <span style={{ fontSize: 13, fontWeight: 700, color: selectedChordTonePattern.genreColor }}>
+                                {selectedChordTonePattern.title}
+                              </span>
+                              {/* Separator */}
+                              <span style={{ color: theme.textSecondary, opacity: 0.3, fontSize: 13 }}>·</span>
+                              {/* Steps */}
+                              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                                {selectedChordTonePattern.steps.map((step, i) => (
+                                  <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                                    {i > 0 && (
+                                      <span style={{ color: theme.textSecondary, opacity: 0.65, fontSize: 15, fontWeight: 600, lineHeight: 1 }}>→</span>
+                                    )}
+                                    {step.type === 'tone' ? (
+                                      <span
+                                        style={{
+                                          display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                                          borderRadius: 6, fontWeight: 700, color: '#fff',
+                                          background: PATTERN_DEGREE_COLORS[step.degree],
+                                          boxShadow: `0 0 8px ${PATTERN_DEGREE_COLORS[step.degree]}99`,
+                                          minWidth: 28, height: 28,
+                                          fontSize: 13, padding: '0 5px',
+                                        }}
+                                      >
+                                        {step.degree}
+                                      </span>
+                                    ) : (
+                                      <span
+                                        style={{
+                                          display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                                          borderRadius: 6,
+                                          background: theme.bgSecondary,
+                                          border: `1px solid ${theme.border}`,
+                                          color: theme.textSecondary,
+                                          minWidth: 38, height: 28,
+                                          fontSize: 11, padding: '0 5px',
+                                          whiteSpace: 'nowrap',
+                                        }}
+                                      >
+                                        Other
+                                      </span>
+                                    )}
+                                  </span>
+                                ))}
+                              </div>
+                              {/* Deselect button */}
+                              <button
+                                onPointerDown={(e) => e.stopPropagation()}
+                                onClick={() => { setSelectedChordTonePattern(null); setProgressionPillLeftPx(null); }}
+                                style={{ background: 'none', border: 'none', cursor: 'pointer', color: selectedChordTonePattern.genreColor, padding: 0, opacity: 0.45, fontSize: 13, lineHeight: 1, marginLeft: 2 }}
+                                title="Deselect pattern"
+                              >
+                                ✕
+                              </button>
+                            </div>
+                          )}
+
+                          {/* Custom Progression pill — shown in real-time as the user builds their progression */}
+                          {customHighlightNotes && customProgressionSequence.length > 0 && (
+                            <div
+                              style={{
+                                position: 'absolute',
+                                left: progressionPillLeftPx !== null ? `${progressionPillLeftPx}px` : '50%',
+                                top: '50%',
+                                transform: 'translate(-50%, -50%)',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: 8,
+                                padding: '6px 12px 6px 8px',
+                                borderRadius: 10,
+                                background: `${theme.accentPrimary}12`,
+                                border: `1px solid ${theme.accentPrimary}45`,
+                                boxShadow: `0 0 14px ${theme.accentPrimary}22`,
+                                cursor: isDraggingProgressionPill ? 'grabbing' : 'grab',
+                                userSelect: 'none',
+                                touchAction: 'none',
+                                whiteSpace: 'nowrap',
+                                zIndex: 2,
+                              }}
+                              title="Drag to reposition above any fret"
+                              onPointerDown={(e) => {
+                                e.preventDefault();
+                                (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+                                const containerWidth = progressionPillContainerRef.current?.offsetWidth ?? 0;
+                                const currentLeft = progressionPillLeftPx !== null ? progressionPillLeftPx : containerWidth * 0.5;
+                                progressionPillDragRef.current = { startX: e.clientX, startPx: currentLeft };
+                                setIsDraggingProgressionPill(true);
+                              }}
+                              onPointerMove={(e) => {
+                                if (!progressionPillDragRef.current || !progressionPillContainerRef.current) return;
+                                const containerWidth = progressionPillContainerRef.current.offsetWidth;
+                                const delta = e.clientX - progressionPillDragRef.current.startX;
+                                const newLeft = Math.max(0, Math.min(containerWidth, progressionPillDragRef.current.startPx + delta));
+                                setProgressionPillLeftPx(newLeft);
+                              }}
+                              onPointerUp={() => {
+                                progressionPillDragRef.current = null;
+                                setIsDraggingProgressionPill(false);
+                              }}
+                            >
+                              {/* Drag grip */}
+                              <svg width="10" height="16" viewBox="0 0 10 16" fill="none" style={{ opacity: 0.35, flexShrink: 0 }}>
+                                <circle cx="3" cy="3" r="1.5" fill={theme.accentPrimary} />
+                                <circle cx="7" cy="3" r="1.5" fill={theme.accentPrimary} />
+                                <circle cx="3" cy="8" r="1.5" fill={theme.accentPrimary} />
+                                <circle cx="7" cy="8" r="1.5" fill={theme.accentPrimary} />
+                                <circle cx="3" cy="13" r="1.5" fill={theme.accentPrimary} />
+                                <circle cx="7" cy="13" r="1.5" fill={theme.accentPrimary} />
+                              </svg>
+                              {/* Label */}
+                              <span style={{ fontSize: 12, fontWeight: 700, color: theme.accentPrimary, letterSpacing: '0.03em' }}>
+                                🎼 My Progression
+                              </span>
+                              {/* Separator */}
+                              <span style={{ color: theme.textSecondary, opacity: 0.3, fontSize: 13 }}>·</span>
+                              {/* Degree steps colored by triad palette */}
+                              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                                {customProgressionSequence.map((step, i) => (
+                                  <span key={step.id} style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                                    {i > 0 && (
+                                      <span style={{ color: theme.textSecondary, opacity: 0.65, fontSize: 15, fontWeight: 600, lineHeight: 1 }}>→</span>
+                                    )}
+                                    <span style={{
+                                      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                                      borderRadius: 6, fontWeight: 700, color: '#fff',
+                                      background: step.color,
+                                      boxShadow: `0 0 8px ${step.color}99`,
+                                      minWidth: 30, height: 26,
+                                      fontSize: 12, padding: '0 6px',
+                                    }}>
+                                      {step.degree}
+                                    </span>
+                                  </span>
+                                ))}
+                              </div>
+                              {/* Clear button */}
+                              <button
+                                onPointerDown={(e) => e.stopPropagation()}
+                                onClick={() => { setCustomProgressionSequence([]); setProgressionPillLeftPx(null); }}
+                                style={{ background: 'none', border: 'none', cursor: 'pointer', color: theme.accentPrimary, padding: 0, opacity: 0.45, fontSize: 13, lineHeight: 1, marginLeft: 2 }}
+                                title="Clear progression"
+                              >
+                                ✕
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  )}
                   {harmonizationTab === 'harmonization' && (
                     <HarmonizationTabs
                       theme={theme}
@@ -3524,10 +4244,10 @@ export default function Home() {
                     </div>
                   )}
 
-                  {/* Feature B — Fret Zone Chord HUD moved to Zones tab in TabbedSettingsCard */}
+                  {/* ── Triads in Scale Controls + Zone HUD moved to Visual Insights / Zones tabs above ── */}
 
-                  {/* ── Triads in Scale Controls ── */}
-                  {rootNote && scaleName && (
+                  {/* ── NOTE: placeholder so future controls can go here ── */}
+                  {false && rootNote && scaleName && (
                     <div className="flex flex-col gap-2 mb-3" style={{ maxWidth: 1100 }}>
                       {/* Row 1: Triads in Scale toggle + optional chord-tone glow slider */}
                       <div className="flex items-center gap-2 flex-wrap">
@@ -3588,9 +4308,9 @@ export default function Home() {
                               style={{
                                 display: 'inline-flex', alignItems: 'center', gap: 5,
                                 padding: '3px 10px', borderRadius: 999,
-                                background: `${targetNoteHighlight.color}20`,
-                                border: `1px solid ${targetNoteHighlight.color}60`,
-                                color: targetNoteHighlight.color,
+                                background: `${targetNoteHighlight!.color}20`,
+                                border: `1px solid ${targetNoteHighlight!.color}60`,
+                                color: targetNoteHighlight!.color,
                                 fontSize: 11, fontWeight: 700, cursor: 'pointer',
                                 whiteSpace: 'nowrap', flexShrink: 0,
                                 transition: 'all 150ms ease-out',
@@ -3599,11 +4319,11 @@ export default function Home() {
                             >
                               <span style={{
                                 width: 6, height: 6, borderRadius: '50%',
-                                background: targetNoteHighlight.color,
+                                background: targetNoteHighlight!.color,
                                 display: 'inline-block', flexShrink: 0,
-                                boxShadow: `0 0 5px ${targetNoteHighlight.color}`,
+                                boxShadow: `0 0 5px ${targetNoteHighlight!.color}`,
                               }} />
-                              Target Notes: {targetNoteHighlight.label}
+                              Target Notes: {targetNoteHighlight!.label}
                               <span style={{ opacity: 0.7, fontSize: 10 }}>✕</span>
                             </button>
                           </>
@@ -3623,8 +4343,8 @@ export default function Home() {
                                 height: 24,
                                 borderRadius: 12,
                                 background: `rgba(0,0,0,0.35)`,
-                                border: `1px solid ${selectedChordTonePattern.genreColor}40`,
-                                boxShadow: `inset 0 1px 3px rgba(0,0,0,0.4), 0 0 8px ${selectedChordTonePattern.genreColor}20`,
+                                border: `1px solid ${selectedChordTonePattern!.genreColor}40`,
+                                boxShadow: `inset 0 1px 3px rgba(0,0,0,0.4), 0 0 8px ${selectedChordTonePattern!.genreColor}20`,
                                 padding: '0 8px',
                               }}>
                                 <div style={{
@@ -3632,8 +4352,8 @@ export default function Home() {
                                   left: 8, right: 8,
                                   top: '50%', transform: 'translateY(-50%)',
                                   height: 4, borderRadius: 2,
-                                  background: `linear-gradient(to right, ${selectedChordTonePattern.genreColor} 0%, ${selectedChordTonePattern.genreColor} ${patternGlowBrightness}%, rgba(255,255,255,0.12) ${patternGlowBrightness}%, rgba(255,255,255,0.12) 100%)`,
-                                  boxShadow: `0 0 6px ${selectedChordTonePattern.genreColor}60`,
+                                  background: `linear-gradient(to right, ${selectedChordTonePattern!.genreColor} 0%, ${selectedChordTonePattern!.genreColor} ${patternGlowBrightness}%, rgba(255,255,255,0.12) ${patternGlowBrightness}%, rgba(255,255,255,0.12) 100%)`,
+                                  boxShadow: `0 0 6px ${selectedChordTonePattern!.genreColor}60`,
                                   pointerEvents: 'none',
                                 }} />
                                 <input
@@ -3645,7 +4365,7 @@ export default function Home() {
                                   style={{ position: 'relative', width: '100%', height: '100%', opacity: 0, cursor: 'pointer', zIndex: 1, margin: 0 }}
                                 />
                               </div>
-                              <span style={{ fontSize: 11, fontFamily: 'monospace', color: selectedChordTonePattern.genreColor, fontWeight: 700, minWidth: 34, textShadow: `0 0 8px ${selectedChordTonePattern.genreColor}80` }}>{patternGlowBrightness}%</span>
+                              <span style={{ fontSize: 11, fontFamily: 'monospace', color: selectedChordTonePattern!.genreColor, fontWeight: 700, minWidth: 34, textShadow: `0 0 8px ${selectedChordTonePattern!.genreColor}80` }}>{patternGlowBrightness}%</span>
                               <SliderResetButton onReset={() => setPatternGlowBrightness(100)} theme={theme} label="Reset glow to 100%" />
                             </div>
 
