@@ -2043,13 +2043,48 @@ export default function Home() {
     [diatonicTriads, showTriadArcBands, triadFocusOn]
   );
 
-  // Focused triad object
+  // Compute the foreground notes for overlay modes other than "triads"
+  // Must be declared BEFORE focusTriad which depends on it.
+  const foregroundNotes = useMemo((): string[] => {
+    if (overlayMode === 'triads') return [];
+    const key = rootNote;
+    const scale = scaleName;
+    // Use the existing colored degree selector's index (selectedFocusDegree → numeric index via diatonicTriads)
+    const degObj = diatonicTriads.find(t => t.degree === selectedFocusDegree);
+    const deg = degObj?.degreeIndex ?? 0;
+    switch (overlayMode) {
+      case 'seventh-chords':
+        return get7thChordNotes(key, scale, deg);
+      case 'modes':
+        return getModeNotes(key, scale);
+      case 'pentatonic':
+        return getPentatonicNotes(key, scale, deg);
+      case 'arpeggios':
+        return getArpeggioNotes(key, scale, deg);
+      case 'diatonic-intervals':
+        return getDiatonicIntervalNotes(key, scale, getScaleNotes(key, scale)[deg] ?? key, '3rd');
+      case 'tritone':
+        return getTritoneNotes(key, scale, deg);
+      default:
+        return [];
+    }
+  }, [overlayMode, selectedFocusDegree, diatonicTriads, rootNote, scaleName]);
+
+  // Focused triad object — when a non-triad overlay is active, synthesize a focus object
+  // using foregroundNotes so the Fretboard's dimming logic highlights the right notes.
   const focusTriad = useMemo((): DiatonicTriad | null => {
     if (!triadFocusOn) return null;
-    return diatonicTriads.find(t => t.degree === selectedFocusDegree)
+    const realTriad = diatonicTriads.find(t => t.degree === selectedFocusDegree)
       ?? diatonicTriads[0]
       ?? null;
-  }, [triadFocusOn, selectedFocusDegree, diatonicTriads]);
+    if (!realTriad) return null;
+    // For non-triad overlay modes, override the notes array with foregroundNotes
+    // so the fretboard dims everything not in the overlay pattern.
+    if (overlayMode !== 'triads' && foregroundNotes.length > 0) {
+      return { ...realTriad, notes: foregroundNotes };
+    }
+    return realTriad;
+  }, [triadFocusOn, selectedFocusDegree, diatonicTriads, overlayMode, foregroundNotes]);
   // ───────────────────────────────────────────────────────────────────────────
 
   // ─── Progression-aware fretboard base positions (Features 0 + A) ─────────────
@@ -2183,32 +2218,6 @@ export default function Home() {
     // Otherwise show the regular triad positions
     return triadData?.notePositions || [];
   }, [enabledNearbyChords.length, selectedNearbyChords, showAllNearbyChords, allNearbyChordPositions, overlayNotePositions, triadData?.notePositions]);
-
-  // Compute the foreground notes for overlay modes other than "triads"
-  const foregroundNotes = useMemo((): string[] => {
-    if (overlayMode === 'triads') return [];
-    const key = rootNote;
-    const scale = scaleName;
-    // Use the existing colored degree selector's index (selectedFocusDegree → numeric index via diatonicTriads)
-    const degObj = diatonicTriads.find(t => t.degree === selectedFocusDegree);
-    const deg = degObj?.degreeIndex ?? 0;
-    switch (overlayMode) {
-      case 'seventh-chords':
-        return get7thChordNotes(key, scale, deg);
-      case 'modes':
-        return getModeNotes(key, scale);
-      case 'pentatonic':
-        return getPentatonicNotes(key, scale, deg);
-      case 'arpeggios':
-        return getArpeggioNotes(key, scale, deg);
-      case 'diatonic-intervals':
-        return getDiatonicIntervalNotes(key, scale, getScaleNotes(key, scale)[deg] ?? key, '3rd');
-      case 'tritone':
-        return getTritoneNotes(key, scale, deg);
-      default:
-        return [];
-    }
-  }, [overlayMode, selectedFocusDegree, diatonicTriads, rootNote, scaleName]);
 
   // Determine which triad notes to highlight
   const displayedTriadNotes = useMemo(() => {
@@ -3245,7 +3254,7 @@ export default function Home() {
                     rootNoteForIntervals={rootNote}
                     allIntervalsDisplayMode={allIntervalsDisplayMode}
                     showTriadMode={fretboardOrder === 'pentatonics-top' || (fretboardOrder === 'triads-top' && showTriadsOnScaleFretboard)}
-                    triadNotes={fretboardOrder === 'pentatonics-top' ? displayedTriadNotes : (showTriadsOnScaleFretboard ? (triadData?.triadNotes || []) : [])}
+                    triadNotes={fretboardOrder === 'pentatonics-top' ? displayedTriadNotes : (showTriadsOnScaleFretboard ? displayedTriadNotes : [])}
                     triadPositions={fretboardOrder === 'pentatonics-top' ? displayedTriadNotePositions : (showTriadsOnScaleFretboard ? (triadData?.notePositions || []) : [])}
                     triadFullPositions={fretboardOrder === 'pentatonics-top' ? (triadData?.triadData?.positions || []) : (showTriadsOnScaleFretboard ? (triadData?.triadData?.positions || []) : [])}
                     onTriadVoicingClick={fretboardOrder === 'pentatonics-top' ? handleTriadVoicingClick : undefined}
@@ -3468,9 +3477,9 @@ export default function Home() {
 
                   {/* ── Triads in Scale Controls ── */}
                   {rootNote && scaleName && (
-                    <div className="flex flex-col gap-2 mb-3" style={{ maxWidth: 820 }}>
+                    <div className="flex flex-col gap-2 mb-3" style={{ maxWidth: 1100 }}>
                       {/* Row 1: Triads in Scale toggle + optional chord-tone glow slider */}
-                      <div className="flex items-center gap-4 flex-wrap">
+                      <div className="flex items-center gap-2 flex-wrap">
                         {/* Triads in Scale toggle → activates Triad Focus mode directly */}
                         <label className="flex items-center gap-2 cursor-pointer select-none" style={{ fontSize: 13, color: theme.textPrimary }}>
                           <div
@@ -4202,9 +4211,9 @@ export default function Home() {
                   focusTriad={focusTriad}
                   nonTriadOpacity={nonTriadOpacity}
                   nonTriadColorMode={nonTriadColorMode}
-                  showRootNoteHighlight={showTriadArcBands && (showRootNoteHighlight as boolean)}
-                  show7thNoteHighlight={showTriadArcBands && (show7thNoteHighlight as boolean)}
-                  highlightKeyNote={showTriadArcBands && (showRootNoteHighlight as boolean) ? (manualKey || rootNote) : undefined}
+                  showRootNoteHighlight={triadFocusOn && (showRootNoteHighlight as boolean)}
+                  show7thNoteHighlight={triadFocusOn && (show7thNoteHighlight as boolean)}
+                  highlightKeyNote={triadFocusOn && (showRootNoteHighlight as boolean) ? (manualKey || rootNote) : undefined}
                   patternBgNotesOpacity={
                     targetNoteHighlight ? (targetNoteBgOpacity as number) :
                     patternHighlightNotes && !showTriadArcBands ? patternBgNotesOpacity :
