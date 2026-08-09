@@ -42,6 +42,10 @@ export interface FretZoneChordHUDProps {
   theme: ThemeConfig;
   onChordHighlight: (notes: string[] | null) => void;
   onChordSelected?: (selected: boolean) => void; // fires true when a chord is locked in, false when cleared
+  /** Fires true when the user starts hovering a chord card, false when hover ends and no chord is locked */
+  onOverlayHoverActive?: (active: boolean) => void;
+  /** Fires when a chord is clicked/locked (not toggled off). Use to permanently disable conflicting overlays. */
+  onChordLocked?: () => void;
   /** When true, renders zone buttons in Harmonization-tab style (larger, no inline label) */
   isEmbedded?: boolean;
 }
@@ -56,7 +60,8 @@ async function fetchZoneChords(
 }
 
 export default function FretZoneChordHUD({
-  currentKey, currentScale, stringCount, fretCount, theme, onChordHighlight, onChordSelected, isEmbedded = false,
+  currentKey, currentScale, stringCount, fretCount, theme, onChordHighlight, onChordSelected,
+  onOverlayHoverActive, onChordLocked, isEmbedded = false,
 }: FretZoneChordHUDProps) {
   const [activeZoneIdx, setActiveZoneIdx] = useState<number | null>(null);
   const [selectedChord, setSelectedChord] = useState<ZoneChord | null>(null);
@@ -83,7 +88,8 @@ export default function FretZoneChordHUD({
     setHoveredChordSymbol(null);
     onChordHighlight(null);
     onChordSelected?.(false);
-  }, [onChordHighlight, onChordSelected]);
+    onOverlayHoverActive?.(false);
+  }, [onChordHighlight, onChordSelected, onOverlayHoverActive]);
 
   // Close sidebar on Escape
   useEffect(() => {
@@ -92,12 +98,13 @@ export default function FretZoneChordHUD({
     return () => document.removeEventListener('keydown', handler);
   }, [sidebarOpen, closeSidebar]);
 
-  // When zone changes, clear chord selection
+  // When zone changes, clear chord selection and hover state
   useEffect(() => {
     setSelectedChord(null);
     setHoveredChordSymbol(null);
     onChordHighlight(null);
     onChordSelected?.(false);
+    onOverlayHoverActive?.(false);
   }, [activeZoneIdx]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleZoneClick = useCallback((idx: number) => {
@@ -121,14 +128,17 @@ export default function FretZoneChordHUD({
       setHoveredChordSymbol(chord.symbol);
       onChordHighlight(chord.notes);
       onChordSelected?.(true);
+      // Permanently disable any conflicting foreground overlay (e.g. Triads in Scale toggle)
+      onChordLocked?.();
     }
-  }, [selectedChord, onChordHighlight, onChordSelected]);
+  }, [selectedChord, onChordHighlight, onChordSelected, onChordLocked]);
 
   const handleChordHover = useCallback((chord: ZoneChord | null) => {
     if (chord) {
       // Always show hover preview — even when a chord is selected, hovering another shows that chord's notes
       onChordHighlight(chord.notes);
       onChordSelected?.(true); // Keep bg notes hidden during hover previews too
+      onOverlayHoverActive?.(true); // Signal: suppress conflicting foreground overlays during preview
       setHoveredChordSymbol(chord.symbol);
     } else {
       // Mouse left: restore the selected chord (if any) or clear
@@ -138,10 +148,11 @@ export default function FretZoneChordHUD({
       } else {
         onChordHighlight(null);
         onChordSelected?.(false);
+        onOverlayHoverActive?.(false); // No chord locked — restore overlays
       }
       setHoveredChordSymbol(null);
     }
-  }, [selectedChord, onChordHighlight, onChordSelected]);
+  }, [selectedChord, onChordHighlight, onChordSelected, onOverlayHoverActive]);
 
   const visibleZones = FRET_ZONES.filter(z => z.midFret <= fretCount);
 

@@ -286,6 +286,8 @@ export default function Home() {
   const [zoneHighlightedChordNotes, setZoneHighlightedChordNotes] = useState<string[] | null>(null);
   // true when user has clicked/locked a chord in the zone sidebar (triggers full bg-note hiding)
   const [zoneChordSelected, setZoneChordSelected] = useState(false);
+  // true while the user is hovering a chord card in the zone sidebar (suppresses triadFocusOn overlay temporarily)
+  const [zoneHoverActive, setZoneHoverActive] = useState(false);
 
   // Chord progression state persistence
   const [chordProgressionState, setChordProgressionState] = useSupabaseStorage<any>('guitar-app-chord-progression-state', null);
@@ -2923,6 +2925,12 @@ export default function Home() {
                       theme={theme}
                       onChordHighlight={setZoneHighlightedChordNotes}
                       onChordSelected={setZoneChordSelected}
+                      onOverlayHoverActive={setZoneHoverActive}
+                      onChordLocked={() => {
+                        // Permanently turn off the foreground overlay toggle when a zone chord is locked
+                        setTriadFocusOn(false);
+                        setZoneHoverActive(false);
+                      }}
                       isEmbedded
                     />
                   )}
@@ -4291,8 +4299,8 @@ export default function Home() {
                   fretCount={fretCount}
                   fretWidth={fretWidth}
                   showTriadArcBands={showTriadArcBands}
-                  triadFocusOn={triadFocusOn}
-                  focusTriad={focusTriad}
+                  triadFocusOn={triadFocusOn && !zoneHoverActive && !zoneChordSelected}
+                  focusTriad={(triadFocusOn && !zoneHoverActive && !zoneChordSelected) ? focusTriad : null}
                   nonTriadOpacity={nonTriadOpacity}
                   nonTriadColorMode={effectiveNonTriadColorMode}
                   foregroundNoteColors={foregroundNoteColors ?? undefined}
