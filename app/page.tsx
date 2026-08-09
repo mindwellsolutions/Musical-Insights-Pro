@@ -1053,8 +1053,8 @@ export default function Home() {
   // Harmonization state
   const [selectedHarmonization, setSelectedHarmonization] = useSupabaseStorage<'original' | '3rds' | '5ths' | '6ths' | '7ths'>('guitar-app-harmonization', 'original');
 
-  // Harmonization panel tab: 'harmonization' | 'recommended' | 'custom' | 'targetNotes'
-  type HarmonizationTabKey = 'harmonization' | 'recommended' | 'custom' | 'targetNotes';
+  // Harmonization panel tab: 'harmonization' | 'recommended' | 'custom' | 'targetNotes' | 'zones'
+  type HarmonizationTabKey = 'harmonization' | 'recommended' | 'custom' | 'targetNotes' | 'zones';
   const [harmonizationTab, setHarmonizationTab] = useSupabaseStorage<HarmonizationTabKey>('guitar-app-harmonization-tab', 'harmonization');
   // Keep carousel state for the 'recommended' tab
   const [selectedChordTonePattern, setSelectedChordTonePattern] = useState<import('@/components/ChordToneProgressionCarousel').ProgressionPattern | null>(null);
@@ -2846,7 +2846,12 @@ export default function Home() {
                         <line x1="18" y1="12" x2="22" y2="12" strokeWidth={2} strokeLinecap="round" />
                       </svg>
                     )},
-                  ] as { key: 'harmonization' | 'recommended' | 'custom' | 'targetNotes'; label: string; icon: React.ReactNode }[]).map(({ key, label, icon }) => {
+                    { key: 'zones' as const, label: 'Zones', icon: (
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                      </svg>
+                    )},
+                  ] as { key: 'harmonization' | 'recommended' | 'custom' | 'targetNotes' | 'zones'; label: string; icon: React.ReactNode }[]).map(({ key, label, icon }) => {
                     const isActive = harmonizationTab === key;
                     const hasActiveTargetNotes = key === 'targetNotes' && !!targetNoteHighlight;
                     return (
@@ -2907,6 +2912,18 @@ export default function Home() {
                       diatonicDegrees={diatonicTriads}
                       sequence={customProgressionSequence}
                       onSequenceChange={setCustomProgressionSequence}
+                    />
+                  )}
+                  {harmonizationTab === 'zones' && rootNote && scaleName && (
+                    <FretZoneChordHUD
+                      currentKey={rootNote}
+                      currentScale={scaleName}
+                      stringCount={stringCount}
+                      fretCount={fretCount}
+                      theme={theme}
+                      onChordHighlight={setZoneHighlightedChordNotes}
+                      onChordSelected={setZoneChordSelected}
+                      isEmbedded
                     />
                   )}
                   {harmonizationTab === 'targetNotes' && rootNote && scaleName && (
@@ -3499,18 +3516,7 @@ export default function Home() {
                     </div>
                   )}
 
-                  {/* Feature B — Fret Zone Chord HUD */}
-                  {rootNote && scaleName && (
-                    <FretZoneChordHUD
-                      currentKey={rootNote}
-                      currentScale={scaleName}
-                      stringCount={stringCount}
-                      fretCount={fretCount}
-                      theme={theme}
-                      onChordHighlight={setZoneHighlightedChordNotes}
-                      onChordSelected={setZoneChordSelected}
-                    />
-                  )}
+                  {/* Feature B — Fret Zone Chord HUD moved to Zones tab in TabbedSettingsCard */}
 
                   {/* ── Triads in Scale Controls ── */}
                   {rootNote && scaleName && (

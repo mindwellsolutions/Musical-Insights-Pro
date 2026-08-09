@@ -42,6 +42,8 @@ export interface FretZoneChordHUDProps {
   theme: ThemeConfig;
   onChordHighlight: (notes: string[] | null) => void;
   onChordSelected?: (selected: boolean) => void; // fires true when a chord is locked in, false when cleared
+  /** When true, renders zone buttons in Harmonization-tab style (larger, no inline label) */
+  isEmbedded?: boolean;
 }
 
 async function fetchZoneChords(
@@ -54,7 +56,7 @@ async function fetchZoneChords(
 }
 
 export default function FretZoneChordHUD({
-  currentKey, currentScale, stringCount, fretCount, theme, onChordHighlight, onChordSelected,
+  currentKey, currentScale, stringCount, fretCount, theme, onChordHighlight, onChordSelected, isEmbedded = false,
 }: FretZoneChordHUDProps) {
   const [activeZoneIdx, setActiveZoneIdx] = useState<number | null>(null);
   const [selectedChord, setSelectedChord] = useState<ZoneChord | null>(null);
@@ -364,6 +366,48 @@ export default function FretZoneChordHUD({
     document.body
   ) : null;
 
+  // ── Embedded: Harmonization-style zone buttons ──────────────────────────────
+  if (isEmbedded) {
+    return (
+      <>
+        <div className="flex flex-wrap gap-2">
+          {visibleZones.map((zone, idx) => {
+            const isActive = activeZoneIdx === idx;
+            return (
+              <button
+                key={zone.label}
+                onClick={() => handleZoneClick(idx)}
+                className="px-4 py-2 rounded-lg text-sm font-medium transition-all hover:opacity-90"
+                title={`${zone.label} — frets ${zone.fretLabel} (CAGED shape ${zone.shape})`}
+                style={{
+                  background: isActive
+                    ? 'linear-gradient(135deg, #3b82f6, #8b5cf6)'
+                    : theme.bgTertiary,
+                  color: isActive ? '#ffffff' : theme.textSecondary,
+                  border: `1px solid ${isActive ? '#2563eb' : theme.border}`,
+                  position: 'relative',
+                }}
+              >
+                <span>{zone.label}</span>
+                <span style={{ opacity: 0.65, marginLeft: 5, fontSize: '0.75em' }}>({zone.fretLabel})</span>
+                {isActive && selectedChord && (
+                  <span style={{
+                    position: 'absolute', top: 4, right: 4,
+                    width: 6, height: 6, borderRadius: '50%',
+                    background: '#fff', flexShrink: 0,
+                    boxShadow: '0 0 4px rgba(255,255,255,0.8)',
+                  }} />
+                )}
+              </button>
+            );
+          })}
+        </div>
+        {sidebar}
+      </>
+    );
+  }
+
+  // ── Standalone: compact pill strip ──────────────────────────────────────────
   return (
     <>
       {/* ── Zone pill strip (inline in the page) ── */}
