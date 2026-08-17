@@ -1114,6 +1114,23 @@ export default function Fretboard({
                             letterNudge = true;
                           }
 
+                          // ── Outer outline ring (showTriadOutline) ─────────────────
+                          // Appended to finalBoxShadow for foreground triad notes only.
+                          // Ring color = the note's own identity color (Monocolor = NOTE_COLORS).
+                          if (showTriadOutline && triadFocusOn && focusTriad) {
+                            const inFocusTriadForOutline = focusTriad.notes.includes(normalizedNote);
+                            if (inFocusTriadForOutline) {
+                              const outlineColor = NOTE_COLORS[notePos.note] ?? '#6b7280';
+                              const ringW = Math.max(1, 3 + outlineThickness * 0.5);
+                              // Use a gap ring (transparent) then the solid color ring
+                              const gapPx = 7;
+                              const outlineRing = `0 0 0 ${gapPx}px transparent, 0 0 0 ${gapPx + ringW}px ${outlineColor}`;
+                              finalBoxShadow = finalBoxShadow && finalBoxShadow !== 'none'
+                                ? `${finalBoxShadow}, ${outlineRing}`
+                                : outlineRing;
+                            }
+                          }
+
                           // Bg notes dimming when a chord-tone pattern is active (Triads in Scale off)
                           if (!triadFocusOn && patternBgNotesOpacity < 100 && selectedChordNotes && selectedChordNotes.length > 0) {
                             const isInPattern = selectedChordNotes.some(n => normalizeNoteToSharp(n) === normalizedNote);
