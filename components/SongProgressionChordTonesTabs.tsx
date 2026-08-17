@@ -227,7 +227,7 @@ export default function SongProgressionChordTonesTabs({
               color: !allIntervalsMode ? '#ffffff' : theme.textSecondary,
             }}
           >
-            Target Tones
+            Tonic Chord Tones
           </button>
           <button
             onClick={() => {
@@ -527,7 +527,7 @@ export default function SongProgressionChordTonesTabs({
                     </button>
                   </div>
 
-                  {/* Only toggle — Target Tones only, right above settings panel */}
+                  {/* Only toggle — Tonic Chord Tones only, right above settings panel */}
                   <div className="flex items-center gap-1.5 mt-2">
                     <input
                       type="checkbox"
