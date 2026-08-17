@@ -164,6 +164,8 @@ export default function Home() {
   // Background (non-triad) note appearance controls
   const [nonTriadOpacity, setNonTriadOpacity] = useState(30);   // 0-100
   const [nonTriadColorMode, setNonTriadColorMode] = useLocalStorage('guitar-app-non-triad-color-mode', true); // false=Interval, true=Monocolor; defaults to Monocolor
+  const [showTriadOutline, setShowTriadOutline] = useLocalStorage('guitar-app-show-triad-outline', false);
+  const [outlineThickness, setOutlineThickness] = useLocalStorage('guitar-app-outline-thickness', 0); // -5 to +5, 0 = medium
   const [showRootNoteHighlight, setShowRootNoteHighlight] = useLocalStorage('guitar-app-show-root-note-highlight', false);
   const [show7thNoteHighlight, setShow7thNoteHighlight] = useLocalStorage('guitar-app-show-7th-note-highlight', false);
   // ── Target Note Highlight ──────────────────────────────────────────────────
@@ -3261,6 +3263,74 @@ export default function Home() {
                                     );
                                   })()}
                                 </div>
+                                {/* Outline checkbox + thickness slider */}
+                                <div style={{ width: 1, height: 20, background: theme.border, flexShrink: 0 }} />
+                                <label
+                                  style={{ display: 'flex', alignItems: 'center', gap: 5, cursor: 'pointer', flexShrink: 0, userSelect: 'none' }}
+                                  title="Show a solid outline ring around each triad note's interval glow"
+                                >
+                                  <span
+                                    onClick={() => setShowTriadOutline(!showTriadOutline)}
+                                    style={{
+                                      display: 'inline-flex',
+                                      alignItems: 'center',
+                                      justifyContent: 'center',
+                                      width: 16,
+                                      height: 16,
+                                      borderRadius: 5,
+                                      border: `2px solid ${showTriadOutline ? theme.accentPrimary : theme.border}`,
+                                      background: showTriadOutline ? theme.accentPrimary : 'transparent',
+                                      transition: 'all 150ms',
+                                      cursor: 'pointer',
+                                      flexShrink: 0,
+                                    }}
+                                  >
+                                    {showTriadOutline && (
+                                      <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
+                                        <path d="M1 3.5L3.5 6L8 1" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                                      </svg>
+                                    )}
+                                  </span>
+                                  <span style={{ fontSize: 11, color: showTriadOutline ? theme.accentPrimary : theme.textSecondary, fontWeight: showTriadOutline ? 600 : 400, whiteSpace: 'nowrap', transition: 'color 150ms' }}>Outline</span>
+                                </label>
+                                {/* Thickness slider — only shown when Outline is checked */}
+                                {showTriadOutline && (
+                                  <div className="flex items-center gap-2" style={{ flexShrink: 0 }}>
+                                    <span style={{ fontSize: 11, color: theme.textSecondary, whiteSpace: 'nowrap' }}>Thin</span>
+                                    <div style={{
+                                      position: 'relative',
+                                      display: 'flex',
+                                      alignItems: 'center',
+                                      width: 80,
+                                      height: 24,
+                                      borderRadius: 12,
+                                      background: 'rgba(0,0,0,0.35)',
+                                      border: `1px solid ${theme.border}`,
+                                      boxShadow: `inset 0 1px 3px rgba(0,0,0,0.4)`,
+                                      padding: '0 8px',
+                                    }}>
+                                      {/* Track fill */}
+                                      <div style={{
+                                        position: 'absolute',
+                                        left: 8, right: 8,
+                                        top: '50%', transform: 'translateY(-50%)',
+                                        height: 4, borderRadius: 2,
+                                        background: `linear-gradient(to right, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.12) ${((outlineThickness + 5) / 10) * 100}%, ${theme.accentPrimary} ${((outlineThickness + 5) / 10) * 100}%, ${theme.accentPrimary} 100%)`,
+                                        pointerEvents: 'none',
+                                      }} />
+                                      <input
+                                        type="range"
+                                        min={-5} max={5} step={1}
+                                        value={outlineThickness}
+                                        onChange={(e) => setOutlineThickness(parseInt(e.target.value))}
+                                        title={`Outline thickness: ${outlineThickness > 0 ? '+' : ''}${outlineThickness}`}
+                                        style={{ position: 'relative', width: '100%', height: '100%', opacity: 0, cursor: 'pointer', zIndex: 1, margin: 0 }}
+                                      />
+                                    </div>
+                                    <span style={{ fontSize: 11, color: theme.textSecondary, whiteSpace: 'nowrap' }}>Thick</span>
+                                    <SliderResetButton onReset={() => setOutlineThickness(0)} theme={theme} label="Reset outline thickness to middle" />
+                                  </div>
+                                )}
                                 {/* Root Note & 7th highlight checkboxes */}
                                 <div style={{ width: 1, height: 20, background: theme.border, flexShrink: 0 }} />
                                 {[
@@ -4678,11 +4748,10 @@ export default function Home() {
                     </div>
                   )}
                   {/* ─────────────────────────────────────────── */}
-
-                  {/* Combined row: triad notes (left) + draggable progression pill (center) */}
-                  {((showTriadArcBands && !!focusTriad) || !!selectedChordTonePattern || !!customHighlightNotes) && (
+                  {/* Notes-in-position pill lives in Visual Insights tab — dead block removed */}
+                  {(false) && (
                     <div
-                      ref={progressionPillContainerRef}
+                      ref={undefined as any}
                       style={{
                         position: 'relative',
                         display: 'flex',
@@ -5026,6 +5095,8 @@ export default function Home() {
                   focusTriad={(triadFocusOn && !zoneHoverActive && !zoneChordSelected) ? focusTriad : null}
                   nonTriadOpacity={nonTriadOpacity}
                   nonTriadColorMode={effectiveNonTriadColorMode}
+                  showTriadOutline={showTriadOutline as boolean}
+                  outlineThickness={outlineThickness as number}
                   foregroundNoteColors={foregroundNoteColors ?? undefined}
                   showRootNoteHighlight={triadFocusOn && (showRootNoteHighlight as boolean)}
                   show7thNoteHighlight={triadFocusOn && (show7thNoteHighlight as boolean)}

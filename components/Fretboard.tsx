@@ -108,6 +108,9 @@ interface FretboardProps {
   foregroundNoteColors?: Record<string, string>;
   // ── Bg notes opacity when a chord-tone pattern is active (Triads in Scale off) ─
   patternBgNotesOpacity?: number;       // 0–100; dims scale notes NOT in selectedChordNotes; default 100 (no dim)
+  // ── Triad note outer outline ring ────────────────────────────────────────────
+  showTriadOutline?: boolean;           // when true, renders a solid ring outside the interval glow
+  outlineThickness?: number;            // -5 to +5; 0 = medium (default 2px ring); each step ±0.5px
 }
 
 const FRET_MARKERS = [3, 5, 7, 9, 12, 15, 17, 19, 21, 24];
@@ -355,6 +358,8 @@ export default function Fretboard({
   patternBgNotesOpacity = 100,
   foregroundNoteColors = undefined,
   fretWidth = 50,
+  showTriadOutline = false,
+  outlineThickness = 0,
 }: FretboardProps) {
   const { getNoteDisplayName } = useNoteDisplay();
   const fretCount = propFretCount;
@@ -787,6 +792,22 @@ export default function Fretboard({
 
                               const glowColor = createMultiColorGlow();
 
+                              // Outer solid outline ring: visible ring outside the glow
+                              // outlineThickness: -5 (thinnest, 1px) … 0 (medium, 3px) … +5 (thickest, 5.5px)
+                              const outlineRingColor = rootHighlightActive
+                                ? ROOT_HIGHLIGHT_COLOR
+                                : seventhHighlightActive
+                                  ? SEVENTH_HIGHLIGHT_COLOR
+                                  : intervalBorderColor;
+                              // ring offset (px from edge of circle before the ring begins) — sits just past the glow
+                              const ringOffset = 7;
+                              const ringWidth = Math.max(1, 3 + outlineThickness * 0.5);
+                              const outlineBoxShadow = showTriadOutline
+                                ? `, 0 0 0 ${ringOffset + ringWidth}px transparent, 0 0 0 ${ringOffset}px ${outlineRingColor}, 0 0 0 ${ringOffset + ringWidth}px ${outlineRingColor}88`
+                                : '';
+
+                              const finalBoxShadow = `${glowColor}${outlineBoxShadow}`;
+
                               // When Root/7th highlight is active, override the border color too
                               const finalBorderColor = rootHighlightActive
                                 ? `3px solid ${ROOT_HIGHLIGHT_COLOR}`
@@ -832,7 +853,7 @@ export default function Fretboard({
                                     backgroundColor: noteColor,
                                     color: '#ffffff',
                                     border: finalBorderColor,
-                                    boxShadow: glowColor,
+                                    boxShadow: finalBoxShadow,
                                     cursor: onTriadVoicingClick ? 'pointer' : 'help',
                                     transform: isHovered ? 'scale(1.1)' : 'scale(1)',
                                   }}
