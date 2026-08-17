@@ -27,22 +27,24 @@ export const CHORD_TONE_COLORS = {
 };
 
 // Colors for all 12 chromatic intervals (semitones from root)
-// Consistent with CHORD_TONE_COLORS for Root (0), M3 (4), P5 (7), M7 (11)
-// b2 (1), b5/Tritone (6), and b7 (10) use distinct non-conflicting colors
-// so that Orange = 3rd only, Green = 5th only, Purple = 7th only.
+// All intervals use the same 4 chord-tone colors, grouped by nearest chord tone:
+//   Red   (#E85555) = Root band:   1 (Root), b2
+//   Gold  (#F5BC3C) = 3rd band:    2, b3, 3
+//   Green (#4caf50) = 5th band:    4, b5, 5
+//   Purple(#A07ED4) = 7th band:    b6, 6, b7, 7
 export const ALL_INTERVAL_COLORS: Record<number, string> = {
-  0: '#E85555',   // Root (P1)        - Red          (matches CHORD_TONE_COLORS.root)
-  1: '#F43F5E',   // b2 (m2)          - Rose
-  2: '#FCD34D',   // 2nd (M2)         - Pale Yellow
-  3: '#86EFAC',   // b3 (m3)          - Mint Green
-  4: '#F5BC3C',   // 3rd (M3)         - Yellow/Gold  (matches CHORD_TONE_COLORS.third)
-  5: '#3B9ED4',   // 4th (P4)         - Blue
-  6: '#D946EF',   // b5 / Tritone     - Fuchsia/Magenta
-  7: '#4caf50',   // 5th (P5)         - Green        (matches CHORD_TONE_COLORS.fifth)
-  8: '#F472B6',   // b6 (m6)          - Pink
-  9: '#34D399',   // 6th (M6)         - Emerald
-  10: '#818CF8',  // b7 (m7)          - Periwinkle/Indigo
-  11: '#A07ED4',  // 7th (M7)         - Lavender     (matches CHORD_TONE_COLORS.seventh)
+  0: '#E85555',   // Root (P1)        - Red   (chord tone: root)
+  1: '#E85555',   // b2 (m2)          - Red   (root band)
+  2: '#F5BC3C',   // 2nd (M2)         - Gold  (3rd band)
+  3: '#F5BC3C',   // b3 (m3)          - Gold  (3rd band)
+  4: '#F5BC3C',   // 3rd (M3)         - Gold  (chord tone: third)
+  5: '#4caf50',   // 4th (P4)         - Green (5th band)
+  6: '#4caf50',   // b5 / Tritone     - Green (5th band)
+  7: '#4caf50',   // 5th (P5)         - Green (chord tone: fifth)
+  8: '#A07ED4',   // b6 (m6)          - Purple (7th band)
+  9: '#A07ED4',   // 6th (M6)         - Purple (7th band)
+  10: '#A07ED4',  // b7 (m7)          - Purple (7th band)
+  11: '#A07ED4',  // 7th (M7)         - Purple (chord tone: seventh)
 };
 
 // Interval label names by semitone from root
