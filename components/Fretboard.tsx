@@ -793,17 +793,17 @@ export default function Fretboard({
                               const glowColor = createMultiColorGlow();
 
                               // Outer solid outline ring: visible ring outside the glow
-                              // outlineThickness: -5 (thinnest, 1px) … 0 (medium, 3px) … +5 (thickest, 5.5px)
+                              // outlineThickness: -5 (thinnest ~0.3px) … 0 (medium ~1.5px) … +5 (thickest ~3px)
                               const outlineRingColor = rootHighlightActive
                                 ? ROOT_HIGHLIGHT_COLOR
                                 : seventhHighlightActive
                                   ? SEVENTH_HIGHLIGHT_COLOR
                                   : intervalBorderColor;
-                              // ring offset (px from edge of circle before the ring begins) — sits just past the glow
-                              const ringOffset = 7;
-                              const ringWidth = Math.max(1, 3 + outlineThickness * 0.5);
+                              // gap between glow edge and the ring (px)
+                              const ringOffset = 5;
+                              const ringWidth = Math.max(0.3, 1.5 + outlineThickness * 0.27);
                               const outlineBoxShadow = showTriadOutline
-                                ? `, 0 0 0 ${ringOffset + ringWidth}px transparent, 0 0 0 ${ringOffset}px ${outlineRingColor}, 0 0 0 ${ringOffset + ringWidth}px ${outlineRingColor}88`
+                                ? `, 0 0 0 ${ringOffset}px transparent, 0 0 0 ${(ringOffset + ringWidth).toFixed(1)}px ${outlineRingColor}`
                                 : '';
 
                               const finalBoxShadow = `${glowColor}${outlineBoxShadow}`;
@@ -1121,10 +1121,10 @@ export default function Fretboard({
                             const inFocusTriadForOutline = focusTriad.notes.includes(normalizedNote);
                             if (inFocusTriadForOutline) {
                               const outlineColor = NOTE_COLORS[notePos.note] ?? '#6b7280';
-                              const ringW = Math.max(1, 3 + outlineThickness * 0.5);
-                              // Use a gap ring (transparent) then the solid color ring
-                              const gapPx = 7;
-                              const outlineRing = `0 0 0 ${gapPx}px transparent, 0 0 0 ${gapPx + ringW}px ${outlineColor}`;
+                              // outlineThickness: -5 (thinnest ~0.3px) … 0 (medium ~1.5px) … +5 (thickest ~3px)
+                              const ringW = Math.max(0.3, 1.5 + outlineThickness * 0.27);
+                              const gapPx = 5;
+                              const outlineRing = `0 0 0 ${gapPx}px transparent, 0 0 0 ${(gapPx + ringW).toFixed(1)}px ${outlineColor}`;
                               finalBoxShadow = finalBoxShadow && finalBoxShadow !== 'none'
                                 ? `${finalBoxShadow}, ${outlineRing}`
                                 : outlineRing;

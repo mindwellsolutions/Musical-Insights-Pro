@@ -2144,7 +2144,9 @@ export default function Home() {
   }, [selectedProgression, progressionViewMode, progressionCurrentSlot, progressionChordSelections, notePositions]);
 
   // Derive actual note names from a selected chord-tone pattern's degrees (1, 3, 5, 7)
+  // Only active while the user is on the 'recommended' tab — leaving the tab disengages the visualization.
   const patternHighlightNotes = useMemo((): string[] | null => {
+    if (harmonizationTab !== 'recommended') return null;
     if (!selectedChordTonePattern) return null;
     const allChordTones = getTonicChordTones(rootNote, scaleName); // [root, third, fifth, seventh]
     const DEGREE_INDEX: Record<string, number> = { '1': 0, '3': 1, '5': 2, '7': 3 };
@@ -2156,7 +2158,7 @@ export default function Home() {
       }
     });
     return notes.size > 0 ? Array.from(notes) : null;
-  }, [selectedChordTonePattern, rootNote, scaleName]);
+  }, [harmonizationTab, selectedChordTonePattern, rootNote, scaleName]);
 
   // Derive highlight notes from custom progression steps — union of all triad notes in the sequence
   const customHighlightNotes = useMemo((): string[] | null => {
