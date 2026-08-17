@@ -2090,7 +2090,7 @@ export default function Home() {
     if (pairs.length === 0) return null;
     const pair = pairs[deg % pairs.length];
     const TENSION_COLOR = '#E85555';    // Red-orange — tension / tritone interval note
-    const RESOLUTION_COLOR = '#5DB572'; // Green — resolution / leading tone notes
+    const RESOLUTION_COLOR = '#388e3c'; // Green — resolution / leading tone notes
     const colorMap: Record<string, string> = {};
     // Fretboard normalizes note names to sharp form via normalizeNoteToSharp (imported at top)
     colorMap[normalizeNoteToSharp(pair.tensionNote)] = TENSION_COLOR;

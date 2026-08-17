@@ -22,7 +22,7 @@ export function getNotesDisplay(notation: 'sharp' | 'flat' = 'flat'): string[] {
 export const CHORD_TONE_COLORS = {
   root: '#E85555',    // Red
   third: '#F5BC3C',   // Yellow/Gold
-  fifth: '#5DB572',   // Green
+  fifth: '#388e3c',   // Green
   seventh: '#A07ED4', // Purple
 };
 
@@ -38,7 +38,7 @@ export const ALL_INTERVAL_COLORS: Record<number, string> = {
   4: '#F5BC3C',   // 3rd (M3)         - Yellow/Gold  (matches CHORD_TONE_COLORS.third)
   5: '#3B9ED4',   // 4th (P4)         - Blue
   6: '#D946EF',   // b5 / Tritone     - Fuchsia/Magenta
-  7: '#5DB572',   // 5th (P5)         - Green        (matches CHORD_TONE_COLORS.fifth)
+  7: '#388e3c',   // 5th (P5)         - Green        (matches CHORD_TONE_COLORS.fifth)
   8: '#F472B6',   // b6 (m6)          - Pink
   9: '#34D399',   // 6th (M6)         - Emerald
   10: '#818CF8',  // b7 (m7)          - Periwinkle/Indigo
