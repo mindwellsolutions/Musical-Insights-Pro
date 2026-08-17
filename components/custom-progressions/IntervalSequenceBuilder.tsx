@@ -74,58 +74,73 @@ export function IntervalSequenceBuilder({
         Key: <span style={{ color: theme.accentPrimary, fontWeight: 600 }}>{currentKey} {currentScale}</span>
       </div>
 
-      {/* Palette */}
-      <div>
-        {sequence.length === 0 && (
-          <div style={{ fontSize: 11, color: theme.textSecondary, opacity: 0.7, marginBottom: 6 }}>
-            Click a scale degree below to start building your progression
-          </div>
-        )}
-        <div style={{ fontSize: 10, color: theme.textSecondary, textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600, marginBottom: 6 }}>Scale Degree Palette</div>
-        <div style={{ display: 'flex', flexDirection: 'row', gap: 6, flexWrap: 'wrap' }}>
-          {diatonicDegrees.map(deg => (
-            <DegreePaletteChip key={deg.degreeIndex} theme={theme} degree={deg} onClick={addStep} />
-          ))}
-        </div>
-      </div>
+      {/* Palette + Sequence Lane — single flex row */}
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 0, minHeight: 90 }}>
 
-      {/* Sequence Lane — only rendered once at least one degree is selected */}
-      {sequence.length > 0 && (
-      <div style={{ overflowX: 'auto', padding: '12px 0', position: 'relative' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
-            {sequence.map((step, idx) => (
-              <React.Fragment key={step.id}>
-                {/* Insertion ghost */}
-                {dragState.isDragging && insertionGhostIndex === idx && (
-                  <div style={{ width: 2, height: 78, borderRadius: 2, background: step.color, opacity: 0.85, boxShadow: `0 0 8px 2px ${step.color}66`, marginRight: 4, flexShrink: 0 }} />
-                )}
-                <IntervalStepCard
-                  theme={theme} step={step} index={idx}
-                  diatonicDegrees={diatonicDegrees}
-                  isDragging={dragState.isDragging && dragState.dragIndex === idx}
-                  style={getCardStyle(idx)}
-                  cardRef={cardRefs.current[idx]}
-                  onDragStart={onDragStart} onRemove={removeStep} onEdit={editStep}
-                />
-                {idx < sequence.length - 1 && (
-                  <span style={{ fontSize: 16, color: theme.textSecondary, opacity: 0.6, margin: '0 6px', flexShrink: 0 }}>→</span>
-                )}
-              </React.Fragment>
+        {/* Left: Scale Degree Palette */}
+        <div style={{ flexShrink: 0, display: 'flex', flexDirection: 'column', gap: 6 }}>
+          <div style={{ fontSize: 10, color: theme.textSecondary, textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600 }}>Scale Degree Palette</div>
+          {sequence.length === 0 && (
+            <div style={{ fontSize: 11, color: theme.textSecondary, opacity: 0.6, marginBottom: 2 }}>
+              Click a degree to start
+            </div>
+          )}
+          <div style={{ display: 'flex', flexDirection: 'row', gap: 6, flexWrap: 'wrap', maxWidth: 300 }}>
+            {diatonicDegrees.map(deg => (
+              <DegreePaletteChip key={deg.degreeIndex} theme={theme} degree={deg} onClick={addStep} />
             ))}
-            {/* Trailing ghost */}
-            {dragState.isDragging && insertionGhostIndex === sequence.length && (
-              <div style={{ width: 2, height: 78, borderRadius: 2, background: sequence[dragState.dragIndex!]?.color ?? '#fff', opacity: 0.85, marginLeft: 4, flexShrink: 0 }} />
-            )}
-            {/* Add button */}
-            <div style={{ marginLeft: sequence.length ? 8 : 0 }}>
-              <button onClick={() => diatonicDegrees[0] && addStep(diatonicDegrees[0])} title="Add first degree"
-                style={{ width: 56, height: 78, borderRadius: 10, border: `1.5px dashed ${theme.border}`, background: 'transparent', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Plus size={20} color={theme.textSecondary} />
-              </button>
+          </div>
+        </div>
+
+        {/* Divider — only when sequence exists */}
+        {sequence.length > 0 && (
+          <div style={{
+            width: 1,
+            alignSelf: 'stretch',
+            background: `linear-gradient(to bottom, transparent, ${theme.border}99 25%, ${theme.border}99 75%, transparent)`,
+            flexShrink: 0,
+            margin: '0 14px',
+          }} />
+        )}
+
+        {/* Right: Sequence Lane */}
+        {sequence.length > 0 && (
+          <div style={{ flex: 1, overflowX: 'auto', padding: '0 0 4px', position: 'relative', minWidth: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
+              {sequence.map((step, idx) => (
+                <React.Fragment key={step.id}>
+                  {/* Insertion ghost */}
+                  {dragState.isDragging && insertionGhostIndex === idx && (
+                    <div style={{ width: 2, height: 78, borderRadius: 2, background: step.color, opacity: 0.85, boxShadow: `0 0 8px 2px ${step.color}66`, marginRight: 4, flexShrink: 0 }} />
+                  )}
+                  <IntervalStepCard
+                    theme={theme} step={step} index={idx}
+                    diatonicDegrees={diatonicDegrees}
+                    isDragging={dragState.isDragging && dragState.dragIndex === idx}
+                    style={getCardStyle(idx)}
+                    cardRef={cardRefs.current[idx]}
+                    onDragStart={onDragStart} onRemove={removeStep} onEdit={editStep}
+                  />
+                  {idx < sequence.length - 1 && (
+                    <span style={{ fontSize: 16, color: theme.textSecondary, opacity: 0.6, margin: '0 6px', flexShrink: 0 }}>→</span>
+                  )}
+                </React.Fragment>
+              ))}
+              {/* Trailing ghost */}
+              {dragState.isDragging && insertionGhostIndex === sequence.length && (
+                <div style={{ width: 2, height: 78, borderRadius: 2, background: sequence[dragState.dragIndex!]?.color ?? '#fff', opacity: 0.85, marginLeft: 4, flexShrink: 0 }} />
+              )}
+              {/* Add button */}
+              <div style={{ marginLeft: 8, flexShrink: 0 }}>
+                <button onClick={() => diatonicDegrees[0] && addStep(diatonicDegrees[0])} title="Add first degree"
+                  style={{ width: 56, height: 78, borderRadius: 10, border: `1.5px dashed ${theme.border}`, background: 'transparent', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Plus size={20} color={theme.textSecondary} />
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
 
       {/* Action Bar + Save Dialog — only show when there are steps */}
       {sequence.length > 0 && (
