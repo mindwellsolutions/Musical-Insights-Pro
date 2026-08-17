@@ -134,7 +134,7 @@ const STRING_COLORS = [
 const CHORD_TONE_COLORS = {
   root: '#E85555',    // Red
   third: '#F5BC3C',   // Yellow/Gold
-  fifth: '#388e3c',   // Green
+  fifth: '#4caf50',   // Green
   seventh: '#A07ED4', // Purple
 };
 
@@ -990,9 +990,9 @@ export default function Fretboard({
                             if (triadNoteIndex === 0) {
                               triadRingColor = '#E85555'; // Root - Red
                             } else if (triadNoteIndex === 1) {
-                              triadRingColor = '#388e3c'; // Third - Green (using 5th color since triads don't have a distinct 3rd)
+                              triadRingColor = '#4caf50'; // Third - Green (using 5th color since triads don't have a distinct 3rd)
                             } else if (triadNoteIndex === 2) {
-                              triadRingColor = '#388e3c'; // Fifth - Green
+                              triadRingColor = '#4caf50'; // Fifth - Green
                             }
                           }
 
@@ -1086,7 +1086,7 @@ export default function Fretboard({
                                 const intervalColors = [
                                   '#E85555', // root  → Red
                                   '#F5BC3C', // third → Gold
-                                  '#388e3c', // fifth → Green
+                                  '#4caf50', // fifth → Green
                                   '#A07ED4', // seventh → Lavender
                                 ];
                                 const intervalCol = intervalColors[triadNoteIndex] ?? intervalColors[0];
