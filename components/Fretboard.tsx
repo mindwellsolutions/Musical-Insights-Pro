@@ -791,29 +791,18 @@ export default function Fretboard({
                               };
 
                               const glowColor = createMultiColorGlow();
+                              const finalBoxShadow = glowColor;
 
-                              // Outer solid outline ring: visible ring outside the glow
-                              // outlineThickness: -5 (thinnest ~0.3px) … 0 (medium ~1.5px) … +5 (thickest ~3px)
-                              const outlineRingColor = rootHighlightActive
-                                ? ROOT_HIGHLIGHT_COLOR
-                                : seventhHighlightActive
-                                  ? SEVENTH_HIGHLIGHT_COLOR
-                                  : intervalBorderColor;
-                              // gap between glow edge and the ring (px)
-                              const ringOffset = 5;
-                              const ringWidth = Math.max(0.3, 1.5 + outlineThickness * 0.27);
-                              const outlineBoxShadow = showTriadOutline
-                                ? `, 0 0 0 ${ringOffset}px transparent, 0 0 0 ${(ringOffset + ringWidth).toFixed(1)}px ${outlineRingColor}`
-                                : '';
-
-                              const finalBoxShadow = `${glowColor}${outlineBoxShadow}`;
+                              // outlineThickness (0–10): extra px added to the base border width
+                              const baseBorderPx = 3;
+                              const borderPx = baseBorderPx + outlineThickness;
 
                               // When Root/7th highlight is active, override the border color too
                               const finalBorderColor = rootHighlightActive
-                                ? `3px solid ${ROOT_HIGHLIGHT_COLOR}`
+                                ? `${borderPx}px solid ${ROOT_HIGHLIGHT_COLOR}`
                                 : seventhHighlightActive
-                                  ? `3px solid ${SEVENTH_HIGHLIGHT_COLOR}`
-                                  : borderColor;
+                                  ? `${borderPx}px solid ${SEVENTH_HIGHLIGHT_COLOR}`
+                                  : `${borderPx}px solid ${intervalBorderColor}`;
 
                               const handleClick = () => {
                                 if (onTriadVoicingClick && allTriadPositionsForNote.length > 0) {
@@ -1068,6 +1057,9 @@ export default function Fretboard({
                             const ROOT_HL_COLOR = '#E85555';
                             const SEVENTH_HL_COLOR = '#A07ED4';
 
+                            // outlineThickness (0–10): extra px added to the 3px base border for foreground notes
+                            const focusBorderPx = 3 + outlineThickness;
+
                             if (inFocusTriad) {
                               // Keep each note's true identity color (circleFill already set above)
                               // Bump root note size +12%
@@ -1076,20 +1068,38 @@ export default function Fretboard({
                               }
                               // Root highlight: override the focus triad border/glow with red
                               if (showRootNoteHighlight && isRootNote) {
-                                borderColor = `3px solid ${ROOT_HL_COLOR}`;
+                                borderColor = `${focusBorderPx}px solid ${ROOT_HL_COLOR}`;
                                 finalBoxShadow = `0 0 0 6px ${hexToRgba(ROOT_HL_COLOR, 0.7)}, 0 0 14px ${hexToRgba(ROOT_HL_COLOR, 0.5)}`;
                               } else if (foregroundNoteColors && foregroundNoteColors[normalizedNote]) {
                                 // Per-note semantic color override (e.g. tritone tension=orange, resolution=green)
                                 const perNoteColor = foregroundNoteColors[normalizedNote];
-                                borderColor = `3px solid ${perNoteColor}`;
+                                borderColor = `${focusBorderPx}px solid ${perNoteColor}`;
                                 finalBoxShadow = `0 0 0 5px ${hexToRgba(perNoteColor, 0.65)}, 0 0 14px ${hexToRgba(perNoteColor, 0.45)}`;
                               } else if (nonTriadColorMode) {
                                 // Monocolor mode: all foreground notes glow in the triad's degree color
-                                // (e.g. mustard for III, blue for IV) — uniform single color per selected degree
-                                borderColor = `3px solid ${focusTriad.color}`;
+                                borderColor = `${focusBorderPx}px solid ${focusTriad.color}`;
                                 finalBoxShadow = `0 0 0 4px ${hexToRgba(focusTriad.color, 0.55)}, 0 0 12px ${hexToRgba(focusTriad.color, 0.35)}`;
+                              } else {
+                                // Interval mode foreground notes — use interval color for border
+                                // Derive interval color per chord tone position in the triad
+                                const triadNoteIndex = focusTriad.notes.indexOf(normalizedNote);
+                                const intervalColors = [
+                                  '#E85555', // root  → Red
+                                  '#F5BC3C', // third → Gold
+                                  '#5DB572', // fifth → Green
+                                  '#A07ED4', // seventh → Lavender
+                                ];
+                                const intervalCol = intervalColors[triadNoteIndex] ?? intervalColors[0];
+                                borderColor = `${focusBorderPx}px solid ${intervalCol}`;
+                                finalBoxShadow = `0 0 0 4px ${hexToRgba(intervalCol, 0.55)}, 0 0 12px ${hexToRgba(intervalCol, 0.35)}`;
                               }
-                              // Interval mode in-triad notes: no extra border (interval coloring is for bg notes context)
+
+                              // showTriadOutline: replace glow color with current position monocolor
+                              if (showTriadOutline && !showRootNoteHighlight && !(foregroundNoteColors && foregroundNoteColors[normalizedNote])) {
+                                const monoColor = focusTriad.color;
+                                finalBoxShadow = `0 0 0 5px ${hexToRgba(monoColor, 0.65)}, 0 0 16px ${hexToRgba(monoColor, 0.45)}, 0 0 26px ${hexToRgba(monoColor, 0.2)}`;
+                              }
+                              // Interval mode in-triad notes: border already set above
                             } else {
                               // Non-triad scale note: check if it's a highlighted Root or 7th
                               if (showRootNoteHighlight && isRootNote) {
@@ -1114,22 +1124,6 @@ export default function Fretboard({
                             letterNudge = true;
                           }
 
-                          // ── Outer outline ring (showTriadOutline) ─────────────────
-                          // Appended to finalBoxShadow for foreground triad notes only.
-                          // Ring color = the note's own identity color (Monocolor = NOTE_COLORS).
-                          if (showTriadOutline && triadFocusOn && focusTriad) {
-                            const inFocusTriadForOutline = focusTriad.notes.includes(normalizedNote);
-                            if (inFocusTriadForOutline) {
-                              const outlineColor = NOTE_COLORS[notePos.note] ?? '#6b7280';
-                              // outlineThickness: -5 (thinnest ~0.3px) … 0 (medium ~1.5px) … +5 (thickest ~3px)
-                              const ringW = Math.max(0.3, 1.5 + outlineThickness * 0.27);
-                              const gapPx = 5;
-                              const outlineRing = `0 0 0 ${gapPx}px transparent, 0 0 0 ${(gapPx + ringW).toFixed(1)}px ${outlineColor}`;
-                              finalBoxShadow = finalBoxShadow && finalBoxShadow !== 'none'
-                                ? `${finalBoxShadow}, ${outlineRing}`
-                                : outlineRing;
-                            }
-                          }
 
                           // Bg notes dimming when a chord-tone pattern is active (Triads in Scale off)
                           if (!triadFocusOn && patternBgNotesOpacity < 100 && selectedChordNotes && selectedChordNotes.length > 0) {

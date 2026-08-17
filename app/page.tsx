@@ -3265,11 +3265,11 @@ export default function Home() {
                                     );
                                   })()}
                                 </div>
-                                {/* Outline checkbox + thickness slider */}
+                                {/* Monocolor Glow checkbox + Border Width slider */}
                                 <div style={{ width: 1, height: 20, background: theme.border, flexShrink: 0 }} />
                                 <label
                                   style={{ display: 'flex', alignItems: 'center', gap: 5, cursor: 'pointer', flexShrink: 0, userSelect: 'none' }}
-                                  title="Show a solid outline ring around each triad note's interval glow"
+                                  title="Replace interval glow with the current position monocolor glow"
                                 >
                                   <span
                                     onClick={() => setShowTriadOutline(!showTriadOutline)}
@@ -3293,46 +3293,33 @@ export default function Home() {
                                       </svg>
                                     )}
                                   </span>
-                                  <span style={{ fontSize: 11, color: showTriadOutline ? theme.accentPrimary : theme.textSecondary, fontWeight: showTriadOutline ? 600 : 400, whiteSpace: 'nowrap', transition: 'color 150ms' }}>Outline</span>
+                                  <span style={{ fontSize: 11, color: showTriadOutline ? theme.accentPrimary : theme.textSecondary, fontWeight: showTriadOutline ? 600 : 400, whiteSpace: 'nowrap', transition: 'color 150ms' }}>Monocolor Glow</span>
                                 </label>
-                                {/* Thickness slider — only shown when Outline is checked */}
-                                {showTriadOutline && (
-                                  <div className="flex items-center gap-2" style={{ flexShrink: 0 }}>
-                                    <span style={{ fontSize: 11, color: theme.textSecondary, whiteSpace: 'nowrap' }}>Thin</span>
+                                {/* Border Width slider — always visible */}
+                                <div className="flex items-center gap-2" style={{ flexShrink: 0 }}>
+                                  <span style={{ fontSize: 11, color: theme.textSecondary, whiteSpace: 'nowrap' }}>Border</span>
+                                  <style>{`
+                                    .border-width-slider { -webkit-appearance: none; appearance: none; width: 72px; height: 4px; border-radius: 2px; outline: none; cursor: pointer; background: transparent; }
+                                    .border-width-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%; background: ${theme.accentPrimary}; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.5); cursor: pointer; }
+                                    .border-width-slider::-moz-range-thumb { width: 12px; height: 12px; border-radius: 50%; background: ${theme.accentPrimary}; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.5); cursor: pointer; }
+                                  `}</style>
+                                  <div style={{ position: 'relative', display: 'flex', alignItems: 'center', width: 72 }}>
                                     <div style={{
-                                      position: 'relative',
-                                      display: 'flex',
-                                      alignItems: 'center',
-                                      width: 80,
-                                      height: 24,
-                                      borderRadius: 12,
-                                      background: 'rgba(0,0,0,0.35)',
-                                      border: `1px solid ${theme.border}`,
-                                      boxShadow: `inset 0 1px 3px rgba(0,0,0,0.4)`,
-                                      padding: '0 8px',
-                                    }}>
-                                      {/* Track fill */}
-                                      <div style={{
-                                        position: 'absolute',
-                                        left: 8, right: 8,
-                                        top: '50%', transform: 'translateY(-50%)',
-                                        height: 4, borderRadius: 2,
-                                        background: `linear-gradient(to right, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.12) ${((outlineThickness + 5) / 10) * 100}%, ${theme.accentPrimary} ${((outlineThickness + 5) / 10) * 100}%, ${theme.accentPrimary} 100%)`,
-                                        pointerEvents: 'none',
-                                      }} />
-                                      <input
-                                        type="range"
-                                        min={-5} max={5} step={1}
-                                        value={outlineThickness}
-                                        onChange={(e) => setOutlineThickness(parseInt(e.target.value))}
-                                        title={`Outline thickness: ${outlineThickness > 0 ? '+' : ''}${outlineThickness}`}
-                                        style={{ position: 'relative', width: '100%', height: '100%', opacity: 0, cursor: 'pointer', zIndex: 1, margin: 0 }}
-                                      />
-                                    </div>
-                                    <span style={{ fontSize: 11, color: theme.textSecondary, whiteSpace: 'nowrap' }}>Thick</span>
-                                    <SliderResetButton onReset={() => setOutlineThickness(0)} theme={theme} label="Reset outline thickness to middle" />
+                                      position: 'absolute', left: 0, right: 0,
+                                      height: 4, borderRadius: 2, pointerEvents: 'none',
+                                      background: `linear-gradient(to right, ${theme.accentPrimary} ${(outlineThickness / 10) * 100}%, rgba(255,255,255,0.15) ${(outlineThickness / 10) * 100}%)`,
+                                    }} />
+                                    <input
+                                      type="range"
+                                      min={0} max={10} step={1}
+                                      value={outlineThickness}
+                                      onChange={(e) => setOutlineThickness(parseInt(e.target.value))}
+                                      title={`Border width: +${outlineThickness}px`}
+                                      className="border-width-slider"
+                                    />
                                   </div>
-                                )}
+                                  <SliderResetButton onReset={() => setOutlineThickness(0)} theme={theme} label="Reset border width" />
+                                </div>
                                 {/* Root Note & 7th highlight checkboxes */}
                                 <div style={{ width: 1, height: 20, background: theme.border, flexShrink: 0 }} />
                                 {[
