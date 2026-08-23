@@ -171,6 +171,9 @@ interface HeaderProps {
   // Overlay mode (replaces hard-coded "Triads in Scale")
   overlayMode?: string;
   onOverlayModeChange?: (mode: string) => void;
+  // Pedal Switching View mode
+  pedalSwitchingMode?: 'passive' | 'realtime';
+  onPedalSwitchingModeChange?: (mode: 'passive' | 'realtime') => void;
 }
 
 export default function Header({
@@ -299,6 +302,8 @@ export default function Header({
   onProgressionsOpenChange,
   overlayMode = 'triads',
   onOverlayModeChange,
+  pedalSwitchingMode = 'passive',
+  onPedalSwitchingModeChange,
 }: HeaderProps) {
   const themeKeys = Object.keys(themes) as Theme[];
   const availableTunings = Object.keys(TUNINGS[stringCount]);
@@ -436,6 +441,8 @@ export default function Header({
             onOverlappingChordsChange={onOverlappingChordsChange}
             onStartDetection={onStartDetection}
             onStopDetection={onStopDetection}
+            pedalSwitchingMode={pedalSwitchingMode}
+            onPedalSwitchingModeChange={onPedalSwitchingModeChange}
             onLogout={handleLogout}
           />
           <Link href="/" title="Go to Musical Insights Home" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>

@@ -2,16 +2,115 @@
 
 /**
  * MIDI Button Handlers Hook
- * Listens for MIDI button presses and triggers corresponding webapp actions
+ * Listens for MIDI button presses and triggers corresponding webapp actions.
+ * Shows premium top-right toasts with section/selection info and NOTE_COLORS squares.
  */
 
 import { useEffect, useCallback, useRef } from 'react';
 import { useMIDIPedal } from '@/components/midi/MIDIContext';
 import { findButtonByMIDIMessage } from '@/lib/midi/midiUtils';
-import { MIDIButtonAction, MIDI_ACTION_LABELS } from '@/lib/midi/midiTypes';
-import { useMIDISelection } from '@/contexts/MIDISelectionContext';
-
+import { MIDIButtonAction } from '@/lib/midi/midiTypes';
+import { useMIDISelection, MIDISectionId } from '@/contexts/MIDISelectionContext';
+import { NOTE_COLORS } from '@/lib/musicTheory';
 import { toast } from 'sonner';
+
+// ── Human-readable section names ──────────────────────────────────────────────
+
+const SECTION_DISPLAY_NAMES: Record<string, string> = {
+  'key-select': 'Key Select',
+  'scale-mode-select': 'Scale Mode',
+  'compatible-scales': 'Compatible Scales',
+  'triads': 'Triads',
+  'manual-selection': 'Manual Selection',
+  'chord-neighborhood': 'Chord Neighborhood',
+  'triad-tabs': 'Triad Tabs',
+  'progression-degrees': 'Progression Degrees',
+};
+
+function getSectionName(id: MIDISectionId): string {
+  return SECTION_DISPLAY_NAMES[id] ?? id;
+}
+
+// ── Note square renderer (inline SVG-like div) ────────────────────────────────
+
+function noteSquareHtml(note: string): string {
+  const color = NOTE_COLORS[note] ?? '#6b7280';
+  return `<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:5px;background:${color};color:#fff;font-size:10px;font-weight:700;flex-shrink:0;line-height:1;">${note}</span>`;
+}
+
+// ── Toast helpers ─────────────────────────────────────────────────────────────
+
+/** Extract note/key from a selection string if it starts with a known note */
+function extractNote(str: string): string | null {
+  // Check sharp/flat two-char notes first, then single-char
+  const twoChar = str.slice(0, 2);
+  if (NOTE_COLORS[twoChar]) return twoChar;
+  const oneChar = str.slice(0, 1);
+  if (NOTE_COLORS[oneChar]) return oneChar;
+  return null;
+}
+
+function showSectionToast(newId: MIDISectionId, prevId: MIDISectionId | null, direction: 'next' | 'prev') {
+  const arrow = direction === 'next' ? '→' : '←';
+  const newName = getSectionName(newId);
+  const prevName = prevId ? getSectionName(prevId) : null;
+
+  toast(
+    // Sonner accepts React nodes via JSX — but we're in a .ts file, so use the message + description pattern
+    newName,
+    {
+      description: prevName ? `Previously: ${prevName}` : undefined,
+      duration: 2200,
+      position: 'top-right',
+      style: {
+        background: 'rgba(14,14,22,0.97)',
+        border: '1px solid rgba(255,255,255,0.10)',
+        boxShadow: '0 8px 32px rgba(0,0,0,0.6)',
+        borderRadius: 12,
+        color: '#fff',
+      },
+      icon: arrow === '→' ? '⏭' : '⏮',
+    }
+  );
+}
+
+function showItemChangeToast(sectionId: MIDISectionId, prev: string | null, next: string) {
+  const sectionName = getSectionName(sectionId);
+  const prevNote = prev ? extractNote(prev) : null;
+  const nextNote = extractNote(next);
+
+  // Build HTML string for the description line
+  const prevPart = prev
+    ? `<span style="opacity:0.45;font-size:11px;">${prevNote ? noteSquareHtml(prevNote) + ' ' : ''}${prev}</span> <span style="opacity:0.5;">→</span> `
+    : '';
+  const nextPart = `<span style="font-size:13px;font-weight:600;">${nextNote ? noteSquareHtml(nextNote) + ' ' : ''}${next}</span>`;
+
+  toast(sectionName, {
+    description: `${prevPart}${nextPart}` as unknown as string,
+    duration: 2000,
+    position: 'top-right',
+    style: {
+      background: 'rgba(14,14,22,0.97)',
+      border: '1px solid rgba(255,255,255,0.10)',
+      boxShadow: '0 8px 32px rgba(0,0,0,0.6)',
+      borderRadius: 12,
+      color: '#fff',
+    },
+    icon: '🎵',
+  });
+}
+
+// ── Real-time scroll helper ────────────────────────────────────────────────────
+
+function scrollToSection(sectionId: MIDISectionId) {
+  // Sections should have data-midi-section-id attribute on their container
+  const el = document.querySelector(`[data-midi-section-id="${sectionId}"]`);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+
+// ── Interface ─────────────────────────────────────────────────────────────────
 
 interface MIDIButtonHandlersCallbacks {
   onPrev?: () => void;
@@ -22,106 +121,99 @@ interface MIDIButtonHandlersCallbacks {
   onItemRight?: () => void;
 }
 
+// ── Main hook ─────────────────────────────────────────────────────────────────
+
 /**
- * Hook to handle MIDI button presses and trigger webapp actions
+ * Hook to handle MIDI button presses and trigger webapp actions.
+ * Subscribes to section/item change events to show premium toasts.
  */
 export function useMIDIButtonHandlers(callbacks: MIDIButtonHandlersCallbacks) {
   const { config, isConnected, lastMIDIMessage } = useMIDIPedal();
-  const { dispatchItemNav, nextSection, prevSection } = useMIDISelection();
+  const {
+    dispatchItemNav, nextSection, prevSection,
+    onSectionChange, onItemChange, pedalSwitchingMode,
+  } = useMIDISelection();
 
   // Use refs to avoid re-creating effect when callbacks change
   const callbacksRef = useRef(callbacks);
-  useEffect(() => {
-    callbacksRef.current = callbacks;
-  }, [callbacks]);
+  useEffect(() => { callbacksRef.current = callbacks; }, [callbacks]);
 
   // Keep context methods in refs to avoid stale closures
   const dispatchItemNavRef = useRef(dispatchItemNav);
   const nextSectionRef = useRef(nextSection);
   const prevSectionRef = useRef(prevSection);
+  const pedalModeRef = useRef(pedalSwitchingMode);
   useEffect(() => {
     dispatchItemNavRef.current = dispatchItemNav;
     nextSectionRef.current = nextSection;
     prevSectionRef.current = prevSection;
-  }, [dispatchItemNav, nextSection, prevSection]);
+    pedalModeRef.current = pedalSwitchingMode;
+  }, [dispatchItemNav, nextSection, prevSection, pedalSwitchingMode]);
+
+  // Subscribe to section change events — show toast + optionally scroll
+  useEffect(() => {
+    const unsub = onSectionChange((newId, prevId) => {
+      showSectionToast(newId, prevId, 'next'); // toast for both next/prev — direction encoded in icon
+      if (pedalModeRef.current === 'realtime') {
+        setTimeout(() => scrollToSection(newId), 50); // slight delay for state to settle
+      }
+    });
+    return unsub;
+  }, [onSectionChange]);
+
+  // Subscribe to item change events — show toast with key/note squares
+  useEffect(() => {
+    const unsub = onItemChange((sectionId, prev, next) => {
+      showItemChangeToast(sectionId, prev, next);
+    });
+    return unsub;
+  }, [onItemChange]);
 
   // Debounce state to prevent double-triggers
   const lastTriggerTime = useRef<Record<string, number>>({});
-  const DEBOUNCE_MS = 200; // 200ms debounce
+  const DEBOUNCE_MS = 200;
 
   const handleAction = useCallback((action: MIDIButtonAction) => {
     const now = Date.now();
-    const lastTime = lastTriggerTime.current[action] || 0;
-
-    // Debounce: ignore if triggered too recently
-    if (now - lastTime < DEBOUNCE_MS) {
-      return;
-    }
-
+    if (now - (lastTriggerTime.current[action] || 0) < DEBOUNCE_MS) return;
     lastTriggerTime.current[action] = now;
 
-    // Show toast notification
-    const actionLabel = MIDI_ACTION_LABELS[action];
-    toast.success(`MIDI: ${actionLabel}`, {
-      duration: 1000,
-    });
-
-    // Execute the appropriate callback
     console.log('[MIDI Handlers] Executing action:', action);
 
     switch (action) {
       // ── Next Section / Last Section — cycle the MIDI-focused section ──────
       case 'prev':
-        // "Next Section" — advance to the next enabled section
-        console.log('[MIDI Handlers] Next Section');
         nextSectionRef.current();
-        // Also call legacy onPrev for backward-compat callers that still bind it
         callbacksRef.current.onPrev?.();
         break;
       case 'next':
-        // "Last Section" — go back to previous enabled section
-        console.log('[MIDI Handlers] Last Section');
         prevSectionRef.current();
         callbacksRef.current.onNext?.();
         break;
       // ── Switch Left / Right — navigate within the currently focused section ──
       case 'scale-left':
-        console.log('[MIDI Handlers] Switch Left → dispatchItemNav(left)');
         dispatchItemNavRef.current('left');
         callbacksRef.current.onScaleLeft?.();
         break;
       case 'scale-right':
-        console.log('[MIDI Handlers] Switch Right → dispatchItemNav(right)');
         dispatchItemNavRef.current('right');
         callbacksRef.current.onScaleRight?.();
         break;
-      // ── item-left / item-right — same as scale-left/right (alternate mapping) ──
       case 'item-left':
-        console.log('[MIDI Handlers] item-left → dispatchItemNav(left)');
         dispatchItemNavRef.current('left');
         break;
       case 'item-right':
-        console.log('[MIDI Handlers] item-right → dispatchItemNav(right)');
         dispatchItemNavRef.current('right');
         break;
       case 'section-left':
       case 'section-right':
-        // Legacy placeholders — covered by prev/next now
-        break;
       case 'none':
         break;
     }
   }, []);
 
-  // Listen for MIDI messages and trigger actions.
-  // lastMIDIMessage is set by MIDIContext whenever the wired input fires —
-  // it is already parsed MIDIMessageData so no re-parsing needed here.
   useEffect(() => {
-    if (!lastMIDIMessage) return;
-    if (!isConnected) return;
-    if (!config.enabled) return;
-
-    // Only trigger on button press (value > 0), not release
+    if (!lastMIDIMessage || !isConnected || !config.enabled) return;
     if (lastMIDIMessage.value === 0) return;
 
     const button = findButtonByMIDIMessage(

@@ -3,54 +3,123 @@
 /**
  * MIDI Selection Context
  *
- * Tracks which UI section is currently "MIDI-active" (i.e., will respond to
- * item-left / item-right pedal presses). Only one section can be active at a
- * time across the entire webapp — radio behaviour.
+ * Two-level model:
+ *   1. enabledSectionIds — sections the user has toggled ON with the MIDI icon.
+ *      These are the sections that will be cycled through by Next/Last Section.
+ *      Persisted to localStorage so the user's choices survive page reloads.
+ *   2. activeSectionId  — the section currently focused (receives item-left /
+ *      item-right). Cycles only through enabled sections.
  *
  * Usage:
- *   // Provider: wrap app root (see app/layout.tsx or page.tsx)
  *   <MIDISelectionProvider>...</MIDISelectionProvider>
  *
- *   // Consumer: inside any controllable section
- *   const { activeSectionId, setActiveSectionId } = useMIDISelection();
+ *   const { activeSectionId, enabledSectionIds, toggleEnabled, nextSection, prevSection } = useMIDISelection();
  */
 
-import React, { createContext, useContext, useState, useCallback, useRef, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useCallback, useRef, useEffect, ReactNode } from 'react';
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
 export type MIDISectionId =
+  | 'key-select'
+  | 'scale-mode-select'
   | 'compatible-scales'
   | 'triads'
   | 'manual-selection'
   | 'chord-neighborhood'
   | 'triad-tabs'
-  | string; // allow custom section IDs from future feature areas
+  | 'progression-degrees'
+  | string;
 
 export interface SectionCallbacks {
   onLeft: () => void;
   onRight: () => void;
 }
 
+/** Saved profile: just a name + the set of enabled section IDs */
+export interface MIDISectionProfile {
+  id: string;
+  name: string;
+  enabledIds: MIDISectionId[];
+  createdAt: number;
+}
+
+export type PedalSwitchingMode = 'passive' | 'realtime';
+
+/** Called when section cycling changes the active section */
+export type SectionChangeListener = (newSectionId: MIDISectionId, prevSectionId: MIDISectionId | null) => void;
+
+/** Called when a section's item-left/right navigation selects a new value */
+export type ItemChangeListener = (sectionId: MIDISectionId, prev: string | null, next: string) => void;
+
 interface MIDISelectionContextValue {
-  /** ID of the section currently claiming MIDI control, or null if none */
+  // ── active focus (cycling target) ──────────────────────────────────────────
   activeSectionId: MIDISectionId | null;
-  /** Set a section as active (pass null to deactivate all) */
   setActiveSectionId: (id: MIDISectionId | null) => void;
-  /** Toggle: if the given id is already active, deactivate; else activate */
-  toggleSectionId: (id: MIDISectionId) => void;
-  /**
-   * Register callbacks for a section so the MIDI handler can route
-   * item-left / item-right to them when that section is active.
-   */
+
+  // ── enabled set (which sections the user wants cycled) ────────────────────
+  enabledSectionIds: Set<MIDISectionId>;
+  toggleEnabled: (id: MIDISectionId) => void;
+  isSectionEnabled: (id: MIDISectionId) => boolean;
+
+  // ── section cycling via Next/Last Section pedal buttons ──────────────────
+  nextSection: () => MIDISectionId | null;
+  prevSection: () => MIDISectionId | null;
+
+  // ── callbacks (item-left / item-right within the active section) ──────────
   registerCallbacks: (id: MIDISectionId, callbacks: SectionCallbacks) => void;
-  /** Remove callbacks when a section unmounts */
   unregisterCallbacks: (id: MIDISectionId) => void;
-  /**
-   * Dispatch an item navigation action to the currently active section.
-   * Called by useMIDIButtonHandlers when it receives item-left / item-right.
-   */
   dispatchItemNav: (direction: 'left' | 'right') => void;
+
+  // ── registration order (used for cycling) ─────────────────────────────────
+  registerSectionOrder: (id: MIDISectionId) => void;
+  unregisterSectionOrder: (id: MIDISectionId) => void;
+
+  // ── section change listeners (for toasts, scroll, etc.) ───────────────────
+  onSectionChange: (listener: SectionChangeListener) => () => void;
+
+  // ── item change reporting (sections call this after nav to report new value) ─
+  reportItemChange: (sectionId: MIDISectionId, prev: string | null, next: string) => void;
+  onItemChange: (listener: ItemChangeListener) => () => void;
+
+  // ── pedal switching view mode ──────────────────────────────────────────────
+  pedalSwitchingMode: PedalSwitchingMode;
+  setPedalSwitchingMode: (mode: PedalSwitchingMode) => void;
+
+  // ── profile save/load ─────────────────────────────────────────────────────
+  sectionProfiles: MIDISectionProfile[];
+  saveProfile: (name: string) => void;
+  loadProfile: (profileId: string) => void;
+  deleteProfile: (profileId: string) => void;
+}
+
+// ── localStorage helpers ──────────────────────────────────────────────────────
+
+const ENABLED_KEY = 'midi-section-enabled-ids';
+const PROFILES_KEY = 'midi-section-profiles';
+
+function loadEnabledIds(): Set<MIDISectionId> {
+  try {
+    const raw = localStorage.getItem(ENABLED_KEY);
+    if (!raw) return new Set();
+    return new Set(JSON.parse(raw) as MIDISectionId[]);
+  } catch { return new Set(); }
+}
+
+function saveEnabledIds(ids: Set<MIDISectionId>) {
+  try { localStorage.setItem(ENABLED_KEY, JSON.stringify([...ids])); } catch { /* ignore */ }
+}
+
+function loadProfiles(): MIDISectionProfile[] {
+  try {
+    const raw = localStorage.getItem(PROFILES_KEY);
+    if (!raw) return [];
+    return JSON.parse(raw) as MIDISectionProfile[];
+  } catch { return []; }
+}
+
+function saveProfiles(profiles: MIDISectionProfile[]) {
+  try { localStorage.setItem(PROFILES_KEY, JSON.stringify(profiles)); } catch { /* ignore */ }
 }
 
 // ── Context ───────────────────────────────────────────────────────────────────
@@ -61,14 +130,37 @@ const MIDISelectionContext = createContext<MIDISelectionContextValue | null>(nul
 
 export function MIDISelectionProvider({ children }: { children: ReactNode }) {
   const [activeSectionId, setActiveSectionIdState] = useState<MIDISectionId | null>(null);
-  const callbacksMap = useRef<Map<MIDISectionId, SectionCallbacks>>(new Map());
+  const [enabledSectionIds, setEnabledSectionIds] = useState<Set<MIDISectionId>>(new Set());
+  const [sectionProfiles, setSectionProfiles] = useState<MIDISectionProfile[]>([]);
+  const [pedalSwitchingMode, setPedalSwitchingModeState] = useState<PedalSwitchingMode>('passive');
 
-  const setActiveSectionId = useCallback((id: MIDISectionId | null) => {
-    setActiveSectionIdState(id);
+  // Ordered list of registered section IDs (registration order = DOM order)
+  const registeredOrder = useRef<MIDISectionId[]>([]);
+  const callbacksMap = useRef<Map<MIDISectionId, SectionCallbacks>>(new Map());
+  // Listener sets for section/item change events
+  const sectionChangeListeners = useRef<Set<SectionChangeListener>>(new Set());
+  const itemChangeListeners = useRef<Set<ItemChangeListener>>(new Set());
+  // Ref to keep activeSectionId accessible synchronously in nextSection/prevSection
+  const activeSectionIdRef = useRef<MIDISectionId | null>(null);
+  useEffect(() => { activeSectionIdRef.current = activeSectionId; }, [activeSectionId]);
+
+  // Load persisted state on mount (client-only)
+  useEffect(() => {
+    setEnabledSectionIds(loadEnabledIds());
+    setSectionProfiles(loadProfiles());
   }, []);
 
-  const toggleSectionId = useCallback((id: MIDISectionId) => {
-    setActiveSectionIdState(prev => (prev === id ? null : id));
+  // ── Registration ───────────────────────────────────────────────────────────
+
+  const registerSectionOrder = useCallback((id: MIDISectionId) => {
+    if (!registeredOrder.current.includes(id)) {
+      registeredOrder.current = [...registeredOrder.current, id];
+    }
+  }, []);
+
+  const unregisterSectionOrder = useCallback((id: MIDISectionId) => {
+    registeredOrder.current = registeredOrder.current.filter(s => s !== id);
+    setActiveSectionIdState(prev => (prev === id ? null : prev));
   }, []);
 
   const registerCallbacks = useCallback((id: MIDISectionId, callbacks: SectionCallbacks) => {
@@ -77,9 +169,69 @@ export function MIDISelectionProvider({ children }: { children: ReactNode }) {
 
   const unregisterCallbacks = useCallback((id: MIDISectionId) => {
     callbacksMap.current.delete(id);
-    // If the deregistering section was active, clear the active selection
-    setActiveSectionIdState(prev => (prev === id ? null : prev));
   }, []);
+
+  // ── Enabled toggle ─────────────────────────────────────────────────────────
+
+  const toggleEnabled = useCallback((id: MIDISectionId) => {
+    setEnabledSectionIds(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+        // If this was the active section, clear it
+        setActiveSectionIdState(cur => (cur === id ? null : cur));
+      } else {
+        next.add(id);
+      }
+      saveEnabledIds(next);
+      return next;
+    });
+  }, []);
+
+  const isSectionEnabled = useCallback((id: MIDISectionId) => {
+    return enabledSectionIds.has(id);
+  }, [enabledSectionIds]);
+
+  const setActiveSectionId = useCallback((id: MIDISectionId | null) => {
+    setActiveSectionIdState(id);
+  }, []);
+
+  // ── Section cycling ────────────────────────────────────────────────────────
+
+  /**
+   * Returns the ordered list of enabled+registered section IDs.
+   * Only sections both registered (in DOM) AND enabled (user turned on) are included.
+   */
+  const getEnabledOrdered = useCallback((): MIDISectionId[] => {
+    return registeredOrder.current.filter(id => enabledSectionIds.has(id));
+  }, [enabledSectionIds]);
+
+  const nextSection = useCallback((): MIDISectionId | null => {
+    const ordered = getEnabledOrdered();
+    if (ordered.length === 0) return null;
+    const prev = activeSectionIdRef.current;
+    const newId = (!prev || !ordered.includes(prev))
+      ? ordered[0]
+      : ordered[(ordered.indexOf(prev) + 1) % ordered.length];
+    setActiveSectionIdState(newId);
+    // Fire section change listeners and optionally scroll to section (realtime mode)
+    sectionChangeListeners.current.forEach(fn => fn(newId, prev));
+    return newId;
+  }, [getEnabledOrdered]);
+
+  const prevSection = useCallback((): MIDISectionId | null => {
+    const ordered = getEnabledOrdered();
+    if (ordered.length === 0) return null;
+    const prev = activeSectionIdRef.current;
+    const newId = (!prev || !ordered.includes(prev))
+      ? ordered[ordered.length - 1]
+      : ordered[(ordered.indexOf(prev) - 1 + ordered.length) % ordered.length];
+    setActiveSectionIdState(newId);
+    sectionChangeListeners.current.forEach(fn => fn(newId, prev));
+    return newId;
+  }, [getEnabledOrdered]);
+
+  // ── Item nav dispatch ──────────────────────────────────────────────────────
 
   const dispatchItemNav = useCallback((direction: 'left' | 'right') => {
     const activeId = activeSectionId;
@@ -90,15 +242,83 @@ export function MIDISelectionProvider({ children }: { children: ReactNode }) {
     else cb.onRight();
   }, [activeSectionId]);
 
+  // ── Listener registration ─────────────────────────────────────────────────
+
+  const onSectionChange = useCallback((listener: SectionChangeListener) => {
+    sectionChangeListeners.current.add(listener);
+    return () => { sectionChangeListeners.current.delete(listener); };
+  }, []);
+
+  const reportItemChange = useCallback((sectionId: MIDISectionId, prev: string | null, next: string) => {
+    itemChangeListeners.current.forEach(fn => fn(sectionId, prev, next));
+  }, []);
+
+  const onItemChange = useCallback((listener: ItemChangeListener) => {
+    itemChangeListeners.current.add(listener);
+    return () => { itemChangeListeners.current.delete(listener); };
+  }, []);
+
+  const setPedalSwitchingMode = useCallback((mode: PedalSwitchingMode) => {
+    setPedalSwitchingModeState(mode);
+  }, []);
+
+  // ── Profile management ─────────────────────────────────────────────────────
+
+  const saveProfile = useCallback((name: string) => {
+    const profile: MIDISectionProfile = {
+      id: `${Date.now()}`,
+      name: name.trim(),
+      enabledIds: [...enabledSectionIds],
+      createdAt: Date.now(),
+    };
+    setSectionProfiles(prev => {
+      const next = [...prev, profile];
+      saveProfiles(next);
+      return next;
+    });
+  }, [enabledSectionIds]);
+
+  const loadProfile = useCallback((profileId: string) => {
+    const profile = sectionProfiles.find(p => p.id === profileId);
+    if (!profile) return;
+    const next = new Set<MIDISectionId>(profile.enabledIds);
+    setEnabledSectionIds(next);
+    saveEnabledIds(next);
+    setActiveSectionIdState(null);
+  }, [sectionProfiles]);
+
+  const deleteProfile = useCallback((profileId: string) => {
+    setSectionProfiles(prev => {
+      const next = prev.filter(p => p.id !== profileId);
+      saveProfiles(next);
+      return next;
+    });
+  }, []);
+
   return (
     <MIDISelectionContext.Provider
       value={{
         activeSectionId,
         setActiveSectionId,
-        toggleSectionId,
+        enabledSectionIds,
+        toggleEnabled,
+        isSectionEnabled,
+        nextSection,
+        prevSection,
         registerCallbacks,
         unregisterCallbacks,
         dispatchItemNav,
+        registerSectionOrder,
+        unregisterSectionOrder,
+        onSectionChange,
+        reportItemChange,
+        onItemChange,
+        pedalSwitchingMode,
+        setPedalSwitchingMode,
+        sectionProfiles,
+        saveProfile,
+        loadProfile,
+        deleteProfile,
       }}
     >
       {children}

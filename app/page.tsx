@@ -90,6 +90,7 @@ import {
 import { useNoteDisplay } from '@/hooks/useNoteDisplay';
 import { SliderResetButton } from '@/components/shared/SliderResetButton';
 import { MIDISectionToggle } from '@/components/midi/MIDISectionToggle';
+import { useMIDISelection } from '@/contexts/MIDISelectionContext';
 
 // Degree → display color for the chord-tone progression pattern indicator
 const PATTERN_DEGREE_COLORS: Record<string, string> = {
@@ -1754,6 +1755,9 @@ export default function Home() {
     handleNearbyChordClick(chordNeighborhoodState.nearbyChords[nextIndex]);
   }, [chordNeighborhoodState.isPanelVisible, chordNeighborhoodState.nearbyChords, chordNeighborhoodState.selectedOverlay, handleNearbyChordClick]);
 
+  // Pedal switching view mode (from MIDISelectionContext)
+  const { pedalSwitchingMode, setPedalSwitchingMode } = useMIDISelection();
+
   // MIDI Button Handlers - Must be after navigation handlers are defined
   // When chord neighborhood is visible, use nearby chord navigation for scale-left/right
   // Otherwise, use the default scale navigation
@@ -2771,6 +2775,8 @@ export default function Home() {
         onProgressionsOpenChange={(open) => setHarmonizationTab(open ? 'recommended' : 'harmonization')}
         overlayMode={overlayMode}
         onOverlayModeChange={setOverlayMode}
+        pedalSwitchingMode={pedalSwitchingMode}
+        onPedalSwitchingModeChange={setPedalSwitchingMode}
       />
       )}
 

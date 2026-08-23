@@ -6,8 +6,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ThemeConfig } from '@/lib/themes';
 import {
-  Settings, Eye, EyeOff, LogOut, Menu, X, Music2, Volume2, Shield, CreditCard,
+  Settings, LogOut, Menu, X, Music2, Volume2, Shield, CreditCard,
   Save, FolderOpen, BookOpen, Mic, Triangle, Layers, Home, HelpCircle,
+  FlaskConical, ChevronRight, Radio, Zap,
 } from 'lucide-react';
 import { useAdminCheck } from '@/hooks/useAdminCheck';
 
@@ -22,6 +23,7 @@ interface HamburgerMenuProps {
   showTriadMode?: boolean;
   overlappingChordsEnabled?: boolean;
   isDetecting?: boolean;
+  pedalSwitchingMode?: 'passive' | 'realtime';
   onSave?: () => void;
   onSaveAs?: () => void;
   onLoad?: () => void;
@@ -39,6 +41,7 @@ interface HamburgerMenuProps {
   onOverlappingChordsChange?: (enabled: boolean) => void;
   onStartDetection?: () => void;
   onStopDetection?: () => void;
+  onPedalSwitchingModeChange?: (mode: 'passive' | 'realtime') => void;
   onLogout?: () => void;
 }
 
@@ -177,6 +180,7 @@ export default function HamburgerMenu({
   showTriadMode = false,
   overlappingChordsEnabled = false,
   isDetecting = false,
+  pedalSwitchingMode = 'passive',
   onSave,
   onSaveAs,
   onLoad,
@@ -194,13 +198,15 @@ export default function HamburgerMenu({
   onOverlappingChordsChange,
   onStartDetection,
   onStopDetection,
+  onPedalSwitchingModeChange,
   onLogout,
 }: HamburgerMenuProps) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [betaOpen, setBetaOpen] = useState(false);
   const { isAdmin } = useAdminCheck();
 
-  const close = () => setIsOpen(false);
+  const close = () => { setIsOpen(false); setBetaOpen(false); };
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';
@@ -316,10 +322,75 @@ export default function HamburgerMenu({
           <SectionLabel>Navigate</SectionLabel>
           <NavRow icon={<Home size={17} />} label="Visualizer" href="/" active={isActive('/')} onClick={close} />
           <NavRow icon={<Music2 size={17} />} label="Song Builder" href="/chord-progression-builder" active={isActive('/chord-progression-builder')} onClick={close} />
-          <NavRow icon={<BookOpen size={17} />} label="Learn Fretboard" href="/learn/fretboard" active={isActive('/learn/fretboard')} onClick={close} />
           {onToggleSettings && (
             <NavRow icon={<Settings size={17} />} label="Settings" onClick={() => { onToggleSettings(); close(); }} />
           )}
+
+          {/* BETA submenu trigger */}
+          <div style={{ position: 'relative' }}>
+            <div
+              onClick={() => setBetaOpen(o => !o)}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.background = 'var(--mi-bg-elevated)'; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.background = 'transparent'; }}
+              style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                padding: '0 20px', height: 46, fontSize: 14, fontWeight: 500,
+                color: betaOpen ? 'var(--mi-text-primary)' : '#c0c0d8',
+                background: betaOpen ? 'rgba(59,130,246,0.08)' : 'transparent',
+                borderLeft: betaOpen ? '3px solid var(--mi-accent-blue)' : '3px solid transparent',
+                cursor: 'pointer', userSelect: 'none',
+                transition: 'background 0.15s ease, color 0.15s ease',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 13 }}>
+                <span style={{ width: 18, height: 18, display: 'flex', alignItems: 'center', justifyContent: 'center', color: betaOpen ? 'var(--mi-accent-blue)' : 'var(--mi-text-secondary)' }}>
+                  <FlaskConical size={17} />
+                </span>
+                <span>Beta</span>
+                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.06em', padding: '2px 5px', borderRadius: 4, background: 'rgba(99,102,241,0.25)', color: '#a5b4fc', border: '1px solid rgba(99,102,241,0.35)' }}>BETA</span>
+              </div>
+              <ChevronRight size={14} style={{ color: 'var(--mi-text-muted)', transform: betaOpen ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.2s ease' }} />
+            </div>
+
+            {/* Beta flyout panel */}
+            {betaOpen && (
+              <div style={{
+                position: 'absolute', left: '100%', top: 0, width: 240,
+                background: 'linear-gradient(180deg, #16162a 0%, #0e0e1a 100%)',
+                border: '1px solid var(--mi-border-medium)',
+                borderRadius: '0 10px 10px 0',
+                boxShadow: '8px 0 32px rgba(0,0,0,0.55)',
+                zIndex: 400, overflow: 'hidden',
+              }}>
+                <div style={{ padding: '10px 16px 6px', fontSize: 10.5, fontWeight: 700, letterSpacing: '0.10em', textTransform: 'uppercase', color: 'var(--mi-text-muted)' }}>
+                  Beta Features
+                </div>
+                {onStartDetection && onStopDetection && (
+                  <ToggleRow
+                    icon={<Volume2 size={14} />}
+                    label="Key Detection"
+                    isOn={isDetecting}
+                    onToggle={() => isDetecting ? onStopDetection() : onStartDetection()}
+                  />
+                )}
+                {onNoteDetectorEnabledChange && (
+                  <ToggleRow
+                    icon={<Mic size={14} />}
+                    label="Note Detector"
+                    isOn={noteDetectorEnabled}
+                    onToggle={() => onNoteDetectorEnabledChange(!noteDetectorEnabled)}
+                  />
+                )}
+                <NavRow
+                  icon={<BookOpen size={17} />}
+                  label="Learn Fretboard"
+                  href="/learn/fretboard"
+                  active={isActive('/learn/fretboard')}
+                  onClick={close}
+                />
+              </div>
+            )}
+          </div>
 
           <Divider />
 
@@ -345,34 +416,41 @@ export default function HamburgerMenu({
               indented
             />
           )}
-          {onFocusModeChange && (
-            <ToggleRow
-              icon={isFocusMode ? <EyeOff size={14} /> : <Eye size={14} />}
-              label="Focus Mode"
-              isOn={isFocusMode}
-              onToggle={() => onFocusModeChange(!isFocusMode)}
-            />
-          )}
 
-          <Divider />
-
-          {/* AUDIO */}
-          <SectionLabel>Audio</SectionLabel>
-          {onStartDetection && onStopDetection && (
-            <ToggleRow
-              icon={<Volume2 size={14} />}
-              label="Key Detection"
-              isOn={isDetecting}
-              onToggle={() => isDetecting ? onStopDetection() : onStartDetection()}
-            />
-          )}
-          {onNoteDetectorEnabledChange && (
-            <ToggleRow
-              icon={<Mic size={14} />}
-              label="Note Detector (Beta)"
-              isOn={noteDetectorEnabled}
-              onToggle={() => onNoteDetectorEnabledChange(!noteDetectorEnabled)}
-            />
+          {/* Pedal Switching View — Passive ↔ Real-time */}
+          {onPedalSwitchingModeChange && (
+            <div style={{ padding: '6px 20px 8px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+                <span style={{ width: 16, display: 'flex', alignItems: 'center', color: 'var(--mi-text-secondary)' }}><Radio size={14} /></span>
+                <span style={{ fontSize: 13, fontWeight: 500, color: '#c0c0d8' }}>Pedal Switching View</span>
+              </div>
+              <div style={{ display: 'flex', borderRadius: 8, overflow: 'hidden', border: '1px solid var(--mi-border-medium)' }}>
+                {(['passive', 'realtime'] as const).map(mode => {
+                  const isActive = pedalSwitchingMode === mode;
+                  return (
+                    <button
+                      key={mode}
+                      onClick={() => onPedalSwitchingModeChange(mode)}
+                      style={{
+                        flex: 1, height: 32, border: 'none', cursor: 'pointer',
+                        fontSize: 12, fontWeight: 600,
+                        background: isActive ? 'var(--mi-accent-blue)' : 'transparent',
+                        color: isActive ? '#fff' : '#8888aa',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5,
+                        transition: 'background 0.15s ease, color 0.15s ease',
+                      }}
+                    >
+                      {mode === 'passive' ? <><Zap size={11} />Passive</> : <><Radio size={11} />Real-time</>}
+                    </button>
+                  );
+                })}
+              </div>
+              <div style={{ fontSize: 11, color: 'var(--mi-text-muted)', marginTop: 5, lineHeight: 1.4 }}>
+                {pedalSwitchingMode === 'passive'
+                  ? 'Toast only — view stays where you are'
+                  : 'View follows pedal section selection'}
+              </div>
+            </div>
           )}
 
           <Divider />
