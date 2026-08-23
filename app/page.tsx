@@ -3837,9 +3837,51 @@ export default function Home() {
                   )}
                   {harmonizationTab === 'scalesModes' && (
                     <div>
-                      <p className="text-xs mb-3" style={{ color: theme.textSecondary }}>
-                        Select a scale or mode — check boxes to include in MIDI Switch Left/Right cycle
-                      </p>
+                      <div className="flex items-center justify-between mb-3 gap-3">
+                        <p className="text-xs" style={{ color: theme.textSecondary }}>
+                          Select a scale or mode — check boxes to include in MIDI Switch Left/Right cycle
+                        </p>
+                        {/* Select All / Deselect All */}
+                        {(() => {
+                          const allScalesForToggle = getDisplayScaleNames(showBasicModesOnly as boolean);
+                          const allChecked = enabledScaleNamesArr.length === 0 || enabledScaleNamesArr.length === allScalesForToggle.length;
+                          const noneChecked = enabledScaleNamesArr.length > 0 && enabledScaleNamesArr.length < allScalesForToggle.length;
+                          return (
+                            <button
+                              onClick={() => {
+                                if (allChecked) {
+                                  // Deselect all: set to just the first scale so something is still usable
+                                  setEnabledScaleNamesArr([allScalesForToggle[0]]);
+                                } else {
+                                  // Select all: empty array = "all enabled" convention
+                                  setEnabledScaleNamesArr([]);
+                                }
+                              }}
+                              className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold flex-shrink-0 transition-all hover:opacity-80"
+                              style={{
+                                background: allChecked ? (theme.accentPrimary + '22') : theme.bgSecondary,
+                                border: `1px solid ${allChecked ? theme.accentPrimary : theme.border}`,
+                                color: allChecked ? theme.accentPrimary : theme.textSecondary,
+                                cursor: 'pointer',
+                                whiteSpace: 'nowrap',
+                              }}
+                              title={allChecked ? 'Deselect all from MIDI cycle' : 'Select all for MIDI cycle'}
+                            >
+                              {allChecked ? (
+                                <>
+                                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="1" y1="1" x2="11" y2="11"/><line x1="11" y1="1" x2="1" y2="11"/></svg>
+                                  Deselect All
+                                </>
+                              ) : (
+                                <>
+                                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="1,6 4,9 11,2"/></svg>
+                                  Select All
+                                </>
+                              )}
+                            </button>
+                          );
+                        })()}
+                      </div>
                       <div className="flex flex-wrap gap-2">
                         {getDisplayScaleNames(showBasicModesOnly as boolean).map((scale) => {
                           const isSelected = (manualScaleName || scaleName) === scale;

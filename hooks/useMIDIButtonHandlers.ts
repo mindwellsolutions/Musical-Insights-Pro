@@ -122,12 +122,40 @@ interface MIDIButtonHandlersCallbacks {
  * Hook to handle MIDI button presses and trigger webapp actions.
  * Subscribes to section/item change events to show premium toasts.
  */
+// ── No-sections toast ─────────────────────────────────────────────────────────
+
+let noSectionToastActive = false; // module-level debounce flag
+
+function showNoSectionsToast() {
+  if (noSectionToastActive) return;
+  noSectionToastActive = true;
+  toast('No Sections Selected', {
+    description: 'Tap the 🎹 MIDI icon next to any section to add it to the pedal cycle.',
+    duration: 4000,
+    position: 'top-right',
+    style: {
+      background: 'rgba(14,14,22,0.97)',
+      border: '1px solid rgba(255,180,0,0.35)',
+      boxShadow: '0 8px 32px rgba(0,0,0,0.6)',
+      borderRadius: 12,
+      color: '#fff',
+    },
+    icon: '⚠️',
+    onDismiss: () => { noSectionToastActive = false; },
+    onAutoClose: () => { noSectionToastActive = false; },
+  });
+}
+
 export function useMIDIButtonHandlers(callbacks: MIDIButtonHandlersCallbacks) {
   const { config, isConnected, lastMIDIMessage } = useMIDIPedal();
   const {
     dispatchItemNav, nextSection, prevSection,
     onSectionChange, onItemChange, pedalSwitchingMode,
+    enabledSectionIds,
   } = useMIDISelection();
+
+  const enabledSectionIdsRef = useRef(enabledSectionIds);
+  useEffect(() => { enabledSectionIdsRef.current = enabledSectionIds; }, [enabledSectionIds]);
 
   // Use refs to avoid re-creating effect when callbacks change
   const callbacksRef = useRef(callbacks);
@@ -178,10 +206,12 @@ export function useMIDIButtonHandlers(callbacks: MIDIButtonHandlersCallbacks) {
     switch (action) {
       // ── Next Section / Last Section — cycle the MIDI-focused section ──────
       case 'prev':
+        if (enabledSectionIdsRef.current.size === 0) { showNoSectionsToast(); break; }
         nextSectionRef.current();
         callbacksRef.current.onPrev?.();
         break;
       case 'next':
+        if (enabledSectionIdsRef.current.size === 0) { showNoSectionsToast(); break; }
         prevSectionRef.current();
         callbacksRef.current.onNext?.();
         break;
