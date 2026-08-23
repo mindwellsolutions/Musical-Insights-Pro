@@ -53,24 +53,20 @@ function extractNote(str: string): string | null {
 function showSectionToast(newId: MIDISectionId, prevId: MIDISectionId | null, direction: 'next' | 'prev') {
   const newName = getSectionName(newId);
 
-  // Use description for the centered section name; title line shows "Selected Section:"
-  toast(
-    `<span style="font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;opacity:0.5;">Selected Section:</span>`,
-    {
-      description: `<span style="display:block;text-align:center;font-size:15px;font-weight:700;letter-spacing:0.01em;margin-top:2px;">${newName}</span>` as unknown as string,
-      duration: 2000,
-      position: 'top-right',
-      style: {
-        background: 'rgba(14,14,22,0.97)',
-        border: '1px solid rgba(255,255,255,0.10)',
-        boxShadow: '0 8px 32px rgba(0,0,0,0.6)',
-        borderRadius: 12,
-        color: '#fff',
-        textAlign: 'center',
-      },
-      icon: direction === 'next' ? '⏭' : '⏮',
-    }
-  );
+  toast('Selected Section:', {
+    description: newName,
+    duration: 2000,
+    position: 'top-right',
+    style: {
+      background: 'rgba(14,14,22,0.97)',
+      border: '1px solid rgba(255,255,255,0.10)',
+      boxShadow: '0 8px 32px rgba(0,0,0,0.6)',
+      borderRadius: 12,
+      color: '#fff',
+      textAlign: 'center',
+    },
+    icon: direction === 'next' ? '⏭' : '⏮',
+  });
 }
 
 function showItemChangeToast(sectionId: MIDISectionId, prev: string | null, next: string) {
