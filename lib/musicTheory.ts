@@ -33,18 +33,18 @@ export const CHORD_TONE_COLORS = {
 //   Green (#4caf50) = 5th band:    4, b5, 5
 //   Purple(#A07ED4) = 7th band:    b6, 6, b7, 7
 export const ALL_INTERVAL_COLORS: Record<number, string> = {
-  0: '#E85555',   // Root (P1)        - Red   (chord tone: root)
-  1: '#E85555',   // b2 (m2)          - Red   (root band)
-  2: '#F5BC3C',   // 2nd (M2)         - Gold  (3rd band)
-  3: '#F5BC3C',   // b3 (m3)          - Gold  (3rd band)
-  4: '#F5BC3C',   // 3rd (M3)         - Gold  (chord tone: third)
-  5: '#4caf50',   // 4th (P4)         - Green (5th band)
-  6: '#4caf50',   // b5 / Tritone     - Green (5th band)
-  7: '#4caf50',   // 5th (P5)         - Green (chord tone: fifth)
-  8: '#A07ED4',   // b6 (m6)          - Purple (7th band)
-  9: '#A07ED4',   // 6th (M6)         - Purple (7th band)
-  10: '#A07ED4',  // b7 (m7)          - Purple (7th band)
-  11: '#A07ED4',  // 7th (M7)         - Purple (chord tone: seventh)
+  0:  '#E85555',  // Root (P1)    - Red          (chord tone: root)
+  1:  '#E8853A',  // b2  (m2)     - Orange       (distinct from root red)
+  2:  '#F5BC3C',  // 2nd (M2)     - Amber/Gold   (chord tone: third band)
+  3:  '#D4C820',  // b3  (m3)     - Yellow-lime  (distinct from amber)
+  4:  '#F5BC3C',  // 3rd (M3)     - Amber/Gold   (chord tone: third)
+  5:  '#4caf50',  // 4th (P4)     - Green        (5th band)
+  6:  '#00BCD4',  // b5  (Tri)    - Cyan         (very distinct: tritone)
+  7:  '#26A69A',  // 5th (P5)     - Teal         (chord tone: fifth, distinct from green)
+  8:  '#A07ED4',  // b6  (m6)     - Purple       (7th band)
+  9:  '#E879A0',  // 6th (M6)     - Pink/Rose    (distinct from purple)
+  10: '#5C8EE6',  // b7  (m7)     - Cornflower blue (distinct from purple)
+  11: '#A07ED4',  // 7th (M7)     - Purple       (chord tone: seventh)
 };
 
 // Interval label names by semitone from root

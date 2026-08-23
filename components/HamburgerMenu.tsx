@@ -466,16 +466,45 @@ export default function HamburgerMenu({
           {/* TOOLS */}
           <SectionLabel>Tools</SectionLabel>
           {onShowGuide && (
-            <NavRow icon={<HelpCircle size={17} />} label="Tutorial Guide" onClick={() => { onShowGuide(); close(); }} />
-          )}
-          {onShowGuideAtStartChange && (
-            <ToggleRow
-              icon={<BookOpen size={14} />}
-              label="Show Guide on Startup"
-              isOn={showGuideAtStart}
-              onToggle={() => onShowGuideAtStartChange(!showGuideAtStart)}
-              indented
-            />
+            <div
+              style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                padding: '0 20px', height: 46, cursor: 'pointer', userSelect: 'none',
+                transition: 'background 0.15s ease',
+              }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.background = 'var(--mi-bg-elevated)'; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.background = 'transparent'; }}
+              onClick={() => { onShowGuide(); close(); }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 13 }}>
+                <span style={{ width: 18, height: 18, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--mi-text-secondary)' }}>
+                  <HelpCircle size={17} />
+                </span>
+                <span style={{ fontSize: 14, fontWeight: 500, color: '#c0c0d8' }}>Tutorial Guide</span>
+              </div>
+              {onShowGuideAtStartChange && (
+                <div
+                  onClick={(e) => { e.stopPropagation(); onShowGuideAtStartChange(!showGuideAtStart); }}
+                  style={{ flexShrink: 0 }}
+                  title="Show Guide on Startup"
+                >
+                  <div style={{
+                    width: 42, height: 24, borderRadius: 12, position: 'relative',
+                    background: showGuideAtStart ? 'var(--mi-accent-blue)' : 'rgba(255,255,255,0.08)',
+                    border: `1px solid ${showGuideAtStart ? 'var(--mi-accent-blue)' : 'var(--mi-border-medium)'}`,
+                    boxShadow: showGuideAtStart ? '0 0 8px rgba(59,130,246,0.35)' : 'none',
+                    transition: 'background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease',
+                  }}>
+                    <div style={{
+                      position: 'absolute', top: 3, left: showGuideAtStart ? 21 : 3,
+                      width: 16, height: 16, borderRadius: '50%', background: '#fff',
+                      boxShadow: '0 1px 4px rgba(0,0,0,0.35)',
+                      transition: 'left 0.2s cubic-bezier(0.4,0,0.2,1)',
+                    }} />
+                  </div>
+                </div>
+              )}
+            </div>
           )}
           {onSave && (
             <NavRow icon={<Save size={17} />} label="Save" onClick={() => { onSave(); close(); }} />
