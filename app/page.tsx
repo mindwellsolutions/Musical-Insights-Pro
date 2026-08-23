@@ -150,6 +150,7 @@ export default function Home() {
 
   // Triad system state
   const [showTriadMode, setShowTriadMode] = useLocalStorage('guitar-app-show-triad-mode', false);
+  const [showBasicModesOnly] = useLocalStorage('guitar-app-scale-mode-basic-only', true);
   const [triadData, setTriadData] = useState<any>(null);
   const [fretboardData, setFretboardData] = useState<any>(null);
   const [selectedTriadInversion, setSelectedTriadInversion] = useSupabaseStorage<TriadInversion>('guitar-app-selected-triad-inversion', 'root');
@@ -3801,7 +3802,7 @@ export default function Home() {
                         Select a scale or mode — MIDI Switch Left/Right navigates cards
                       </p>
                       <div className="flex flex-wrap gap-2">
-                        {getDisplayScaleNames(false).map((scale) => {
+                        {getDisplayScaleNames(showBasicModesOnly as boolean).map((scale) => {
                           const isSelected = (manualScaleName || scaleName) === scale;
                           return (
                             <button
