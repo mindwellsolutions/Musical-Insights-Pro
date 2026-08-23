@@ -47,6 +47,7 @@ export default function CompatibleScalesSection({
   const { getNoteDisplayName } = useNoteDisplay();
   const [isExpanded, setIsExpanded] = useState(true);
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
+  const [isGenreFilterExpanded, setIsGenreFilterExpanded] = useState(false);
   const [midiSelectedIndex, setMidiSelectedIndex] = useState<number>(-1);
   const isDark = theme === 'dark';
   const scaleRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -402,41 +403,61 @@ export default function CompatibleScalesSection({
       {/* Genre Filter UI */}
       {isExpanded && allGenres.length > 0 && (
         <div style={genreFilterContainerStyle}>
-          <div style={genreFilterLabelStyle}>Filter by Genre:</div>
-          <div style={genreTagsContainerStyle}>
-            {allGenres.map((genre) => (
-              <div
-                key={genre}
-                style={genreTagStyle(selectedGenres.includes(genre))}
-                onClick={() => toggleGenre(genre)}
-                onMouseEnter={(e) => {
-                  if (!selectedGenres.includes(genre)) {
-                    e.currentTarget.style.backgroundColor = isDark ? '#333' : '#d8d8d8';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (!selectedGenres.includes(genre)) {
-                    e.currentTarget.style.backgroundColor = isDark ? '#2a2a2a' : '#e8e8e8';
-                  }
-                }}
-              >
-                {genre}
-              </div>
-            ))}
+          {/* Collapsible header row */}
+          <div
+            style={{ display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer', userSelect: 'none' }}
+            onClick={() => setIsGenreFilterExpanded(prev => !prev)}
+          >
+            <div style={genreFilterLabelStyle}>Filter by Genre:</div>
+            <span style={{ fontSize: 10, color: isDark ? '#888' : '#666', lineHeight: 1 }}>
+              {isGenreFilterExpanded ? '▲' : '▼'}
+            </span>
+            {selectedGenres.length > 0 && !isGenreFilterExpanded && (
+              <span style={{ fontSize: 11, color: '#4CAF50', fontWeight: 600 }}>
+                ({selectedGenres.length} active)
+              </span>
+            )}
           </div>
-          {selectedGenres.length > 0 && (
-            <div
-              style={clearFilterButtonStyle}
-              onClick={clearGenreFilters}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = isDark ? '#3a3a3a' : '#ccc';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = isDark ? '#333' : '#ddd';
-              }}
-            >
-              Clear Filters
-            </div>
+
+          {/* Genre pills — only shown when expanded */}
+          {isGenreFilterExpanded && (
+            <>
+              <div style={genreTagsContainerStyle}>
+                {allGenres.map((genre) => (
+                  <div
+                    key={genre}
+                    style={genreTagStyle(selectedGenres.includes(genre))}
+                    onClick={() => toggleGenre(genre)}
+                    onMouseEnter={(e) => {
+                      if (!selectedGenres.includes(genre)) {
+                        e.currentTarget.style.backgroundColor = isDark ? '#333' : '#d8d8d8';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!selectedGenres.includes(genre)) {
+                        e.currentTarget.style.backgroundColor = isDark ? '#2a2a2a' : '#e8e8e8';
+                      }
+                    }}
+                  >
+                    {genre}
+                  </div>
+                ))}
+              </div>
+              {selectedGenres.length > 0 && (
+                <div
+                  style={clearFilterButtonStyle}
+                  onClick={clearGenreFilters}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = isDark ? '#3a3a3a' : '#ccc';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = isDark ? '#333' : '#ddd';
+                  }}
+                >
+                  Clear Filters
+                </div>
+              )}
+            </>
           )}
         </div>
       )}

@@ -74,6 +74,33 @@ export default function TriadCAGEDToggleCard({
       }}
     >
       <div className="space-y-2">
+        {/* Back button — shown only when Triads & CAGED is ON */}
+        {showTriadMode && (
+          <button
+            onClick={() => {
+              if (overlappingChordsEnabled && onOverlappingChordsChange) {
+                onOverlappingChordsChange(false);
+              }
+              onTriadModeChange(false);
+            }}
+            className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold transition-all hover:opacity-80"
+            style={{
+              background: 'transparent',
+              border: `1px solid ${theme.border}`,
+              color: theme.textSecondary,
+              cursor: 'pointer',
+              width: '100%',
+              justifyContent: 'flex-start',
+            }}
+            aria-label="Back — turn off Triads & CAGED"
+          >
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+            Back
+          </button>
+        )}
+
         <ToggleRow
           label="Triads & CAGED"
           isOn={showTriadMode}
