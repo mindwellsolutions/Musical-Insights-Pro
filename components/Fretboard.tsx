@@ -1062,12 +1062,13 @@ export default function Fretboard({
 
                             if (inFocusTriad) {
                               // Keep each note's true identity color (circleFill already set above)
-                              // Bump root note size +12%
-                              if (isRootNote) {
+                              // Bump root note size +12% only when Key highlight is NOT active
+                              if (isRootNote && !showRootNoteHighlight) {
                                 circleDiameter = 36;
                               }
                               // Root highlight: override the focus triad border/glow with red
                               if (showRootNoteHighlight && isRootNote) {
+                                circleDiameter = 32; // match 7th circle size exactly
                                 borderColor = `${focusBorderPx}px solid ${ROOT_HL_COLOR}`;
                                 finalBoxShadow = `0 0 0 6px ${hexToRgba(ROOT_HL_COLOR, 0.7)}, 0 0 14px ${hexToRgba(ROOT_HL_COLOR, 0.5)}`;
                               } else if (foregroundNoteColors && foregroundNoteColors[normalizedNote]) {
@@ -1104,7 +1105,7 @@ export default function Fretboard({
                               // Non-triad scale note: check if it's a highlighted Root or 7th
                               if (showRootNoteHighlight && isRootNote) {
                                 // Root note outside triad: render as forefront with red border/glow
-                                circleDiameter = 34;
+                                circleDiameter = 32; // match 7th circle size exactly
                                 borderColor = `3px solid ${ROOT_HL_COLOR}`;
                                 finalBoxShadow = `0 0 0 6px ${hexToRgba(ROOT_HL_COLOR, 0.7)}, 0 0 14px ${hexToRgba(ROOT_HL_COLOR, 0.5)}`;
                                 // Full opacity — do NOT dim
