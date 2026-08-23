@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
+import { MIDISectionToggle } from '@/components/midi/MIDISectionToggle';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -329,6 +330,42 @@ export default function Header({
   // Scale/Mode filter state - defaults to true (Basic mode) and persists in localStorage
   const [showBasicModesOnly, setShowBasicModesOnly] = useLocalStorage('guitar-app-scale-mode-basic-only', true);
 
+  // ── MIDI callbacks for Key and Scale/Mode cycling ─────────────────────────
+
+  const handleMIDIKeyLeft = useCallback(() => {
+    if (!onManualKeyScaleChange) return;
+    const notes = getNotesDisplay();
+    const currentInternal = manualKey;
+    const currentIdx = notes.findIndex(n => normalizeNoteFromDisplay(n) === currentInternal);
+    const newIdx = currentIdx <= 0 ? notes.length - 1 : currentIdx - 1;
+    onManualKeyScaleChange(normalizeNoteFromDisplay(notes[newIdx]), manualScaleName);
+  }, [getNotesDisplay, manualKey, manualScaleName, onManualKeyScaleChange]);
+
+  const handleMIDIKeyRight = useCallback(() => {
+    if (!onManualKeyScaleChange) return;
+    const notes = getNotesDisplay();
+    const currentInternal = manualKey;
+    const currentIdx = notes.findIndex(n => normalizeNoteFromDisplay(n) === currentInternal);
+    const newIdx = currentIdx >= notes.length - 1 ? 0 : currentIdx + 1;
+    onManualKeyScaleChange(normalizeNoteFromDisplay(notes[newIdx]), manualScaleName);
+  }, [getNotesDisplay, manualKey, manualScaleName, onManualKeyScaleChange]);
+
+  const handleMIDIScaleLeft = useCallback(() => {
+    if (!onManualKeyScaleChange) return;
+    const scales = getDisplayScaleNames(showBasicModesOnly as boolean);
+    const currentIdx = scales.findIndex(s => s === manualScaleName);
+    const newIdx = currentIdx <= 0 ? scales.length - 1 : currentIdx - 1;
+    onManualKeyScaleChange(manualKey, scales[newIdx]);
+  }, [showBasicModesOnly, manualKey, manualScaleName, onManualKeyScaleChange]);
+
+  const handleMIDIScaleRight = useCallback(() => {
+    if (!onManualKeyScaleChange) return;
+    const scales = getDisplayScaleNames(showBasicModesOnly as boolean);
+    const currentIdx = scales.findIndex(s => s === manualScaleName);
+    const newIdx = currentIdx >= scales.length - 1 ? 0 : currentIdx + 1;
+    onManualKeyScaleChange(manualKey, scales[newIdx]);
+  }, [showBasicModesOnly, manualKey, manualScaleName, onManualKeyScaleChange]);
+
   // Format detected key to capitalize properly
   const formatDetectedKey = (key: string | null | undefined): string => {
     if (!key) return 'Analyzing...';
@@ -372,11 +409,8 @@ export default function Header({
 
       {/* ── Top Bar: 64px — Logo · HamburgerMenu · (key detection chip) · User Avatar ── */}
       <div style={{ height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px', gap: 12 }}>
-        {/* Left: Logo + Hamburger */}
+        {/* Left: Hamburger + Logo */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexShrink: 0 }}>
-          <Link href="/" title="Go to Musical Insights Home" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-            <Image src="/images/logo-whitetext.png" alt="Musical Insights" width={120} height={27} priority style={{ objectFit: 'contain', cursor: 'pointer' }} />
-          </Link>
           <HamburgerMenu
             theme={theme}
             isFocusMode={isFocusMode}
@@ -404,6 +438,9 @@ export default function Header({
             onStopDetection={onStopDetection}
             onLogout={handleLogout}
           />
+          <Link href="/" title="Go to Musical Insights Home" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+            <Image src="/images/logo-whitetext.png" alt="Musical Insights" width={120} height={27} priority style={{ objectFit: 'contain', cursor: 'pointer' }} />
+          </Link>
         </div>
 
         {/* Center: current scale display (compact) */}
@@ -644,9 +681,18 @@ export default function Header({
                 <div className="flex flex-col gap-3" data-guide="manual-selection">
                   {/* Root Note Buttons */}
                   <div>
-                    <label className="block text-xs font-medium mb-2" style={{ color: theme.textSecondary }}>
-                      Key
-                    </label>
+                    <div className="flex items-center gap-2 mb-2">
+                      <label className="text-xs font-medium" style={{ color: theme.textSecondary }}>
+                        Key
+                      </label>
+                      <MIDISectionToggle
+                        sectionId="key-select"
+                        label="Select Key"
+                        onLeft={handleMIDIKeyLeft}
+                        onRight={handleMIDIKeyRight}
+                        theme={theme}
+                      />
+                    </div>
                     <div className="flex gap-1.5">
                       {getNotesDisplay().map((displayNote) => {
                         const internalNote = normalizeNoteFromDisplay(displayNote);
@@ -707,9 +753,18 @@ export default function Header({
 
                   {/* Scale/Mode Row with Dropdown, Toggle, and Add Button */}
                   <div>
-                    <label className="block text-xs font-medium mb-2" style={{ color: theme.textSecondary }}>
-                      Scale/Mode
-                    </label>
+                    <div className="flex items-center gap-2 mb-2">
+                      <label className="text-xs font-medium" style={{ color: theme.textSecondary }}>
+                        Scale/Mode
+                      </label>
+                      <MIDISectionToggle
+                        sectionId="scale-mode-select"
+                        label="Select Scale/Mode"
+                        onLeft={handleMIDIScaleLeft}
+                        onRight={handleMIDIScaleRight}
+                        theme={theme}
+                      />
+                    </div>
                     <div className="flex gap-2 items-center">
                       {/* Scale/Mode Dropdown */}
                       <select

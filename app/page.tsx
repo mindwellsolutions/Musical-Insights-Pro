@@ -89,6 +89,7 @@ import {
 } from '@/lib/overlay-patterns';
 import { useNoteDisplay } from '@/hooks/useNoteDisplay';
 import { SliderResetButton } from '@/components/shared/SliderResetButton';
+import { MIDISectionToggle } from '@/components/midi/MIDISectionToggle';
 
 // Degree → display color for the chord-tone progression pattern indicator
 const PATTERN_DEGREE_COLORS: Record<string, string> = {
@@ -3396,6 +3397,13 @@ export default function Home() {
                                 onNext={handleFocusNext}
                                 theme={theme}
                               />
+                              <MIDISectionToggle
+                                sectionId="progression-degrees"
+                                label="Progression Degrees"
+                                onLeft={handleFocusPrevious}
+                                onRight={handleFocusNext}
+                                theme={theme}
+                              />
 
                               {/* Notes in <degree>: circles to the right of the nav */}
                               {focusTriad && (() => {
@@ -3875,6 +3883,17 @@ export default function Home() {
                                 </span>
                               </div>
                             </div>
+                          )}
+
+                          {/* MIDI toggle for Chord Neighborhood — always rendered in triad mode so it stays registered */}
+                          {fretboardOrder === 'triads-top' && (
+                            <MIDISectionToggle
+                              sectionId="chord-neighborhood"
+                              label="Chord Neighborhood"
+                              onLeft={handleMIDINearbyChordPrev}
+                              onRight={handleMIDINearbyChordNext}
+                              theme={theme}
+                            />
                           )}
                           </div>{/* END LEFT group */}
 
@@ -4770,14 +4789,23 @@ export default function Home() {
                       {showTriadArcBands && diatonicTriads.length > 0 && (
                         <>
                           {/* Row 2: Triad degree selector strip */}
-                          <TriadFocusSelector
-                            available={diatonicTriads}
-                            selectedDegree={selectedFocusDegree}
-                            onSelect={handleFocusDegreeSelect}
-                            onPrevious={handleFocusPrevious}
-                            onNext={handleFocusNext}
-                            theme={theme}
-                          />
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                            <TriadFocusSelector
+                              available={diatonicTriads}
+                              selectedDegree={selectedFocusDegree}
+                              onSelect={handleFocusDegreeSelect}
+                              onPrevious={handleFocusPrevious}
+                              onNext={handleFocusNext}
+                              theme={theme}
+                            />
+                            <MIDISectionToggle
+                              sectionId="progression-degrees"
+                              label="Progression Degrees"
+                              onLeft={handleFocusPrevious}
+                              onRight={handleFocusNext}
+                              theme={theme}
+                            />
+                          </div>
 
                         </>
                       )}
