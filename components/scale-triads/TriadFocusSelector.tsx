@@ -4,7 +4,6 @@ import { DiatonicTriad } from '@/lib/music-theory/triad-membership/types';
 import { ThemeConfig } from '@/lib/themes';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useNoteDisplay } from '@/hooks/useNoteDisplay';
-import { MIDISectionToggle } from '@/components/midi/MIDISectionToggle';
 
 interface TriadFocusSelectorProps {
   available: DiatonicTriad[];
@@ -133,14 +132,7 @@ export function TriadFocusSelector({
         <ChevronRight size={16} />
       </button>
 
-      {/* MIDI Section Toggle */}
-      <MIDISectionToggle
-        sectionId="triads"
-        label="Triads"
-        onLeft={onPrevious}
-        onRight={onNext}
-        theme={theme}
-      />
+      {/* MIDI Section Toggle is rendered always-mounted in page.tsx to keep triads in cycle even when this component is unmounted */}
     </div>
   );
 }

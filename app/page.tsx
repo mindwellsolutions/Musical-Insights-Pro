@@ -1766,6 +1766,7 @@ export default function Home() {
         setHarmonizationTab('scalesModes');
       } else if (newId === 'triads') {
         setHarmonizationTab('visualInsights');
+        setShowTriadArcBands(true);
       }
     });
     return unsub;
@@ -2601,6 +2602,17 @@ export default function Home() {
       onMouseUp={isDraggingHorizontal ? handleHorizontalDragEnd : undefined}
       onMouseLeave={isDraggingHorizontal ? handleHorizontalDragEnd : undefined}
     >
+      {/* Always-mounted hidden MIDI toggle for triads — keeps it in the section cycle even when Visual Insights tab is closed */}
+      <div style={{ display: 'none' }}>
+        <MIDISectionToggle
+          sectionId="triads"
+          label="Triads"
+          onLeft={handleFocusPrevious}
+          onRight={handleFocusNext}
+          theme={theme}
+        />
+      </div>
+
       {/* Audio Detection Sidebar - Hidden in Focus Mode */}
       {!isFocusMode && (
         <AudioSidebar
