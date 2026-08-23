@@ -633,26 +633,6 @@ export function AudioSidebar({
             )}
           </div>
 
-          <div className="flex items-center gap-2 mb-4">
-            <Music className="h-6 w-6" style={{ color: theme.textPrimary }} />
-            <h2 className="text-lg font-bold" style={{ color: theme.textPrimary }}>
-              Audio Input
-            </h2>
-          </div>
-
-          <KeyDetectionPanel
-            theme={currentTheme}
-            autoRecommendation={autoRecommendation}
-            autoSwitchFretboard={autoSwitchFretboard}
-            onScaleChange={onScaleChange}
-            onDetectedKeyChange={onDetectedKeyChange}
-            onCompatibleScalesChange={onCompatibleScalesChange}
-            onSelectedScaleChange={onSelectedScaleChange}
-            onDetectionStateChange={onDetectionStateChange}
-            onStartDetectionReady={onStartDetectionReady}
-            onStopDetectionReady={onStopDetectionReady}
-          />
-
           {/* MIDI Pedal Section */}
           <MIDIPedalStatus theme={theme} />
 
@@ -809,18 +789,62 @@ export function AudioSidebar({
               )}
             </div>
 
-            {/* Note Detector Section */}
-            <NoteDetectorSidebar
-              theme={theme}
-              enabled={noteDetectorEnabled}
-              onDetectedNoteChange={onDetectedNoteChange}
-              liveNotesGlowEnabled={liveNotesGlowEnabled}
-              onLiveNotesGlowChange={onLiveNotesGlowChange}
-              liveNotesGlowDuration={liveNotesGlowDuration}
-              onLiveNotesGlowDurationChange={onLiveNotesGlowDurationChange}
-              circleOf5thsGlowDuration={circleOf5thsGlowDuration}
-              onCircleOf5thsGlowDurationChange={onCircleOf5thsGlowDurationChange}
-            />
+            {/* Beta Settings Section — Audio Input + Note Detector */}
+            <div
+              className="rounded-lg p-3 mt-4"
+              style={{
+                background: theme.bgTertiary,
+                border: `1px solid ${theme.border}`,
+              }}
+            >
+              <div className="flex items-center gap-2 mb-3">
+                <Music className="h-4 w-4" style={{ color: theme.textSecondary }} />
+                <h3 className="text-xs font-semibold" style={{ color: theme.textPrimary }}>
+                  Beta Settings
+                </h3>
+                <span
+                  style={{
+                    fontSize: 9,
+                    fontWeight: 700,
+                    letterSpacing: '0.05em',
+                    padding: '1px 5px',
+                    borderRadius: 4,
+                    background: 'linear-gradient(135deg, #f59e0b, #ef4444)',
+                    color: '#fff',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  Beta
+                </span>
+              </div>
+
+              {/* Audio Input */}
+              <KeyDetectionPanel
+                theme={currentTheme}
+                autoRecommendation={autoRecommendation}
+                autoSwitchFretboard={autoSwitchFretboard}
+                onScaleChange={onScaleChange}
+                onDetectedKeyChange={onDetectedKeyChange}
+                onCompatibleScalesChange={onCompatibleScalesChange}
+                onSelectedScaleChange={onSelectedScaleChange}
+                onDetectionStateChange={onDetectionStateChange}
+                onStartDetectionReady={onStartDetectionReady}
+                onStopDetectionReady={onStopDetectionReady}
+              />
+
+              {/* Note Detector */}
+              <NoteDetectorSidebar
+                theme={theme}
+                enabled={noteDetectorEnabled}
+                onDetectedNoteChange={onDetectedNoteChange}
+                liveNotesGlowEnabled={liveNotesGlowEnabled}
+                onLiveNotesGlowChange={onLiveNotesGlowChange}
+                liveNotesGlowDuration={liveNotesGlowDuration}
+                onLiveNotesGlowDurationChange={onLiveNotesGlowDurationChange}
+                circleOf5thsGlowDuration={circleOf5thsGlowDuration}
+                onCircleOf5thsGlowDurationChange={onCircleOf5thsGlowDurationChange}
+              />
+            </div>
 
             {/* Guide Settings Section */}
             <div
