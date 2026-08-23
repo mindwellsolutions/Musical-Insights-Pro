@@ -43,6 +43,8 @@ interface HamburgerMenuProps {
   onStopDetection?: () => void;
   onPedalSwitchingModeChange?: (mode: 'passive' | 'realtime') => void;
   onLogout?: () => void;
+  /** Increment this value to programmatically open the menu (e.g. from Settings back button) */
+  forceOpen?: number;
 }
 
 // ── Reusable sub-components ──────────────────────────────────────────────────
@@ -200,6 +202,7 @@ export default function HamburgerMenu({
   onStopDetection,
   onPedalSwitchingModeChange,
   onLogout,
+  forceOpen,
 }: HamburgerMenuProps) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
@@ -212,6 +215,11 @@ export default function HamburgerMenu({
     if (href === '/') return pathname === '/';
     return pathname === href || pathname.startsWith(href + '/');
   };
+
+  // Open programmatically when forceOpen increments (e.g. Settings back button)
+  useEffect(() => {
+    if (forceOpen) setIsOpen(true);
+  }, [forceOpen]);
 
   // Lock body scroll when open
   useEffect(() => {

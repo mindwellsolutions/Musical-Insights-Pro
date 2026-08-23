@@ -63,6 +63,8 @@ interface AudioSidebarProps {
   hideToggleButton?: boolean;
   fretWidth?: number;
   onFretWidthChange?: (width: number) => void;
+  /** Called when the back button is clicked — should close settings and open the menu panel */
+  onBack?: () => void;
 }
 
 export function AudioSidebar({
@@ -114,6 +116,7 @@ export function AudioSidebar({
   hideToggleButton = false,
   fretWidth = 50,
   onFretWidthChange,
+  onBack,
 }: AudioSidebarProps) {
   // Shared skill level state - synced with AI Assistant and Compatible Scales
   const [skillLevel, setSkillLevel] = useSharedSkillLevel();
@@ -237,7 +240,7 @@ export function AudioSidebar({
           {/* Back button — top-left of settings panel */}
           <div className="mb-3">
             <button
-              onClick={toggleExpanded}
+              onClick={() => { if (onBack) { onBack(); } else { toggleExpanded(); } }}
               aria-label="Back to main view"
               style={{
                 display: 'inline-flex',

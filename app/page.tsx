@@ -1014,6 +1014,9 @@ export default function Home() {
   const midiScaleLeftHandler = useRef<(() => void) | null>(null);
   const midiScaleRightHandler = useRef<(() => void) | null>(null);
 
+  // Incrementing trigger to programmatically open the hamburger menu (e.g. Settings back button)
+  const [openMenuTrigger, setOpenMenuTrigger] = useState(0);
+
   // Audio sidebar state — auto-open if navigated from another page via AppSettingsButton
   const [isAudioSidebarExpanded, setIsAudioSidebarExpanded] = useState(() => {
     if (typeof window !== 'undefined' && sessionStorage.getItem('openAudioSidebar') === '1') {
@@ -2677,6 +2680,10 @@ export default function Home() {
           onStringBrightnessChange={setStringBrightness}
           fretWidth={fretWidth}
           onFretWidthChange={setFretWidth}
+          onBack={() => {
+            setIsAudioSidebarExpanded(false);
+            setOpenMenuTrigger(prev => prev + 1);
+          }}
         />
       )}
 
@@ -2812,6 +2819,7 @@ export default function Home() {
         onOverlayModeChange={setOverlayMode}
         pedalSwitchingMode={pedalSwitchingMode}
         onPedalSwitchingModeChange={setPedalSwitchingMode}
+        openMenuTrigger={openMenuTrigger}
       />
       )}
 

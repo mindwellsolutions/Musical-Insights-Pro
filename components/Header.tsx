@@ -174,6 +174,8 @@ interface HeaderProps {
   // Pedal Switching View mode
   pedalSwitchingMode?: 'passive' | 'realtime';
   onPedalSwitchingModeChange?: (mode: 'passive' | 'realtime') => void;
+  /** Increment to programmatically open the hamburger menu */
+  openMenuTrigger?: number;
 }
 
 export default function Header({
@@ -304,6 +306,7 @@ export default function Header({
   onOverlayModeChange,
   pedalSwitchingMode = 'passive',
   onPedalSwitchingModeChange,
+  openMenuTrigger,
 }: HeaderProps) {
   const themeKeys = Object.keys(themes) as Theme[];
   const availableTunings = Object.keys(TUNINGS[stringCount]);
@@ -437,6 +440,7 @@ export default function Header({
             noteDetectorEnabled={noteDetectorEnabled}
             isDetecting={isDetecting}
             onToggleSettings={onToggleSettings}
+            forceOpen={openMenuTrigger}
             onFocusModeChange={onFocusModeChange}
             onShowGuide={onShowGuide}
             showGuideAtStart={showGuideAtStart}
