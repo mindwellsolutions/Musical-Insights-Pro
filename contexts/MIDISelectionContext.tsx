@@ -134,8 +134,19 @@ export function MIDISelectionProvider({ children }: { children: ReactNode }) {
   const [sectionProfiles, setSectionProfiles] = useState<MIDISectionProfile[]>([]);
   const [pedalSwitchingMode, setPedalSwitchingModeState] = useState<PedalSwitchingMode>('passive');
 
-  // Ordered list of registered section IDs (registration order = DOM order)
+  // Canonical cycling order — determines the sequence of Next/Last Section pedal steps.
+  // Sections not in this list fall back to registration (DOM) order at the tail.
+  const CANONICAL_ORDER: MIDISectionId[] = [
+    'key-select',
+    'scale-mode-select',
+    'triads',
+    'compatible-scales',
+  ];
+
+  // Registered section IDs (still tracked so we know what is mounted)
   const registeredOrder = useRef<MIDISectionId[]>([]);
+  // Ref-count per section so duplicate toggles (hidden + visible) don't evict each other
+  const registrationCount = useRef<Map<MIDISectionId, number>>(new Map());
   const callbacksMap = useRef<Map<MIDISectionId, SectionCallbacks>>(new Map());
   // Listener sets for section/item change events
   const sectionChangeListeners = useRef<Set<SectionChangeListener>>(new Set());
@@ -153,14 +164,22 @@ export function MIDISelectionProvider({ children }: { children: ReactNode }) {
   // ── Registration ───────────────────────────────────────────────────────────
 
   const registerSectionOrder = useCallback((id: MIDISectionId) => {
+    const count = (registrationCount.current.get(id) ?? 0) + 1;
+    registrationCount.current.set(id, count);
     if (!registeredOrder.current.includes(id)) {
       registeredOrder.current = [...registeredOrder.current, id];
     }
   }, []);
 
   const unregisterSectionOrder = useCallback((id: MIDISectionId) => {
-    registeredOrder.current = registeredOrder.current.filter(s => s !== id);
-    setActiveSectionIdState(prev => (prev === id ? null : prev));
+    const count = (registrationCount.current.get(id) ?? 1) - 1;
+    registrationCount.current.set(id, count);
+    // Only remove from order when the last instance unmounts
+    if (count <= 0) {
+      registrationCount.current.delete(id);
+      registeredOrder.current = registeredOrder.current.filter(s => s !== id);
+      setActiveSectionIdState(prev => (prev === id ? null : prev));
+    }
   }, []);
 
   const registerCallbacks = useCallback((id: MIDISectionId, callbacks: SectionCallbacks) => {
@@ -168,7 +187,11 @@ export function MIDISelectionProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const unregisterCallbacks = useCallback((id: MIDISectionId) => {
-    callbacksMap.current.delete(id);
+    // Only delete if no other instance is still registered
+    const count = registrationCount.current.get(id) ?? 0;
+    if (count <= 0) {
+      callbacksMap.current.delete(id);
+    }
   }, []);
 
   // ── Enabled toggle ─────────────────────────────────────────────────────────
@@ -199,12 +222,22 @@ export function MIDISelectionProvider({ children }: { children: ReactNode }) {
   // ── Section cycling ────────────────────────────────────────────────────────
 
   /**
-   * Returns the ordered list of enabled+registered section IDs.
-   * Only sections both registered (in DOM) AND enabled (user turned on) are included.
+   * Returns the ordered list of enabled section IDs.
+   * Uses CANONICAL_ORDER for the known sections, then appends any additional
+   * registered+enabled sections that aren't in the canonical list.
+   * A section does NOT need to be currently mounted (registered) to appear —
+   * it only needs to be enabled. Callbacks are still required for item-nav.
    */
   const getEnabledOrdered = useCallback((): MIDISectionId[] => {
-    return registeredOrder.current.filter(id => enabledSectionIds.has(id));
-  }, [enabledSectionIds]);
+    const enabled = enabledSectionIds;
+    // 1. Canonical slots that are enabled (regardless of mount state)
+    const canonical = CANONICAL_ORDER.filter(id => enabled.has(id));
+    // 2. Any extra registered+enabled sections not in the canonical list
+    const extras = registeredOrder.current.filter(
+      id => enabled.has(id) && !CANONICAL_ORDER.includes(id)
+    );
+    return [...canonical, ...extras];
+  }, [enabledSectionIds]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const nextSection = useCallback((): MIDISectionId | null => {
     const ordered = getEnabledOrdered();
