@@ -2403,6 +2403,12 @@ export default function Home() {
       setOverlappingChordsEnabled(false);
     }
 
+    // When turning ON Triads & CAGED, automatically enable CAGED Guide and CAGED Scales
+    if (enabled) {
+      setShowCAGEDGuide(true);
+      setShowPentatonicCAGEDGuide(true);
+    }
+
     // When turning OFF Triads & CAGED, clear all chord neighborhood state
     // This ensures nearby chords don't remain visible on the fretboard
     if (!enabled) {
@@ -2436,7 +2442,7 @@ export default function Home() {
       // When turning ON Triads & CAGED, switch to triads view
       setFretboardOrder('triads-top');
     }
-  }, [overlappingChordsEnabled, setShowTriadMode, setOverlappingChordsEnabled, setFretboardOrder]);
+  }, [overlappingChordsEnabled, setShowTriadMode, setOverlappingChordsEnabled, setFretboardOrder, setShowCAGEDGuide, setShowPentatonicCAGEDGuide]);
 
   // ── Triad Arc Band & Focus Mode handlers ───────────────────────────────────
 
