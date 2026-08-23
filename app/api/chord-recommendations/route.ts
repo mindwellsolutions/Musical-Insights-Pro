@@ -63,6 +63,10 @@ function normalizeScaleName(scale: string): string {
     'minorpent': 'minorpentatonic',
     'majorpent': 'majorpentatonic',
 
+    // Extended pentatonic — map to closest DB equivalent (no extended files exist)
+    'extendedpentatonicmajor': 'majorpentatonic',
+    'extendedpentatonicminor': 'minorpentatonic',
+
     // Harmonic/Melodic variations
     'minorharmonic': 'harmonicminor',
     'minormelodic': 'melodicminor',
@@ -71,6 +75,10 @@ function normalizeScaleName(scale: string): string {
     'major': 'ionian',
     'minor': 'aeolian',
     'naturalminor': 'aeolian',
+
+    // Blues
+    'blues': 'blues',
+    'bluesscale': 'blues',
   };
 
   return scaleNameMap[normalized] || normalized;

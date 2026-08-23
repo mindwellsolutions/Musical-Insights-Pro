@@ -125,8 +125,18 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    // Normalize scale name to match database keys
+    // The client sends camelCase keys like "ExtendedPentatonicMajor"; map them to what's in the DB
+    const scaleKeyMap: Record<string, string> = {
+      'ExtendedPentatonicMajor': 'MajorPentatonic',
+      'ExtendedPentatonicMinor': 'MinorPentatonic',
+      'Blues': 'BluesScale',
+      'BluesScale': 'BluesScale',
+    };
+    const resolvedScale = scaleKeyMap[scale] ?? scale;
+
     // Get the scale data
-    const scaleData = database.scales[scale];
+    const scaleData = database.scales[resolvedScale];
 
     if (!scaleData) {
       return NextResponse.json(

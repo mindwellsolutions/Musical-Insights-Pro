@@ -24,7 +24,7 @@ import { Theme, themes, FretboardTheme, fretboardThemes } from '@/lib/themes';
 import { useSupabaseStorage } from '@/hooks/useSupabaseStorage';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { calculateLiveNotePositions, calculateExactLiveNotePosition, LiveNotePosition } from '@/lib/audio/liveNoteDetection';
-import { ScaleCompatibilityRating, getCompatibleScales } from '@/lib/musicalCompatibility';
+import { ScaleCompatibilityRating, getCompatibleScales, getDisplayScaleNames } from '@/lib/musicalCompatibility';
 import { getCompatibleScalesFromDatabase } from '@/lib/music-theory-database/compatibility-service';
 import { dbScaleNameToIntervalsKey } from '@/lib/music-theory-database/scale-mapping';
 import { ManualSelection } from '@/components/ManualSelectionList';
@@ -1061,7 +1061,7 @@ export default function Home() {
   const [selectedHarmonization, setSelectedHarmonization] = useSupabaseStorage<'original' | '3rds' | '5ths' | '6ths' | '7ths'>('guitar-app-harmonization', 'original');
 
   // Harmonization panel tab: 'visualInsights' | 'harmonization' | 'recommended' | 'custom' | 'targetNotes' | 'zones'
-  type HarmonizationTabKey = 'visualInsights' | 'harmonization' | 'recommended' | 'custom' | 'targetNotes' | 'zones';
+  type HarmonizationTabKey = 'visualInsights' | 'harmonization' | 'recommended' | 'custom' | 'targetNotes' | 'zones' | 'scalesModes';
   const [harmonizationTab, setHarmonizationTab] = useSupabaseStorage<HarmonizationTabKey>('guitar-app-harmonization-tab', 'visualInsights');
   // Keep carousel state for the 'recommended' tab
   const [selectedChordTonePattern, setSelectedChordTonePattern] = useState<import('@/components/ChordToneProgressionCarousel').ProgressionPattern | null>(null);
@@ -1756,7 +1756,17 @@ export default function Home() {
   }, [chordNeighborhoodState.isPanelVisible, chordNeighborhoodState.nearbyChords, chordNeighborhoodState.selectedOverlay, handleNearbyChordClick]);
 
   // Pedal switching view mode (from MIDISelectionContext)
-  const { pedalSwitchingMode, setPedalSwitchingMode } = useMIDISelection();
+  const { pedalSwitchingMode, setPedalSwitchingMode, onSectionChange } = useMIDISelection();
+
+  // Auto-switch to Scales & Modes tab when scale-mode-select MIDI section becomes active
+  useEffect(() => {
+    const unsub = onSectionChange((newId) => {
+      if (newId === 'scale-mode-select') {
+        setHarmonizationTab('scalesModes');
+      }
+    });
+    return unsub;
+  }, [onSectionChange, setHarmonizationTab]);
 
   // MIDI Button Handlers - Must be after navigation handlers are defined
   // When chord neighborhood is visible, use nearby chord navigation for scale-left/right
@@ -2856,6 +2866,12 @@ export default function Home() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                       </svg>
                     )},
+                    { key: 'scalesModes' as const, label: 'Scales & Modes', icon: (
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7h4M3 12h4M3 17h4" />
+                      </svg>
+                    )},
                     { key: 'targetNotes' as const, label: 'Target Notes', icon: (
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="10" strokeWidth={2} />
@@ -2871,7 +2887,7 @@ export default function Home() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                       </svg>
                     )},
-                  ] as { key: 'visualInsights' | 'harmonization' | 'recommended' | 'custom' | 'targetNotes' | 'zones'; label: string; icon: React.ReactNode }[]).map(({ key, label, icon }) => {
+                  ] as { key: 'visualInsights' | 'harmonization' | 'recommended' | 'custom' | 'scalesModes' | 'targetNotes' | 'zones'; label: string; icon: React.ReactNode }[]).map(({ key, label, icon }) => {
                     const isActive = harmonizationTab === key;
                     const hasActiveTargetNotes = key === 'targetNotes' && !!targetNoteHighlight;
                     return (
@@ -3778,6 +3794,50 @@ export default function Home() {
                         setManualScaleName(scale);
                       }}
                     />
+                  )}
+                  {harmonizationTab === 'scalesModes' && (
+                    <div>
+                      <p className="text-xs mb-3" style={{ color: theme.textSecondary }}>
+                        Select a scale or mode — MIDI Switch Left/Right navigates cards
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {getDisplayScaleNames(false).map((scale) => {
+                          const isSelected = (manualScaleName || scaleName) === scale;
+                          return (
+                            <button
+                              key={scale}
+                              onClick={() => {
+                                setManualScaleName(scale);
+                                setScaleName(scale);
+                              }}
+                              className="flex flex-col items-center justify-center rounded-xl text-center transition-all"
+                              style={{
+                                minWidth: 84,
+                                maxWidth: 120,
+                                padding: '8px 10px',
+                                background: isSelected ? theme.accentPrimary : theme.bgPrimary,
+                                border: `1.5px solid ${isSelected ? theme.accentPrimary : theme.border}`,
+                                color: isSelected ? '#fff' : theme.textPrimary,
+                                boxShadow: isSelected ? `0 0 12px ${theme.accentPrimary}55` : 'none',
+                                fontWeight: isSelected ? 700 : 500,
+                                fontSize: 11,
+                                lineHeight: 1.3,
+                                cursor: 'pointer',
+                                flexShrink: 0,
+                              }}
+                            >
+                              <span
+                                className="mb-1 flex items-center justify-center"
+                                style={{ fontSize: 14, opacity: isSelected ? 1 : 0.55 }}
+                              >
+                                🎵
+                              </span>
+                              {scale}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
                   )}
                 </div>
               </div>
