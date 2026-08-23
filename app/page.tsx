@@ -2950,7 +2950,7 @@ export default function Home() {
                     <div>
                       {/* ── Triads in Scale Controls ── */}
                       {rootNote && scaleName && (
-                        <div className="flex flex-col gap-2 mb-3" style={{ maxWidth: 1100 }}>
+                        <div className="flex flex-col gap-2 mb-3">
                           {/* Row 1: Triads in Scale toggle + optional chord-tone glow slider */}
                           <div className="flex items-center gap-2 flex-wrap">
                             {/* Triads in Scale toggle → activates Triad Focus mode directly */}
