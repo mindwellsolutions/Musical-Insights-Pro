@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { DiatonicTriad } from '@/lib/music-theory/triad-membership/types';
 import { ThemeConfig } from '@/lib/themes';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -15,6 +16,8 @@ interface TriadFocusSelectorProps {
   /** Set of degree strings included in MIDI cycle. Defaults to all if undefined. */
   enabledDegrees?: Set<string>;
   onToggleDegree?: (degree: string) => void;
+  /** Optional MIDI icon button rendered after the ▶ arrow */
+  midiToggle?: React.ReactNode;
 }
 
 /**
@@ -31,6 +34,7 @@ export function TriadFocusSelector({
   theme,
   enabledDegrees,
   onToggleDegree,
+  midiToggle,
 }: TriadFocusSelectorProps) {
   const { getNoteDisplayName } = useNoteDisplay();
   if (!available || available.length === 0) return null;
@@ -164,7 +168,8 @@ export function TriadFocusSelector({
         <ChevronRight size={16} />
       </button>
 
-      {/* MIDI Section Toggle is rendered always-mounted in page.tsx to keep triads in cycle even when this component is unmounted */}
+      {/* MIDI icon — injected from parent so the toggle sits inline with the nav */}
+      {midiToggle}
     </div>
   );
 }

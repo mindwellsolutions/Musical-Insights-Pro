@@ -3451,7 +3451,7 @@ export default function Home() {
                           {/* Row 2: Triad degree selector strip + notes circles on same row */}
                           {showTriadArcBands && diatonicTriads.length > 0 && (
                             <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
-                              {/* ◀ position chips ▶ */}
+                              {/* ◀ position chips ▶ + MIDI icon */}
                               <TriadFocusSelector
                                 available={diatonicTriads}
                                 selectedDegree={selectedFocusDegree}
@@ -3466,14 +3466,15 @@ export default function Home() {
                                   const next = current.includes(degree) ? current.filter(d => d !== degree) : [...current, degree];
                                   setEnabledTriadDegreesArr(next.length === all.length ? [] : next);
                                 }}
-                              />
-                              {/* MIDI toggle for Visual Insights Positions (I, II, III …) */}
-                              <MIDISectionToggle
-                                sectionId="triads"
-                                label="Visual Insights Positions"
-                                onLeft={handleFocusPrevious}
-                                onRight={handleFocusNext}
-                                theme={theme}
+                                midiToggle={
+                                  <MIDISectionToggle
+                                    sectionId="triads"
+                                    label="Visual Insights Positions"
+                                    onLeft={handleFocusPrevious}
+                                    onRight={handleFocusNext}
+                                    theme={theme}
+                                  />
+                                }
                               />
                               {/* Notes in <degree>: circles to the right of the nav */}
                               {focusTriad && (() => {
