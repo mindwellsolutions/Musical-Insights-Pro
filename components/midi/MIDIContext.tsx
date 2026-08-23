@@ -193,7 +193,9 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
   }, []);
 
   // ---------------------------------------------------------------------------
-  // Auto-select device when inputs list changes (library handles enumeration)
+  // Auto-select device when inputs list changes (library handles enumeration).
+  // selectInput must be called OUTSIDE any state updater to avoid the React
+  // "setState during render" error (updating another component while rendering).
   // ---------------------------------------------------------------------------
   useEffect(() => {
     if (inputs.length === 0) return;
@@ -201,27 +203,20 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
 
     const savedConfig = loadMIDIConfig();
 
+    // Determine which ID to select (pure computation, no side effects)
     setSelectedInputId(prev => {
       // Keep current selection if still present
       if (prev && inputs.find(i => i.id === prev)) return prev;
       // Restore saved device
       if (savedConfig.deviceId) {
         const found = inputs.find(i => i.id === savedConfig.deviceId);
-        if (found) {
-          selectInput(found.id);
-          console.log('[MIDI] Auto-selected saved device:', found.name);
-          return found.id;
-        }
+        if (found) return found.id;
       }
       // Auto-select if only one device
-      if (inputs.length === 1) {
-        selectInput(inputs[0].id);
-        console.log('[MIDI] Auto-selected only device:', inputs[0].name);
-        return inputs[0].id;
-      }
+      if (inputs.length === 1) return inputs[0].id;
       return prev;
     });
-  }, [inputs, selectInput]);
+  }, [inputs]);
 
   // Re-wire listener when selected input changes
   useEffect(() => {
