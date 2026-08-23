@@ -3448,22 +3448,11 @@ export default function Home() {
                             )}
                           </div>
 
-                          {/* Row 2: Positions label + chip strip + notes circles */}
+                          {/* Row 2: Positions label + chip strip + MIDI icon + notes circles — all on one line */}
                           {showTriadArcBands && diatonicTriads.length > 0 && (
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                              {/* Label row: "Positions" + MIDI icon — matches Key / Scale/Mode pattern */}
-                              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                                <span style={{ fontSize: 11, fontWeight: 500, color: theme.textSecondary }}>Positions</span>
-                                <MIDISectionToggle
-                                  sectionId="triads"
-                                  label="Visual Insights Positions"
-                                  onLeft={handleFocusPrevious}
-                                  onRight={handleFocusNext}
-                                  theme={theme}
-                                />
-                              </div>
-                              {/* Chip strip + notes circles on same row */}
-                              <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                              {/* "Positions" label */}
+                              <span style={{ fontSize: 11, fontWeight: 500, color: theme.textSecondary, flexShrink: 0 }}>Positions</span>
                               {/* ◀ position chips ▶ */}
                               <TriadFocusSelector
                                 available={diatonicTriads}
@@ -3479,6 +3468,14 @@ export default function Home() {
                                   const next = current.includes(degree) ? current.filter(d => d !== degree) : [...current, degree];
                                   setEnabledTriadDegreesArr(next.length === all.length ? [] : next);
                                 }}
+                              />
+                              {/* MIDI icon — after the > arrow, before the Notes circles */}
+                              <MIDISectionToggle
+                                sectionId="triads"
+                                label="Visual Insights Positions"
+                                onLeft={handleFocusPrevious}
+                                onRight={handleFocusNext}
+                                theme={theme}
                               />
                               {/* Notes in <degree>: circles to the right of the nav */}
                               {focusTriad && (() => {
@@ -3545,7 +3542,6 @@ export default function Home() {
                                   </div>
                                 );
                               })()}
-                              </div>{/* end chip strip + notes row */}
                             </div>
                           )}
                         </div>
