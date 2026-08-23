@@ -27,24 +27,21 @@ export const CHORD_TONE_COLORS = {
 };
 
 // Colors for all 12 chromatic intervals (semitones from root)
-// All intervals use the same 4 chord-tone colors, grouped by nearest chord tone:
-//   Red   (#E85555) = Root band:   1 (Root), b2
-//   Gold  (#F5BC3C) = 3rd band:    2, b3, 3
-//   Green (#4caf50) = 5th band:    4, b5, 5
-//   Purple(#A07ED4) = 7th band:    b6, 6, b7, 7
+// Each semitone has a UNIQUE color — no two share the same hue.
+// Ordered around the color wheel for maximum visual distinction on dark fretboard backgrounds:
 export const ALL_INTERVAL_COLORS: Record<number, string> = {
-  0:  '#E85555',  // Root (P1)    - Red          (chord tone: root)
-  1:  '#E8853A',  // b2  (m2)     - Orange       (distinct from root red)
-  2:  '#F5BC3C',  // 2nd (M2)     - Amber/Gold   (chord tone: third band)
-  3:  '#D4C820',  // b3  (m3)     - Yellow-lime  (distinct from amber)
-  4:  '#F5BC3C',  // 3rd (M3)     - Amber/Gold   (chord tone: third)
-  5:  '#4caf50',  // 4th (P4)     - Green        (5th band)
-  6:  '#00BCD4',  // b5  (Tri)    - Cyan         (very distinct: tritone)
-  7:  '#26A69A',  // 5th (P5)     - Teal         (chord tone: fifth, distinct from green)
-  8:  '#A07ED4',  // b6  (m6)     - Purple       (7th band)
-  9:  '#E879A0',  // 6th (M6)     - Pink/Rose    (distinct from purple)
-  10: '#5C8EE6',  // b7  (m7)     - Cornflower blue (distinct from purple)
-  11: '#A07ED4',  // 7th (M7)     - Purple       (chord tone: seventh)
+  0:  '#E85555',  // Root (P1)  - Red           (chord tone: root — keep)
+  1:  '#F4845F',  // b2  (m2)   - Coral/Salmon  (warm, between red and orange)
+  2:  '#F5A623',  // 2nd (M2)   - Deep Orange   (distinct from coral and amber)
+  3:  '#F5BC3C',  // b3  (m3)   - Amber/Gold    (keep 1 yellow — chord tone third band)
+  4:  '#C8D428',  // 3rd (M3)   - Yellow-Lime   (bright chartreuse, clearly not amber)
+  5:  '#4caf50',  // 4th (P4)   - Green         (keep — chord tone fifth band)
+  6:  '#26A69A',  // b5  (Tri)  - Teal          (keep teal — tritone landmark)
+  7:  '#29B6F6',  // 5th (P5)   - Sky Blue      (bright, clearly different from teal)
+  8:  '#5C8EE6',  // b6  (m6)   - Cornflower Blue (keep blue — cool, distinct from sky)
+  9:  '#A07ED4',  // 6th (M6)   - Purple/Lavender (keep purple — chord tone seventh band)
+  10: '#D45FBF',  // b7  (m7)   - Magenta/Orchid (warm purple-pink, distinct from lavender)
+  11: '#E879A0',  // 7th (M7)   - Rose/Pink     (keep pink — clearly not magenta)
 };
 
 // Interval label names by semitone from root
