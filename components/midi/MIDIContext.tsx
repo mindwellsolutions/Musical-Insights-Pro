@@ -37,6 +37,9 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
   const [learningButtonId, setLearningButtonId] = useState<string | null>(null); // Now stores action name when learning
   const [lastMIDIMessage, setLastMIDIMessage] = useState<MIDIMessageData | null>(null);
   const [isDetectingButtons, setIsDetectingButtons] = useState(false);
+  const [isRefreshingDevices, setIsRefreshingDevices] = useState(false);
+  // Manually tracked device list — updated by the library AND by our refreshDevices call
+  const [manualDevices, setManualDevices] = useState<MIDIDeviceInfo[]>([]);
 
   // Track when learning mode started to ignore old messages
   const learningStartTime = useRef<number>(0);
@@ -110,13 +113,18 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
   // Convert Web MIDI API inputs to our device info format
   // Note: @react-midi/hooks Input type doesn't have a 'state' property
   // We assume all inputs in the array are connected
-  const availableDevices: MIDIDeviceInfo[] = inputs.map(input => ({
+  const libraryDevices: MIDIDeviceInfo[] = inputs.map(input => ({
     id: input.id,
     name: input.name || 'Unknown Device',
     manufacturer: input.manufacturer || '',
-    connected: true, // If it's in the inputs array, it's connected
+    connected: true,
     state: 'connected' as const,
   }));
+
+  // Merge library-detected devices with manually-detected ones (deduped by id)
+  const allDeviceIds = new Set(libraryDevices.map(d => d.id));
+  const mergedExtras = manualDevices.filter(d => !allDeviceIds.has(d.id));
+  const availableDevices: MIDIDeviceInfo[] = [...libraryDevices, ...mergedExtras];
 
   // Get currently selected device
   const selectedDevice = availableDevices.find(d => d.id === selectedInputId) || null;
@@ -359,6 +367,50 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
     }));
   }, []);
 
+  // Refresh MIDI devices by re-requesting MIDI access from the browser
+  // This does NOT reload the page — it re-enumerates connected devices
+  const refreshDevices = useCallback(async () => {
+    if (typeof navigator === 'undefined' || !('requestMIDIAccess' in navigator)) {
+      console.warn('[MIDI] Web MIDI API not supported in this browser');
+      return;
+    }
+
+    setIsRefreshingDevices(true);
+    console.log('[MIDI] 🔄 Refreshing MIDI device list...');
+
+    try {
+      const midiAccess = await navigator.requestMIDIAccess({ sysex: false });
+      const freshDevices: MIDIDeviceInfo[] = [];
+      midiAccess.inputs.forEach((input) => {
+        freshDevices.push({
+          id: input.id,
+          name: input.name || 'Unknown Device',
+          manufacturer: input.manufacturer || '',
+          connected: input.state === 'connected',
+          state: input.state as 'connected' | 'disconnected',
+        });
+      });
+
+      console.log('[MIDI] ✅ Found', freshDevices.length, 'device(s):', freshDevices.map(d => d.name));
+      setManualDevices(freshDevices);
+
+      // If a previously saved device is now visible, auto-select it
+      setConfig(prev => {
+        if (prev.deviceId) {
+          const found = freshDevices.find(d => d.id === prev.deviceId);
+          if (found) {
+            selectInput(found.id);
+          }
+        }
+        return prev;
+      });
+    } catch (error) {
+      console.error('[MIDI] ❌ Failed to refresh MIDI devices:', error);
+    } finally {
+      setIsRefreshingDevices(false);
+    }
+  }, [selectInput]);
+
   const value: MIDIContextState = {
     config,
     isConnected,
@@ -379,6 +431,8 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
     removeButtonById,
     clearMappings,
     clearAllButtons,
+    refreshDevices,
+    isRefreshingDevices,
   };
 
   return <MIDIContext.Provider value={value}>{children}</MIDIContext.Provider>;

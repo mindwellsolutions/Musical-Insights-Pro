@@ -33,6 +33,8 @@ export default function MIDIConfigModal({ isOpen, onClose, theme }: MIDIConfigMo
     resetConfig,
     saveConfig,
     clearAllButtons,
+    refreshDevices,
+    isRefreshingDevices,
   } = useMIDIPedal();
 
   const [localConfig, setLocalConfig] = useState(config);
@@ -317,16 +319,17 @@ export default function MIDIConfigModal({ isOpen, onClose, theme }: MIDIConfigMo
                 ))}
               </select>
               <button
-                onClick={() => window.location.reload()}
-                className="px-3 py-2 rounded-lg hover:opacity-70 transition-opacity"
+                onClick={refreshDevices}
+                disabled={isRefreshingDevices}
+                className="px-3 py-2 rounded-lg hover:opacity-70 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
                 style={{
                   background: theme.bgTertiary,
                   color: theme.textPrimary,
                   border: `1px solid ${theme.border}`,
                 }}
-                title="Refresh devices"
+                title={isRefreshingDevices ? 'Scanning for MIDI devices...' : 'Scan for MIDI devices'}
               >
-                <RefreshCw className="h-4 w-4" />
+                <RefreshCw className={`h-4 w-4 ${isRefreshingDevices ? 'animate-spin' : ''}`} />
               </button>
             </div>
 

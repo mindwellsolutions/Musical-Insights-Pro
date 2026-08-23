@@ -157,6 +157,12 @@ export interface MIDIContextState {
 
   /** Clear all detected buttons */
   clearAllButtons: () => void;
+
+  /** Refresh the list of available MIDI input devices without reloading the page */
+  refreshDevices: () => Promise<void>;
+
+  /** Whether a device refresh is in progress */
+  isRefreshingDevices: boolean;
 }
 
 /**
@@ -183,10 +189,10 @@ export interface MIDIMessageData {
  * Action labels for UI display
  */
 export const MIDI_ACTION_LABELS: Record<MIDIButtonAction, string> = {
-  'prev': 'Manual Selection: Previous',
-  'next': 'Manual Selection: Next',
-  'scale-left': 'Compatible Scales: Navigate Left',
-  'scale-right': 'Compatible Scales: Navigate Right',
+  'prev': 'Next Section',
+  'next': 'Last Section',
+  'scale-left': 'Switch Left',
+  'scale-right': 'Switch Right',
   'item-left': 'Active Section: Item Left',
   'item-right': 'Active Section: Item Right',
   'section-left': 'Cycle Section: Left',
