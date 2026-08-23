@@ -168,6 +168,7 @@ export default function Home() {
   const [outlineThickness, setOutlineThickness] = useLocalStorage('guitar-app-outline-thickness', 0); // -5 to +5, 0 = medium
   const [showRootNoteHighlight, setShowRootNoteHighlight] = useLocalStorage('guitar-app-show-root-note-highlight', false);
   const [show7thNoteHighlight, setShow7thNoteHighlight] = useLocalStorage('guitar-app-show-7th-note-highlight', false);
+  const [enlargeKeyAnd7th, setEnlargeKeyAnd7th] = useLocalStorage('guitar-app-enlarge-key-7th', true);
   // ── Target Note Highlight ──────────────────────────────────────────────────
   const [targetNoteHighlight, setTargetNoteHighlight] = useState<TargetNoteHighlight | null>(null);
   const [targetNoteBgOpacity, setTargetNoteBgOpacity] = useLocalStorage('guitar-app-target-note-bg-opacity', 25);
@@ -3356,6 +3357,29 @@ export default function Home() {
                                     <span style={{ fontSize: 11, color: checked ? color : theme.textSecondary, fontWeight: checked ? 600 : 400, whiteSpace: 'nowrap', transition: 'color 150ms' }}>{label}</span>
                                   </label>
                                 ))}
+                                {/* Enlarge toggle */}
+                                <label
+                                  style={{ display: 'flex', alignItems: 'center', gap: 5, cursor: 'pointer', flexShrink: 0, userSelect: 'none' }}
+                                  title="When on, Key and 7th rings are enlarged; when off, they match the size of regular interval notes"
+                                >
+                                  <span
+                                    onClick={() => setEnlargeKeyAnd7th(!(enlargeKeyAnd7th as boolean))}
+                                    style={{
+                                      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                                      width: 16, height: 16, borderRadius: 5,
+                                      border: `2px solid ${(enlargeKeyAnd7th as boolean) ? theme.accentPrimary : theme.border}`,
+                                      background: (enlargeKeyAnd7th as boolean) ? theme.accentPrimary : 'transparent',
+                                      transition: 'all 150ms', cursor: 'pointer', flexShrink: 0,
+                                    }}
+                                  >
+                                    {(enlargeKeyAnd7th as boolean) && (
+                                      <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
+                                        <path d="M1 3.5L3.5 6L8 1" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                                      </svg>
+                                    )}
+                                  </span>
+                                  <span style={{ fontSize: 11, color: (enlargeKeyAnd7th as boolean) ? theme.accentPrimary : theme.textSecondary, fontWeight: (enlargeKeyAnd7th as boolean) ? 600 : 400, whiteSpace: 'nowrap', transition: 'color 150ms' }}>Enlarge</span>
+                                </label>
                               </>
                             )}
                           </div>
@@ -4715,6 +4739,29 @@ export default function Home() {
                                 <span style={{ fontSize: 11, color: checked ? color : theme.textSecondary, fontWeight: checked ? 600 : 400, whiteSpace: 'nowrap', transition: 'color 150ms' }}>{label}</span>
                               </label>
                             ))}
+                            {/* Enlarge toggle */}
+                            <label
+                              style={{ display: 'flex', alignItems: 'center', gap: 5, cursor: 'pointer', flexShrink: 0, userSelect: 'none' }}
+                              title="When on, Key and 7th rings are enlarged; when off, they match the size of regular interval notes"
+                            >
+                              <span
+                                onClick={() => setEnlargeKeyAnd7th(!(enlargeKeyAnd7th as boolean))}
+                                style={{
+                                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                                  width: 16, height: 16, borderRadius: 5,
+                                  border: `2px solid ${(enlargeKeyAnd7th as boolean) ? theme.accentPrimary : theme.border}`,
+                                  background: (enlargeKeyAnd7th as boolean) ? theme.accentPrimary : 'transparent',
+                                  transition: 'all 150ms', cursor: 'pointer', flexShrink: 0,
+                                }}
+                              >
+                                {(enlargeKeyAnd7th as boolean) && (
+                                  <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
+                                    <path d="M1 3.5L3.5 6L8 1" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                                  </svg>
+                                )}
+                              </span>
+                              <span style={{ fontSize: 11, color: (enlargeKeyAnd7th as boolean) ? theme.accentPrimary : theme.textSecondary, fontWeight: (enlargeKeyAnd7th as boolean) ? 600 : 400, whiteSpace: 'nowrap', transition: 'color 150ms' }}>Enlarge</span>
+                            </label>
                           </>
                         )}
                       </div>
@@ -5089,6 +5136,7 @@ export default function Home() {
                   foregroundNoteColors={foregroundNoteColors ?? undefined}
                   showRootNoteHighlight={triadFocusOn && (showRootNoteHighlight as boolean)}
                   show7thNoteHighlight={triadFocusOn && (show7thNoteHighlight as boolean)}
+                  enlargeKeyAnd7th={enlargeKeyAnd7th as boolean}
                   highlightKeyNote={triadFocusOn && (showRootNoteHighlight as boolean) ? (manualKey || rootNote) : undefined}
                   patternBgNotesOpacity={
                     targetNoteHighlight ? (targetNoteBgOpacity as number) :

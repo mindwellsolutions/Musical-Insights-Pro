@@ -319,6 +319,9 @@ export default function HamburgerMenu({
           <NavRow icon={<Home size={17} />} label="Visualizer" href="/" active={isActive('/')} onClick={close} />
           <NavRow icon={<Music2 size={17} />} label="Song Builder" href="/chord-progression-builder" active={isActive('/chord-progression-builder')} onClick={close} />
           <NavRow icon={<BookOpen size={17} />} label="Learn Fretboard" href="/learn/fretboard" active={isActive('/learn/fretboard')} onClick={close} />
+          {onToggleSettings && (
+            <NavRow icon={<Settings size={17} />} label="Settings" onClick={() => { onToggleSettings(); close(); }} />
+          )}
 
           <Divider />
 
@@ -389,9 +392,6 @@ export default function HamburgerMenu({
               onToggle={() => onShowGuideAtStartChange(!showGuideAtStart)}
               indented
             />
-          )}
-          {onToggleSettings && (
-            <NavRow icon={<Settings size={17} />} label="Settings" onClick={() => { onToggleSettings(); close(); }} />
           )}
           {onSave && (
             <NavRow icon={<Save size={17} />} label="Save" onClick={() => { onSave(); close(); }} />

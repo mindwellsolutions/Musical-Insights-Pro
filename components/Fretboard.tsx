@@ -111,6 +111,8 @@ interface FretboardProps {
   // ── Triad note outer outline ring ────────────────────────────────────────────
   showTriadOutline?: boolean;           // when true, renders a solid ring outside the interval glow
   outlineThickness?: number;            // -5 to +5; 0 = medium (default 2px ring); each step ±0.5px
+  // ── Key / 7th highlight size ─────────────────────────────────────────────────
+  enlargeKeyAnd7th?: boolean;           // when true, Key/7th rings use large glow (6px spread); when false, same as interval notes (4px)
 }
 
 const FRET_MARKERS = [3, 5, 7, 9, 12, 15, 17, 19, 21, 24];
@@ -360,6 +362,7 @@ export default function Fretboard({
   fretWidth = 50,
   showTriadOutline = false,
   outlineThickness = 0,
+  enlargeKeyAnd7th = true,
 }: FretboardProps) {
   const { getNoteDisplayName } = useNoteDisplay();
   const fretCount = propFretCount;
@@ -750,11 +753,12 @@ export default function Fretboard({
                               // Create multi-colored glow rings if this note is part of multiple hovered chords
                               const createMultiColorGlow = () => {
                                 // Root/7th highlight overrides glow color when checkbox is checked
+                                const hlSpread = enlargeKeyAnd7th ? 6 : 4;
                                 if (rootHighlightActive) {
-                                  return `0 0 0 6px ${hexToRgba(ROOT_HIGHLIGHT_COLOR, 0.7)}, 0 0 14px ${hexToRgba(ROOT_HIGHLIGHT_COLOR, 0.5)}`;
+                                  return `0 0 0 ${hlSpread}px ${hexToRgba(ROOT_HIGHLIGHT_COLOR, 0.7)}, 0 0 14px ${hexToRgba(ROOT_HIGHLIGHT_COLOR, 0.5)}`;
                                 }
                                 if (seventhHighlightActive) {
-                                  return `0 0 0 6px ${hexToRgba(SEVENTH_HIGHLIGHT_COLOR, 0.7)}, 0 0 14px ${hexToRgba(SEVENTH_HIGHLIGHT_COLOR, 0.5)}`;
+                                  return `0 0 0 ${hlSpread}px ${hexToRgba(SEVENTH_HIGHLIGHT_COLOR, 0.7)}, 0 0 14px ${hexToRgba(SEVENTH_HIGHLIGHT_COLOR, 0.5)}`;
                                 }
 
                                 if (!isHovered || hoveredTriadPositions.length === 0) {
@@ -1070,7 +1074,8 @@ export default function Fretboard({
                               if (showRootNoteHighlight && isRootNote) {
                                 circleDiameter = 32; // match 7th circle size exactly
                                 borderColor = `${focusBorderPx}px solid ${ROOT_HL_COLOR}`;
-                                finalBoxShadow = `0 0 0 6px ${hexToRgba(ROOT_HL_COLOR, 0.7)}, 0 0 14px ${hexToRgba(ROOT_HL_COLOR, 0.5)}`;
+                                const hlSpread = enlargeKeyAnd7th ? 6 : 4;
+                                finalBoxShadow = `0 0 0 ${hlSpread}px ${hexToRgba(ROOT_HL_COLOR, 0.7)}, 0 0 14px ${hexToRgba(ROOT_HL_COLOR, 0.5)}`;
                               } else if (foregroundNoteColors && foregroundNoteColors[normalizedNote]) {
                                 // Per-note semantic color override (e.g. tritone tension=orange, resolution=green)
                                 const perNoteColor = foregroundNoteColors[normalizedNote];
@@ -1107,13 +1112,15 @@ export default function Fretboard({
                                 // Root note outside triad: render as forefront with red border/glow
                                 circleDiameter = 32; // match 7th circle size exactly
                                 borderColor = `3px solid ${ROOT_HL_COLOR}`;
-                                finalBoxShadow = `0 0 0 6px ${hexToRgba(ROOT_HL_COLOR, 0.7)}, 0 0 14px ${hexToRgba(ROOT_HL_COLOR, 0.5)}`;
+                                const rootSpread = enlargeKeyAnd7th ? 6 : 4;
+                                finalBoxShadow = `0 0 0 ${rootSpread}px ${hexToRgba(ROOT_HL_COLOR, 0.7)}, 0 0 14px ${hexToRgba(ROOT_HL_COLOR, 0.5)}`;
                                 // Full opacity — do NOT dim
                               } else if (show7thNoteHighlight && is7thNote) {
                                 // 7th note: render as forefront with purple border/glow
                                 circleDiameter = 32;
                                 borderColor = `3px solid ${SEVENTH_HL_COLOR}`;
-                                finalBoxShadow = `0 0 0 6px ${hexToRgba(SEVENTH_HL_COLOR, 0.7)}, 0 0 14px ${hexToRgba(SEVENTH_HL_COLOR, 0.5)}`;
+                                const sthSpread = enlargeKeyAnd7th ? 6 : 4;
+                                finalBoxShadow = `0 0 0 ${sthSpread}px ${hexToRgba(SEVENTH_HL_COLOR, 0.7)}, 0 0 14px ${hexToRgba(SEVENTH_HL_COLOR, 0.5)}`;
                                 // Full opacity — do NOT dim
                               } else {
                                 // Regular background note: apply opacity + always keep color (no B&W desaturation)
