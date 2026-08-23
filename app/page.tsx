@@ -1770,6 +1770,8 @@ export default function Home() {
     const unsub = onSectionChange((newId) => {
       if (newId === 'scale-mode-select') {
         setHarmonizationTab('scalesModes');
+        // Hide arc bands when leaving triads — prevents piano bars lingering on non-triad sections
+        setShowTriadArcBands(false);
         // Scroll back up so tabs + fretboard are visible
         setTimeout(() => {
           const tabsEl = document.querySelector('[data-midi-section-id="visual-insights-tabs"]');
@@ -1784,19 +1786,21 @@ export default function Home() {
           if (tabsEl) tabsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 80);
       } else if (newId === 'key-select') {
-        // Scroll back to top so fretboard is visible
+        // Hide arc bands when leaving triads
+        setShowTriadArcBands(false);
+        // Scroll to very top — Select Key & Scale is in the header/top area
         setTimeout(() => {
-          const tabsEl = document.querySelector('[data-midi-section-id="visual-insights-tabs"]');
-          if (tabsEl) tabsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 80);
       } else if (newId === 'compatible-scales') {
+        // Hide arc bands when leaving triads
+        setShowTriadArcBands(false);
         // Scroll so the Visual Insights tabs bar is at the TOP of the viewport
         // — user sees tabs + fretboard, and compatible scales appear just below.
         setTimeout(() => {
           const tabsEl = document.querySelector('[data-midi-section-id="visual-insights-tabs"]');
           const scalesEl = document.querySelector('[data-midi-section-id="compatible-scales"]');
           if (tabsEl) {
-            // Scroll so the tabs card is at top; compatible scales will be visible below fretboard
             tabsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
           } else if (scalesEl) {
             scalesEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -5549,39 +5553,6 @@ export default function Home() {
                 selectedProgressionId={selectedProgression?.id ?? null}
                 currentTheme={currentTheme}
                 theme={theme}
-              />
-            </ErrorBoundary>
-          </div>
-        )}
-
-        {/* Overlapping Chords Feature - Hidden in Focus Mode and Triad Mode */}
-        {!isFocusMode && !showTriadMode && rootNote && scaleName && (
-          <div className="px-8 pb-8">
-            <ErrorBoundary theme={theme}>
-              <OverlappingChordsContainer
-                theme={theme}
-                currentKey={rootNote}
-                currentScale={scaleName}
-                stringCount={stringCount}
-                tuning={tuning}
-                onFretboardDataChange={handleOverlappingChordsFretboardDataChange}
-              />
-            </ErrorBoundary>
-          </div>
-        )}
-
-        {/* Dynamic Recommendation Panel - Shows when navigating manual selections */}
-        {!isFocusMode && manualSelections.length > 0 && currentSelectionIndex >= 0 && (
-          <div className="px-8 pb-8">
-            <ErrorBoundary theme={theme}>
-              <DynamicRecommendationPanel
-                theme={theme}
-                manualSelections={manualSelections}
-                currentSelectionIndex={currentSelectionIndex}
-                currentKey={rootNote}
-                currentScaleName={scaleName}
-                onChordSelect={handleChordSelectFromRecommendations}
-                onScaleSelect={handleScaleSelectFromChordRecommendation}
               />
             </ErrorBoundary>
           </div>
