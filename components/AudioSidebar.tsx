@@ -120,6 +120,7 @@ export function AudioSidebar({
   const [internalIsExpanded, setInternalIsExpanded] = useState(false);
   const [isThemeDropdownOpen, setIsThemeDropdownOpen] = useState(false);
   const [isFretboardThemeDropdownOpen, setIsFretboardThemeDropdownOpen] = useState(false);
+  const [isBetaSettingsOpen, setIsBetaSettingsOpen] = useState(false);
   const [isFretDotsOpen, setIsFretDotsOpen] = useState(false);
   const [isBrightnessExpanded, setIsBrightnessExpanded] = useState(false);
   const fretDotsRef = useRef<HTMLDivElement>(null);
@@ -789,17 +790,22 @@ export function AudioSidebar({
               )}
             </div>
 
-            {/* Beta Settings Section — Audio Input + Note Detector */}
+            {/* Beta Settings Section — Audio Input + Note Detector (collapsible) */}
             <div
-              className="rounded-lg p-3 mt-4"
+              className="rounded-lg mt-4"
               style={{
                 background: theme.bgTertiary,
                 border: `1px solid ${theme.border}`,
               }}
             >
-              <div className="flex items-center gap-2 mb-3">
-                <Music className="h-4 w-4" style={{ color: theme.textSecondary }} />
-                <h3 className="text-xs font-semibold" style={{ color: theme.textPrimary }}>
+              {/* Clickable header */}
+              <button
+                onClick={() => setIsBetaSettingsOpen(!isBetaSettingsOpen)}
+                className="w-full flex items-center gap-2 p-3"
+                style={{ background: 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left' }}
+              >
+                <Music className="h-4 w-4 flex-shrink-0" style={{ color: theme.textSecondary }} />
+                <h3 className="text-xs font-semibold flex-1" style={{ color: theme.textPrimary }}>
                   Beta Settings
                 </h3>
                 <span
@@ -812,38 +818,51 @@ export function AudioSidebar({
                     background: 'linear-gradient(135deg, #f59e0b, #ef4444)',
                     color: '#fff',
                     textTransform: 'uppercase',
+                    flexShrink: 0,
                   }}
                 >
                   Beta
                 </span>
-              </div>
+                <ChevronDown
+                  className="h-3 w-3 flex-shrink-0 transition-transform"
+                  style={{
+                    color: theme.textSecondary,
+                    transform: isBetaSettingsOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                  }}
+                />
+              </button>
 
-              {/* Audio Input */}
-              <KeyDetectionPanel
-                theme={currentTheme}
-                autoRecommendation={autoRecommendation}
-                autoSwitchFretboard={autoSwitchFretboard}
-                onScaleChange={onScaleChange}
-                onDetectedKeyChange={onDetectedKeyChange}
-                onCompatibleScalesChange={onCompatibleScalesChange}
-                onSelectedScaleChange={onSelectedScaleChange}
-                onDetectionStateChange={onDetectionStateChange}
-                onStartDetectionReady={onStartDetectionReady}
-                onStopDetectionReady={onStopDetectionReady}
-              />
+              {/* Collapsible content */}
+              {isBetaSettingsOpen && (
+                <div className="px-3 pb-3">
+                  {/* Audio Input */}
+                  <KeyDetectionPanel
+                    theme={currentTheme}
+                    autoRecommendation={autoRecommendation}
+                    autoSwitchFretboard={autoSwitchFretboard}
+                    onScaleChange={onScaleChange}
+                    onDetectedKeyChange={onDetectedKeyChange}
+                    onCompatibleScalesChange={onCompatibleScalesChange}
+                    onSelectedScaleChange={onSelectedScaleChange}
+                    onDetectionStateChange={onDetectionStateChange}
+                    onStartDetectionReady={onStartDetectionReady}
+                    onStopDetectionReady={onStopDetectionReady}
+                  />
 
-              {/* Note Detector */}
-              <NoteDetectorSidebar
-                theme={theme}
-                enabled={noteDetectorEnabled}
-                onDetectedNoteChange={onDetectedNoteChange}
-                liveNotesGlowEnabled={liveNotesGlowEnabled}
-                onLiveNotesGlowChange={onLiveNotesGlowChange}
-                liveNotesGlowDuration={liveNotesGlowDuration}
-                onLiveNotesGlowDurationChange={onLiveNotesGlowDurationChange}
-                circleOf5thsGlowDuration={circleOf5thsGlowDuration}
-                onCircleOf5thsGlowDurationChange={onCircleOf5thsGlowDurationChange}
-              />
+                  {/* Note Detector */}
+                  <NoteDetectorSidebar
+                    theme={theme}
+                    enabled={noteDetectorEnabled}
+                    onDetectedNoteChange={onDetectedNoteChange}
+                    liveNotesGlowEnabled={liveNotesGlowEnabled}
+                    onLiveNotesGlowChange={onLiveNotesGlowChange}
+                    liveNotesGlowDuration={liveNotesGlowDuration}
+                    onLiveNotesGlowDurationChange={onLiveNotesGlowDurationChange}
+                    circleOf5thsGlowDuration={circleOf5thsGlowDuration}
+                    onCircleOf5thsGlowDurationChange={onCircleOf5thsGlowDurationChange}
+                  />
+                </div>
+              )}
             </div>
 
             {/* Guide Settings Section */}
