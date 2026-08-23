@@ -3369,65 +3369,67 @@ export default function Home() {
                                   </div>
                                   <SliderResetButton onReset={() => setOutlineThickness(0)} theme={theme} label="Reset border width" />
                                 </div>
-                                {/* Root Note & 7th highlight checkboxes */}
-                                <div style={{ width: 1, height: 20, background: theme.border, flexShrink: 0 }} />
-                                {[
-                                  { label: 'Key', key: 'root', checked: showRootNoteHighlight as boolean, set: setShowRootNoteHighlight, color: '#E85555' },
-                                  { label: '7th', key: '7th', checked: show7thNoteHighlight as boolean, set: setShow7thNoteHighlight, color: '#A07ED4' },
-                                ].map(({ label, key, checked, set, color }) => (
+                                {/* Root Note & 7th highlight checkboxes + Enlarge — grouped so they never wrap apart */}
+                                <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+                                  <div style={{ width: 1, height: 20, background: theme.border, flexShrink: 0 }} />
+                                  {[
+                                    { label: 'Key', key: 'root', checked: showRootNoteHighlight as boolean, set: setShowRootNoteHighlight, color: '#E85555' },
+                                    { label: '7th', key: '7th', checked: show7thNoteHighlight as boolean, set: setShow7thNoteHighlight, color: '#A07ED4' },
+                                  ].map(({ label, key, checked, set, color }) => (
+                                    <label
+                                      key={key}
+                                      style={{ display: 'flex', alignItems: 'center', gap: 5, cursor: 'pointer', flexShrink: 0, userSelect: 'none' }}
+                                      title={`Highlight all ${label} notes in the forefront with ${color === '#E85555' ? 'Red' : 'Purple'}`}
+                                    >
+                                      <span
+                                        onClick={() => set(!checked)}
+                                        style={{
+                                          display: 'inline-flex',
+                                          alignItems: 'center',
+                                          justifyContent: 'center',
+                                          width: 16,
+                                          height: 16,
+                                          borderRadius: 5,
+                                          border: `2px solid ${checked ? color : theme.border}`,
+                                          background: checked ? color : 'transparent',
+                                          transition: 'all 150ms',
+                                          cursor: 'pointer',
+                                          flexShrink: 0,
+                                        }}
+                                      >
+                                        {checked && (
+                                          <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
+                                            <path d="M1 3.5L3.5 6L8 1" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                                          </svg>
+                                        )}
+                                      </span>
+                                      <span style={{ fontSize: 11, color: checked ? color : theme.textSecondary, fontWeight: checked ? 600 : 400, whiteSpace: 'nowrap', transition: 'color 150ms' }}>{label}</span>
+                                    </label>
+                                  ))}
+                                  {/* Enlarge toggle — same group as Key / 7th */}
                                   <label
-                                    key={key}
                                     style={{ display: 'flex', alignItems: 'center', gap: 5, cursor: 'pointer', flexShrink: 0, userSelect: 'none' }}
-                                    title={`Highlight all ${label} notes in the forefront with ${color === '#E85555' ? 'Red' : 'Purple'}`}
+                                    title="When on, Key and 7th rings are enlarged; when off, they match the size of regular interval notes"
                                   >
                                     <span
-                                      onClick={() => set(!checked)}
+                                      onClick={() => setEnlargeKeyAnd7th(!(enlargeKeyAnd7th as boolean))}
                                       style={{
-                                        display: 'inline-flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        width: 16,
-                                        height: 16,
-                                        borderRadius: 5,
-                                        border: `2px solid ${checked ? color : theme.border}`,
-                                        background: checked ? color : 'transparent',
-                                        transition: 'all 150ms',
-                                        cursor: 'pointer',
-                                        flexShrink: 0,
+                                        display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                                        width: 16, height: 16, borderRadius: 5,
+                                        border: `2px solid ${(enlargeKeyAnd7th as boolean) ? theme.accentPrimary : theme.border}`,
+                                        background: (enlargeKeyAnd7th as boolean) ? theme.accentPrimary : 'transparent',
+                                        transition: 'all 150ms', cursor: 'pointer', flexShrink: 0,
                                       }}
                                     >
-                                      {checked && (
+                                      {(enlargeKeyAnd7th as boolean) && (
                                         <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
                                           <path d="M1 3.5L3.5 6L8 1" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                                         </svg>
                                       )}
                                     </span>
-                                    <span style={{ fontSize: 11, color: checked ? color : theme.textSecondary, fontWeight: checked ? 600 : 400, whiteSpace: 'nowrap', transition: 'color 150ms' }}>{label}</span>
+                                    <span style={{ fontSize: 11, color: (enlargeKeyAnd7th as boolean) ? theme.accentPrimary : theme.textSecondary, fontWeight: (enlargeKeyAnd7th as boolean) ? 600 : 400, whiteSpace: 'nowrap', transition: 'color 150ms' }}>Enlarge</span>
                                   </label>
-                                ))}
-                                {/* Enlarge toggle */}
-                                <label
-                                  style={{ display: 'flex', alignItems: 'center', gap: 5, cursor: 'pointer', flexShrink: 0, userSelect: 'none' }}
-                                  title="When on, Key and 7th rings are enlarged; when off, they match the size of regular interval notes"
-                                >
-                                  <span
-                                    onClick={() => setEnlargeKeyAnd7th(!(enlargeKeyAnd7th as boolean))}
-                                    style={{
-                                      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                                      width: 16, height: 16, borderRadius: 5,
-                                      border: `2px solid ${(enlargeKeyAnd7th as boolean) ? theme.accentPrimary : theme.border}`,
-                                      background: (enlargeKeyAnd7th as boolean) ? theme.accentPrimary : 'transparent',
-                                      transition: 'all 150ms', cursor: 'pointer', flexShrink: 0,
-                                    }}
-                                  >
-                                    {(enlargeKeyAnd7th as boolean) && (
-                                      <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-                                        <path d="M1 3.5L3.5 6L8 1" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                                      </svg>
-                                    )}
-                                  </span>
-                                  <span style={{ fontSize: 11, color: (enlargeKeyAnd7th as boolean) ? theme.accentPrimary : theme.textSecondary, fontWeight: (enlargeKeyAnd7th as boolean) ? 600 : 400, whiteSpace: 'nowrap', transition: 'color 150ms' }}>Enlarge</span>
-                                </label>
+                                </div>
                               </>
                             )}
                           </div>
@@ -4842,65 +4844,67 @@ export default function Home() {
                                 );
                               })()}
                             </div>
-                            {/* Root Note & 7th highlight checkboxes */}
-                            <div style={{ width: 1, height: 20, background: theme.border, flexShrink: 0 }} />
-                            {[
-                              { label: 'Key', key: 'root', checked: showRootNoteHighlight as boolean, set: setShowRootNoteHighlight, color: '#E85555' },
-                              { label: '7th', key: '7th', checked: show7thNoteHighlight as boolean, set: setShow7thNoteHighlight, color: '#A07ED4' },
-                            ].map(({ label, key, checked, set, color }) => (
+                            {/* Root Note & 7th highlight checkboxes + Enlarge — grouped so they never wrap apart */}
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+                              <div style={{ width: 1, height: 20, background: theme.border, flexShrink: 0 }} />
+                              {[
+                                { label: 'Key', key: 'root', checked: showRootNoteHighlight as boolean, set: setShowRootNoteHighlight, color: '#E85555' },
+                                { label: '7th', key: '7th', checked: show7thNoteHighlight as boolean, set: setShow7thNoteHighlight, color: '#A07ED4' },
+                              ].map(({ label, key, checked, set, color }) => (
+                                <label
+                                  key={key}
+                                  style={{ display: 'flex', alignItems: 'center', gap: 5, cursor: 'pointer', flexShrink: 0, userSelect: 'none' }}
+                                  title={`Highlight all ${label} notes in the forefront with ${color === '#E85555' ? 'Red' : 'Purple'}`}
+                                >
+                                  <span
+                                    onClick={() => set(!checked)}
+                                    style={{
+                                      display: 'inline-flex',
+                                      alignItems: 'center',
+                                      justifyContent: 'center',
+                                      width: 16,
+                                      height: 16,
+                                      borderRadius: 5,
+                                      border: `2px solid ${checked ? color : theme.border}`,
+                                      background: checked ? color : 'transparent',
+                                      transition: 'all 150ms',
+                                      cursor: 'pointer',
+                                      flexShrink: 0,
+                                    }}
+                                  >
+                                    {checked && (
+                                      <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
+                                        <path d="M1 3.5L3.5 6L8 1" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                                      </svg>
+                                    )}
+                                  </span>
+                                  <span style={{ fontSize: 11, color: checked ? color : theme.textSecondary, fontWeight: checked ? 600 : 400, whiteSpace: 'nowrap', transition: 'color 150ms' }}>{label}</span>
+                                </label>
+                              ))}
+                              {/* Enlarge toggle — same group as Key / 7th */}
                               <label
-                                key={key}
                                 style={{ display: 'flex', alignItems: 'center', gap: 5, cursor: 'pointer', flexShrink: 0, userSelect: 'none' }}
-                                title={`Highlight all ${label} notes in the forefront with ${color === '#E85555' ? 'Red' : 'Purple'}`}
+                                title="When on, Key and 7th rings are enlarged; when off, they match the size of regular interval notes"
                               >
                                 <span
-                                  onClick={() => set(!checked)}
+                                  onClick={() => setEnlargeKeyAnd7th(!(enlargeKeyAnd7th as boolean))}
                                   style={{
-                                    display: 'inline-flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    width: 16,
-                                    height: 16,
-                                    borderRadius: 5,
-                                    border: `2px solid ${checked ? color : theme.border}`,
-                                    background: checked ? color : 'transparent',
-                                    transition: 'all 150ms',
-                                    cursor: 'pointer',
-                                    flexShrink: 0,
+                                    display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                                    width: 16, height: 16, borderRadius: 5,
+                                    border: `2px solid ${(enlargeKeyAnd7th as boolean) ? theme.accentPrimary : theme.border}`,
+                                    background: (enlargeKeyAnd7th as boolean) ? theme.accentPrimary : 'transparent',
+                                    transition: 'all 150ms', cursor: 'pointer', flexShrink: 0,
                                   }}
                                 >
-                                  {checked && (
+                                  {(enlargeKeyAnd7th as boolean) && (
                                     <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
                                       <path d="M1 3.5L3.5 6L8 1" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                                     </svg>
                                   )}
                                 </span>
-                                <span style={{ fontSize: 11, color: checked ? color : theme.textSecondary, fontWeight: checked ? 600 : 400, whiteSpace: 'nowrap', transition: 'color 150ms' }}>{label}</span>
+                                <span style={{ fontSize: 11, color: (enlargeKeyAnd7th as boolean) ? theme.accentPrimary : theme.textSecondary, fontWeight: (enlargeKeyAnd7th as boolean) ? 600 : 400, whiteSpace: 'nowrap', transition: 'color 150ms' }}>Enlarge</span>
                               </label>
-                            ))}
-                            {/* Enlarge toggle */}
-                            <label
-                              style={{ display: 'flex', alignItems: 'center', gap: 5, cursor: 'pointer', flexShrink: 0, userSelect: 'none' }}
-                              title="When on, Key and 7th rings are enlarged; when off, they match the size of regular interval notes"
-                            >
-                              <span
-                                onClick={() => setEnlargeKeyAnd7th(!(enlargeKeyAnd7th as boolean))}
-                                style={{
-                                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                                  width: 16, height: 16, borderRadius: 5,
-                                  border: `2px solid ${(enlargeKeyAnd7th as boolean) ? theme.accentPrimary : theme.border}`,
-                                  background: (enlargeKeyAnd7th as boolean) ? theme.accentPrimary : 'transparent',
-                                  transition: 'all 150ms', cursor: 'pointer', flexShrink: 0,
-                                }}
-                              >
-                                {(enlargeKeyAnd7th as boolean) && (
-                                  <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-                                    <path d="M1 3.5L3.5 6L8 1" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                                  </svg>
-                                )}
-                              </span>
-                              <span style={{ fontSize: 11, color: (enlargeKeyAnd7th as boolean) ? theme.accentPrimary : theme.textSecondary, fontWeight: (enlargeKeyAnd7th as boolean) ? 600 : 400, whiteSpace: 'nowrap', transition: 'color 150ms' }}>Enlarge</span>
-                            </label>
+                            </div>
                           </>
                         )}
                       </div>
