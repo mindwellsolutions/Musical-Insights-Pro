@@ -15,9 +15,6 @@
 
 import React, { createContext, useContext, useState, useEffect, useCallback, ReactNode, useRef } from 'react';
 import { useMIDIInputs } from '@react-midi/hooks';
-
-// Local alias for the library's Input type (not exported from the public API)
-type MIDILibInput = { id: string; name: string; manufacturer: string; onmidimessage: ((m: { data: number[] }) => void) | null };
 import {
   MIDIContextState,
   MIDIPedalConfig,
@@ -58,18 +55,52 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
   const isLearningRef = useRef(false);
   const learningButtonIdRef = useRef<string | null>(null);
   const learningStartTime = useRef<number>(0);
-  const activeInputRef = useRef<MIDILibInput | null>(null);
+  // Real MIDIAccess from the browser — needed to reach actual MIDIInput objects
+  // (the library's inputs array contains plain wrapper objects, not real MIDIInputs,
+  // so setting onmidimessage on them is a no-op).
+  const midiAccessRef = useRef<MIDIAccess | null>(null);
+  const activeInputRef = useRef<MIDIInput | null>(null);
 
   // Keep refs in sync with state
   useEffect(() => { isLearningRef.current = isLearning; }, [isLearning]);
   useEffect(() => { learningButtonIdRef.current = learningButtonId; }, [learningButtonId]);
 
+  // selectedInputId ref so the MIDIAccess callback can re-wire without stale closure
+  const selectedInputIdRef = useRef<string | null>(null);
+  useEffect(() => { selectedInputIdRef.current = selectedInputId; }, [selectedInputId]);
+
   // ---------------------------------------------------------------------------
-  // Core MIDI message handler — wired directly to the selected MIDIInput.
-  // The library's Input.onmidimessage passes a MIDIMessage = { data: number[] }.
+  // Acquire real MIDIAccess on mount so wireInput can reach real MIDIInput objects.
+  // The library's MIDIProvider also calls requestMIDIAccess — Chrome returns the
+  // same singleton MIDIAccess object for all callers, so there is no conflict.
+  // After acquiring, immediately wire any already-selected input (timing gap fix).
   // ---------------------------------------------------------------------------
-  const handleMIDIMessage = useCallback((message: { data: number[] }) => {
-    const data = message.data;
+  useEffect(() => {
+    if (typeof navigator === 'undefined' || !('requestMIDIAccess' in navigator)) return;
+    navigator.requestMIDIAccess({ sysex: false }).then(access => {
+      midiAccessRef.current = access;
+      console.log('[MIDI] Real MIDIAccess acquired, inputs:', Array.from(access.inputs.values()).map(i => i.name));
+      // If a device was already selected before MIDIAccess resolved, wire it now
+      if (selectedInputIdRef.current) {
+        const realInput = access.inputs.get(selectedInputIdRef.current);
+        if (realInput) {
+          realInput.addEventListener('midimessage', handleMIDIMessage as EventListener);
+          activeInputRef.current = realInput;
+          console.log('[MIDI] 🔌 Retroactively wired to:', realInput.name);
+        }
+      }
+    }).catch(err => {
+      console.error('[MIDI] Failed to acquire MIDIAccess:', err);
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // ---------------------------------------------------------------------------
+  // Core MIDI message handler — wired to the real MIDIInput via addEventListener.
+  // Uses MIDIMessageEvent from the Web MIDI API.
+  // ---------------------------------------------------------------------------
+  const handleMIDIMessage = useCallback((event: MIDIMessageEvent) => {
+    const data = event.data;
     if (!data) return;
 
     const parsed = parseMIDIMessage(data);
@@ -145,30 +176,36 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
   }, []);
 
   // ---------------------------------------------------------------------------
-  // Wire/unwire our own onmidimessage listener to the selected MIDIInput.
-  // We use the raw MIDIInput from the library's inputs array (not MIDIAccess)
-  // so we capture ALL message types including Program Change (0xC0).
+  // Wire/unwire our listener to the REAL MIDIInput from browser MIDIAccess.
+  // The library's inputs array contains plain wrapper objects — setting
+  // onmidimessage on them is a no-op. We must use midiAccessRef.inputs.get(id)
+  // to reach the actual browser MIDIInput and use addEventListener on it.
   // ---------------------------------------------------------------------------
   const wireInput = useCallback((inputId: string | null) => {
-    // Remove listener from previous input
+    // Remove listener from previous real input
     if (activeInputRef.current) {
-      activeInputRef.current.onmidimessage = null;
+      activeInputRef.current.removeEventListener('midimessage', handleMIDIMessage as EventListener);
       activeInputRef.current = null;
     }
 
     if (!inputId) return;
 
-    // Find the raw MIDIInput from the library's inputs array
-    const rawInput = inputs.find(i => i.id === inputId);
-    if (!rawInput) {
-      console.warn('[MIDI] wireInput: input not found for id', inputId);
+    // Must have real MIDIAccess to find the real MIDIInput
+    if (!midiAccessRef.current) {
+      console.warn('[MIDI] wireInput: MIDIAccess not yet available, will retry when it arrives');
       return;
     }
 
-    rawInput.onmidimessage = handleMIDIMessage;
-    activeInputRef.current = rawInput;
-    console.log('[MIDI] 🔌 Listener wired to:', rawInput.name);
-  }, [inputs, handleMIDIMessage]);
+    const realInput = midiAccessRef.current.inputs.get(inputId);
+    if (!realInput) {
+      console.warn('[MIDI] wireInput: real MIDIInput not found for id', inputId);
+      return;
+    }
+
+    realInput.addEventListener('midimessage', handleMIDIMessage as EventListener);
+    activeInputRef.current = realInput;
+    console.log('[MIDI] 🔌 Listener wired to real MIDIInput:', realInput.name);
+  }, [handleMIDIMessage]);
 
   // ---------------------------------------------------------------------------
   // Convert library inputs to our MIDIDeviceInfo format
