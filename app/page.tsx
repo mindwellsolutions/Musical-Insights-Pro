@@ -151,6 +151,9 @@ export default function Home() {
   // Triad system state
   const [showTriadMode, setShowTriadMode] = useLocalStorage('guitar-app-show-triad-mode', false);
   const [showBasicModesOnly] = useLocalStorage('guitar-app-scale-mode-basic-only', true);
+  // MIDI cycle filters — stored as string[] (JSON-serializable), used as Set at runtime
+  const [enabledTriadDegreesArr, setEnabledTriadDegreesArr] = useLocalStorage<string[]>('guitar-app-enabled-triad-degrees', []);
+  const [enabledScaleNamesArr, setEnabledScaleNamesArr] = useLocalStorage<string[]>('guitar-app-enabled-scale-names', []);
   const [triadData, setTriadData] = useState<any>(null);
   const [fretboardData, setFretboardData] = useState<any>(null);
   const [selectedTriadInversion, setSelectedTriadInversion] = useSupabaseStorage<TriadInversion>('guitar-app-selected-triad-inversion', 'root');
@@ -2454,17 +2457,24 @@ export default function Home() {
 
   const handleFocusPrevious = useCallback(() => {
     if (diatonicTriads.length === 0) return;
-    const idx = diatonicTriads.findIndex(t => t.degree === selectedFocusDegree);
-    const prev = diatonicTriads[(idx - 1 + diatonicTriads.length) % diatonicTriads.length];
+    // Filter to only enabled degrees (if any checked; fall back to all if none checked)
+    const enabledSet = enabledTriadDegreesArr.length > 0 ? new Set(enabledTriadDegreesArr) : null;
+    const pool = enabledSet ? diatonicTriads.filter(t => enabledSet.has(t.degree)) : diatonicTriads;
+    if (pool.length === 0) return;
+    const idx = pool.findIndex(t => t.degree === selectedFocusDegree);
+    const prev = pool[(idx - 1 + pool.length) % pool.length];
     handleFocusDegreeSelect(prev.degree);
-  }, [diatonicTriads, selectedFocusDegree, handleFocusDegreeSelect]);
+  }, [diatonicTriads, selectedFocusDegree, handleFocusDegreeSelect, enabledTriadDegreesArr]);
 
   const handleFocusNext = useCallback(() => {
     if (diatonicTriads.length === 0) return;
-    const idx = diatonicTriads.findIndex(t => t.degree === selectedFocusDegree);
-    const next = diatonicTriads[(idx + 1) % diatonicTriads.length];
+    const enabledSet = enabledTriadDegreesArr.length > 0 ? new Set(enabledTriadDegreesArr) : null;
+    const pool = enabledSet ? diatonicTriads.filter(t => enabledSet.has(t.degree)) : diatonicTriads;
+    if (pool.length === 0) return;
+    const idx = pool.findIndex(t => t.degree === selectedFocusDegree);
+    const next = pool[(idx + 1) % pool.length];
     handleFocusDegreeSelect(next.degree);
-  }, [diatonicTriads, selectedFocusDegree, handleFocusDegreeSelect]);
+  }, [diatonicTriads, selectedFocusDegree, handleFocusDegreeSelect, enabledTriadDegreesArr]);
 
   // Keyboard navigation for Triad Focus Mode (Arrow keys + 1–7)
   useEffect(() => {
@@ -3433,6 +3443,13 @@ export default function Home() {
                                 onPrevious={handleFocusPrevious}
                                 onNext={handleFocusNext}
                                 theme={theme}
+                                enabledDegrees={enabledTriadDegreesArr.length > 0 ? new Set(enabledTriadDegreesArr) : new Set(diatonicTriads.map(t => t.degree))}
+                                onToggleDegree={(degree) => {
+                                  const all = diatonicTriads.map(t => t.degree);
+                                  const current = enabledTriadDegreesArr.length > 0 ? enabledTriadDegreesArr : all;
+                                  const next = current.includes(degree) ? current.filter(d => d !== degree) : [...current, degree];
+                                  setEnabledTriadDegreesArr(next.length === all.length ? [] : next);
+                                }}
                               />
                               {/* Notes in <degree>: circles to the right of the nav */}
                               {focusTriad && (() => {
@@ -3805,42 +3822,72 @@ export default function Home() {
                   {harmonizationTab === 'scalesModes' && (
                     <div>
                       <p className="text-xs mb-3" style={{ color: theme.textSecondary }}>
-                        Select a scale or mode — MIDI Switch Left/Right navigates cards
+                        Select a scale or mode — check boxes to include in MIDI Switch Left/Right cycle
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {getDisplayScaleNames(showBasicModesOnly as boolean).map((scale) => {
                           const isSelected = (manualScaleName || scaleName) === scale;
+                          const allScales = getDisplayScaleNames(showBasicModesOnly as boolean);
+                          const isEnabled = enabledScaleNamesArr.length === 0
+                            ? true
+                            : enabledScaleNamesArr.includes(scale);
                           return (
-                            <button
+                            <div
                               key={scale}
-                              onClick={() => {
-                                setManualScaleName(scale);
-                                setScaleName(scale);
-                              }}
-                              className="flex flex-col items-center justify-center rounded-xl text-center transition-all"
-                              style={{
-                                minWidth: 84,
-                                maxWidth: 120,
-                                padding: '8px 10px',
-                                background: isSelected ? theme.accentPrimary : theme.bgPrimary,
-                                border: `1.5px solid ${isSelected ? theme.accentPrimary : theme.border}`,
-                                color: isSelected ? '#fff' : theme.textPrimary,
-                                boxShadow: isSelected ? `0 0 12px ${theme.accentPrimary}55` : 'none',
-                                fontWeight: isSelected ? 700 : 500,
-                                fontSize: 11,
-                                lineHeight: 1.3,
-                                cursor: 'pointer',
-                                flexShrink: 0,
-                              }}
+                              style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, flexShrink: 0 }}
                             >
-                              <span
-                                className="mb-1 flex items-center justify-center"
-                                style={{ fontSize: 14, opacity: isSelected ? 1 : 0.55 }}
+                              {/* Checkbox — MIDI cycle inclusion */}
+                              <input
+                                type="checkbox"
+                                checked={isEnabled}
+                                onChange={() => {
+                                  const current = enabledScaleNamesArr.length === 0 ? allScales : enabledScaleNamesArr;
+                                  const next = current.includes(scale)
+                                    ? current.filter(s => s !== scale)
+                                    : [...current, scale];
+                                  setEnabledScaleNamesArr(next.length === allScales.length ? [] : next);
+                                }}
+                                title={isEnabled ? `Remove "${scale}" from MIDI cycle` : `Add "${scale}" to MIDI cycle`}
+                                style={{
+                                  width: 13,
+                                  height: 13,
+                                  accentColor: theme.accentPrimary,
+                                  cursor: 'pointer',
+                                  opacity: isEnabled ? 1 : 0.4,
+                                }}
+                              />
+                              {/* Card button */}
+                              <button
+                                onClick={() => {
+                                  setManualScaleName(scale);
+                                  setScaleName(scale);
+                                }}
+                                className="flex flex-col items-center justify-center rounded-xl text-center transition-all"
+                                style={{
+                                  minWidth: 84,
+                                  maxWidth: 120,
+                                  padding: '8px 10px',
+                                  background: isSelected ? theme.accentPrimary : theme.bgPrimary,
+                                  border: `1.5px solid ${isSelected ? theme.accentPrimary : theme.border}`,
+                                  color: isSelected ? '#fff' : theme.textPrimary,
+                                  boxShadow: isSelected ? `0 0 12px ${theme.accentPrimary}55` : 'none',
+                                  fontWeight: isSelected ? 700 : 500,
+                                  fontSize: 11,
+                                  lineHeight: 1.3,
+                                  cursor: 'pointer',
+                                  flexShrink: 0,
+                                  opacity: isEnabled ? 1 : 0.4,
+                                }}
                               >
-                                🎵
-                              </span>
-                              {scale}
-                            </button>
+                                <span
+                                  className="mb-1 flex items-center justify-center"
+                                  style={{ fontSize: 14, opacity: isSelected ? 1 : 0.55 }}
+                                >
+                                  🎵
+                                </span>
+                                {scale}
+                              </button>
+                            </div>
                           );
                         })}
                       </div>
@@ -4870,6 +4917,13 @@ export default function Home() {
                               onPrevious={handleFocusPrevious}
                               onNext={handleFocusNext}
                               theme={theme}
+                              enabledDegrees={enabledTriadDegreesArr.length > 0 ? new Set(enabledTriadDegreesArr) : new Set(diatonicTriads.map(t => t.degree))}
+                              onToggleDegree={(degree) => {
+                                const all = diatonicTriads.map(t => t.degree);
+                                const current = enabledTriadDegreesArr.length > 0 ? enabledTriadDegreesArr : all;
+                                const next = current.includes(degree) ? current.filter(d => d !== degree) : [...current, degree];
+                                setEnabledTriadDegreesArr(next.length === all.length ? [] : next);
+                              }}
                             />
                           </div>
 

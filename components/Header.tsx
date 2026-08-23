@@ -334,6 +334,8 @@ export default function Header({
 
   // Scale/Mode filter state - defaults to true (Basic mode) and persists in localStorage
   const [showBasicModesOnly, setShowBasicModesOnly] = useLocalStorage('guitar-app-scale-mode-basic-only', true);
+  // MIDI-enabled scale names — empty array means all enabled (same key as page.tsx)
+  const [enabledScaleNamesArr] = useLocalStorage<string[]>('guitar-app-enabled-scale-names', []);
 
   // ── MIDI callbacks for Key and Scale/Mode cycling ─────────────────────────
 
@@ -357,19 +359,28 @@ export default function Header({
 
   const handleMIDIScaleLeft = useCallback(() => {
     if (!onManualKeyScaleChange) return;
-    const scales = getDisplayScaleNames(showBasicModesOnly as boolean);
-    const currentIdx = scales.findIndex(s => s === manualScaleName);
-    const newIdx = currentIdx <= 0 ? scales.length - 1 : currentIdx - 1;
-    onManualKeyScaleChange(manualKey, scales[newIdx]);
-  }, [showBasicModesOnly, manualKey, manualScaleName, onManualKeyScaleChange]);
+    const allScales = getDisplayScaleNames(showBasicModesOnly as boolean);
+    // Filter to checked scales; fall back to all if none are checked
+    const pool = enabledScaleNamesArr.length > 0
+      ? allScales.filter(s => enabledScaleNamesArr.includes(s))
+      : allScales;
+    if (pool.length === 0) return;
+    const currentIdx = pool.findIndex(s => s === manualScaleName);
+    const newIdx = currentIdx <= 0 ? pool.length - 1 : currentIdx - 1;
+    onManualKeyScaleChange(manualKey, pool[newIdx]);
+  }, [showBasicModesOnly, enabledScaleNamesArr, manualKey, manualScaleName, onManualKeyScaleChange]);
 
   const handleMIDIScaleRight = useCallback(() => {
     if (!onManualKeyScaleChange) return;
-    const scales = getDisplayScaleNames(showBasicModesOnly as boolean);
-    const currentIdx = scales.findIndex(s => s === manualScaleName);
-    const newIdx = currentIdx >= scales.length - 1 ? 0 : currentIdx + 1;
-    onManualKeyScaleChange(manualKey, scales[newIdx]);
-  }, [showBasicModesOnly, manualKey, manualScaleName, onManualKeyScaleChange]);
+    const allScales = getDisplayScaleNames(showBasicModesOnly as boolean);
+    const pool = enabledScaleNamesArr.length > 0
+      ? allScales.filter(s => enabledScaleNamesArr.includes(s))
+      : allScales;
+    if (pool.length === 0) return;
+    const currentIdx = pool.findIndex(s => s === manualScaleName);
+    const newIdx = currentIdx >= pool.length - 1 ? 0 : currentIdx + 1;
+    onManualKeyScaleChange(manualKey, pool[newIdx]);
+  }, [showBasicModesOnly, enabledScaleNamesArr, manualKey, manualScaleName, onManualKeyScaleChange]);
 
   // Format detected key to capitalize properly
   const formatDetectedKey = (key: string | null | undefined): string => {
