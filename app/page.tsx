@@ -1765,7 +1765,7 @@ export default function Home() {
   // Pedal switching view mode (from MIDISelectionContext)
   const { pedalSwitchingMode, setPedalSwitchingMode, onSectionChange } = useMIDISelection();
 
-  // Auto-switch tabs when MIDI section becomes active
+  // Auto-switch tabs / scroll when MIDI section becomes active
   useEffect(() => {
     const unsub = onSectionChange((newId) => {
       if (newId === 'scale-mode-select') {
@@ -1773,6 +1773,13 @@ export default function Home() {
       } else if (newId === 'triads') {
         setHarmonizationTab('visualInsights');
         setShowTriadArcBands(true);
+      } else if (newId === 'compatible-scales') {
+        // Scroll so the Compatible Scales section header is at the bottom of the
+        // viewport — fretboard stays visible above, scales appear below.
+        setTimeout(() => {
+          const el = document.querySelector('[data-midi-section-id="compatible-scales"]');
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 80); // slight delay so any tab-switch renders first
       }
     });
     return unsub;
@@ -5493,7 +5500,7 @@ export default function Home() {
 
         {/* Music Theory Tabs - Hidden in Focus Mode and Triad Mode */}
         {!isFocusMode && !showTriadMode && ((autoRecommendation && detectedKey) || isManualMode) && rootNote && scaleName && (
-          <div className="px-8 pb-8" data-guide="compatible-scales">
+          <div className="px-8 pb-8" data-guide="compatible-scales" data-midi-section-id="compatible-scales">
             <ErrorBoundary theme={theme}>
               <MusicTheoryTabs
                 detectedKey={detectedKey || ''}
