@@ -227,19 +227,17 @@ export default function HamburgerMenu({
           padding: '0 12px', height: 34, borderRadius: 'var(--mi-radius-md)',
           background: 'var(--mi-bg-elevated)',
           border: '1px solid var(--mi-border-medium)',
-          color: 'var(--mi-text-secondary)',
+          color: '#ffffff',
           cursor: 'pointer', fontSize: 13, fontWeight: 500,
-          transition: 'background 0.15s ease, border-color 0.15s ease, color 0.15s ease',
+          transition: 'background 0.15s ease, border-color 0.15s ease',
         }}
         onMouseEnter={(e) => {
           (e.currentTarget as HTMLButtonElement).style.background = 'var(--mi-bg-overlay)';
           (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--mi-border-accent)';
-          (e.currentTarget as HTMLButtonElement).style.color = 'var(--mi-text-primary)';
         }}
         onMouseLeave={(e) => {
           (e.currentTarget as HTMLButtonElement).style.background = 'var(--mi-bg-elevated)';
           (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--mi-border-medium)';
-          (e.currentTarget as HTMLButtonElement).style.color = 'var(--mi-text-secondary)';
         }}
         title="Open navigation menu"
         aria-label="Open navigation menu"

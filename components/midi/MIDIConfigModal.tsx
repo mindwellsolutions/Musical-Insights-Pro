@@ -45,6 +45,14 @@ export default function MIDIConfigModal({ isOpen, onClose, theme }: MIDIConfigMo
   const [isSavingProfile, setIsSavingProfile] = useState(false);
   const [isLoadingProfiles, setIsLoadingProfiles] = useState(false);
 
+  // Auto-scan for devices when the modal opens
+  useEffect(() => {
+    if (isOpen) {
+      refreshDevices();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
+
   // Sync local config with context config
   useEffect(() => {
     setLocalConfig(config);

@@ -182,53 +182,62 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
   }, []);
 
   // ---------------------------------------------------------------------------
-  // Initialize MIDI access on mount
-  // Bluetooth MIDI note: Chrome/Edge sometimes returns an empty inputs map
-  // immediately after requestMIDIAccess resolves if the BT device connected
-  // after the page loaded. We attach onstatechange right away (so hot-plug
-  // events are never missed) and also do a re-scan after a short delay.
+  // applyDevices — update state and auto-wire the selected device
+  // ---------------------------------------------------------------------------
+  const applyDevices = useCallback((devices: MIDIDeviceInfo[]) => {
+    setAvailableDevices(devices);
+    const savedConfig = loadMIDIConfig();
+
+    setSelectedInputId(prev => {
+      // Keep current selection if still present
+      if (prev && devices.find(d => d.id === prev)) {
+        wireInput(prev);
+        return prev;
+      }
+      // Restore saved device
+      if (savedConfig.deviceId) {
+        const found = devices.find(d => d.id === savedConfig.deviceId);
+        if (found) {
+          wireInput(found.id);
+          console.log('[MIDI] Auto-selected saved device:', found.name);
+          return found.id;
+        }
+      }
+      // Auto-select single device
+      if (devices.length === 1) {
+        wireInput(devices[0].id);
+        console.log('[MIDI] Auto-selected only device:', devices[0].name);
+        return devices[0].id;
+      }
+      return prev;
+    });
+  }, [wireInput]);
+
+  // ---------------------------------------------------------------------------
+  // Initialize MIDI access on mount.
+  // Bluetooth MIDI on Windows/Chrome: inputs map is often empty immediately
+  // after requestMIDIAccess resolves. We retry every 500ms for up to 5s so
+  // paired BT devices are picked up without manual intervention.
   // ---------------------------------------------------------------------------
   useEffect(() => {
     if (typeof navigator === 'undefined' || !('requestMIDIAccess' in navigator)) return;
 
     let cancelled = false;
+    let retryTimer: ReturnType<typeof setTimeout> | null = null;
+    let retryCount = 0;
+    const MAX_RETRIES = 10; // 10 × 500ms = 5 seconds total
 
-    const applyDevices = (access: MIDIAccess, devices: MIDIDeviceInfo[]) => {
-      if (cancelled) return;
-      setAvailableDevices(devices);
+    const scanNow = () => {
+      if (cancelled || !midiAccessRef.current) return;
+      const devices = buildDeviceList(midiAccessRef.current);
+      console.log(`[MIDI] Scan #${retryCount}: found ${devices.length} device(s):`, devices.map(d => d.name));
+      applyDevices(devices);
 
-      // Load config so we can auto-select
-      const savedConfig = loadMIDIConfig();
-
-      setSelectedInputId(prev => {
-        // If already wired, don't re-wire unless the device was lost
-        if (prev) {
-          const stillThere = devices.find(d => d.id === prev);
-          if (stillThere) {
-            wireInput(prev);
-            return prev;
-          }
-        }
-
-        // Try to auto-select the saved device
-        if (savedConfig.deviceId) {
-          const found = devices.find(d => d.id === savedConfig.deviceId);
-          if (found) {
-            wireInput(found.id);
-            console.log('[MIDI] Auto-selected saved device:', found.name);
-            return found.id;
-          }
-        }
-
-        // Auto-select if there's exactly one device
-        if (devices.length === 1) {
-          wireInput(devices[0].id);
-          console.log('[MIDI] Auto-selected only device:', devices[0].name);
-          return devices[0].id;
-        }
-
-        return prev;
-      });
+      // Keep retrying if we haven't found any devices yet
+      if (devices.length === 0 && retryCount < MAX_RETRIES) {
+        retryCount++;
+        retryTimer = setTimeout(scanNow, 500);
+      }
     };
 
     const init = async () => {
@@ -238,31 +247,22 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
 
         midiAccessRef.current = access;
 
-        // Attach onstatechange immediately — catches Bluetooth devices that
-        // appear after the initial enumeration
-        access.onstatechange = () => {
+        // onstatechange fires on BT connect/disconnect — always re-scan
+        access.onstatechange = (e: Event) => {
           if (cancelled) return;
-          const updated = buildDeviceList(access);
-          console.log('[MIDI] onstatechange: device list updated', updated.map(d => d.name));
-          applyDevices(access, updated);
+          const port = (e as MIDIConnectionEvent).port;
+          console.log('[MIDI] onstatechange:', port?.name, port?.state, port?.type);
+          // Small delay: Chrome fires this before the input is available in the map
+          setTimeout(() => {
+            if (cancelled || !midiAccessRef.current) return;
+            const updated = buildDeviceList(midiAccessRef.current);
+            console.log('[MIDI] Post-statechange scan:', updated.map(d => d.name));
+            applyDevices(updated);
+          }, 150);
         };
 
-        // First scan
-        const devices = buildDeviceList(access);
-        console.log('[MIDI] Init scan: found', devices.length, 'device(s):', devices.map(d => d.name));
-        applyDevices(access, devices);
-
-        // Re-scan after 600ms — Bluetooth MIDI devices on Chrome/Edge often
-        // need extra time to register in the inputs map after requestMIDIAccess
-        // resolves. This covers the "0 devices on first open" case.
-        setTimeout(() => {
-          if (cancelled || !midiAccessRef.current) return;
-          const delayed = buildDeviceList(midiAccessRef.current);
-          console.log('[MIDI] Delayed scan: found', delayed.length, 'device(s):', delayed.map(d => d.name));
-          if (delayed.length > devices.length) {
-            applyDevices(midiAccessRef.current, delayed);
-          }
-        }, 600);
+        // Initial scan + retry loop
+        scanNow();
 
         // Load config into state
         setConfig(() => {
@@ -278,7 +278,10 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
     };
 
     init();
-    return () => { cancelled = true; };
+    return () => {
+      cancelled = true;
+      if (retryTimer) clearTimeout(retryTimer);
+    };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -387,8 +390,8 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
     }));
   }, []);
 
-  // Refresh MIDI devices — re-requests access and updates device list without page reload.
-  // Also does a delayed re-scan to catch Bluetooth devices that need extra time.
+  // Refresh MIDI devices — re-requests access and retries until devices appear.
+  // Uses the same retry loop as init (up to 5s) for Bluetooth devices.
   const refreshDevices = useCallback(async () => {
     if (typeof navigator === 'undefined' || !('requestMIDIAccess' in navigator)) {
       console.warn('[MIDI] Web MIDI API not supported in this browser');
@@ -398,54 +401,47 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
     setIsRefreshingDevices(true);
     console.log('[MIDI] 🔄 Refreshing MIDI device list...');
 
-    try {
-      const access = await navigator.requestMIDIAccess({ sysex: false });
-      midiAccessRef.current = access;
+    let retryCount = 0;
+    const MAX_RETRIES = 10;
 
-      // Re-attach onstatechange in case it was lost
-      access.onstatechange = () => {
-        const updated = buildDeviceList(access);
-        console.log('[MIDI] onstatechange:', updated.map(d => d.name));
-        setAvailableDevices(updated);
-        setSelectedInputId(prev => {
-          if (prev) {
-            const stillThere = updated.find(d => d.id === prev);
-            if (stillThere) { wireInput(prev); return prev; }
-          }
-          if (updated.length === 1) { wireInput(updated[0].id); return updated[0].id; }
-          return prev;
-        });
-      };
+    const tryScan = async (): Promise<void> => {
+      try {
+        // Always re-request — Chrome returns the same MIDIAccess object but
+        // the inputs map may have been updated since we last checked
+        const access = await navigator.requestMIDIAccess({ sysex: false });
+        midiAccessRef.current = access;
 
-      const scan = (label: string) => {
-        if (!midiAccessRef.current) return;
-        const devices = buildDeviceList(midiAccessRef.current);
-        console.log('[MIDI] ✅', label, '— found', devices.length, 'device(s):', devices.map(d => d.name));
-        setAvailableDevices(devices);
+        // Keep onstatechange live
+        access.onstatechange = (e: Event) => {
+          const port = (e as MIDIConnectionEvent).port;
+          console.log('[MIDI] onstatechange (refresh):', port?.name, port?.state);
+          setTimeout(() => {
+            if (!midiAccessRef.current) return;
+            applyDevices(buildDeviceList(midiAccessRef.current));
+          }, 150);
+        };
 
-        setSelectedInputId(prev => {
-          const targetId = prev || config.deviceId || null;
-          if (targetId) {
-            const found = devices.find(d => d.id === targetId);
-            if (found) { wireInput(found.id); return found.id; }
-          }
-          if (!prev && devices.length === 1) { wireInput(devices[0].id); return devices[0].id; }
-          return prev;
-        });
-      };
+        const devices = buildDeviceList(access);
+        console.log(`[MIDI] ✅ Refresh scan #${retryCount}: found ${devices.length} device(s):`, devices.map(d => d.name));
+        applyDevices(devices);
 
-      // Immediate scan
-      scan('Refresh scan');
+        if (devices.length === 0 && retryCount < MAX_RETRIES) {
+          retryCount++;
+          await new Promise(r => setTimeout(r, 500));
+          return tryScan();
+        }
+      } catch (error) {
+        console.error('[MIDI] ❌ Failed to refresh MIDI devices:', error);
+      } finally {
+        if (retryCount >= MAX_RETRIES || (midiAccessRef.current && buildDeviceList(midiAccessRef.current).length > 0)) {
+          setIsRefreshingDevices(false);
+        }
+      }
+    };
 
-      // Delayed re-scan for Bluetooth devices
-      setTimeout(() => scan('Refresh delayed scan'), 600);
-    } catch (error) {
-      console.error('[MIDI] ❌ Failed to refresh MIDI devices:', error);
-    } finally {
-      // Keep spinner going through the delayed scan
-      setTimeout(() => setIsRefreshingDevices(false), 700);
-    }
-  }, [buildDeviceList, wireInput, config.deviceId]);
+    await tryScan();
+    setIsRefreshingDevices(false);
+  }, [buildDeviceList, applyDevices]);
 
   const value: MIDIContextState = {
     config,
