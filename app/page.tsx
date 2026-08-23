@@ -1770,16 +1770,38 @@ export default function Home() {
     const unsub = onSectionChange((newId) => {
       if (newId === 'scale-mode-select') {
         setHarmonizationTab('scalesModes');
+        // Scroll back up so tabs + fretboard are visible
+        setTimeout(() => {
+          const tabsEl = document.querySelector('[data-midi-section-id="visual-insights-tabs"]');
+          if (tabsEl) tabsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 80);
       } else if (newId === 'triads') {
         setHarmonizationTab('visualInsights');
         setShowTriadArcBands(true);
-      } else if (newId === 'compatible-scales') {
-        // Scroll so the Compatible Scales section header is at the bottom of the
-        // viewport — fretboard stays visible above, scales appear below.
+        // Scroll back up so tabs + fretboard are visible
         setTimeout(() => {
-          const el = document.querySelector('[data-midi-section-id="compatible-scales"]');
-          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 80); // slight delay so any tab-switch renders first
+          const tabsEl = document.querySelector('[data-midi-section-id="visual-insights-tabs"]');
+          if (tabsEl) tabsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 80);
+      } else if (newId === 'key-select') {
+        // Scroll back to top so fretboard is visible
+        setTimeout(() => {
+          const tabsEl = document.querySelector('[data-midi-section-id="visual-insights-tabs"]');
+          if (tabsEl) tabsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 80);
+      } else if (newId === 'compatible-scales') {
+        // Scroll so the Visual Insights tabs bar is at the TOP of the viewport
+        // — user sees tabs + fretboard, and compatible scales appear just below.
+        setTimeout(() => {
+          const tabsEl = document.querySelector('[data-midi-section-id="visual-insights-tabs"]');
+          const scalesEl = document.querySelector('[data-midi-section-id="compatible-scales"]');
+          if (tabsEl) {
+            // Scroll so the tabs card is at top; compatible scales will be visible below fretboard
+            tabsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else if (scalesEl) {
+            scalesEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 80);
       }
     });
     return unsub;
@@ -2884,6 +2906,7 @@ export default function Home() {
             {!isFocusMode && !showTriadMode && (
               <div
                 className="rounded-xl mb-4"
+                data-midi-section-id="visual-insights-tabs"
                 style={{
                   background: theme.bgSecondary,
                   border: `1px solid ${theme.border}`,
