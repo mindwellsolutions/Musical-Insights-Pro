@@ -3467,6 +3467,14 @@ export default function Home() {
                                   setEnabledTriadDegreesArr(next.length === all.length ? [] : next);
                                 }}
                               />
+                              {/* MIDI toggle for Visual Insights Positions (I, II, III …) */}
+                              <MIDISectionToggle
+                                sectionId="triads"
+                                label="Visual Insights Positions"
+                                onLeft={handleFocusPrevious}
+                                onRight={handleFocusNext}
+                                theme={theme}
+                              />
                               {/* Notes in <degree>: circles to the right of the nav */}
                               {focusTriad && (() => {
                                 const triadRootNorm = normalizeNoteToSharp(focusTriad.rootNote);
