@@ -234,6 +234,40 @@ export function AudioSidebar({
             zIndex: 1,
           }}
         >
+          {/* Back button — top-left of settings panel */}
+          <div className="mb-3">
+            <button
+              onClick={toggleExpanded}
+              aria-label="Back to main view"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 6,
+                padding: '5px 12px 5px 8px',
+                borderRadius: 20,
+                background: 'rgba(255,255,255,0.06)',
+                border: '1px solid rgba(255,255,255,0.12)',
+                color: 'rgba(255,255,255,0.7)',
+                fontSize: 12,
+                fontWeight: 600,
+                cursor: 'pointer',
+                transition: 'background 150ms, color 150ms',
+                letterSpacing: '0.01em',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.12)';
+                (e.currentTarget as HTMLButtonElement).style.color = '#fff';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.06)';
+                (e.currentTarget as HTMLButtonElement).style.color = 'rgba(255,255,255,0.7)';
+              }}
+            >
+              <ChevronLeft size={14} strokeWidth={2.5} />
+              Back
+            </button>
+          </div>
+
           {/* Logo at top of sidebar */}
           <div className="mb-4 flex justify-center">
             <Image
