@@ -4,14 +4,20 @@
  * MIDI Context Provider
  * Manages MIDI device connections, configuration, and state.
  *
- * Uses the Web MIDI API directly rather than relying on @react-midi/hooks for
- * message routing. The library's MIDIProvider/useMIDIInputs is kept only for
- * device enumeration; all message handling is wired via our own onmidimessage
- * listeners so that Program Change, SysEx, and Bluetooth MIDI devices work
- * reliably without needing a full page reload.
+ * Hybrid approach:
+ * - Device enumeration: useMIDIInputs from @react-midi/hooks (proven reliable
+ *   for Bluetooth MIDI on Windows/Chrome — the library's MIDIProvider owns the
+ *   requestMIDIAccess call and handles onstatechange reactively).
+ * - Message handling: our own onmidimessage listener wired directly to the
+ *   selected MIDIInput so that Program Change (0xC0) and all other message
+ *   types work, without the library's CC/Note-only filter.
  */
 
 import React, { createContext, useContext, useState, useEffect, useCallback, ReactNode, useRef } from 'react';
+import { useMIDIInputs } from '@react-midi/hooks';
+
+// Local alias for the library's Input type (not exported from the public API)
+type MIDILibInput = { id: string; name: string; manufacturer: string; onmidimessage: ((m: { data: number[] }) => void) | null };
 import {
   MIDIContextState,
   MIDIPedalConfig,
@@ -43,27 +49,27 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
   const [isDetectingButtons, setIsDetectingButtons] = useState(false);
   const [isRefreshingDevices, setIsRefreshingDevices] = useState(false);
 
-  // Our own device list — populated directly from navigator.requestMIDIAccess()
-  const [availableDevices, setAvailableDevices] = useState<MIDIDeviceInfo[]>([]);
+  // Library provides reactive device enumeration — this is what worked in the ref project.
+  // The MIDIProvider parent owns requestMIDIAccess and onstatechange.
+  const { inputs, selectInput, selectedInputId: librarySelectedId } = useMIDIInputs();
   const [selectedInputId, setSelectedInputId] = useState<string | null>(null);
 
   // Stable refs so callbacks never capture stale state
   const isLearningRef = useRef(false);
   const learningButtonIdRef = useRef<string | null>(null);
   const learningStartTime = useRef<number>(0);
-  const midiAccessRef = useRef<MIDIAccess | null>(null);
-  const activeListenerRef = useRef<((e: Event) => void) | null>(null);
-  const activeInputRef = useRef<MIDIInput | null>(null);
+  const activeInputRef = useRef<MIDILibInput | null>(null);
 
   // Keep refs in sync with state
   useEffect(() => { isLearningRef.current = isLearning; }, [isLearning]);
   useEffect(() => { learningButtonIdRef.current = learningButtonId; }, [learningButtonId]);
 
   // ---------------------------------------------------------------------------
-  // Core MIDI message handler — wired directly to the selected MIDIInput
+  // Core MIDI message handler — wired directly to the selected MIDIInput.
+  // The library's Input.onmidimessage passes a MIDIMessage = { data: number[] }.
   // ---------------------------------------------------------------------------
-  const handleMIDIMessage = useCallback((event: MIDIMessageEvent) => {
-    const data = event.data;
+  const handleMIDIMessage = useCallback((message: { data: number[] }) => {
+    const data = message.data;
     if (!data) return;
 
     const parsed = parseMIDIMessage(data);
@@ -139,153 +145,85 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
   }, []);
 
   // ---------------------------------------------------------------------------
-  // Wire/unwire message listener when selected input changes
+  // Wire/unwire our own onmidimessage listener to the selected MIDIInput.
+  // We use the raw MIDIInput from the library's inputs array (not MIDIAccess)
+  // so we capture ALL message types including Program Change (0xC0).
   // ---------------------------------------------------------------------------
   const wireInput = useCallback((inputId: string | null) => {
     // Remove listener from previous input
-    if (activeInputRef.current && activeListenerRef.current) {
+    if (activeInputRef.current) {
       activeInputRef.current.onmidimessage = null;
-      activeListenerRef.current = null;
       activeInputRef.current = null;
     }
 
-    if (!inputId || !midiAccessRef.current) return;
+    if (!inputId) return;
 
-    const input = midiAccessRef.current.inputs.get(inputId);
-    if (!input) {
+    // Find the raw MIDIInput from the library's inputs array
+    const rawInput = inputs.find(i => i.id === inputId);
+    if (!rawInput) {
       console.warn('[MIDI] wireInput: input not found for id', inputId);
       return;
     }
 
-    const listener = (e: Event) => handleMIDIMessage(e as MIDIMessageEvent);
-    input.onmidimessage = listener;
-    activeInputRef.current = input;
-    activeListenerRef.current = listener;
-    console.log('[MIDI] 🔌 Listener wired to:', input.name);
-  }, [handleMIDIMessage]);
+    rawInput.onmidimessage = handleMIDIMessage;
+    activeInputRef.current = rawInput;
+    console.log('[MIDI] 🔌 Listener wired to:', rawInput.name);
+  }, [inputs, handleMIDIMessage]);
 
   // ---------------------------------------------------------------------------
-  // Build device list from a MIDIAccess object
+  // Convert library inputs to our MIDIDeviceInfo format
   // ---------------------------------------------------------------------------
-  const buildDeviceList = useCallback((access: MIDIAccess): MIDIDeviceInfo[] => {
-    const devices: MIDIDeviceInfo[] = [];
-    access.inputs.forEach(input => {
-      devices.push({
-        id: input.id,
-        name: input.name || 'Unknown Device',
-        manufacturer: input.manufacturer || '',
-        connected: input.state === 'connected',
-        state: input.state as 'connected' | 'disconnected',
-      });
+  const availableDevices: MIDIDeviceInfo[] = inputs.map(input => ({
+    id: input.id,
+    name: input.name || 'Unknown Device',
+    manufacturer: input.manufacturer || '',
+    connected: true, // If it's in the library's inputs array, it's connected
+    state: 'connected' as const,
+  }));
+
+  // ---------------------------------------------------------------------------
+  // Load config on mount
+  // ---------------------------------------------------------------------------
+  useEffect(() => {
+    const localConfig = loadMIDIConfig();
+    setConfig({
+      ...localConfig,
+      enabled: localConfig.deviceId && localConfig.buttons.length > 0 ? true : localConfig.enabled,
     });
-    return devices;
   }, []);
 
   // ---------------------------------------------------------------------------
-  // applyDevices — update state and auto-wire the selected device
+  // Auto-select device when inputs list changes (library handles enumeration)
   // ---------------------------------------------------------------------------
-  const applyDevices = useCallback((devices: MIDIDeviceInfo[]) => {
-    setAvailableDevices(devices);
+  useEffect(() => {
+    if (inputs.length === 0) return;
+    console.log('[MIDI] Inputs updated — available:', inputs.map(i => i.name));
+
     const savedConfig = loadMIDIConfig();
 
     setSelectedInputId(prev => {
       // Keep current selection if still present
-      if (prev && devices.find(d => d.id === prev)) {
-        wireInput(prev);
-        return prev;
-      }
+      if (prev && inputs.find(i => i.id === prev)) return prev;
       // Restore saved device
       if (savedConfig.deviceId) {
-        const found = devices.find(d => d.id === savedConfig.deviceId);
+        const found = inputs.find(i => i.id === savedConfig.deviceId);
         if (found) {
-          wireInput(found.id);
+          selectInput(found.id);
           console.log('[MIDI] Auto-selected saved device:', found.name);
           return found.id;
         }
       }
-      // Auto-select single device
-      if (devices.length === 1) {
-        wireInput(devices[0].id);
-        console.log('[MIDI] Auto-selected only device:', devices[0].name);
-        return devices[0].id;
+      // Auto-select if only one device
+      if (inputs.length === 1) {
+        selectInput(inputs[0].id);
+        console.log('[MIDI] Auto-selected only device:', inputs[0].name);
+        return inputs[0].id;
       }
       return prev;
     });
-  }, [wireInput]);
+  }, [inputs, selectInput]);
 
-  // ---------------------------------------------------------------------------
-  // Initialize MIDI access on mount.
-  // Bluetooth MIDI on Windows/Chrome: inputs map is often empty immediately
-  // after requestMIDIAccess resolves. We retry every 500ms for up to 5s so
-  // paired BT devices are picked up without manual intervention.
-  // ---------------------------------------------------------------------------
-  useEffect(() => {
-    if (typeof navigator === 'undefined' || !('requestMIDIAccess' in navigator)) return;
-
-    let cancelled = false;
-    let retryTimer: ReturnType<typeof setTimeout> | null = null;
-    let retryCount = 0;
-    const MAX_RETRIES = 10; // 10 × 500ms = 5 seconds total
-
-    const scanNow = () => {
-      if (cancelled || !midiAccessRef.current) return;
-      const devices = buildDeviceList(midiAccessRef.current);
-      console.log(`[MIDI] Scan #${retryCount}: found ${devices.length} device(s):`, devices.map(d => d.name));
-      applyDevices(devices);
-
-      // Keep retrying if we haven't found any devices yet
-      if (devices.length === 0 && retryCount < MAX_RETRIES) {
-        retryCount++;
-        retryTimer = setTimeout(scanNow, 500);
-      }
-    };
-
-    const init = async () => {
-      try {
-        const access = await navigator.requestMIDIAccess({ sysex: false });
-        if (cancelled) return;
-
-        midiAccessRef.current = access;
-
-        // onstatechange fires on BT connect/disconnect — always re-scan
-        access.onstatechange = (e: Event) => {
-          if (cancelled) return;
-          const port = (e as MIDIConnectionEvent).port;
-          console.log('[MIDI] onstatechange:', port?.name, port?.state, port?.type);
-          // Small delay: Chrome fires this before the input is available in the map
-          setTimeout(() => {
-            if (cancelled || !midiAccessRef.current) return;
-            const updated = buildDeviceList(midiAccessRef.current);
-            console.log('[MIDI] Post-statechange scan:', updated.map(d => d.name));
-            applyDevices(updated);
-          }, 150);
-        };
-
-        // Initial scan + retry loop
-        scanNow();
-
-        // Load config into state
-        setConfig(() => {
-          const localConfig = loadMIDIConfig();
-          return {
-            ...localConfig,
-            enabled: localConfig.deviceId && localConfig.buttons.length > 0 ? true : localConfig.enabled,
-          };
-        });
-      } catch (err) {
-        console.error('[MIDI] requestMIDIAccess failed:', err);
-      }
-    };
-
-    init();
-    return () => {
-      cancelled = true;
-      if (retryTimer) clearTimeout(retryTimer);
-    };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // Re-wire listener when selectedInputId changes
+  // Re-wire listener when selected input changes
   useEffect(() => {
     wireInput(selectedInputId);
   }, [selectedInputId, wireInput]);
@@ -312,18 +250,18 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
     });
   }, []);
 
-  // Select device — updates our own selectedInputId and wires the listener
+  // Select device — tells library + updates our selectedInputId + saves config
   const selectDevice = useCallback((deviceId: string) => {
     const device = availableDevices.find(d => d.id === deviceId);
     if (!device) return;
-    setSelectedInputId(deviceId);
-    // wireInput is called via the useEffect that watches selectedInputId
+    selectInput(deviceId);       // library tracks selection for useMIDIMessage
+    setSelectedInputId(deviceId); // our state drives wireInput via useEffect
     updateConfig({
       deviceId: device.id,
       deviceName: formatDeviceName(device.name, device.manufacturer),
       enabled: true,
     });
-  }, [availableDevices, updateConfig]);
+  }, [availableDevices, selectInput, updateConfig]);
 
   // Start learning mode
   const startLearning = useCallback((buttonId: string) => {
@@ -390,8 +328,11 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
     }));
   }, []);
 
-  // Refresh MIDI devices — re-requests access and retries until devices appear.
-  // Uses the same retry loop as init (up to 5s) for Bluetooth devices.
+  // Refresh MIDI devices.
+  // The library's MIDIProvider already owns requestMIDIAccess and onstatechange,
+  // so "refresh" means: force a new requestMIDIAccess call to wake Chrome's MIDI
+  // subsystem, then let the library re-populate inputs via its own onstatechange.
+  // We briefly show a spinner for UX feedback.
   const refreshDevices = useCallback(async () => {
     if (typeof navigator === 'undefined' || !('requestMIDIAccess' in navigator)) {
       console.warn('[MIDI] Web MIDI API not supported in this browser');
@@ -399,49 +340,21 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
     }
 
     setIsRefreshingDevices(true);
-    console.log('[MIDI] 🔄 Refreshing MIDI device list...');
+    console.log('[MIDI] 🔄 Refresh triggered — current inputs:', inputs.map(i => i.name));
 
-    let retryCount = 0;
-    const MAX_RETRIES = 10;
+    try {
+      // Calling requestMIDIAccess again wakes Chrome's MIDI stack and triggers
+      // onstatechange in the library's MIDIProvider if new devices appear.
+      await navigator.requestMIDIAccess();
+      console.log('[MIDI] ✅ requestMIDIAccess re-called — library will update inputs via onstatechange');
+    } catch (err) {
+      console.error('[MIDI] ❌ requestMIDIAccess failed on refresh:', err);
+    }
 
-    const tryScan = async (): Promise<void> => {
-      try {
-        // Always re-request — Chrome returns the same MIDIAccess object but
-        // the inputs map may have been updated since we last checked
-        const access = await navigator.requestMIDIAccess({ sysex: false });
-        midiAccessRef.current = access;
-
-        // Keep onstatechange live
-        access.onstatechange = (e: Event) => {
-          const port = (e as MIDIConnectionEvent).port;
-          console.log('[MIDI] onstatechange (refresh):', port?.name, port?.state);
-          setTimeout(() => {
-            if (!midiAccessRef.current) return;
-            applyDevices(buildDeviceList(midiAccessRef.current));
-          }, 150);
-        };
-
-        const devices = buildDeviceList(access);
-        console.log(`[MIDI] ✅ Refresh scan #${retryCount}: found ${devices.length} device(s):`, devices.map(d => d.name));
-        applyDevices(devices);
-
-        if (devices.length === 0 && retryCount < MAX_RETRIES) {
-          retryCount++;
-          await new Promise(r => setTimeout(r, 500));
-          return tryScan();
-        }
-      } catch (error) {
-        console.error('[MIDI] ❌ Failed to refresh MIDI devices:', error);
-      } finally {
-        if (retryCount >= MAX_RETRIES || (midiAccessRef.current && buildDeviceList(midiAccessRef.current).length > 0)) {
-          setIsRefreshingDevices(false);
-        }
-      }
-    };
-
-    await tryScan();
+    // Give the library a moment to fire onstatechange and update its inputs state
+    await new Promise(r => setTimeout(r, 800));
     setIsRefreshingDevices(false);
-  }, [buildDeviceList, applyDevices]);
+  }, [inputs]);
 
   const value: MIDIContextState = {
     config,
