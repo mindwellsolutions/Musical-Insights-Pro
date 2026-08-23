@@ -2,11 +2,16 @@
 
 /**
  * MIDI Context Provider
- * Manages MIDI device connections, configuration, and state
+ * Manages MIDI device connections, configuration, and state.
+ *
+ * Uses the Web MIDI API directly rather than relying on @react-midi/hooks for
+ * message routing. The library's MIDIProvider/useMIDIInputs is kept only for
+ * device enumeration; all message handling is wired via our own onmidimessage
+ * listeners so that Program Change, SysEx, and Bluetooth MIDI devices work
+ * reliably without needing a full page reload.
  */
 
 import React, { createContext, useContext, useState, useEffect, useCallback, ReactNode, useRef } from 'react';
-import { useMIDIInputs, useMIDIMessage } from '@react-midi/hooks';
 import {
   MIDIContextState,
   MIDIPedalConfig,
@@ -19,7 +24,6 @@ import {
   saveMIDIConfig,
   parseMIDIMessage,
   formatDeviceName,
-  buttonExists,
   createButtonFromMessage,
   removeButton,
   clearAllButtonMappings,
@@ -34,127 +38,36 @@ interface MIDIContextProviderProps {
 export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
   const [config, setConfig] = useState<MIDIPedalConfig>(DEFAULT_MIDI_CONFIG);
   const [isLearning, setIsLearning] = useState(false);
-  const [learningButtonId, setLearningButtonId] = useState<string | null>(null); // Now stores action name when learning
+  const [learningButtonId, setLearningButtonId] = useState<string | null>(null);
   const [lastMIDIMessage, setLastMIDIMessage] = useState<MIDIMessageData | null>(null);
   const [isDetectingButtons, setIsDetectingButtons] = useState(false);
   const [isRefreshingDevices, setIsRefreshingDevices] = useState(false);
-  // Manually tracked device list — updated by the library AND by our refreshDevices call
-  const [manualDevices, setManualDevices] = useState<MIDIDeviceInfo[]>([]);
 
-  // Track when learning mode started to ignore old messages
+  // Our own device list — populated directly from navigator.requestMIDIAccess()
+  const [availableDevices, setAvailableDevices] = useState<MIDIDeviceInfo[]>([]);
+  const [selectedInputId, setSelectedInputId] = useState<string | null>(null);
+
+  // Stable refs so callbacks never capture stale state
+  const isLearningRef = useRef(false);
+  const learningButtonIdRef = useRef<string | null>(null);
   const learningStartTime = useRef<number>(0);
+  const midiAccessRef = useRef<MIDIAccess | null>(null);
+  const activeListenerRef = useRef<((e: Event) => void) | null>(null);
+  const activeInputRef = useRef<MIDIInput | null>(null);
 
-  // Track the actual midiMessage object reference to detect truly new messages
-  const lastMidiMessageRef = useRef<any>(null);
+  // Keep refs in sync with state
+  useEffect(() => { isLearningRef.current = isLearning; }, [isLearning]);
+  useEffect(() => { learningButtonIdRef.current = learningButtonId; }, [learningButtonId]);
 
-  // Use react-midi-hooks to get MIDI inputs
-  const { inputs, selectInput, selectedInputId } = useMIDIInputs();
-  const midiMessage = useMIDIMessage();
+  // ---------------------------------------------------------------------------
+  // Core MIDI message handler — wired directly to the selected MIDIInput
+  // ---------------------------------------------------------------------------
+  const handleMIDIMessage = useCallback((event: MIDIMessageEvent) => {
+    const data = event.data;
+    if (!data) return;
 
-  // Load configuration from localStorage and server on mount
-  useEffect(() => {
-    const loadConfig = async () => {
-      // First, load from localStorage (immediate)
-      const localConfig = loadMIDIConfig();
-      console.log('[MIDI Context] Loaded config from localStorage:', localConfig);
-
-      // If there's a device and buttons configured, ensure enabled is true
-      let configToSet = {
-        ...localConfig,
-        enabled: localConfig.deviceId && localConfig.buttons.length > 0 ? true : localConfig.enabled,
-      };
-
-      console.log('[MIDI Context] Setting config with enabled:', configToSet.enabled);
-      setConfig(configToSet);
-
-      // Then, try to load from server (may override localStorage)
-      try {
-        const response = await fetch('/api/midi/config');
-        if (response.ok) {
-          const data = await response.json();
-          if (data.config) {
-            console.log('[MIDI Context] Loaded config from server:', data.config);
-            configToSet = {
-              ...data.config,
-              enabled: data.config.deviceId && data.config.buttons.length > 0 ? true : data.config.enabled,
-            };
-            setConfig(configToSet);
-            // Also save to localStorage to keep them in sync
-            saveMIDIConfig(configToSet);
-          }
-        }
-      } catch (error) {
-        console.error('[MIDI Context] Error loading config from server:', error);
-      }
-
-      // If there's a saved device ID, try to select it
-      if (configToSet.deviceId && inputs.length > 0) {
-        const device = inputs.find(input => input.id === configToSet.deviceId);
-        if (device) {
-          selectInput(configToSet.deviceId);
-        }
-      }
-    };
-
-    loadConfig();
-  }, [inputs, selectInput]);
-
-  // Log config changes
-  useEffect(() => {
-    console.log('[MIDI Context] Config state changed:', {
-      enabled: config.enabled,
-      deviceId: config.deviceId,
-      deviceName: config.deviceName,
-      buttonsCount: config.buttons.length,
-      buttons: config.buttons,
-    });
-  }, [config]);
-
-  // Convert Web MIDI API inputs to our device info format
-  // Note: @react-midi/hooks Input type doesn't have a 'state' property
-  // We assume all inputs in the array are connected
-  const libraryDevices: MIDIDeviceInfo[] = inputs.map(input => ({
-    id: input.id,
-    name: input.name || 'Unknown Device',
-    manufacturer: input.manufacturer || '',
-    connected: true,
-    state: 'connected' as const,
-  }));
-
-  // Merge library-detected devices with manually-detected ones (deduped by id)
-  const allDeviceIds = new Set(libraryDevices.map(d => d.id));
-  const mergedExtras = manualDevices.filter(d => !allDeviceIds.has(d.id));
-  const availableDevices: MIDIDeviceInfo[] = [...libraryDevices, ...mergedExtras];
-
-  // Get currently selected device
-  const selectedDevice = availableDevices.find(d => d.id === selectedInputId) || null;
-
-  // Check if connected (if we have a selected input ID and it exists in inputs)
-  const isConnected = selectedInputId !== null && inputs.some(i => i.id === selectedInputId);
-
-  // Process incoming MIDI messages
-  useEffect(() => {
-    if (!midiMessage) return;
-
-    // Check if this is the same message object we already processed
-    // This prevents re-processing when useEffect re-runs due to dependency changes
-    if (midiMessage === lastMidiMessageRef.current) {
-      console.log('[MIDI] ⚠️ Skipping - same message object reference (useEffect re-run)');
-      return;
-    }
-
-    // This is a truly new message - update the reference
-    lastMidiMessageRef.current = midiMessage;
-    console.log('[MIDI] 🆕 New message object detected');
-    console.log('[MIDI] Raw message received:', midiMessage.data);
-
-    const parsed = parseMIDIMessage(midiMessage.data);
-    console.log('[MIDI] Parsed message:', parsed);
-
-    if (!parsed || parsed.type === 'unknown') {
-      console.log('[MIDI] Message ignored - unknown type');
-      return;
-    }
+    const parsed = parseMIDIMessage(data);
+    if (!parsed || parsed.type === 'unknown') return;
 
     const messageData: MIDIMessageData = {
       type: parsed.type,
@@ -164,48 +77,29 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
       timestamp: Date.now(),
     };
 
-    // Always update last message for debugging
+    // Always update last message (shows in Config modal status area)
     setLastMIDIMessage(messageData);
-    console.log('[MIDI] Message data:', messageData);
+    console.log('[MIDI] Message:', parsed.type, parsed.number, 'ch', parsed.channel, 'val', parsed.value);
 
-    // If in learning mode, assign the MIDI message to the action being learned
-    // Accept CC, Note On (value > 0), and Program Change messages
+    // --- Learning mode ---
     const isValidForDetection =
       parsed.type === 'cc' ||
       parsed.type === 'program' ||
       (parsed.type === 'note' && parsed.value > 0);
 
-    // Only process messages that arrived AFTER learning mode started
-    const isNewMessage = messageData.timestamp > learningStartTime.current;
+    const isNewEnough = messageData.timestamp > learningStartTime.current;
 
-    // Debug logging for learning mode
-    if (isLearning && learningButtonId) {
-      console.log('[MIDI] Learning mode check:', {
-        isLearning,
-        learningButtonId,
-        isValidForDetection,
-        isNewMessage,
-        messageTimestamp: messageData.timestamp,
-        learningStartTime: learningStartTime.current,
-        willProcess: isValidForDetection && isNewMessage
-      });
-    }
-
-    if (isLearning && learningButtonId && isValidForDetection && isNewMessage) {
-      const actionToAssign = learningButtonId; // learningButtonId now contains the action name
-      console.log('[MIDI] ✅ PROCESSING MESSAGE - Learning mode active for action:', actionToAssign);
+    if (isLearningRef.current && learningButtonIdRef.current && isValidForDetection && isNewEnough) {
+      const actionToAssign = learningButtonIdRef.current;
+      console.log('[MIDI] ✅ Learning: assigning', parsed.type, parsed.number, '→', actionToAssign);
 
       setConfig(prev => {
-        // Check if this exact MIDI message is already assigned to a different action
         const existingButton = prev.buttons.find(b => {
-          // First check raw data match if available
           if (parsed.rawData && b.rawMidiData && b.rawMidiData.length > 0) {
             const rawMatch = parsed.rawData.length === b.rawMidiData.length &&
               parsed.rawData.every((byte, idx) => byte === b.rawMidiData![idx]);
             if (rawMatch) return true;
           }
-
-          // Fallback to parsed message matching
           if (b.messageType !== parsed.type || b.channel !== parsed.channel) return false;
           if (parsed.type === 'cc' && b.ccNumber === parsed.number) return true;
           if (parsed.type === 'note' && b.noteNumber === parsed.number) return true;
@@ -214,70 +108,161 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
         });
 
         let updatedButtons;
-
         if (existingButton) {
-          // Update existing button with new action
-          console.log('[MIDI] Updating existing button with new action');
           updatedButtons = prev.buttons.map(button => {
-            if (button.id === existingButton.id) {
-              return {
-                ...button,
-                action: actionToAssign as any,
-                enabled: true,
-              };
-            }
-            // If another button had this action, clear it
-            if (button.action === actionToAssign) {
-              return {
-                ...button,
-                action: 'none' as any,
-              };
-            }
+            if (button.id === existingButton.id) return { ...button, action: actionToAssign as any, enabled: true };
+            if (button.action === actionToAssign) return { ...button, action: 'none' as any };
             return button;
           });
         } else {
-          // Create new button for this action
-          console.log('[MIDI] Creating new button for action');
-          const newButton = createButtonFromMessage(
-            parsed.type,
-            parsed.number,
-            parsed.channel,
-            prev.buttons.length,
-            parsed.rawData
-          );
-
-          // Clear any existing button with this action
+          const newButton = createButtonFromMessage(parsed.type, parsed.number, parsed.channel, prev.buttons.length, parsed.rawData);
           updatedButtons = prev.buttons.map(b =>
             b.action === actionToAssign ? { ...b, action: 'none' as any } : b
           );
-
-          // Add new button with the action
-          updatedButtons.push({
-            ...newButton,
-            action: actionToAssign as any,
-          });
+          updatedButtons.push({ ...newButton, action: actionToAssign as any });
         }
 
-        const newConfig = {
-          ...prev,
-          buttons: updatedButtons,
-        };
-
-        // Auto-save the configuration after learning
-        console.log('[MIDI] Saving configuration after learning...');
+        const newConfig = { ...prev, buttons: updatedButtons };
         saveMIDIConfig(newConfig);
-
         return newConfig;
       });
 
-      // Stop learning after capturing
-      console.log('[MIDI] ✅ Stopping learning mode - assignment complete');
       setIsLearning(false);
       setLearningButtonId(null);
-      learningStartTime.current = 0; // Reset the timestamp
-      console.log('[MIDI] Action assigned and saved successfully');
+      learningStartTime.current = 0;
+      console.log('[MIDI] ✅ Assignment complete');
     }
-  }, [midiMessage, isLearning, learningButtonId, isDetectingButtons]);
+
+    // --- Runtime dispatch (non-learning): handled by useMIDIButtonHandlers via context ---
+    // The MIDISelectionContext reads config and reacts; we just need the message in state.
+    // For runtime action dispatch we expose lastMIDIMessage + config via context value.
+  }, []);
+
+  // ---------------------------------------------------------------------------
+  // Wire/unwire message listener when selected input changes
+  // ---------------------------------------------------------------------------
+  const wireInput = useCallback((inputId: string | null) => {
+    // Remove listener from previous input
+    if (activeInputRef.current && activeListenerRef.current) {
+      activeInputRef.current.onmidimessage = null;
+      activeListenerRef.current = null;
+      activeInputRef.current = null;
+    }
+
+    if (!inputId || !midiAccessRef.current) return;
+
+    const input = midiAccessRef.current.inputs.get(inputId);
+    if (!input) {
+      console.warn('[MIDI] wireInput: input not found for id', inputId);
+      return;
+    }
+
+    const listener = (e: Event) => handleMIDIMessage(e as MIDIMessageEvent);
+    input.onmidimessage = listener;
+    activeInputRef.current = input;
+    activeListenerRef.current = listener;
+    console.log('[MIDI] 🔌 Listener wired to:', input.name);
+  }, [handleMIDIMessage]);
+
+  // ---------------------------------------------------------------------------
+  // Build device list from a MIDIAccess object
+  // ---------------------------------------------------------------------------
+  const buildDeviceList = useCallback((access: MIDIAccess): MIDIDeviceInfo[] => {
+    const devices: MIDIDeviceInfo[] = [];
+    access.inputs.forEach(input => {
+      devices.push({
+        id: input.id,
+        name: input.name || 'Unknown Device',
+        manufacturer: input.manufacturer || '',
+        connected: input.state === 'connected',
+        state: input.state as 'connected' | 'disconnected',
+      });
+    });
+    return devices;
+  }, []);
+
+  // ---------------------------------------------------------------------------
+  // Initialize MIDI access on mount
+  // ---------------------------------------------------------------------------
+  useEffect(() => {
+    if (typeof navigator === 'undefined' || !('requestMIDIAccess' in navigator)) return;
+
+    let cancelled = false;
+
+    const init = async () => {
+      try {
+        const access = await navigator.requestMIDIAccess({ sysex: false });
+        if (cancelled) return;
+
+        midiAccessRef.current = access;
+        const devices = buildDeviceList(access);
+        setAvailableDevices(devices);
+        console.log('[MIDI] Init: found', devices.length, 'device(s):', devices.map(d => d.name));
+
+        // Listen for hot-plug events
+        access.onstatechange = () => {
+          if (cancelled) return;
+          const updated = buildDeviceList(access);
+          setAvailableDevices(updated);
+          console.log('[MIDI] onstatechange: device list updated', updated.map(d => d.name));
+
+          // Re-wire if our selected device disappeared or reappeared
+          setSelectedInputId(prev => {
+            if (prev) wireInput(prev);
+            return prev;
+          });
+        };
+
+        // Auto-select saved device from config
+        const savedConfig = loadMIDIConfig();
+        if (savedConfig.deviceId) {
+          const found = devices.find(d => d.id === savedConfig.deviceId);
+          if (found) {
+            setSelectedInputId(found.id);
+            wireInput(found.id);
+            console.log('[MIDI] Auto-selected saved device:', found.name);
+          }
+        } else if (devices.length === 1) {
+          // Auto-select if there's exactly one device
+          setSelectedInputId(devices[0].id);
+          wireInput(devices[0].id);
+          console.log('[MIDI] Auto-selected only device:', devices[0].name);
+        }
+
+        // Load config into state
+        setConfig(prev => {
+          const localConfig = loadMIDIConfig();
+          return {
+            ...localConfig,
+            enabled: localConfig.deviceId && localConfig.buttons.length > 0 ? true : localConfig.enabled,
+          };
+        });
+      } catch (err) {
+        console.error('[MIDI] requestMIDIAccess failed:', err);
+      }
+    };
+
+    init();
+    return () => { cancelled = true; };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Re-wire listener when selectedInputId changes
+  useEffect(() => {
+    wireInput(selectedInputId);
+  }, [selectedInputId, wireInput]);
+
+  // Log config changes
+  useEffect(() => {
+    console.log('[MIDI Context] Config:', {
+      enabled: config.enabled,
+      deviceId: config.deviceId,
+      buttonsCount: config.buttons.length,
+    });
+  }, [config]);
+
+  const selectedDevice = availableDevices.find(d => d.id === selectedInputId) || null;
+  const isConnected = !!selectedInputId && availableDevices.some(d => d.id === selectedInputId && d.connected);
 
   // Update configuration
   const updateConfig = useCallback((updates: Partial<MIDIPedalConfig>) => {
@@ -289,18 +274,18 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
     });
   }, []);
 
-  // Select device
+  // Select device — updates our own selectedInputId and wires the listener
   const selectDevice = useCallback((deviceId: string) => {
-    selectInput(deviceId);
     const device = availableDevices.find(d => d.id === deviceId);
-    if (device) {
-      updateConfig({
-        deviceId: device.id,
-        deviceName: formatDeviceName(device.name, device.manufacturer),
-        enabled: true,
-      });
-    }
-  }, [selectInput, availableDevices, updateConfig]);
+    if (!device) return;
+    setSelectedInputId(deviceId);
+    // wireInput is called via the useEffect that watches selectedInputId
+    updateConfig({
+      deviceId: device.id,
+      deviceName: formatDeviceName(device.name, device.manufacturer),
+      enabled: true,
+    });
+  }, [availableDevices, updateConfig]);
 
   // Start learning mode
   const startLearning = useCallback((buttonId: string) => {
@@ -367,8 +352,7 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
     }));
   }, []);
 
-  // Refresh MIDI devices by re-requesting MIDI access from the browser
-  // This does NOT reload the page — it re-enumerates connected devices
+  // Refresh MIDI devices — re-requests access and updates device list without page reload
   const refreshDevices = useCallback(async () => {
     if (typeof navigator === 'undefined' || !('requestMIDIAccess' in navigator)) {
       console.warn('[MIDI] Web MIDI API not supported in this browser');
@@ -379,27 +363,28 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
     console.log('[MIDI] 🔄 Refreshing MIDI device list...');
 
     try {
-      const midiAccess = await navigator.requestMIDIAccess({ sysex: false });
-      const freshDevices: MIDIDeviceInfo[] = [];
-      midiAccess.inputs.forEach((input) => {
-        freshDevices.push({
-          id: input.id,
-          name: input.name || 'Unknown Device',
-          manufacturer: input.manufacturer || '',
-          connected: input.state === 'connected',
-          state: input.state as 'connected' | 'disconnected',
-        });
-      });
+      const access = await navigator.requestMIDIAccess({ sysex: false });
+      midiAccessRef.current = access;
 
+      const freshDevices = buildDeviceList(access);
+      setAvailableDevices(freshDevices);
       console.log('[MIDI] ✅ Found', freshDevices.length, 'device(s):', freshDevices.map(d => d.name));
-      setManualDevices(freshDevices);
 
-      // If a previously saved device is now visible, auto-select it
-      setConfig(prev => {
-        if (prev.deviceId) {
-          const found = freshDevices.find(d => d.id === prev.deviceId);
+      // Update onstatechange to use the new access object
+      access.onstatechange = () => {
+        const updated = buildDeviceList(access);
+        setAvailableDevices(updated);
+        setSelectedInputId(prev => { if (prev) wireInput(prev); return prev; });
+      };
+
+      // Auto-select saved device if now visible, or keep current selection
+      setSelectedInputId(prev => {
+        const targetId = prev || config.deviceId || null;
+        if (targetId) {
+          const found = freshDevices.find(d => d.id === targetId);
           if (found) {
-            selectInput(found.id);
+            wireInput(found.id);
+            return found.id;
           }
         }
         return prev;
@@ -409,7 +394,7 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
     } finally {
       setIsRefreshingDevices(false);
     }
-  }, [selectInput]);
+  }, [buildDeviceList, wireInput, config.deviceId]);
 
   const value: MIDIContextState = {
     config,
