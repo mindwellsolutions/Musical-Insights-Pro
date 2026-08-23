@@ -2466,6 +2466,8 @@ export default function Home() {
 
   const handleFocusPrevious = useCallback(() => {
     if (diatonicTriads.length === 0) return;
+    // Auto-show Visual Insights tab when MIDI triggers this — ensures the UI is visible
+    if (harmonizationTab !== 'visualInsights') setHarmonizationTab('visualInsights');
     // Filter to only enabled degrees (if any checked; fall back to all if none checked)
     const enabledSet = enabledTriadDegreesArr.length > 0 ? new Set(enabledTriadDegreesArr) : null;
     const pool = enabledSet ? diatonicTriads.filter(t => enabledSet.has(t.degree)) : diatonicTriads;
@@ -2473,17 +2475,19 @@ export default function Home() {
     const idx = pool.findIndex(t => t.degree === selectedFocusDegree);
     const prev = pool[(idx - 1 + pool.length) % pool.length];
     handleFocusDegreeSelect(prev.degree);
-  }, [diatonicTriads, selectedFocusDegree, handleFocusDegreeSelect, enabledTriadDegreesArr]);
+  }, [diatonicTriads, selectedFocusDegree, handleFocusDegreeSelect, enabledTriadDegreesArr, harmonizationTab, setHarmonizationTab]);
 
   const handleFocusNext = useCallback(() => {
     if (diatonicTriads.length === 0) return;
+    // Auto-show Visual Insights tab when MIDI triggers this — ensures the UI is visible
+    if (harmonizationTab !== 'visualInsights') setHarmonizationTab('visualInsights');
     const enabledSet = enabledTriadDegreesArr.length > 0 ? new Set(enabledTriadDegreesArr) : null;
     const pool = enabledSet ? diatonicTriads.filter(t => enabledSet.has(t.degree)) : diatonicTriads;
     if (pool.length === 0) return;
     const idx = pool.findIndex(t => t.degree === selectedFocusDegree);
     const next = pool[(idx + 1) % pool.length];
     handleFocusDegreeSelect(next.degree);
-  }, [diatonicTriads, selectedFocusDegree, handleFocusDegreeSelect, enabledTriadDegreesArr]);
+  }, [diatonicTriads, selectedFocusDegree, handleFocusDegreeSelect, enabledTriadDegreesArr, harmonizationTab, setHarmonizationTab]);
 
   // Keyboard navigation for Triad Focus Mode (Arrow keys + 1–7)
   useEffect(() => {
