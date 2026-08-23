@@ -188,12 +188,21 @@ export function getNoteAtFret(openNote: string, fret: number): string {
   return NOTES[(noteIndex + fret) % 12];
 }
 
+// Flat-to-sharp lookup for root note normalization (inline to avoid circular imports)
+const FLAT_TO_SHARP_ROOT: Record<string, string> = {
+  'Db': 'C#', 'Eb': 'D#', 'Gb': 'F#', 'Ab': 'G#', 'Bb': 'A#',
+  'db': 'C#', 'eb': 'D#', 'gb': 'F#', 'ab': 'G#', 'bb': 'A#',
+};
+
 export function getScaleNotes(rootNote: string, scaleName: string): string[] {
   // Try extended intervals first, then fall back to basic intervals
   const intervals = EXTENDED_SCALE_INTERVALS[scaleName] || SCALE_INTERVALS[scaleName];
   if (!intervals) return [];
 
-  const rootIndex = NOTES.indexOf(rootNote);
+  // Normalize flat root notes to sharps so NOTES.indexOf() succeeds
+  const normalizedRoot = FLAT_TO_SHARP_ROOT[rootNote] ?? rootNote;
+  const rootIndex = NOTES.indexOf(normalizedRoot);
+  if (rootIndex === -1) return [];
   return intervals.map(interval => NOTES[(rootIndex + interval) % 12]);
 }
 

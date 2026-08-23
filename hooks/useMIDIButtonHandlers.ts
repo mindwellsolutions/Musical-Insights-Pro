@@ -191,13 +191,14 @@ export function useMIDIButtonHandlers(callbacks: MIDIButtonHandlersCallbacks) {
         callbacksRef.current.onNext?.();
         break;
       // ── Switch Left / Right — navigate within the currently focused section ──
+      // dispatchItemNav calls the section's registered onLeft/onRight callback.
+      // We do NOT also call callbacksRef.current.onScaleLeft/Right — that was
+      // the old page-level fallback and caused an unwanted second scroll/action.
       case 'scale-left':
         dispatchItemNavRef.current('left');
-        callbacksRef.current.onScaleLeft?.();
         break;
       case 'scale-right':
         dispatchItemNavRef.current('right');
-        callbacksRef.current.onScaleRight?.();
         break;
       case 'item-left':
         dispatchItemNavRef.current('left');

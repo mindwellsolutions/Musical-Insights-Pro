@@ -97,6 +97,8 @@ export function getPositionColor(positionIndex: number): string {
  * Maps flat notes (Db, Eb, Gb, Ab, Bb) to sharp notes (C#, D#, F#, G#, A#)
  */
 export function normalizeNoteToSharp(note: string): string {
+  // Guard: if note is undefined, null, or not a string, return empty string
+  if (note == null || typeof note !== 'string') return '';
   // Trim and handle case-insensitive input
   const trimmedNote = note.trim();
 
