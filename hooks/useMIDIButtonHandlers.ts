@@ -51,16 +51,14 @@ function extractNote(str: string): string | null {
 }
 
 function showSectionToast(newId: MIDISectionId, prevId: MIDISectionId | null, direction: 'next' | 'prev') {
-  const arrow = direction === 'next' ? '→' : '←';
   const newName = getSectionName(newId);
-  const prevName = prevId ? getSectionName(prevId) : null;
 
+  // Use description for the centered section name; title line shows "Selected Section:"
   toast(
-    // Sonner accepts React nodes via JSX — but we're in a .ts file, so use the message + description pattern
-    newName,
+    `<span style="font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;opacity:0.5;">Selected Section:</span>`,
     {
-      description: prevName ? `Previously: ${prevName}` : undefined,
-      duration: 2200,
+      description: `<span style="display:block;text-align:center;font-size:15px;font-weight:700;letter-spacing:0.01em;margin-top:2px;">${newName}</span>` as unknown as string,
+      duration: 2000,
       position: 'top-right',
       style: {
         background: 'rgba(14,14,22,0.97)',
@@ -68,8 +66,9 @@ function showSectionToast(newId: MIDISectionId, prevId: MIDISectionId | null, di
         boxShadow: '0 8px 32px rgba(0,0,0,0.6)',
         borderRadius: 12,
         color: '#fff',
+        textAlign: 'center',
       },
-      icon: arrow === '→' ? '⏭' : '⏮',
+      icon: direction === 'next' ? '⏭' : '⏮',
     }
   );
 }

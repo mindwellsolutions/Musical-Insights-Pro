@@ -1759,11 +1759,13 @@ export default function Home() {
   // Pedal switching view mode (from MIDISelectionContext)
   const { pedalSwitchingMode, setPedalSwitchingMode, onSectionChange } = useMIDISelection();
 
-  // Auto-switch to Scales & Modes tab when scale-mode-select MIDI section becomes active
+  // Auto-switch tabs when MIDI section becomes active
   useEffect(() => {
     const unsub = onSectionChange((newId) => {
       if (newId === 'scale-mode-select') {
         setHarmonizationTab('scalesModes');
+      } else if (newId === 'triads') {
+        setHarmonizationTab('visualInsights');
       }
     });
     return unsub;
@@ -3420,14 +3422,6 @@ export default function Home() {
                                 onNext={handleFocusNext}
                                 theme={theme}
                               />
-                              <MIDISectionToggle
-                                sectionId="progression-degrees"
-                                label="Progression Degrees"
-                                onLeft={handleFocusPrevious}
-                                onRight={handleFocusNext}
-                                theme={theme}
-                              />
-
                               {/* Notes in <degree>: circles to the right of the nav */}
                               {focusTriad && (() => {
                                 const triadRootNorm = normalizeNoteToSharp(focusTriad.rootNote);
@@ -4863,13 +4857,6 @@ export default function Home() {
                               onSelect={handleFocusDegreeSelect}
                               onPrevious={handleFocusPrevious}
                               onNext={handleFocusNext}
-                              theme={theme}
-                            />
-                            <MIDISectionToggle
-                              sectionId="progression-degrees"
-                              label="Progression Degrees"
-                              onLeft={handleFocusPrevious}
-                              onRight={handleFocusNext}
                               theme={theme}
                             />
                           </div>
