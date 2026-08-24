@@ -3,9 +3,14 @@
 /**
  * MIDISectionToggle
  *
- * A compact radio-style button that claims/releases MIDI pedal control for a
- * given UI section. Only one section can be active at a time (enforced by
- * MIDISelectionContext).
+ * A compact MIDI icon button placed next to a UI section. Clicking it toggles
+ * the section ON/OFF in the "enabled" set — sections that are ON will be cycled
+ * through by the Next Section / Last Section pedal buttons.
+ *
+ * Three visual states:
+ *   disabled  — greyed out icon, section is not in the cycle pool
+ *   enabled   — white/lit icon, section is in the cycle pool but not currently focused
+ *   focused   — accent-colored glow + pulse, section is currently being controlled
  *
  * Usage:
  *   <MIDISectionToggle
@@ -34,20 +39,10 @@ interface MIDISectionToggleProps {
 /** Inline MIDI pedal foot-switch SVG icon */
 function PedalIcon({ size = 14, color = 'currentColor' }: { size?: number; color?: string }) {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 16 16"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      {/* Body */}
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="1" y="4" width="14" height="8" rx="2" fill={color} opacity="0.9" />
-      {/* Left pedal button */}
       <rect x="2.5" y="5.5" width="5" height="5" rx="1" fill="rgba(0,0,0,0.35)" />
-      {/* Right pedal button */}
       <rect x="8.5" y="5.5" width="5" height="5" rx="1" fill="rgba(0,0,0,0.35)" />
-      {/* Cable */}
       <path d="M8 4V2.5C8 2 8.5 1.5 9 1.5H10" stroke={color} strokeWidth="1.2" strokeLinecap="round" />
     </svg>
   );
@@ -61,67 +56,97 @@ export function MIDISectionToggle({
   theme,
   className,
 }: MIDISectionToggleProps) {
-  const { activeSectionId, toggleSectionId, registerCallbacks, unregisterCallbacks } = useMIDISelection();
+  const {
+    activeSectionId,
+    enabledSectionIds,
+    toggleEnabled,
+    registerCallbacks,
+    unregisterCallbacks,
+    registerSectionOrder,
+    unregisterSectionOrder,
+  } = useMIDISelection();
   const { isConnected, config } = useMIDIPedal();
 
-  const isActive = activeSectionId === sectionId;
-  const isMIDIAvailable = isConnected && config.enabled;
+  const isEnabled = enabledSectionIds.has(sectionId);
+  const isFocused = activeSectionId === sectionId;
+  // A device being connected is all that's needed to allow toggling sections.
+  // config.enabled starts false on a fresh deployment (empty localStorage) even
+  // when a device is selected — requiring it here blocks the button entirely on
+  // first use of the deployed site. isConnected is the correct gate.
+  const isMIDIAvailable = isConnected;
 
-  // Register/update callbacks whenever they change
+  // Register section in DOM order and callbacks
+  useEffect(() => {
+    registerSectionOrder(sectionId);
+    return () => { unregisterSectionOrder(sectionId); };
+  }, [sectionId, registerSectionOrder, unregisterSectionOrder]);
+
   useEffect(() => {
     const callbacks: SectionCallbacks = { onLeft, onRight };
     registerCallbacks(sectionId, callbacks);
-    return () => {
-      unregisterCallbacks(sectionId);
-    };
+    return () => { unregisterCallbacks(sectionId); };
   }, [sectionId, onLeft, onRight, registerCallbacks, unregisterCallbacks]);
 
   const handleClick = () => {
-    toggleSectionId(sectionId);
+    if (!isMIDIAvailable) return;
+    toggleEnabled(sectionId);
   };
 
   const accentColor = theme.accentPrimary || '#3b82f6';
+  // Enabled-but-not-focused: bright white so it's clearly ON
+  const enabledColor = '#e2e8f0';
+
+  const iconColor = isFocused ? accentColor : isEnabled ? enabledColor : theme.textSecondary;
+  const bgColor = isFocused
+    ? `${accentColor}22`
+    : isEnabled
+    ? 'rgba(255,255,255,0.08)'
+    : theme.bgSecondary;
+  const borderStyle = isFocused
+    ? `1.5px solid ${accentColor}`
+    : isEnabled
+    ? `1.5px solid ${enabledColor}66`
+    : `1px solid ${theme.border}`;
+
+  const titleText = !isMIDIAvailable
+    ? 'MIDI pedal not connected — configure in Settings'
+    : isFocused
+    ? `MIDI focused: ${label} — Next/Last Section to cycle away`
+    : isEnabled
+    ? `${label}: in MIDI cycle — click to remove`
+    : `Add "${label}" to MIDI cycle`;
 
   return (
     <button
       onClick={handleClick}
-      title={
-        !isMIDIAvailable
-          ? 'MIDI pedal not connected'
-          : isActive
-          ? `MIDI Active: ${label} — click to release`
-          : `Control "${label}" with MIDI pedal`
-      }
+      title={titleText}
       className={className}
       style={{
         display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
-        width: 26,
-        height: 26,
-        borderRadius: 6,
-        border: isActive
-          ? `1.5px solid ${accentColor}`
-          : `1px solid ${theme.border}`,
-        background: isActive ? `${accentColor}22` : theme.bgSecondary,
-        color: isActive ? accentColor : theme.textSecondary,
-        cursor: isMIDIAvailable ? 'pointer' : 'not-allowed',
-        opacity: isMIDIAvailable ? 1 : 0.4,
+        width: 24,
+        height: 24,
+        borderRadius: 5,
+        border: borderStyle,
+        background: bgColor,
+        color: iconColor,
+        cursor: isMIDIAvailable ? 'pointer' : 'default',
+        opacity: isMIDIAvailable ? 1 : 0.6,
         transition: 'all 150ms ease',
-        boxShadow: isActive ? `0 0 8px ${accentColor}55` : 'none',
+        boxShadow: isFocused ? `0 0 8px ${accentColor}66` : 'none',
         flexShrink: 0,
         padding: 0,
-        // Pulse animation when active
-        animation: isActive ? 'midi-section-pulse 2s ease-in-out infinite' : 'none',
+        animation: isFocused ? 'midi-toggle-pulse 2s ease-in-out infinite' : 'none',
       }}
-      aria-pressed={isActive}
-      aria-label={`MIDI control: ${label}`}
+      aria-pressed={isEnabled}
+      aria-label={`MIDI toggle: ${label}`}
     >
-      <PedalIcon size={14} color={isActive ? accentColor : theme.textSecondary} />
+      <PedalIcon size={13} color={iconColor} />
       <style jsx>{`
-        @keyframes midi-section-pulse {
+        @keyframes midi-toggle-pulse {
           0%, 100% { box-shadow: 0 0 6px ${accentColor}55; }
-          50%       { box-shadow: 0 0 12px ${accentColor}99; }
+          50%       { box-shadow: 0 0 14px ${accentColor}aa; }
         }
       `}</style>
     </button>

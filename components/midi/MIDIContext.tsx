@@ -233,6 +233,8 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
   // Auto-select device when inputs list changes (library handles enumeration).
   // selectInput must be called OUTSIDE any state updater to avoid the React
   // "setState during render" error (updating another component while rendering).
+  // Also auto-enables config when a device is selected so that the section
+  // toggles are clickable on a fresh deployment (empty localStorage → enabled=false).
   // ---------------------------------------------------------------------------
   useEffect(() => {
     if (inputs.length === 0) return;
@@ -254,6 +256,20 @@ export function MIDIContextProvider({ children }: MIDIContextProviderProps) {
       return prev;
     });
   }, [inputs]);
+
+  // Auto-enable config whenever a device becomes selected.
+  // On a fresh deployment localStorage is empty so config.enabled = false even
+  // though a device is connected. This effect flips it to true automatically.
+  useEffect(() => {
+    if (!selectedInputId) return;
+    setConfig(prev => {
+      if (prev.enabled) return prev; // already enabled, no-op
+      const updated = { ...prev, enabled: true };
+      saveMIDIConfig(updated);
+      console.log('[MIDI] Auto-enabled config because device is selected:', selectedInputId);
+      return updated;
+    });
+  }, [selectedInputId]);
 
   // Re-wire listener when selected input changes
   useEffect(() => {
