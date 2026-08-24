@@ -17,6 +17,15 @@
  */
 
 import React, { createContext, useContext, useState, useCallback, useRef, useEffect, ReactNode } from 'react';
+import { createClient } from '@/lib/supabase/client-ssr';
+import {
+  DEFAULT_ENABLED_IDS,
+  loadEnabledIdsFromStorage,
+  saveEnabledIdsToStorage,
+  loadEnabledIdsFromDB,
+  saveEnabledIdsToDB,
+  seedDefaultToggleState,
+} from '@/lib/supabase/midi-section-service';
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -93,22 +102,9 @@ interface MIDISelectionContextValue {
   deleteProfile: (profileId: string) => void;
 }
 
-// ── localStorage helpers ──────────────────────────────────────────────────────
+// ── localStorage helpers (profiles only — section toggles moved to midi-section-service) ──
 
-const ENABLED_KEY = 'midi-section-enabled-ids';
 const PROFILES_KEY = 'midi-section-profiles';
-
-function loadEnabledIds(): Set<MIDISectionId> {
-  try {
-    const raw = localStorage.getItem(ENABLED_KEY);
-    if (!raw) return new Set();
-    return new Set(JSON.parse(raw) as MIDISectionId[]);
-  } catch { return new Set(); }
-}
-
-function saveEnabledIds(ids: Set<MIDISectionId>) {
-  try { localStorage.setItem(ENABLED_KEY, JSON.stringify([...ids])); } catch { /* ignore */ }
-}
 
 function loadProfiles(): MIDISectionProfile[] {
   try {
@@ -130,9 +126,14 @@ const MIDISelectionContext = createContext<MIDISelectionContextValue | null>(nul
 
 export function MIDISelectionProvider({ children }: { children: ReactNode }) {
   const [activeSectionId, setActiveSectionIdState] = useState<MIDISectionId | null>(null);
-  const [enabledSectionIds, setEnabledSectionIds] = useState<Set<MIDISectionId>>(new Set());
+  // Default: all canonical sections ON for new/anonymous visitors
+  const [enabledSectionIds, setEnabledSectionIds] = useState<Set<MIDISectionId>>(
+    new Set(DEFAULT_ENABLED_IDS),
+  );
   const [sectionProfiles, setSectionProfiles] = useState<MIDISectionProfile[]>([]);
   const [pedalSwitchingMode, setPedalSwitchingModeState] = useState<PedalSwitchingMode>('passive');
+  // Authenticated user ID — null until auth resolves
+  const [userId, setUserId] = useState<string | null>(null);
 
   // Canonical cycling order — determines the sequence of Next/Last Section pedal steps.
   // Sections not in this list fall back to registration (DOM) order at the tail.
@@ -155,10 +156,36 @@ export function MIDISelectionProvider({ children }: { children: ReactNode }) {
   const activeSectionIdRef = useRef<MIDISectionId | null>(null);
   useEffect(() => { activeSectionIdRef.current = activeSectionId; }, [activeSectionId]);
 
-  // Load persisted state on mount (client-only)
+  // ── Load persisted state on mount (client-only) ────────────────────────────
+  // Priority: Supabase (authenticated) → localStorage (anonymous) → defaults
   useEffect(() => {
-    setEnabledSectionIds(loadEnabledIds());
     setSectionProfiles(loadProfiles());
+
+    const supabase = createClient();
+
+    // Resolve auth user, then load the appropriate toggle state
+    supabase.auth.getUser().then(async ({ data }) => {
+      const uid = data?.user?.id ?? null;
+      setUserId(uid);
+
+      if (uid) {
+        // Authenticated: load from DB, seed defaults on first visit
+        const dbIds = await loadEnabledIdsFromDB(uid);
+        if (dbIds === null) {
+          // First visit for this user — seed all-ON defaults
+          await seedDefaultToggleState(uid);
+          setEnabledSectionIds(new Set(DEFAULT_ENABLED_IDS));
+        } else {
+          setEnabledSectionIds(dbIds);
+        }
+      } else {
+        // Anonymous: use localStorage (already defaults to all-ON on first visit)
+        setEnabledSectionIds(loadEnabledIdsFromStorage());
+      }
+    }).catch(() => {
+      // Auth failed — fall back to localStorage
+      setEnabledSectionIds(loadEnabledIdsFromStorage());
+    });
   }, []);
 
   // ── Registration ───────────────────────────────────────────────────────────
@@ -201,15 +228,19 @@ export function MIDISelectionProvider({ children }: { children: ReactNode }) {
       const next = new Set(prev);
       if (next.has(id)) {
         next.delete(id);
-        // If this was the active section, clear it
         setActiveSectionIdState(cur => (cur === id ? null : cur));
       } else {
         next.add(id);
       }
-      saveEnabledIds(next);
+      // Always persist to localStorage (fast, works for anonymous users too)
+      saveEnabledIdsToStorage(next);
+      // Persist to Supabase for authenticated users (fire-and-forget)
+      if (userId) {
+        saveEnabledIdsToDB(userId, next).catch(() => { /* silent */ });
+      }
       return next;
     });
-  }, []);
+  }, [userId]);
 
   const isSectionEnabled = useCallback((id: MIDISectionId) => {
     return enabledSectionIds.has(id);
@@ -316,9 +347,12 @@ export function MIDISelectionProvider({ children }: { children: ReactNode }) {
     if (!profile) return;
     const next = new Set<MIDISectionId>(profile.enabledIds);
     setEnabledSectionIds(next);
-    saveEnabledIds(next);
+    saveEnabledIdsToStorage(next);
+    if (userId) {
+      saveEnabledIdsToDB(userId, next).catch(() => { /* silent */ });
+    }
     setActiveSectionIdState(null);
-  }, [sectionProfiles]);
+  }, [sectionProfiles, userId]);
 
   const deleteProfile = useCallback((profileId: string) => {
     setSectionProfiles(prev => {
