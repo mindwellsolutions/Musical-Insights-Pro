@@ -8,7 +8,7 @@ import { ThemeConfig } from '@/lib/themes';
 import {
   Settings, LogOut, Menu, X, Music2, Volume2, Shield, CreditCard,
   Save, FolderOpen, BookOpen, Mic, Triangle, Layers, Home, HelpCircle,
-  FlaskConical, ChevronRight, Radio, Zap,
+  FlaskConical, ChevronRight, Radio, Zap, Guitar,
 } from 'lucide-react';
 import { useAdminCheck } from '@/hooks/useAdminCheck';
 
@@ -24,6 +24,12 @@ interface HamburgerMenuProps {
   overlappingChordsEnabled?: boolean;
   isDetecting?: boolean;
   pedalSwitchingMode?: 'passive' | 'realtime';
+  instrument?: 'guitar' | 'bass';
+  onInstrumentChange?: (instrument: 'guitar' | 'bass') => void;
+  guitarStringCount?: 6 | 7;
+  onGuitarStringCountChange?: (count: 6 | 7) => void;
+  bassStringCount?: 4 | 5 | 6;
+  onBassStringCountChange?: (count: 4 | 5 | 6) => void;
   onSave?: () => void;
   onSaveAs?: () => void;
   onLoad?: () => void;
@@ -183,6 +189,12 @@ export default function HamburgerMenu({
   overlappingChordsEnabled = false,
   isDetecting = false,
   pedalSwitchingMode = 'passive',
+  instrument = 'guitar',
+  onInstrumentChange,
+  guitarStringCount = 6,
+  onGuitarStringCountChange,
+  bassStringCount = 4,
+  onBassStringCountChange,
   onSave,
   onSaveAs,
   onLoad,
@@ -401,6 +413,71 @@ export default function HamburgerMenu({
           </div>
 
           <Divider />
+
+          {/* INSTRUMENT */}
+          {onInstrumentChange && (
+            <>
+              <SectionLabel>Instrument</SectionLabel>
+              <div style={{ padding: '0 20px 8px' }}>
+                <div style={{ display: 'flex', borderRadius: 8, overflow: 'hidden', border: '1px solid var(--mi-border-medium)' }}>
+                  {(['guitar', 'bass'] as const).map(opt => {
+                    const active = instrument === opt;
+                    return (
+                      <button
+                        key={opt}
+                        onClick={() => onInstrumentChange(opt)}
+                        style={{
+                          flex: 1, height: 36, border: 'none', cursor: 'pointer',
+                          fontSize: 13, fontWeight: 600,
+                          background: active ? 'var(--mi-accent-blue)' : 'transparent',
+                          color: active ? '#fff' : '#8888aa',
+                          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                          transition: 'background 0.15s ease, color 0.15s ease',
+                        }}
+                      >
+                        <Guitar size={14} />
+                        {opt === 'guitar' ? 'Guitar' : 'Bass'}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* String count selector: Guitar = 6/7, Bass = 4/5/6 */}
+              <div style={{ padding: '0 20px 12px' }}>
+                <div style={{ fontSize: 11, fontWeight: 600, color: '#8888aa', marginBottom: 6 }}>
+                  Strings
+                </div>
+                <div style={{ display: 'flex', borderRadius: 8, overflow: 'hidden', border: '1px solid var(--mi-border-medium)' }}>
+                  {(instrument === 'guitar' ? [6, 7] as const : [4, 5, 6] as const).map(count => {
+                    const active = instrument === 'guitar' ? guitarStringCount === count : bassStringCount === count;
+                    return (
+                      <button
+                        key={count}
+                        onClick={() => {
+                          if (instrument === 'guitar') {
+                            onGuitarStringCountChange?.(count as 6 | 7);
+                          } else {
+                            onBassStringCountChange?.(count as 4 | 5 | 6);
+                          }
+                        }}
+                        style={{
+                          flex: 1, height: 32, border: 'none', cursor: 'pointer',
+                          fontSize: 13, fontWeight: 600,
+                          background: active ? 'var(--mi-accent-blue)' : 'transparent',
+                          color: active ? '#fff' : '#8888aa',
+                          transition: 'background 0.15s ease, color 0.15s ease',
+                        }}
+                      >
+                        {count}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+              <Divider />
+            </>
+          )}
 
           {/* VIEW MODE */}
           <SectionLabel>View Mode</SectionLabel>

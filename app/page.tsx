@@ -116,7 +116,14 @@ export default function Home() {
   const [currentTheme, setCurrentTheme] = useSupabaseStorage<Theme>('guitar-app-theme', 'dark');
   const [rootNote, setRootNote, setRootNoteDisplayOnly] = useSupabaseStorage('guitar-app-root-note', 'B');
   const [scaleName, setScaleName, setScaleNameDisplayOnly] = useSupabaseStorage('guitar-app-scale-name', 'Aeolian');
-  const [stringCount, setStringCount] = useSupabaseStorage<6 | 7>('guitar-app-string-count', 6);
+  const [guitarStringCount, setGuitarStringCount] = useSupabaseStorage<6 | 7>('guitar-app-string-count', 6);
+  // Instrument mode: 'guitar' shows all strings; 'bass' reuses the 6-string tuning table and hides
+  // the top strings to emulate a 4/5/6-string bass.
+  const [instrument, setInstrument] = useSupabaseStorage<'guitar' | 'bass'>('guitar-app-instrument', 'guitar');
+  const [bassStringCount, setBassStringCount] = useSupabaseStorage<4 | 5 | 6>('guitar-app-bass-string-count', 4);
+  // Effective string count used for tuning lookups: Bass always sources from the 6-string tuning
+  // table (no dedicated bass tunings exist) and hides strings visually; Guitar uses its own 6|7 choice.
+  const stringCount = instrument === 'bass' ? 6 : guitarStringCount;
   const [tuningName, setTuningName] = useSupabaseStorage('guitar-app-tuning-name', 'Standard');
   const [isInverted, setIsInverted] = useSupabaseStorage('guitar-app-is-inverted', true);
   const [selectedChordNotes, setSelectedChordNotes] = useSupabaseStorage<string[] | null>('guitar-app-selected-chord-notes', null);
@@ -1838,6 +1845,12 @@ export default function Home() {
   };
 
   const tuning = TUNINGS[stringCount][tuningName as keyof typeof TUNINGS[typeof stringCount]];
+  // Bass mode reuses the 6-string guitar tuning and hides the highest strings to emulate a
+  // 4/5/6-string bass, leaving the rest of the guitar logic (notes, chords, scales) fully intact.
+  // 6-string bass: show all. 5-string: hide high E (index 5). 4-string: hide B and high E (4, 5).
+  const hiddenStringIndices = instrument === 'bass'
+    ? Array.from({ length: 6 - bassStringCount }, (_, i) => tuning.length - 1 - i)
+    : [];
 
   // Calculate scale note positions for triad (pentatonic for major/minor, other scales for dim/aug)
   const triadScaleNotePositions = useMemo((): NotePosition[] => {
@@ -2395,7 +2408,16 @@ export default function Home() {
   }, [detectedNote, detectedFrequency, tuning, tuningName, rootNote, scaleName, liveNotesGlowEnabled]);
 
   const handleStringCountChange = (count: 6 | 7) => {
-    setStringCount(count);
+    setGuitarStringCount(count);
+    setTuningName('Standard');
+  };
+
+  const handleBassStringCountChange = (count: 4 | 5 | 6) => {
+    setBassStringCount(count);
+  };
+
+  const handleInstrumentChange = (nextInstrument: 'guitar' | 'bass') => {
+    setInstrument(nextInstrument);
     setTuningName('Standard');
   };
 
@@ -2706,7 +2728,6 @@ export default function Home() {
           circleOf5thsGlowDuration={circleOf5thsGlowDuration}
           onCircleOf5thsGlowDurationChange={setCircleOf5thsGlowDuration}
           stringCount={stringCount}
-          onStringCountChange={handleStringCountChange}
           tuningName={tuningName}
           onTuningChange={setTuningName}
           isInverted={isInverted}
@@ -2862,6 +2883,10 @@ export default function Home() {
         onOverlayModeChange={setOverlayMode}
         pedalSwitchingMode={pedalSwitchingMode}
         onPedalSwitchingModeChange={setPedalSwitchingMode}
+        instrument={instrument}
+        onInstrumentChange={handleInstrumentChange}
+        bassStringCount={bassStringCount}
+        onBassStringCountChange={handleBassStringCountChange}
         openMenuTrigger={openMenuTrigger}
       />
       )}
@@ -4155,6 +4180,7 @@ export default function Home() {
                     <Fretboard
                     stringCount={stringCount}
                     tuning={tuning}
+                    hiddenStringIndices={hiddenStringIndices}
                     notePositions={fretboardOrder === 'triads-top' ? combinedNotePositions : triadScaleNotePositions}
                     theme={theme}
                     isInverted={isInverted}
@@ -4331,6 +4357,7 @@ export default function Home() {
                   <Fretboard
                     stringCount={stringCount}
                     tuning={tuning}
+                    hiddenStringIndices={hiddenStringIndices}
                     notePositions={fretboardOrder === 'pentatonics-top' ? notePositions : triadScaleNotePositions}
                     theme={theme}
                     isInverted={isInverted}
@@ -5335,6 +5362,7 @@ export default function Home() {
                   <Fretboard
                   stringCount={stringCount}
                   tuning={tuning}
+                  hiddenStringIndices={hiddenStringIndices}
                   notePositions={fretboardPositionsWithTriads}
                   theme={theme}
                   isInverted={isInverted}

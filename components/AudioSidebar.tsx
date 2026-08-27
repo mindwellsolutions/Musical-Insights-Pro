@@ -45,7 +45,6 @@ interface AudioSidebarProps {
   onCircleOf5thsGlowDurationChange?: (duration: number) => void;
   // Fretboard settings props
   stringCount?: 6 | 7;
-  onStringCountChange?: (count: 6 | 7) => void;
   tuningName?: string;
   onTuningChange?: (tuning: string) => void;
   isInverted?: boolean;
@@ -98,7 +97,6 @@ export function AudioSidebar({
   circleOf5thsGlowDuration = 1000,
   onCircleOf5thsGlowDurationChange,
   stringCount = 6,
-  onStringCountChange,
   tuningName = 'Standard',
   onTuningChange,
   isInverted = false,
@@ -216,9 +214,9 @@ export function AudioSidebar({
         className="AudioSidebar fixed left-0 top-0 h-full transition-all duration-300 flex"
         style={{
           width: isExpanded ? 384 : 0,
-          background: isExpanded ? 'var(--mi-bg-surface)' : 'transparent',
+          background: isExpanded ? 'linear-gradient(180deg, #12121a 0%, #0e0e15 100%)' : 'transparent',
           borderRight: isExpanded ? '1px solid var(--mi-border-medium)' : 'none',
-          boxShadow: isExpanded ? '4px 0 24px rgba(0,0,0,0.4)' : 'none',
+          boxShadow: isExpanded ? '6px 0 40px rgba(0,0,0,0.6), 1px 0 0 rgba(255,255,255,0.04)' : 'none',
           zIndex: 40,
           pointerEvents: isExpanded ? 'auto' : 'none',
           isolation: 'isolate',
@@ -314,42 +312,6 @@ export function AudioSidebar({
                 Settings
               </h3>
             </div>
-
-            {/* Strings Selection */}
-            {onStringCountChange && (
-              <div className="mb-3">
-                <div className="flex items-center gap-2 mb-2">
-                  <Guitar className="w-4 h-4" style={{ color: theme.textSecondary }} />
-                  <span className="text-xs font-medium" style={{ color: theme.textSecondary }}>
-                    Strings:
-                  </span>
-                </div>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => onStringCountChange(6)}
-                    className="flex-1 py-1.5 px-3 rounded text-xs font-medium transition-all"
-                    style={{
-                      background: stringCount === 6 ? theme.buttonPrimary : theme.bgSecondary,
-                      color: stringCount === 6 ? '#ffffff' : theme.textPrimary,
-                      border: `1px solid ${stringCount === 6 ? theme.buttonPrimary : theme.border}`,
-                    }}
-                  >
-                    6
-                  </button>
-                  <button
-                    onClick={() => onStringCountChange(7)}
-                    className="flex-1 py-1.5 px-3 rounded text-xs font-medium transition-all"
-                    style={{
-                      background: stringCount === 7 ? theme.buttonPrimary : theme.bgSecondary,
-                      color: stringCount === 7 ? '#ffffff' : theme.textPrimary,
-                      border: `1px solid ${stringCount === 7 ? theme.buttonPrimary : theme.border}`,
-                    }}
-                  >
-                    7
-                  </button>
-                </div>
-              </div>
-            )}
 
             {/* Colorful Strings */}
             {onShowColorfulStringsChange && (

@@ -113,6 +113,8 @@ interface FretboardProps {
   outlineThickness?: number;            // -5 to +5; 0 = medium (default 2px ring); each step ±0.5px
   // ── Key / 7th highlight size ─────────────────────────────────────────────────
   enlargeKeyAnd7th?: boolean;           // when true, Key/7th rings use large glow (6px spread); when false, same as interval notes (4px)
+  // ── Instrument mode (Bass hides top 2 strings: B and high E) ───────────────────
+  hiddenStringIndices?: number[];       // physical tuning-array indices to hide from rendering (e.g. [4,5] for bass)
 }
 
 const FRET_MARKERS = [3, 5, 7, 9, 12, 15, 17, 19, 21, 24];
@@ -363,6 +365,7 @@ export default function Fretboard({
   showTriadOutline = false,
   outlineThickness = 0,
   enlargeKeyAnd7th = true,
+  hiddenStringIndices = [],
 }: FretboardProps) {
   const { getNoteDisplayName } = useNoteDisplay();
   const fretCount = propFretCount;
@@ -504,6 +507,12 @@ export default function Fretboard({
             )}
 
             {displayTuning.map((note, stringIndex) => {
+              // Determine the physical (non-display) tuning index for this row, so we can
+              // hide specific physical strings (e.g. Bass mode hides B and high E) regardless
+              // of whether the fretboard is inverted.
+              const physicalIndex = isInverted ? (tuning.length - 1 - stringIndex) : stringIndex;
+              if (hiddenStringIndices.includes(physicalIndex)) return null;
+
               // Map display stringIndex to the physical string's color.
               // tuning array is ordered [lowE, A, D, G, B, highE] (low → high).
               // Regular mode: displayTuning = tuning, so stringIndex 0 = lowE → colorIndex 0 (Red).

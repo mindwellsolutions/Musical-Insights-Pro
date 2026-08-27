@@ -174,6 +174,11 @@ interface HeaderProps {
   // Pedal Switching View mode
   pedalSwitchingMode?: 'passive' | 'realtime';
   onPedalSwitchingModeChange?: (mode: 'passive' | 'realtime') => void;
+  // Instrument mode: Guitar (all strings) vs Bass (hides B and high E)
+  instrument?: 'guitar' | 'bass';
+  onInstrumentChange?: (instrument: 'guitar' | 'bass') => void;
+  bassStringCount?: 4 | 5 | 6;
+  onBassStringCountChange?: (count: 4 | 5 | 6) => void;
   /** Increment to programmatically open the hamburger menu */
   openMenuTrigger?: number;
 }
@@ -306,6 +311,10 @@ export default function Header({
   onOverlayModeChange,
   pedalSwitchingMode = 'passive',
   onPedalSwitchingModeChange,
+  instrument = 'guitar',
+  onInstrumentChange,
+  bassStringCount = 4,
+  onBassStringCountChange,
   openMenuTrigger,
 }: HeaderProps) {
   const themeKeys = Object.keys(themes) as Theme[];
@@ -458,6 +467,12 @@ export default function Header({
             onStopDetection={onStopDetection}
             pedalSwitchingMode={pedalSwitchingMode}
             onPedalSwitchingModeChange={onPedalSwitchingModeChange}
+            instrument={instrument}
+            onInstrumentChange={onInstrumentChange}
+            guitarStringCount={stringCount === 7 ? 7 : 6}
+            onGuitarStringCountChange={onStringCountChange}
+            bassStringCount={bassStringCount}
+            onBassStringCountChange={onBassStringCountChange}
             onLogout={handleLogout}
           />
           <Link href="/" title="Go to Musical Insights Home" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
