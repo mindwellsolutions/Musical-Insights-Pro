@@ -168,6 +168,9 @@ interface HeaderProps {
   // Recommended Progressions (lifted state from SongProgressionChordTonesTabs)
   progressionsOpen?: boolean;
   onProgressionsOpenChange?: (open: boolean) => void;
+  // Triads in Scale arc-bands toggle (synced with fretboard panel toggle)
+  showTriadArcBands?: boolean;
+  onTriadArcBandsChange?: (enabled: boolean) => void;
   // Overlay mode (replaces hard-coded "Triads in Scale")
   overlayMode?: string;
   onOverlayModeChange?: (mode: string) => void;
@@ -307,6 +310,8 @@ export default function Header({
   selectedTriadType = 'major',
   progressionsOpen = false,
   onProgressionsOpenChange,
+  showTriadArcBands = false,
+  onTriadArcBandsChange,
   overlayMode = 'triads',
   onOverlayModeChange,
   pedalSwitchingMode = 'passive',
@@ -467,6 +472,12 @@ export default function Header({
             onStopDetection={onStopDetection}
             pedalSwitchingMode={pedalSwitchingMode}
             onPedalSwitchingModeChange={onPedalSwitchingModeChange}
+            showTriadArcBands={showTriadArcBands}
+            onTriadArcBandsChange={onTriadArcBandsChange}
+            showIndividualNotes={showIndividualNotes}
+            onIndividualNotesChange={onIndividualNotesChange}
+            overlayMode={overlayMode}
+            onOverlayModeChange={onOverlayModeChange}
             instrument={instrument}
             onInstrumentChange={onInstrumentChange}
             guitarStringCount={stringCount === 7 ? 7 : 6}

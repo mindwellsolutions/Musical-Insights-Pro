@@ -22,6 +22,12 @@ interface HamburgerMenuProps {
   noteDetectorEnabled?: boolean;
   showTriadMode?: boolean;
   overlappingChordsEnabled?: boolean;
+  showTriadArcBands?: boolean;
+  onTriadArcBandsChange?: (enabled: boolean) => void;
+  showIndividualNotes?: boolean;
+  onIndividualNotesChange?: (enabled: boolean) => void;
+  overlayMode?: string;
+  onOverlayModeChange?: (mode: string) => void;
   isDetecting?: boolean;
   pedalSwitchingMode?: 'passive' | 'realtime';
   instrument?: 'guitar' | 'bass';
@@ -187,6 +193,12 @@ export default function HamburgerMenu({
   noteDetectorEnabled = false,
   showTriadMode = false,
   overlappingChordsEnabled = false,
+  showTriadArcBands = false,
+  onTriadArcBandsChange,
+  showIndividualNotes = false,
+  onIndividualNotesChange,
+  overlayMode = 'triads',
+  onOverlayModeChange,
   isDetecting = false,
   pedalSwitchingMode = 'passive',
   instrument = 'guitar',
@@ -481,6 +493,65 @@ export default function HamburgerMenu({
 
           {/* VIEW MODE */}
           <SectionLabel>View Mode</SectionLabel>
+
+          {/* ── Triads in Scale (synced with fretboard toggle + dropdown) ── */}
+          {onTriadArcBandsChange && (
+            <div style={{ padding: '4px 20px 10px' }}>
+              {/* Toggle + dropdown row */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+                {/* Toggle pill */}
+                <div
+                  onClick={() => onTriadArcBandsChange(!showTriadArcBands)}
+                  style={{
+                    width: 42, height: 24, borderRadius: 12, flexShrink: 0, position: 'relative',
+                    background: showTriadArcBands ? 'var(--mi-accent-blue)' : 'rgba(255,255,255,0.08)',
+                    border: `1px solid ${showTriadArcBands ? 'var(--mi-accent-blue)' : 'var(--mi-border-medium)'}`,
+                    boxShadow: showTriadArcBands ? '0 0 8px rgba(59,130,246,0.35)' : 'none',
+                    transition: 'background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease',
+                    cursor: 'pointer',
+                  }}
+                >
+                  <div style={{
+                    position: 'absolute', top: 3, left: showTriadArcBands ? 21 : 3,
+                    width: 16, height: 16, borderRadius: '50%', background: '#fff',
+                    boxShadow: '0 1px 4px rgba(0,0,0,0.35)',
+                    transition: 'left 0.2s cubic-bezier(0.4,0,0.2,1)',
+                  }} />
+                </div>
+                {/* Overlay mode dropdown */}
+                <select
+                  value={overlayMode}
+                  onChange={(e) => onOverlayModeChange?.(e.target.value)}
+                  onClick={(e) => e.stopPropagation()}
+                  style={{
+                    flex: 1, fontSize: 12, fontWeight: 600,
+                    color: '#c0c0d8',
+                    background: 'rgba(255,255,255,0.06)',
+                    border: '1px solid var(--mi-border-medium)',
+                    borderRadius: 6, padding: '3px 6px',
+                    cursor: 'pointer', outline: 'none',
+                  }}
+                >
+                  <option value="triads">Triads in Scale</option>
+                  <option value="seventh-chords">7th Chords in Scale</option>
+                  <option value="pentatonic">Pentatonic per Chord</option>
+                  <option value="arpeggios">Arpeggio Shapes (CAGED)</option>
+                  <option value="diatonic-intervals">Diatonic Intervals</option>
+                  <option value="tritone">Tritone Tension &amp; Resolution</option>
+                </select>
+              </div>
+              {/* Individual Notes toggle below */}
+              {onIndividualNotesChange && (
+                <ToggleRow
+                  icon={<Music2 size={14} />}
+                  label="Individual Notes"
+                  isOn={showIndividualNotes}
+                  onToggle={() => onIndividualNotesChange(!showIndividualNotes)}
+                />
+              )}
+            </div>
+          )}
+
           {onTriadModeChange && (
             <ToggleRow
               icon={<Triangle size={14} />}

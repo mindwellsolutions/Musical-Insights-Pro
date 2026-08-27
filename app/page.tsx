@@ -2879,6 +2879,12 @@ export default function Home() {
         selectedTriadType={selectedTriadType}
         progressionsOpen={harmonizationTab === 'recommended'}
         onProgressionsOpenChange={(open) => setHarmonizationTab(open ? 'recommended' : 'harmonization')}
+        showTriadArcBands={showTriadArcBands}
+        onTriadArcBandsChange={(next) => {
+          setShowTriadArcBands(next);
+          setTriadFocusOn(next);
+          if (next) setTargetNoteHighlight(null);
+        }}
         overlayMode={overlayMode}
         onOverlayModeChange={setOverlayMode}
         pedalSwitchingMode={pedalSwitchingMode}
