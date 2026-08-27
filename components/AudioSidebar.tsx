@@ -272,7 +272,7 @@ export function AudioSidebar({
           {/* Logo at top of sidebar */}
           <div className="mb-4 flex justify-center">
             <Image
-              src="/images/logo-whitetext.png"
+              src="/images/logo/musical-insights-pro-logo-blue.png"
               alt="Modern Guitar Scales"
               width={200}
               height={45}

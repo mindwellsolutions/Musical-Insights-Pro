@@ -5,43 +5,126 @@
     "enabled": true,
     "buttons": [
       {
-        "id": "program-0-ch1",
+        "id": "program-0-ch1-1787512936806",
         "channel": 1,
         "messageType": "program",
         "programNumber": 0,
-        "action": "prev",
+        "action": "next",
         "label": "Program 0 (Ch 1)",
-        "enabled": true
+        "enabled": true,
+        "rawMidiData": [
+          192,
+          0
+        ]
       },
       {
-        "id": "program-1-ch1",
+        "id": "program-1-ch1-1787512942371",
         "channel": 1,
         "messageType": "program",
         "programNumber": 1,
-        "action": "next",
+        "action": "prev",
         "label": "Program 1 (Ch 1)",
-        "enabled": true
+        "enabled": true,
+        "rawMidiData": [
+          192,
+          1
+        ]
       },
       {
-        "id": "program-2-ch1",
+        "id": "program-2-ch1-1787512944231",
         "channel": 1,
         "messageType": "program",
         "programNumber": 2,
         "action": "scale-left",
         "label": "Program 2 (Ch 1)",
-        "enabled": true
+        "enabled": true,
+        "rawMidiData": [
+          192,
+          2
+        ]
       },
       {
-        "id": "program-3-ch1",
+        "id": "program-3-ch1-1787512945666",
         "channel": 1,
         "messageType": "program",
         "programNumber": 3,
         "action": "scale-right",
         "label": "Program 3 (Ch 1)",
-        "enabled": true
+        "enabled": true,
+        "rawMidiData": [
+          192,
+          3
+        ]
       }
     ],
-    "lastUpdated": 1763064794968
+    "lastUpdated": 1787520638431
   },
-  "profiles": []
+  "profiles": [
+    {
+      "id": "profile-1787512957625-2199ztn0p",
+      "name": "M-VAVE - Standard v1",
+      "deviceName": "USB-Midi",
+      "config": {
+        "deviceId": null,
+        "deviceName": null,
+        "enabled": true,
+        "buttons": [
+          {
+            "id": "program-0-ch1-1787512936806",
+            "channel": 1,
+            "messageType": "program",
+            "programNumber": 0,
+            "action": "prev",
+            "label": "Program 0 (Ch 1)",
+            "enabled": true,
+            "rawMidiData": [
+              192,
+              0
+            ]
+          },
+          {
+            "id": "program-1-ch1-1787512942371",
+            "channel": 1,
+            "messageType": "program",
+            "programNumber": 1,
+            "action": "next",
+            "label": "Program 1 (Ch 1)",
+            "enabled": true,
+            "rawMidiData": [
+              192,
+              1
+            ]
+          },
+          {
+            "id": "program-2-ch1-1787512944231",
+            "channel": 1,
+            "messageType": "program",
+            "programNumber": 2,
+            "action": "scale-left",
+            "label": "Program 2 (Ch 1)",
+            "enabled": true,
+            "rawMidiData": [
+              192,
+              2
+            ]
+          },
+          {
+            "id": "program-3-ch1-1787512945666",
+            "channel": 1,
+            "messageType": "program",
+            "programNumber": 3,
+            "action": "scale-right",
+            "label": "Program 3 (Ch 1)",
+            "enabled": true,
+            "rawMidiData": [
+              192,
+              3
+            ]
+          }
+        ]
+      },
+      "createdAt": 1787512957625,
+      "updatedAt": 1787512970768
+    }
+  ]
 }

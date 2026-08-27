@@ -521,7 +521,7 @@ export default function ChordProgressionBuilder() {
           {/* Logo + Label — clickable to home */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexShrink: 0 }}>
             <a href="/" title="Go to Musical Insights Home" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-              <Image src="/images/logo-whitetext.png" width={110} height={25} alt="Musical Insights" style={{ objectFit: 'contain', cursor: 'pointer' }} />
+              <Image src="/images/logo/musical-insights-pro-logo-blue.png" width={110} height={25} alt="Musical Insights" style={{ objectFit: 'contain', cursor: 'pointer' }} />
             </a>
             <div style={{ width: 1, height: 22, background: 'var(--mi-border-medium)' }} />
             <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--mi-text-secondary)', whiteSpace: 'nowrap' }}>Song Builder</span>

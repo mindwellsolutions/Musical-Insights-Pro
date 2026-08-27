@@ -325,7 +325,7 @@ export default function HamburgerMenu({
           background: 'rgba(255,255,255,0.02)',
         }}>
           <Image
-            src="/images/logo-whitetext.png"
+            src="/images/logo/musical-insights-pro-logo-blue.png"
             alt="Musical Insights"
             width={118} height={26}
             style={{ objectFit: 'contain' }}
