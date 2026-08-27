@@ -46,7 +46,7 @@ export default function LoginPage() {
         onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
         onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = '0.8'; }}
       >
-        <Image src="/images/logo/website-logo-live-v1.2.png" width={120} height={27} alt="Home" style={{ objectFit: 'contain' }} />
+        <Image src="/images/logo/website-logo-live-v1.3.png" width={120} height={27} alt="Home" style={{ objectFit: 'contain' }} />
       </Link>
 
       {/* Animated background orbs */}
@@ -69,7 +69,7 @@ export default function LoginPage() {
         }}>
           {/* Logo */}
           <div style={{ textAlign: 'center', marginBottom: 32 }}>
-            <Image src="/images/logo/website-logo-live-v1.2.png" alt="Musical Insights Pro" width={220} height={50} priority style={{ objectFit: 'contain' }} />
+            <Image src="/images/logo/website-logo-live-v1.3.png" alt="Musical Insights Pro" width={220} height={50} priority style={{ objectFit: 'contain' }} />
             <p style={{ marginTop: 12, fontSize: 14, color: 'var(--mi-text-secondary)' }}>Sign in to your account</p>
           </div>
 

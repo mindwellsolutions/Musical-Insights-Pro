@@ -71,7 +71,7 @@ export default function ResetPasswordPage() {
           <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
               <Image
-                src="/images/logo/website-logo-live-v1.2.png"
+                src="/images/logo/website-logo-live-v1.3.png"
                 alt="Musical Insights Pro"
                 width={240}
                 height={54}

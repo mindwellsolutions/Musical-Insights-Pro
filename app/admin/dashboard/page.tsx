@@ -87,7 +87,7 @@ export default function AdminDashboardPage() {
       {/* Admin Header Bar */}
       <div style={{ height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 24px', borderBottom: '1px solid var(--mi-border-subtle)', background: 'var(--mi-bg-surface)', position: 'sticky', top: 0, zIndex: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <Image src="/images/logo/website-logo-live-v1.2.png" width={120} height={27} alt="Musical Insights" style={{ objectFit: 'contain' }} />
+          <Image src="/images/logo/website-logo-live-v1.3.png" width={120} height={27} alt="Musical Insights" style={{ objectFit: 'contain' }} />
           <div style={{ width: 1, height: 24, background: 'var(--mi-border-medium)' }} />
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <Shield size={16} style={{ color: 'var(--mi-accent-amber)' }} />
