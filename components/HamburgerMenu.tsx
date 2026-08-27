@@ -327,7 +327,7 @@ export default function HamburgerMenu({
           <Image
             src="/images/logo/website-logo-live-v1.3.png"
             alt="Musical Insights"
-            width={118} height={26}
+            width={148} height={33}
             style={{ objectFit: 'contain' }}
           />
           <button

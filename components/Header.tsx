@@ -487,7 +487,7 @@ export default function Header({
             onLogout={handleLogout}
           />
           <Link href="/" title="Go to Musical Insights Home" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-            <Image src="/images/logo/website-logo-live-v1.3.png" alt="Musical Insights" width={120} height={27} priority style={{ objectFit: 'contain', cursor: 'pointer' }} />
+            <Image src="/images/logo/website-logo-live-v1.3.png" alt="Musical Insights" width={150} height={34} priority style={{ objectFit: 'contain', cursor: 'pointer' }} />
           </Link>
         </div>
 
