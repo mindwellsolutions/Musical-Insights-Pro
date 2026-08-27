@@ -156,7 +156,7 @@ export default function ManageSubscriptionPage() {
       {/* Page Header */}
       <div style={{ height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 24px', borderBottom: '1px solid var(--mi-border-subtle)', background: 'var(--mi-bg-surface)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <Image src="/images/logo/website-logo-live-v1.3.png" width={120} height={27} alt="Musical Insights" style={{ objectFit: 'contain' }} />
+          <Image src="/images/logo/website-logo-live-v1.4.png" width={120} height={27} alt="Musical Insights" style={{ objectFit: 'contain' }} />
           <div style={{ width: 1, height: 24, background: 'var(--mi-border-medium)' }} />
           <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--mi-text-secondary)' }}>Manage Subscription</span>
         </div>
