@@ -89,7 +89,7 @@ export default function UpdatePasswordPage() {
           <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
               <Image
-                src="/images/logo/musical-insights-pro-logo-blue.png"
+                src="/images/logo/website-logo-live-v1.2.png"
                 alt="Musical Insights Pro"
                 width={240}
                 height={54}

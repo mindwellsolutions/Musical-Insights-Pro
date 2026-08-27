@@ -61,7 +61,7 @@ export default function LearnFretboardPage() {
       {/* Page Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 32px', borderBottom: '1px solid var(--mi-border-subtle)', background: 'var(--mi-bg-surface)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <Image src="/images/logo/musical-insights-pro-logo-blue.png" width={130} height={30} alt="Musical Insights" style={{ objectFit: 'contain' }} />
+          <Image src="/images/logo/website-logo-live-v1.2.png" width={130} height={30} alt="Musical Insights" style={{ objectFit: 'contain' }} />
           <div style={{ width: 1, height: 28, background: 'var(--mi-border-medium)' }} />
           <div>
             <h1 style={{ fontSize: 18, fontWeight: 700, color: 'var(--mi-text-primary)', margin: 0 }}>Learn Fretboard Notes</h1>

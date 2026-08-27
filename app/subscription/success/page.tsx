@@ -44,7 +44,7 @@ function SubscriptionSuccessContent() {
 
       {/* Header */}
       <div style={{ height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 24px', borderBottom: '1px solid var(--mi-border-subtle)', background: 'var(--mi-bg-surface)', position: 'relative', zIndex: 10 }}>
-        <Image src="/images/logo/musical-insights-pro-logo-blue.png" width={120} height={27} alt="Musical Insights" style={{ objectFit: 'contain' }} />
+        <Image src="/images/logo/website-logo-live-v1.2.png" width={120} height={27} alt="Musical Insights" style={{ objectFit: 'contain' }} />
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '7px 14px', borderRadius: 'var(--mi-radius-sm)', background: 'var(--mi-bg-elevated)', border: '1px solid var(--mi-border-medium)', fontSize: 13, fontWeight: 500, color: 'var(--mi-text-secondary)', textDecoration: 'none' }}>
           Back to App
         </Link>

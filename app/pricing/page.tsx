@@ -101,7 +101,7 @@ export default function PricingPage() {
 
       {/* Page Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 32px', position: 'relative', zIndex: 1 }}>
-        <Image src="/images/logo/musical-insights-pro-logo-blue.png" width={140} height={32} alt="Musical Insights" style={{ objectFit: 'contain' }} />
+        <Image src="/images/logo/website-logo-live-v1.2.png" width={140} height={32} alt="Musical Insights" style={{ objectFit: 'contain' }} />
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 16px', borderRadius: 'var(--mi-radius-sm)', background: 'var(--mi-bg-elevated)', border: '1px solid var(--mi-border-medium)', fontSize: 13, fontWeight: 500, color: 'var(--mi-text-secondary)', textDecoration: 'none' }}>
           <ChevronLeft size={14} /> Back to App
         </Link>
