@@ -662,6 +662,10 @@ export default function Header({
                   onOverlappingChordsChange={onOverlappingChordsChange}
                   showIndividualNotes={showIndividualNotes}
                   onIndividualNotesChange={onIndividualNotesChange}
+                  showTriadArcBands={showTriadArcBands}
+                  onTriadArcBandsChange={onTriadArcBandsChange}
+                  overlayMode={overlayMode}
+                  onOverlayModeChange={onOverlayModeChange}
                 />
               )}
 

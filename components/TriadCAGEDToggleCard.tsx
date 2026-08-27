@@ -10,6 +10,11 @@ interface TriadCAGEDToggleCardProps {
   onOverlappingChordsChange?: (enabled: boolean) => void;
   showIndividualNotes?: boolean;
   onIndividualNotesChange?: (enabled: boolean) => void;
+  // Triads in Scale arc-bands (synced with fretboard panel toggle)
+  showTriadArcBands?: boolean;
+  onTriadArcBandsChange?: (enabled: boolean) => void;
+  overlayMode?: string;
+  onOverlayModeChange?: (mode: string) => void;
 }
 
 export default function TriadCAGEDToggleCard({
@@ -20,6 +25,10 @@ export default function TriadCAGEDToggleCard({
   onOverlappingChordsChange,
   showIndividualNotes = false,
   onIndividualNotesChange,
+  showTriadArcBands = false,
+  onTriadArcBandsChange,
+  overlayMode = 'triads',
+  onOverlayModeChange,
 }: TriadCAGEDToggleCardProps) {
   // Reusable toggle row
   const ToggleRow = ({
@@ -74,6 +83,63 @@ export default function TriadCAGEDToggleCard({
       }}
     >
       <div className="space-y-2">
+
+        {/* ── Triads in Scale toggle + overlay dropdown (synced with fretboard) ── */}
+        {onTriadArcBandsChange && (
+          <div>
+            <div className="flex items-center gap-2">
+              {/* Toggle pill */}
+              <div
+                onClick={() => onTriadArcBandsChange(!showTriadArcBands)}
+                className="relative flex-shrink-0"
+                style={{
+                  width: 36, height: 20, borderRadius: 10, cursor: 'pointer',
+                  background: showTriadArcBands ? theme.accentPrimary : '#4b5563',
+                  border: `2px solid ${showTriadArcBands ? theme.accentPrimary : '#6b7280'}`,
+                  transition: 'background 0.2s ease, border-color 0.2s ease',
+                }}
+                aria-label="Toggle Triads in Scale"
+              >
+                <span
+                  className="inline-block rounded-full shadow-md"
+                  style={{
+                    position: 'absolute', top: 1,
+                    width: 12, height: 12,
+                    background: '#fff',
+                    transform: showTriadArcBands ? 'translateX(16px)' : 'translateX(2px)',
+                    transition: 'transform 0.2s cubic-bezier(0.4,0,0.2,1)',
+                  }}
+                />
+              </div>
+              {/* Overlay mode dropdown */}
+              <select
+                value={overlayMode}
+                onChange={(e) => onOverlayModeChange?.(e.target.value)}
+                onClick={(e) => e.stopPropagation()}
+                className="flex-1 text-xs font-semibold rounded"
+                style={{
+                  background: theme.bgSecondary,
+                  color: theme.textPrimary,
+                  border: `1px solid ${theme.border}`,
+                  padding: '2px 5px',
+                  cursor: 'pointer',
+                  outline: 'none',
+                  minWidth: 0,
+                }}
+              >
+                <option value="triads">Triads in Scale</option>
+                <option value="seventh-chords">7th Chords in Scale</option>
+                <option value="pentatonic">Pentatonic per Chord</option>
+                <option value="arpeggios">Arpeggio Shapes (CAGED)</option>
+                <option value="diatonic-intervals">Diatonic Intervals</option>
+                <option value="tritone">Tritone Tension &amp; Resolution</option>
+              </select>
+            </div>
+            {/* Divider below */}
+            <div className="mt-2 border-t" style={{ borderColor: theme.border }} />
+          </div>
+        )}
+
         {/* Back button — shown only when Triads & CAGED is ON */}
         {showTriadMode && (
           <button
